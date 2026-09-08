@@ -1,0 +1,5 @@
+node_modules/
+build/
+scripts/*.map
+.DS_Store
+Thumbs.db
