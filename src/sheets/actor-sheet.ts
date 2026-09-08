@@ -17,7 +17,7 @@ function fieldValue(
 export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["relis", "actor-sheet", "character-sheet"],
-    position: { width: 780, height: 760 },
+    position: { width: 780, height: 680 },
     window: { resizable: true },
   };
 
@@ -62,6 +62,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         id: item.id,
         name: item.name,
         type: item.type,
+        typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
         canRoll: item.type === "action",
       })),
     };

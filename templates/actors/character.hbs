@@ -36,6 +36,7 @@
       <input
         type="number"
         min="0"
+        max="{{system.health.hitPoints.maximum}}"
         value="{{system.health.hitPoints.current}}"
         data-value-type="number"
         data-document-field="system.health.hitPoints.current"
@@ -149,7 +150,7 @@
               data-action="open-item"
               data-item-id="{{id}}"
             >{{name}}</button>
-            <span class="relis-badge">{{type}}</span>
+            <span class="relis-badge">{{typeLabel}}</span>
             {{#if canRoll}}
               <button
                 type="button"
@@ -165,5 +166,5 @@
     {{/if}}
   </section>
 
-  <footer class="relis-footer">Tranche verticale 10-C · schéma 1 · paquet 0.1.0</footer>
+  <footer class="relis-footer">Tranche verticale 10-C · schéma 1 · paquet 0.1.1</footer>
 </section>

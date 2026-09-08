@@ -9,6 +9,9 @@ const manifest = JSON.parse(
 const packageJson = JSON.parse(
   fs.readFileSync(path.join(root, "package.json"), "utf8"),
 );
+const french = JSON.parse(
+  fs.readFileSync(path.join(root, "lang/fr.json"), "utf8"),
+);
 
 assert.equal(manifest.id, "relis");
 assert.equal(manifest.title, "RE:LIS — RE: Lost in Space");
@@ -41,11 +44,18 @@ const expectedCounts = {
   ChatMessage: 1,
 };
 for (const [documentName, expected] of Object.entries(expectedCounts)) {
+  const documentTypes = manifest.documentTypes[documentName] ?? {};
   assert.equal(
-    Object.keys(manifest.documentTypes[documentName] ?? {}).length,
+    Object.keys(documentTypes).length,
     expected,
     `${documentName}: ${expected} types`,
   );
+  for (const type of Object.keys(documentTypes))
+    assert.equal(
+      typeof french.TYPES?.[documentName]?.[type],
+      "string",
+      `Traduction française absente : TYPES.${documentName}.${type}`,
+    );
 }
 assert.equal(
   Object.values(expectedCounts).reduce((sum, value) => sum + value, 0),

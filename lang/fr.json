@@ -1,25 +1,90 @@
 {
-  "RELIS.Name": "RE:LIS — RE: Lost in Space",
-  "RELIS.Ready": "RE:LIS 0.1.0 est chargé.",
-  "RELIS.Error.InsufficientResource": "Ressource insuffisante pour accomplir cette Action.",
-  "RELIS.Error.ActorRequired": "Cette Action doit être embarquée par un personnage.",
-  "TYPES.Actor.character": "Personnage",
-  "TYPES.Actor.npc": "PNJ",
-  "TYPES.Actor.creature": "Créature",
-  "TYPES.Actor.cohort": "Cohorte",
-  "TYPES.Actor.drone": "Drone",
-  "TYPES.Actor.vehicle": "Véhicule",
-  "TYPES.Actor.mecha": "Mecha",
-  "TYPES.Actor.ship": "Vaisseau",
-  "TYPES.Actor.ark": "Arche",
-  "TYPES.Actor.organization": "Organisation",
-  "TYPES.Actor.settlement": "Établissement",
-  "TYPES.Item.action": "Action",
-  "TYPES.Item.equipment": "Équipement",
-  "TYPES.ActiveEffect.relisEffect": "Effet RE:LIS",
-  "TYPES.Combat.personal": "Rencontre personnelle",
-  "TYPES.Combat.spatial": "Rencontre spatiale",
-  "TYPES.Combat.crisis": "Crise",
-  "TYPES.Combatant.participant": "Participant",
-  "TYPES.ChatMessage.relisCard": "Carte RE:LIS"
+  "RELIS": {
+    "Name": "RE:LIS — RE: Lost in Space",
+    "Ready": "RE:LIS 0.1.1 est chargé.",
+    "Error": {
+      "InsufficientResource": "Ressource insuffisante pour accomplir cette Action.",
+      "ActorRequired": "Cette Action doit être embarquée par un personnage."
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage joueur",
+      "npc": "Personnage non-joueur",
+      "creature": "Créature",
+      "cohort": "Cohorte",
+      "drone": "Drone",
+      "vehicle": "Véhicule",
+      "mecha": "Mécha",
+      "ship": "Vaisseau",
+      "ark": "Arche",
+      "organization": "Organisation",
+      "settlement": "Implantation"
+    },
+    "Item": {
+      "ancestry": "Ascendance",
+      "profile": "Profil",
+      "origin": "Origine",
+      "advantage": "Atout",
+      "drawback": "Handicap",
+      "path": "Voie",
+      "specialization": "Spécialisation",
+      "post": "Poste",
+      "talent": "Talent",
+      "action": "Action",
+      "power": "Pouvoir",
+      "conditionTemplate": "Modèle de condition",
+      "weapon": "Arme",
+      "armor": "Armure",
+      "equipment": "Équipement",
+      "consumable": "Consommable",
+      "ammunition": "Munition",
+      "resource": "Ressource",
+      "container": "Conteneur",
+      "hull": "Coque",
+      "module": "Module",
+      "installation": "Installation",
+      "project": "Projet",
+      "research": "Recherche",
+      "stratagem": "Stratagème",
+      "document": "Document"
+    },
+    "JournalEntryPage": {
+      "starSystem": "Système stellaire",
+      "celestialBody": "Corps céleste",
+      "region": "Région",
+      "site": "Site",
+      "xenoSpecies": "Xénorace",
+      "analysis": "Analyse",
+      "expedition": "Expédition",
+      "report": "Rapport",
+      "dossier": "Dossier",
+      "market": "Marché",
+      "account": "Compte",
+      "transaction": "Transaction",
+      "contract": "Contrat",
+      "shipment": "Acheminement",
+      "legalRecord": "Registre juridique",
+      "relation": "Relation",
+      "treaty": "Traité",
+      "colonyRecord": "Dossier colonial",
+      "consentRecord": "Registre de consentement",
+      "biologicalRecord": "Dossier biologique",
+      "register": "Registre"
+    },
+    "ActiveEffect": {
+      "relisEffect": "Effet RE:LIS"
+    },
+    "Combat": {
+      "personal": "Rencontre personnelle",
+      "spatial": "Rencontre spatiale",
+      "crisis": "Crise"
+    },
+    "Combatant": {
+      "participant": "Participant"
+    },
+    "ChatMessage": {
+      "relisCard": "Carte RE:LIS"
+    }
+  }
 }

@@ -2,6 +2,7 @@ import { PACKAGE_VERSION, SYSTEM_ID } from "./config";
 import { registerDataModels } from "./data/models";
 import { RelisActor } from "./documents/actor";
 import { registerIdentityHooks } from "./hooks/identity";
+import { registerIntegrityHooks } from "./hooks/integrity";
 import { registerSettings } from "./settings";
 import { registerSheets } from "./sheets/register";
 
@@ -12,6 +13,7 @@ Hooks.once("init", () => {
   registerSettings();
   registerSheets();
   registerIdentityHooks();
+  registerIntegrityHooks();
 });
 
 Hooks.once("ready", () => {

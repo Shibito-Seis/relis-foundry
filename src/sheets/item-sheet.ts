@@ -31,6 +31,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     return {
       ...context,
       item: this.item,
+      itemTypeLabel: game.i18n.localize(`TYPES.Item.${this.item.type}`),
       system: this.item.system,
       editable: this.item.isOwner,
       isAction: this.item.type === "action",

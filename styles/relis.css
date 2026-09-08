@@ -12,11 +12,17 @@
 
 .relis.actor-sheet,
 .relis.item-sheet {
+  max-width: calc(100vw - 1rem);
+  max-height: calc(100vh - 1rem);
   font-size: calc(14px * var(--relis-text-scale));
 }
 
 .relis .window-content {
+  min-height: 0;
   padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
   color: var(--relis-ink);
   background: #101820;
 }

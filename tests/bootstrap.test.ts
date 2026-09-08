@@ -112,7 +112,7 @@ describe("amorçage Foundry 10-C", () => {
     expect(modelCount).toBe(64);
     expect(registeredSettings).toHaveLength(32);
     expect(registeredSheets).toEqual(["Actor", "Item"]);
-    expect(hookNames).toHaveLength(7);
+    expect(hookNames).toHaveLength(8);
     expect((globalThis as any).CONFIG.Actor.documentClass.name).toBe(
       "RelisActor",
     );

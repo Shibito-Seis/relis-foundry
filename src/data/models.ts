@@ -9,6 +9,7 @@ import {
   SKILL_DEFINITIONS,
 } from "../config";
 import { masteryBonus } from "../rules/check";
+import { clampHitPoints } from "../rules/health";
 
 const fields = foundry.data.fields;
 
@@ -192,17 +193,16 @@ export class CharacterData extends ReservedData {
         },
       ]),
     );
-    const maximum = Math.max(1, Number(this.health.hitPoints.maximum ?? 1));
-    const value = Math.max(
-      0,
-      Math.min(maximum, Number(this.health.hitPoints.current ?? 0)),
+    const hitPoints = clampHitPoints(
+      this.health.hitPoints.current,
+      this.health.hitPoints.maximum,
     );
 
     this.derived = {
       attributes,
       skills,
       trackables: {
-        hitPoints: { value, max: maximum },
+        hitPoints: { value: hitPoints.current, max: hitPoints.maximum },
       },
     };
   }

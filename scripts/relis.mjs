@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.1.0";
+var PACKAGE_VERSION = "0.1.1";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -156,6 +156,57 @@ function degreeLabel(degree) {
 		success: "Réussite",
 		criticalSuccess: "Réussite critique"
 	}[degree];
+}
+//#endregion
+//#region src/rules/health.ts
+var CURRENT_PATH = "system.health.hitPoints.current";
+var MAXIMUM_PATH = "system.health.hitPoints.maximum";
+function finiteInteger(value, fallback) {
+	const number = Number(value);
+	return Number.isFinite(number) ? Math.trunc(number) : fallback;
+}
+function readPath(source, path) {
+	if (Object.hasOwn(source, path)) return source[path];
+	return path.split(".").reduce((value, key) => value?.[key], source);
+}
+function hasPath(source, path) {
+	if (Object.hasOwn(source, path)) return true;
+	const keys = path.split(".");
+	let value = source;
+	for (const key of keys) {
+		if (value === null || typeof value !== "object" || !Object.hasOwn(value, key)) return false;
+		value = value[key];
+	}
+	return true;
+}
+function writePath(source, path, value) {
+	if (Object.keys(source).some((key) => key.includes("."))) {
+		source[path] = value;
+		return;
+	}
+	const keys = path.split(".");
+	let target = source;
+	for (const key of keys.slice(0, -1)) {
+		const child = target[key];
+		if (child === null || typeof child !== "object" || Array.isArray(child)) target[key] = {};
+		target = target[key];
+	}
+	target[keys.at(-1) ?? path] = value;
+}
+function clampHitPoints(current, maximum) {
+	const safeMaximum = Math.max(1, finiteInteger(maximum, 1));
+	return {
+		current: Math.max(0, Math.min(safeMaximum, finiteInteger(current, 0))),
+		maximum: safeMaximum
+	};
+}
+function constrainHitPointUpdate(existing, change) {
+	const currentChanged = hasPath(change, CURRENT_PATH);
+	const maximumChanged = hasPath(change, MAXIMUM_PATH);
+	if (!currentChanged && !maximumChanged) return;
+	const next = clampHitPoints(currentChanged ? readPath(change, CURRENT_PATH) : existing.current, maximumChanged ? readPath(change, MAXIMUM_PATH) : existing.maximum);
+	if (maximumChanged) writePath(change, MAXIMUM_PATH, next.maximum);
+	if (currentChanged || next.current !== existing.current) writePath(change, CURRENT_PATH, next.current);
 }
 //#endregion
 //#region src/data/models.ts
@@ -337,14 +388,13 @@ var CharacterData = class extends ReservedData {
 			masteryBonus: masteryBonus(String(score.rank)),
 			total: masteryBonus(String(score.rank))
 		}]));
-		const maximum = Math.max(1, Number(this.health.hitPoints.maximum ?? 1));
-		const value = Math.max(0, Math.min(maximum, Number(this.health.hitPoints.current ?? 0)));
+		const hitPoints = clampHitPoints(this.health.hitPoints.current, this.health.hitPoints.maximum);
 		this.derived = {
 			attributes,
 			skills,
 			trackables: { hitPoints: {
-				value,
-				max: maximum
+				value: hitPoints.current,
+				max: hitPoints.maximum
 			} }
 		};
 	}
@@ -726,6 +776,17 @@ function registerIdentityHooks() {
 	for (const documentName of DOCUMENT_NAMES) Hooks.on(`preCreate${documentName}`, ensureRelisId);
 }
 //#endregion
+//#region src/hooks/integrity.ts
+function registerIntegrityHooks() {
+	Hooks.on("preUpdateActor", (actor, change) => {
+		if (actor.type !== "character") return;
+		constrainHitPointUpdate({
+			current: Number(actor.system.health?.hitPoints?.current ?? 0),
+			maximum: Number(actor.system.health?.hitPoints?.maximum ?? 1)
+		}, change);
+	});
+}
+//#endregion
 //#region src/settings.ts
 var WORLD_SETTINGS = [
 	{
@@ -1013,7 +1074,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		],
 		position: {
 			width: 780,
-			height: 760
+			height: 680
 		},
 		window: { resizable: true }
 	};
@@ -1048,6 +1109,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				id: item.id,
 				name: item.name,
 				type: item.type,
+				typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
 				canRoll: item.type === "action"
 			}))
 		};
@@ -1160,6 +1222,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		return {
 			...await super._prepareContext(options),
 			item: this.item,
+			itemTypeLabel: game.i18n.localize(`TYPES.Item.${this.item.type}`),
 			system: this.item.system,
 			editable: this.item.isOwner,
 			isAction: this.item.type === "action",
@@ -1218,6 +1281,7 @@ Hooks.once("init", () => {
 	registerSettings();
 	registerSheets();
 	registerIdentityHooks();
+	registerIntegrityHooks();
 });
 Hooks.once("ready", () => {
 	const textScale = Number(game.settings.get("relis", "ui.textScale") ?? 1);
