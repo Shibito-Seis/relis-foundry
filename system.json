@@ -1,0 +1,136 @@
+{
+  "id": "relis",
+  "title": "RE:LIS — RE: Lost in Space",
+  "description": "Système de jeu officiel RE:LIS pour Foundry Virtual Tabletop.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "14",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Maoilios aka ShibitoSeis"
+    }
+  ],
+  "esmodules": ["scripts/relis.mjs"],
+  "styles": ["styles/relis.css"],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    }
+  ],
+  "socket": true,
+  "initiative": "1d20",
+  "grid": {
+    "distance": 1.5,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "derived.trackables.hitPoints",
+  "url": "https://github.com/Shibito-Seis/relis-foundry",
+  "manifest": "https://raw.githubusercontent.com/Shibito-Seis/relis-foundry/main/system.json",
+  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.1.0/relis-v0.1.0.zip",
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": ["description", "identity.biography", "identity.memory"]
+      },
+      "npc": {
+        "htmlFields": ["description"]
+      },
+      "creature": {
+        "htmlFields": ["description"]
+      },
+      "cohort": {
+        "htmlFields": ["description"]
+      },
+      "drone": {
+        "htmlFields": ["description"]
+      },
+      "vehicle": {
+        "htmlFields": ["description"]
+      },
+      "mecha": {
+        "htmlFields": ["description"]
+      },
+      "ship": {
+        "htmlFields": ["description"]
+      },
+      "ark": {
+        "htmlFields": ["description"]
+      },
+      "organization": {
+        "htmlFields": ["description"]
+      },
+      "settlement": {
+        "htmlFields": ["description"]
+      }
+    },
+    "Item": {
+      "ancestry": { "htmlFields": ["description"] },
+      "profile": { "htmlFields": ["description"] },
+      "origin": { "htmlFields": ["description"] },
+      "advantage": { "htmlFields": ["description"] },
+      "drawback": { "htmlFields": ["description"] },
+      "path": { "htmlFields": ["description"] },
+      "specialization": { "htmlFields": ["description"] },
+      "post": { "htmlFields": ["description"] },
+      "talent": { "htmlFields": ["description"] },
+      "action": { "htmlFields": ["description"] },
+      "power": { "htmlFields": ["description"] },
+      "conditionTemplate": { "htmlFields": ["description"] },
+      "weapon": { "htmlFields": ["description"] },
+      "armor": { "htmlFields": ["description"] },
+      "equipment": { "htmlFields": ["description"] },
+      "consumable": { "htmlFields": ["description"] },
+      "ammunition": { "htmlFields": ["description"] },
+      "resource": { "htmlFields": ["description"] },
+      "container": { "htmlFields": ["description"] },
+      "hull": { "htmlFields": ["description"] },
+      "module": { "htmlFields": ["description"] },
+      "installation": { "htmlFields": ["description"] },
+      "project": { "htmlFields": ["description"] },
+      "research": { "htmlFields": ["description"] },
+      "stratagem": { "htmlFields": ["description"] },
+      "document": { "htmlFields": ["description"] }
+    },
+    "JournalEntryPage": {
+      "starSystem": { "htmlFields": ["description"] },
+      "celestialBody": { "htmlFields": ["description"] },
+      "region": { "htmlFields": ["description"] },
+      "site": { "htmlFields": ["description"] },
+      "xenoSpecies": { "htmlFields": ["description"] },
+      "analysis": { "htmlFields": ["description"] },
+      "expedition": { "htmlFields": ["description"] },
+      "report": { "htmlFields": ["description"] },
+      "dossier": { "htmlFields": ["description"] },
+      "market": { "htmlFields": ["description"] },
+      "account": { "htmlFields": ["description"] },
+      "transaction": { "htmlFields": ["description"] },
+      "contract": { "htmlFields": ["description"] },
+      "shipment": { "htmlFields": ["description"] },
+      "legalRecord": { "htmlFields": ["description"] },
+      "relation": { "htmlFields": ["description"] },
+      "treaty": { "htmlFields": ["description"] },
+      "colonyRecord": { "htmlFields": ["description"] },
+      "consentRecord": { "htmlFields": ["description"] },
+      "biologicalRecord": { "htmlFields": ["description"] },
+      "register": { "htmlFields": ["description"] }
+    },
+    "ActiveEffect": {
+      "relisEffect": {}
+    },
+    "Combat": {
+      "personal": {},
+      "spatial": {},
+      "crisis": {}
+    },
+    "Combatant": {
+      "participant": {}
+    },
+    "ChatMessage": {
+      "relisCard": {}
+    }
+  }
+}

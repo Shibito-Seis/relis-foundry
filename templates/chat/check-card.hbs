@@ -1,0 +1,19 @@
+<article class="relis-chat-card relis-degree--{{degree}}">
+  <header>
+    <span class="relis-kicker">RE:LIS · {{actorName}}</span>
+    <h3>{{label}}</h3>
+  </header>
+  <div class="relis-chat-total">
+    <strong>{{total}}</strong>
+    <span>contre DD {{difficulty}}</span>
+  </div>
+  <p class="relis-degree">{{degreeLabel}}</p>
+  <dl>
+    <div><dt>d20 naturel</dt><dd>{{natural}}</dd></div>
+    <div><dt>Attribut</dt><dd>{{attribute}}</dd></div>
+    <div><dt>Maîtrise</dt><dd>{{mastery}}</dd></div>
+    {{#if hasCost}}<div><dt>Coût</dt><dd>{{cost}}
+          {{resourceKey}}</dd></div>{{/if}}
+    {{#if effectApplied}}<div><dt>Effet</dt><dd>temporaire appliqué</dd></div>{{/if}}
+  </dl>
+</article>

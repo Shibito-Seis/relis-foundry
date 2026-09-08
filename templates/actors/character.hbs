@@ -1,0 +1,169 @@
+<section class="relis-sheet" data-document-id="{{actor.id}}">
+  <header class="relis-header">
+    <div>
+      <p class="relis-kicker">RE:LIS — Personnage</p>
+      <input
+        class="relis-name"
+        type="text"
+        value="{{actor.name}}"
+        data-document-field="name"
+      />
+    </div>
+    <label>
+      Niveau
+      <input
+        type="number"
+        min="1"
+        max="30"
+        value="{{system.level}}"
+        data-value-type="number"
+        data-document-field="system.level"
+      />
+    </label>
+  </header>
+
+  <div class="relis-grid relis-grid--summary">
+    <label>
+      Nom public
+      <input
+        type="text"
+        value="{{system.identity.publicName}}"
+        data-document-field="system.identity.publicName"
+      />
+    </label>
+    <label>
+      PV actuels
+      <input
+        type="number"
+        min="0"
+        value="{{system.health.hitPoints.current}}"
+        data-value-type="number"
+        data-document-field="system.health.hitPoints.current"
+      />
+    </label>
+    <label>
+      PV maximum
+      <input
+        type="number"
+        min="1"
+        value="{{system.health.hitPoints.maximum}}"
+        data-value-type="number"
+        data-document-field="system.health.hitPoints.maximum"
+      />
+    </label>
+    <label>
+      DD d’essai
+      <input type="number" min="0" value="15" data-test-difficulty />
+    </label>
+  </div>
+
+  <div class="relis-columns">
+    <section>
+      <h2>Attributs</h2>
+      <div class="relis-list">
+        {{#each attributes}}
+          <div class="relis-row">
+            <span>{{label}}</span>
+            <input
+              type="number"
+              min="-5"
+              max="8"
+              value="{{base}}"
+              data-value-type="number"
+              data-document-field="system.attributes.{{key}}.base"
+            />
+            <label class="relis-partial" title="Valeur partielle +">
+              +
+              <input
+                type="checkbox"
+                {{checked partial}}
+                data-document-field="system.attributes.{{key}}.partial"
+              />
+            </label>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+
+    <section>
+      <h2>Compétences</h2>
+      <div class="relis-list relis-list--skills">
+        {{#each skills}}
+          <div class="relis-row relis-row--skill">
+            <button
+              type="button"
+              class="relis-link"
+              data-action="roll-skill"
+              data-skill-key="{{key}}"
+              title="Tester {{label}}"
+            >
+              <i class="fa-solid fa-dice-d20"></i>
+              {{label}}
+            </button>
+            <select data-document-field="system.skills.{{key}}.rank">
+              {{selectOptions
+                masteryRanks
+                selected=rank
+                valueAttr="key"
+                labelAttr="label"
+              }}
+            </select>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+  </div>
+
+  <section>
+    <div class="relis-section-heading">
+      <h2>Ressources énergétiques</h2>
+      <button type="button" data-action="create-demo">
+        <i class="fa-solid fa-flask"></i>
+        Préparer la démonstration 10-C
+      </button>
+    </div>
+    {{#if energyPools.length}}
+      <div class="relis-pills">
+        {{#each energyPools}}
+          <span class="relis-pill"><strong>{{key}}</strong>
+            {{current}}
+            /
+            {{maximum}}</span>
+        {{/each}}
+      </div>
+    {{else}}
+      <p class="relis-muted">Aucune réserve. Le bouton de démonstration ajoute 3
+        CE.</p>
+    {{/if}}
+  </section>
+
+  <section>
+    <h2>Items embarqués</h2>
+    {{#if items.length}}
+      <div class="relis-list">
+        {{#each items}}
+          <div class="relis-row relis-row--item">
+            <button
+              type="button"
+              class="relis-link"
+              data-action="open-item"
+              data-item-id="{{id}}"
+            >{{name}}</button>
+            <span class="relis-badge">{{type}}</span>
+            {{#if canRoll}}
+              <button
+                type="button"
+                data-action="roll-action"
+                data-item-id="{{id}}"
+              ><i class="fa-solid fa-dice-d20"></i> Lancer</button>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <p class="relis-muted">Aucun Item embarqué.</p>
+    {{/if}}
+  </section>
+
+  <footer class="relis-footer">Tranche verticale 10-C · schéma 1 · paquet 0.1.0</footer>
+</section>

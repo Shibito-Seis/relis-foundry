@@ -1,0 +1,251 @@
+:root {
+  --relis-text-scale: 1;
+  --relis-ink: #e8edf2;
+  --relis-muted: #aeb9c4;
+  --relis-panel: #17222d;
+  --relis-panel-2: #21313e;
+  --relis-line: #496477;
+  --relis-cyan: #64d4df;
+  --relis-red: #d66969;
+  --relis-gold: #d9b75f;
+}
+
+.relis.actor-sheet,
+.relis.item-sheet {
+  font-size: calc(14px * var(--relis-text-scale));
+}
+
+.relis .window-content {
+  padding: 0;
+  color: var(--relis-ink);
+  background: #101820;
+}
+
+.relis-sheet {
+  min-height: 100%;
+  padding: 1rem;
+  color: var(--relis-ink);
+  background: linear-gradient(145deg, #101820 0%, #182633 100%);
+}
+
+.relis-sheet h2 {
+  margin: 1rem 0 0.5rem;
+  padding-bottom: 0.25rem;
+  color: var(--relis-cyan);
+  border-bottom: 1px solid var(--relis-line);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.relis-sheet input,
+.relis-sheet select,
+.relis-sheet button {
+  color: var(--relis-ink);
+  background: var(--relis-panel-2);
+  border: 1px solid var(--relis-line);
+  border-radius: 4px;
+}
+
+.relis-sheet button {
+  width: auto;
+  padding: 0.35rem 0.55rem;
+  cursor: pointer;
+}
+
+.relis-sheet button:hover,
+.relis-sheet button:focus-visible {
+  border-color: var(--relis-cyan);
+  box-shadow: 0 0 0 1px var(--relis-cyan);
+}
+
+.relis-header,
+.relis-section-heading,
+.relis-row,
+.relis-chat-card dl div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.relis-name {
+  width: min(32rem, 100%);
+  height: auto;
+  padding: 0.25rem 0.4rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.relis-kicker,
+.relis-muted,
+.relis-footer {
+  color: var(--relis-muted);
+}
+
+.relis-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.relis-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.relis-grid--summary {
+  grid-template-columns: 2fr repeat(3, 1fr);
+  margin-top: 1rem;
+}
+
+.relis-grid--form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.relis-grid label,
+.relis-header label {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--relis-muted);
+  font-size: 0.8rem;
+}
+
+.relis-columns {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.8fr) minmax(22rem, 1.2fr);
+  gap: 1rem;
+}
+
+.relis-list {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.relis-list--skills {
+  max-height: 21rem;
+  padding-right: 0.25rem;
+  overflow: auto;
+}
+
+.relis-row {
+  min-height: 2rem;
+  padding: 0.25rem 0.4rem;
+  background: color-mix(in srgb, var(--relis-panel) 88%, transparent);
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.relis-row input[type="number"] {
+  width: 4rem;
+}
+
+.relis-row--skill select {
+  width: 9rem;
+}
+
+.relis-row--item .relis-link {
+  flex: 1;
+  text-align: left;
+}
+
+.relis-link {
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+.relis-partial {
+  display: inline-flex !important;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 0.15rem !important;
+}
+
+.relis-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.relis-pill,
+.relis-badge {
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--relis-line);
+  border-radius: 999px;
+  background: var(--relis-panel);
+}
+
+.relis-badge {
+  color: var(--relis-muted);
+  font-size: 0.72rem;
+}
+
+.relis-footer {
+  margin-top: 1.2rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--relis-line);
+  font-size: 0.72rem;
+}
+
+.relis-chat-card {
+  padding: 0.6rem;
+  border-left: 4px solid var(--relis-cyan);
+  background: #111c25;
+  color: var(--relis-ink);
+}
+
+.relis-chat-card h3,
+.relis-chat-card p {
+  margin: 0.25rem 0;
+}
+
+.relis-chat-total {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.relis-chat-total strong {
+  font-size: 1.8rem;
+}
+
+.relis-chat-card dl {
+  margin: 0.5rem 0 0;
+}
+
+.relis-chat-card dt,
+.relis-chat-card dd {
+  margin: 0;
+}
+
+.relis-degree--criticalSuccess {
+  border-left-color: var(--relis-gold);
+}
+.relis-degree--success {
+  border-left-color: #6bc58a;
+}
+.relis-degree--failure {
+  border-left-color: #d98b5f;
+}
+.relis-degree--criticalFailure {
+  border-left-color: var(--relis-red);
+}
+
+.relis-high-contrast .relis-sheet,
+.relis-high-contrast .relis-chat-card {
+  --relis-ink: #fff;
+  --relis-muted: #e6e6e6;
+  --relis-panel: #000;
+  --relis-panel-2: #111;
+  --relis-line: #fff;
+  --relis-cyan: #7ff7ff;
+}
+
+@media (max-width: 700px) {
+  .relis-columns,
+  .relis-grid--summary,
+  .relis-grid--form {
+    grid-template-columns: 1fr;
+  }
+}

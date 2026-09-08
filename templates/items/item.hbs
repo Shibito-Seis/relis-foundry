@@ -1,0 +1,160 @@
+<section class="relis-sheet relis-sheet--item" data-document-id="{{item.id}}">
+  <header class="relis-header">
+    <div>
+      <p class="relis-kicker">RE:LIS — {{item.type}}</p>
+      <input
+        class="relis-name"
+        type="text"
+        value="{{item.name}}"
+        data-document-field="name"
+      />
+    </div>
+  </header>
+
+  {{#if isAction}}
+    <h2>Test</h2>
+    <div class="relis-grid relis-grid--form">
+      <label>
+        Attribut
+        <select data-document-field="system.test.attributeKey">
+          {{selectOptions
+            attributes
+            selected=system.test.attributeKey
+            valueAttr="key"
+            labelAttr="label"
+          }}
+        </select>
+      </label>
+      <label>
+        Compétence
+        <select data-document-field="system.test.skillKey">
+          {{selectOptions
+            skills
+            selected=system.test.skillKey
+            valueAttr="key"
+            labelAttr="label"
+          }}
+        </select>
+      </label>
+      <label>
+        Difficulté
+        <input
+          type="number"
+          min="0"
+          value="{{system.test.difficulty}}"
+          data-value-type="number"
+          data-document-field="system.test.difficulty"
+        />
+      </label>
+      <label>
+        Ressource
+        <input
+          type="text"
+          value="{{system.test.resourceKey}}"
+          data-document-field="system.test.resourceKey"
+        />
+      </label>
+      <label>
+        Coût
+        <input
+          type="number"
+          min="0"
+          value="{{system.test.cost}}"
+          data-value-type="number"
+          data-document-field="system.test.cost"
+        />
+      </label>
+    </div>
+    <h2>Effet temporaire</h2>
+    <div class="relis-grid relis-grid--form">
+      <label>
+        Clé de condition
+        <input
+          type="text"
+          value="{{system.effect.conditionKey}}"
+          data-document-field="system.effect.conditionKey"
+        />
+      </label>
+      <label>
+        Intensité
+        <input
+          type="number"
+          min="0"
+          value="{{system.effect.intensity}}"
+          data-value-type="number"
+          data-document-field="system.effect.intensity"
+        />
+      </label>
+      <label>
+        Durée en rounds
+        <input
+          type="number"
+          min="0"
+          value="{{system.effect.durationRounds}}"
+          data-value-type="number"
+          data-document-field="system.effect.durationRounds"
+        />
+      </label>
+    </div>
+    <button type="button" data-action="test-item"><i
+        class="fa-solid fa-dice-d20"
+      ></i>
+      Tester l’Action</button>
+  {{/if}}
+
+  {{#if isEquipment}}
+    <h2>État physique</h2>
+    <div class="relis-grid relis-grid--form">
+      <label>
+        Quantité
+        <input
+          type="number"
+          min="0"
+          value="{{system.physical.quantity}}"
+          data-value-type="number"
+          data-document-field="system.physical.quantity"
+        />
+      </label>
+      <label>
+        Masse unitaire
+        <input
+          type="number"
+          min="0"
+          step="0.1"
+          value="{{system.physical.massEach}}"
+          data-value-type="number"
+          data-document-field="system.physical.massEach"
+        />
+      </label>
+      <label>
+        Encombrement unitaire
+        <input
+          type="number"
+          min="0"
+          step="0.1"
+          value="{{system.physical.bulkEach}}"
+          data-value-type="number"
+          data-document-field="system.physical.bulkEach"
+        />
+      </label>
+      <label>
+        Port
+        <input
+          type="text"
+          value="{{system.physical.equipState}}"
+          data-document-field="system.physical.equipState"
+        />
+      </label>
+      <label>
+        État
+        <input
+          type="text"
+          value="{{system.physical.condition}}"
+          data-document-field="system.physical.condition"
+        />
+      </label>
+    </div>
+  {{/if}}
+
+  <footer class="relis-footer">Item minimal de la tranche verticale 10-C</footer>
+</section>
