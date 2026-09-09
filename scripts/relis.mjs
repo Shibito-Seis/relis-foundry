@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.1.2";
+var PACKAGE_VERSION = "0.2.0";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -1126,6 +1126,75 @@ function registerSettings() {
 	});
 }
 //#endregion
+//#region src/ui/actor-tabs.ts
+var CHARACTER_TABS = [
+	{
+		id: "summary",
+		label: "Synthèse"
+	},
+	{
+		id: "identity",
+		label: "Identité & Corps"
+	},
+	{
+		id: "attributes",
+		label: "Attributs & Compétences"
+	},
+	{
+		id: "progression",
+		label: "Progression"
+	},
+	{
+		id: "capabilities",
+		label: "Capacités & Énergies"
+	},
+	{
+		id: "inventory",
+		label: "Inventaire & Garde-Robe"
+	},
+	{
+		id: "health",
+		label: "Santé & Survie"
+	},
+	{
+		id: "relations",
+		label: "Relations & Journal"
+	}
+];
+var NPC_TABS = [
+	{
+		id: "summary",
+		label: "Synthèse"
+	},
+	{
+		id: "identity",
+		label: "Identité"
+	},
+	{
+		id: "mechanics",
+		label: "Mécanique"
+	},
+	{
+		id: "capabilities",
+		label: "Capacités & Équipement"
+	},
+	{
+		id: "health",
+		label: "Santé"
+	},
+	{
+		id: "relations",
+		label: "Relations & Notes"
+	}
+];
+function actorTabsForType(actorType) {
+	return actorType === "npc" ? NPC_TABS : CHARACTER_TABS;
+}
+function normalizeActorTab(actorType, requested) {
+	const tabs = actorTabsForType(actorType);
+	return tabs.some((tab) => tab.id === requested) ? String(requested) : tabs[0]?.id ?? "summary";
+}
+//#endregion
 //#region src/sheets/actor-sheet.ts
 var ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 var HandlebarsApplicationMixin$1 = foundry.applications.api.HandlebarsApplicationMixin;
@@ -1139,41 +1208,81 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		classes: [
 			"relis",
 			"actor-sheet",
-			"character-sheet"
+			"relis-actor-sheet"
 		],
 		position: {
-			width: 780,
-			height: 680
+			width: 920,
+			height: 720
 		},
 		window: { resizable: true }
 	};
 	static PARTS = { main: { template: "systems/relis/templates/actors/character.hbs" } };
+	activeTab = "summary";
 	async _prepareContext(options) {
 		const context = await super._prepareContext(options);
-		const attributes = Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
+		const isCharacter = this.actor.type === "character";
+		const attributes = isCharacter ? Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
 			key,
 			label,
 			base: this.actor.system.attributes[key].base,
-			partial: this.actor.system.attributes[key].partial
-		}));
-		const skills = Object.entries(SKILL_DEFINITIONS).map(([key, definition]) => ({
+			partial: this.actor.system.attributes[key].partial,
+			effective: this.actor.system.derived?.attributes?.[key] ?? 0
+		})) : [];
+		const skills = isCharacter ? Object.entries(SKILL_DEFINITIONS).map(([key, definition]) => ({
 			key,
 			label: definition[0],
 			defaultAttribute: definition[1],
 			rank: this.actor.system.skills[key].rank,
+			masteryBonus: this.actor.system.derived?.skills?.[key]?.masteryBonus ?? 0,
+			total: this.actor.system.derived?.skills?.[key]?.total ?? 0,
+			favorite: Boolean(this.actor.system.skills[key].favorite),
 			masteryRanks: Object.entries(MASTERY_LABELS).map(([rankKey, label]) => ({
 				key: rankKey,
 				label
 			}))
+		})) : [];
+		const energyPools = isCharacter ? Array.from(this.actor.system.energyPools ?? []).map((pool, index) => ({
+			index,
+			key: String(pool.key),
+			label: String(pool.key).toLocaleUpperCase("fr"),
+			current: Number(pool.current ?? 0),
+			maximum: Number(pool.maximum ?? 0),
+			reserved: Number(pool.reserved ?? 0),
+			debt: Number(pool.debt ?? 0)
+		})) : [];
+		const effects = Array.from(this.actor.effects ?? []).map((effect) => {
+			const presentation = presentCondition(String(effect.system?.conditionKey ?? effect.name), game.i18n);
+			return {
+				id: effect.id,
+				name: effect.name || presentation.label,
+				description: presentation.description,
+				icon: effect.img || "icons/svg/aura.svg",
+				intensity: Math.max(0, Math.trunc(Number(effect.system?.intensity) || 0)),
+				duration: formatRoundDuration(effect.duration?.remaining ?? effect.duration?.rounds, game.i18n)
+			};
+		});
+		const tabs = actorTabsForType(this.actor.type).map((tab) => ({
+			...tab,
+			active: tab.id === normalizeActorTab(this.actor.type, this.activeTab),
+			tabIndex: tab.id === normalizeActorTab(this.actor.type, this.activeTab) ? 0 : -1
 		}));
+		const favoriteSkills = skills.filter((skill) => skill.favorite);
+		const featuredSkills = favoriteSkills.length > 0 ? favoriteSkills : skills.slice(0, 4);
+		const publicName = isCharacter ? String(this.actor.system.identity.publicName ?? "").trim() : "";
 		return {
 			...context,
 			actor: this.actor,
 			system: this.actor.system,
 			editable: this.actor.isOwner,
+			isCharacter,
+			isNpc: this.actor.type === "npc",
+			actorTypeLabel: game.i18n.localize(`TYPES.Actor.${this.actor.type}`),
+			displayName: publicName || this.actor.name,
+			tabs,
 			attributes,
 			skills,
-			energyPools: Array.from(this.actor.system.energyPools ?? []),
+			featuredSkills,
+			energyPools,
 			items: Array.from(this.actor.items ?? []).map((item) => ({
 				id: item.id,
 				name: item.name,
@@ -1181,23 +1290,24 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
 				canRoll: item.type === "action"
 			})),
-			effects: Array.from(this.actor.effects ?? []).map((effect) => {
-				const presentation = presentCondition(String(effect.system?.conditionKey ?? effect.name), game.i18n);
-				return {
-					id: effect.id,
-					name: effect.name || presentation.label,
-					description: presentation.description,
-					icon: effect.img || "icons/svg/aura.svg",
-					intensity: Math.max(0, Math.trunc(Number(effect.system?.intensity) || 0)),
-					duration: formatRoundDuration(effect.duration?.remaining ?? effect.duration?.rounds, game.i18n)
-				};
-			})
+			effects,
+			effectCount: effects.length,
+			itemCount: Number(this.actor.items?.size ?? 0)
 		};
 	}
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		const root = this.element;
-		if (!this.actor.isOwner) for (const control of root.querySelectorAll("input, select, button")) control.disabled = true;
+		this.activateTab(root, this.activeTab);
+		if (!this.actor.isOwner) for (const control of root.querySelectorAll("[data-document-field], [data-owner-control]")) control.disabled = true;
+		for (const button of root.querySelectorAll("[data-action='switch-tab']")) {
+			button.addEventListener("click", () => {
+				this.activateTab(root, button.dataset.tabId, true);
+			});
+			button.addEventListener("keydown", (event) => {
+				this.onTabKeydown(root, event);
+			});
+		}
 		for (const element of root.querySelectorAll("[data-document-field]")) element.addEventListener("change", () => {
 			if (!this.actor.isOwner) return;
 			const path = element.dataset.documentField;
@@ -1205,6 +1315,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			this.actor.update({ [path]: fieldValue$1(element) });
 		});
 		for (const button of root.querySelectorAll("[data-action='roll-skill']")) button.addEventListener("click", () => {
+			if (!this.actor.isOwner) return;
 			const skillKey = button.dataset.skillKey ?? "shooting";
 			const definition = SKILL_DEFINITIONS[skillKey];
 			const difficultyInput = root.querySelector("[data-test-difficulty]");
@@ -1219,12 +1330,38 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			this.actor.items.get(button.dataset.itemId ?? "")?.sheet.render(true);
 		});
 		for (const button of root.querySelectorAll("[data-action='roll-action']")) button.addEventListener("click", () => {
+			if (!this.actor.isOwner) return;
 			const item = this.actor.items.get(button.dataset.itemId ?? "");
 			if (item) this.actor.rollAction(item);
 		});
 		root.querySelector("[data-action='create-demo']")?.addEventListener("click", () => {
 			this.createDemo();
 		});
+	}
+	activateTab(root, requested, focus = false) {
+		const active = normalizeActorTab(this.actor.type, requested);
+		this.activeTab = active;
+		for (const button of root.querySelectorAll("[data-action='switch-tab']")) {
+			const selected = button.dataset.tabId === active;
+			button.setAttribute("aria-selected", String(selected));
+			button.tabIndex = selected ? 0 : -1;
+			if (selected && focus) button.focus();
+		}
+		for (const panel of root.querySelectorAll("[data-tab-panel]")) panel.hidden = panel.dataset.tabPanel !== active;
+	}
+	onTabKeydown(root, event) {
+		if (![
+			"ArrowLeft",
+			"ArrowRight",
+			"Home",
+			"End"
+		].includes(event.key)) return;
+		const buttons = Array.from(root.querySelectorAll("[data-action='switch-tab']"));
+		const current = buttons.findIndex((button) => button.dataset.tabId === this.activeTab);
+		if (current < 0 || buttons.length === 0) return;
+		event.preventDefault();
+		const next = event.key === "Home" ? 0 : event.key === "End" ? buttons.length - 1 : (current + (event.key === "ArrowRight" ? 1 : -1) + buttons.length) % buttons.length;
+		this.activateTab(root, buttons[next]?.dataset.tabId, true);
 	}
 	async createDemo() {
 		if (!this.actor.isOwner) return;
@@ -1344,7 +1481,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 //#region src/sheets/register.ts
 function registerSheets() {
 	foundry.documents.collections.Actors.registerSheet("relis", RelisActorSheet, {
-		types: ["character"],
+		types: ["character", "npc"],
 		makeDefault: true
 	});
 	foundry.documents.collections.Items.registerSheet("relis", RelisItemSheet, {

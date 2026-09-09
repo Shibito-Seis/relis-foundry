@@ -20,7 +20,7 @@ formatage, les tests unitaires, le build et le manifeste.
 
 Dans `Actions`, ouvrir `Publier une Release Foundry`, choisir `Run workflow`, saisir
 le tag correspondant exactement au manifeste, puis lancer. Pour la recette corrective,
-utiliser `v0.1.2`. Le workflow construit `relis-v0.1.2.zip`, crée le tag et la
+utiliser `v0.2.0`. Le workflow construit `relis-v0.2.0.zip`, crée le tag et la
 Release, puis y joint l’archive.
 
 Ne pas créer manuellement une archive différente : le ZIP automatisé garantit que
@@ -35,22 +35,21 @@ Utiliser l’URL de manifeste suivante dans le gestionnaire de systèmes :
 
 Le manifeste téléchargera alors :
 
-`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.1.2/relis-v0.1.2.zip`
+`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.2.0/relis-v0.2.0.zip`
 
-## 5. Recette 10-C
+## 5. Recette 10-D1
 
 1. Créer un monde avec le système `RE:LIS — RE: Lost in Space`.
 2. Ouvrir la console du navigateur et vérifier l’absence d’erreur rouge `relis`.
-3. Créer un Actor `character`, le nommer et rouvrir sa fiche.
-4. Modifier Dextérité, Tir, PV et niveau ; fermer puis rouvrir la fiche.
-5. Cliquer sur `Préparer la démonstration 10-C`.
-6. Vérifier la présence d’un Équipement, d’une Action et d’une réserve de 3 CE.
-7. Lancer l’Action ; vérifier le d20, le degré et la carte de Chat.
-8. Vérifier que le coût retire 1 CE et qu’une réussite crée un effet temporaire.
-9. Actualiser le navigateur ; vérifier que l’Actor, ses Items et la CE dépensée
-   persistent.
-10. Signaler la version Foundry affichée, les erreurs de console et l’étape exacte
+3. Ouvrir le Personnage de recette 10-C et vérifier la nouvelle coque d’identité.
+4. Parcourir les huit onglets à la souris puis avec Gauche, Droite, Début et Fin.
+5. Vérifier que PV, énergies, effets et Items affichent les données persistantes.
+6. Modifier une CE dans `Capacités & Énergies`, fermer puis rouvrir la fiche.
+7. Relancer la démonstration 10-C depuis ce même onglet et contrôler le Chat.
+8. Réduire la fiche et confirmer son défilement et l’accès aux huit onglets.
+9. Créer un Actor `npc`, ouvrir ses six onglets et confirmer l’absence de faux scores.
+10. Ouvrir la fiche avec un compte non propriétaire : navigation et consultation
+    doivent rester possibles, tandis que les mutations et jets sont désactivés.
+11. Actualiser le navigateur et confirmer la persistance des données existantes.
+12. Signaler la version Foundry affichée, les erreurs de console et l’étape exacte
     du premier échec éventuel.
-
-Le champ `compatibility.verified` est volontairement absent de la v0.1.2. Il sera
-ajouté seulement après cette recette réelle sur Foundry VTT 14.365 via The Forge.

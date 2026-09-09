@@ -1,5 +1,18 @@
 # Journal des versions
 
+## 0.2.0 — socle d’interface 10-D1
+
+- Bandeau d’identité Personnage/PNJ inspiré des anciennes cartes ID RE:LIS.
+- Palette graphite, bleu profond, cyan et ambre réalisée uniquement en CSS.
+- Huit onglets Personnage et six onglets PNJ avec navigation au clavier.
+- Barre récapitulative des PV, énergies, effets et Items existants.
+- Répartition des fonctions validées de 10-C dans les panneaux appropriés.
+- Modification manuelle des réserves d’énergie existantes.
+- États d’attente explicites pour les modèles métier réservés à 10-D2–10-D6.
+- Mise en page adaptative et maintien du défilement dans les petites fenêtres.
+- Enregistrement de la fiche PNJ sans inventer son futur schéma de données.
+- Compatibilité Foundry VTT 14 marquée vérifiée après la recette 10-C sur 14.365.
+
 ## 0.1.2 — clôture de recette 10-C
 
 - Raccord explicite des 64 sous-types aux libellés localisés des fenêtres natives Foundry.

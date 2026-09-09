@@ -17,6 +17,10 @@ const chatTemplate = fs.readFileSync(
   path.join(root, "templates/chat/check-card.hbs"),
   "utf8",
 );
+const actorTemplate = fs.readFileSync(
+  path.join(root, "templates/actors/character.hbs"),
+  "utf8",
+);
 
 assert.equal(manifest.id, "relis");
 assert.equal(manifest.title, "RE:LIS — RE: Lost in Space");
@@ -24,9 +28,9 @@ assert.equal(manifest.version, packageJson.version);
 assert.equal(manifest.compatibility.minimum, "14");
 assert.equal(manifest.compatibility.maximum, "14");
 assert.equal(
-  Object.hasOwn(manifest.compatibility, "verified"),
-  false,
-  "verified attend la recette The Forge",
+  manifest.compatibility.verified,
+  "14",
+  "Foundry 14 doit rester marqué vérifié après la recette 10-C sur 14.365",
 );
 assert.deepEqual(manifest.authors, [{ name: "Maoilios aka ShibitoSeis" }]);
 assert.equal(manifest.url, "https://github.com/Shibito-Seis/relis-foundry");
@@ -80,6 +84,31 @@ assert.match(
   chatTemplate,
   /effectDuration/,
   "Durée de l’effet absente de la carte de Chat",
+);
+assert.match(
+  actorTemplate,
+  /data-action="switch-tab"/,
+  "Navigation d’onglets 10-D1 absente de la fiche Actor",
+);
+assert.match(
+  actorTemplate,
+  /<h2\s*>Garde-Robe<\/h2>/,
+  "Accès Garde-Robe absent de la coque Personnage",
+);
+assert.match(
+  actorTemplate,
+  /Figurant,\s+Secondaire ou Majeur/,
+  "Densités PNJ non annoncées par le prototype",
+);
+assert.match(
+  styles,
+  /\.relis-id-portrait/,
+  "Bandeau d’identité CSS 10-D1 absent",
+);
+assert.match(
+  styles,
+  /@media \(prefers-reduced-motion: reduce\)/,
+  "Protection reduced-motion absente",
 );
 
 for (const relativePath of [
