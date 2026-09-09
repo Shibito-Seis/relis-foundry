@@ -1,6 +1,11 @@
 import { ATTRIBUTE_LABELS, MASTERY_LABELS, SKILL_DEFINITIONS } from "../config";
 import type { RelisActor } from "../documents/actor";
 import { formatRoundDuration, presentCondition } from "../rules/effects";
+import {
+  plainResourcePool,
+  resourcePoolPresentation,
+  updateResourcePoolCurrent,
+} from "../rules/resources";
 import { actorTabsForType, normalizeActorTab } from "../ui/actor-tabs";
 
 const ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
@@ -62,15 +67,21 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       : [];
     const energyPools = isCharacter
       ? Array.from(this.actor.system.energyPools ?? []).map(
-          (pool: any, index: number) => ({
-            index,
-            key: String(pool.key),
-            label: String(pool.key).toLocaleUpperCase("fr"),
-            current: Number(pool.current ?? 0),
-            maximum: Number(pool.maximum ?? 0),
-            reserved: Number(pool.reserved ?? 0),
-            debt: Number(pool.debt ?? 0),
-          }),
+          (pool: any, index: number) => {
+            const plain = plainResourcePool(pool);
+            const presentation = resourcePoolPresentation(plain.key);
+            return {
+              ...plain,
+              ...presentation,
+              index,
+              resourceClass: presentation.isDemo
+                ? "relis-resource--demo"
+                : "relis-resource--energy",
+              cardClass: presentation.isDemo
+                ? "relis-energy-card--demo"
+                : "relis-energy-card--canonical",
+            };
+          },
         )
       : [];
     const effects = (
@@ -122,6 +133,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       skills,
       featuredSkills,
       energyPools,
+      hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
       items: (Array.from(this.actor.items ?? []) as Item[]).map((item) => ({
         id: item.id,
         name: item.name,
@@ -167,6 +179,22 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         const path = element.dataset.documentField;
         if (!path) return;
         void this.actor.update({ [path]: fieldValue(element) });
+      });
+    }
+
+    for (const element of root.querySelectorAll<HTMLInputElement>(
+      "[data-energy-index]",
+    )) {
+      element.addEventListener("change", () => {
+        if (!this.actor.isOwner) return;
+        const index = Number(element.dataset.energyIndex);
+        if (!Number.isInteger(index)) return;
+        const pools = updateResourcePoolCurrent(
+          this.actor.system.energyPools ?? [],
+          index,
+          Number(element.value),
+        );
+        void this.actor.update({ "system.energyPools": pools });
       });
     }
 
@@ -259,14 +287,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (!this.actor.isOwner) return;
     const pools = Array.from(
       this.actor.system.energyPools ?? [],
-      (pool: any) => ({
-        key: String(pool.key),
-        current: Number(pool.current),
-        maximum: Number(pool.maximum),
-        reserved: Number(pool.reserved),
-        debt: Number(pool.debt),
-        unit: String(pool.unit),
-      }),
+      plainResourcePool,
     );
     if (!pools.some((pool) => pool.key === "ce")) {
       pools.push({
@@ -275,7 +296,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         maximum: 3,
         reserved: 0,
         debt: 0,
-        unit: "count",
+        unit: "test",
       });
       await this.actor.update({ "system.energyPools": pools });
     }
@@ -330,7 +351,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (toCreate.length > 0)
       await this.actor.createEmbeddedDocuments("Item", toCreate);
     ui.notifications.info(
-      "Démonstration 10-C préparée : Action, Équipement et 3 CE.",
+      "Démonstration 10-C préparée : Action, Équipement et 3 CE de test.",
     );
   }
 }

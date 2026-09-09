@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.2.1 — correctifs de recette 10-D1
+
+- Médaillon de portrait contraint à un carré réel avant son découpage circulaire.
+- Bandeau, ressources, onglets et contenu placés dans un flux vertical non compressible.
+- Onglets autorisés à revenir sur plusieurs lignes au lieu de disparaître hors écran.
+- Pied de fiche isolé des styles Foundry et replacé après le contenu.
+- Modification des réserves persistée par remplacement atomique de leur collection.
+- CE renommées « CE — démo » et marquées comme ressource de recette non canonique.
+- Maintien du Mana, du Prana et du Flux comme familles personnelles canoniques à raccorder.
+- Test multijoueur réel reporté sans bloquer le jalon ; contrôles de propriétaire conservés.
+
 ## 0.2.0 — socle d’interface 10-D1
 
 - Bandeau d’identité Personnage/PNJ inspiré des anciennes cartes ID RE:LIS.

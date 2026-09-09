@@ -59,7 +59,7 @@
         <small>/ {{system.health.hitPoints.maximum}}</small>
       </div>
       {{#each energyPools}}
-        <div class="relis-resource relis-resource--energy">
+        <div class="relis-resource {{resourceClass}}">
           <span>{{label}}</span><strong>{{current}}</strong><small>/
             {{maximum}}</small>
         </div>
@@ -322,10 +322,17 @@
               aria-hidden="true"
             ></i>Préparer la démonstration 10-C</button>
         </div>
+        {{#if hasDemoEnergy}}
+          <p class="relis-demo-notice">
+            <i class="fa-solid fa-flask" aria-hidden="true"></i>
+            Les CE affichées ici servent uniquement à la démonstration technique
+            10-C. Elles ne constituent pas une ressource personnelle canonique.
+          </p>
+        {{/if}}
         {{#if energyPools.length}}
           <div class="relis-energy-grid">
             {{#each energyPools}}
-              <article class="relis-energy-card">
+              <article class="relis-energy-card {{cardClass}}">
                 <strong>{{label}}</strong>
                 <label>Actuel<input
                     type="number"
@@ -333,7 +340,8 @@
                     max="{{maximum}}"
                     value="{{current}}"
                     data-value-type="number"
-                    data-document-field="system.energyPools.{{index}}.current"
+                    data-energy-index="{{index}}"
+                    data-owner-control
                   /></label>
                 <span>Maximum <b>{{maximum}}</b></span><span>Réservé
                   <b>{{reserved}}</b></span><span>Dette <b>{{debt}}</b></span>
@@ -557,5 +565,6 @@
     {{/if}}
   </main>
 
-  <footer class="relis-footer">Étape 10-D1 · socle d’interface · paquet 0.2.0</footer>
+  <footer class="relis-sheet-footer">Étape 10-D1 · correctif de recette · paquet
+    0.2.1</footer>
 </section>

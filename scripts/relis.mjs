@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.2.0";
+var PACKAGE_VERSION = "0.2.1";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -632,8 +632,8 @@ function formatRoundDuration(value, i18n) {
 	return i18n.format(key, { rounds });
 }
 //#endregion
-//#region src/documents/actor.ts
-function plainPool(pool) {
+//#region src/rules/resources.ts
+function plainResourcePool(pool) {
 	return {
 		key: String(pool.key),
 		current: Number(pool.current ?? 0),
@@ -643,6 +643,39 @@ function plainPool(pool) {
 		unit: String(pool.unit ?? "count")
 	};
 }
+function resourcePoolPresentation(key) {
+	const normalized = key.trim().toLocaleLowerCase("fr");
+	if (normalized === "ce") return {
+		label: "CE — démo",
+		isDemo: true
+	};
+	if (normalized === "mana") return {
+		label: "Mana",
+		isDemo: false
+	};
+	if (normalized === "prana") return {
+		label: "Prana",
+		isDemo: false
+	};
+	if (normalized === "flux") return {
+		label: "Flux",
+		isDemo: false
+	};
+	return {
+		label: normalized.toLocaleUpperCase("fr"),
+		isDemo: false
+	};
+}
+function updateResourcePoolCurrent(pools, index, requested) {
+	const updated = Array.from(pools, plainResourcePool);
+	const pool = updated[index];
+	if (!pool) return updated;
+	const finite = Number.isFinite(requested) ? requested : 0;
+	pool.current = Math.min(pool.maximum, Math.max(0, finite));
+	return updated;
+}
+//#endregion
+//#region src/documents/actor.ts
 function succeeded(degree) {
 	return degree === "success" || degree === "criticalSuccess";
 }
@@ -654,7 +687,7 @@ var RelisActor = class extends Actor {
 		const difficulty = Math.max(0, Math.trunc(Number(options.difficulty) || 0));
 		const cost = Math.max(0, Math.trunc(Number(options.cost) || 0));
 		const resourceKey = String(options.resourceKey ?? "");
-		const pools = Array.from(this.system.energyPools ?? [], plainPool);
+		const pools = Array.from(this.system.energyPools ?? [], plainResourcePool);
 		const resourceIndex = resourceKey ? pools.findIndex((pool) => pool.key === resourceKey) : -1;
 		if (cost > 0 && (resourceIndex < 0 || (pools[resourceIndex]?.current ?? 0) < cost)) {
 			ui.notifications.warn(game.i18n.localize("RELIS.Error.InsufficientResource"));
@@ -1241,15 +1274,17 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				label
 			}))
 		})) : [];
-		const energyPools = isCharacter ? Array.from(this.actor.system.energyPools ?? []).map((pool, index) => ({
-			index,
-			key: String(pool.key),
-			label: String(pool.key).toLocaleUpperCase("fr"),
-			current: Number(pool.current ?? 0),
-			maximum: Number(pool.maximum ?? 0),
-			reserved: Number(pool.reserved ?? 0),
-			debt: Number(pool.debt ?? 0)
-		})) : [];
+		const energyPools = isCharacter ? Array.from(this.actor.system.energyPools ?? []).map((pool, index) => {
+			const plain = plainResourcePool(pool);
+			const presentation = resourcePoolPresentation(plain.key);
+			return {
+				...plain,
+				...presentation,
+				index,
+				resourceClass: presentation.isDemo ? "relis-resource--demo" : "relis-resource--energy",
+				cardClass: presentation.isDemo ? "relis-energy-card--demo" : "relis-energy-card--canonical"
+			};
+		}) : [];
 		const effects = Array.from(this.actor.effects ?? []).map((effect) => {
 			const presentation = presentCondition(String(effect.system?.conditionKey ?? effect.name), game.i18n);
 			return {
@@ -1283,6 +1318,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			skills,
 			featuredSkills,
 			energyPools,
+			hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
 			items: Array.from(this.actor.items ?? []).map((item) => ({
 				id: item.id,
 				name: item.name,
@@ -1313,6 +1349,13 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			const path = element.dataset.documentField;
 			if (!path) return;
 			this.actor.update({ [path]: fieldValue$1(element) });
+		});
+		for (const element of root.querySelectorAll("[data-energy-index]")) element.addEventListener("change", () => {
+			if (!this.actor.isOwner) return;
+			const index = Number(element.dataset.energyIndex);
+			if (!Number.isInteger(index)) return;
+			const pools = updateResourcePoolCurrent(this.actor.system.energyPools ?? [], index, Number(element.value));
+			this.actor.update({ "system.energyPools": pools });
 		});
 		for (const button of root.querySelectorAll("[data-action='roll-skill']")) button.addEventListener("click", () => {
 			if (!this.actor.isOwner) return;
@@ -1365,14 +1408,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 	}
 	async createDemo() {
 		if (!this.actor.isOwner) return;
-		const pools = Array.from(this.actor.system.energyPools ?? [], (pool) => ({
-			key: String(pool.key),
-			current: Number(pool.current),
-			maximum: Number(pool.maximum),
-			reserved: Number(pool.reserved),
-			debt: Number(pool.debt),
-			unit: String(pool.unit)
-		}));
+		const pools = Array.from(this.actor.system.energyPools ?? [], plainResourcePool);
 		if (!pools.some((pool) => pool.key === "ce")) {
 			pools.push({
 				key: "ce",
@@ -1380,7 +1416,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				maximum: 3,
 				reserved: 0,
 				debt: 0,
-				unit: "count"
+				unit: "test"
 			});
 			await this.actor.update({ "system.energyPools": pools });
 		}
@@ -1415,7 +1451,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			}
 		});
 		if (toCreate.length > 0) await this.actor.createEmbeddedDocuments("Item", toCreate);
-		ui.notifications.info("Démonstration 10-C préparée : Action, Équipement et 3 CE.");
+		ui.notifications.info("Démonstration 10-C préparée : Action, Équipement et 3 CE de test.");
 	}
 };
 //#endregion

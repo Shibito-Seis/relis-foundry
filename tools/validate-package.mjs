@@ -110,6 +110,26 @@ assert.match(
   /@media \(prefers-reduced-motion: reduce\)/,
   "Protection reduced-motion absente",
 );
+assert.match(
+  actorTemplate,
+  /data-energy-index=/,
+  "Mise à jour atomique des réserves absente de la fiche",
+);
+assert.match(
+  actorTemplate,
+  /ressource personnelle canonique/,
+  "CE de démonstration non distinguée des ressources canoniques",
+);
+assert.match(
+  styles,
+  /\.relis-sheet-footer\s*\{[^}]*position: static !important/s,
+  "Pied de fiche non protégé contre les styles Foundry",
+);
+assert.match(
+  styles,
+  /\.relis-id-portrait\s*\{[^}]*height: clamp/s,
+  "Hauteur carrée du médaillon non verrouillée",
+);
 
 for (const relativePath of [
   ...manifest.esmodules,

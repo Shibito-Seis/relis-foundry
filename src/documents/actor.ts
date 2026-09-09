@@ -6,6 +6,7 @@ import {
   type CheckDegree,
 } from "../rules/check";
 import { formatRoundDuration, presentCondition } from "../rules/effects";
+import { plainResourcePool } from "../rules/resources";
 
 interface RollCheckOptions {
   attributeKey: string;
@@ -20,26 +21,6 @@ interface RollCheckOptions {
     durationRounds: number;
   };
   sourceItem?: Item;
-}
-
-interface PlainResourcePool {
-  key: string;
-  current: number;
-  maximum: number;
-  reserved: number;
-  debt: number;
-  unit: string;
-}
-
-function plainPool(pool: any): PlainResourcePool {
-  return {
-    key: String(pool.key),
-    current: Number(pool.current ?? 0),
-    maximum: Number(pool.maximum ?? 0),
-    reserved: Number(pool.reserved ?? 0),
-    debt: Number(pool.debt ?? 0),
-    unit: String(pool.unit ?? "count"),
-  };
 }
 
 function succeeded(degree: CheckDegree): boolean {
@@ -68,7 +49,7 @@ export class RelisActor extends Actor {
     const difficulty = Math.max(0, Math.trunc(Number(options.difficulty) || 0));
     const cost = Math.max(0, Math.trunc(Number(options.cost) || 0));
     const resourceKey = String(options.resourceKey ?? "");
-    const pools = Array.from(this.system.energyPools ?? [], plainPool);
+    const pools = Array.from(this.system.energyPools ?? [], plainResourcePool);
     const resourceIndex = resourceKey
       ? pools.findIndex((pool) => pool.key === resourceKey)
       : -1;

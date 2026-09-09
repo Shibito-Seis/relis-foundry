@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.2.0` ouvre l’étape 10-D avec le socle d’interface 10-D1. Elle conserve
+La version `0.2.1` ouvre l’étape 10-D avec le socle d’interface 10-D1. Elle conserve
 la tranche verticale validée de 10-C et ajoute une coque Personnage/PNJ inspirée des
 anciennes cartes d’identité RE:LIS : bandeau ID, ressources visibles, huit onglets
 Personnage, six onglets PNJ, navigation clavier et comportement responsive.
@@ -21,7 +21,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.2.0.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.2.1.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
