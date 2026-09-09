@@ -139,6 +139,28 @@
   </section>
 
   <section>
+    <h2>Effets actifs</h2>
+    {{#if effects.length}}
+      <div class="relis-list">
+        {{#each effects}}
+          <div class="relis-row relis-row--effect" title="{{description}}">
+            <img class="relis-effect-icon" src="{{icon}}" alt="" />
+            <span class="relis-effect-name">{{name}}</span>
+            <span class="relis-badge">Intensité {{intensity}}</span>
+            <span class="relis-badge">{{duration}}</span>
+          </div>
+        {{/each}}
+      </div>
+      <p class="relis-muted relis-effect-help">
+        Les durées en rounds avancent pendant une Rencontre active. Le moteur
+        complet des conditions sera développé en 10-F.
+      </p>
+    {{else}}
+      <p class="relis-muted">Aucun effet actif.</p>
+    {{/if}}
+  </section>
+
+  <section>
     <h2>Items embarqués</h2>
     {{#if items.length}}
       <div class="relis-list">
@@ -166,5 +188,5 @@
     {{/if}}
   </section>
 
-  <footer class="relis-footer">Tranche verticale 10-C · schéma 1 · paquet 0.1.1</footer>
+  <footer class="relis-footer">Tranche verticale 10-C · schéma 1 · paquet 0.1.2</footer>
 </section>

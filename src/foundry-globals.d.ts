@@ -19,6 +19,7 @@ declare class Actor {
   type: string;
   system: any;
   items: any;
+  effects: any;
   uuid: string;
   isOwner: boolean;
   update(data: Record<string, unknown>): Promise<Actor>;
@@ -27,6 +28,17 @@ declare class Actor {
     data: Record<string, unknown>[],
   ): Promise<any[]>;
   deleteEmbeddedDocuments(documentName: string, ids: string[]): Promise<any[]>;
+}
+
+declare class ActiveEffect {
+  id: string;
+  name: string;
+  type: string;
+  img: string;
+  origin: string;
+  duration: any;
+  system: any;
+  update(data: Record<string, unknown>): Promise<ActiveEffect>;
 }
 
 declare class Item {

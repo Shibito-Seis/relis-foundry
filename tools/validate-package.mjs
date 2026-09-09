@@ -12,6 +12,11 @@ const packageJson = JSON.parse(
 const french = JSON.parse(
   fs.readFileSync(path.join(root, "lang/fr.json"), "utf8"),
 );
+const styles = fs.readFileSync(path.join(root, "styles/relis.css"), "utf8");
+const chatTemplate = fs.readFileSync(
+  path.join(root, "templates/chat/check-card.hbs"),
+  "utf8",
+);
 
 assert.equal(manifest.id, "relis");
 assert.equal(manifest.title, "RE:LIS — RE: Lost in Space");
@@ -60,6 +65,21 @@ for (const [documentName, expected] of Object.entries(expectedCounts)) {
 assert.equal(
   Object.values(expectedCounts).reduce((sum, value) => sum + value, 0),
   64,
+);
+assert.equal(
+  french.RELIS?.Condition?.calibrated?.Name,
+  "Calibré",
+  "Libellé de la condition de démonstration absent",
+);
+assert.match(
+  styles,
+  /\.chat-message \.message-content \.relis-chat-card h3/,
+  "Protection de contraste de la carte de Chat absente",
+);
+assert.match(
+  chatTemplate,
+  /effectDuration/,
+  "Durée de l’effet absente de la carte de Chat",
 );
 
 for (const relativePath of [

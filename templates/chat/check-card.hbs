@@ -14,6 +14,23 @@
     <div><dt>Maîtrise</dt><dd>{{mastery}}</dd></div>
     {{#if hasCost}}<div><dt>Coût</dt><dd>{{cost}}
           {{resourceKey}}</dd></div>{{/if}}
-    {{#if effectApplied}}<div><dt>Effet</dt><dd>temporaire appliqué</dd></div>{{/if}}
+    {{#if effectApplied}}
+      <div class="relis-chat-effect">
+        <dt>Effet</dt>
+        <dd>
+          <strong>{{effectLabel}}</strong>
+          · intensité
+          {{effectIntensity}}
+          ·
+          {{effectDuration}}
+        </dd>
+      </div>
+    {{/if}}
   </dl>
+  {{#if effectApplied}}
+    <p class="relis-chat-note">
+      {{effectDescription}}
+      La durée en rounds progresse pendant une Rencontre active.
+    </p>
+  {{/if}}
 </article>

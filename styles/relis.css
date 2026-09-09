@@ -195,15 +195,46 @@
 }
 
 .relis-chat-card {
+  --relis-chat-ink: #f4f7fa;
+  --relis-chat-muted: #c2ced8;
   padding: 0.6rem;
   border-left: 4px solid var(--relis-cyan);
   background: #111c25;
-  color: var(--relis-ink);
+  color: var(--relis-chat-ink);
+}
+
+.chat-message .message-content .relis-chat-card,
+.chat-message .message-content .relis-chat-card h3,
+.chat-message .message-content .relis-chat-card p,
+.chat-message .message-content .relis-chat-card span,
+.chat-message .message-content .relis-chat-card strong,
+.chat-message .message-content .relis-chat-card dt,
+.chat-message .message-content .relis-chat-card dd,
+.relis-chat-card h3,
+.relis-chat-card p,
+.relis-chat-card span,
+.relis-chat-card strong,
+.relis-chat-card dt,
+.relis-chat-card dd {
+  color: var(--relis-chat-ink) !important;
 }
 
 .relis-chat-card h3,
 .relis-chat-card p {
   margin: 0.25rem 0;
+}
+
+.relis-chat-card h3 {
+  border: 0;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.chat-message .message-content .relis-chat-card .relis-kicker,
+.chat-message .message-content .relis-chat-card dt,
+.relis-chat-card .relis-kicker,
+.relis-chat-card dt {
+  color: var(--relis-chat-muted) !important;
 }
 
 .relis-chat-total {
@@ -220,9 +251,47 @@
   margin: 0.5rem 0 0;
 }
 
+.relis-chat-card dl div {
+  padding: 0.12rem 0;
+  border-top: 1px solid rgb(255 255 255 / 8%);
+}
+
 .relis-chat-card dt,
 .relis-chat-card dd {
   margin: 0;
+}
+
+.relis-chat-card dd {
+  text-align: right;
+}
+
+.relis-chat-note {
+  margin-top: 0.65rem !important;
+  padding-top: 0.45rem;
+  color: var(--relis-chat-muted) !important;
+  border-top: 1px solid rgb(255 255 255 / 14%);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.relis-row--effect {
+  justify-content: flex-start;
+}
+
+.relis-effect-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+  border: 1px solid var(--relis-line);
+  border-radius: 4px;
+}
+
+.relis-effect-name {
+  flex: 1;
+}
+
+.relis-effect-help {
+  font-size: 0.78rem;
 }
 
 .relis-degree--criticalSuccess {
@@ -246,6 +315,8 @@
   --relis-panel-2: #111;
   --relis-line: #fff;
   --relis-cyan: #7ff7ff;
+  --relis-chat-ink: #fff;
+  --relis-chat-muted: #fff;
 }
 
 @media (max-width: 700px) {

@@ -422,6 +422,7 @@ export function registerDataModels(): void {
   for (const type of JOURNAL_PAGE_TYPES)
     CONFIG.JournalEntryPage.dataModels[type] = ReservedData;
   CONFIG.ActiveEffect.dataModels.relisEffect = RelisEffectData;
+  CONFIG.ActiveEffect.expiryAction = "delete";
   for (const type of ["personal", "spatial", "crisis"])
     CONFIG.Combat.dataModels[type] = RelisCombatData;
   CONFIG.Combatant.dataModels.participant = RelisParticipantData;

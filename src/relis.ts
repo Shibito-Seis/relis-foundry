@@ -5,10 +5,12 @@ import { registerIdentityHooks } from "./hooks/identity";
 import { registerIntegrityHooks } from "./hooks/integrity";
 import { registerSettings } from "./settings";
 import { registerSheets } from "./sheets/register";
+import { registerDocumentTypeLabels } from "./type-labels";
 
 Hooks.once("init", () => {
   console.log(`RE:LIS | Initialisation ${PACKAGE_VERSION}`);
   CONFIG.Actor.documentClass = RelisActor;
+  registerDocumentTypeLabels();
   registerDataModels();
   registerSettings();
   registerSheets();

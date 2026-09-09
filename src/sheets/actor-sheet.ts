@@ -1,5 +1,6 @@
 import { ATTRIBUTE_LABELS, MASTERY_LABELS, SKILL_DEFINITIONS } from "../config";
 import type { RelisActor } from "../documents/actor";
+import { formatRoundDuration, presentCondition } from "../rules/effects";
 
 const ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 const HandlebarsApplicationMixin =
@@ -65,6 +66,28 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
         canRoll: item.type === "action",
       })),
+      effects: (Array.from(this.actor.effects ?? []) as ActiveEffect[]).map(
+        (effect) => {
+          const presentation = presentCondition(
+            String(effect.system?.conditionKey ?? effect.name),
+            game.i18n,
+          );
+          return {
+            id: effect.id,
+            name: effect.name || presentation.label,
+            description: presentation.description,
+            icon: effect.img || "icons/svg/aura.svg",
+            intensity: Math.max(
+              0,
+              Math.trunc(Number(effect.system?.intensity) || 0),
+            ),
+            duration: formatRoundDuration(
+              effect.duration?.remaining ?? effect.duration?.rounds,
+              game.i18n,
+            ),
+          };
+        },
+      ),
     };
   }
 

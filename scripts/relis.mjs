@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.1.1";
+var PACKAGE_VERSION = "0.1.2";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -597,6 +597,7 @@ function registerDataModels() {
 	for (const type of ITEM_TYPES) CONFIG.Item.dataModels[type] = type === "action" ? ActionData : type === "equipment" ? EquipmentData : ReservedData;
 	for (const type of JOURNAL_PAGE_TYPES) CONFIG.JournalEntryPage.dataModels[type] = ReservedData;
 	CONFIG.ActiveEffect.dataModels.relisEffect = RelisEffectData;
+	CONFIG.ActiveEffect.expiryAction = "delete";
 	for (const type of [
 		"personal",
 		"spatial",
@@ -611,6 +612,24 @@ function registerDataModels() {
 		bar: [],
 		value: []
 	}]));
+}
+//#endregion
+//#region src/rules/effects.ts
+function localizedOrFallback(i18n, key, fallback) {
+	const localized = i18n.localize(key);
+	return localized === key ? fallback : localized;
+}
+function presentCondition(conditionKey, i18n) {
+	const root = `RELIS.Condition.${conditionKey}`;
+	return {
+		label: localizedOrFallback(i18n, `${root}.Name`, conditionKey),
+		description: localizedOrFallback(i18n, `${root}.Description`, conditionKey)
+	};
+}
+function formatRoundDuration(value, i18n) {
+	const rounds = Math.max(0, Math.ceil(Number(value) || 0));
+	const key = rounds === 1 ? "RELIS.Duration.OneRound" : "RELIS.Duration.ManyRounds";
+	return i18n.format(key, { rounds });
 }
 //#endregion
 //#region src/documents/actor.ts
@@ -653,7 +672,7 @@ var RelisActor = class extends Actor {
 			difficulty
 		});
 		const priorPools = pools.map((pool) => ({ ...pool }));
-		let createdEffectId = null;
+		let effectMutation = null;
 		try {
 			if (cost > 0 && resourceIndex >= 0) {
 				const pool = pools[resourceIndex];
@@ -661,22 +680,9 @@ var RelisActor = class extends Actor {
 				pool.current -= cost;
 				await this.update({ "system.energyPools": pools });
 			}
-			if (options.effect?.conditionKey && succeeded(resolution.degree)) {
-				const [effect] = await this.createEmbeddedDocuments("ActiveEffect", [{
-					name: `RE:LIS — ${options.effect.conditionKey}`,
-					type: "relisEffect",
-					icon: "icons/svg/aura.svg",
-					origin: options.sourceItem?.uuid ?? this.uuid,
-					duration: { rounds: Math.max(0, Math.trunc(options.effect.durationRounds)) },
-					system: {
-						sourceRef: options.sourceItem?.uuid ?? this.uuid,
-						conditionKey: options.effect.conditionKey,
-						intensity: Math.max(0, Math.trunc(options.effect.intensity)),
-						visibility: "document"
-					}
-				}]);
-				createdEffectId = effect?.id ?? null;
-			}
+			if (options.effect?.conditionKey && succeeded(resolution.degree)) effectMutation = await this.applyTemporaryEffect(options.effect, options.sourceItem?.uuid ?? this.uuid);
+			const effectPresentation = options.effect?.conditionKey ? presentCondition(options.effect.conditionKey, game.i18n) : null;
+			const effectDurationRounds = Math.max(0, Math.trunc(Number(options.effect?.durationRounds) || 0));
 			const content = await renderTemplate("systems/relis/templates/chat/check-card.hbs", {
 				actorName: this.name,
 				label: options.label,
@@ -690,7 +696,11 @@ var RelisActor = class extends Actor {
 				resourceKey,
 				cost,
 				hasCost: cost > 0,
-				effectApplied: Boolean(createdEffectId)
+				effectApplied: Boolean(effectMutation?.effectId),
+				effectLabel: effectPresentation?.label ?? "",
+				effectDescription: effectPresentation?.description ?? "",
+				effectIntensity: Math.max(0, Math.trunc(Number(options.effect?.intensity) || 0)),
+				effectDuration: formatRoundDuration(effectDurationRounds, game.i18n)
 			});
 			await ChatMessage.implementation.create({
 				type: "relisCard",
@@ -710,10 +720,69 @@ var RelisActor = class extends Actor {
 				}
 			});
 		} catch (error) {
-			if (createdEffectId) await this.deleteEmbeddedDocuments("ActiveEffect", [createdEffectId]);
+			if (effectMutation?.created) await this.deleteEmbeddedDocuments("ActiveEffect", [effectMutation.effectId]);
+			else if (effectMutation?.document && effectMutation.rollback) await effectMutation.document.update(effectMutation.rollback);
 			if (cost > 0) await this.update({ "system.energyPools": priorPools });
 			throw error;
 		}
+	}
+	async applyTemporaryEffect(effectOptions, sourceRef) {
+		const conditionKey = String(effectOptions.conditionKey);
+		const intensity = Math.max(0, Math.trunc(Number(effectOptions.intensity) || 0));
+		const rounds = Math.max(0, Math.trunc(Number(effectOptions.durationRounds) || 0));
+		const presentation = presentCondition(conditionKey, game.i18n);
+		const duration = {
+			rounds,
+			startRound: Number(game.combat?.round ?? 0),
+			startTurn: Number(game.combat?.turn ?? 0),
+			startTime: Number(game.time?.worldTime ?? 0)
+		};
+		const effectData = {
+			name: `RE:LIS — ${presentation.label}`,
+			type: "relisEffect",
+			img: "icons/svg/aura.svg",
+			origin: sourceRef,
+			duration,
+			system: {
+				sourceRef,
+				conditionKey,
+				intensity,
+				visibility: "document"
+			}
+		};
+		const [existing, ...legacyDuplicates] = Array.from(this.effects ?? []).filter((effect) => effect.type === "relisEffect" && effect.origin === sourceRef && String(effect.system?.conditionKey) === conditionKey);
+		if (legacyDuplicates.length > 0) await this.deleteEmbeddedDocuments("ActiveEffect", legacyDuplicates.map((effect) => effect.id));
+		if (!existing) {
+			const [created] = await this.createEmbeddedDocuments("ActiveEffect", [effectData]);
+			return {
+				effectId: String(created?.id ?? ""),
+				created: true
+			};
+		}
+		const rollback = {
+			name: existing.name,
+			img: existing.img,
+			origin: existing.origin,
+			duration: {
+				rounds: existing.duration?.rounds ?? null,
+				turns: existing.duration?.turns ?? null,
+				seconds: existing.duration?.seconds ?? null,
+				startRound: existing.duration?.startRound ?? null,
+				startTurn: existing.duration?.startTurn ?? null,
+				startTime: existing.duration?.startTime ?? null
+			},
+			"system.sourceRef": existing.system?.sourceRef ?? "",
+			"system.conditionKey": existing.system?.conditionKey ?? "",
+			"system.intensity": existing.system?.intensity ?? 0,
+			"system.visibility": existing.system?.visibility ?? "document"
+		};
+		await existing.update(effectData);
+		return {
+			effectId: existing.id,
+			created: false,
+			document: existing,
+			rollback
+		};
 	}
 	async rollAction(action) {
 		if (action.type !== "action") throw new Error("L’Item transmis n’est pas une Action RE:LIS.");
@@ -1111,7 +1180,18 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				type: item.type,
 				typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
 				canRoll: item.type === "action"
-			}))
+			})),
+			effects: Array.from(this.actor.effects ?? []).map((effect) => {
+				const presentation = presentCondition(String(effect.system?.conditionKey ?? effect.name), game.i18n);
+				return {
+					id: effect.id,
+					name: effect.name || presentation.label,
+					description: presentation.description,
+					icon: effect.img || "icons/svg/aura.svg",
+					intensity: Math.max(0, Math.trunc(Number(effect.system?.intensity) || 0)),
+					duration: formatRoundDuration(effect.duration?.remaining ?? effect.duration?.rounds, game.i18n)
+				};
+			})
 		};
 	}
 	async _onRender(context, options) {
@@ -1273,10 +1353,33 @@ function registerSheets() {
 	});
 }
 //#endregion
+//#region src/type-labels.ts
+var DOCUMENT_TYPE_REGISTRY = {
+	Actor: ACTOR_TYPES,
+	Item: ITEM_TYPES,
+	JournalEntryPage: JOURNAL_PAGE_TYPES,
+	ActiveEffect: ["relisEffect"],
+	Combat: [
+		"personal",
+		"spatial",
+		"crisis"
+	],
+	Combatant: ["participant"],
+	ChatMessage: ["relisCard"]
+};
+function registerDocumentTypeLabels() {
+	for (const [documentName, types] of Object.entries(DOCUMENT_TYPE_REGISTRY)) {
+		const documentConfig = CONFIG[documentName];
+		documentConfig.typeLabels ??= {};
+		for (const type of types) documentConfig.typeLabels[type] = `TYPES.${documentName}.${type}`;
+	}
+}
+//#endregion
 //#region src/relis.ts
 Hooks.once("init", () => {
 	console.log(`RE:LIS | Initialisation ${PACKAGE_VERSION}`);
 	CONFIG.Actor.documentClass = RelisActor;
+	registerDocumentTypeLabels();
 	registerDataModels();
 	registerSettings();
 	registerSheets();

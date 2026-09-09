@@ -110,11 +110,30 @@ describe("amorçage Foundry 10-C", () => {
       0,
     );
     expect(modelCount).toBe(64);
+    const labelCount = [
+      "Actor",
+      "Item",
+      "JournalEntryPage",
+      "ActiveEffect",
+      "Combat",
+      "Combatant",
+      "ChatMessage",
+    ].reduce(
+      (sum, documentName) =>
+        sum +
+        Object.keys((globalThis as any).CONFIG[documentName].typeLabels).length,
+      0,
+    );
+    expect(labelCount).toBe(64);
+    expect((globalThis as any).CONFIG.Actor.typeLabels.character).toBe(
+      "TYPES.Actor.character",
+    );
     expect(registeredSettings).toHaveLength(32);
     expect(registeredSheets).toEqual(["Actor", "Item"]);
     expect(hookNames).toHaveLength(8);
     expect((globalThis as any).CONFIG.Actor.documentClass.name).toBe(
       "RelisActor",
     );
+    expect((globalThis as any).CONFIG.ActiveEffect.expiryAction).toBe("delete");
   });
 });
