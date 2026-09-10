@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.2.2` ouvre 10-D2 avec les modèles persistants communs aux Personnages
+La version `0.2.3` corrige l’initialisation 10-D2 et conserve les modèles persistants communs aux Personnages
 et PNJ. Elle conserve le socle d’interface validé de 10-D1 et ajoute identité,
 âges, corps actif, Attributs, Compétences, santé, Stress, Fatigue, Surmenage,
 Contrecoup, besoins, références et trois densités fonctionnelles de PNJ.
@@ -21,7 +21,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.2.2.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.2.3.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.

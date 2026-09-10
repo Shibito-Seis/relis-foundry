@@ -10,6 +10,11 @@ import {
 } from "../config";
 import { masteryBonus } from "../rules/check";
 import { clampHitPoints } from "../rules/health";
+import {
+  initialBody,
+  initialPresentation,
+  normalizePersonSource,
+} from "./person-defaults";
 
 const fields = foundry.data.fields;
 
@@ -605,16 +610,7 @@ export class PersonData extends ReservedData {
       skills: new fields.SchemaField(skills),
       bodies: new fields.ArrayField(bodyField(), {
         required: true,
-        initial: [
-          {
-            id: "primary",
-            name: "Corps principal",
-            nature: "biological",
-            architecture: "",
-            size: "medium",
-            integratedItemRefs: [],
-          },
-        ],
+        initial: [initialBody()],
       }),
       activeBodyId: new fields.StringField({
         required: true,
@@ -623,34 +619,7 @@ export class PersonData extends ReservedData {
       }),
       presentations: new fields.ArrayField(presentationField(), {
         required: true,
-        initial: [
-          {
-            id: "identity",
-            name: "Portrait identitaire",
-            category: "identity",
-            portrait: {
-              path: "",
-              kind: "portrait",
-              alt: "",
-              caption: "",
-              source: "",
-              visibility: "document",
-            },
-            token: {
-              path: "",
-              kind: "token",
-              alt: "",
-              caption: "",
-              source: "",
-              visibility: "document",
-            },
-            bodyIds: ["primary"],
-            availability: "available",
-            active: true,
-            favorite: true,
-            notes: "",
-          },
-        ],
+        initial: [initialPresentation()],
       }),
       outfits: new fields.ArrayField(outfitField(), {
         required: true,
@@ -706,6 +675,7 @@ export class PersonData extends ReservedData {
   }
 
   static migrateData(source: Record<string, any>): Record<string, any> {
+    normalizePersonSource(source);
     source.meta ??= {};
     source.meta.schemaVersion = SCHEMA_VERSION;
     source.health ??= {};

@@ -1,5 +1,18 @@
 # Journal des versions
 
+## 0.2.3 — correctif bloquant d’initialisation 10-D2
+
+- Correction des valeurs initiales imbriquées du Corps principal :
+  `criticalFunctions`, `locations` et `needs` sont toujours définis.
+- Correction de la Présentation identitaire initiale : `sourceRef` et
+  `associatedPresentationId` sont toujours définis.
+- Centralisation des valeurs initiales dans des fabriques retournant des objets
+  neufs, afin d’éviter toute mutation partagée entre Actors.
+- Ajout d’un test unitaire spécifique couvrant chaque champ signalé par la
+  validation réelle de Foundry VTT 14.365.
+- Classement de l’avertissement `FilePicker` comme provenant du module The Forge,
+  sans rapport avec le système RE:LIS.
+
 ## 0.2.2 — modèles Personnage et PNJ 10-D2
 
 - Ajout du champ `changes` v14 au modèle d’ActiveEffect RE:LIS ; l’erreur rouge
