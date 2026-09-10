@@ -5,6 +5,7 @@ export interface HitPoints {
 
 const CURRENT_PATH = "system.health.hitPoints.current";
 const MAXIMUM_PATH = "system.health.hitPoints.maximum";
+const STRESS_CURRENT_PATH = "system.health.stress.current";
 
 function finiteInteger(value: unknown, fallback: number): number {
   const number = Number(value);
@@ -79,4 +80,21 @@ export function constrainHitPointUpdate(
   if (maximumChanged) writePath(change, MAXIMUM_PATH, next.maximum);
   if (currentChanged || next.current !== existing.current)
     writePath(change, CURRENT_PATH, next.current);
+}
+
+export function constrainStressUpdate(
+  existingCurrent: number,
+  maximum: number,
+  change: Record<string, any>,
+): void {
+  if (!hasPath(change, STRESS_CURRENT_PATH)) return;
+  const safeMaximum = Math.max(0, finiteInteger(maximum, 0));
+  const nextCurrent = Math.max(
+    0,
+    Math.min(
+      safeMaximum,
+      finiteInteger(readPath(change, STRESS_CURRENT_PATH), existingCurrent),
+    ),
+  );
+  writePath(change, STRESS_CURRENT_PATH, nextCurrent);
 }

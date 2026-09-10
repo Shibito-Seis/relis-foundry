@@ -23,17 +23,28 @@ export const NPC_TABS: readonly ActorTabDefinition[] = [
   { id: "relations", label: "Relations & Notes" },
 ] as const;
 
+const NPC_CONDENSED_TABS = NPC_TABS.filter((tab) =>
+  ["summary", "identity", "capabilities"].includes(tab.id),
+);
+
+const NPC_STANDARD_TABS = NPC_TABS.filter((tab) => tab.id !== "relations");
+
 export function actorTabsForType(
   actorType: string,
+  detailLevel = "complete",
 ): readonly ActorTabDefinition[] {
-  return actorType === "npc" ? NPC_TABS : CHARACTER_TABS;
+  if (actorType !== "npc") return CHARACTER_TABS;
+  if (detailLevel === "condensed") return NPC_CONDENSED_TABS;
+  if (detailLevel === "standard") return NPC_STANDARD_TABS;
+  return NPC_TABS;
 }
 
 export function normalizeActorTab(
   actorType: string,
   requested: string | null | undefined,
+  detailLevel = "complete",
 ): string {
-  const tabs = actorTabsForType(actorType);
+  const tabs = actorTabsForType(actorType, detailLevel);
   return tabs.some((tab) => tab.id === requested)
     ? String(requested)
     : (tabs[0]?.id ?? "summary");

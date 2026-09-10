@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { clampHitPoints, constrainHitPointUpdate } from "../src/rules/health";
+import {
+  clampHitPoints,
+  constrainHitPointUpdate,
+  constrainStressUpdate,
+} from "../src/rules/health";
 
 describe("intégrité des points de vie", () => {
   it("borne les PV actuels entre zéro et le maximum", () => {
@@ -25,5 +29,11 @@ describe("intégrité des points de vie", () => {
       current: 70,
       maximum: 70,
     });
+  });
+
+  it("borne le Stress au maximum dérivé du personnage ou du PNJ", () => {
+    const change = { "system.health.stress.current": 40 };
+    constrainStressUpdate(3, 14, change);
+    expect(change["system.health.stress.current"]).toBe(14);
   });
 });

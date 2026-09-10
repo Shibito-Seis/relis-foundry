@@ -2,7 +2,7 @@
   "id": "relis",
   "title": "RE:LIS — RE: Lost in Space",
   "description": "Système de jeu officiel RE:LIS pour Foundry Virtual Tabletop.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "compatibility": {
     "minimum": "14",
     "verified": "14",
@@ -31,14 +31,14 @@
   "primaryTokenAttribute": "derived.trackables.hitPoints",
   "url": "https://github.com/Shibito-Seis/relis-foundry",
   "manifest": "https://raw.githubusercontent.com/Shibito-Seis/relis-foundry/main/system.json",
-  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.2.1/relis-v0.2.1.zip",
+  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.2.2/relis-v0.2.2.zip",
   "documentTypes": {
     "Actor": {
       "character": {
         "htmlFields": ["description", "identity.biography", "identity.memory"]
       },
       "npc": {
-        "htmlFields": ["description"]
+        "htmlFields": ["description", "identity.biography", "identity.memory"]
       },
       "creature": {
         "htmlFields": ["description"]

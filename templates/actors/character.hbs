@@ -30,22 +30,22 @@
               aria-label="Nom de l’Actor"
             />
           </div>
-          <span class="relis-state-chip">Prototype fonctionnel</span>
+          <span class="relis-state-chip">Modèle 10-D2</span>
         </div>
 
         {{#if isCharacter}}
           <dl class="relis-id-facts">
             <div><dt>Nom public</dt><dd>{{displayName}}</dd></div>
             <div><dt>Niveau</dt><dd>{{system.level}}</dd></div>
-            <div><dt>Corps principal</dt><dd>À définir en 10-D2</dd></div>
-            <div><dt>Présentation</dt><dd>Portrait courant</dd></div>
+            <div><dt>Corps actif</dt><dd>{{activeBody.name}}</dd></div>
+            <div><dt>Nature</dt><dd>{{activeBodyNatureLabel}}</dd></div>
           </dl>
         {{else}}
           <dl class="relis-id-facts">
             <div><dt>Désignation</dt><dd>{{displayName}}</dd></div>
-            <div><dt>Densité</dt><dd>À définir en 10-D2</dd></div>
-            <div><dt>Corps</dt><dd>À définir en 10-D2</dd></div>
-            <div><dt>Accès</dt><dd>Selon les droits Foundry</dd></div>
+            <div><dt>Densité</dt><dd>{{npcDetailLevel}}</dd></div>
+            <div><dt>Rôle</dt><dd>{{system.role}}</dd></div>
+            <div><dt>Corps actif</dt><dd>{{activeBody.name}}</dd></div>
           </dl>
         {{/if}}
       </div>
@@ -53,11 +53,27 @@
   </header>
 
   <section class="relis-resource-strip" aria-label="Résumé des ressources">
-    {{#if isCharacter}}
+    {{#if isPerson}}
       <div class="relis-resource relis-resource--vital">
         <span>PV</span><strong>{{system.health.hitPoints.current}}</strong>
         <small>/ {{system.health.hitPoints.maximum}}</small>
       </div>
+      <div class="relis-resource relis-resource--mental">
+        <span>Stress</span><strong>{{stress.value}}</strong>
+        <small>/ {{stress.max}}</small>
+      </div>
+      <div class="relis-resource">
+        <span>Fatigue</span><strong>{{system.health.fatigue}}</strong>
+        <small>/ 5</small>
+      </div>
+      {{#if system.defenses.cap}}
+        <div class="relis-resource"><span>CAP</span><strong
+          >{{system.defenses.cap}}</strong></div>
+      {{/if}}
+      {{#if system.defenses.cae}}
+        <div class="relis-resource"><span>CAE</span><strong
+          >{{system.defenses.cae}}</strong></div>
+      {{/if}}
       {{#each energyPools}}
         <div class="relis-resource {{resourceClass}}">
           <span>{{label}}</span><strong>{{current}}</strong><small>/
@@ -68,10 +84,6 @@
         >{{effectCount}}</strong></div>
       <div class="relis-resource"><span>Items</span><strong
         >{{itemCount}}</strong></div>
-    {{else}}
-      <div class="relis-resource relis-resource--reserved">
-        <span>Ressources PNJ</span><strong>Modèle métier réservé à 10-D2</strong>
-      </div>
     {{/if}}
   </section>
 
@@ -121,9 +133,11 @@
                 >{{effectCount}}</strong></div>
               <div><span>Items embarqués</span><strong
                 >{{itemCount}}</strong></div>
-              <div><span>Stress et fatigue</span><strong
-                  class="relis-pending"
-                >Modèle 10-D2</strong></div>
+              <div><span>Stress</span><strong>{{stress.value}}
+                  /
+                  {{stress.max}}</strong></div>
+              <div><span>Fatigue</span><strong>{{system.health.fatigue}}
+                  / 5</strong></div>
             </div>
           </article>
           <article class="relis-card">
@@ -176,15 +190,101 @@
                   value="{{system.identity.publicName}}"
                   data-document-field="system.identity.publicName"
                 /></label>
+              <label>Pronoms<input
+                  type="text"
+                  value="{{system.identity.pronouns}}"
+                  data-document-field="system.identity.pronouns"
+                /></label>
+              <label>Genre<input
+                  type="text"
+                  value="{{system.identity.gender}}"
+                  data-document-field="system.identity.gender"
+                /></label>
+              <label>Indicatif<input
+                  type="text"
+                  value="{{system.identity.callsign}}"
+                  data-document-field="system.identity.callsign"
+                /></label>
+              <label>Corps actif<select
+                  data-document-field="system.activeBodyId"
+                >{{selectOptions
+                    bodies
+                    selected=system.activeBodyId
+                    valueAttr="id"
+                    labelAttr="name"
+                  }}</select></label>
             </div>
           </article>
           <article class="relis-card">
-            <p class="relis-kicker">Incarnations</p><h2>Corps & présentations</h2>
-            <div class="relis-empty-state"><i
-                class="fa-solid fa-fingerprint"
-                aria-hidden="true"
-              ></i><p>Les Corps, présentations et portraits multiples seront
-                activés en 10-D2 et 10-D5.</p></div>
+            <p class="relis-kicker">Apparence actuelle</p><h2>Corps & identité
+              visible</h2>
+            <div class="relis-grid relis-grid--form">
+              <label>Nature<input
+                  type="text"
+                  value="{{activeBodyNatureLabel}}"
+                  disabled
+                /></label>
+              <label>Taille du corps<input
+                  type="text"
+                  value="{{activeBody.size}}"
+                  disabled
+                /></label>
+              <label>Corpulence<input
+                  type="text"
+                  value="{{system.identity.appearance.build}}"
+                  data-document-field="system.identity.appearance.build"
+                /></label>
+              <label>Yeux ou capteurs<input
+                  type="text"
+                  value="{{system.identity.appearance.eyes}}"
+                  data-document-field="system.identity.appearance.eyes"
+                /></label>
+              <label>Voix<input
+                  type="text"
+                  value="{{system.identity.appearance.voice}}"
+                  data-document-field="system.identity.appearance.voice"
+                /></label>
+              <label>Signes distinctifs<input
+                  type="text"
+                  value="{{system.identity.appearance.distinctiveMarks}}"
+                  data-document-field="system.identity.appearance.distinctiveMarks"
+                /></label>
+            </div>
+            <p class="relis-scope-note">La gestion de plusieurs Corps,
+              Présences, portraits et Tokens reste réservée à 10-D5. Le modèle
+              10-D2 en conserve déjà les identifiants sans dupliquer les
+              ressources personnelles.</p>
+          </article>
+          <article class="relis-card relis-card--wide">
+            <p class="relis-kicker">Repères temporels distincts</p><h2>Âges</h2>
+            <div class="relis-grid relis-grid--ages">
+              <label>Date de naissance terrienne<input
+                  type="text"
+                  value="{{system.age.earthBirthDate}}"
+                  data-document-field="system.age.earthBirthDate"
+                /></label>
+              <label>Âge chronologique<input
+                  type="number"
+                  min="0"
+                  value="{{system.age.chronological.value}}"
+                  data-value-type="number"
+                  data-document-field="system.age.chronological.value"
+                /></label>
+              <label>Âge biologique<input
+                  type="number"
+                  min="0"
+                  value="{{system.age.biological.value}}"
+                  data-value-type="number"
+                  data-document-field="system.age.biological.value"
+                /></label>
+              <label>Âge apparent<input
+                  type="number"
+                  min="0"
+                  value="{{system.age.apparent.value}}"
+                  data-value-type="number"
+                  data-document-field="system.age.apparent.value"
+                /></label>
+            </div>
           </article>
         </div>
       </section>
@@ -285,14 +385,31 @@
         <div class="relis-content-grid">
           <article class="relis-card">
             <p class="relis-kicker">État actuel</p><h2>Progression</h2>
-            <label class="relis-large-field">Niveau<input
-                type="number"
-                min="1"
-                max="30"
-                value="{{system.level}}"
-                data-value-type="number"
-                data-document-field="system.level"
-              /></label>
+            <div class="relis-grid relis-grid--form">
+              <label>Niveau<input
+                  type="number"
+                  min="1"
+                  max="30"
+                  value="{{system.level}}"
+                  data-value-type="number"
+                  data-document-field="system.level"
+                /></label>
+              <label>Étoiles mythiques<input
+                  type="number"
+                  min="0"
+                  value="{{progression.mythicStars}}"
+                  data-value-type="number"
+                  data-document-field="system.progression.mythicStars"
+                /></label>
+            </div>
+            <div class="relis-fact-list">
+              <div><span>Choix en attente</span><strong
+                >{{progression.pendingChoices.length}}</strong></div>
+              <div><span>Gains automatiques</span><strong
+                >{{progression.automaticGrants.length}}</strong></div>
+              <div><span>Entrées d’historique</span><strong
+                >{{progression.historyRefs.length}}</strong></div>
+            </div>
           </article>
           <article class="relis-card">
             <p class="relis-kicker">Choix et historique</p><h2>Étapes de
@@ -301,7 +418,8 @@
                 class="fa-solid fa-route"
                 aria-hidden="true"
               ></i><p>L’historique, les gains automatiques et les choix différés
-                seront raccordés en 10-D4.</p></div>
+                seront manipulés par les assistants de 10-D4. Le présent panneau
+                projette déjà leurs collections sans inventer d’XP.</p></div>
           </article>
         </div>
       </section>
@@ -432,6 +550,56 @@
                   data-value-type="number"
                   data-document-field="system.health.hitPoints.maximum"
                 /></label>
+              <label>Stress actuel<input
+                  type="number"
+                  min="0"
+                  max="{{stress.max}}"
+                  value="{{stress.value}}"
+                  data-value-type="number"
+                  data-document-field="system.health.stress.current"
+                /></label>
+              <label>Stress maximum<input
+                  type="number"
+                  value="{{stress.max}}"
+                  disabled
+                /></label>
+              <label>Fatigue<input
+                  type="number"
+                  min="0"
+                  max="5"
+                  value="{{system.health.fatigue}}"
+                  data-value-type="number"
+                  data-document-field="system.health.fatigue"
+                /></label>
+              <label>Agonie<input
+                  type="number"
+                  min="0"
+                  value="{{system.health.agony}}"
+                  data-value-type="number"
+                  data-document-field="system.health.agony"
+                /></label>
+              <label>Surmenage<input
+                  type="number"
+                  min="0"
+                  value="{{system.health.overexertion}}"
+                  data-value-type="number"
+                  data-document-field="system.health.overexertion"
+                /></label>
+              <label>Contrecoup<input
+                  type="number"
+                  min="0"
+                  value="{{system.health.backlash}}"
+                  data-value-type="number"
+                  data-document-field="system.health.backlash"
+                /></label>
+              <label>Stabilité<select
+                  data-document-field="system.health.stability"
+                >{{selectOptions
+                    stabilityOptions
+                    selected=system.health.stability
+                    valueAttr="key"
+                    labelAttr="label"
+                  }}</select></label>
             </div>
           </article>
           <article class="relis-card">
@@ -452,6 +620,35 @@
               </div>
             {{else}}<p class="relis-muted">Aucun effet actif.</p>{{/if}}
           </article>
+          <article class="relis-card">
+            <p class="relis-kicker">Besoins applicables</p><h2>Survie</h2>
+            {{#if needs.length}}
+              <div class="relis-list">
+                {{#each needs}}
+                  <div class="relis-row relis-row--need">
+                    <span>{{label}}</span><strong>{{current}}</strong>
+                    <span class="relis-badge">{{state}}</span>
+                  </div>
+                {{/each}}
+              </div>
+            {{else}}
+              <div class="relis-empty-state relis-empty-state--small"><i
+                  class="fa-solid fa-lungs"
+                  aria-hidden="true"
+                ></i><p>Aucun besoin corporel n’est encore rattaché. Une absence
+                  n’est pas affichée comme un faux zéro.</p></div>
+            {{/if}}
+          </article>
+          <article class="relis-card">
+            <p class="relis-kicker">Accès préparés</p><h2>Soins & anatomie</h2>
+            <div class="relis-empty-state relis-empty-state--small"><i
+                class="fa-solid fa-kit-medical"
+                aria-hidden="true"
+              ></i><p>Les emplacements de soins rapides, localisations de
+                Blessures et dossiers médico-biologiques sont réservés. Les
+                Items arrivent en 10-E ; les règles de soins et de biométrie en
+                10-F.</p></div>
+          </article>
         </div>
       </section>
 
@@ -465,11 +662,30 @@
       >
         <article class="relis-card">
           <p class="relis-kicker">Réseau personnel</p><h2>Relations & Journal</h2>
-          <div class="relis-empty-state"><i
-              class="fa-solid fa-address-book"
-              aria-hidden="true"
-            ></i><p>Relations, mémoires, journal personnel et accès rapide au
-              suivi médico-biologique seront raccordés en 10-D6.</p></div>
+          {{#if hasReferences}}
+            <div class="relis-reference-grid">
+              {{#each referenceGroups}}
+                <section><h3>{{label}}</h3>
+                  {{#if entries.length}}
+                    <div class="relis-list">
+                      {{#each entries}}
+                        <div class="relis-row"><span>{{label}}</span><span
+                            class="relis-badge"
+                          >{{state}}</span></div>
+                      {{/each}}
+                    </div>
+                  {{else}}<p class="relis-muted">Aucune référence.</p>{{/if}}
+                </section>
+              {{/each}}
+            </div>
+          {{else}}
+            <div class="relis-empty-state"><i
+                class="fa-solid fa-address-book"
+                aria-hidden="true"
+              ></i><p>Aucune relation, organisation, compte ou page de journal
+                n’est encore liée. Ces dossiers restent des Documents séparés et
+                ne sont jamais recopiés dans la fiche.</p></div>
+          {{/if}}
         </article>
       </section>
     {{else}}
@@ -480,12 +696,68 @@
         aria-labelledby="relis-tab-summary"
         data-tab-panel="summary"
       >
-        <article class="relis-card"><p class="relis-kicker">PNJ</p><h2
-          >Synthèse</h2><div class="relis-empty-state"><i
-              class="fa-solid fa-user-shield"
-              aria-hidden="true"
-            ></i><p>La coque commune est opérationnelle. Le choix PNJ Figurant,
-              Secondaire ou Majeur sera raccordé en 10-D2.</p></div></article>
+        <div class="relis-dashboard-grid">
+          <article class="relis-card relis-card--wide">
+            <p class="relis-kicker">PNJ sapient</p><h2>Synthèse</h2>
+            <div class="relis-grid relis-grid--form">
+              <label>Densité<select
+                  data-document-field="system.detailLevel"
+                >{{selectOptions
+                    npcDetailOptions
+                    selected=system.detailLevel
+                    valueAttr="key"
+                    labelAttr="label"
+                  }}</select></label>
+              <label>Niveau<input
+                  type="number"
+                  min="1"
+                  max="30"
+                  value="{{system.level}}"
+                  data-value-type="number"
+                  data-document-field="system.level"
+                /></label>
+              <label>Rôle<input
+                  type="text"
+                  value="{{system.role}}"
+                  data-document-field="system.role"
+                /></label>
+              <label>Attitude visible<input
+                  type="text"
+                  value="{{system.attitudeVisible}}"
+                  data-document-field="system.attitudeVisible"
+                /></label>
+            </div>
+            <div class="relis-fact-list">
+              <div><span>Intégrité</span><strong
+                >{{system.health.hitPoints.current}}
+                  /
+                  {{system.health.hitPoints.maximum}}
+                  PV</strong></div>
+              <div><span>Corps actif</span><strong
+                >{{activeBody.name}}</strong></div>
+              <div><span>Effets actifs</span><strong
+                >{{effectCount}}</strong></div>
+            </div>
+          </article>
+          <article class="relis-card">
+            <p class="relis-kicker">Compétences utiles</p><h2>Actions rapides</h2>
+            {{#if featuredSkills.length}}
+              <div class="relis-list relis-list--compact">
+                {{#each featuredSkills}}
+                  <button
+                    type="button"
+                    class="relis-quick-roll"
+                    data-action="roll-skill"
+                    data-skill-key="{{key}}"
+                    data-owner-control
+                  ><i class="fa-solid fa-dice-d20" aria-hidden="true"></i><span
+                    >{{label}}</span><strong>{{total}}</strong></button>
+                {{/each}}
+              </div>
+            {{else}}<p class="relis-muted">Aucune Compétence favorite ou
+                maîtrisée.</p>{{/if}}
+          </article>
+        </div>
       </section>
       <section
         class="relis-tab-panel"
@@ -495,12 +767,61 @@
         data-tab-panel="identity"
         hidden
       >
-        <article class="relis-card"><p class="relis-kicker">Dossier PNJ</p><h2
-          >Identité</h2><div class="relis-empty-state"><i
-              class="fa-solid fa-id-card"
-              aria-hidden="true"
-            ></i><p>Identité publique, identité MJ, description et portraits
-              seront structurés en 10-D2.</p></div></article>
+        <div class="relis-content-grid">
+          <article class="relis-card"><p class="relis-kicker">Projection
+              autorisée</p><h2>Identité</h2>
+            <div class="relis-grid relis-grid--form">
+              <label>Nom principal<input
+                  type="text"
+                  value="{{system.identity.primaryName}}"
+                  data-document-field="system.identity.primaryName"
+                /></label>
+              <label>Nom affiché<input
+                  type="text"
+                  value="{{system.identity.publicName}}"
+                  data-document-field="system.identity.publicName"
+                /></label>
+              <label>Pronoms<input
+                  type="text"
+                  value="{{system.identity.pronouns}}"
+                  data-document-field="system.identity.pronouns"
+                /></label>
+              <label>Indicatif<input
+                  type="text"
+                  value="{{system.identity.callsign}}"
+                  data-document-field="system.identity.callsign"
+                /></label>
+            </div>
+          </article>
+          <article class="relis-card"><p class="relis-kicker">Description
+              visible</p><h2>Apparence</h2>
+            <div class="relis-grid relis-grid--form">
+              <label>Corpulence<input
+                  type="text"
+                  value="{{system.identity.appearance.build}}"
+                  data-document-field="system.identity.appearance.build"
+                /></label>
+              <label>Voix<input
+                  type="text"
+                  value="{{system.identity.appearance.voice}}"
+                  data-document-field="system.identity.appearance.voice"
+                /></label>
+              <label>Yeux ou capteurs<input
+                  type="text"
+                  value="{{system.identity.appearance.eyes}}"
+                  data-document-field="system.identity.appearance.eyes"
+                /></label>
+              <label>Signes distinctifs<input
+                  type="text"
+                  value="{{system.identity.appearance.distinctiveMarks}}"
+                  data-document-field="system.identity.appearance.distinctiveMarks"
+                /></label>
+            </div>
+          </article>
+          <p class="relis-scope-note relis-card relis-card--wide">Une couverture
+            publique ne doit contenir aucune identité réelle, intention secrète
+            ou note MJ. Ces vérités demeurent dans des Documents séparés.</p>
+        </div>
       </section>
       <section
         class="relis-tab-panel"
@@ -510,12 +831,71 @@
         data-tab-panel="mechanics"
         hidden
       >
-        <article class="relis-card"><p class="relis-kicker">Profil de jeu</p><h2
-          >Mécanique</h2><div class="relis-empty-state"><i
-              class="fa-solid fa-sliders"
-              aria-hidden="true"
-            ></i><p>Les champs dépendront de la densité PNJ retenue. Aucun score
-              fictif n’est enregistré par ce prototype.</p></div></article>
+        <div class="relis-columns">
+          <article class="relis-card"><p class="relis-kicker">Valeurs
+              fondamentales</p><h2>Attributs</h2>
+            <div class="relis-list">
+              {{#each attributes}}
+                <div class="relis-row relis-row--attribute">
+                  <span>{{label}}</span><span
+                    class="relis-derived"
+                  >{{effective}}</span>
+                  <input
+                    type="number"
+                    min="-5"
+                    max="8"
+                    value="{{base}}"
+                    data-value-type="number"
+                    data-document-field="system.attributes.{{key}}.base"
+                  />
+                  <label class="relis-partial">+<input
+                      type="checkbox"
+                      {{checked partial}}
+                      data-document-field="system.attributes.{{key}}.partial"
+                    /></label>
+                </div>
+              {{/each}}
+            </div>
+          </article>
+          <article class="relis-card"><div class="relis-section-heading">
+              <div><p class="relis-kicker">Même moteur que les PJ</p><h2
+                >Compétences</h2></div>
+              <label class="relis-compact-field">DD<input
+                  type="number"
+                  min="0"
+                  value="15"
+                  data-test-difficulty
+                /></label>
+            </div>
+            {{#if skills.length}}
+              <div class="relis-list relis-list--skills">
+                {{#each skills}}
+                  <div class="relis-row relis-row--skill">
+                    <button
+                      type="button"
+                      class="relis-link"
+                      data-action="roll-skill"
+                      data-skill-key="{{key}}"
+                      data-owner-control
+                    ><i class="fa-solid fa-dice-d20" aria-hidden="true"></i>
+                      {{label}}</button>
+                    <span class="relis-derived">{{total}}</span>
+                    <select
+                      data-document-field="system.skills.{{key}}.rank"
+                    >{{selectOptions
+                        masteryRanks
+                        selected=rank
+                        valueAttr="key"
+                        labelAttr="label"
+                      }}</select>
+                  </div>
+                {{/each}}
+              </div>
+            {{else}}<div class="relis-empty-state relis-empty-state--small"><p
+                >Cette densité replie les Compétences non maîtrisées. Passez en
+                  vue complète pour inspecter les vingt-cinq.</p></div>{{/if}}
+          </article>
+        </div>
       </section>
       <section
         class="relis-tab-panel"
@@ -525,12 +905,33 @@
         data-tab-panel="capabilities"
         hidden
       >
-        <article class="relis-card"><p class="relis-kicker">Moyens</p><h2
-          >Capacités & Équipement</h2><div class="relis-empty-state"><i
-              class="fa-solid fa-toolbox"
-              aria-hidden="true"
-            ></i><p>Capacités, actions et équipement seront raccordés au modèle
-              PNJ de 10-D2.</p></div></article>
+        <article class="relis-card"><p class="relis-kicker">Moyens embarqués</p><h2
+          >Capacités & Équipement</h2>
+          {{#if items.length}}
+            <div class="relis-list">
+              {{#each items}}
+                <div class="relis-row relis-row--item"><button
+                    type="button"
+                    class="relis-link"
+                    data-action="open-item"
+                    data-item-id="{{id}}"
+                  >{{name}}</button><span
+                    class="relis-badge"
+                  >{{typeLabel}}</span>
+                  {{#if canRoll}}<button
+                      type="button"
+                      data-action="roll-action"
+                      data-item-id="{{id}}"
+                      data-owner-control
+                    ><i class="fa-solid fa-dice-d20" aria-hidden="true"></i>
+                      Lancer</button>{{/if}}</div>
+              {{/each}}
+            </div>
+          {{else}}<div class="relis-empty-state relis-empty-state--small"><i
+                class="fa-solid fa-toolbox"
+                aria-hidden="true"
+              ></i><p>Aucun Item embarqué.</p></div>{{/if}}
+        </article>
       </section>
       <section
         class="relis-tab-panel"
@@ -540,12 +941,54 @@
         data-tab-panel="health"
         hidden
       >
-        <article class="relis-card"><p class="relis-kicker">État</p><h2
-          >Santé</h2><div class="relis-empty-state"><i
-              class="fa-solid fa-heart-pulse"
-              aria-hidden="true"
-            ></i><p>Le suivi dépendra de la densité PNJ et des droits d’accès
-              médicaux définis par la Bible.</p></div></article>
+        <div class="relis-content-grid">
+          <article class="relis-card"><p class="relis-kicker">État</p><h2
+            >Santé</h2><div class="relis-grid relis-grid--form">
+              <label>PV actuels<input
+                  type="number"
+                  min="0"
+                  max="{{system.health.hitPoints.maximum}}"
+                  value="{{system.health.hitPoints.current}}"
+                  data-value-type="number"
+                  data-document-field="system.health.hitPoints.current"
+                /></label>
+              <label>PV maximum<input
+                  type="number"
+                  min="1"
+                  value="{{system.health.hitPoints.maximum}}"
+                  data-value-type="number"
+                  data-document-field="system.health.hitPoints.maximum"
+                /></label>
+              <label>Stress<input
+                  type="number"
+                  min="0"
+                  max="{{stress.max}}"
+                  value="{{stress.value}}"
+                  data-value-type="number"
+                  data-document-field="system.health.stress.current"
+                /></label>
+              <label>Fatigue<input
+                  type="number"
+                  min="0"
+                  max="5"
+                  value="{{system.health.fatigue}}"
+                  data-value-type="number"
+                  data-document-field="system.health.fatigue"
+                /></label>
+            </div></article>
+          <article class="relis-card"><p class="relis-kicker">Suivi actif</p><h2
+            >Effets</h2>
+            {{#if effects.length}}<div class="relis-list">{{#each effects}}
+                  <div class="relis-row relis-row--effect"><img
+                      class="relis-effect-icon"
+                      src="{{icon}}"
+                      alt=""
+                    /><span class="relis-effect-name">{{name}}</span><span
+                      class="relis-badge"
+                    >{{duration}}</span></div>{{/each}}</div>
+            {{else}}<p class="relis-muted">Aucun effet actif.</p>{{/if}}
+          </article>
+        </div>
       </section>
       <section
         class="relis-tab-panel"
@@ -555,16 +998,38 @@
         data-tab-panel="relations"
         hidden
       >
-        <article class="relis-card"><p class="relis-kicker">Continuité</p><h2
-          >Relations & Notes</h2><div class="relis-empty-state"><i
-              class="fa-solid fa-book"
-              aria-hidden="true"
-            ></i><p>Relations, notes MJ et journaux liés seront raccordés en
-              10-D2 puis 10-D6.</p></div></article>
+        <div class="relis-content-grid">
+          <article class="relis-card"><p class="relis-kicker">Aide au MJ</p><h2
+            >Comportement</h2><div class="relis-grid relis-grid--form">
+              <label>Seuil de repli<input
+                  type="number"
+                  min="0"
+                  value="{{system.behavior.retreatThreshold}}"
+                  data-value-type="number"
+                  data-document-field="system.behavior.retreatThreshold"
+                /></label>
+              <label>Reddition<input
+                  type="text"
+                  value="{{system.behavior.surrender}}"
+                  data-document-field="system.behavior.surrender"
+                /></label>
+            </div><p class="relis-scope-note">Ces données aident le MJ ; elles
+              ne jouent jamais le PNJ à sa place.</p></article>
+          <article class="relis-card"><p class="relis-kicker">Documents liés</p><h2
+            >Relations</h2>
+            {{#if hasReferences}}<div class="relis-fact-list">{{#each
+                  referenceGroups
+                }}<div><span>{{label}}</span><strong
+                    >{{entries.length}}</strong></div>{{/each}}</div>
+            {{else}}<div class="relis-empty-state relis-empty-state--small"><p
+                >Aucune référence autorisée. Les intentions et notes secrètes ne
+                  sont pas stockées ici.</p></div>{{/if}}
+          </article>
+        </div>
       </section>
     {{/if}}
   </main>
 
-  <footer class="relis-sheet-footer">Étape 10-D1 · correctif de recette · paquet
-    0.2.1</footer>
+  <footer class="relis-sheet-footer">Étape 10-D2 · modèles Personnage et PNJ ·
+    paquet 0.2.2</footer>
 </section>

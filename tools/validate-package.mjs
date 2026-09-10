@@ -97,8 +97,13 @@ assert.match(
 );
 assert.match(
   actorTemplate,
-  /Figurant,\s+Secondaire ou Majeur/,
-  "Densités PNJ non annoncées par le prototype",
+  /data-document-field="system\.detailLevel"/,
+  "Sélecteur des densités PNJ absent",
+);
+assert.match(
+  actorTemplate,
+  /system\.health\.overexertion/,
+  "Suivi du Surmenage absent de la fiche Personnage",
 );
 assert.match(
   styles,

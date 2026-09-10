@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.2.1";
+var PACKAGE_VERSION = "0.2.2";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -161,6 +161,7 @@ function degreeLabel(degree) {
 //#region src/rules/health.ts
 var CURRENT_PATH = "system.health.hitPoints.current";
 var MAXIMUM_PATH = "system.health.hitPoints.maximum";
+var STRESS_CURRENT_PATH = "system.health.stress.current";
 function finiteInteger(value, fallback) {
 	const number = Number(value);
 	return Number.isFinite(number) ? Math.trunc(number) : fallback;
@@ -208,6 +209,11 @@ function constrainHitPointUpdate(existing, change) {
 	if (maximumChanged) writePath(change, MAXIMUM_PATH, next.maximum);
 	if (currentChanged || next.current !== existing.current) writePath(change, CURRENT_PATH, next.current);
 }
+function constrainStressUpdate(existingCurrent, maximum, change) {
+	if (!hasPath(change, STRESS_CURRENT_PATH)) return;
+	const safeMaximum = Math.max(0, finiteInteger(maximum, 0));
+	writePath(change, STRESS_CURRENT_PATH, Math.max(0, Math.min(safeMaximum, finiteInteger(readPath(change, STRESS_CURRENT_PATH), existingCurrent))));
+}
 //#endregion
 //#region src/data/models.ts
 var fields = foundry.data.fields;
@@ -216,7 +222,7 @@ function metaField() {
 		schemaVersion: new fields.StringField({
 			required: true,
 			blank: false,
-			initial: "1"
+			initial: "2"
 		}),
 		rulesVersion: new fields.StringField({
 			required: true,
@@ -258,6 +264,10 @@ function attributeField() {
 		partial: new fields.BooleanField({
 			required: true,
 			initial: false
+		}),
+		modifiers: new fields.ArrayField(modifierField(), {
+			required: true,
+			initial: []
 		})
 	});
 }
@@ -276,24 +286,171 @@ function skillField(defaultAttribute) {
 		favorite: new fields.BooleanField({
 			required: true,
 			initial: false
+		}),
+		modifiers: new fields.ArrayField(modifierField(), {
+			required: true,
+			initial: []
 		})
 	});
 }
-function resourcePoolField() {
+function optionalStringField(initial = "") {
+	return new fields.StringField({
+		required: true,
+		blank: true,
+		initial
+	});
+}
+function modifierField() {
+	return new fields.SchemaField({
+		id: optionalStringField(),
+		sourceRef: optionalStringField(),
+		value: new fields.NumberField({
+			required: true,
+			initial: 0
+		}),
+		mode: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "add"
+		}),
+		priority: new fields.NumberField({
+			required: true,
+			integer: true,
+			initial: 0
+		}),
+		conditionKey: optionalStringField(),
+		enabled: new fields.BooleanField({
+			required: true,
+			initial: true
+		}),
+		labelKey: optionalStringField()
+	});
+}
+function stableTextEntryField() {
+	return new fields.SchemaField({
+		id: optionalStringField(),
+		sort: new fields.NumberField({
+			required: true,
+			integer: true,
+			initial: 0
+		}),
+		status: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "active"
+		}),
+		value: optionalStringField(),
+		visibility: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "owner"
+		})
+	});
+}
+function referenceField() {
+	return new fields.SchemaField({
+		relisId: optionalStringField(),
+		uuid: optionalStringField(),
+		documentName: optionalStringField(),
+		type: optionalStringField(),
+		state: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "unresolved"
+		}),
+		labelSnapshot: optionalStringField(),
+		missingPolicy: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "diagnose"
+		})
+	});
+}
+function referenceArrayField() {
+	return new fields.ArrayField(referenceField(), {
+		required: true,
+		initial: []
+	});
+}
+function measurementField(unit = "count") {
+	return new fields.SchemaField({
+		value: new fields.NumberField({
+			required: false,
+			nullable: true,
+			initial: null
+		}),
+		unit: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: unit
+		}),
+		precision: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "exact"
+		}),
+		minimum: new fields.NumberField({
+			required: false,
+			nullable: true,
+			initial: null
+		}),
+		maximum: new fields.NumberField({
+			required: false,
+			nullable: true,
+			initial: null
+		})
+	});
+}
+function fictionStampField() {
+	return new fields.SchemaField({
+		worldTime: new fields.NumberField({
+			required: false,
+			nullable: true,
+			initial: null
+		}),
+		calendarId: optionalStringField(),
+		displayOverride: optionalStringField(),
+		precision: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "exact"
+		})
+	});
+}
+function mediaRefField(kind = "image") {
+	return new fields.SchemaField({
+		path: optionalStringField(),
+		kind: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: kind
+		}),
+		alt: optionalStringField(),
+		caption: optionalStringField(),
+		source: optionalStringField(),
+		visibility: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "document"
+		})
+	});
+}
+function resourcePoolField(key = "resource", current = 0, maximum = 0, unit = "count") {
 	return new fields.SchemaField({
 		key: new fields.StringField({
 			required: true,
-			blank: false
+			blank: false,
+			initial: key
 		}),
 		current: new fields.NumberField({
 			required: true,
 			min: 0,
-			initial: 0
+			initial: current
 		}),
 		maximum: new fields.NumberField({
 			required: true,
 			min: 0,
-			initial: 0
+			initial: maximum
 		}),
 		reserved: new fields.NumberField({
 			required: true,
@@ -308,7 +465,312 @@ function resourcePoolField() {
 		unit: new fields.StringField({
 			required: true,
 			blank: false,
+			initial: unit
+		})
+	});
+}
+function healthField() {
+	return new fields.SchemaField({
+		hitPoints: resourcePoolField("hitPoints", 10, 10, "pv"),
+		stress: resourcePoolField("stress", 0, 10, "points"),
+		fatigue: new fields.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			max: 5,
+			initial: 0
+		}),
+		agony: new fields.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			initial: 0
+		}),
+		stability: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "stable"
+		}),
+		overexertion: new fields.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			initial: 0
+		}),
+		backlash: new fields.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			initial: 0
+		}),
+		injuryRefs: referenceArrayField(),
+		conditionRefs: referenceArrayField(),
+		medicalRecordRefs: referenceArrayField()
+	});
+}
+function identityField() {
+	return new fields.SchemaField({
+		primaryName: optionalStringField(),
+		publicName: optionalStringField(),
+		pronouns: optionalStringField(),
+		gender: optionalStringField(),
+		callsign: optionalStringField(),
+		aliases: new fields.ArrayField(stableTextEntryField(), {
+			required: true,
+			initial: []
+		}),
+		languages: referenceArrayField(),
+		cultureRefs: referenceArrayField(),
+		affiliationRefs: referenceArrayField(),
+		appearance: new fields.SchemaField({
+			apparentAge: optionalStringField(),
+			height: measurementField("m"),
+			build: optionalStringField(),
+			skin: optionalStringField(),
+			hair: optionalStringField(),
+			eyes: optionalStringField(),
+			distinctiveMarks: optionalStringField(),
+			voice: optionalStringField(),
+			posture: optionalStringField(),
+			description: optionalStringField()
+		}),
+		biography: new fields.HTMLField({
+			required: true,
+			blank: true,
+			initial: ""
+		}),
+		memory: new fields.HTMLField({
+			required: true,
+			blank: true,
+			initial: ""
+		}),
+		goals: new fields.ArrayField(stableTextEntryField(), {
+			required: true,
+			initial: []
+		}),
+		anchors: referenceArrayField()
+	});
+}
+function buildField() {
+	return new fields.SchemaField({
+		ancestryRef: referenceField(),
+		secondaryAncestryRef: referenceField(),
+		profileRef: referenceField(),
+		originRef: referenceField(),
+		pathRef: referenceField(),
+		primarySpecializationRef: referenceField(),
+		secondarySpecializations: new fields.ArrayField(new fields.SchemaField({
+			ref: referenceField(),
+			rank: optionalStringField(),
+			sourceRef: referenceField()
+		}), {
+			required: true,
+			initial: []
+		}),
+		advantageRefs: referenceArrayField(),
+		drawbackRefs: referenceArrayField()
+	});
+}
+function ageField() {
+	return new fields.SchemaField({
+		earthBirthDate: optionalStringField(),
+		universalEquivalent: fictionStampField(),
+		chronological: measurementField("years"),
+		biological: measurementField("years"),
+		apparent: measurementField("years"),
+		category: optionalStringField(),
+		profileRef: referenceField(),
+		updatedAt: fictionStampField()
+	});
+}
+function bodyField() {
+	return new fields.SchemaField({
+		id: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "primary"
+		}),
+		name: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "Corps principal"
+		}),
+		nature: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "biological"
+		}),
+		architecture: optionalStringField(),
+		size: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "medium"
+		}),
+		criticalFunctions: new fields.ArrayField(stableTextEntryField(), {
+			required: true,
+			initial: []
+		}),
+		locations: new fields.ArrayField(stableTextEntryField(), {
+			required: true,
+			initial: [{
+				id: "core",
+				sort: 0,
+				status: "active",
+				value: "Zone centrale",
+				visibility: "document"
+			}]
+		}),
+		needs: new fields.ArrayField(needField(), {
+			required: true,
+			initial: []
+		}),
+		integratedItemRefs: referenceArrayField()
+	});
+}
+function presentationField() {
+	return new fields.SchemaField({
+		id: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "identity"
+		}),
+		name: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "Portrait identitaire"
+		}),
+		category: optionalStringField("identity"),
+		portrait: mediaRefField("portrait"),
+		token: mediaRefField("token"),
+		bodyIds: new fields.ArrayField(new fields.StringField(), {
+			required: true,
+			initial: ["primary"]
+		}),
+		availability: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "available"
+		}),
+		sourceRef: referenceField(),
+		associatedPresentationId: optionalStringField(),
+		active: new fields.BooleanField({
+			required: true,
+			initial: true
+		}),
+		favorite: new fields.BooleanField({
+			required: true,
+			initial: true
+		}),
+		notes: optionalStringField()
+	});
+}
+function outfitField() {
+	return new fields.SchemaField({
+		id: optionalStringField(),
+		sort: new fields.NumberField({
+			required: true,
+			integer: true,
+			initial: 0
+		}),
+		status: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "active"
+		}),
+		name: optionalStringField(),
+		function: optionalStringField(),
+		bodyIds: new fields.ArrayField(new fields.StringField(), {
+			required: true,
+			initial: []
+		}),
+		itemRefs: referenceArrayField(),
+		containerRefs: referenceArrayField(),
+		presentationId: optionalStringField(),
+		storageRef: referenceField(),
+		readiness: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "incomplete"
+		}),
+		conflicts: new fields.ArrayField(new fields.StringField(), {
+			required: true,
+			initial: []
+		})
+	});
+}
+function movementField() {
+	return new fields.SchemaField({
+		id: optionalStringField(),
+		kind: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "ground"
+		}),
+		speed: new fields.NumberField({
+			required: true,
+			min: 0,
+			initial: 0
+		}),
+		unit: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "mPerRound"
+		}),
+		maneuverability: new fields.NumberField({
+			required: false,
+			nullable: true,
+			integer: true,
+			initial: null
+		})
+	});
+}
+function defensesField() {
+	return new fields.SchemaField({
+		cap: new fields.NumberField({
+			required: false,
+			nullable: true,
+			integer: true,
+			initial: null
+		}),
+		cae: new fields.NumberField({
+			required: false,
+			nullable: true,
+			integer: true,
+			initial: null
+		}),
+		resistances: new fields.ArrayField(stableTextEntryField(), {
+			required: true,
+			initial: []
+		})
+	});
+}
+function needField() {
+	return new fields.SchemaField({
+		key: new fields.StringField({
+			required: true,
+			blank: false
+		}),
+		current: new fields.NumberField({
+			required: false,
+			nullable: true,
+			initial: null
+		}),
+		maximum: new fields.NumberField({
+			required: false,
+			nullable: true,
+			initial: null
+		}),
+		unit: new fields.StringField({
+			required: true,
+			blank: false,
 			initial: "count"
+		}),
+		lastSatisfiedAt: fictionStampField(),
+		nextThresholdAt: fictionStampField(),
+		state: new fields.StringField({
+			required: true,
+			blank: false,
+			initial: "normal"
 		})
 	});
 }
@@ -324,34 +786,15 @@ var ReservedData = class extends foundry.abstract.TypeDataModel {
 		};
 	}
 };
-var CharacterData = class extends ReservedData {
+var PersonData = class extends ReservedData {
 	static defineSchema() {
 		const attributes = Object.fromEntries(Object.keys(ATTRIBUTE_LABELS).map((key) => [key, attributeField()]));
 		const skills = Object.fromEntries(Object.entries(SKILL_DEFINITIONS).map(([key, definition]) => [key, skillField(definition[1])]));
 		return {
 			...super.defineSchema(),
-			identity: new fields.SchemaField({
-				primaryName: new fields.StringField({
-					required: true,
-					blank: true,
-					initial: ""
-				}),
-				publicName: new fields.StringField({
-					required: true,
-					blank: true,
-					initial: ""
-				}),
-				biography: new fields.HTMLField({
-					required: true,
-					blank: true,
-					initial: ""
-				}),
-				memory: new fields.HTMLField({
-					required: true,
-					blank: true,
-					initial: ""
-				})
-			}),
+			identity: identityField(),
+			build: buildField(),
+			age: ageField(),
 			level: new fields.NumberField({
 				required: true,
 				integer: true,
@@ -361,41 +804,217 @@ var CharacterData = class extends ReservedData {
 			}),
 			attributes: new fields.SchemaField(attributes),
 			skills: new fields.SchemaField(skills),
-			health: new fields.SchemaField({ hitPoints: new fields.SchemaField({
-				current: new fields.NumberField({
+			bodies: new fields.ArrayField(bodyField(), {
+				required: true,
+				initial: [{
+					id: "primary",
+					name: "Corps principal",
+					nature: "biological",
+					architecture: "",
+					size: "medium",
+					integratedItemRefs: []
+				}]
+			}),
+			activeBodyId: new fields.StringField({
+				required: true,
+				blank: false,
+				initial: "primary"
+			}),
+			presentations: new fields.ArrayField(presentationField(), {
+				required: true,
+				initial: [{
+					id: "identity",
+					name: "Portrait identitaire",
+					category: "identity",
+					portrait: {
+						path: "",
+						kind: "portrait",
+						alt: "",
+						caption: "",
+						source: "",
+						visibility: "document"
+					},
+					token: {
+						path: "",
+						kind: "token",
+						alt: "",
+						caption: "",
+						source: "",
+						visibility: "document"
+					},
+					bodyIds: ["primary"],
+					availability: "available",
+					active: true,
+					favorite: true,
+					notes: ""
+				}]
+			}),
+			outfits: new fields.ArrayField(outfitField(), {
+				required: true,
+				initial: []
+			}),
+			defenses: defensesField(),
+			movements: new fields.ArrayField(movementField(), {
+				required: true,
+				initial: []
+			}),
+			turn: new fields.SchemaField({
+				actionsCurrent: new fields.NumberField({
 					required: true,
 					integer: true,
 					min: 0,
-					initial: 10
+					initial: 0
 				}),
-				maximum: new fields.NumberField({
+				reactionAvailable: new fields.BooleanField({
 					required: true,
-					integer: true,
-					min: 1,
-					initial: 10
+					initial: false
 				})
-			}) }),
+			}),
+			health: healthField(),
+			needs: new fields.ArrayField(needField(), {
+				required: true,
+				initial: []
+			}),
 			energyPools: new fields.ArrayField(resourcePoolField(), {
 				required: true,
 				initial: []
-			})
+			}),
+			biometricSummary: new fields.SchemaField({
+				state: optionalStringField(),
+				alerts: new fields.ArrayField(new fields.StringField(), {
+					required: true,
+					initial: []
+				}),
+				limitations: new fields.ArrayField(new fields.StringField(), {
+					required: true,
+					initial: []
+				}),
+				updatedAt: fictionStampField()
+			}),
+			post: new fields.SchemaField({
+				primaryRef: referenceField(),
+				secondaryRefs: referenceArrayField()
+			}),
+			relationshipRefs: referenceArrayField(),
+			organizationRefs: referenceArrayField(),
+			accountRefs: referenceArrayField(),
+			personalJournalRefs: referenceArrayField()
 		};
+	}
+	static migrateData(source) {
+		source.meta ??= {};
+		source.meta.schemaVersion = "2";
+		source.health ??= {};
+		source.health.hitPoints ??= {
+			current: 10,
+			maximum: 10
+		};
+		source.health.hitPoints.key ??= "hitPoints";
+		source.health.hitPoints.reserved ??= 0;
+		source.health.hitPoints.debt ??= 0;
+		source.health.hitPoints.unit ??= "pv";
+		return source;
 	}
 	prepareDerivedData() {
 		super.prepareDerivedData();
-		const attributes = Object.fromEntries(Object.entries(this.attributes).map(([key, score]) => [key, Number(score.base ?? 0)]));
-		const skills = Object.fromEntries(Object.entries(this.skills).map(([key, score]) => [key, {
-			masteryBonus: masteryBonus(String(score.rank)),
-			total: masteryBonus(String(score.rank))
-		}]));
+		const attributes = Object.fromEntries(Object.entries(this.attributes).map(([key, score]) => {
+			const modifiers = Array.from(score.modifiers ?? []).reduce((sum, modifier) => modifier.enabled !== false && modifier.mode === "add" ? sum + Number(modifier.value ?? 0) : sum, 0);
+			return [key, Number(score.base ?? 0) + modifiers];
+		}));
+		const skills = Object.fromEntries(Object.entries(this.skills).map(([key, score]) => {
+			const attributeKey = String(score.defaultAttribute ?? "");
+			const mastery = masteryBonus(String(score.rank));
+			const modifiers = Array.from(score.modifiers ?? []).reduce((sum, modifier) => modifier.enabled !== false && modifier.mode === "add" ? sum + Number(modifier.value ?? 0) : sum, 0);
+			return [key, {
+				masteryBonus: mastery,
+				total: Number(attributes[attributeKey] ?? 0) + mastery + modifiers
+			}];
+		}));
 		const hitPoints = clampHitPoints(this.health.hitPoints.current, this.health.hitPoints.maximum);
+		const stressMaximum = Math.max(0, 10 + Number(attributes.willpower ?? 0));
+		const stressCurrent = Math.min(stressMaximum, Math.max(0, Number(this.health.stress?.current ?? 0)));
+		const activeBody = Array.from(this.bodies ?? []).find((body) => body.id === this.activeBodyId);
+		const primaryMovement = Array.from(this.movements ?? [])[0];
 		this.derived = {
 			attributes,
 			skills,
-			trackables: { hitPoints: {
-				value: hitPoints.current,
-				max: hitPoints.maximum
-			} }
+			activeBody: activeBody ?? Array.from(this.bodies ?? [])[0] ?? null,
+			primaryMovement: primaryMovement ?? null,
+			trackables: {
+				hitPoints: {
+					value: hitPoints.current,
+					max: hitPoints.maximum
+				},
+				stress: {
+					value: stressCurrent,
+					max: stressMaximum
+				}
+			}
+		};
+	}
+};
+var CharacterData = class extends PersonData {
+	static defineSchema() {
+		return {
+			...super.defineSchema(),
+			progression: new fields.SchemaField({
+				pendingChoices: new fields.ArrayField(stableTextEntryField(), {
+					required: true,
+					initial: []
+				}),
+				automaticGrants: new fields.ArrayField(stableTextEntryField(), {
+					required: true,
+					initial: []
+				}),
+				historyRefs: referenceArrayField(),
+				mythicStars: new fields.NumberField({
+					required: true,
+					integer: true,
+					min: 0,
+					initial: 0
+				})
+			})
+		};
+	}
+};
+var NpcData = class extends PersonData {
+	static defineSchema() {
+		return {
+			...super.defineSchema(),
+			detailLevel: new fields.StringField({
+				required: true,
+				blank: false,
+				initial: "standard"
+			}),
+			role: optionalStringField(),
+			publicIdentity: new fields.SchemaField({
+				name: optionalStringField(),
+				pronouns: optionalStringField(),
+				presentationId: optionalStringField()
+			}),
+			attitudeVisible: optionalStringField(),
+			behavior: new fields.SchemaField({
+				tactics: new fields.ArrayField(new fields.StringField(), {
+					required: true,
+					initial: []
+				}),
+				retreatThreshold: new fields.NumberField({
+					required: false,
+					nullable: true,
+					min: 0,
+					initial: null
+				}),
+				surrender: optionalStringField(),
+				priorities: new fields.ArrayField(new fields.StringField(), {
+					required: true,
+					initial: []
+				}),
+				limits: new fields.ArrayField(new fields.StringField(), {
+					required: true,
+					initial: []
+				})
+			}),
+			promotion: new fields.SchemaField({ sourceCharacterRef: referenceField() })
 		};
 	}
 };
@@ -491,6 +1110,21 @@ var EquipmentData = class extends ReservedData {
 var RelisEffectData = class extends foundry.abstract.TypeDataModel {
 	static defineSchema() {
 		return {
+			changes: new fields.ArrayField(new fields.SchemaField({
+				key: optionalStringField(),
+				phase: optionalStringField(),
+				priority: new fields.NumberField({
+					required: false,
+					nullable: true,
+					integer: true,
+					initial: null
+				}),
+				type: optionalStringField(),
+				value: optionalStringField()
+			}), {
+				required: true,
+				initial: []
+			}),
 			meta: metaField(),
 			sourceRef: new fields.StringField({
 				required: true,
@@ -593,7 +1227,7 @@ var RelisCardData = class extends foundry.abstract.TypeDataModel {
 	}
 };
 function registerDataModels() {
-	for (const type of ACTOR_TYPES) CONFIG.Actor.dataModels[type] = type === "character" ? CharacterData : ReservedData;
+	for (const type of ACTOR_TYPES) CONFIG.Actor.dataModels[type] = type === "character" ? CharacterData : type === "npc" ? NpcData : ReservedData;
 	for (const type of ITEM_TYPES) CONFIG.Item.dataModels[type] = type === "action" ? ActionData : type === "equipment" ? EquipmentData : ReservedData;
 	for (const type of JOURNAL_PAGE_TYPES) CONFIG.JournalEntryPage.dataModels[type] = ReservedData;
 	CONFIG.ActiveEffect.dataModels.relisEffect = RelisEffectData;
@@ -605,7 +1239,7 @@ function registerDataModels() {
 	]) CONFIG.Combat.dataModels[type] = RelisCombatData;
 	CONFIG.Combatant.dataModels.participant = RelisParticipantData;
 	CONFIG.ChatMessage.dataModels.relisCard = RelisCardData;
-	CONFIG.Actor.trackableAttributes = Object.fromEntries(ACTOR_TYPES.map((type) => [type, type === "character" ? {
+	CONFIG.Actor.trackableAttributes = Object.fromEntries(ACTOR_TYPES.map((type) => [type, type === "character" || type === "npc" ? {
 		bar: ["derived.trackables.hitPoints"],
 		value: ["level"]
 	} : {
@@ -681,8 +1315,8 @@ function succeeded(degree) {
 }
 var RelisActor = class extends Actor {
 	async rollRelisCheck(options) {
-		if (this.type !== "character") throw new Error("La tranche 10-C ne résout que les jets de personnage.");
-		const attribute = Number(this.system.attributes?.[options.attributeKey]?.base ?? 0);
+		if (!["character", "npc"].includes(this.type)) throw new Error("Les jets personnels RE:LIS exigent un Personnage ou un PNJ.");
+		const attribute = Number(this.system.derived?.attributes?.[options.attributeKey] ?? this.system.attributes?.[options.attributeKey]?.base ?? 0);
 		const mastery = masteryBonus(String(this.system.skills?.[options.skillKey]?.rank ?? "untrained"));
 		const difficulty = Math.max(0, Math.trunc(Number(options.difficulty) || 0));
 		const cost = Math.max(0, Math.trunc(Number(options.cost) || 0));
@@ -777,6 +1411,7 @@ var RelisActor = class extends Actor {
 			origin: sourceRef,
 			duration,
 			system: {
+				changes: [],
 				sourceRef,
 				conditionKey,
 				intensity,
@@ -881,11 +1516,12 @@ function registerIdentityHooks() {
 //#region src/hooks/integrity.ts
 function registerIntegrityHooks() {
 	Hooks.on("preUpdateActor", (actor, change) => {
-		if (actor.type !== "character") return;
+		if (!["character", "npc"].includes(actor.type)) return;
 		constrainHitPointUpdate({
 			current: Number(actor.system.health?.hitPoints?.current ?? 0),
 			maximum: Number(actor.system.health?.hitPoints?.maximum ?? 1)
 		}, change);
+		constrainStressUpdate(Number(actor.system.health?.stress?.current ?? 0), 10 + Number(actor.system.derived?.attributes?.willpower ?? 0), change);
 	});
 }
 //#endregion
@@ -1112,7 +1748,7 @@ var HIDDEN_SETTINGS = [
 		scope: "world",
 		config: false,
 		type: String,
-		default: "1"
+		default: "2"
 	},
 	{
 		key: "versions.rules",
@@ -1220,11 +1856,20 @@ var NPC_TABS = [
 		label: "Relations & Notes"
 	}
 ];
-function actorTabsForType(actorType) {
-	return actorType === "npc" ? NPC_TABS : CHARACTER_TABS;
+var NPC_CONDENSED_TABS = NPC_TABS.filter((tab) => [
+	"summary",
+	"identity",
+	"capabilities"
+].includes(tab.id));
+var NPC_STANDARD_TABS = NPC_TABS.filter((tab) => tab.id !== "relations");
+function actorTabsForType(actorType, detailLevel = "complete") {
+	if (actorType !== "npc") return CHARACTER_TABS;
+	if (detailLevel === "condensed") return NPC_CONDENSED_TABS;
+	if (detailLevel === "standard") return NPC_STANDARD_TABS;
+	return NPC_TABS;
 }
-function normalizeActorTab(actorType, requested) {
-	const tabs = actorTabsForType(actorType);
+function normalizeActorTab(actorType, requested, detailLevel = "complete") {
+	const tabs = actorTabsForType(actorType, detailLevel);
 	return tabs.some((tab) => tab.id === requested) ? String(requested) : tabs[0]?.id ?? "summary";
 }
 //#endregion
@@ -1233,8 +1878,67 @@ var ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 var HandlebarsApplicationMixin$1 = foundry.applications.api.HandlebarsApplicationMixin;
 function fieldValue$1(target) {
 	if (target instanceof HTMLInputElement && target.type === "checkbox") return target.checked;
-	if (target.dataset.valueType === "number") return Number(target.value);
+	if (target.dataset.valueType === "number") return target.value.trim() === "" ? null : Number(target.value);
 	return target.value;
+}
+var BODY_NATURE_LABELS = {
+	biological: "Biologique",
+	synthetic: "Synthétique",
+	hybrid: "Hybride",
+	energetic: "Énergétique",
+	atypical: "Atypique"
+};
+var NEED_LABELS = {
+	oxygen: "Oxygène",
+	food: "Alimentation",
+	water: "Hydratation",
+	sleep: "Sommeil",
+	energy: "Énergie",
+	cooling: "Refroidissement",
+	maintenance: "Maintenance",
+	rest: "Repos",
+	feeding: "Alimentation spéciale",
+	uvExposure: "Exposition UV",
+	environmentalSafety: "Sécurité environnementale"
+};
+var NPC_DETAIL_OPTIONS = [
+	{
+		key: "condensed",
+		label: "Figurant — condensé"
+	},
+	{
+		key: "standard",
+		label: "Secondaire — standard"
+	},
+	{
+		key: "complete",
+		label: "Majeur — complet"
+	}
+];
+var STABILITY_OPTIONS = [
+	{
+		key: "stable",
+		label: "Stable"
+	},
+	{
+		key: "unstable",
+		label: "Instable"
+	},
+	{
+		key: "stabilized",
+		label: "Stabilisé"
+	},
+	{
+		key: "incapacitated",
+		label: "Hors de combat"
+	}
+];
+function referencePresentation(reference) {
+	return {
+		label: String(reference?.labelSnapshot ?? "").trim() || String(reference?.relisId ?? "").trim() || "Référence sans libellé",
+		state: String(reference?.state ?? "unresolved"),
+		uuid: String(reference?.uuid ?? "")
+	};
 }
 var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 	static DEFAULT_OPTIONS = {
@@ -1254,14 +1958,17 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 	async _prepareContext(options) {
 		const context = await super._prepareContext(options);
 		const isCharacter = this.actor.type === "character";
-		const attributes = isCharacter ? Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
+		const isNpc = this.actor.type === "npc";
+		const isPerson = isCharacter || isNpc;
+		const npcDetailLevel = isNpc ? String(this.actor.system.detailLevel ?? "standard") : "complete";
+		const attributes = isPerson ? Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
 			key,
 			label,
 			base: this.actor.system.attributes[key].base,
 			partial: this.actor.system.attributes[key].partial,
 			effective: this.actor.system.derived?.attributes?.[key] ?? 0
 		})) : [];
-		const skills = isCharacter ? Object.entries(SKILL_DEFINITIONS).map(([key, definition]) => ({
+		const allSkills = isPerson ? Object.entries(SKILL_DEFINITIONS).map(([key, definition]) => ({
 			key,
 			label: definition[0],
 			defaultAttribute: definition[1],
@@ -1274,7 +1981,12 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				label
 			}))
 		})) : [];
-		const energyPools = isCharacter ? Array.from(this.actor.system.energyPools ?? []).map((pool, index) => {
+		const skills = isNpc ? allSkills.filter((skill) => {
+			if (npcDetailLevel === "complete") return true;
+			if (npcDetailLevel === "standard") return skill.favorite || skill.rank !== "untrained";
+			return skill.favorite || skill.rank !== "untrained";
+		}) : allSkills;
+		const energyPools = isPerson ? Array.from(this.actor.system.energyPools ?? []).map((pool, index) => {
 			const plain = plainResourcePool(pool);
 			const presentation = resourcePoolPresentation(plain.key);
 			return {
@@ -1296,21 +2008,66 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				duration: formatRoundDuration(effect.duration?.remaining ?? effect.duration?.rounds, game.i18n)
 			};
 		});
-		const tabs = actorTabsForType(this.actor.type).map((tab) => ({
+		const normalizedTab = normalizeActorTab(this.actor.type, this.activeTab, npcDetailLevel);
+		const tabs = actorTabsForType(this.actor.type, npcDetailLevel).map((tab) => ({
 			...tab,
-			active: tab.id === normalizeActorTab(this.actor.type, this.activeTab),
-			tabIndex: tab.id === normalizeActorTab(this.actor.type, this.activeTab) ? 0 : -1
+			active: tab.id === normalizedTab,
+			tabIndex: tab.id === normalizedTab ? 0 : -1
 		}));
 		const favoriteSkills = skills.filter((skill) => skill.favorite);
 		const featuredSkills = favoriteSkills.length > 0 ? favoriteSkills : skills.slice(0, 4);
-		const publicName = isCharacter ? String(this.actor.system.identity.publicName ?? "").trim() : "";
+		const publicName = isPerson ? String(this.actor.system.identity.publicName ?? "").trim() : "";
+		const activeBody = this.actor.system.derived?.activeBody ?? null;
+		const bodies = isPerson ? Array.from(this.actor.system.bodies ?? []).map((body) => ({
+			id: String(body.id),
+			name: String(body.name),
+			nature: String(body.nature),
+			natureLabel: BODY_NATURE_LABELS[String(body.nature)] ?? String(body.nature),
+			size: String(body.size),
+			selected: String(body.id) === String(this.actor.system.activeBodyId)
+		})) : [];
+		const needs = isPerson ? Array.from(this.actor.system.needs ?? []).map((need) => ({
+			key: String(need.key),
+			label: NEED_LABELS[String(need.key)] ?? String(need.key),
+			current: need.current,
+			maximum: need.maximum,
+			unit: String(need.unit ?? ""),
+			state: String(need.state ?? "normal")
+		})) : [];
+		const stress = isPerson ? this.actor.system.derived?.trackables?.stress : null;
+		const primaryMovement = this.actor.system.derived?.primaryMovement ?? null;
+		const referenceGroups = isPerson ? [
+			{
+				label: "Relations",
+				entries: Array.from(this.actor.system.relationshipRefs ?? []).map(referencePresentation)
+			},
+			{
+				label: "Organisations",
+				entries: Array.from(this.actor.system.organizationRefs ?? []).map(referencePresentation)
+			},
+			{
+				label: "Comptes",
+				entries: Array.from(this.actor.system.accountRefs ?? []).map(referencePresentation)
+			},
+			{
+				label: "Journaux personnels",
+				entries: Array.from(this.actor.system.personalJournalRefs ?? []).map(referencePresentation)
+			}
+		] : [];
 		return {
 			...context,
 			actor: this.actor,
 			system: this.actor.system,
 			editable: this.actor.isOwner,
 			isCharacter,
-			isNpc: this.actor.type === "npc",
+			isNpc,
+			isPerson,
+			npcDetailLevel,
+			npcCondensed: npcDetailLevel === "condensed",
+			npcStandard: npcDetailLevel === "standard",
+			npcComplete: npcDetailLevel === "complete",
+			npcDetailOptions: NPC_DETAIL_OPTIONS,
+			stabilityOptions: STABILITY_OPTIONS,
 			actorTypeLabel: game.i18n.localize(`TYPES.Actor.${this.actor.type}`),
 			displayName: publicName || this.actor.name,
 			tabs,
@@ -1318,6 +2075,15 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			skills,
 			featuredSkills,
 			energyPools,
+			bodies,
+			activeBody,
+			activeBodyNatureLabel: BODY_NATURE_LABELS[String(activeBody?.nature)] ?? String(activeBody?.nature ?? "Non défini"),
+			needs,
+			stress,
+			primaryMovement,
+			referenceGroups,
+			hasReferences: referenceGroups.some((group) => group.entries.length > 0),
+			progression: isCharacter ? this.actor.system.progression : null,
 			hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
 			items: Array.from(this.actor.items ?? []).map((item) => ({
 				id: item.id,
@@ -1382,7 +2148,8 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		});
 	}
 	activateTab(root, requested, focus = false) {
-		const active = normalizeActorTab(this.actor.type, requested);
+		const detailLevel = this.actor.type === "npc" ? String(this.actor.system.detailLevel ?? "standard") : "complete";
+		const active = normalizeActorTab(this.actor.type, requested, detailLevel);
 		this.activeTab = active;
 		for (const button of root.querySelectorAll("[data-action='switch-tab']")) {
 			const selected = button.dataset.tabId === active;

@@ -114,6 +114,10 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.relis-grid--ages {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .relis-grid label,
 .relis-header label {
   display: grid;
@@ -428,6 +432,10 @@
   border-left-color: var(--relis-red);
 }
 
+.relis-resource--mental {
+  border-left-color: #b58cf1;
+}
+
 .relis-resource--demo {
   border-style: dashed;
   border-left-color: var(--relis-gold);
@@ -515,6 +523,33 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
+}
+
+.relis-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.relis-reference-grid h3 {
+  margin: 0 0 0.45rem;
+  color: var(--relis-cyan-soft);
+  font-size: 0.85rem;
+}
+
+.relis-scope-note {
+  margin: 0.75rem 0 0;
+  padding: 0.55rem 0.7rem;
+  color: var(--relis-muted);
+  border-left: 3px solid var(--relis-gold);
+  background: rgb(240 179 90 / 6%);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.relis-row--need {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto auto;
 }
 
 .relis-fact-list {
@@ -808,6 +843,8 @@
   .relis-columns,
   .relis-grid--summary,
   .relis-grid--form,
+  .relis-grid--ages,
+  .relis-reference-grid,
   .relis-energy-grid {
     grid-template-columns: 1fr;
   }

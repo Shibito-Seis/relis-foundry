@@ -34,9 +34,26 @@ describe("navigation des fiches 10-D1", () => {
     ]);
   });
 
+  it("adapte le nombre d’onglets à la densité PNJ sans changer les données", () => {
+    expect(actorTabsForType("npc", "condensed").map((tab) => tab.id)).toEqual([
+      "summary",
+      "identity",
+      "capabilities",
+    ]);
+    expect(actorTabsForType("npc", "standard").map((tab) => tab.id)).toEqual([
+      "summary",
+      "identity",
+      "mechanics",
+      "capabilities",
+      "health",
+    ]);
+    expect(actorTabsForType("npc", "complete")).toBe(NPC_TABS);
+  });
+
   it("ramène toute cible inconnue vers la Synthèse du type concerné", () => {
     expect(normalizeActorTab("character", "inventory")).toBe("inventory");
     expect(normalizeActorTab("npc", "attributes")).toBe("summary");
     expect(normalizeActorTab("character", undefined)).toBe("summary");
+    expect(normalizeActorTab("npc", "relations", "standard")).toBe("summary");
   });
 });

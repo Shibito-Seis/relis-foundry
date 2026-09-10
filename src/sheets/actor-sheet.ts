@@ -14,11 +14,58 @@ const HandlebarsApplicationMixin =
 
 function fieldValue(
   target: HTMLInputElement | HTMLSelectElement,
-): string | number | boolean {
+): string | number | boolean | null {
   if (target instanceof HTMLInputElement && target.type === "checkbox")
     return target.checked;
-  if (target.dataset.valueType === "number") return Number(target.value);
+  if (target.dataset.valueType === "number")
+    return target.value.trim() === "" ? null : Number(target.value);
   return target.value;
+}
+
+const BODY_NATURE_LABELS: Record<string, string> = {
+  biological: "Biologique",
+  synthetic: "Synthétique",
+  hybrid: "Hybride",
+  energetic: "Énergétique",
+  atypical: "Atypique",
+};
+
+const NEED_LABELS: Record<string, string> = {
+  oxygen: "Oxygène",
+  food: "Alimentation",
+  water: "Hydratation",
+  sleep: "Sommeil",
+  energy: "Énergie",
+  cooling: "Refroidissement",
+  maintenance: "Maintenance",
+  rest: "Repos",
+  feeding: "Alimentation spéciale",
+  uvExposure: "Exposition UV",
+  environmentalSafety: "Sécurité environnementale",
+};
+
+const NPC_DETAIL_OPTIONS = [
+  { key: "condensed", label: "Figurant — condensé" },
+  { key: "standard", label: "Secondaire — standard" },
+  { key: "complete", label: "Majeur — complet" },
+];
+
+const STABILITY_OPTIONS = [
+  { key: "stable", label: "Stable" },
+  { key: "unstable", label: "Instable" },
+  { key: "stabilized", label: "Stabilisé" },
+  { key: "incapacitated", label: "Hors de combat" },
+];
+
+function referencePresentation(reference: any): Record<string, unknown> {
+  return {
+    label:
+      String(reference?.labelSnapshot ?? "").trim() ||
+      String(reference?.relisId ?? "").trim() ||
+      "Référence sans libellé",
+    state: String(reference?.state ?? "unresolved"),
+    uuid: String(reference?.uuid ?? ""),
+  };
 }
 
 export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
@@ -38,7 +85,12 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   async _prepareContext(options: any): Promise<Record<string, any>> {
     const context = await super._prepareContext(options);
     const isCharacter = this.actor.type === "character";
-    const attributes = isCharacter
+    const isNpc = this.actor.type === "npc";
+    const isPerson = isCharacter || isNpc;
+    const npcDetailLevel = isNpc
+      ? String(this.actor.system.detailLevel ?? "standard")
+      : "complete";
+    const attributes = isPerson
       ? Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
           key,
           label,
@@ -47,7 +99,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           effective: this.actor.system.derived?.attributes?.[key] ?? 0,
         }))
       : [];
-    const skills = isCharacter
+    const allSkills = isPerson
       ? Object.entries(SKILL_DEFINITIONS).map(([key, definition]) => ({
           key,
           label: definition[0],
@@ -65,7 +117,15 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           ),
         }))
       : [];
-    const energyPools = isCharacter
+    const skills = isNpc
+      ? allSkills.filter((skill) => {
+          if (npcDetailLevel === "complete") return true;
+          if (npcDetailLevel === "standard")
+            return skill.favorite || skill.rank !== "untrained";
+          return skill.favorite || skill.rank !== "untrained";
+        })
+      : allSkills;
+    const energyPools = isPerson
       ? Array.from(this.actor.system.energyPools ?? []).map(
           (pool: any, index: number) => {
             const plain = plainResourcePool(pool);
@@ -106,18 +166,78 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         ),
       };
     });
-    const tabs = actorTabsForType(this.actor.type).map((tab) => ({
-      ...tab,
-      active: tab.id === normalizeActorTab(this.actor.type, this.activeTab),
-      tabIndex:
-        tab.id === normalizeActorTab(this.actor.type, this.activeTab) ? 0 : -1,
-    }));
+    const normalizedTab = normalizeActorTab(
+      this.actor.type,
+      this.activeTab,
+      npcDetailLevel,
+    );
+    const tabs = actorTabsForType(this.actor.type, npcDetailLevel).map(
+      (tab) => ({
+        ...tab,
+        active: tab.id === normalizedTab,
+        tabIndex: tab.id === normalizedTab ? 0 : -1,
+      }),
+    );
     const favoriteSkills = skills.filter((skill) => skill.favorite);
     const featuredSkills =
       favoriteSkills.length > 0 ? favoriteSkills : skills.slice(0, 4);
-    const publicName = isCharacter
+    const publicName = isPerson
       ? String(this.actor.system.identity.publicName ?? "").trim()
       : "";
+    const activeBody = this.actor.system.derived?.activeBody ?? null;
+    const bodies = isPerson
+      ? Array.from(this.actor.system.bodies ?? []).map((body: any) => ({
+          id: String(body.id),
+          name: String(body.name),
+          nature: String(body.nature),
+          natureLabel:
+            BODY_NATURE_LABELS[String(body.nature)] ?? String(body.nature),
+          size: String(body.size),
+          selected: String(body.id) === String(this.actor.system.activeBodyId),
+        }))
+      : [];
+    const needs = isPerson
+      ? Array.from(this.actor.system.needs ?? []).map((need: any) => ({
+          key: String(need.key),
+          label: NEED_LABELS[String(need.key)] ?? String(need.key),
+          current: need.current,
+          maximum: need.maximum,
+          unit: String(need.unit ?? ""),
+          state: String(need.state ?? "normal"),
+        }))
+      : [];
+    const stress = isPerson
+      ? this.actor.system.derived?.trackables?.stress
+      : null;
+    const primaryMovement = this.actor.system.derived?.primaryMovement ?? null;
+    const referenceGroups = isPerson
+      ? [
+          {
+            label: "Relations",
+            entries: Array.from(this.actor.system.relationshipRefs ?? []).map(
+              referencePresentation,
+            ),
+          },
+          {
+            label: "Organisations",
+            entries: Array.from(this.actor.system.organizationRefs ?? []).map(
+              referencePresentation,
+            ),
+          },
+          {
+            label: "Comptes",
+            entries: Array.from(this.actor.system.accountRefs ?? []).map(
+              referencePresentation,
+            ),
+          },
+          {
+            label: "Journaux personnels",
+            entries: Array.from(
+              this.actor.system.personalJournalRefs ?? [],
+            ).map(referencePresentation),
+          },
+        ]
+      : [];
 
     return {
       ...context,
@@ -125,7 +245,14 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       system: this.actor.system,
       editable: this.actor.isOwner,
       isCharacter,
-      isNpc: this.actor.type === "npc",
+      isNpc,
+      isPerson,
+      npcDetailLevel,
+      npcCondensed: npcDetailLevel === "condensed",
+      npcStandard: npcDetailLevel === "standard",
+      npcComplete: npcDetailLevel === "complete",
+      npcDetailOptions: NPC_DETAIL_OPTIONS,
+      stabilityOptions: STABILITY_OPTIONS,
       actorTypeLabel: game.i18n.localize(`TYPES.Actor.${this.actor.type}`),
       displayName: publicName || this.actor.name,
       tabs,
@@ -133,6 +260,17 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       skills,
       featuredSkills,
       energyPools,
+      bodies,
+      activeBody,
+      activeBodyNatureLabel:
+        BODY_NATURE_LABELS[String(activeBody?.nature)] ??
+        String(activeBody?.nature ?? "Non défini"),
+      needs,
+      stress,
+      primaryMovement,
+      referenceGroups,
+      hasReferences: referenceGroups.some((group) => group.entries.length > 0),
+      progression: isCharacter ? this.actor.system.progression : null,
       hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
       items: (Array.from(this.actor.items ?? []) as Item[]).map((item) => ({
         id: item.id,
@@ -249,7 +387,11 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     requested: string | undefined,
     focus = false,
   ): void {
-    const active = normalizeActorTab(this.actor.type, requested);
+    const detailLevel =
+      this.actor.type === "npc"
+        ? String(this.actor.system.detailLevel ?? "standard")
+        : "complete";
+    const active = normalizeActorTab(this.actor.type, requested, detailLevel);
     this.activeTab = active;
     for (const button of root.querySelectorAll<HTMLButtonElement>(
       "[data-action='switch-tab']",

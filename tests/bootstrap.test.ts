@@ -135,5 +135,46 @@ describe("amorçage Foundry 10-C", () => {
       "RelisActor",
     );
     expect((globalThis as any).CONFIG.ActiveEffect.expiryAction).toBe("delete");
+    expect(
+      Object.keys(
+        (
+          globalThis as any
+        ).CONFIG.ActiveEffect.dataModels.relisEffect.defineSchema(),
+      ),
+    ).toContain("changes");
+    expect((globalThis as any).CONFIG.Actor.dataModels.npc.name).toBe(
+      "NpcData",
+    );
+    expect(
+      Object.keys(
+        (globalThis as any).CONFIG.Actor.dataModels.character.defineSchema(),
+      ),
+    ).toEqual(
+      expect.arrayContaining([
+        "identity",
+        "age",
+        "bodies",
+        "presentations",
+        "health",
+        "needs",
+        "progression",
+      ]),
+    );
+    expect(
+      Object.keys(
+        (globalThis as any).CONFIG.Actor.dataModels.npc.defineSchema(),
+      ),
+    ).toEqual(
+      expect.arrayContaining([
+        "identity",
+        "bodies",
+        "health",
+        "detailLevel",
+        "behavior",
+      ]),
+    );
+    expect(
+      (globalThis as any).CONFIG.Actor.trackableAttributes.npc.bar,
+    ).toEqual(["derived.trackables.hitPoints"]);
   });
 });

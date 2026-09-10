@@ -1,5 +1,22 @@
 # Journal des versions
 
+## 0.2.2 — modèles Personnage et PNJ 10-D2
+
+- Ajout du champ `changes` v14 au modèle d’ActiveEffect RE:LIS ; l’erreur rouge
+  de validation signalée par Foundry 14.365 est supprimée.
+- Schéma de personne porté à la version 2 sans supprimer les données 0.2.1.
+- Identité enrichie, trois âges, corps actif et présentation initiale structurés.
+- Attributs et Compétences partagés par les Personnages et PNJ avec même moteur
+  de jet et totaux dérivés complets.
+- Santé étendue aux PV, Stress, Fatigue, Agonie, Stabilité, Surmenage et
+  Contrecoup.
+- Besoins corporels, défenses, mouvements, références et résumé biométrique
+  réservés sans faux zéro.
+- Trois densités PNJ fonctionnelles : Figurant, Secondaire et Majeur, sans perte
+  de données lorsque l’affichage est condensé.
+- Panneaux Personnage et PNJ reliés aux données persistantes ; secrets médicaux,
+  identitaires et MJ maintenus hors de l’Actor accessible.
+
 ## 0.2.1 — correctifs de recette 10-D1
 
 - Médaillon de portrait contraint à un carré réel avant son découpage circulaire.

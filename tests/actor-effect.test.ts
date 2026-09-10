@@ -108,6 +108,7 @@ describe("effet temporaire de la tranche 10-C", () => {
     expect(actor.effects).toHaveLength(1);
     expect(actor.createdEffects).toBe(1);
     expect(actor.effects[0].name).toBe("RE:LIS — Calibré");
+    expect(actor.effects[0].system.changes).toEqual([]);
     expect(actor.effects[0].update).toHaveBeenCalledTimes(1);
     expect(actor.effects[0].duration).toMatchObject({
       rounds: 1,

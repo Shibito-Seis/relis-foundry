@@ -36,11 +36,15 @@ interface EffectMutation {
 
 export class RelisActor extends Actor {
   async rollRelisCheck(options: RollCheckOptions): Promise<void> {
-    if (this.type !== "character")
-      throw new Error("La tranche 10-C ne résout que les jets de personnage.");
+    if (!["character", "npc"].includes(this.type))
+      throw new Error(
+        "Les jets personnels RE:LIS exigent un Personnage ou un PNJ.",
+      );
 
     const attribute = Number(
-      this.system.attributes?.[options.attributeKey]?.base ?? 0,
+      this.system.derived?.attributes?.[options.attributeKey] ??
+        this.system.attributes?.[options.attributeKey]?.base ??
+        0,
     );
     const rank = String(
       this.system.skills?.[options.skillKey]?.rank ?? "untrained",
@@ -179,6 +183,7 @@ export class RelisActor extends Actor {
       origin: sourceRef,
       duration,
       system: {
+        changes: [],
         sourceRef,
         conditionKey,
         intensity,
