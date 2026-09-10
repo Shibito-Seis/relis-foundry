@@ -1,7 +1,7 @@
 {
   "RELIS": {
     "Name": "RE:LIS — RE: Lost in Space",
-    "Ready": "RE:LIS 0.2.3 est chargé.",
+    "Ready": "RE:LIS 0.2.4 est chargé.",
     "Error": {
       "InsufficientResource": "Ressource insuffisante pour accomplir cette Action.",
       "ActorRequired": "Cette Action doit être embarquée par un personnage."

@@ -76,7 +76,13 @@ describe("effet temporaire de la tranche 10-C", () => {
     (globalThis as any).ui = {
       notifications: { warn: vi.fn() },
     };
-    (globalThis as any).renderTemplate = vi.fn(async () => "<article />");
+    (globalThis as any).foundry = {
+      applications: {
+        handlebars: {
+          renderTemplate: vi.fn(async () => "<article />"),
+        },
+      },
+    };
     (globalThis as any).ChatMessage = {
       implementation: { create: vi.fn(async () => ({})) },
       getSpeaker: vi.fn(() => ({})),
@@ -116,6 +122,12 @@ describe("effet temporaire de la tranche 10-C", () => {
       startTurn: 1,
       startTime: 4200,
     });
+    expect(
+      (globalThis as any).foundry.applications.handlebars.renderTemplate,
+    ).toHaveBeenCalledWith(
+      "systems/relis/templates/chat/check-card.hbs",
+      expect.objectContaining({ actorName: "Personnage d’essai" }),
+    );
   });
 
   it("nettoie les doublons laissés par la version 0.1.1", async () => {

@@ -20,7 +20,7 @@ formatage, les tests unitaires, le build et le manifeste.
 
 Dans `Actions`, ouvrir `Publier une Release Foundry`, choisir `Run workflow`, saisir
 le tag correspondant exactement au manifeste, puis lancer. Pour la recette corrective,
-utiliser `v0.2.3`. Le workflow construit `relis-v0.2.3.zip`, crée le tag et la
+utiliser `v0.2.4`. Le workflow construit `relis-v0.2.4.zip`, crée le tag et la
 Release, puis y joint l’archive.
 
 Ne pas créer manuellement une archive différente : le ZIP automatisé garantit que
@@ -35,7 +35,7 @@ Utiliser l’URL de manifeste suivante dans le gestionnaire de systèmes :
 
 Le manifeste téléchargera alors :
 
-`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.2.3/relis-v0.2.3.zip`
+`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.2.4/relis-v0.2.4.zip`
 
 ## 5. Recette 10-D1
 

@@ -1,5 +1,15 @@
 # Journal des versions
 
+## 0.2.4 — clôture technique 10-D2
+
+- Remplacement de l’appel global déprécié `renderTemplate` par
+  `foundry.applications.handlebars.renderTemplate`.
+- Suppression de l’avertissement RE:LIS observé lors de la création d’une carte
+  de Chat sous Foundry VTT 14.365.
+- Aucun changement des règles, des Actors ou des données persistantes.
+- La définition réelle du Mana, du Prana, du Flux et des besoins corporels reste
+  rattachée aux futurs Items et compendiums canoniques.
+
 ## 0.2.3 — correctif bloquant d’initialisation 10-D2
 
 - Correction des valeurs initiales imbriquées du Corps principal :

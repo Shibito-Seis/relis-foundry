@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.2.3";
+var PACKAGE_VERSION = "0.2.4";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -1428,7 +1428,7 @@ var RelisActor = class extends Actor {
 			if (options.effect?.conditionKey && succeeded(resolution.degree)) effectMutation = await this.applyTemporaryEffect(options.effect, options.sourceItem?.uuid ?? this.uuid);
 			const effectPresentation = options.effect?.conditionKey ? presentCondition(options.effect.conditionKey, game.i18n) : null;
 			const effectDurationRounds = Math.max(0, Math.trunc(Number(options.effect?.durationRounds) || 0));
-			const content = await renderTemplate("systems/relis/templates/chat/check-card.hbs", {
+			const content = await foundry.applications.handlebars.renderTemplate("systems/relis/templates/chat/check-card.hbs", {
 				actorName: this.name,
 				label: options.label,
 				attribute,

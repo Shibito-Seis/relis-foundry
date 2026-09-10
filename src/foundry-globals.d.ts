@@ -6,10 +6,6 @@ declare const Hooks: {
 declare const foundry: Record<string, any>;
 declare const game: Record<string, any>;
 declare const ui: Record<string, any>;
-declare function renderTemplate(
-  path: string,
-  data: Record<string, unknown>,
-): Promise<string>;
 
 declare class Actor {
   static implementation: {

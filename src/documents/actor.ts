@@ -101,7 +101,7 @@ export class RelisActor extends Actor {
         Math.trunc(Number(options.effect?.durationRounds) || 0),
       );
 
-      const content = await renderTemplate(
+      const content = await foundry.applications.handlebars.renderTemplate(
         "systems/relis/templates/chat/check-card.hbs",
         {
           actorName: this.name,
