@@ -1,10 +1,11 @@
 {
   "RELIS": {
     "Name": "RE:LIS — RE: Lost in Space",
-    "Ready": "RE:LIS 0.2.4 est chargé.",
+    "Ready": "RE:LIS 0.3.0 est chargé.",
     "Error": {
       "InsufficientResource": "Ressource insuffisante pour accomplir cette Action.",
-      "ActorRequired": "Cette Action doit être embarquée par un personnage."
+      "ActorRequired": "Cette Action doit être embarquée par un personnage.",
+      "ItemMigration": "La migration du noyau Item 10-E1-P a échoué. Les données n’ont pas été déclarées migrées ; consultez la console avant de poursuivre."
     },
     "Condition": {
       "calibrated": {

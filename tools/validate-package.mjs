@@ -21,6 +21,10 @@ const actorTemplate = fs.readFileSync(
   path.join(root, "templates/actors/character.hbs"),
   "utf8",
 );
+const itemTemplate = fs.readFileSync(
+  path.join(root, "templates/items/item.hbs"),
+  "utf8",
+);
 
 assert.equal(manifest.id, "relis");
 assert.equal(manifest.title, "RE:LIS — RE: Lost in Space");
@@ -134,6 +138,26 @@ assert.match(
   styles,
   /\.relis-id-portrait\s*\{[^}]*height: clamp/s,
   "Hauteur carrée du médaillon non verrouillée",
+);
+assert.match(
+  styles,
+  /\.relis-item-layout/,
+  "Mise en page de la fiche Item 10-E1-P absente",
+);
+assert.match(
+  itemTemplate,
+  /system\.provenance\.localRevision/,
+  "Provenance de l’exemplaire absente de la fiche Item",
+);
+assert.match(
+  itemTemplate,
+  /system\.referencePrice\.amount/,
+  "Prix de référence absent de la fiche Item",
+);
+assert.match(
+  itemTemplate,
+  /system\.physical\.volumeEach/,
+  "Volume physique absent de la fiche Item",
 );
 
 for (const relativePath of [

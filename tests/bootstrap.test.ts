@@ -130,9 +130,12 @@ describe("amorçage Foundry 10-C", () => {
     );
     expect(registeredSettings).toHaveLength(32);
     expect(registeredSheets).toEqual(["Actor", "Item"]);
-    expect(hookNames).toHaveLength(8);
+    expect(hookNames).toHaveLength(10);
     expect((globalThis as any).CONFIG.Actor.documentClass.name).toBe(
       "RelisActor",
+    );
+    expect((globalThis as any).CONFIG.Item.documentClass.name).toBe(
+      "RelisItem",
     );
     expect((globalThis as any).CONFIG.ActiveEffect.expiryAction).toBe("delete");
     expect(
@@ -176,5 +179,29 @@ describe("amorçage Foundry 10-C", () => {
     expect(
       (globalThis as any).CONFIG.Actor.trackableAttributes.npc.bar,
     ).toEqual(["derived.trackables.hitPoints"]);
+    expect(
+      Object.keys(
+        (globalThis as any).CONFIG.Item.dataModels.ancestry.defineSchema(),
+      ),
+    ).toEqual(
+      expect.arrayContaining([
+        "meta",
+        "description",
+        "traits",
+        "requirementRefs",
+        "effectRefs",
+        "provenance",
+      ]),
+    );
+    expect(
+      Object.keys(
+        (globalThis as any).CONFIG.Item.dataModels.weapon.defineSchema(),
+      ),
+    ).toContain("physical");
+    expect(
+      Object.keys(
+        (globalThis as any).CONFIG.Item.dataModels.ancestry.defineSchema(),
+      ),
+    ).not.toContain("physical");
   });
 });

@@ -43,13 +43,22 @@ declare class Item {
   };
   id: string;
   name: string;
+  img: string;
   type: string;
   system: any;
   parent: Actor | null;
+  documentName: string;
+  pack: string | null;
   sheet: { render(force?: boolean): unknown };
   uuid: string;
   isOwner: boolean;
-  update(data: Record<string, unknown>): Promise<Item>;
+  prepareDerivedData(): void;
+  toObject(source?: boolean): Record<string, any>;
+  updateSource(data: Record<string, unknown>): void;
+  update(
+    data: Record<string, unknown>,
+    options?: Record<string, unknown>,
+  ): Promise<Item>;
 }
 
 declare class Roll {

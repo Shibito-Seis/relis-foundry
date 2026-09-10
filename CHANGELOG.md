@@ -1,5 +1,23 @@
 # Journal des versions
 
+## 0.3.0 — noyau commun des Items personnels 10-E1-P
+
+- Remplacement des modèles réservés par un contrat Item commun sur les 26 types.
+- Séparation autoritaire entre identifiant d’exemplaire, référence de source et
+  version source, sans duplication dans la provenance.
+- Ajout des traits, prérequis, effets référencés, Niveau, Qualité Q-0 à Q-5,
+  rareté RAR-M 0 à 6, légalité, fabricant et prix de référence.
+- Ajout de l’état physique aux armes, armures, équipements, consommables,
+  munitions, ressources et conteneurs, avec totaux dérivés.
+- Génération d’identifiants `WLD-ITM-*`, instantanés possédés indépendants et
+  traçage des modifications locales.
+- Fiche Item commune, responsive et en lecture seule pour les observateurs,
+  avec diagnostics de source et provenance.
+- Migration additive et idempotente des Items 0.2.4, sans contenu canonique
+  fictif et sans perte de l’Action ou de l’Équipement de démonstration 10-C.
+- Les opérations de conteneur et d’équipement restent réservées à 10-E2-P et
+  10-E3-P.
+
 ## 0.2.4 — clôture technique 10-D2
 
 - Remplacement de l’appel global déprécié `renderTemplate` par

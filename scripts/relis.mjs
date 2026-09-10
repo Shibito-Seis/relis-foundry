@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.2.4";
+var PACKAGE_VERSION = "0.3.0";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -216,7 +216,7 @@ function constrainStressUpdate(existingCurrent, maximum, change) {
 }
 //#endregion
 //#region src/data/person-defaults.ts
-function initialReference() {
+function initialReference$1() {
 	return {
 		relisId: "",
 		uuid: "",
@@ -269,7 +269,7 @@ function initialPresentation() {
 		},
 		bodyIds: ["primary"],
 		availability: "available",
-		sourceRef: initialReference(),
+		sourceRef: initialReference$1(),
 		associatedPresentationId: "",
 		active: true,
 		favorite: true,
@@ -324,6 +324,553 @@ function normalizePersonSource(source) {
 	return source;
 }
 //#endregion
+//#region src/utils/ulid.ts
+var CROCKFORD = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+function encodeTime(time) {
+	let value = Math.max(0, Math.floor(time));
+	let output = "";
+	for (let index = 0; index < 10; index += 1) {
+		output = CROCKFORD[value % 32] + output;
+		value = Math.floor(value / 32);
+	}
+	return output;
+}
+function encodeRandom() {
+	const bytes = /* @__PURE__ */ new Uint8Array(16);
+	globalThis.crypto.getRandomValues(bytes);
+	return Array.from(bytes, (byte) => CROCKFORD[byte & 31]).join("");
+}
+function createRelisId(now = Date.now()) {
+	return `${encodeTime(now)}${encodeRandom()}`;
+}
+//#endregion
+//#region src/data/item-defaults.ts
+var PHYSICAL_ITEM_TYPES = [
+	"weapon",
+	"armor",
+	"equipment",
+	"consumable",
+	"ammunition",
+	"resource",
+	"container"
+];
+var LEGALITY_STATES = [
+	"free",
+	"declared",
+	"regulated",
+	"reserved",
+	"military",
+	"sovereign",
+	"prohibited",
+	"unrecognized"
+];
+var EQUIP_STATES = [
+	"stored",
+	"carried",
+	"readied",
+	"equipped",
+	"installed"
+];
+var ITEM_CONDITIONS = [
+	"intact",
+	"worn",
+	"damaged",
+	"broken",
+	"destroyed"
+];
+var UPGRADE_STATES = [
+	"current",
+	"sourceMissing",
+	"updateAvailable",
+	"locallyModified",
+	"conflict",
+	"unknown"
+];
+var QUANTITY_UNITS = [
+	"count",
+	"kg",
+	"g",
+	"l",
+	"ml",
+	"m"
+];
+function isPhysicalItemType(type) {
+	return PHYSICAL_ITEM_TYPES.includes(type);
+}
+function createWorldItemId(idFactory = createRelisId) {
+	return `WLD-ITM-${idFactory()}`;
+}
+function initialReference(overrides = {}) {
+	return {
+		relisId: "",
+		uuid: "",
+		documentName: "",
+		type: "",
+		state: "unresolved",
+		labelSnapshot: "",
+		missingPolicy: "diagnose",
+		...overrides
+	};
+}
+function initialItemProvenance() {
+	return {
+		acquisitionKind: "unknown",
+		acquiredFromRef: initialReference(),
+		acquiredAt: null,
+		lotId: "",
+		localRevision: 0,
+		manualOverrides: [],
+		upgradeState: "unknown"
+	};
+}
+function initialPhysicalState() {
+	return {
+		quantity: 1,
+		unit: "count",
+		massEach: null,
+		volumeEach: null,
+		bulkEach: null,
+		containerRef: initialReference(),
+		locationKey: "",
+		custodianRef: initialReference(),
+		equipState: "stored",
+		condition: "intact",
+		wear: 0,
+		charges: {
+			current: null,
+			maximum: null,
+			unit: "charge"
+		},
+		identified: true
+	};
+}
+function record(value) {
+	return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+}
+function text(value, fallback = "") {
+	return typeof value === "string" ? value : fallback;
+}
+function finiteNumber(value, fallback, minimum, maximum) {
+	if (value === null || value === void 0 || value === "") return fallback;
+	const parsed = Number(value);
+	if (!Number.isFinite(parsed)) return fallback;
+	return Math.min(maximum ?? parsed, Math.max(minimum ?? parsed, parsed));
+}
+function integer(value, fallback, minimum = 0, maximum) {
+	return Math.trunc(finiteNumber(value, fallback, minimum, maximum) ?? fallback);
+}
+function stringArray(value) {
+	if (!Array.isArray(value)) return [];
+	return Array.from(new Set(value.filter((entry) => typeof entry === "string")));
+}
+function referenceArray(value) {
+	return Array.isArray(value) ? value.map((entry) => normalizeReference(entry)) : [];
+}
+function normalizeReference(value) {
+	const source = record(value);
+	return initialReference({
+		...source,
+		relisId: text(source.relisId),
+		uuid: text(source.uuid),
+		documentName: text(source.documentName),
+		type: text(source.type),
+		state: text(source.state, "unresolved") || "unresolved",
+		labelSnapshot: text(source.labelSnapshot),
+		missingPolicy: text(source.missingPolicy, "diagnose") || "diagnose"
+	});
+}
+function normalizePhysicalState(value) {
+	const source = record(value);
+	const charges = record(source.charges);
+	const quantity = finiteNumber(source.quantity, 1, 0) ?? 1;
+	const unit = QUANTITY_UNITS.includes(source.unit) ? source.unit : "count";
+	return {
+		...initialPhysicalState(),
+		...source,
+		quantity: unit === "count" ? Math.trunc(quantity) : quantity,
+		unit,
+		massEach: finiteNumber(source.massEach, null, 0),
+		volumeEach: finiteNumber(source.volumeEach, null, 0),
+		bulkEach: finiteNumber(source.bulkEach, null, 0),
+		containerRef: normalizeReference(source.containerRef),
+		locationKey: text(source.locationKey),
+		custodianRef: normalizeReference(source.custodianRef),
+		equipState: EQUIP_STATES.includes(source.equipState) ? source.equipState : "stored",
+		condition: ITEM_CONDITIONS.includes(source.condition) ? source.condition : "intact",
+		wear: integer(source.wear, 0, 0, 6),
+		charges: {
+			...charges,
+			current: finiteNumber(charges.current, null, 0),
+			maximum: finiteNumber(charges.maximum, null, 0),
+			unit: text(charges.unit, "charge") || "charge"
+		},
+		identified: source.identified !== false
+	};
+}
+function normalizeItemSystem(value, physical, idFactory = createRelisId) {
+	const source = record(value);
+	const meta = record(source.meta);
+	const provenance = record(source.provenance);
+	const referencePrice = record(source.referencePrice);
+	const legality = text(source.legality);
+	const normalized = {
+		...source,
+		meta: {
+			...meta,
+			schemaVersion: "3",
+			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
+			contentVersion: text(meta.contentVersion, "1.0.0") || "1.0.0",
+			relisId: text(meta.relisId) || createWorldItemId(idFactory),
+			sourceRef: normalizeReference(meta.sourceRef),
+			sourceVersion: text(meta.sourceVersion),
+			revision: integer(meta.revision, 0),
+			status: text(meta.status, "draft") || "draft",
+			causeRefs: referenceArray(meta.causeRefs),
+			tags: stringArray(meta.tags)
+		},
+		description: text(source.description),
+		traits: stringArray(source.traits),
+		requirementRefs: referenceArray(source.requirementRefs),
+		effectRefs: referenceArray(source.effectRefs),
+		level: finiteNumber(source.level, null, 1, 30),
+		quality: finiteNumber(source.quality, null, 0, 5),
+		rarity: finiteNumber(source.rarity, null, 0, 6),
+		legality: LEGALITY_STATES.includes(legality) ? legality : "",
+		referencePrice: {
+			...referencePrice,
+			amount: finiteNumber(referencePrice.amount, null, 0),
+			currencyRef: normalizeReference(referencePrice.currencyRef),
+			unit: text(referencePrice.unit, "count") || "count",
+			quantityBasis: finiteNumber(referencePrice.quantityBasis, 1, Number.EPSILON) ?? 1,
+			sourceRefs: referenceArray(referencePrice.sourceRefs)
+		},
+		manufacturerRef: normalizeReference(source.manufacturerRef),
+		provenance: {
+			...initialItemProvenance(),
+			...provenance,
+			acquisitionKind: text(provenance.acquisitionKind, "unknown") || "unknown",
+			acquiredFromRef: normalizeReference(provenance.acquiredFromRef),
+			acquiredAt: finiteNumber(provenance.acquiredAt, null, 0),
+			lotId: text(provenance.lotId),
+			localRevision: integer(provenance.localRevision, 0),
+			manualOverrides: stringArray(provenance.manualOverrides),
+			upgradeState: UPGRADE_STATES.includes(provenance.upgradeState) ? provenance.upgradeState : "unknown"
+		}
+	};
+	if (physical) normalized.physical = normalizePhysicalState(source.physical);
+	return normalized;
+}
+function physicalTotals(value) {
+	const physical = normalizePhysicalState(value);
+	const quantity = Number(physical.quantity);
+	const total = (each) => each === null || !Number.isFinite(Number(each)) ? null : Number((quantity * Number(each)).toPrecision(12));
+	return {
+		mass: total(physical.massEach),
+		volume: total(physical.volumeEach),
+		bulk: total(physical.bulkEach)
+	};
+}
+function buildOwnedItemSystem(value, sourceUuid, sourceName, sourceType, physical, idFactory = createRelisId) {
+	const source = normalizeItemSystem(value, physical, idFactory);
+	const sourceId = source.meta.relisId;
+	return {
+		...source,
+		meta: {
+			...source.meta,
+			relisId: createWorldItemId(idFactory),
+			sourceRef: initialReference({
+				relisId: sourceId,
+				uuid: sourceUuid,
+				documentName: "Item",
+				type: sourceType,
+				state: sourceUuid ? "resolved" : "unresolved",
+				labelSnapshot: sourceName
+			}),
+			sourceVersion: source.meta.contentVersion,
+			revision: 0
+		},
+		provenance: {
+			...source.provenance,
+			localRevision: 0,
+			manualOverrides: [],
+			upgradeState: "current"
+		}
+	};
+}
+//#endregion
+//#region src/data/item-models.ts
+var fields$1 = foundry.data.fields;
+function optionalStringField$1(initial = "") {
+	return new fields$1.StringField({
+		required: true,
+		blank: true,
+		initial
+	});
+}
+function optionalNumberField(minimum = 0, maximum) {
+	return new fields$1.NumberField({
+		required: false,
+		nullable: true,
+		min: minimum,
+		max: maximum,
+		initial: null
+	});
+}
+function referenceField$1() {
+	return new fields$1.SchemaField({
+		relisId: optionalStringField$1(),
+		uuid: optionalStringField$1(),
+		documentName: optionalStringField$1(),
+		type: optionalStringField$1(),
+		state: new fields$1.StringField({
+			required: true,
+			blank: false,
+			initial: "unresolved"
+		}),
+		labelSnapshot: optionalStringField$1(),
+		missingPolicy: new fields$1.StringField({
+			required: true,
+			blank: false,
+			initial: "diagnose"
+		})
+	});
+}
+function referenceArrayField$1() {
+	return new fields$1.ArrayField(referenceField$1(), {
+		required: true,
+		initial: []
+	});
+}
+function itemMetaField() {
+	return new fields$1.SchemaField({
+		schemaVersion: new fields$1.StringField({
+			required: true,
+			blank: false,
+			initial: "3"
+		}),
+		rulesVersion: new fields$1.StringField({
+			required: true,
+			blank: false,
+			initial: RULES_VERSION
+		}),
+		contentVersion: new fields$1.StringField({
+			required: true,
+			blank: false,
+			initial: CONTENT_VERSION
+		}),
+		relisId: optionalStringField$1(),
+		sourceRef: referenceField$1(),
+		sourceVersion: optionalStringField$1(),
+		revision: new fields$1.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			initial: 0
+		}),
+		status: new fields$1.StringField({
+			required: true,
+			blank: false,
+			initial: "draft"
+		}),
+		causeRefs: referenceArrayField$1(),
+		tags: new fields$1.ArrayField(new fields$1.StringField(), {
+			required: true,
+			initial: []
+		})
+	});
+}
+function provenanceField() {
+	return new fields$1.SchemaField({
+		acquisitionKind: new fields$1.StringField({
+			required: true,
+			blank: false,
+			initial: "unknown"
+		}),
+		acquiredFromRef: referenceField$1(),
+		acquiredAt: optionalNumberField(),
+		lotId: optionalStringField$1(),
+		localRevision: new fields$1.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			initial: 0
+		}),
+		manualOverrides: new fields$1.ArrayField(new fields$1.StringField(), {
+			required: true,
+			initial: []
+		}),
+		upgradeState: new fields$1.StringField({
+			required: true,
+			blank: false,
+			choices: UPGRADE_STATES,
+			initial: "unknown"
+		})
+	});
+}
+function physicalField() {
+	return new fields$1.SchemaField({
+		quantity: new fields$1.NumberField({
+			required: true,
+			min: 0,
+			initial: 1
+		}),
+		unit: new fields$1.StringField({
+			required: true,
+			blank: false,
+			choices: QUANTITY_UNITS,
+			initial: "count"
+		}),
+		massEach: optionalNumberField(),
+		volumeEach: optionalNumberField(),
+		bulkEach: optionalNumberField(),
+		containerRef: referenceField$1(),
+		locationKey: optionalStringField$1(),
+		custodianRef: referenceField$1(),
+		equipState: new fields$1.StringField({
+			required: true,
+			blank: false,
+			choices: EQUIP_STATES,
+			initial: "stored"
+		}),
+		condition: new fields$1.StringField({
+			required: true,
+			blank: false,
+			choices: ITEM_CONDITIONS,
+			initial: "intact"
+		}),
+		wear: new fields$1.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			max: 6,
+			initial: 0
+		}),
+		charges: new fields$1.SchemaField({
+			current: optionalNumberField(),
+			maximum: optionalNumberField(),
+			unit: new fields$1.StringField({
+				required: true,
+				blank: false,
+				initial: "charge"
+			})
+		}),
+		identified: new fields$1.BooleanField({
+			required: true,
+			initial: true
+		})
+	});
+}
+var RelisItemData = class extends foundry.abstract.TypeDataModel {
+	static isPhysical = false;
+	static defineSchema() {
+		return {
+			meta: itemMetaField(),
+			description: new fields$1.HTMLField({
+				required: true,
+				blank: true,
+				initial: ""
+			}),
+			traits: new fields$1.ArrayField(new fields$1.StringField(), {
+				required: true,
+				initial: []
+			}),
+			requirementRefs: referenceArrayField$1(),
+			effectRefs: referenceArrayField$1(),
+			level: optionalNumberField(1, 30),
+			quality: optionalNumberField(0, 5),
+			rarity: optionalNumberField(0, 6),
+			legality: new fields$1.StringField({
+				required: true,
+				blank: true,
+				choices: ["", ...LEGALITY_STATES],
+				initial: ""
+			}),
+			referencePrice: new fields$1.SchemaField({
+				amount: optionalNumberField(),
+				currencyRef: referenceField$1(),
+				unit: new fields$1.StringField({
+					required: true,
+					blank: false,
+					initial: "count"
+				}),
+				quantityBasis: new fields$1.NumberField({
+					required: true,
+					min: Number.EPSILON,
+					initial: 1
+				}),
+				sourceRefs: referenceArrayField$1()
+			}),
+			manufacturerRef: referenceField$1(),
+			provenance: provenanceField()
+		};
+	}
+	static migrateData(source) {
+		return normalizeItemSystem(source, this.isPhysical);
+	}
+	prepareDerivedData() {
+		super.prepareDerivedData();
+		const physical = this.constructor.isPhysical;
+		this.derived = { physical: physical ? physicalTotals(this.physical) : null };
+	}
+};
+var PhysicalItemData = class extends RelisItemData {
+	static isPhysical = true;
+	static defineSchema() {
+		return {
+			...super.defineSchema(),
+			physical: physicalField()
+		};
+	}
+};
+var ActionData = class extends RelisItemData {
+	static defineSchema() {
+		return {
+			...super.defineSchema(),
+			test: new fields$1.SchemaField({
+				attributeKey: new fields$1.StringField({
+					required: true,
+					blank: false,
+					initial: "dexterity"
+				}),
+				skillKey: new fields$1.StringField({
+					required: true,
+					blank: false,
+					initial: "shooting"
+				}),
+				difficulty: new fields$1.NumberField({
+					required: true,
+					integer: true,
+					min: 0,
+					initial: 15
+				}),
+				resourceKey: optionalStringField$1(),
+				cost: new fields$1.NumberField({
+					required: true,
+					integer: true,
+					min: 0,
+					initial: 0
+				})
+			}),
+			effect: new fields$1.SchemaField({
+				conditionKey: optionalStringField$1(),
+				intensity: new fields$1.NumberField({
+					required: true,
+					integer: true,
+					min: 0,
+					initial: 1
+				}),
+				durationRounds: new fields$1.NumberField({
+					required: true,
+					integer: true,
+					min: 0,
+					initial: 1
+				})
+			})
+		};
+	}
+};
+var EquipmentData = class extends PhysicalItemData {};
+//#endregion
 //#region src/data/models.ts
 var fields = foundry.data.fields;
 function metaField() {
@@ -331,7 +878,7 @@ function metaField() {
 		schemaVersion: new fields.StringField({
 			required: true,
 			blank: false,
-			initial: "2"
+			initial: "3"
 		}),
 		rulesVersion: new fields.StringField({
 			required: true,
@@ -981,7 +1528,7 @@ var PersonData = class extends ReservedData {
 	static migrateData(source) {
 		normalizePersonSource(source);
 		source.meta ??= {};
-		source.meta.schemaVersion = "2";
+		source.meta.schemaVersion = "3";
 		source.health ??= {};
 		source.health.hitPoints ??= {
 			current: 10,
@@ -1093,95 +1640,6 @@ var NpcData = class extends PersonData {
 				})
 			}),
 			promotion: new fields.SchemaField({ sourceCharacterRef: referenceField() })
-		};
-	}
-};
-var ActionData = class extends ReservedData {
-	static defineSchema() {
-		return {
-			...super.defineSchema(),
-			test: new fields.SchemaField({
-				attributeKey: new fields.StringField({
-					required: true,
-					blank: false,
-					initial: "dexterity"
-				}),
-				skillKey: new fields.StringField({
-					required: true,
-					blank: false,
-					initial: "shooting"
-				}),
-				difficulty: new fields.NumberField({
-					required: true,
-					integer: true,
-					min: 0,
-					initial: 15
-				}),
-				resourceKey: new fields.StringField({
-					required: true,
-					blank: true,
-					initial: ""
-				}),
-				cost: new fields.NumberField({
-					required: true,
-					integer: true,
-					min: 0,
-					initial: 0
-				})
-			}),
-			effect: new fields.SchemaField({
-				conditionKey: new fields.StringField({
-					required: true,
-					blank: true,
-					initial: ""
-				}),
-				intensity: new fields.NumberField({
-					required: true,
-					integer: true,
-					min: 0,
-					initial: 1
-				}),
-				durationRounds: new fields.NumberField({
-					required: true,
-					integer: true,
-					min: 0,
-					initial: 1
-				})
-			})
-		};
-	}
-};
-var EquipmentData = class extends ReservedData {
-	static defineSchema() {
-		return {
-			...super.defineSchema(),
-			physical: new fields.SchemaField({
-				quantity: new fields.NumberField({
-					required: true,
-					min: 0,
-					initial: 1
-				}),
-				massEach: new fields.NumberField({
-					required: true,
-					min: 0,
-					initial: 0
-				}),
-				bulkEach: new fields.NumberField({
-					required: true,
-					min: 0,
-					initial: 0
-				}),
-				equipState: new fields.StringField({
-					required: true,
-					blank: false,
-					initial: "stored"
-				}),
-				condition: new fields.StringField({
-					required: true,
-					blank: false,
-					initial: "intact"
-				})
-			})
 		};
 	}
 };
@@ -1306,7 +1764,7 @@ var RelisCardData = class extends foundry.abstract.TypeDataModel {
 };
 function registerDataModels() {
 	for (const type of ACTOR_TYPES) CONFIG.Actor.dataModels[type] = type === "character" ? CharacterData : type === "npc" ? NpcData : ReservedData;
-	for (const type of ITEM_TYPES) CONFIG.Item.dataModels[type] = type === "action" ? ActionData : type === "equipment" ? EquipmentData : ReservedData;
+	for (const type of ITEM_TYPES) CONFIG.Item.dataModels[type] = type === "action" ? ActionData : type === "equipment" ? EquipmentData : isPhysicalItemType(type) ? PhysicalItemData : RelisItemData;
 	for (const type of JOURNAL_PAGE_TYPES) CONFIG.JournalEntryPage.dataModels[type] = ReservedData;
 	CONFIG.ActiveEffect.dataModels.relisEffect = RelisEffectData;
 	CONFIG.ActiveEffect.expiryAction = "delete";
@@ -1549,28 +2007,8 @@ var RelisActor = class extends Actor {
 	}
 };
 //#endregion
-//#region src/utils/ulid.ts
-var CROCKFORD = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
-function encodeTime(time) {
-	let value = Math.max(0, Math.floor(time));
-	let output = "";
-	for (let index = 0; index < 10; index += 1) {
-		output = CROCKFORD[value % 32] + output;
-		value = Math.floor(value / 32);
-	}
-	return output;
-}
-function encodeRandom() {
-	const bytes = /* @__PURE__ */ new Uint8Array(16);
-	globalThis.crypto.getRandomValues(bytes);
-	return Array.from(bytes, (byte) => CROCKFORD[byte & 31]).join("");
-}
-function createRelisId(now = Date.now()) {
-	return `${encodeTime(now)}${encodeRandom()}`;
-}
-function isRelisId(value) {
-	return typeof value === "string" && /^[0-9A-HJKMNP-TV-Z]{26}$/.test(value);
-}
+//#region src/documents/item.ts
+var RelisItem = class extends Item {};
 //#endregion
 //#region src/hooks/identity.ts
 var DOCUMENT_NAMES = [
@@ -1584,8 +2022,9 @@ var DOCUMENT_NAMES = [
 ];
 function ensureRelisId(document) {
 	const current = document.system?.meta?.relisId;
-	if (isRelisId(current)) return;
-	document.updateSource({ "system.meta.relisId": createRelisId() });
+	if (typeof current === "string" && current.trim()) return;
+	const isItem = document.documentName === "Item" || typeof Item !== "undefined" && document instanceof Item;
+	document.updateSource({ "system.meta.relisId": isItem ? createWorldItemId() : createRelisId() });
 }
 function registerIdentityHooks() {
 	for (const documentName of DOCUMENT_NAMES) Hooks.on(`preCreate${documentName}`, ensureRelisId);
@@ -1600,6 +2039,115 @@ function registerIntegrityHooks() {
 			maximum: Number(actor.system.health?.hitPoints?.maximum ?? 1)
 		}, change);
 		constrainStressUpdate(Number(actor.system.health?.stress?.current ?? 0), 10 + Number(actor.system.derived?.attributes?.willpower ?? 0), change);
+	});
+}
+//#endregion
+//#region src/hooks/items.ts
+function sourceUuid(data, options) {
+	const candidates = [
+		options.sourceUuid,
+		options.sourceId,
+		data._stats?.compendiumSource,
+		data.flags?.core?.sourceId
+	];
+	return String(candidates.find((candidate) => typeof candidate === "string") ?? "");
+}
+function prepareItemCreation(item, data, options = {}) {
+	const physical = isPhysicalItemType(item.type);
+	const incomingSystem = data.system ?? {};
+	const incomingId = String(incomingSystem.meta?.relisId ?? "");
+	const inferredSourceUuid = sourceUuid(data, options);
+	if (Boolean(item.parent && incomingId) || Boolean(inferredSourceUuid && incomingId)) {
+		item.updateSource({ system: buildOwnedItemSystem(incomingSystem, inferredSourceUuid, String(data.name ?? item.name), String(data.type ?? item.type), physical) });
+		return;
+	}
+	item.updateSource({ system: normalizeItemSystem(item.system ?? incomingSystem, physical) });
+}
+function changedPaths(value, prefix = "", output = []) {
+	if (!value || typeof value !== "object" || Array.isArray(value)) {
+		if (prefix) output.push(prefix);
+		return output;
+	}
+	for (const [key, child] of Object.entries(value)) {
+		if (key.includes(".")) {
+			output.push(prefix ? `${prefix}.${key}` : key);
+			continue;
+		}
+		changedPaths(child, prefix ? `${prefix}.${key}` : key, output);
+	}
+	return output;
+}
+function requestedValue(change, path, fallback) {
+	if (Object.hasOwn(change, path)) return change[path];
+	let current = change;
+	for (const part of path.split(".")) {
+		if (!current || typeof current !== "object" || !Object.hasOwn(current, part)) return fallback;
+		current = current[part];
+	}
+	return current;
+}
+function setRequestedValue(change, path, value) {
+	if (Object.hasOwn(change, path)) {
+		change[path] = value;
+		return;
+	}
+	const parts = path.split(".");
+	let current = change;
+	for (const part of parts.slice(0, -1)) {
+		if (!current || typeof current !== "object" || !Object.hasOwn(current, part)) {
+			change[path] = value;
+			return;
+		}
+		current = current[part];
+	}
+	current[parts.at(-1)] = value;
+}
+function constrainPhysicalItemUpdate(item, change) {
+	if (!isPhysicalItemType(item.type)) return;
+	const currentUnit = String(item.system.physical?.unit ?? "count");
+	const unit = String(requestedValue(change, "system.physical.unit", currentUnit));
+	const currentQuantity = Number(item.system.physical?.quantity ?? 1);
+	const quantity = Number(requestedValue(change, "system.physical.quantity", currentQuantity));
+	if (unit === "count" && Number.isFinite(quantity) && !Number.isInteger(quantity)) setRequestedValue(change, "system.physical.quantity", Math.max(0, Math.trunc(quantity)));
+}
+function trackLocalItemUpdate(item, change, options = {}) {
+	if (!item.parent || options.relisMigration || options.relisProvenance) return;
+	const paths = changedPaths(change).filter((path) => (path === "name" || path === "img" || path.startsWith("system.")) && !path.startsWith("system.meta.") && !path.startsWith("system.provenance.") && !path.startsWith("system.derived."));
+	if (paths.length === 0) return;
+	const existing = Array.from(item.system.provenance?.manualOverrides ?? [], String);
+	change["system.provenance.localRevision"] = Math.max(0, Math.trunc(Number(item.system.provenance?.localRevision ?? 0))) + 1;
+	change["system.provenance.manualOverrides"] = Array.from(/* @__PURE__ */ new Set([...existing, ...paths])).sort();
+	if (item.system.meta?.sourceRef?.relisId) change["system.provenance.upgradeState"] = "locallyModified";
+}
+function worldItems() {
+	const result = /* @__PURE__ */ new Set();
+	for (const item of Array.from(game.items?.contents ?? game.items ?? [])) result.add(item);
+	for (const actor of Array.from(game.actors?.contents ?? game.actors ?? [])) for (const item of Array.from(actor.items ?? [])) result.add(item);
+	return Array.from(result);
+}
+async function migrateItemCore() {
+	if (!game.user?.isGM) return 0;
+	const migrationId = `10-E1-P-schema-3`;
+	if ((game.settings.get("relis", "migrations.state") ?? {}).lastMigrationId === migrationId) return 0;
+	const items = worldItems();
+	for (const item of items) {
+		const source = item.toObject(true).system ?? item.system ?? {};
+		await item.update({ system: normalizeItemSystem(source, isPhysicalItemType(item.type)) }, { relisMigration: true });
+	}
+	await game.settings.set(SYSTEM_ID, "migrations.state", {
+		packageVersion: PACKAGE_VERSION,
+		state: "completed",
+		lastMigrationId: migrationId,
+		errors: []
+	});
+	console.log(`RE:LIS | Migration 10-E1-P : ${items.length} Item(s) contrôlé(s).`);
+	return items.length;
+}
+function registerItemHooks() {
+	Hooks.on("preCreateItem", prepareItemCreation);
+	Hooks.on("preUpdateItem", (item, change, options) => {
+		constrainPhysicalItemUpdate(item, change);
+		trackLocalItemUpdate(item, change, options);
 	});
 }
 //#endregion
@@ -1826,7 +2374,7 @@ var HIDDEN_SETTINGS = [
 		scope: "world",
 		config: false,
 		type: String,
-		default: "2"
+		default: "3"
 	},
 	{
 		key: "versions.rules",
@@ -2304,27 +2852,142 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 var ItemSheetV2 = foundry.applications.sheets.ItemSheetV2;
 var HandlebarsApplicationMixin = foundry.applications.api.HandlebarsApplicationMixin;
 function fieldValue(target) {
+	if (target.dataset.valueType === "boolean") return target.checked;
+	if (target.dataset.valueType === "nullable-number") return target.value === "" ? null : Number(target.value);
 	return target.dataset.valueType === "number" ? Number(target.value) : target.value;
+}
+var LEGALITY_LABELS = {
+	"": "Non applicable",
+	free: "Libre",
+	declared: "Déclaré",
+	regulated: "Réglementé",
+	reserved: "Réservé",
+	military: "Militaire",
+	sovereign: "Souverain",
+	prohibited: "Interdit",
+	unrecognized: "Non reconnu"
+};
+var EQUIP_STATE_LABELS = {
+	stored: "Rangé",
+	carried: "Transporté",
+	readied: "Préparé",
+	equipped: "Équipé",
+	installed: "Installé"
+};
+var CONDITION_LABELS = {
+	intact: "Intact",
+	worn: "Usé",
+	damaged: "Endommagé",
+	broken: "Brisé",
+	destroyed: "Détruit"
+};
+function options(values, labels) {
+	return values.map((value) => ({
+		value,
+		label: labels[value] ?? value
+	}));
 }
 var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 	static DEFAULT_OPTIONS = {
 		classes: ["relis", "item-sheet"],
 		position: {
-			width: 560,
-			height: 600
+			width: 760,
+			height: 760
 		},
 		window: { resizable: true }
 	};
 	static PARTS = { main: { template: "systems/relis/templates/items/item.hbs" } };
-	async _prepareContext(options) {
+	async _prepareContext(optionsValue) {
+		const context = await super._prepareContext(optionsValue);
+		const system = this.item.system;
+		const hasPhysical = isPhysicalItemType(this.item.type);
+		const sourceRef = system.meta?.sourceRef ?? {};
+		const hasSourceRef = Boolean(sourceRef.relisId || sourceRef.uuid);
+		let sourceDocument = null;
+		if (sourceRef.uuid) try {
+			sourceDocument = await foundry.utils.fromUuid(String(sourceRef.uuid));
+		} catch {
+			sourceDocument = null;
+		}
+		if (!sourceDocument && sourceRef.relisId) sourceDocument = [...Array.from(game.items?.contents ?? game.items ?? []), ...Array.from(game.actors?.contents ?? game.actors ?? []).flatMap((actor) => Array.from(actor.items ?? []))].find((candidate) => candidate.system.meta?.relisId === String(sourceRef.relisId)) ?? null;
+		const sourceMissing = hasSourceRef && !sourceDocument;
+		const updateAvailable = Boolean(sourceDocument && system.meta.sourceVersion && sourceDocument.system.meta?.contentVersion && system.meta.sourceVersion !== sourceDocument.system.meta.contentVersion);
+		const manualOverrides = Array.from(system.provenance?.manualOverrides ?? [], String);
+		const badges = [{
+			label: this.item.parent ? "Exemplaire" : "Source",
+			className: this.item.parent ? "" : "relis-state-chip--source"
+		}];
+		if (manualOverrides.length > 0) badges.push({
+			label: "Modifié",
+			className: "relis-state-chip--warning"
+		});
+		if (sourceMissing) badges.push({
+			label: "Source absente",
+			className: "relis-state-chip--danger"
+		});
+		else if (updateAvailable) badges.push({
+			label: "Mise à jour disponible",
+			className: "relis-state-chip--warning"
+		});
+		const diagnostics = [];
+		if (!system.meta?.relisId) diagnostics.push({
+			level: "error",
+			icon: "fa-circle-exclamation",
+			message: "Identifiant RE:LIS absent."
+		});
+		if (sourceMissing) diagnostics.push({
+			level: "warning",
+			icon: "fa-link-slash",
+			message: "La source n’est plus résoluble. Cet exemplaire demeure autonome et jouable."
+		});
+		if (updateAvailable) diagnostics.push({
+			level: "info",
+			icon: "fa-arrow-up-right-dots",
+			message: "Une version plus récente de la source existe. Aucune mise à jour automatique n’est appliquée."
+		});
+		if (hasPhysical && system.physical?.unit === "count") {
+			const quantity = Number(system.physical.quantity);
+			if (!Number.isInteger(quantity)) diagnostics.push({
+				level: "error",
+				icon: "fa-circle-exclamation",
+				message: "Une quantité en unités doit être entière."
+			});
+		}
 		return {
-			...await super._prepareContext(options),
+			...context,
 			item: this.item,
 			itemTypeLabel: game.i18n.localize(`TYPES.Item.${this.item.type}`),
-			system: this.item.system,
+			system,
 			editable: this.item.isOwner,
 			isAction: this.item.type === "action",
-			isEquipment: this.item.type === "equipment",
+			hasPhysical,
+			hasSourceRef,
+			itemRole: this.item.parent ? hasSourceRef ? "Exemplaire lié à une source" : "Exemplaire autonome" : "Source ou modèle de monde",
+			badges,
+			diagnostics,
+			manualOverrides,
+			traitsText: Array.from(system.traits ?? []).join(", "),
+			requirementCount: Number(system.requirementRefs?.length ?? 0),
+			effectRefCount: Number(system.effectRefs?.length ?? 0),
+			physicalTotals: hasPhysical ? physicalTotals(system.physical) : null,
+			qualityOptions: [{
+				value: "",
+				label: "Non applicable"
+			}, ...Array.from({ length: 6 }, (_, value) => ({
+				value,
+				label: `Q-${value}`
+			}))],
+			rarityOptions: [{
+				value: "",
+				label: "Non applicable"
+			}, ...Array.from({ length: 7 }, (_, value) => ({
+				value,
+				label: `RAR-M ${value}`
+			}))],
+			legalityOptions: options(["", ...LEGALITY_STATES], LEGALITY_LABELS),
+			quantityUnitOptions: options(QUANTITY_UNITS, {}),
+			equipStateOptions: options(EQUIP_STATES, EQUIP_STATE_LABELS),
+			conditionOptions: options(ITEM_CONDITIONS, CONDITION_LABELS),
 			attributes: Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
 				key,
 				label
@@ -2339,14 +3002,22 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			}))
 		};
 	}
-	async _onRender(context, options) {
-		await super._onRender(context, options);
+	async _onRender(context, optionsValue) {
+		await super._onRender(context, optionsValue);
 		const root = this.element;
-		if (!this.item.isOwner) for (const control of root.querySelectorAll("input, select, button")) control.disabled = true;
+		if (!this.item.isOwner) for (const control of root.querySelectorAll("input, select, textarea, button")) control.disabled = true;
 		for (const element of root.querySelectorAll("[data-document-field]")) element.addEventListener("change", () => {
+			if (!this.item.isOwner) return;
 			const path = element.dataset.documentField;
 			if (!path) return;
 			this.item.update({ [path]: fieldValue(element) });
+		});
+		for (const element of root.querySelectorAll("[data-array-field]")) element.addEventListener("change", () => {
+			if (!this.item.isOwner) return;
+			const path = element.dataset.arrayField;
+			if (!path) return;
+			const values = Array.from(new Set(element.value.split(/[\n,]/u).map((value) => value.trim()).filter(Boolean)));
+			this.item.update({ [path]: values });
 		});
 		root.querySelector("[data-action='test-item']")?.addEventListener("click", () => {
 			const actor = this.item.parent;
@@ -2366,7 +3037,7 @@ function registerSheets() {
 		makeDefault: true
 	});
 	foundry.documents.collections.Items.registerSheet("relis", RelisItemSheet, {
-		types: ["action", "equipment"],
+		types: ITEM_TYPES,
 		makeDefault: true
 	});
 }
@@ -2397,18 +3068,26 @@ function registerDocumentTypeLabels() {
 Hooks.once("init", () => {
 	console.log(`RE:LIS | Initialisation ${PACKAGE_VERSION}`);
 	CONFIG.Actor.documentClass = RelisActor;
+	CONFIG.Item.documentClass = RelisItem;
 	registerDocumentTypeLabels();
 	registerDataModels();
 	registerSettings();
 	registerSheets();
 	registerIdentityHooks();
 	registerIntegrityHooks();
+	registerItemHooks();
 });
-Hooks.once("ready", () => {
+Hooks.once("ready", async () => {
 	const textScale = Number(game.settings.get("relis", "ui.textScale") ?? 1);
 	document.documentElement.style.setProperty("--relis-text-scale", String(textScale));
 	document.body.classList.toggle("relis-high-contrast", Boolean(game.settings.get(SYSTEM_ID, "ui.highContrast")));
-	if (game.user?.isGM) ui.notifications.info(game.i18n.localize("RELIS.Ready"));
+	if (game.user?.isGM) try {
+		await migrateItemCore();
+		ui.notifications.info(game.i18n.localize("RELIS.Ready"));
+	} catch (error) {
+		console.error("RE:LIS | Échec de la migration 10-E1-P", error);
+		ui.notifications.error(game.i18n.localize("RELIS.Error.ItemMigration"));
+	}
 });
 //#endregion
 

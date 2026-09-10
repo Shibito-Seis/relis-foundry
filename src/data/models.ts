@@ -15,6 +15,13 @@ import {
   initialPresentation,
   normalizePersonSource,
 } from "./person-defaults";
+import {
+  ActionData,
+  EquipmentData,
+  PhysicalItemData,
+  RelisItemData,
+} from "./item-models";
+import { isPhysicalItemType } from "./item-defaults";
 
 const fields = foundry.data.fields;
 
@@ -817,97 +824,6 @@ export class NpcData extends PersonData {
   }
 }
 
-export class ActionData extends ReservedData {
-  static defineSchema(): Record<string, any> {
-    return {
-      ...super.defineSchema(),
-      test: new fields.SchemaField({
-        attributeKey: new fields.StringField({
-          required: true,
-          blank: false,
-          initial: "dexterity",
-        }),
-        skillKey: new fields.StringField({
-          required: true,
-          blank: false,
-          initial: "shooting",
-        }),
-        difficulty: new fields.NumberField({
-          required: true,
-          integer: true,
-          min: 0,
-          initial: 15,
-        }),
-        resourceKey: new fields.StringField({
-          required: true,
-          blank: true,
-          initial: "",
-        }),
-        cost: new fields.NumberField({
-          required: true,
-          integer: true,
-          min: 0,
-          initial: 0,
-        }),
-      }),
-      effect: new fields.SchemaField({
-        conditionKey: new fields.StringField({
-          required: true,
-          blank: true,
-          initial: "",
-        }),
-        intensity: new fields.NumberField({
-          required: true,
-          integer: true,
-          min: 0,
-          initial: 1,
-        }),
-        durationRounds: new fields.NumberField({
-          required: true,
-          integer: true,
-          min: 0,
-          initial: 1,
-        }),
-      }),
-    };
-  }
-}
-
-export class EquipmentData extends ReservedData {
-  static defineSchema(): Record<string, any> {
-    return {
-      ...super.defineSchema(),
-      physical: new fields.SchemaField({
-        quantity: new fields.NumberField({
-          required: true,
-          min: 0,
-          initial: 1,
-        }),
-        massEach: new fields.NumberField({
-          required: true,
-          min: 0,
-          initial: 0,
-        }),
-        bulkEach: new fields.NumberField({
-          required: true,
-          min: 0,
-          initial: 0,
-        }),
-        equipState: new fields.StringField({
-          required: true,
-          blank: false,
-          initial: "stored",
-        }),
-        condition: new fields.StringField({
-          required: true,
-          blank: false,
-          initial: "intact",
-        }),
-      }),
-    };
-  }
-}
-
 export class RelisEffectData extends foundry.abstract.TypeDataModel {
   static defineSchema(): Record<string, any> {
     return {
@@ -1045,7 +961,9 @@ export function registerDataModels(): void {
         ? ActionData
         : type === "equipment"
           ? EquipmentData
-          : ReservedData;
+          : isPhysicalItemType(type)
+            ? PhysicalItemData
+            : RelisItemData;
   }
   for (const type of JOURNAL_PAGE_TYPES)
     CONFIG.JournalEntryPage.dataModels[type] = ReservedData;

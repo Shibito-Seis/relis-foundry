@@ -50,11 +50,18 @@
 
 .relis-sheet input,
 .relis-sheet select,
+.relis-sheet textarea,
 .relis-sheet button {
   color: var(--relis-ink);
   background: var(--relis-panel-2);
   border: 1px solid var(--relis-line);
   border-radius: 4px;
+}
+
+.relis-sheet textarea {
+  min-height: 5rem;
+  padding: 0.45rem;
+  resize: vertical;
 }
 
 .relis-sheet button {
@@ -693,14 +700,193 @@
   font-size: 0.9rem;
 }
 
-.relis-sheet :is(input, select, button):disabled {
+.relis-sheet :is(input, select, textarea, button):disabled {
   cursor: not-allowed;
   opacity: 0.62;
 }
 
-.relis-sheet :is(input, select, button):focus-visible {
+.relis-sheet :is(input, select, textarea, button):focus-visible {
   outline: 2px solid var(--relis-cyan-soft);
   outline-offset: 2px;
+}
+
+.relis-item-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.relis-item-header {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem;
+  border: 1px solid var(--relis-cyan);
+  background:
+    linear-gradient(105deg, rgb(49 215 242 / 12%), transparent 45%),
+    var(--relis-panel);
+  box-shadow: inset 0 0 0 1px rgb(135 242 255 / 12%);
+  clip-path: polygon(
+    0.8rem 0,
+    100% 0,
+    100% calc(100% - 0.8rem),
+    calc(100% - 0.8rem) 100%,
+    0 100%,
+    0 0.8rem
+  );
+}
+
+.relis-item-icon {
+  display: grid;
+  place-items: center;
+  width: 5.25rem;
+  height: 5.25rem;
+  overflow: hidden;
+  border: 2px solid var(--relis-cyan-soft);
+  border-radius: 50%;
+  background: var(--relis-night);
+  box-shadow: 0 0 0.7rem rgb(49 215 242 / 38%);
+}
+
+.relis-item-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.relis-item-heading {
+  min-width: 0;
+}
+
+.relis-item-image-path {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+  color: var(--relis-muted);
+  font-size: 0.7rem;
+}
+
+.relis-item-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.relis-state-chip--source {
+  color: var(--relis-cyan-soft);
+  border-color: var(--relis-cyan);
+}
+
+.relis-state-chip--warning {
+  color: var(--relis-gold);
+  border-color: var(--relis-gold);
+}
+
+.relis-state-chip--danger {
+  color: var(--relis-red);
+  border-color: var(--relis-red);
+}
+
+.relis-item-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.relis-item-form input,
+.relis-item-form select {
+  width: 100%;
+}
+
+.relis-item-description textarea {
+  min-height: 8rem;
+}
+
+.relis-item-ref-summary,
+.relis-item-totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.65rem 0 0;
+}
+
+.relis-item-ref-summary span,
+.relis-item-totals div {
+  padding: 0.3rem 0.5rem;
+  color: var(--relis-muted);
+  border: 1px solid var(--relis-line);
+  background: var(--relis-night);
+  font-size: 0.72rem;
+}
+
+.relis-item-totals div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.relis-item-totals dt,
+.relis-item-totals dd {
+  margin: 0;
+}
+
+.relis-item-totals dd {
+  color: var(--relis-cyan-soft);
+  font-weight: 700;
+}
+
+.relis-checkbox-field {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  align-self: end;
+  min-height: 2.2rem;
+}
+
+.relis-checkbox-field input {
+  width: auto;
+}
+
+.relis-item-diagnostics {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.relis-item-diagnostic {
+  margin: 0;
+  padding: 0.45rem 0.6rem;
+  border-left: 3px solid var(--relis-cyan);
+  background: var(--relis-panel);
+  font-size: 0.78rem;
+}
+
+.relis-item-diagnostic--warning {
+  border-color: var(--relis-gold);
+}
+
+.relis-item-diagnostic--error {
+  border-color: var(--relis-red);
+}
+
+.relis-item-provenance code,
+.relis-item-provenance strong {
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.relis-item-provenance details {
+  margin-top: 0.65rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--relis-line);
+}
+
+.relis-item-provenance summary {
+  color: var(--relis-cyan-soft);
+  cursor: pointer;
 }
 
 .relis-chat-card {
@@ -847,6 +1033,25 @@
   .relis-reference-grid,
   .relis-energy-grid {
     grid-template-columns: 1fr;
+  }
+
+  .relis-item-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .relis-item-header {
+    grid-template-columns: 4.75rem minmax(0, 1fr);
+  }
+
+  .relis-item-icon {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+
+  .relis-item-badges {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
   }
 
   .relis-id-header {

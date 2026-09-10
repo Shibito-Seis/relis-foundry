@@ -1,6 +1,6 @@
 export const SYSTEM_ID = "relis";
-export const PACKAGE_VERSION = "0.2.4";
-export const SCHEMA_VERSION = "2";
+export const PACKAGE_VERSION = "0.3.0";
+export const SCHEMA_VERSION = "3";
 export const RULES_VERSION = "1.0.0";
 export const CONTENT_VERSION = "1.0.0";
 

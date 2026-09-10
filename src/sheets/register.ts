@@ -1,3 +1,4 @@
+import { ITEM_TYPES } from "../config";
 import { RelisActorSheet } from "./actor-sheet";
 import { RelisItemSheet } from "./item-sheet";
 
@@ -7,7 +8,7 @@ export function registerSheets(): void {
     makeDefault: true,
   });
   foundry.documents.collections.Items.registerSheet("relis", RelisItemSheet, {
-    types: ["action", "equipment"],
+    types: ITEM_TYPES,
     makeDefault: true,
   });
 }
