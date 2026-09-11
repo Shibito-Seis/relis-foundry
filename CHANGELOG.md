@@ -1,5 +1,17 @@
 # Journal des versions
 
+## 0.3.3 — montage réel de l’éditeur et protection des PV
+
+- Montage de l’élément ProseMirror directement dans le DOM après rendu : sa
+  configuration, sa hauteur et sa surface de saisie ne sont plus perdues par
+  une sérialisation `outerHTML`.
+- Contraste explicite des options du sélecteur de Traits sur le menu natif clair.
+- La migration du modèle Personnage ignore désormais les mises à jour
+  partielles signalées par Foundry ; celles-ci ne peuvent plus injecter les PV
+  initiaux `10/10` ni les autres valeurs par défaut.
+- Aucun changement de schéma et aucune réécriture automatique des données
+  existantes.
+
 ## 0.3.2 — correctif d’interface des Items 10-E1-P
 
 - Rendu explicite des options du sélecteur multiple : le catalogue canonique

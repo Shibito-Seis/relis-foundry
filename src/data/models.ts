@@ -681,7 +681,11 @@ export class PersonData extends ReservedData {
     };
   }
 
-  static migrateData(source: Record<string, any>): Record<string, any> {
+  static migrateData(
+    source: Record<string, any>,
+    options: Readonly<{ partial?: boolean }> = {},
+  ): Record<string, any> {
+    if (options.partial) return source;
     normalizePersonSource(source);
     source.meta ??= {};
     source.meta.schemaVersion = SCHEMA_VERSION;

@@ -107,19 +107,6 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
           secrets: this.item.isOwner,
         },
       );
-    const descriptionEditor =
-      foundry.applications.elements.HTMLProseMirrorElement.create({
-        name: "system.description",
-        value: description,
-        enriched: enrichedDescription,
-        toggled: true,
-        documentUUID: this.item.uuid,
-        collaborate: false,
-        height: 260,
-        disabled: !canEditDescription,
-        classes: "relis-description-editor",
-        dataset: { descriptionEditor: "true" },
-      }).outerHTML;
     const sourceRef = system.meta?.sourceRef ?? {};
     const hasSourceRef = Boolean(sourceRef.relisId || sourceRef.uuid);
     let sourceDocument: Item | null = null;
@@ -219,7 +206,8 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       canEditDescription,
       canManageDescriptionPermission,
       canEditTraits,
-      descriptionEditor,
+      description,
+      enrichedDescription,
       traitOptions,
       selectedTraits: selectedTraitIds.map((value) => ({
         value,
@@ -277,6 +265,30 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   async _onRender(context: any, optionsValue: any): Promise<void> {
     await super._onRender(context, optionsValue);
     const root = this.element as HTMLElement;
+    const descriptionHost = root.querySelector<HTMLElement>(
+      "[data-description-editor-host]",
+    );
+    if (descriptionHost) {
+      const descriptionEditor =
+        foundry.applications.elements.HTMLProseMirrorElement.create({
+          name: "system.description",
+          value: String(context.description ?? ""),
+          enriched: String(context.enrichedDescription ?? ""),
+          toggled: true,
+          documentUUID: this.item.uuid,
+          collaborate: false,
+          height: 260,
+          disabled: !context.canEditDescription,
+          classes: "relis-description-editor",
+          dataset: { descriptionEditor: "true" },
+        });
+      descriptionHost.replaceChildren(descriptionEditor);
+      descriptionEditor.addEventListener("save", (event: Event) => {
+        if (!context.canEditDescription) return;
+        const value = String((event.currentTarget as any).value ?? "");
+        void this.item.update({ "system.description": value });
+      });
+    }
     if (!this.item.isOwner) {
       for (const control of root.querySelectorAll<
         | HTMLInputElement
@@ -297,13 +309,6 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         void this.item.update({ [path]: fieldValue(element) });
       });
     }
-    root
-      .querySelector<HTMLElement>("[data-description-editor]")
-      ?.addEventListener("save", (event) => {
-        if (!context.canEditDescription) return;
-        const value = String((event.currentTarget as any).value ?? "");
-        void this.item.update({ "system.description": value });
-      });
     root
       .querySelector<HTMLElement>("[data-trait-selector]")
       ?.addEventListener("change", (event) => {

@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.3.2";
+var PACKAGE_VERSION = "0.3.3";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -1942,7 +1942,8 @@ var PersonData = class extends ReservedData {
 			personalJournalRefs: referenceArrayField()
 		};
 	}
-	static migrateData(source) {
+	static migrateData(source, options = {}) {
+		if (options.partial) return source;
 		normalizePersonSource(source);
 		source.meta ??= {};
 		source.meta.schemaVersion = "4";
@@ -3330,18 +3331,6 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			relativeTo: this.item,
 			secrets: this.item.isOwner
 		});
-		const descriptionEditor = foundry.applications.elements.HTMLProseMirrorElement.create({
-			name: "system.description",
-			value: description,
-			enriched: enrichedDescription,
-			toggled: true,
-			documentUUID: this.item.uuid,
-			collaborate: false,
-			height: 260,
-			disabled: !canEditDescription,
-			classes: "relis-description-editor",
-			dataset: { descriptionEditor: "true" }
-		}).outerHTML;
 		const sourceRef = system.meta?.sourceRef ?? {};
 		const hasSourceRef = Boolean(sourceRef.relisId || sourceRef.uuid);
 		let sourceDocument = null;
@@ -3403,7 +3392,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			canEditDescription,
 			canManageDescriptionPermission,
 			canEditTraits,
-			descriptionEditor,
+			description,
+			enrichedDescription,
 			traitOptions,
 			selectedTraits: selectedTraitIds.map((value) => ({
 				value,
@@ -3456,17 +3446,33 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 	async _onRender(context, optionsValue) {
 		await super._onRender(context, optionsValue);
 		const root = this.element;
+		const descriptionHost = root.querySelector("[data-description-editor-host]");
+		if (descriptionHost) {
+			const descriptionEditor = foundry.applications.elements.HTMLProseMirrorElement.create({
+				name: "system.description",
+				value: String(context.description ?? ""),
+				enriched: String(context.enrichedDescription ?? ""),
+				toggled: true,
+				documentUUID: this.item.uuid,
+				collaborate: false,
+				height: 260,
+				disabled: !context.canEditDescription,
+				classes: "relis-description-editor",
+				dataset: { descriptionEditor: "true" }
+			});
+			descriptionHost.replaceChildren(descriptionEditor);
+			descriptionEditor.addEventListener("save", (event) => {
+				if (!context.canEditDescription) return;
+				const value = String(event.currentTarget.value ?? "");
+				this.item.update({ "system.description": value });
+			});
+		}
 		if (!this.item.isOwner) for (const control of root.querySelectorAll("input, select, textarea, button")) control.disabled = true;
 		for (const element of root.querySelectorAll("[data-document-field]")) element.addEventListener("change", () => {
 			if (!this.item.isOwner) return;
 			const path = element.dataset.documentField;
 			if (!path) return;
 			this.item.update({ [path]: fieldValue(element) });
-		});
-		root.querySelector("[data-description-editor]")?.addEventListener("save", (event) => {
-			if (!context.canEditDescription) return;
-			const value = String(event.currentTarget.value ?? "");
-			this.item.update({ "system.description": value });
 		});
 		root.querySelector("[data-trait-selector]")?.addEventListener("change", (event) => {
 			if (!context.canEditTraits) return;

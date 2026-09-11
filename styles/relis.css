@@ -815,6 +815,16 @@
   background: var(--relis-input);
 }
 
+.relis-trait-selector select option {
+  color: #152b38 !important;
+  background: #eef5f7 !important;
+}
+
+.relis-trait-selector select option:checked {
+  color: #071b27 !important;
+  background: #8fc5ff !important;
+}
+
 .relis-trait-readonly {
   display: flex;
   flex-wrap: wrap;
@@ -905,6 +915,16 @@
 .relis-item-description .relis-description-editor {
   display: block;
   min-height: 7rem;
+}
+
+.relis-description-editor-host,
+.relis-description-editor-host > prose-mirror {
+  display: block;
+  min-height: 16.25rem;
+}
+
+.relis-description-editor-host > prose-mirror {
+  height: 16.25rem;
 }
 
 .relis-item-description .editor-content {

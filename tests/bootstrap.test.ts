@@ -179,6 +179,23 @@ describe("amorçage Foundry 10-C", () => {
     expect(
       (globalThis as any).CONFIG.Actor.trackableAttributes.npc.bar,
     ).toEqual(["derived.trackables.hitPoints"]);
+    const CharacterModel = (globalThis as any).CONFIG.Actor.dataModels
+      .character;
+    const partialHealth = {
+      health: { hitPoints: { current: 50, maximum: 50 } },
+    };
+    expect(
+      CharacterModel.migrateData(partialHealth, { partial: true }),
+    ).toEqual(partialHealth);
+    expect(partialHealth).toEqual({
+      health: { hitPoints: { current: 50, maximum: 50 } },
+    });
+    const partialIdentity = { identity: { publicName: "Maya" } };
+    expect(
+      CharacterModel.migrateData(partialIdentity, { partial: true }),
+    ).toEqual(partialIdentity);
+    expect(partialIdentity).not.toHaveProperty("health");
+    expect(partialIdentity).not.toHaveProperty("bodies");
     expect(
       Object.keys(
         (globalThis as any).CONFIG.Item.dataModels.ancestry.defineSchema(),

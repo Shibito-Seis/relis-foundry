@@ -174,6 +174,21 @@ assert.match(
   /\.relis-item-description prose-mirror \.ProseMirror[\s\S]*?color: var\(--relis-ink\) !important;/,
   "Contraste de saisie ProseMirror non garanti",
 );
+assert.match(
+  itemTemplate,
+  /data-description-editor-host/,
+  "Hôte DOM de l’éditeur ProseMirror absent",
+);
+assert.doesNotMatch(
+  itemTemplate,
+  /\{\{\{descriptionEditor\}\}\}/,
+  "Ancien éditeur ProseMirror sérialisé encore présent",
+);
+assert.match(
+  styles,
+  /\.relis-trait-selector select option\s*\{[^}]*color: #152b38 !important;/s,
+  "Contraste des options de Traits non garanti",
+);
 
 for (const relativePath of [
   ...manifest.esmodules,
