@@ -190,9 +190,16 @@ describe("amorçage Foundry 10-C", () => {
         "traits",
         "requirementRefs",
         "effectRefs",
+        "permissions",
         "provenance",
       ]),
     );
+    expect(
+      Object.hasOwn(
+        (globalThis as any).CONFIG.Item.dataModels.ancestry,
+        "migrateData",
+      ),
+    ).toBe(false);
     expect(
       Object.keys(
         (globalThis as any).CONFIG.Item.dataModels.weapon.defineSchema(),

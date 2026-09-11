@@ -1,5 +1,6 @@
 import { CONTENT_VERSION, RULES_VERSION, SCHEMA_VERSION } from "../config";
 import { createRelisId } from "../utils/ulid";
+import { normalizeTraitIds } from "./item-catalog";
 
 export const PHYSICAL_ITEM_TYPES = [
   "weapon",
@@ -102,6 +103,10 @@ export function initialItemProvenance(): RecordLike {
     manualOverrides: [],
     upgradeState: "unknown",
   };
+}
+
+export function initialItemPermissions(): RecordLike {
+  return { playerEditableDescription: false };
 }
 
 export function initialPhysicalState(): RecordLike {
@@ -246,7 +251,7 @@ export function normalizeItemSystem(
       tags: stringArray(meta.tags),
     },
     description: text(source.description),
-    traits: stringArray(source.traits),
+    traits: normalizeTraitIds(source.traits),
     requirementRefs: referenceArray(source.requirementRefs),
     effectRefs: referenceArray(source.effectRefs),
     level: finiteNumber(source.level, null, 1, 30),
@@ -265,6 +270,12 @@ export function normalizeItemSystem(
       sourceRefs: referenceArray(referencePrice.sourceRefs),
     },
     manufacturerRef: normalizeReference(source.manufacturerRef),
+    permissions: {
+      ...initialItemPermissions(),
+      ...record(source.permissions),
+      playerEditableDescription:
+        record(source.permissions).playerEditableDescription === true,
+    },
     provenance: {
       ...initialItemProvenance(),
       ...provenance,

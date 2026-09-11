@@ -1,5 +1,25 @@
 # Journal des versions
 
+## 0.3.1 — correctif bloquant des Items 10-E1-P
+
+- Suppression de la migration de modèle appliquée à tort aux mises à jour
+  partielles : modifier un champ n’efface plus les valeurs déjà enregistrées.
+- Ajout d’un contrat explicite d’applicabilité : une Ascendance et les autres
+  types non concernés n’affichent plus Niveau, Qualité, rareté, légalité,
+  fabricant ou prix.
+- Remplacement du texte libre des traits par le sélecteur multiple natif de
+  Foundry, alimenté par le vocabulaire canonique de la bible et doté de
+  pastilles retirables.
+- Remplacement du champ de description brut par l’éditeur riche ProseMirror de
+  Foundry ; l’édition est réservée au MJ par défaut et peut être autorisée au
+  propriétaire PJ Item par Item.
+- Le portrait de l’Item ouvre désormais le sélecteur d’image natif de Foundry ;
+  le chemin technique n’est plus exposé dans le bandeau.
+- Migration additive vers le schéma 4, conservation des anciens traits libres
+  jusqu’à leur retrait volontaire et ajout de tests de non-régression.
+
+La version 0.3.0 est rejetée pour la recette : elle ne doit plus être utilisée.
+
 ## 0.3.0 — noyau commun des Items personnels 10-E1-P
 
 - Remplacement des modèles réservés par un contrat Item commun sur les 26 types.

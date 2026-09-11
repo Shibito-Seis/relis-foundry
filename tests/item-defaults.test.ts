@@ -18,6 +18,7 @@ describe("noyau commun des Items 10-E1-P", () => {
     expect(system.meta.sourceVersion).toBe("");
     expect(system.provenance.upgradeState).toBe("unknown");
     expect(system.traits).toEqual([]);
+    expect(system.permissions.playerEditableDescription).toBe(false);
   });
 
   it("est idempotent lorsque l’identifiant existe déjà", () => {
@@ -102,6 +103,19 @@ describe("noyau commun des Items 10-E1-P", () => {
       currencyRef: { relisId: "CUR-credit" },
     });
     expect(system).not.toHaveProperty("priceQuote");
+  });
+
+  it("normalise uniquement les traits issus du catalogue sans perdre un ancien trait", () => {
+    const system = normalizeItemSystem(
+      { traits: ["Humain", "survie", "Trait de test historique"] },
+      false,
+      () => ULID_A,
+    );
+    expect(system.traits).toEqual([
+      "humain",
+      "survie",
+      "Trait de test historique",
+    ]);
   });
 
   it("fabrique des exemplaires indépendants liés à la même source", () => {

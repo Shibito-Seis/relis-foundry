@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.3.0";
+var PACKAGE_VERSION = "0.3.1";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -344,6 +344,392 @@ function createRelisId(now = Date.now()) {
 	return `${encodeTime(now)}${encodeRandom()}`;
 }
 //#endregion
+//#region src/data/item-catalog.ts
+var NONE = {
+	level: false,
+	quality: false,
+	rarity: false,
+	legality: false,
+	manufacturer: false,
+	referencePrice: false
+};
+var LEVELLED = {
+	...NONE,
+	level: true
+};
+var PERSONAL_CATALOG = {
+	level: true,
+	quality: true,
+	rarity: true,
+	legality: true,
+	manufacturer: true,
+	referencePrice: true
+};
+var MATERIAL_CATALOG = {
+	...PERSONAL_CATALOG,
+	level: false
+};
+var PLATFORM_CATALOG = { ...PERSONAL_CATALOG };
+/**
+* Visibility contract for the shared Item sheet. This controls presentation,
+* not storage: later specialised sheets may consume currently hidden fields.
+*/
+var ITEM_FIELD_APPLICABILITY = {
+	ancestry: NONE,
+	profile: NONE,
+	origin: NONE,
+	advantage: NONE,
+	drawback: NONE,
+	path: NONE,
+	specialization: NONE,
+	post: NONE,
+	talent: LEVELLED,
+	action: NONE,
+	power: LEVELLED,
+	conditionTemplate: NONE,
+	weapon: PERSONAL_CATALOG,
+	armor: PERSONAL_CATALOG,
+	equipment: PERSONAL_CATALOG,
+	consumable: PERSONAL_CATALOG,
+	ammunition: PERSONAL_CATALOG,
+	resource: MATERIAL_CATALOG,
+	container: MATERIAL_CATALOG,
+	hull: PLATFORM_CATALOG,
+	module: PLATFORM_CATALOG,
+	installation: PLATFORM_CATALOG,
+	project: NONE,
+	research: NONE,
+	stratagem: NONE,
+	document: NONE
+};
+function itemFieldApplicability(type) {
+	return ITEM_FIELD_APPLICABILITY[type] ?? NONE;
+}
+function hasCatalogFields(value) {
+	return Object.values(value).some(Boolean);
+}
+var CANONICAL_TRAIT_LABELS = `
+Acrobaties
+Adaptation
+Adoption
+Affadissement
+Affinité
+Aide
+Air
+Altération
+Analyse
+Animal
+Anomalie
+Appendice
+Apprentissage
+Architecture
+Archive
+Arme
+Arme naturelle
+Armes lourdes
+Armure
+Artisanat
+Ascendance
+Ascendance universelle
+Atelier
+Athlétisme
+Attaque
+Audition
+Augmentation
+Aura
+Automatisation
+Avertissement
+Beastkin
+Besoin vital
+Biologique
+Biosphère
+Calcul
+Camouflage
+Camp
+Canalisation
+Capteur
+Catalyseur
+Chance
+Chien
+Chimique
+Châssis
+Collective
+Combat
+Commandement
+Commerce
+Communauté
+Communication
+Compétence
+Concentration
+Connaissance
+Conscience
+Conseil
+Construction
+Continuité
+Contrat
+Contrôle
+Convergence
+Coopération
+Coordination
+Corne
+Corruption
+Cryostase
+Culture
+Curiosité
+Demi-Beastkin
+Demi-Elfe
+Demi-Gnome
+Demi-Nain
+Dextérité
+Diagnostic
+Diaspora
+Diplomatie
+Discrétion
+Duplicat
+Découverte
+Défense
+Défense numérique
+Démolition
+Déplacement
+Déplacement forcé
+Détection
+Effort
+Elfe
+Elman
+Embuscade
+Encombrement
+Endurance
+Environnement
+Esman
+Exode
+Exploration
+Expression parentale
+Fabrication
+Feu-follet
+Filature
+Flux
+Force
+Formation
+Fortune
+Fusion
+Félin
+Garde
+Gnome
+Gravité
+Guérison
+Général
+Humain
+Héritage
+IAA
+Identité
+Illusion
+Impact
+Improvisation
+Incarnée
+Informatique
+Ingénierie
+Initiative
+Innée
+Instinct
+Institution
+Interaction
+Interface
+Intimidation
+Inventaire
+Invention
+Investigation
+Langage
+Langue
+Libération
+Linguistique
+Logistique
+Loup
+Lumière
+Légendaire
+Lézard
+Magie
+Maintenance
+Mana
+Manipulation
+Manœuvre
+Masse
+Maîtrise
+Mental
+Minage
+Mobilité
+Module
+Morphologie
+Mouvement
+Mutation
+Mythique
+Médecine
+Mémoire
+Métabolisme
+Métamorphose
+Méthode
+Mêlée
+Nage
+Nain
+Nature
+Navigation
+Noyau
+Observation
+Odorat
+Orientation
+Ours
+Outil
+Partenariat
+Passion
+Perception
+Petit
+Physiologie
+Physiologie artificielle
+Physique
+Pilotage
+Pistage
+Poison
+Positionnement
+Possession
+Poste
+Posture
+Posture corporelle
+Poursuite
+Prana
+Protection
+Prototype
+Précepte
+Précision
+Prédation
+Préparation
+Présence
+Queue
+Rechargement
+Recherche
+Renard
+Repos
+Respiration
+Ressource
+Risque
+Rituel
+Ruse
+Réaction
+Récupération
+Réflexes
+Réparation
+Répliquée
+Réseau
+Réserve
+Résilience
+Résistance
+Saignement
+Sang-froid
+Sauvegarde
+Sauvetage
+Sciences
+Serment
+Social
+Soin
+Soins
+Souris
+Soutien
+Spiritualité
+Spécialisation
+Spécialité
+Stabilisation
+Stabilité
+Stress
+Structure
+Surcharge
+Surmenage
+Survie
+Synchronisation
+Synthèse
+Systèmes de vaisseau
+Sécurité
+Tactique
+Technique
+Techno-magie
+Techno-magique
+Technologie
+Temps
+Territoire
+Thermique
+Tir
+Traces
+Tradition
+Traitement
+Transcendance
+Transfert
+Transformation
+Traumatisme
+Travail d'équipe
+Tromperie
+Téléportation
+Utilitaire
+UV
+Vaisseau
+Vampirique
+Vibration
+Vigilance
+Vigueur
+Visuel
+Visée
+Vitalité
+Vivant
+Voie
+Volonté
+Voyage
+Vulpin
+Xénologie
+Zone
+Âge
+Écarlate
+Échantillon
+Élément
+Émotion
+Énergie
+Équilibre
+Équipage
+Équipement
+Évolution
+`.trim().split("\n");
+function traitId(label) {
+	return label.normalize("NFKD").replace(/\p{M}/gu, "").toLocaleLowerCase("fr-FR").replace(/[’']/gu, "-").replace(/[^a-z0-9]+/gu, "-").replace(/^-+|-+$/gu, "");
+}
+var TRAIT_CATALOG = CANONICAL_TRAIT_LABELS.map((label) => ({
+	id: traitId(label),
+	label
+}));
+var TRAIT_LABEL_BY_ID = new Map(TRAIT_CATALOG.map(({ id, label }) => [id, label]));
+var TRAIT_ID_BY_LABEL = new Map(TRAIT_CATALOG.map(({ id, label }) => [label.toLocaleLowerCase("fr-FR"), id]));
+function normalizeTraitIds(value) {
+	if (!Array.isArray(value)) return [];
+	const normalized = value.filter((entry) => typeof entry === "string").map((entry) => entry.trim()).filter(Boolean).map((entry) => {
+		if (TRAIT_LABEL_BY_ID.has(entry)) return entry;
+		return TRAIT_ID_BY_LABEL.get(entry.toLocaleLowerCase("fr-FR")) ?? entry;
+	});
+	return Array.from(new Set(normalized));
+}
+function traitLabel(value) {
+	return TRAIT_LABEL_BY_ID.get(value) ?? value;
+}
+function traitChoices(selected) {
+	const values = normalizeTraitIds(selected);
+	const canonical = TRAIT_CATALOG.map(({ id, label }) => ({
+		value: id,
+		label,
+		selected: values.includes(id),
+		legacy: false
+	}));
+	const legacy = values.filter((value) => !TRAIT_LABEL_BY_ID.has(value)).map((value) => ({
+		value,
+		label: `${value} — ancien trait`,
+		selected: true,
+		legacy: true
+	}));
+	return [...canonical, ...legacy];
+}
+//#endregion
 //#region src/data/item-defaults.ts
 var PHYSICAL_ITEM_TYPES = [
 	"weapon",
@@ -422,6 +808,9 @@ function initialItemProvenance() {
 		manualOverrides: [],
 		upgradeState: "unknown"
 	};
+}
+function initialItemPermissions() {
+	return { playerEditableDescription: false };
 }
 function initialPhysicalState() {
 	return {
@@ -517,7 +906,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 		...source,
 		meta: {
 			...meta,
-			schemaVersion: "3",
+			schemaVersion: "4",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
 			contentVersion: text(meta.contentVersion, "1.0.0") || "1.0.0",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
@@ -529,7 +918,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			tags: stringArray(meta.tags)
 		},
 		description: text(source.description),
-		traits: stringArray(source.traits),
+		traits: normalizeTraitIds(source.traits),
 		requirementRefs: referenceArray(source.requirementRefs),
 		effectRefs: referenceArray(source.effectRefs),
 		level: finiteNumber(source.level, null, 1, 30),
@@ -545,6 +934,11 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			sourceRefs: referenceArray(referencePrice.sourceRefs)
 		},
 		manufacturerRef: normalizeReference(source.manufacturerRef),
+		permissions: {
+			...initialItemPermissions(),
+			...record(source.permissions),
+			playerEditableDescription: record(source.permissions).playerEditableDescription === true
+		},
 		provenance: {
 			...initialItemProvenance(),
 			...provenance,
@@ -646,7 +1040,7 @@ function itemMetaField() {
 		schemaVersion: new fields$1.StringField({
 			required: true,
 			blank: false,
-			initial: "3"
+			initial: "4"
 		}),
 		rulesVersion: new fields$1.StringField({
 			required: true,
@@ -801,11 +1195,12 @@ var RelisItemData = class extends foundry.abstract.TypeDataModel {
 				sourceRefs: referenceArrayField$1()
 			}),
 			manufacturerRef: referenceField$1(),
+			permissions: new fields$1.SchemaField({ playerEditableDescription: new fields$1.BooleanField({
+				required: true,
+				initial: false
+			}) }),
 			provenance: provenanceField()
 		};
-	}
-	static migrateData(source) {
-		return normalizeItemSystem(source, this.isPhysical);
 	}
 	prepareDerivedData() {
 		super.prepareDerivedData();
@@ -878,7 +1273,7 @@ function metaField() {
 		schemaVersion: new fields.StringField({
 			required: true,
 			blank: false,
-			initial: "3"
+			initial: "4"
 		}),
 		rulesVersion: new fields.StringField({
 			required: true,
@@ -1528,7 +1923,7 @@ var PersonData = class extends ReservedData {
 	static migrateData(source) {
 		normalizePersonSource(source);
 		source.meta ??= {};
-		source.meta.schemaVersion = "3";
+		source.meta.schemaVersion = "4";
 		source.health ??= {};
 		source.health.hitPoints ??= {
 			current: 10,
@@ -2127,7 +2522,7 @@ function worldItems() {
 }
 async function migrateItemCore() {
 	if (!game.user?.isGM) return 0;
-	const migrationId = `10-E1-P-schema-3`;
+	const migrationId = `10-E1-P-schema-4`;
 	if ((game.settings.get("relis", "migrations.state") ?? {}).lastMigrationId === migrationId) return 0;
 	const items = worldItems();
 	for (const item of items) {
@@ -2374,7 +2769,7 @@ var HIDDEN_SETTINGS = [
 		scope: "world",
 		config: false,
 		type: String,
-		default: "3"
+		default: "4"
 	},
 	{
 		key: "versions.rules",
@@ -2901,6 +3296,38 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		const context = await super._prepareContext(optionsValue);
 		const system = this.item.system;
 		const hasPhysical = isPhysicalItemType(this.item.type);
+		const applicability = itemFieldApplicability(this.item.type);
+		const canEditDescription = Boolean(this.item.isOwner && (game.user?.isGM || system.permissions?.playerEditableDescription));
+		const canManageDescriptionPermission = Boolean(this.item.isOwner && game.user?.isGM);
+		const canEditTraits = Boolean(this.item.isOwner);
+		const selectedTraitIds = normalizeTraitIds(system.traits);
+		const choices = traitChoices(selectedTraitIds);
+		const description = String(system.description ?? "");
+		const enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(description, {
+			async: true,
+			relativeTo: this.item,
+			secrets: this.item.isOwner
+		});
+		const descriptionEditor = foundry.applications.elements.HTMLProseMirrorElement.create({
+			name: "system.description",
+			value: description,
+			enriched: enrichedDescription,
+			toggled: true,
+			documentUUID: this.item.uuid,
+			collaborate: false,
+			height: 260,
+			disabled: !canEditDescription,
+			classes: "relis-description-editor",
+			dataset: { descriptionEditor: "true" }
+		}).outerHTML;
+		const traitSelector = canEditTraits ? foundry.applications.elements.HTMLMultiSelectElement.create({
+			name: "system.traits",
+			value: selectedTraitIds,
+			choices: Object.fromEntries(choices.map(({ value, label }) => [value, label])),
+			disabled: false,
+			classes: "relis-trait-selector",
+			dataset: { traitSelector: "true" }
+		}).outerHTML : "";
 		const sourceRef = system.meta?.sourceRef ?? {};
 		const hasSourceRef = Boolean(sourceRef.relisId || sourceRef.uuid);
 		let sourceDocument = null;
@@ -2959,14 +3386,24 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			itemTypeLabel: game.i18n.localize(`TYPES.Item.${this.item.type}`),
 			system,
 			editable: this.item.isOwner,
+			canEditDescription,
+			canManageDescriptionPermission,
+			canEditTraits,
+			descriptionEditor,
+			traitSelector,
+			selectedTraits: selectedTraitIds.map((value) => ({
+				value,
+				label: traitLabel(value)
+			})),
 			isAction: this.item.type === "action",
 			hasPhysical,
+			applicability,
+			hasCatalog: hasCatalogFields(applicability),
 			hasSourceRef,
 			itemRole: this.item.parent ? hasSourceRef ? "Exemplaire lié à une source" : "Exemplaire autonome" : "Source ou modèle de monde",
 			badges,
 			diagnostics,
 			manualOverrides,
-			traitsText: Array.from(system.traits ?? []).join(", "),
 			requirementCount: Number(system.requirementRefs?.length ?? 0),
 			effectRefCount: Number(system.effectRefs?.length ?? 0),
 			physicalTotals: hasPhysical ? physicalTotals(system.physical) : null,
@@ -3012,12 +3449,24 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			if (!path) return;
 			this.item.update({ [path]: fieldValue(element) });
 		});
-		for (const element of root.querySelectorAll("[data-array-field]")) element.addEventListener("change", () => {
+		root.querySelector("[data-description-editor]")?.addEventListener("save", (event) => {
+			if (!context.canEditDescription) return;
+			const value = String(event.currentTarget.value ?? "");
+			this.item.update({ "system.description": value });
+		});
+		root.querySelector("[data-trait-selector]")?.addEventListener("change", (event) => {
+			if (!context.canEditTraits) return;
+			const value = event.currentTarget.value;
+			this.item.update({ "system.traits": normalizeTraitIds(value instanceof Set ? Array.from(value) : value) });
+		});
+		root.querySelector("[data-action='edit-image']")?.addEventListener("click", () => {
 			if (!this.item.isOwner) return;
-			const path = element.dataset.arrayField;
-			if (!path) return;
-			const values = Array.from(new Set(element.value.split(/[\n,]/u).map((value) => value.trim()).filter(Boolean)));
-			this.item.update({ [path]: values });
+			const FilePicker = foundry.applications.apps.FilePicker.implementation;
+			new FilePicker({
+				type: "image",
+				current: this.item.img,
+				callback: (path) => this.item.update({ img: path })
+			}).render({ force: true });
 		});
 		root.querySelector("[data-action='test-item']")?.addEventListener("click", () => {
 			const actor = this.item.parent;

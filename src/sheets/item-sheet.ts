@@ -6,6 +6,13 @@ import {
   isPhysicalItemType,
   physicalTotals,
 } from "../data/item-defaults";
+import {
+  hasCatalogFields,
+  itemFieldApplicability,
+  normalizeTraitIds,
+  traitChoices,
+  traitLabel,
+} from "../data/item-catalog";
 import { ATTRIBUTE_LABELS, MASTERY_LABELS, SKILL_DEFINITIONS } from "../config";
 import type { RelisActor } from "../documents/actor";
 
@@ -77,6 +84,52 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const context = await super._prepareContext(optionsValue);
     const system = this.item.system;
     const hasPhysical = isPhysicalItemType(this.item.type);
+    const applicability = itemFieldApplicability(this.item.type);
+    const canEditDescription = Boolean(
+      this.item.isOwner &&
+      (game.user?.isGM || system.permissions?.playerEditableDescription),
+    );
+    const canManageDescriptionPermission = Boolean(
+      this.item.isOwner && game.user?.isGM,
+    );
+    const canEditTraits = Boolean(this.item.isOwner);
+    const selectedTraitIds = normalizeTraitIds(system.traits);
+    const choices = traitChoices(selectedTraitIds);
+    const description = String(system.description ?? "");
+    const enrichedDescription =
+      await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+        description,
+        {
+          async: true,
+          relativeTo: this.item,
+          secrets: this.item.isOwner,
+        },
+      );
+    const descriptionEditor =
+      foundry.applications.elements.HTMLProseMirrorElement.create({
+        name: "system.description",
+        value: description,
+        enriched: enrichedDescription,
+        toggled: true,
+        documentUUID: this.item.uuid,
+        collaborate: false,
+        height: 260,
+        disabled: !canEditDescription,
+        classes: "relis-description-editor",
+        dataset: { descriptionEditor: "true" },
+      }).outerHTML;
+    const traitSelector = canEditTraits
+      ? foundry.applications.elements.HTMLMultiSelectElement.create({
+          name: "system.traits",
+          value: selectedTraitIds,
+          choices: Object.fromEntries(
+            choices.map(({ value, label }) => [value, label]),
+          ),
+          disabled: false,
+          classes: "relis-trait-selector",
+          dataset: { traitSelector: "true" },
+        }).outerHTML
+      : "";
     const sourceRef = system.meta?.sourceRef ?? {};
     const hasSourceRef = Boolean(sourceRef.relisId || sourceRef.uuid);
     let sourceDocument: Item | null = null;
@@ -173,8 +226,19 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       itemTypeLabel: game.i18n.localize(`TYPES.Item.${this.item.type}`),
       system,
       editable: this.item.isOwner,
+      canEditDescription,
+      canManageDescriptionPermission,
+      canEditTraits,
+      descriptionEditor,
+      traitSelector,
+      selectedTraits: selectedTraitIds.map((value) => ({
+        value,
+        label: traitLabel(value),
+      })),
       isAction: this.item.type === "action",
       hasPhysical,
+      applicability,
+      hasCatalog: hasCatalogFields(applicability),
       hasSourceRef,
       itemRole: this.item.parent
         ? hasSourceRef
@@ -184,7 +248,6 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       badges,
       diagnostics,
       manualOverrides,
-      traitsText: Array.from(system.traits ?? []).join(", "),
       requirementCount: Number(system.requirementRefs?.length ?? 0),
       effectRefCount: Number(system.effectRefs?.length ?? 0),
       physicalTotals: hasPhysical ? physicalTotals(system.physical) : null,
@@ -244,24 +307,36 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         void this.item.update({ [path]: fieldValue(element) });
       });
     }
-    for (const element of root.querySelectorAll<HTMLTextAreaElement>(
-      "[data-array-field]",
-    )) {
-      element.addEventListener("change", () => {
-        if (!this.item.isOwner) return;
-        const path = element.dataset.arrayField;
-        if (!path) return;
-        const values = Array.from(
-          new Set(
-            element.value
-              .split(/[\n,]/u)
-              .map((value) => value.trim())
-              .filter(Boolean),
-          ),
-        );
-        void this.item.update({ [path]: values });
+    root
+      .querySelector<HTMLElement>("[data-description-editor]")
+      ?.addEventListener("save", (event) => {
+        if (!context.canEditDescription) return;
+        const value = String((event.currentTarget as any).value ?? "");
+        void this.item.update({ "system.description": value });
       });
-    }
+    root
+      .querySelector<HTMLElement>("[data-trait-selector]")
+      ?.addEventListener("change", (event) => {
+        if (!context.canEditTraits) return;
+        const value = (event.currentTarget as any).value;
+        void this.item.update({
+          "system.traits": normalizeTraitIds(
+            value instanceof Set ? Array.from(value) : value,
+          ),
+        });
+      });
+    root
+      .querySelector<HTMLButtonElement>("[data-action='edit-image']")
+      ?.addEventListener("click", () => {
+        if (!this.item.isOwner) return;
+        const FilePicker = foundry.applications.apps.FilePicker.implementation;
+        const picker = new FilePicker({
+          type: "image",
+          current: this.item.img,
+          callback: (path: string) => this.item.update({ img: path }),
+        });
+        void picker.render({ force: true });
+      });
     root
       .querySelector<HTMLButtonElement>("[data-action='test-item']")
       ?.addEventListener("click", () => {

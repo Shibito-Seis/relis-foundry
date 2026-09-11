@@ -5,7 +5,6 @@ import {
   LEGALITY_STATES,
   QUANTITY_UNITS,
   UPGRADE_STATES,
-  normalizeItemSystem,
   physicalTotals,
 } from "./item-defaults";
 
@@ -211,12 +210,14 @@ export class RelisItemData extends foundry.abstract.TypeDataModel {
         sourceRefs: referenceArrayField(),
       }),
       manufacturerRef: referenceField(),
+      permissions: new fields.SchemaField({
+        playerEditableDescription: new fields.BooleanField({
+          required: true,
+          initial: false,
+        }),
+      }),
       provenance: provenanceField(),
     };
-  }
-
-  static migrateData(source: Record<string, any>): Record<string, any> {
-    return normalizeItemSystem(source, this.isPhysical);
   }
 
   prepareDerivedData(): void {

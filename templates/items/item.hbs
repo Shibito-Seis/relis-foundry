@@ -3,9 +3,18 @@
   data-document-id="{{item.id}}"
 >
   <header class="relis-item-header">
-    <div class="relis-item-icon">
+    <button
+      class="relis-item-icon"
+      type="button"
+      data-action="edit-image"
+      title="Choisir l’illustration"
+      aria-label="Choisir l’illustration de {{item.name}}"
+    >
       <img src="{{item.img}}" alt="Illustration de {{item.name}}" />
-    </div>
+      <span class="relis-item-icon-action" aria-hidden="true">
+        <i class="fa-solid fa-image"></i>
+      </span>
+    </button>
     <div class="relis-item-heading">
       <p class="relis-kicker">RE:LIS — {{itemTypeLabel}}</p>
       <input
@@ -14,10 +23,20 @@
         value="{{item.name}}"
         data-document-field="name"
       />
-      <label class="relis-item-image-path">
-        Illustration
-        <input type="text" value="{{item.img}}" data-document-field="img" />
-      </label>
+      <div class="relis-trait-bar" aria-label="Traits de l’Item">
+        <span class="relis-trait-bar-label">Traits</span>
+        {{#if canEditTraits}}
+          {{{traitSelector}}}
+        {{else}}
+          <div class="relis-trait-readonly">
+            {{#each selectedTraits}}
+              <span class="relis-trait-chip">{{this.label}}</span>
+            {{else}}
+              <span class="relis-trait-empty">Aucun trait</span>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
     </div>
     <div class="relis-item-badges" aria-label="État de l’Item">
       {{#each badges}}
@@ -38,143 +57,162 @@
   {{/if}}
 
   <div class="relis-item-layout">
-    <section class="relis-card relis-card--wide">
+    <section class="relis-card relis-item-description-card">
       <p class="relis-kicker">Contenu commun</p>
-      <h2>Description et traits</h2>
-      <label class="relis-item-description">
-        Description
-        <textarea
-          data-document-field="system.description"
-        >{{system.description}}</textarea>
-      </label>
-      <label>
-        Traits
-        <small>séparés par une virgule ou un retour à la ligne</small>
-        <textarea data-array-field="system.traits">{{traitsText}}</textarea>
-      </label>
+      <div class="relis-section-heading relis-description-heading">
+        <h2>Description</h2>
+        {{#if canManageDescriptionPermission}}
+          <label class="relis-description-permission">
+            <input
+              type="checkbox"
+              {{checked system.permissions.playerEditableDescription}}
+              data-value-type="boolean"
+              data-document-field="system.permissions.playerEditableDescription"
+            />
+            Autoriser le propriétaire PJ à modifier
+          </label>
+        {{/if}}
+      </div>
+      <div class="relis-item-description">
+        {{{descriptionEditor}}}
+      </div>
       <div class="relis-item-ref-summary">
         <span>{{requirementCount}} prérequis référencé(s)</span>
         <span>{{effectRefCount}} effet(s) référencé(s)</span>
       </div>
     </section>
 
-    <section class="relis-card">
-      <p class="relis-kicker">Valeurs stables</p>
-      <h2>Catalogue</h2>
-      <div class="relis-grid relis-grid--form relis-item-form">
-        <label>
-          Niveau
-          <input
-            type="number"
-            min="1"
-            max="30"
-            value="{{system.level}}"
-            data-value-type="nullable-number"
-            data-document-field="system.level"
-          />
-        </label>
-        <label>
-          Qualité
-          <select
-            data-document-field="system.quality"
-            data-value-type="nullable-number"
-          >
-            {{selectOptions
-              qualityOptions
-              selected=system.quality
-              valueAttr="value"
-              labelAttr="label"
-            }}
-          </select>
-        </label>
-        <label>
-          Rareté
-          <select
-            data-document-field="system.rarity"
-            data-value-type="nullable-number"
-          >
-            {{selectOptions
-              rarityOptions
-              selected=system.rarity
-              valueAttr="value"
-              labelAttr="label"
-            }}
-          </select>
-        </label>
-        <label>
-          Légalité
-          <select data-document-field="system.legality">
-            {{selectOptions
-              legalityOptions
-              selected=system.legality
-              valueAttr="value"
-              labelAttr="label"
-            }}
-          </select>
-        </label>
-        <label>
-          Fabricant — identifiant durable
-          <input
-            type="text"
-            value="{{system.manufacturerRef.relisId}}"
-            data-document-field="system.manufacturerRef.relisId"
-          />
-        </label>
-        <label>
-          Fabricant — libellé mémorisé
-          <input
-            type="text"
-            value="{{system.manufacturerRef.labelSnapshot}}"
-            data-document-field="system.manufacturerRef.labelSnapshot"
-          />
-        </label>
-      </div>
-      <h2>Prix de référence</h2>
-      <p class="relis-scope-note">
-        Valeur de catalogue uniquement. Les devis datés et locaux appartiennent
-        aux marchés de 10-J.
-      </p>
-      <div class="relis-grid relis-grid--form relis-item-form">
-        <label>
-          Montant
-          <input
-            type="number"
-            min="0"
-            step="any"
-            value="{{system.referencePrice.amount}}"
-            data-value-type="nullable-number"
-            data-document-field="system.referencePrice.amount"
-          />
-        </label>
-        <label>
-          Pour une quantité de
-          <input
-            type="number"
-            min="0.000001"
-            step="any"
-            value="{{system.referencePrice.quantityBasis}}"
-            data-value-type="number"
-            data-document-field="system.referencePrice.quantityBasis"
-          />
-        </label>
-        <label>
-          Unité de prix
-          <input
-            type="text"
-            value="{{system.referencePrice.unit}}"
-            data-document-field="system.referencePrice.unit"
-          />
-        </label>
-        <label>
-          Monnaie — identifiant durable
-          <input
-            type="text"
-            value="{{system.referencePrice.currencyRef.relisId}}"
-            data-document-field="system.referencePrice.currencyRef.relisId"
-          />
-        </label>
-      </div>
-    </section>
+    {{#if hasCatalog}}
+      <section class="relis-card">
+        <p class="relis-kicker">Valeurs stables</p>
+        <h2>Catalogue</h2>
+        <div class="relis-grid relis-grid--form relis-item-form">
+          {{#if applicability.level}}
+            <label>
+              Niveau
+              <input
+                type="number"
+                min="1"
+                max="30"
+                value="{{system.level}}"
+                data-value-type="nullable-number"
+                data-document-field="system.level"
+              />
+            </label>
+          {{/if}}
+          {{#if applicability.quality}}
+            <label>
+              Qualité
+              <select
+                data-document-field="system.quality"
+                data-value-type="nullable-number"
+              >
+                {{selectOptions
+                  qualityOptions
+                  selected=system.quality
+                  valueAttr="value"
+                  labelAttr="label"
+                }}
+              </select>
+            </label>
+          {{/if}}
+          {{#if applicability.rarity}}
+            <label>
+              Rareté
+              <select
+                data-document-field="system.rarity"
+                data-value-type="nullable-number"
+              >
+                {{selectOptions
+                  rarityOptions
+                  selected=system.rarity
+                  valueAttr="value"
+                  labelAttr="label"
+                }}
+              </select>
+            </label>
+          {{/if}}
+          {{#if applicability.legality}}
+            <label>
+              Légalité
+              <select data-document-field="system.legality">
+                {{selectOptions
+                  legalityOptions
+                  selected=system.legality
+                  valueAttr="value"
+                  labelAttr="label"
+                }}
+              </select>
+            </label>
+          {{/if}}
+          {{#if applicability.manufacturer}}
+            <label>
+              Fabricant — identifiant durable
+              <input
+                type="text"
+                value="{{system.manufacturerRef.relisId}}"
+                data-document-field="system.manufacturerRef.relisId"
+              />
+            </label>
+            <label>
+              Fabricant — libellé mémorisé
+              <input
+                type="text"
+                value="{{system.manufacturerRef.labelSnapshot}}"
+                data-document-field="system.manufacturerRef.labelSnapshot"
+              />
+            </label>
+          {{/if}}
+        </div>
+        {{#if applicability.referencePrice}}
+          <h2>Prix de référence</h2>
+          <p class="relis-scope-note">
+            Valeur de catalogue uniquement. Les devis datés et locaux
+            appartiennent aux marchés de 10-J.
+          </p>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>
+              Montant
+              <input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.referencePrice.amount}}"
+                data-value-type="nullable-number"
+                data-document-field="system.referencePrice.amount"
+              />
+            </label>
+            <label>
+              Pour une quantité de
+              <input
+                type="number"
+                min="0.000001"
+                step="any"
+                value="{{system.referencePrice.quantityBasis}}"
+                data-value-type="number"
+                data-document-field="system.referencePrice.quantityBasis"
+              />
+            </label>
+            <label>
+              Unité de prix
+              <input
+                type="text"
+                value="{{system.referencePrice.unit}}"
+                data-document-field="system.referencePrice.unit"
+              />
+            </label>
+            <label>
+              Monnaie — identifiant durable
+              <input
+                type="text"
+                value="{{system.referencePrice.currencyRef.relisId}}"
+                data-document-field="system.referencePrice.currencyRef.relisId"
+              />
+            </label>
+          </div>
+        {{/if}}
+      </section>
+    {{/if}}
 
     {{#if hasPhysical}}
       <section class="relis-card">
@@ -460,6 +498,6 @@
   </div>
 
   <footer class="relis-sheet-footer">
-    Étape 10-E1-P · noyau commun des Items · paquet 0.3.0
+    Étape 10-E1-P · correctif du noyau commun des Items · paquet 0.3.1
   </footer>
 </section>

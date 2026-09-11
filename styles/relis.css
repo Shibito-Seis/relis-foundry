@@ -739,15 +739,25 @@
 }
 
 .relis-item-icon {
+  position: relative;
   display: grid;
   place-items: center;
   width: 5.25rem;
   height: 5.25rem;
+  padding: 0;
   overflow: hidden;
   border: 2px solid var(--relis-cyan-soft);
   border-radius: 50%;
   background: var(--relis-night);
+  color: var(--relis-ink);
+  cursor: pointer;
   box-shadow: 0 0 0.7rem rgb(49 215 242 / 38%);
+}
+
+.relis-item-icon:hover:not(:disabled),
+.relis-item-icon:focus-visible {
+  border-color: #fff;
+  box-shadow: 0 0 1rem rgb(49 215 242 / 65%);
 }
 
 .relis-item-icon img {
@@ -756,18 +766,76 @@
   object-fit: cover;
 }
 
+.relis-item-icon-action {
+  position: absolute;
+  right: 0.15rem;
+  bottom: 0.15rem;
+  display: grid;
+  place-items: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  border: 1px solid var(--relis-cyan-soft);
+  border-radius: 50%;
+  background: rgb(5 20 30 / 92%);
+  color: var(--relis-cyan-soft);
+  font-size: 0.68rem;
+}
+
 .relis-item-heading {
   min-width: 0;
 }
 
-.relis-item-image-path {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+.relis-trait-bar {
+  display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   margin-top: 0.35rem;
+  min-width: 0;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgb(135 242 255 / 18%);
+}
+
+.relis-trait-bar-label {
+  flex: 0 0 auto;
   color: var(--relis-muted);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.relis-trait-selector {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.relis-trait-selector select {
+  min-width: 9rem;
+  color: var(--relis-ink);
+  background: var(--relis-input);
+}
+
+.relis-trait-readonly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.relis-trait-chip,
+.relis-trait-empty {
+  padding: 0.18rem 0.42rem;
+  border: 1px solid var(--relis-line);
+  border-radius: 999px;
+  background: rgb(9 28 40 / 88%);
+  color: var(--relis-cyan-soft);
+  font-size: 0.68rem;
+  line-height: 1.2;
+}
+
+.relis-trait-empty {
+  color: var(--relis-muted);
+  font-style: italic;
 }
 
 .relis-item-badges {
@@ -798,13 +866,60 @@
   gap: 0.75rem;
 }
 
+.relis-item-description-card {
+  grid-column: 1 / -1;
+}
+
 .relis-item-form input,
 .relis-item-form select {
   width: 100%;
 }
 
-.relis-item-description textarea {
+.relis-description-heading {
+  margin-bottom: 0.45rem;
+}
+
+.relis-description-permission {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.35rem !important;
+  color: var(--relis-muted);
+  font-size: 0.7rem;
+  font-weight: 500 !important;
+}
+
+.relis-description-permission input {
+  width: auto;
+}
+
+.relis-item-description {
   min-height: 8rem;
+  padding: 0.55rem;
+  border: 1px solid var(--relis-line);
+  border-radius: 4px;
+  background: rgb(5 20 30 / 72%);
+}
+
+.relis-item-description prose-mirror,
+.relis-item-description .relis-description-editor {
+  display: block;
+  min-height: 7rem;
+}
+
+.relis-item-description .editor-content {
+  min-height: 7rem;
+  padding: 0.35rem;
+  color: var(--relis-ink);
+  line-height: 1.5;
+}
+
+.relis-item-description .editor-content > :first-child {
+  margin-top: 0;
+}
+
+.relis-item-description .editor-content > :last-child {
+  margin-bottom: 0;
 }
 
 .relis-item-ref-summary,
