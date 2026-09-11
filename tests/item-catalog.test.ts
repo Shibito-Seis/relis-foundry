@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import { ITEM_TYPES } from "../src/config";
 import {
   ITEM_FIELD_APPLICABILITY,
+  QUALITY_GRADE_LABELS,
+  STRUCTURAL_RARITY_LABELS,
   TRAIT_CATALOG,
   hasCatalogFields,
   itemFieldApplicability,
@@ -9,7 +11,7 @@ import {
   traitChoices,
 } from "../src/data/item-catalog";
 
-describe("présentation conditionnelle des Items 0.3.1", () => {
+describe("présentation conditionnelle des Items 0.3.2", () => {
   it("déclare explicitement l’applicabilité des 26 types", () => {
     expect(Object.keys(ITEM_FIELD_APPLICABILITY).sort()).toEqual(
       [...ITEM_TYPES].sort(),
@@ -61,5 +63,25 @@ describe("présentation conditionnelle des Items 0.3.1", () => {
         ({ value }) => value === "ancien libre",
       ),
     ).toMatchObject({ selected: true, legacy: true });
+  });
+
+  it("affiche les noms de qualité et de rareté sans changer leurs grades", () => {
+    expect(QUALITY_GRADE_LABELS).toEqual([
+      "Improvisée",
+      "Rustique",
+      "Standard",
+      "Précision",
+      "Supérieure",
+      "Exceptionnelle",
+    ]);
+    expect(STRUCTURAL_RARITY_LABELS).toEqual([
+      "Ubiquitaire",
+      "Commune",
+      "Spécialisée",
+      "Peu commune",
+      "Rare",
+      "Exceptionnelle",
+      "Singulière",
+    ]);
   });
 });

@@ -26,7 +26,19 @@
       <div class="relis-trait-bar" aria-label="Traits de l’Item">
         <span class="relis-trait-bar-label">Traits</span>
         {{#if canEditTraits}}
-          {{{traitSelector}}}
+          <multi-select
+            class="relis-trait-selector"
+            name="system.traits"
+            data-trait-selector
+          >
+            {{#each traitOptions}}
+              {{#if this.selected}}
+                <option value="{{this.value}}" selected>{{this.label}}</option>
+              {{else}}
+                <option value="{{this.value}}">{{this.label}}</option>
+              {{/if}}
+            {{/each}}
+          </multi-select>
         {{else}}
           <div class="relis-trait-readonly">
             {{#each selectedTraits}}
@@ -498,6 +510,6 @@
   </div>
 
   <footer class="relis-sheet-footer">
-    Étape 10-E1-P · correctif du noyau commun des Items · paquet 0.3.1
+    Étape 10-E1-P · correctif d’interface des Items · paquet 0.3.2
   </footer>
 </section>

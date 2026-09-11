@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.3.2 — correctif d’interface des Items 10-E1-P
+
+- Rendu explicite des options du sélecteur multiple : le catalogue canonique
+  des Traits est désormais réellement visible dans Foundry.
+- Correction du contraste du contenu ProseMirror pendant la saisie, sans
+  modifier les descriptions déjà enregistrées.
+- Affichage des noms de Qualité et de Rareté à la place des codes `Q-*` et
+  `RAR-M *`, avec conservation des grades numériques dans les données.
+- Aucun changement de schéma : les Items et Actors créés en 0.3.1 restent
+  compatibles sans migration supplémentaire.
+
 ## 0.3.1 — correctif bloquant des Items 10-E1-P
 
 - Suppression de la migration de modèle appliquée à tort aux mises à jour

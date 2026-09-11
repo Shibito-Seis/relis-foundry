@@ -159,6 +159,21 @@ assert.match(
   /system\.physical\.volumeEach/,
   "Volume physique absent de la fiche Item",
 );
+assert.match(
+  itemTemplate,
+  /<multi-select[\s\S]*?\{\{#each traitOptions\}\}[\s\S]*?<option/,
+  "Options explicites du sélecteur de Traits absentes",
+);
+assert.doesNotMatch(
+  itemTemplate,
+  /\{\{\{traitSelector\}\}\}/,
+  "Ancien sélecteur de Traits sérialisé encore présent",
+);
+assert.match(
+  styles,
+  /\.relis-item-description prose-mirror \.ProseMirror[\s\S]*?color: var\(--relis-ink\) !important;/,
+  "Contraste de saisie ProseMirror non garanti",
+);
 
 for (const relativePath of [
   ...manifest.esmodules,

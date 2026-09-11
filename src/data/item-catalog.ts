@@ -9,6 +9,30 @@ export interface ItemFieldApplicability {
   referencePrice: boolean;
 }
 
+/**
+ * Human-readable labels for the numeric values stored by the shared Item
+ * schema. Codes remain an implementation detail and are never used as UI
+ * labels.
+ */
+export const QUALITY_GRADE_LABELS = [
+  "Improvisée",
+  "Rustique",
+  "Standard",
+  "Précision",
+  "Supérieure",
+  "Exceptionnelle",
+] as const;
+
+export const STRUCTURAL_RARITY_LABELS = [
+  "Ubiquitaire",
+  "Commune",
+  "Spécialisée",
+  "Peu commune",
+  "Rare",
+  "Exceptionnelle",
+  "Singulière",
+] as const;
+
 const NONE: ItemFieldApplicability = {
   level: false,
   quality: false,

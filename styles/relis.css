@@ -914,6 +914,21 @@
   line-height: 1.5;
 }
 
+.relis-item-description prose-mirror .ProseMirror,
+.relis-item-description .relis-description-editor .ProseMirror,
+.relis-item-description .prosemirror .ProseMirror {
+  min-height: 7rem;
+  color: var(--relis-ink) !important;
+  caret-color: var(--relis-cyan-soft);
+}
+
+.relis-item-description prose-mirror .ProseMirror p,
+.relis-item-description prose-mirror .ProseMirror li,
+.relis-item-description .relis-description-editor .ProseMirror p,
+.relis-item-description .relis-description-editor .ProseMirror li {
+  color: inherit !important;
+}
+
 .relis-item-description .editor-content > :first-child {
   margin-top: 0;
 }

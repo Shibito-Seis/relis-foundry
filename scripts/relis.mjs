@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.3.1";
+var PACKAGE_VERSION = "0.3.2";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -345,6 +345,28 @@ function createRelisId(now = Date.now()) {
 }
 //#endregion
 //#region src/data/item-catalog.ts
+/**
+* Human-readable labels for the numeric values stored by the shared Item
+* schema. Codes remain an implementation detail and are never used as UI
+* labels.
+*/
+var QUALITY_GRADE_LABELS = [
+	"Improvisée",
+	"Rustique",
+	"Standard",
+	"Précision",
+	"Supérieure",
+	"Exceptionnelle"
+];
+var STRUCTURAL_RARITY_LABELS = [
+	"Ubiquitaire",
+	"Commune",
+	"Spécialisée",
+	"Peu commune",
+	"Rare",
+	"Exceptionnelle",
+	"Singulière"
+];
 var NONE = {
 	level: false,
 	quality: false,
@@ -3301,7 +3323,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		const canManageDescriptionPermission = Boolean(this.item.isOwner && game.user?.isGM);
 		const canEditTraits = Boolean(this.item.isOwner);
 		const selectedTraitIds = normalizeTraitIds(system.traits);
-		const choices = traitChoices(selectedTraitIds);
+		const traitOptions = traitChoices(selectedTraitIds);
 		const description = String(system.description ?? "");
 		const enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(description, {
 			async: true,
@@ -3320,14 +3342,6 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			classes: "relis-description-editor",
 			dataset: { descriptionEditor: "true" }
 		}).outerHTML;
-		const traitSelector = canEditTraits ? foundry.applications.elements.HTMLMultiSelectElement.create({
-			name: "system.traits",
-			value: selectedTraitIds,
-			choices: Object.fromEntries(choices.map(({ value, label }) => [value, label])),
-			disabled: false,
-			classes: "relis-trait-selector",
-			dataset: { traitSelector: "true" }
-		}).outerHTML : "";
 		const sourceRef = system.meta?.sourceRef ?? {};
 		const hasSourceRef = Boolean(sourceRef.relisId || sourceRef.uuid);
 		let sourceDocument = null;
@@ -3390,7 +3404,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			canManageDescriptionPermission,
 			canEditTraits,
 			descriptionEditor,
-			traitSelector,
+			traitOptions,
 			selectedTraits: selectedTraitIds.map((value) => ({
 				value,
 				label: traitLabel(value)
@@ -3410,16 +3424,16 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			qualityOptions: [{
 				value: "",
 				label: "Non applicable"
-			}, ...Array.from({ length: 6 }, (_, value) => ({
+			}, ...QUALITY_GRADE_LABELS.map((label, value) => ({
 				value,
-				label: `Q-${value}`
+				label
 			}))],
 			rarityOptions: [{
 				value: "",
 				label: "Non applicable"
-			}, ...Array.from({ length: 7 }, (_, value) => ({
+			}, ...STRUCTURAL_RARITY_LABELS.map((label, value) => ({
 				value,
-				label: `RAR-M ${value}`
+				label
 			}))],
 			legalityOptions: options(["", ...LEGALITY_STATES], LEGALITY_LABELS),
 			quantityUnitOptions: options(QUANTITY_UNITS, {}),

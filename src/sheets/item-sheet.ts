@@ -7,6 +7,8 @@ import {
   physicalTotals,
 } from "../data/item-defaults";
 import {
+  QUALITY_GRADE_LABELS,
+  STRUCTURAL_RARITY_LABELS,
   hasCatalogFields,
   itemFieldApplicability,
   normalizeTraitIds,
@@ -94,7 +96,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     );
     const canEditTraits = Boolean(this.item.isOwner);
     const selectedTraitIds = normalizeTraitIds(system.traits);
-    const choices = traitChoices(selectedTraitIds);
+    const traitOptions = traitChoices(selectedTraitIds);
     const description = String(system.description ?? "");
     const enrichedDescription =
       await foundry.applications.ux.TextEditor.implementation.enrichHTML(
@@ -118,18 +120,6 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         classes: "relis-description-editor",
         dataset: { descriptionEditor: "true" },
       }).outerHTML;
-    const traitSelector = canEditTraits
-      ? foundry.applications.elements.HTMLMultiSelectElement.create({
-          name: "system.traits",
-          value: selectedTraitIds,
-          choices: Object.fromEntries(
-            choices.map(({ value, label }) => [value, label]),
-          ),
-          disabled: false,
-          classes: "relis-trait-selector",
-          dataset: { traitSelector: "true" },
-        }).outerHTML
-      : "";
     const sourceRef = system.meta?.sourceRef ?? {};
     const hasSourceRef = Boolean(sourceRef.relisId || sourceRef.uuid);
     let sourceDocument: Item | null = null;
@@ -230,7 +220,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       canManageDescriptionPermission,
       canEditTraits,
       descriptionEditor,
-      traitSelector,
+      traitOptions,
       selectedTraits: selectedTraitIds.map((value) => ({
         value,
         label: traitLabel(value),
@@ -253,16 +243,16 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       physicalTotals: hasPhysical ? physicalTotals(system.physical) : null,
       qualityOptions: [
         { value: "", label: "Non applicable" },
-        ...Array.from({ length: 6 }, (_, value) => ({
+        ...QUALITY_GRADE_LABELS.map((label, value) => ({
           value,
-          label: `Q-${value}`,
+          label,
         })),
       ],
       rarityOptions: [
         { value: "", label: "Non applicable" },
-        ...Array.from({ length: 7 }, (_, value) => ({
+        ...STRUCTURAL_RARITY_LABELS.map((label, value) => ({
           value,
-          label: `RAR-M ${value}`,
+          label,
         })),
       ],
       legalityOptions: options(["", ...LEGALITY_STATES], LEGALITY_LABELS),
