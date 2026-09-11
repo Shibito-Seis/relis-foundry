@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.3.3";
+var PACKAGE_VERSION = "0.3.4";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -3269,6 +3269,94 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 //#region src/sheets/item-sheet.ts
 var ItemSheetV2 = foundry.applications.sheets.ItemSheetV2;
 var HandlebarsApplicationMixin = foundry.applications.api.HandlebarsApplicationMixin;
+var EDITABLE_SURFACE_SELECTOR = "[contenteditable=\"true\"], .ProseMirror[contenteditable]";
+function isElement(value) {
+	return Boolean(value && typeof value === "object" && value.nodeType === 1 && value.style?.setProperty);
+}
+function isEditableSurface(value) {
+	if (!isElement(value)) return false;
+	return value.isContentEditable || value.getAttribute("contenteditable") === "true";
+}
+/**
+* Find Foundry's live ProseMirror surface even if a future implementation
+* places it in a shadow root or an iframe.
+*/
+function findEditableSurface(root) {
+	if (isEditableSurface(root)) return root;
+	const direct = root.querySelector(EDITABLE_SURFACE_SELECTOR);
+	if (direct) return direct;
+	for (const element of root.querySelectorAll("*")) {
+		if (element.shadowRoot) {
+			const shadowMatch = findEditableSurface(element.shadowRoot);
+			if (shadowMatch) return shadowMatch;
+		}
+		if (element.tagName === "IFRAME") {
+			const frameDocument = element.contentDocument;
+			if (frameDocument) {
+				const frameMatch = findEditableSurface(frameDocument);
+				if (frameMatch) return frameMatch;
+			}
+		}
+	}
+	return null;
+}
+/**
+* Foundry's editor surface is created only after the editor opens. Applying
+* the contrast directly to that live node avoids relying on private wrapper
+* classes or on CSS crossing a shadow-root boundary.
+*/
+function revealEditableSurface(surface) {
+	surface.dataset.relisEditorSurface = "visible";
+	surface.classList.add("relis-live-editor-surface");
+	surface.style.setProperty("color", "#e8f7ff", "important");
+	surface.style.setProperty("-webkit-text-fill-color", "#e8f7ff", "important");
+	surface.style.setProperty("caret-color", "#87f2ff", "important");
+	surface.style.setProperty("font-size", "0.9rem", "important");
+	surface.style.setProperty("line-height", "1.5", "important");
+	surface.style.setProperty("opacity", "1", "important");
+	surface.style.setProperty("visibility", "visible", "important");
+	surface.style.setProperty("filter", "none", "important");
+	surface.style.setProperty("mix-blend-mode", "normal", "important");
+	surface.style.setProperty("position", "relative", "important");
+	surface.style.setProperty("z-index", "1", "important");
+	for (const child of surface.querySelectorAll("*")) {
+		child.style.setProperty("color", "inherit", "important");
+		child.style.setProperty("-webkit-text-fill-color", "currentColor", "important");
+		child.style.setProperty("opacity", "1", "important");
+		child.style.setProperty("visibility", "visible", "important");
+		child.style.setProperty("filter", "none", "important");
+		child.style.setProperty("mix-blend-mode", "normal", "important");
+	}
+}
+function eventEditableSurface(event) {
+	return event.composedPath().find(isEditableSurface);
+}
+function revealEditorSurface(editor, event) {
+	const eventSurface = event ? eventEditableSurface(event) : null;
+	const primaryInput = editor._primaryInput;
+	const surface = eventSurface || (isEditableSurface(primaryInput) ? primaryInput : isElement(primaryInput) ? findEditableSurface(primaryInput) : null) || findEditableSurface(editor);
+	if (!surface) return false;
+	revealEditableSurface(surface);
+	return true;
+}
+function scheduleEditorSurfaceReveal(editor) {
+	let attempts = 8;
+	const reveal = () => {
+		if (revealEditorSurface(editor) || --attempts <= 0) return;
+		requestAnimationFrame(reveal);
+	};
+	queueMicrotask(reveal);
+}
+function optionElements(root) {
+	const options = Array.from(root.querySelectorAll("option"));
+	for (const element of root.querySelectorAll("*")) if (element.shadowRoot) options.push(...optionElements(element.shadowRoot));
+	return [...new Set(options)];
+}
+function syncSelectedTraitOptions(selector) {
+	const value = selector.value;
+	const selected = new Set(normalizeTraitIds(value instanceof Set ? Array.from(value) : value));
+	for (const option of optionElements(selector)) option.hidden = selected.has(option.value);
+}
 function fieldValue(target) {
 	if (target.dataset.valueType === "boolean") return target.checked;
 	if (target.dataset.valueType === "nullable-number") return target.value === "" ? null : Number(target.value);
@@ -3461,6 +3549,16 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				dataset: { descriptionEditor: "true" }
 			});
 			descriptionHost.replaceChildren(descriptionEditor);
+			descriptionEditor.addEventListener("open", () => {
+				scheduleEditorSurfaceReveal(descriptionEditor);
+			});
+			for (const eventName of [
+				"focusin",
+				"beforeinput",
+				"input"
+			]) descriptionEditor.addEventListener(eventName, (event) => {
+				if (!revealEditorSurface(descriptionEditor, event)) scheduleEditorSurfaceReveal(descriptionEditor);
+			}, { capture: true });
 			descriptionEditor.addEventListener("save", (event) => {
 				if (!context.canEditDescription) return;
 				const value = String(event.currentTarget.value ?? "");
@@ -3474,11 +3572,16 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			if (!path) return;
 			this.item.update({ [path]: fieldValue(element) });
 		});
-		root.querySelector("[data-trait-selector]")?.addEventListener("change", (event) => {
-			if (!context.canEditTraits) return;
-			const value = event.currentTarget.value;
-			this.item.update({ "system.traits": normalizeTraitIds(value instanceof Set ? Array.from(value) : value) });
-		});
+		const traitSelector = root.querySelector("[data-trait-selector]");
+		if (traitSelector) {
+			requestAnimationFrame(() => syncSelectedTraitOptions(traitSelector));
+			traitSelector.addEventListener("change", (event) => {
+				if (!context.canEditTraits) return;
+				const value = event.currentTarget.value;
+				syncSelectedTraitOptions(event.currentTarget);
+				this.item.update({ "system.traits": normalizeTraitIds(value instanceof Set ? Array.from(value) : value) });
+			});
+		}
 		root.querySelector("[data-action='edit-image']")?.addEventListener("click", () => {
 			if (!this.item.isOwner) return;
 			const FilePicker = foundry.applications.apps.FilePicker.implementation;

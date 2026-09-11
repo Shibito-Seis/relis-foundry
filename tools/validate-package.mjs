@@ -25,6 +25,10 @@ const itemTemplate = fs.readFileSync(
   path.join(root, "templates/items/item.hbs"),
   "utf8",
 );
+const itemSheetSource = fs.readFileSync(
+  path.join(root, "src/sheets/item-sheet.ts"),
+  "utf8",
+);
 
 assert.equal(manifest.id, "relis");
 assert.equal(manifest.title, "RE:LIS — RE: Lost in Space");
@@ -83,6 +87,26 @@ assert.match(
   styles,
   /\.chat-message \.message-content \.relis-chat-card h3/,
   "Protection de contraste de la carte de Chat absente",
+);
+assert.match(
+  itemSheetSource,
+  /dataset\.relisEditorSurface = "visible"/,
+  "La surface ProseMirror réelle n’est pas marquée au moment de son ouverture",
+);
+assert.match(
+  itemSheetSource,
+  /event\.composedPath\(\)\.find\(isEditableSurface\)/,
+  "La surface contenteditable réelle n’est pas résolue depuis les événements d’édition",
+);
+assert.match(
+  itemSheetSource,
+  /option\.hidden = selected\.has\(option\.value\)/,
+  "Les Traits déjà sélectionnés ne sont pas retirés de la liste de choix",
+);
+assert.match(
+  styles,
+  /\.relis-trait-selector select option:checked\s*\{[^}]*display: none !important;/s,
+  "Un Trait déjà sélectionné reste visible dans la liste",
 );
 assert.match(
   chatTemplate,

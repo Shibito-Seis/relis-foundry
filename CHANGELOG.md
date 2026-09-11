@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.3.4 — surface ProseMirror réelle et choix de Traits disponibles
+
+- Détection de la surface `contenteditable` réellement créée par Foundry à
+  l’ouverture de ProseMirror, y compris derrière un Shadow DOM ou un iframe.
+- Application du contraste directement sur cette surface et ses nœuds de
+  contenu lors de l’ouverture, du focus et de la saisie ; les styles des
+  enveloppes ne peuvent plus masquer le texte actif.
+- Les Traits déjà portés par l’Item disparaissent de la liste de choix. Leur
+  retrait par la croix de la pastille les rend immédiatement disponibles.
+- Aucun changement de schéma, de données métier ni de migration.
+
 ## 0.3.3 — montage réel de l’éditeur et protection des PV
 
 - Montage de l’élément ProseMirror directement dans le DOM après rendu : sa

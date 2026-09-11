@@ -821,6 +821,7 @@
 }
 
 .relis-trait-selector select option:checked {
+  display: none !important;
   color: #071b27 !important;
   background: #8fc5ff !important;
 }
@@ -940,6 +941,28 @@
   min-height: 7rem;
   color: var(--relis-ink) !important;
   caret-color: var(--relis-cyan-soft);
+}
+
+.relis-item-description [data-relis-editor-surface="visible"],
+.relis-item-description .relis-live-editor-surface {
+  position: relative !important;
+  z-index: 1 !important;
+  color: #e8f7ff !important;
+  -webkit-text-fill-color: #e8f7ff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.relis-item-description [data-relis-editor-surface="visible"] *,
+.relis-item-description .relis-live-editor-surface * {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
 }
 
 .relis-item-description prose-mirror .ProseMirror p,
