@@ -95,6 +95,26 @@ assert.match(
 );
 assert.match(
   itemSheetSource,
+  /toolbar\.dataset\.relisEditorToolbar = "true"/,
+  "La barre ProseMirror réelle n’est pas isolée de la surface éditable",
+);
+assert.match(
+  itemSheetSource,
+  /editor\.contains\(surface\) \? \[editor\] : \[surfaceRoot\]/,
+  "La recherche de la barre ProseMirror n’est pas bornée au composant actif",
+);
+assert.match(
+  itemSheetSource,
+  /layout\.style\.setProperty\("flex-direction", "column", "important"\)/,
+  "La barre et le contenu ProseMirror ne sont pas empilés verticalement",
+);
+assert.match(
+  styles,
+  /\[data-relis-editor-toolbar="true"\]\s*\{[^}]*z-index: 20 !important;[^}]*background: #123444 !important;/s,
+  "Le plan d’affichage et le fond de la barre ProseMirror ne sont pas garantis",
+);
+assert.match(
+  itemSheetSource,
   /event\.composedPath\(\)\.find\(isEditableSurface\)/,
   "La surface contenteditable réelle n’est pas résolue depuis les événements d’édition",
 );

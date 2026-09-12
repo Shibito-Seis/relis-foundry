@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.3.4";
+var PACKAGE_VERSION = "0.3.5";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -3270,6 +3270,13 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 var ItemSheetV2 = foundry.applications.sheets.ItemSheetV2;
 var HandlebarsApplicationMixin = foundry.applications.api.HandlebarsApplicationMixin;
 var EDITABLE_SURFACE_SELECTOR = "[contenteditable=\"true\"], .ProseMirror[contenteditable]";
+var EDITOR_TOOLBAR_SELECTOR = [
+	"menu",
+	"[role=\"toolbar\"]",
+	".editor-menu",
+	".prosemirror-menu",
+	".ProseMirror-menubar"
+].join(", ");
 function isElement(value) {
 	return Boolean(value && typeof value === "object" && value.nodeType === 1 && value.style?.setProperty);
 }
@@ -3300,12 +3307,96 @@ function findEditableSurface(root) {
 	}
 	return null;
 }
+function nearestSharedContainer(first, second) {
+	let candidate = first.parentElement;
+	while (candidate) {
+		if (candidate.contains(second)) return candidate;
+		candidate = candidate.parentElement;
+	}
+	return null;
+}
+function findEditorToolbar(editor, surface) {
+	const surfaceRoot = surface.getRootNode();
+	const roots = editor.contains(surface) ? [editor] : [surfaceRoot];
+	for (const root of roots) for (const toolbar of root.querySelectorAll(EDITOR_TOOLBAR_SELECTOR)) {
+		if (toolbar.contains(surface)) continue;
+		if (toolbar.querySelectorAll("button, select, a, [role=\"button\"]").length < 3) continue;
+		const layout = nearestSharedContainer(toolbar, surface);
+		if (layout) return {
+			toolbar,
+			layout
+		};
+	}
+	return null;
+}
+function directChildContaining(container, descendant) {
+	let child = descendant;
+	while (child.parentElement && child.parentElement !== container) child = child.parentElement;
+	return child;
+}
+function arrangeEditorLayout(editor, surface) {
+	const editorParts = findEditorToolbar(editor, surface);
+	if (!editorParts) return;
+	const { toolbar, layout } = editorParts;
+	const content = directChildContaining(layout, surface);
+	layout.dataset.relisEditorLayout = "stacked";
+	layout.style.setProperty("display", "flex", "important");
+	layout.style.setProperty("flex-direction", "column", "important");
+	layout.style.setProperty("align-items", "stretch", "important");
+	layout.style.setProperty("gap", "0.45rem", "important");
+	layout.style.setProperty("position", "relative", "important");
+	layout.style.setProperty("isolation", "isolate", "important");
+	layout.style.setProperty("overflow", "visible", "important");
+	toolbar.dataset.relisEditorToolbar = "true";
+	toolbar.style.setProperty("position", "relative", "important");
+	toolbar.style.setProperty("inset", "auto", "important");
+	toolbar.style.setProperty("z-index", "20", "important");
+	toolbar.style.setProperty("display", "flex", "important");
+	toolbar.style.setProperty("flex-wrap", "wrap", "important");
+	toolbar.style.setProperty("align-items", "center", "important");
+	toolbar.style.setProperty("gap", "0.3rem", "important");
+	toolbar.style.setProperty("width", "100%", "important");
+	toolbar.style.setProperty("height", "auto", "important");
+	toolbar.style.setProperty("min-height", "2.55rem", "important");
+	toolbar.style.setProperty("max-height", "none", "important");
+	toolbar.style.setProperty("margin", "0", "important");
+	toolbar.style.setProperty("padding", "0.35rem", "important");
+	toolbar.style.setProperty("box-sizing", "border-box", "important");
+	toolbar.style.setProperty("overflow", "visible", "important");
+	toolbar.style.setProperty("pointer-events", "auto", "important");
+	toolbar.style.setProperty("list-style", "none", "important");
+	toolbar.style.setProperty("background", "#123444", "important");
+	toolbar.style.setProperty("border", "1px solid #367487", "important");
+	toolbar.style.setProperty("border-radius", "4px", "important");
+	toolbar.style.setProperty("box-shadow", "none", "important");
+	for (const control of toolbar.querySelectorAll("button, select, a, [role=\"button\"]")) {
+		control.style.setProperty("position", "relative", "important");
+		control.style.setProperty("inset", "auto", "important");
+		control.style.setProperty("z-index", "21", "important");
+		control.style.setProperty("pointer-events", "auto", "important");
+	}
+	content.dataset.relisEditorContent = "true";
+	content.style.setProperty("position", "relative", "important");
+	content.style.setProperty("inset", "auto", "important");
+	content.style.setProperty("z-index", "1", "important");
+	content.style.setProperty("flex", "1 1 auto", "important");
+	content.style.setProperty("width", "100%", "important");
+	content.style.setProperty("min-height", "12rem", "important");
+	content.style.setProperty("box-sizing", "border-box", "important");
+	surface.style.setProperty("inset", "auto", "important");
+	surface.style.setProperty("width", "100%", "important");
+	surface.style.setProperty("min-height", "12rem", "important");
+	surface.style.setProperty("margin", "0", "important");
+	surface.style.setProperty("padding", "0.55rem 0.65rem", "important");
+	surface.style.setProperty("box-sizing", "border-box", "important");
+	surface.style.setProperty("pointer-events", "auto", "important");
+}
 /**
 * Foundry's editor surface is created only after the editor opens. Applying
 * the contrast directly to that live node avoids relying on private wrapper
 * classes or on CSS crossing a shadow-root boundary.
 */
-function revealEditableSurface(surface) {
+function revealEditableSurface(editor, surface) {
 	surface.dataset.relisEditorSurface = "visible";
 	surface.classList.add("relis-live-editor-surface");
 	surface.style.setProperty("color", "#e8f7ff", "important");
@@ -3319,6 +3410,7 @@ function revealEditableSurface(surface) {
 	surface.style.setProperty("mix-blend-mode", "normal", "important");
 	surface.style.setProperty("position", "relative", "important");
 	surface.style.setProperty("z-index", "1", "important");
+	arrangeEditorLayout(editor, surface);
 	for (const child of surface.querySelectorAll("*")) {
 		child.style.setProperty("color", "inherit", "important");
 		child.style.setProperty("-webkit-text-fill-color", "currentColor", "important");
@@ -3336,7 +3428,7 @@ function revealEditorSurface(editor, event) {
 	const primaryInput = editor._primaryInput;
 	const surface = eventSurface || (isEditableSurface(primaryInput) ? primaryInput : isElement(primaryInput) ? findEditableSurface(primaryInput) : null) || findEditableSurface(editor);
 	if (!surface) return false;
-	revealEditableSurface(surface);
+	revealEditableSurface(editor, surface);
 	return true;
 }
 function scheduleEditorSurfaceReveal(editor) {

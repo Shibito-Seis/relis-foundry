@@ -965,6 +965,61 @@
   mix-blend-mode: normal !important;
 }
 
+.relis-item-description [data-relis-editor-layout="stacked"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 0.45rem !important;
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+}
+
+.relis-item-description [data-relis-editor-toolbar="true"] {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 20 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.3rem !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 2.55rem !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0.35rem !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+  list-style: none !important;
+  color: #e8f7ff !important;
+  background: #123444 !important;
+  border: 1px solid #367487 !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+.relis-item-description [data-relis-editor-toolbar="true"] button,
+.relis-item-description [data-relis-editor-toolbar="true"] select,
+.relis-item-description [data-relis-editor-toolbar="true"] a,
+.relis-item-description [data-relis-editor-toolbar="true"] [role="button"] {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 21 !important;
+  pointer-events: auto !important;
+}
+
+.relis-item-description [data-relis-editor-content="true"] {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 1 !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 12rem !important;
+  box-sizing: border-box !important;
+}
+
 .relis-item-description prose-mirror .ProseMirror p,
 .relis-item-description prose-mirror .ProseMirror li,
 .relis-item-description .relis-description-editor .ProseMirror p,

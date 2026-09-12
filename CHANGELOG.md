@@ -1,5 +1,19 @@
 # Journal des versions
 
+## 0.3.5 — barre ProseMirror séparée de la rédaction
+
+- La barre d’outils native de ProseMirror est replacée dans le flux vertical,
+  au-dessus de la surface éditable, avec sa propre hauteur et son propre plan
+  d’affichage.
+- Tous ses contrôles natifs restent accessibles : styles de paragraphe,
+  tableaux, typographie, listes, alignement, médias, liens, source et
+  enregistrement.
+- Le fond brun résiduel est remplacé par un bandeau bleu graphite cohérent avec
+  la fiche Item ; les boutons peuvent revenir à la ligne sur une fenêtre plus
+  étroite.
+- La visibilité du texte obtenue en 0.3.4 et le filtrage des Traits sont
+  conservés sans changement de données ni de schéma.
+
 ## 0.3.4 — surface ProseMirror réelle et choix de Traits disponibles
 
 - Détection de la surface `contenteditable` réellement créée par Foundry à
