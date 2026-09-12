@@ -945,8 +945,8 @@
 
 .relis-item-description [data-relis-editor-surface="visible"],
 .relis-item-description .relis-live-editor-surface {
-  position: relative !important;
-  z-index: 1 !important;
+  position: static !important;
+  z-index: auto !important;
   color: #e8f7ff !important;
   -webkit-text-fill-color: #e8f7ff !important;
   opacity: 1 !important;
@@ -998,16 +998,6 @@
   border: 1px solid #367487 !important;
   border-radius: 4px !important;
   box-shadow: none !important;
-}
-
-.relis-item-description [data-relis-editor-toolbar="true"] button,
-.relis-item-description [data-relis-editor-toolbar="true"] select,
-.relis-item-description [data-relis-editor-toolbar="true"] a,
-.relis-item-description [data-relis-editor-toolbar="true"] [role="button"] {
-  position: relative !important;
-  inset: auto !important;
-  z-index: 21 !important;
-  pointer-events: auto !important;
 }
 
 .relis-item-description [data-relis-editor-content="true"] {

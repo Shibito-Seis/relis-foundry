@@ -127,6 +127,16 @@ function arrangeEditorLayout(editor: HTMLElement, surface: HTMLElement): void {
   const { toolbar, layout } = editorParts;
   const content = directChildContaining(layout, surface);
 
+  // Do not touch Foundry's live menu while a toolbar control is acquiring
+  // focus. Re-applying positional styles between pointerdown and click can
+  // prevent ProseMirror's native command handlers from receiving the click.
+  if (
+    layout.dataset.relisEditorLayout === "stacked" &&
+    toolbar.dataset.relisEditorToolbar === "true" &&
+    content.dataset.relisEditorContent === "true"
+  )
+    return;
+
   layout.dataset.relisEditorLayout = "stacked";
   layout.style.setProperty("display", "flex", "important");
   layout.style.setProperty("flex-direction", "column", "important");
@@ -159,15 +169,6 @@ function arrangeEditorLayout(editor: HTMLElement, surface: HTMLElement): void {
   toolbar.style.setProperty("border-radius", "4px", "important");
   toolbar.style.setProperty("box-shadow", "none", "important");
 
-  for (const control of toolbar.querySelectorAll<HTMLElement>(
-    'button, select, a, [role="button"]',
-  )) {
-    control.style.setProperty("position", "relative", "important");
-    control.style.setProperty("inset", "auto", "important");
-    control.style.setProperty("z-index", "21", "important");
-    control.style.setProperty("pointer-events", "auto", "important");
-  }
-
   content.dataset.relisEditorContent = "true";
   content.style.setProperty("position", "relative", "important");
   content.style.setProperty("inset", "auto", "important");
@@ -197,6 +198,7 @@ function revealEditableSurface(
 ): void {
   surface.dataset.relisEditorSurface = "visible";
   surface.classList.add("relis-live-editor-surface");
+  arrangeEditorLayout(editor, surface);
   surface.style.setProperty("color", "#e8f7ff", "important");
   surface.style.setProperty("-webkit-text-fill-color", "#e8f7ff", "important");
   surface.style.setProperty("caret-color", "#87f2ff", "important");
@@ -206,9 +208,8 @@ function revealEditableSurface(
   surface.style.setProperty("visibility", "visible", "important");
   surface.style.setProperty("filter", "none", "important");
   surface.style.setProperty("mix-blend-mode", "normal", "important");
-  surface.style.setProperty("position", "relative", "important");
-  surface.style.setProperty("z-index", "1", "important");
-  arrangeEditorLayout(editor, surface);
+  surface.style.setProperty("position", "static", "important");
+  surface.style.setProperty("z-index", "auto", "important");
 
   for (const child of surface.querySelectorAll<HTMLElement>("*")) {
     child.style.setProperty("color", "inherit", "important");
@@ -230,6 +231,7 @@ function eventEditableSurface(event: Event): HTMLElement | null {
 
 function revealEditorSurface(editor: HTMLElement, event?: Event): boolean {
   const eventSurface = event ? eventEditableSurface(event) : null;
+  if (event && !eventSurface) return false;
   const primaryInput = (editor as any)._primaryInput;
   const surface =
     eventSurface ||
@@ -539,8 +541,11 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         descriptionEditor.addEventListener(
           eventName,
           (event: Event) => {
-            if (!revealEditorSurface(descriptionEditor, event))
-              scheduleEditorSurfaceReveal(descriptionEditor);
+            // A toolbar button also emits focusin inside <prose-mirror>.
+            // Only the actual contenteditable surface should trigger our
+            // visibility patch; the menu must remain untouched for the whole
+            // native pointer interaction.
+            revealEditorSurface(descriptionEditor, event);
           },
           { capture: true },
         );

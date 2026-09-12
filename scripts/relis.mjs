@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.3.5";
+var PACKAGE_VERSION = "0.3.6";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -3339,6 +3339,7 @@ function arrangeEditorLayout(editor, surface) {
 	if (!editorParts) return;
 	const { toolbar, layout } = editorParts;
 	const content = directChildContaining(layout, surface);
+	if (layout.dataset.relisEditorLayout === "stacked" && toolbar.dataset.relisEditorToolbar === "true" && content.dataset.relisEditorContent === "true") return;
 	layout.dataset.relisEditorLayout = "stacked";
 	layout.style.setProperty("display", "flex", "important");
 	layout.style.setProperty("flex-direction", "column", "important");
@@ -3369,12 +3370,6 @@ function arrangeEditorLayout(editor, surface) {
 	toolbar.style.setProperty("border", "1px solid #367487", "important");
 	toolbar.style.setProperty("border-radius", "4px", "important");
 	toolbar.style.setProperty("box-shadow", "none", "important");
-	for (const control of toolbar.querySelectorAll("button, select, a, [role=\"button\"]")) {
-		control.style.setProperty("position", "relative", "important");
-		control.style.setProperty("inset", "auto", "important");
-		control.style.setProperty("z-index", "21", "important");
-		control.style.setProperty("pointer-events", "auto", "important");
-	}
 	content.dataset.relisEditorContent = "true";
 	content.style.setProperty("position", "relative", "important");
 	content.style.setProperty("inset", "auto", "important");
@@ -3399,6 +3394,7 @@ function arrangeEditorLayout(editor, surface) {
 function revealEditableSurface(editor, surface) {
 	surface.dataset.relisEditorSurface = "visible";
 	surface.classList.add("relis-live-editor-surface");
+	arrangeEditorLayout(editor, surface);
 	surface.style.setProperty("color", "#e8f7ff", "important");
 	surface.style.setProperty("-webkit-text-fill-color", "#e8f7ff", "important");
 	surface.style.setProperty("caret-color", "#87f2ff", "important");
@@ -3408,9 +3404,8 @@ function revealEditableSurface(editor, surface) {
 	surface.style.setProperty("visibility", "visible", "important");
 	surface.style.setProperty("filter", "none", "important");
 	surface.style.setProperty("mix-blend-mode", "normal", "important");
-	surface.style.setProperty("position", "relative", "important");
-	surface.style.setProperty("z-index", "1", "important");
-	arrangeEditorLayout(editor, surface);
+	surface.style.setProperty("position", "static", "important");
+	surface.style.setProperty("z-index", "auto", "important");
 	for (const child of surface.querySelectorAll("*")) {
 		child.style.setProperty("color", "inherit", "important");
 		child.style.setProperty("-webkit-text-fill-color", "currentColor", "important");
@@ -3425,6 +3420,7 @@ function eventEditableSurface(event) {
 }
 function revealEditorSurface(editor, event) {
 	const eventSurface = event ? eventEditableSurface(event) : null;
+	if (event && !eventSurface) return false;
 	const primaryInput = editor._primaryInput;
 	const surface = eventSurface || (isEditableSurface(primaryInput) ? primaryInput : isElement(primaryInput) ? findEditableSurface(primaryInput) : null) || findEditableSurface(editor);
 	if (!surface) return false;
@@ -3649,7 +3645,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				"beforeinput",
 				"input"
 			]) descriptionEditor.addEventListener(eventName, (event) => {
-				if (!revealEditorSurface(descriptionEditor, event)) scheduleEditorSurfaceReveal(descriptionEditor);
+				revealEditorSurface(descriptionEditor, event);
 			}, { capture: true });
 			descriptionEditor.addEventListener("save", (event) => {
 				if (!context.canEditDescription) return;

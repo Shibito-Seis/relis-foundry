@@ -1,5 +1,17 @@
 # Journal des versions
 
+## 0.3.6 — commandes ProseMirror de nouveau interactives
+
+- La correction visuelle de l’éditeur n’est plus réappliquée lorsqu’un contrôle
+  de la barre prend le focus ; la séquence native de clic reste intacte.
+- La mise en page de la barre et de la surface éditable est initialisée une seule
+  fois par ouverture de l’éditeur.
+- Les boutons conservent leur positionnement natif ; seul leur bandeau parent
+  porte le plan d’affichage nécessaire à la séparation visuelle.
+- La surface de rédaction quitte son plan superposé et revient dans le flux de
+  l’éditeur, sans perdre le contraste, la saisie visible ni la persistance.
+- Aucun changement de schéma ni de données métier.
+
 ## 0.3.5 — barre ProseMirror séparée de la rédaction
 
 - La barre d’outils native de ProseMirror est replacée dans le flux vertical,
