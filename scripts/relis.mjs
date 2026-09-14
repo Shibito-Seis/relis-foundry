@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.4.0";
+var PACKAGE_VERSION = "0.4.1";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -3822,12 +3822,11 @@ function displayMeasure(value, suffix) {
 	return value === null ? "Inconnue" : `${value} ${suffix}`;
 }
 function dialogContent() {
-	const content = document.createElement("div");
-	content.className = "relis-inventory-dialog";
-	return content;
+	return document.createElement("div");
 }
 function dialogNumber(content, label, name, value, maximum, integerValue) {
 	const field = document.createElement("label");
+	field.className = "relis-inventory-dialog-field";
 	field.textContent = label;
 	const input = document.createElement("input");
 	input.type = "number";
@@ -3842,6 +3841,7 @@ function dialogNumber(content, label, name, value, maximum, integerValue) {
 }
 function dialogText(content, label, name, value = "") {
 	const field = document.createElement("label");
+	field.className = "relis-inventory-dialog-field";
 	field.textContent = label;
 	const input = document.createElement("input");
 	input.type = "text";
@@ -3854,6 +3854,7 @@ function dialogText(content, label, name, value = "") {
 }
 function dialogSelect(content, label, name, choices) {
 	const field = document.createElement("label");
+	field.className = "relis-inventory-dialog-field";
 	field.textContent = label;
 	const select = document.createElement("select");
 	select.name = name;
@@ -4862,7 +4863,7 @@ Hooks.once("ready", async () => {
 		await migrateItemCore();
 		const recovered = await recoverPendingInventoryTransfers();
 		if (recovered > 0) console.log(`RE:LIS | ${recovered} Item(s) de transfert récupéré(s).`);
-		ui.notifications.info(game.i18n.localize("RELIS.Ready"));
+		ui.notifications.info(game.i18n.format("RELIS.Ready", { version: PACKAGE_VERSION }));
 	} catch (error) {
 		console.error("RE:LIS | Échec de la migration ou récupération", error);
 		ui.notifications.error(game.i18n.localize("RELIS.Error.ItemMigration"));

@@ -113,9 +113,7 @@ function displayMeasure(value: number | null, suffix: string): string {
 }
 
 function dialogContent(): HTMLDivElement {
-  const content = document.createElement("div");
-  content.className = "relis-inventory-dialog";
-  return content;
+  return document.createElement("div");
 }
 
 function dialogNumber(
@@ -127,6 +125,7 @@ function dialogNumber(
   integerValue: boolean,
 ): void {
   const field = document.createElement("label");
+  field.className = "relis-inventory-dialog-field";
   field.textContent = label;
   const input = document.createElement("input");
   input.type = "number";
@@ -147,6 +146,7 @@ function dialogText(
   value = "",
 ): void {
   const field = document.createElement("label");
+  field.className = "relis-inventory-dialog-field";
   field.textContent = label;
   const input = document.createElement("input");
   input.type = "text";
@@ -165,6 +165,7 @@ function dialogSelect(
   choices: Array<{ value: string; label: string }>,
 ): void {
   const field = document.createElement("label");
+  field.className = "relis-inventory-dialog-field";
   field.textContent = label;
   const select = document.createElement("select");
   select.name = name;

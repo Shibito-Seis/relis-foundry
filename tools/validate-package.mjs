@@ -29,6 +29,14 @@ const itemSheetSource = fs.readFileSync(
   path.join(root, "src/sheets/item-sheet.ts"),
   "utf8",
 );
+const actorSheetSource = fs.readFileSync(
+  path.join(root, "src/sheets/actor-sheet.ts"),
+  "utf8",
+);
+const bootstrapSource = fs.readFileSync(
+  path.join(root, "src/relis.ts"),
+  "utf8",
+);
 const inventoryRulesSource = fs.readFileSync(
   path.join(root, "src/rules/inventory.ts"),
   "utf8",
@@ -47,6 +55,21 @@ assert.equal(
   manifest.compatibility.verified,
   "14",
   "Foundry 14 doit rester marqué vérifié après la recette 10-C sur 14.365",
+);
+assert.equal(
+  french.RELIS?.Ready,
+  "RE:LIS {version} est chargé.",
+  "Le message de chargement doit accepter la version courante",
+);
+assert.match(
+  bootstrapSource,
+  /game\.i18n\.format\("RELIS\.Ready", \{ version: PACKAGE_VERSION \}\)/,
+  "Le chargement doit injecter PACKAGE_VERSION dans le message traduit",
+);
+assert.match(
+  actorSheetSource,
+  /function dialogContent\(\): HTMLDivElement \{\s*return document\.createElement\("div"\);\s*\}/,
+  "DialogV2 exige un div racine sans attribut pour les formulaires d’inventaire",
 );
 assert.deepEqual(manifest.authors, [{ name: "Maoilios aka ShibitoSeis" }]);
 assert.equal(manifest.url, "https://github.com/Shibito-Seis/relis-foundry");

@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.4.1 — formulaires d’inventaire Foundry 14
+
+- Le nœud racine fourni à `DialogV2.input` est désormais un `div` strictement
+  neutre, conformément au contrat Foundry 14 ; ses attributs visuels sont
+  déplacés vers les champs enfants.
+- Les commandes Créer, Scinder, Fusionner, Déplacer et Transférer peuvent de
+  nouveau ouvrir leur formulaire.
+- Le message de chargement injecte désormais la version courante du paquet au
+  lieu de conserver le texte historique `0.3.0`.
+- Aucun changement de schéma ni aucune migration de données supplémentaire.
+
 ## 0.4.0 — inventaire personnel et conteneurs 10-E2-P
 
 - Remplacement de la liste d’Items physiques par un inventaire hiérarchique

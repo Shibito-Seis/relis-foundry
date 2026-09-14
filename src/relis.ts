@@ -39,7 +39,9 @@ Hooks.once("ready", async () => {
       const recovered = await recoverPendingInventoryTransfers();
       if (recovered > 0)
         console.log(`RE:LIS | ${recovered} Item(s) de transfert récupéré(s).`);
-      ui.notifications.info(game.i18n.localize("RELIS.Ready"));
+      ui.notifications.info(
+        game.i18n.format("RELIS.Ready", { version: PACKAGE_VERSION }),
+      );
     } catch (error) {
       console.error("RE:LIS | Échec de la migration ou récupération", error);
       ui.notifications.error(game.i18n.localize("RELIS.Error.ItemMigration"));

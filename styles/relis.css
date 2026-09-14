@@ -728,21 +728,19 @@
   margin-top: 0.75rem;
 }
 
-.relis-inventory-dialog {
+.relis-inventory-dialog-field {
   display: grid;
   gap: 0.75rem;
   min-width: min(28rem, 72vw);
-  padding: 0.4rem;
+  margin-block: 0.4rem 0.75rem;
 }
 
-.relis-inventory-dialog label {
-  display: grid;
-  gap: 0.3rem;
+.relis-inventory-dialog-field {
   color: var(--color-text-secondary, #52606a);
   font-weight: 700;
 }
 
-.relis-inventory-dialog :is(input, select) {
+.relis-inventory-dialog-field :is(input, select) {
   width: 100%;
   color: var(--color-text-primary, #18252e);
 }
