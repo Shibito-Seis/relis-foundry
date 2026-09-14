@@ -1,4 +1,5 @@
 import { ATTRIBUTE_LABELS, MASTERY_LABELS, SKILL_DEFINITIONS } from "../config";
+import { PHYSICAL_ITEM_TYPES, isPhysicalItemType } from "../data/item-defaults";
 import type { RelisActor } from "../documents/actor";
 import { formatRoundDuration, presentCondition } from "../rules/effects";
 import {
@@ -6,6 +7,19 @@ import {
   resourcePoolPresentation,
   updateResourcePoolCurrent,
 } from "../rules/resources";
+import {
+  canMergeStacks,
+  inventoryContainerTargets,
+  presentInventory,
+  type InventoryItemLike,
+} from "../rules/inventory";
+import {
+  createInventoryItem,
+  mergeInventoryStacks,
+  moveInventoryItem,
+  splitInventoryStack,
+  transferInventoryItem,
+} from "../services/inventory";
 import { actorTabsForType, normalizeActorTab } from "../ui/actor-tabs";
 
 const ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
@@ -56,6 +70,127 @@ const STABILITY_OPTIONS = [
   { key: "stabilized", label: "Stabilisé" },
   { key: "incapacitated", label: "Hors de combat" },
 ];
+
+const INVENTORY_CONDITION_LABELS: Record<string, string> = {
+  intact: "Intact",
+  worn: "Usé",
+  damaged: "Endommagé",
+  broken: "Brisé",
+  destroyed: "Détruit",
+};
+
+const INVENTORY_ACCESS_LABELS: Record<string, string> = {
+  ready: "Prêt",
+  accessible: "Accessible",
+  stored: "Rangé",
+  distant: "Distant",
+  unavailable: "Indisponible",
+};
+
+const QUANTITY_UNIT_LABELS: Record<string, string> = {
+  count: "unité(s)",
+  kg: "kg",
+  g: "g",
+  l: "L",
+  ml: "mL",
+  m: "m",
+};
+
+function itemSnapshot(item: Item): InventoryItemLike {
+  const source = item.toObject?.(true) ?? {};
+  return {
+    id: item.id,
+    name: item.name,
+    type: item.type,
+    uuid: item.uuid,
+    system: source.system ?? item.system ?? {},
+    flags: source.flags ?? item.flags ?? {},
+  };
+}
+
+function displayMeasure(value: number | null, suffix: string): string {
+  return value === null ? "Inconnue" : `${value} ${suffix}`;
+}
+
+function dialogContent(): HTMLDivElement {
+  const content = document.createElement("div");
+  content.className = "relis-inventory-dialog";
+  return content;
+}
+
+function dialogNumber(
+  content: HTMLElement,
+  label: string,
+  name: string,
+  value: number,
+  maximum: number,
+  integerValue: boolean,
+): void {
+  const field = document.createElement("label");
+  field.textContent = label;
+  const input = document.createElement("input");
+  input.type = "number";
+  input.name = name;
+  input.min = integerValue ? "1" : "0.000001";
+  input.max = String(maximum);
+  input.step = integerValue ? "1" : "any";
+  input.value = String(value);
+  input.autofocus = true;
+  field.append(input);
+  content.append(field);
+}
+
+function dialogText(
+  content: HTMLElement,
+  label: string,
+  name: string,
+  value = "",
+): void {
+  const field = document.createElement("label");
+  field.textContent = label;
+  const input = document.createElement("input");
+  input.type = "text";
+  input.name = name;
+  input.value = value;
+  input.required = true;
+  input.autofocus = true;
+  field.append(input);
+  content.append(field);
+}
+
+function dialogSelect(
+  content: HTMLElement,
+  label: string,
+  name: string,
+  choices: Array<{ value: string; label: string }>,
+): void {
+  const field = document.createElement("label");
+  field.textContent = label;
+  const select = document.createElement("select");
+  select.name = name;
+  for (const choice of choices) {
+    const option = document.createElement("option");
+    option.value = choice.value;
+    option.textContent = choice.label;
+    select.append(option);
+  }
+  field.append(select);
+  content.append(field);
+}
+
+async function askInventoryForm(
+  title: string,
+  content: HTMLDivElement,
+  label: string,
+): Promise<Record<string, any> | null> {
+  return (await foundry.applications.api.DialogV2.input({
+    window: { title },
+    content,
+    ok: { label },
+    modal: true,
+    rejectClose: false,
+  })) as Record<string, any> | null;
+}
 
 function referencePresentation(reference: any): Record<string, unknown> {
   return {
@@ -238,6 +373,115 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           },
         ]
       : [];
+    const actorItems = Array.from(this.actor.items ?? []) as Item[];
+    const physicalItems = actorItems.filter((item) =>
+      isPhysicalItemType(item.type),
+    );
+    const physicalSnapshots = physicalItems.map(itemSnapshot);
+    const inventory = presentInventory(physicalSnapshots);
+    const inventoryRows = inventory.rows.map((row) => {
+      const item = physicalItems.find(
+        (candidate) => candidate.id === row.item.id,
+      );
+      const physical = row.item.system.physical ?? {};
+      const pendingState = String(
+        row.item.flags?.relis?.inventoryTransfer?.state ?? "complete",
+      );
+      const mergeCandidates = physicalSnapshots.filter(
+        (candidate) =>
+          String(
+            candidate.flags?.relis?.inventoryTransfer?.state ?? "complete",
+          ) === "complete" && canMergeStacks(row.item, candidate),
+      );
+      const capacity = row.item.system.capacity ?? {};
+      const quantity = Number(physical.quantity ?? 0);
+      const counted = String(physical.unit ?? "count") === "count";
+      const massEach =
+        physical.massEach === null || physical.massEach === undefined
+          ? null
+          : Number(physical.massEach);
+      const rowClasses = [
+        "relis-inventory-row",
+        row.item.type === "container" ? "relis-inventory-row--container" : "",
+        row.orphaned || row.cyclic ? "relis-inventory-row--error" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+      return {
+        id: row.item.id,
+        name: row.item.name,
+        type: row.item.type,
+        typeLabel: game.i18n.localize(`TYPES.Item.${row.item.type}`),
+        rowClasses,
+        img: item?.img ?? "icons/svg/item-bag.svg",
+        depth: row.depth,
+        level: row.depth + 1,
+        indent: row.depth * 18,
+        quantity,
+        quantityUnit:
+          QUANTITY_UNIT_LABELS[String(physical.unit ?? "count")] ??
+          String(physical.unit ?? ""),
+        lot: String(
+          row.item.system.provenance?.lotId ?? physical.batchId ?? "",
+        ).trim(),
+        condition:
+          INVENTORY_CONDITION_LABELS[String(physical.condition ?? "intact")] ??
+          String(physical.condition ?? ""),
+        accessibility:
+          INVENTORY_ACCESS_LABELS[String(physical.accessibility ?? "stored")] ??
+          String(physical.accessibility ?? ""),
+        location: row.parentId
+          ? (physicalItems.find((candidate) => candidate.id === row.parentId)
+              ?.name ?? "Conteneur manquant")
+          : "Inventaire principal",
+        isContainer: row.item.type === "container",
+        childCount: row.childCount,
+        pending: pendingState === "pending",
+        quarantined: pendingState === "quarantined",
+        hasError: row.orphaned || row.cyclic,
+        canSplit:
+          row.item.type !== "container" &&
+          (counted ? quantity > 1 : quantity > 0),
+        canMerge: mergeCandidates.length > 0,
+        canMove:
+          inventoryContainerTargets(physicalSnapshots, row.item.id).length >
+            0 || Boolean(row.parentId),
+        canTransfer: quantity > 0,
+        ownMass: displayMeasure(
+          massEach !== null && Number.isFinite(massEach)
+            ? massEach * quantity
+            : null,
+          "kg",
+        ),
+        subtreeMass: displayMeasure(row.subtreeLoad.mass, "kg"),
+        capacityMass:
+          capacity.mass === null || capacity.mass === undefined
+            ? "Sans limite définie"
+            : `${row.containerUsage?.mass ?? "?"} / ${capacity.mass} kg`,
+        capacityVolume:
+          capacity.volume === null || capacity.volume === undefined
+            ? "Sans limite définie"
+            : `${row.containerUsage?.volume ?? "?"} / ${capacity.volume} L`,
+        capacityBulk:
+          capacity.bulk === null || capacity.bulk === undefined
+            ? "Sans limite définie"
+            : `${row.containerUsage?.bulk ?? "?"} / ${capacity.bulk}`,
+        capacityUnits:
+          capacity.units === null || capacity.units === undefined
+            ? "Sans limite définie"
+            : `${row.containerUsage?.units ?? 0} / ${capacity.units}`,
+      };
+    });
+    const itemRows = actorItems.map((item) => ({
+      id: item.id,
+      name: item.name,
+      type: item.type,
+      typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
+      canRoll: item.type === "action",
+    }));
+    const relatedItems = itemRows.filter(
+      (item) => !isPhysicalItemType(item.type),
+    );
 
     return {
       ...context,
@@ -272,16 +516,21 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       hasReferences: referenceGroups.some((group) => group.entries.length > 0),
       progression: isCharacter ? this.actor.system.progression : null,
       hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
-      items: (Array.from(this.actor.items ?? []) as Item[]).map((item) => ({
-        id: item.id,
-        name: item.name,
-        type: item.type,
-        typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
-        canRoll: item.type === "action",
-      })),
+      items: itemRows,
+      relatedItems,
+      inventoryRows,
+      hasInventory: inventoryRows.length > 0,
+      inventoryDiagnostics: inventory.diagnostics,
+      hasInventoryDiagnostics: inventory.diagnostics.length > 0,
+      inventoryTotals: {
+        itemCount: physicalItems.length,
+        mass: displayMeasure(inventory.totalLoad.mass, "kg"),
+        volume: displayMeasure(inventory.totalLoad.volume, "L"),
+        bulk: displayMeasure(inventory.totalLoad.bulk, "ENC"),
+      },
       effects,
       effectCount: effects.length,
-      itemCount: Number(this.actor.items?.size ?? 0),
+      itemCount: actorItems.length,
     };
   }
 
@@ -376,10 +625,240 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     }
 
     root
+      .querySelector<HTMLButtonElement>("[data-action='create-inventory-item']")
+      ?.addEventListener("click", () => {
+        void this.createPhysicalItem();
+      });
+
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-action='split-inventory-stack']",
+    )) {
+      button.addEventListener("click", () => {
+        void this.splitPhysicalStack(button.dataset.itemId ?? "");
+      });
+    }
+
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-action='merge-inventory-stack']",
+    )) {
+      button.addEventListener("click", () => {
+        void this.mergePhysicalStack(button.dataset.itemId ?? "");
+      });
+    }
+
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-action='move-inventory-item']",
+    )) {
+      button.addEventListener("click", () => {
+        void this.movePhysicalItem(button.dataset.itemId ?? "");
+      });
+    }
+
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-action='transfer-inventory-item']",
+    )) {
+      button.addEventListener("click", () => {
+        void this.transferPhysicalItem(button.dataset.itemId ?? "");
+      });
+    }
+
+    root
       .querySelector<HTMLButtonElement>("[data-action='create-demo']")
       ?.addEventListener("click", () => {
         void this.createDemo();
       });
+  }
+
+  private async inventoryTask(
+    task: () => Promise<void>,
+    success: string,
+  ): Promise<void> {
+    try {
+      await task();
+      ui.notifications.info(success);
+      await this.render({ force: true });
+    } catch (error) {
+      console.error("RE:LIS | Opération d’inventaire refusée", error);
+      ui.notifications.error(
+        error instanceof Error
+          ? error.message
+          : "Opération d’inventaire refusée.",
+      );
+    }
+  }
+
+  private async createPhysicalItem(): Promise<void> {
+    if (!this.actor.isOwner) return;
+    const content = dialogContent();
+    dialogText(content, "Nom", "name", "Nouvel objet");
+    dialogSelect(
+      content,
+      "Type matériel",
+      "type",
+      PHYSICAL_ITEM_TYPES.map((value) => ({
+        value,
+        label: game.i18n.localize(`TYPES.Item.${value}`),
+      })),
+    );
+    const result = await askInventoryForm(
+      "Créer un Item d’inventaire",
+      content,
+      "Créer",
+    );
+    if (!result) return;
+    await this.inventoryTask(async () => {
+      await createInventoryItem(
+        this.actor,
+        String(result.name ?? ""),
+        String(result.type ?? "equipment"),
+      );
+    }, "Item ajouté à l’inventaire.");
+  }
+
+  private async splitPhysicalStack(itemId: string): Promise<void> {
+    if (!this.actor.isOwner) return;
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const quantity = Number(item.system.physical?.quantity ?? 0);
+    const counted = String(item.system.physical?.unit ?? "count") === "count";
+    const content = dialogContent();
+    dialogNumber(
+      content,
+      `Quantité à détacher de « ${item.name} »`,
+      "quantity",
+      counted ? 1 : Math.min(quantity / 2, 1),
+      counted ? quantity - 1 : quantity - Number.EPSILON,
+      counted,
+    );
+    const result = await askInventoryForm(
+      "Scinder la pile",
+      content,
+      "Scinder",
+    );
+    if (!result) return;
+    await this.inventoryTask(async () => {
+      await splitInventoryStack(this.actor, itemId, Number(result.quantity));
+    }, "Pile scindée sans modifier la quantité totale.");
+  }
+
+  private async mergePhysicalStack(itemId: string): Promise<void> {
+    if (!this.actor.isOwner) return;
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const snapshot = itemSnapshot(item);
+    const candidates = (Array.from(this.actor.items ?? []) as Item[]).filter(
+      (candidate) => canMergeStacks(snapshot, itemSnapshot(candidate)),
+    );
+    if (!candidates.length) {
+      ui.notifications.warn("Aucune pile strictement compatible à fusionner.");
+      return;
+    }
+    const content = dialogContent();
+    dialogSelect(
+      content,
+      "Pile absorbée",
+      "sourceId",
+      candidates.map((candidate) => ({
+        value: candidate.id,
+        label: `${candidate.name} — ${candidate.system.physical.quantity} ${QUANTITY_UNIT_LABELS[String(candidate.system.physical.unit)] ?? candidate.system.physical.unit}`,
+      })),
+    );
+    const result = await askInventoryForm(
+      `Fusionner dans « ${item.name} »`,
+      content,
+      "Fusionner",
+    );
+    if (!result) return;
+    await this.inventoryTask(async () => {
+      await mergeInventoryStacks(
+        this.actor,
+        itemId,
+        String(result.sourceId ?? ""),
+      );
+    }, "Piles fusionnées ; le total est conservé.");
+  }
+
+  private async movePhysicalItem(itemId: string): Promise<void> {
+    if (!this.actor.isOwner) return;
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const snapshots = (Array.from(this.actor.items ?? []) as Item[])
+      .filter((candidate) => isPhysicalItemType(candidate.type))
+      .map(itemSnapshot);
+    const targets = inventoryContainerTargets(snapshots, itemId);
+    const content = dialogContent();
+    dialogSelect(content, "Destination", "containerId", [
+      { value: "", label: "Inventaire principal" },
+      ...targets.map((target) => ({ value: target.id, label: target.name })),
+    ]);
+    const result = await askInventoryForm(
+      `Déplacer « ${item.name} »`,
+      content,
+      "Déplacer",
+    );
+    if (!result) return;
+    await this.inventoryTask(async () => {
+      await moveInventoryItem(
+        this.actor,
+        itemId,
+        String(result.containerId ?? "") || null,
+      );
+    }, "Emplacement mis à jour après contrôle des capacités.");
+  }
+
+  private async transferPhysicalItem(itemId: string): Promise<void> {
+    if (!this.actor.isOwner) return;
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const actors = (
+      Array.from(game.actors?.contents ?? game.actors ?? []) as RelisActor[]
+    ).filter(
+      (actor) =>
+        actor.uuid !== this.actor.uuid &&
+        ["character", "npc"].includes(actor.type) &&
+        (game.user?.isGM || actor.isOwner),
+    );
+    if (!actors.length) {
+      ui.notifications.warn(
+        "Aucun autre Personnage ou PNJ modifiable ne peut recevoir cet Item.",
+      );
+      return;
+    }
+    const content = dialogContent();
+    dialogSelect(
+      content,
+      "Actor destinataire",
+      "actorUuid",
+      actors.map((actor) => ({ value: actor.uuid, label: actor.name })),
+    );
+    const maximum = Number(item.system.physical?.quantity ?? 0);
+    if (item.type !== "container")
+      dialogNumber(
+        content,
+        "Quantité transférée",
+        "quantity",
+        maximum,
+        maximum,
+        String(item.system.physical?.unit ?? "count") === "count",
+      );
+    const result = await askInventoryForm(
+      `Transférer « ${item.name} »`,
+      content,
+      "Transférer",
+    );
+    if (!result) return;
+    const destination = actors.find(
+      (actor) => actor.uuid === String(result.actorUuid ?? ""),
+    );
+    if (!destination) return;
+    await this.inventoryTask(async () => {
+      await transferInventoryItem(
+        this.actor,
+        destination,
+        itemId,
+        item.type === "container" ? maximum : Number(result.quantity),
+      );
+    }, `Transfert vers ${destination.name} terminé sans duplication jouable.`);
   }
 
   private activateTab(

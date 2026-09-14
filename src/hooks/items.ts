@@ -1,8 +1,9 @@
 import { PACKAGE_VERSION, SCHEMA_VERSION, SYSTEM_ID } from "../config";
 import {
   buildOwnedItemSystem,
+  initialReference,
   isPhysicalItemType,
-  normalizeItemSystem,
+  normalizeItemSystemForType,
 } from "../data/item-defaults";
 
 function sourceUuid(
@@ -32,6 +33,16 @@ export function prepareItemCreation(
   const isOwnedCopy = Boolean(item.parent && incomingId);
   const isImportedCopy = Boolean(inferredSourceUuid && incomingId);
 
+  if (options.relisInventoryOperation) {
+    item.updateSource({
+      system: normalizeItemSystemForType(
+        item.system ?? incomingSystem,
+        item.type,
+      ),
+    });
+    return;
+  }
+
   if (isOwnedCopy || isImportedCopy) {
     item.updateSource({
       system: buildOwnedItemSystem(
@@ -46,7 +57,10 @@ export function prepareItemCreation(
   }
 
   item.updateSource({
-    system: normalizeItemSystem(item.system ?? incomingSystem, physical),
+    system: normalizeItemSystemForType(
+      item.system ?? incomingSystem,
+      item.type,
+    ),
   });
 }
 
@@ -136,6 +150,59 @@ export function constrainPhysicalItemUpdate(
       "system.physical.quantity",
       Math.max(0, Math.trunc(quantity)),
     );
+
+  const currentContainer = String(
+    item.system.physical?.containerRef?.relisId ??
+      item.system.physical?.containerRef?.uuid ??
+      "",
+  );
+  const requestedLocation = requestedValue(
+    change,
+    "system.physical.locationKey",
+    item.system.physical?.locationKey ?? "",
+  );
+  const changesLocation =
+    Object.hasOwn(change, "system.physical.locationKey") ||
+    Boolean(change.system?.physical && "locationKey" in change.system.physical);
+  if (
+    changesLocation &&
+    String(requestedLocation ?? "").trim() &&
+    currentContainer
+  )
+    setRequestedValue(
+      change,
+      "system.physical.containerRef",
+      initialReference(),
+    );
+}
+
+export function preventUnsafeContainerDeletion(
+  item: Item,
+  options: Record<string, any> = {},
+): boolean | void {
+  if (
+    item.type !== "container" ||
+    !item.parent ||
+    options.relisInventoryOperation
+  )
+    return;
+  const relisId = String(item.system.meta?.relisId ?? "");
+  const uuid = String(item.uuid ?? "");
+  const contents = (Array.from(item.parent.items ?? []) as Item[]).filter(
+    (candidate) => {
+      const reference = candidate.system.physical?.containerRef;
+      return (
+        candidate.id !== item.id &&
+        ((relisId && String(reference?.relisId ?? "") === relisId) ||
+          (uuid && String(reference?.uuid ?? "") === uuid))
+      );
+    },
+  );
+  if (contents.length === 0) return;
+  ui.notifications.warn(
+    `Suppression refusée : ${item.name} contient encore ${contents.length} ligne(s). Déplacez ou transférez son contenu.`,
+  );
+  return false;
 }
 
 export function trackLocalItemUpdate(
@@ -181,7 +248,7 @@ function worldItems(): Item[] {
 
 export async function migrateItemCore(): Promise<number> {
   if (!game.user?.isGM) return 0;
-  const migrationId = `10-E1-P-schema-${SCHEMA_VERSION}`;
+  const migrationId = `10-E2-P-schema-${SCHEMA_VERSION}`;
   const migrationState = game.settings.get(SYSTEM_ID, "migrations.state") ?? {};
   if (migrationState.lastMigrationId === migrationId) return 0;
 
@@ -189,7 +256,7 @@ export async function migrateItemCore(): Promise<number> {
   for (const item of items) {
     const source = item.toObject(true).system ?? item.system ?? {};
     await item.update(
-      { system: normalizeItemSystem(source, isPhysicalItemType(item.type)) },
+      { system: normalizeItemSystemForType(source, item.type) },
       { relisMigration: true },
     );
   }
@@ -200,13 +267,14 @@ export async function migrateItemCore(): Promise<number> {
     errors: [],
   });
   console.log(
-    `RE:LIS | Migration 10-E1-P : ${items.length} Item(s) contrôlé(s).`,
+    `RE:LIS | Migration 10-E2-P : ${items.length} Item(s) contrôlé(s).`,
   );
   return items.length;
 }
 
 export function registerItemHooks(): void {
   Hooks.on("preCreateItem", prepareItemCreation);
+  Hooks.on("preDeleteItem", preventUnsafeContainerDeletion);
   Hooks.on(
     "preUpdateItem",
     (item: Item, change: Record<string, any>, options: Record<string, any>) => {

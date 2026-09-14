@@ -31,6 +31,29 @@ export const EQUIP_STATES = [
   "installed",
 ] as const;
 
+export const OWNERSHIP_STATES = [
+  "owned",
+  "loaned",
+  "issued",
+  "held",
+  "evidence",
+] as const;
+
+export const ACCESSIBILITY_STATES = [
+  "ready",
+  "accessible",
+  "stored",
+  "distant",
+  "unavailable",
+] as const;
+
+export const CONTAINER_ACCESS_RULES = [
+  "normal",
+  "quick",
+  "restricted",
+  "sealed",
+] as const;
+
 export const ITEM_CONDITIONS = [
   "intact",
   "worn",
@@ -119,11 +142,27 @@ export function initialPhysicalState(): RecordLike {
     containerRef: initialReference(),
     locationKey: "",
     custodianRef: initialReference(),
+    ownershipState: "owned",
+    accessibility: "stored",
+    maintenanceRefs: [],
     equipState: "stored",
     condition: "intact",
     wear: 0,
     charges: { current: null, maximum: null, unit: "charge" },
+    expiresAt: {
+      worldTime: null,
+      calendarId: "",
+      displayOverride: "",
+      precision: "exact",
+    },
     identified: true,
+  };
+}
+
+export function initialContainerState(): RecordLike {
+  return {
+    capacity: { mass: null, volume: null, bulk: null, units: null },
+    accessRule: "normal",
   };
 }
 
@@ -146,7 +185,9 @@ function finiteNumber(
   if (value === null || value === undefined || value === "") return fallback;
   const parsed = Number(value);
   if (!Number.isFinite(parsed)) return fallback;
-  return Math.min(maximum ?? parsed, Math.max(minimum ?? parsed, parsed));
+  const lowerBounded =
+    minimum === undefined ? parsed : Math.max(minimum, parsed);
+  return maximum === undefined ? lowerBounded : Math.min(maximum, lowerBounded);
 }
 
 function integer(
@@ -192,6 +233,7 @@ export function normalizeReference(value: unknown): RecordLike {
 export function normalizePhysicalState(value: unknown): RecordLike {
   const source = record(value);
   const charges = record(source.charges);
+  const expiresAt = record(source.expiresAt);
   const quantity = finiteNumber(source.quantity, 1, 0) ?? 1;
   const unit = (QUANTITY_UNITS as readonly string[]).includes(source.unit)
     ? source.unit
@@ -207,6 +249,17 @@ export function normalizePhysicalState(value: unknown): RecordLike {
     containerRef: normalizeReference(source.containerRef),
     locationKey: text(source.locationKey),
     custodianRef: normalizeReference(source.custodianRef),
+    ownershipState: (OWNERSHIP_STATES as readonly string[]).includes(
+      source.ownershipState,
+    )
+      ? source.ownershipState
+      : "owned",
+    accessibility: (ACCESSIBILITY_STATES as readonly string[]).includes(
+      source.accessibility,
+    )
+      ? source.accessibility
+      : "stored",
+    maintenanceRefs: referenceArray(source.maintenanceRefs),
     equipState: (EQUIP_STATES as readonly string[]).includes(source.equipState)
       ? source.equipState
       : "stored",
@@ -220,7 +273,35 @@ export function normalizePhysicalState(value: unknown): RecordLike {
       maximum: finiteNumber(charges.maximum, null, 0),
       unit: text(charges.unit, "charge") || "charge",
     },
+    expiresAt: {
+      ...expiresAt,
+      worldTime: finiteNumber(expiresAt.worldTime, null),
+      calendarId: text(expiresAt.calendarId),
+      displayOverride: text(expiresAt.displayOverride),
+      precision: text(expiresAt.precision, "exact") || "exact",
+    },
     identified: source.identified !== false,
+  };
+}
+
+export function normalizeContainerState(value: unknown): RecordLike {
+  const source = record(value);
+  const capacity = record(source.capacity);
+  const accessRule = text(source.accessRule, "normal");
+  return {
+    ...source,
+    capacity: {
+      ...capacity,
+      mass: finiteNumber(capacity.mass, null, 0),
+      volume: finiteNumber(capacity.volume, null, 0),
+      bulk: finiteNumber(capacity.bulk, null, 0),
+      units: finiteNumber(capacity.units, null, 0),
+    },
+    accessRule: (CONTAINER_ACCESS_RULES as readonly string[]).includes(
+      accessRule,
+    )
+      ? accessRule
+      : "normal",
   };
 }
 
@@ -296,6 +377,24 @@ export function normalizeItemSystem(
   return normalized;
 }
 
+export function normalizeItemSystemForType(
+  value: unknown,
+  type: string,
+  idFactory: IdFactory = createRelisId,
+): RecordLike {
+  const normalized = normalizeItemSystem(
+    value,
+    isPhysicalItemType(type),
+    idFactory,
+  );
+  if (type === "container") {
+    const container = normalizeContainerState(value);
+    normalized.capacity = container.capacity;
+    normalized.accessRule = container.accessRule;
+  }
+  return normalized;
+}
+
 export function physicalTotals(value: unknown): RecordLike {
   const physical = normalizePhysicalState(value);
   const quantity = Number(physical.quantity);
@@ -318,7 +417,7 @@ export function buildOwnedItemSystem(
   physical: boolean,
   idFactory: IdFactory = createRelisId,
 ): RecordLike {
-  const source = normalizeItemSystem(value, physical, idFactory);
+  const source = normalizeItemSystemForType(value, sourceType, idFactory);
   const sourceId = source.meta.relisId;
   return {
     ...source,

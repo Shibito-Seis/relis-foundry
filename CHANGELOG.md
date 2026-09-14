@@ -1,5 +1,25 @@
 # Journal des versions
 
+## 0.4.0 — inventaire personnel et conteneurs 10-E2-P
+
+- Remplacement de la liste d’Items physiques par un inventaire hiérarchique
+  partagé par les Personnages et les PNJ, avec charge connue, emplacement, lot,
+  état et accessibilité.
+- Conteneurs modélisés comme Items frères : capacités de masse, volume,
+  encombrement et unités, accès normal, rapide, restreint ou scellé, calcul de
+  charge avec contenus imbriqués et refus des cycles.
+- Création d’objets matériels depuis la fiche Actor, scission de piles,
+  fusion strictement homogène et déplacement dans ou hors d’un conteneur.
+- Transfert inter-Actor en deux phases : copie destination indisponible,
+  remappage de toute l’arborescence, retrait de la source puis activation. Une
+  interruption conserve au plus un exemplaire jouable et peut être récupérée au
+  chargement MJ.
+- Suppression brute d’un conteneur non vide refusée ; références historiques
+  orphelines ou cycliques isolées et signalées sans suppression de données.
+- Schéma Item 5 et migration additive depuis 0.3.6. Aucun état « porté, tenu,
+  équipé ou installé » supplémentaire : ces règles restent réservées à
+  10-E3-P.
+
 ## 0.3.6 — commandes ProseMirror de nouveau interactives
 
 - La correction visuelle de l’éditeur n’est plus réappliquée lorsqu’un contrôle

@@ -302,6 +302,44 @@
             />
           </label>
           <label>
+            Lot traçable
+            <input
+              type="text"
+              value="{{system.provenance.lotId}}"
+              data-document-field="system.provenance.lotId"
+            />
+          </label>
+          <label>
+            Relation de propriété
+            <select data-document-field="system.physical.ownershipState">
+              {{selectOptions
+                ownershipOptions
+                selected=system.physical.ownershipState
+                valueAttr="value"
+                labelAttr="label"
+              }}
+            </select>
+          </label>
+          <label>
+            Accessibilité
+            <select data-document-field="system.physical.accessibility">
+              {{selectOptions
+                accessibilityOptions
+                selected=system.physical.accessibility
+                valueAttr="value"
+                labelAttr="label"
+              }}
+            </select>
+          </label>
+          <label>
+            Expiration — affichage diégétique
+            <input
+              type="text"
+              value="{{system.physical.expiresAt.displayOverride}}"
+              data-document-field="system.physical.expiresAt.displayOverride"
+            />
+          </label>
+          <label>
             Port
             <select data-document-field="system.physical.equipState">
               {{selectOptions
@@ -370,9 +408,84 @@
           <div><dt>Encombrement total</dt><dd>{{physicalTotals.bulk}}</dd></div>
         </dl>
         <p class="relis-scope-note">
-          Conteneurs, transferts et équipement sont décrits mais ne deviennent
-          opératoires qu’en 10-E2-P et 10-E3-P.
+          Piles, lots, conteneurs et transferts sont opératoires depuis
+          l’inventaire de l’Actor. Porter, tenir, équiper et installer arrivent
+          en 10-E3-P.
         </p>
+      </section>
+    {{/if}}
+
+    {{#if isContainer}}
+      <section class="relis-card">
+        <p class="relis-kicker">Contraintes cumulatives</p>
+        <h2>Conteneur</h2>
+        <div class="relis-grid relis-grid--form relis-item-form">
+          <label>
+            Capacité de masse (kg)
+            <input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.capacity.mass}}"
+              data-value-type="nullable-number"
+              data-document-field="system.capacity.mass"
+            />
+          </label>
+          <label>
+            Capacité de volume (L)
+            <input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.capacity.volume}}"
+              data-value-type="nullable-number"
+              data-document-field="system.capacity.volume"
+            />
+          </label>
+          <label>
+            Capacité d’encombrement
+            <input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.capacity.bulk}}"
+              data-value-type="nullable-number"
+              data-document-field="system.capacity.bulk"
+            />
+          </label>
+          <label>
+            Capacité en unités
+            <input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.capacity.units}}"
+              data-value-type="nullable-number"
+              data-document-field="system.capacity.units"
+            />
+          </label>
+          <label>
+            Règle d’accès
+            <select data-document-field="system.accessRule">
+              {{selectOptions
+                containerAccessOptions
+                selected=system.accessRule
+                valueAttr="value"
+                labelAttr="label"
+              }}
+            </select>
+          </label>
+        </div>
+        {{#if containerUsage}}
+          <dl class="relis-item-totals">
+            <div><dt>Masse contenue</dt><dd>{{containerUsage.mass}}</dd></div>
+            <div><dt>Volume contenu</dt><dd>{{containerUsage.volume}}</dd></div>
+            <div><dt>Encombrement contenu</dt><dd
+              >{{containerUsage.bulk}}</dd></div>
+            <div><dt>Unités contenues</dt><dd
+              >{{containerUsage.units}}</dd></div>
+          </dl>
+        {{/if}}
       </section>
     {{/if}}
 

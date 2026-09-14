@@ -29,6 +29,14 @@ const itemSheetSource = fs.readFileSync(
   path.join(root, "src/sheets/item-sheet.ts"),
   "utf8",
 );
+const inventoryRulesSource = fs.readFileSync(
+  path.join(root, "src/rules/inventory.ts"),
+  "utf8",
+);
+const inventoryServiceSource = fs.readFileSync(
+  path.join(root, "src/services/inventory.ts"),
+  "utf8",
+);
 
 assert.equal(manifest.id, "relis");
 assert.equal(manifest.title, "RE:LIS — RE: Lost in Space");
@@ -87,6 +95,31 @@ assert.match(
   styles,
   /\.chat-message \.message-content \.relis-chat-card h3/,
   "Protection de contraste de la carte de Chat absente",
+);
+assert.match(
+  actorTemplate,
+  /data-action="split-inventory-stack"/,
+  "Scission de pile absente de l’inventaire Actor",
+);
+assert.match(
+  actorTemplate,
+  /data-action="transfer-inventory-item"/,
+  "Transfert inter-Actor absent de l’inventaire",
+);
+assert.match(
+  itemTemplate,
+  /system\.capacity\.mass/,
+  "Capacités typées du conteneur absentes de sa fiche",
+);
+assert.match(
+  inventoryRulesSource,
+  /descendantIds[\s\S]*Déplacement refusé : il créerait une boucle/,
+  "Prévention des cycles de conteneurs absente",
+);
+assert.match(
+  inventoryServiceSource,
+  /state: "pending"[\s\S]*activateTransfer/,
+  "Transfert préparatoire indisponible puis activé absent",
 );
 assert.match(
   itemSheetSource,

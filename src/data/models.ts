@@ -17,6 +17,7 @@ import {
 } from "./person-defaults";
 import {
   ActionData,
+  ContainerData,
   EquipmentData,
   PhysicalItemData,
   RelisItemData,
@@ -963,11 +964,13 @@ export function registerDataModels(): void {
     CONFIG.Item.dataModels[type] =
       type === "action"
         ? ActionData
-        : type === "equipment"
-          ? EquipmentData
-          : isPhysicalItemType(type)
-            ? PhysicalItemData
-            : RelisItemData;
+        : type === "container"
+          ? ContainerData
+          : type === "equipment"
+            ? EquipmentData
+            : isPhysicalItemType(type)
+              ? PhysicalItemData
+              : RelisItemData;
   }
   for (const type of JOURNAL_PAGE_TYPES)
     CONFIG.JournalEntryPage.dataModels[type] = ReservedData;

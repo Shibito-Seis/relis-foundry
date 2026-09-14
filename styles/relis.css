@@ -554,6 +554,199 @@
   line-height: 1.4;
 }
 
+.relis-inventory-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.relis-inventory-summary span {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+  padding: 0.55rem 0.65rem;
+  color: var(--relis-muted);
+  border: 1px solid var(--relis-line);
+  background: linear-gradient(135deg, rgb(49 215 242 / 8%), var(--relis-panel));
+  font-size: 0.68rem;
+}
+
+.relis-inventory-summary b {
+  overflow-wrap: anywhere;
+  color: var(--relis-cyan-soft);
+  font-size: 0.9rem;
+}
+
+.relis-inventory-diagnostics {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+}
+
+.relis-inventory-heading {
+  margin-top: 0.75rem;
+}
+
+.relis-inventory-heading h2 {
+  margin-bottom: 0;
+}
+
+.relis-inventory-tree {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.relis-inventory-row {
+  min-width: 0;
+  margin-left: var(--relis-inventory-depth);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--relis-line) 78%, transparent);
+  border-left: 3px solid var(--relis-line);
+  border-radius: 4px;
+  background: rgb(7 22 32 / 86%);
+}
+
+.relis-inventory-row--container {
+  border-left-color: var(--relis-cyan);
+  background:
+    linear-gradient(105deg, rgb(49 215 242 / 8%), transparent 42%),
+    rgb(7 22 32 / 92%);
+}
+
+.relis-inventory-row--error {
+  border-left-color: var(--relis-red);
+}
+
+.relis-inventory-main {
+  display: grid;
+  grid-template-columns:
+    2.4rem minmax(10rem, 1.5fr) auto minmax(8rem, 0.8fr)
+    minmax(7rem, 0.7fr);
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 0.45rem 0.55rem;
+}
+
+.relis-inventory-main > img {
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: cover;
+  border: 1px solid var(--relis-line);
+  border-radius: 50%;
+  background: var(--relis-night);
+}
+
+.relis-inventory-identity,
+.relis-inventory-quantity,
+.relis-inventory-location,
+.relis-inventory-load {
+  display: grid;
+  min-width: 0;
+}
+
+.relis-inventory-identity .relis-link {
+  max-width: 100%;
+  padding: 0;
+  overflow: hidden;
+  color: var(--relis-ink);
+  font-weight: 700;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.relis-inventory-identity span,
+.relis-inventory-identity small,
+.relis-inventory-quantity span,
+.relis-inventory-location span,
+.relis-inventory-load span,
+.relis-inventory-load small {
+  overflow-wrap: anywhere;
+  color: var(--relis-muted);
+  font-size: 0.66rem;
+}
+
+.relis-inventory-quantity {
+  justify-items: end;
+  color: var(--relis-cyan-soft);
+}
+
+.relis-inventory-location b,
+.relis-inventory-load b {
+  overflow-wrap: anywhere;
+  font-size: 0.72rem;
+}
+
+.relis-container-capacity {
+  padding: 0.35rem 0.55rem;
+  border-top: 1px solid rgb(155 176 188 / 14%);
+}
+
+.relis-container-capacity summary {
+  color: var(--relis-cyan-soft);
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.relis-container-capacity > div {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.relis-container-capacity span {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.3rem;
+  color: var(--relis-muted);
+  border: 1px solid rgb(155 176 188 / 16%);
+  font-size: 0.65rem;
+}
+
+.relis-container-capacity b {
+  color: var(--relis-ink);
+}
+
+.relis-inventory-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  padding: 0.35rem 0.55rem;
+  border-top: 1px solid rgb(155 176 188 / 14%);
+  background: rgb(18 52 73 / 28%);
+}
+
+.relis-inventory-actions button {
+  padding: 0.25rem 0.4rem;
+  font-size: 0.68rem;
+}
+
+.relis-inventory-secondary {
+  margin-top: 0.75rem;
+}
+
+.relis-inventory-dialog {
+  display: grid;
+  gap: 0.75rem;
+  min-width: min(28rem, 72vw);
+  padding: 0.4rem;
+}
+
+.relis-inventory-dialog label {
+  display: grid;
+  gap: 0.3rem;
+  color: var(--color-text-secondary, #52606a);
+  font-weight: 700;
+}
+
+.relis-inventory-dialog :is(input, select) {
+  width: 100%;
+  color: var(--color-text-primary, #18252e);
+}
+
 .relis-row--need {
   display: grid;
   grid-template-columns: minmax(8rem, 1fr) auto auto;
@@ -1241,6 +1434,19 @@
   .relis-card--wide {
     grid-row: auto;
   }
+
+  .relis-inventory-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .relis-inventory-main {
+    grid-template-columns: 2.4rem minmax(9rem, 1fr) auto;
+  }
+
+  .relis-inventory-location,
+  .relis-inventory-load {
+    grid-column: 2 / -1;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1295,6 +1501,10 @@
   .relis-row--skill {
     grid-template-columns: minmax(7rem, 1fr) 2rem minmax(7rem, 9rem);
   }
+
+  .relis-container-capacity > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 480px) {
@@ -1304,6 +1514,34 @@
 
   .relis-id-header {
     grid-template-columns: 1fr;
+  }
+
+  .relis-inventory-summary,
+  .relis-container-capacity > div {
+    grid-template-columns: 1fr;
+  }
+
+  .relis-inventory-row {
+    margin-left: min(var(--relis-inventory-depth), 1rem);
+  }
+
+  .relis-inventory-main {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+  }
+
+  .relis-inventory-quantity,
+  .relis-inventory-location,
+  .relis-inventory-load {
+    grid-column: 2;
+    justify-items: start;
+  }
+
+  .relis-inventory-actions {
+    justify-content: stretch;
+  }
+
+  .relis-inventory-actions button {
+    flex: 1 1 8rem;
   }
 
   .relis-id-portrait {

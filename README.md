@@ -2,25 +2,23 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.3.6` stabilise l’interface de 10-E1-P : les 26 types d’Items partagent
-un noyau persistant de catalogue, références, versions et provenance. Les sept
-familles matérielles reçoivent en plus quantité, unité, masse, volume,
-encombrement, état, usure, charges et identification. La migration depuis 0.2.4
-est additive et conserve les Items techniques de 10-C.
+La version `0.4.0` livre 10-E2-P sur le noyau Item validé de 10-E1-P. Les sept
+familles matérielles apparaissent dans un inventaire personnel hiérarchique :
+quantité, lot, masse, volume, encombrement, état, accessibilité et emplacement
+restent portés par les vrais Items de l’Actor.
 
-La fiche commune n’affiche que les champs applicables au type. Les traits sont
-choisis dans le vocabulaire canonique par sélection multiple, la description
-utilise l’éditeur riche de Foundry monté directement dans la fiche, et Qualité
-comme Rareté présentent leurs noms plutôt que leurs codes techniques. La barre
-ProseMirror reste séparée du texte sans intercepter ni neutraliser ses commandes
-natives. Le portrait ouvre son sélecteur d’image.
-La version 0.3.0 est rejetée car ses mises à jour partielles pouvaient effacer
-les autres champs d’un Item.
+Les conteneurs sont des Items frères reliés par référence. Leur charge est
+reconstruite sans collection parallèle ; les cycles et dépassements de capacité
+sont refusés. La fiche permet de créer un objet, scinder ou fusionner une pile,
+déplacer une arborescence et transférer tout ou partie vers un autre Personnage
+ou PNJ. Le transfert prépare une copie indisponible, remappe les conteneurs,
+retire la source puis active la destination afin qu’une erreur ne laisse pas deux
+exemplaires jouables.
 
-Les opérations de conteneur, transferts, équipement, assistants, Garde-Robe et
-dossiers restent réservées aux lots suivants. Aucun catalogue fictif ni contenu
-canonique n’est livré par 10-E1-P. Les visuels fonctionnels restent réalisés en
-CSS et en SVG interne jusqu’à la passe graphique finale.
+Porter, tenir, équiper, installer, les ensembles de Garde-Robe et les règles
+détaillées d’armes ou de consommables restent réservés à 10-E3-P et 10-E4-P.
+Aucun catalogue fictif ni contenu canonique n’est livré. Les visuels fonctionnels
+restent réalisés en CSS et en SVG interne jusqu’à la passe graphique finale.
 
 ## Développement
 
@@ -32,7 +30,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.3.6.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.4.0.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.

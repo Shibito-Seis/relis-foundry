@@ -6,6 +6,7 @@ import { registerIdentityHooks } from "./hooks/identity";
 import { registerIntegrityHooks } from "./hooks/integrity";
 import { migrateItemCore, registerItemHooks } from "./hooks/items";
 import { registerSettings } from "./settings";
+import { recoverPendingInventoryTransfers } from "./services/inventory";
 import { registerSheets } from "./sheets/register";
 import { registerDocumentTypeLabels } from "./type-labels";
 
@@ -35,9 +36,12 @@ Hooks.once("ready", async () => {
   if (game.user?.isGM) {
     try {
       await migrateItemCore();
+      const recovered = await recoverPendingInventoryTransfers();
+      if (recovered > 0)
+        console.log(`RE:LIS | ${recovered} Item(s) de transfert récupéré(s).`);
       ui.notifications.info(game.i18n.localize("RELIS.Ready"));
     } catch (error) {
-      console.error("RE:LIS | Échec de la migration 10-E1-P", error);
+      console.error("RE:LIS | Échec de la migration ou récupération", error);
       ui.notifications.error(game.i18n.localize("RELIS.Error.ItemMigration"));
     }
   }

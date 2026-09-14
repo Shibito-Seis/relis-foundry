@@ -1,8 +1,11 @@
 import { CONTENT_VERSION, RULES_VERSION, SCHEMA_VERSION } from "../config";
 import {
+  ACCESSIBILITY_STATES,
+  CONTAINER_ACCESS_RULES,
   EQUIP_STATES,
   ITEM_CONDITIONS,
   LEGALITY_STATES,
+  OWNERSHIP_STATES,
   QUANTITY_UNITS,
   UPGRADE_STATES,
   physicalTotals,
@@ -48,6 +51,20 @@ function referenceArrayField(): any {
   return new fields.ArrayField(referenceField(), {
     required: true,
     initial: [],
+  });
+}
+
+function fictionStampField(): any {
+  return new fields.SchemaField({
+    worldTime: optionalNumberField(),
+    calendarId: optionalStringField(),
+    displayOverride: optionalStringField(),
+    precision: new fields.StringField({
+      required: true,
+      blank: false,
+      choices: ["exact", "approximate", "range", "unknown"],
+      initial: "exact",
+    }),
   });
 }
 
@@ -134,6 +151,19 @@ function physicalField(): any {
     containerRef: referenceField(),
     locationKey: optionalStringField(),
     custodianRef: referenceField(),
+    ownershipState: new fields.StringField({
+      required: true,
+      blank: false,
+      choices: OWNERSHIP_STATES,
+      initial: "owned",
+    }),
+    accessibility: new fields.StringField({
+      required: true,
+      blank: false,
+      choices: ACCESSIBILITY_STATES,
+      initial: "stored",
+    }),
+    maintenanceRefs: referenceArrayField(),
     equipState: new fields.StringField({
       required: true,
       blank: false,
@@ -162,6 +192,7 @@ function physicalField(): any {
         initial: "charge",
       }),
     }),
+    expiresAt: fictionStampField(),
     identified: new fields.BooleanField({ required: true, initial: true }),
   });
 }
@@ -286,3 +317,23 @@ export class ActionData extends RelisItemData {
 }
 
 export class EquipmentData extends PhysicalItemData {}
+
+export class ContainerData extends PhysicalItemData {
+  static defineSchema(): Record<string, any> {
+    return {
+      ...super.defineSchema(),
+      capacity: new fields.SchemaField({
+        mass: optionalNumberField(),
+        volume: optionalNumberField(),
+        bulk: optionalNumberField(),
+        units: optionalNumberField(),
+      }),
+      accessRule: new fields.StringField({
+        required: true,
+        blank: false,
+        choices: CONTAINER_ACCESS_RULES,
+        initial: "normal",
+      }),
+    };
+  }
+}

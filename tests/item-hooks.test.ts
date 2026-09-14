@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   constrainPhysicalItemUpdate,
   migrateItemCore,
+  preventUnsafeContainerDeletion,
   prepareItemCreation,
   trackLocalItemUpdate,
 } from "../src/hooks/items";
@@ -86,6 +87,41 @@ describe("cycle de vie des exemplaires Item", () => {
     };
     constrainPhysicalItemUpdate(item, measured);
     expect(measured["system.physical.quantity"]).toBe(2.8);
+
+    item.system.physical.containerRef = { relisId: "WLD-bag" };
+    const relocated: Record<string, any> = {
+      "system.physical.locationKey": "actor-cargo",
+    };
+    constrainPhysicalItemUpdate(item, relocated);
+    expect(relocated["system.physical.containerRef"]).toMatchObject({
+      relisId: "",
+      uuid: "",
+    });
+  });
+
+  it("refuse la suppression brute d’un conteneur non vide", () => {
+    const warn = vi.fn();
+    (globalThis as any).ui = { notifications: { warn } };
+    const container = {
+      id: "bag",
+      name: "Sac",
+      type: "container",
+      uuid: "Actor.a.Item.bag",
+      system: { meta: { relisId: "WLD-bag" } },
+      parent: { items: [] as any[] },
+    } as unknown as Item;
+    const content = {
+      id: "tool",
+      system: { physical: { containerRef: { relisId: "WLD-bag" } } },
+    } as unknown as Item;
+    (container.parent as Actor).items = [container, content];
+    expect(preventUnsafeContainerDeletion(container)).toBe(false);
+    expect(warn).toHaveBeenCalledOnce();
+    expect(
+      preventUnsafeContainerDeletion(container, {
+        relisInventoryOperation: true,
+      }),
+    ).toBeUndefined();
   });
 
   it("migre une seule fois les Items du monde et les Items embarqués", async () => {
@@ -136,7 +172,7 @@ describe("cycle de vie des exemplaires Item", () => {
     });
     await expect(migrateItemCore()).resolves.toBe(0);
     expect(worldItem.update).toHaveBeenCalledTimes(1);
-    expect(setting.lastMigrationId).toBe("10-E1-P-schema-4");
+    expect(setting.lastMigrationId).toBe("10-E2-P-schema-5");
     log.mockRestore();
   });
 });

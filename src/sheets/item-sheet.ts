@@ -1,7 +1,10 @@
 import {
+  ACCESSIBILITY_STATES,
+  CONTAINER_ACCESS_RULES,
   EQUIP_STATES,
   ITEM_CONDITIONS,
   LEGALITY_STATES,
+  OWNERSHIP_STATES,
   QUANTITY_UNITS,
   isPhysicalItemType,
   physicalTotals,
@@ -15,6 +18,11 @@ import {
   traitChoices,
   traitLabel,
 } from "../data/item-catalog";
+import {
+  presentInventory,
+  type InventoryItemLike,
+  type InventoryLoad,
+} from "../rules/inventory";
 import { ATTRIBUTE_LABELS, MASTERY_LABELS, SKILL_DEFINITIONS } from "../config";
 import type { RelisActor } from "../documents/actor";
 
@@ -313,6 +321,29 @@ const CONDITION_LABELS: Record<string, string> = {
   destroyed: "Détruit",
 };
 
+const OWNERSHIP_LABELS: Record<string, string> = {
+  owned: "Possédé",
+  loaned: "Prêté",
+  issued: "Attribué",
+  held: "Détenu",
+  evidence: "Pièce à conviction",
+};
+
+const ACCESSIBILITY_LABELS: Record<string, string> = {
+  ready: "Prêt",
+  accessible: "Accessible",
+  stored: "Rangé",
+  distant: "Distant",
+  unavailable: "Indisponible",
+};
+
+const CONTAINER_ACCESS_LABELS: Record<string, string> = {
+  normal: "Accès normal",
+  quick: "Accès rapide",
+  restricted: "Accès restreint",
+  sealed: "Scellé",
+};
+
 function options(
   values: readonly string[],
   labels: Record<string, string>,
@@ -337,6 +368,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const context = await super._prepareContext(optionsValue);
     const system = this.item.system;
     const hasPhysical = isPhysicalItemType(this.item.type);
+    const isContainer = this.item.type === "container";
     const applicability = itemFieldApplicability(this.item.type);
     const canEditDescription = Boolean(
       this.item.isOwner &&
@@ -447,6 +479,25 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
           message: "Une quantité en unités doit être entière.",
         });
     }
+    let containerUsage: InventoryLoad | null = null;
+    if (isContainer && this.item.parent) {
+      const owned = (Array.from(this.item.parent.items ?? []) as Item[]).map(
+        (item): InventoryItemLike => {
+          const source = item.toObject?.(true) ?? {};
+          return {
+            id: item.id,
+            name: item.name,
+            type: item.type,
+            uuid: item.uuid,
+            system: source.system ?? item.system ?? {},
+            flags: source.flags ?? item.flags ?? {},
+          };
+        },
+      );
+      containerUsage =
+        presentInventory(owned).rows.find((row) => row.item.id === this.item.id)
+          ?.containerUsage ?? null;
+    }
 
     return {
       ...context,
@@ -466,6 +517,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       })),
       isAction: this.item.type === "action",
       hasPhysical,
+      isContainer,
       applicability,
       hasCatalog: hasCatalogFields(applicability),
       hasSourceRef,
@@ -480,6 +532,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       requirementCount: Number(system.requirementRefs?.length ?? 0),
       effectRefCount: Number(system.effectRefs?.length ?? 0),
       physicalTotals: hasPhysical ? physicalTotals(system.physical) : null,
+      containerUsage,
       qualityOptions: [
         { value: "", label: "Non applicable" },
         ...QUALITY_GRADE_LABELS.map((label, value) => ({
@@ -498,6 +551,12 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       quantityUnitOptions: options(QUANTITY_UNITS, {}),
       equipStateOptions: options(EQUIP_STATES, EQUIP_STATE_LABELS),
       conditionOptions: options(ITEM_CONDITIONS, CONDITION_LABELS),
+      ownershipOptions: options(OWNERSHIP_STATES, OWNERSHIP_LABELS),
+      accessibilityOptions: options(ACCESSIBILITY_STATES, ACCESSIBILITY_LABELS),
+      containerAccessOptions: options(
+        CONTAINER_ACCESS_RULES,
+        CONTAINER_ACCESS_LABELS,
+      ),
       attributes: Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
         key,
         label,

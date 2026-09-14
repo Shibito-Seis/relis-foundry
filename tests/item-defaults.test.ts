@@ -4,6 +4,7 @@ import {
   createWorldItemId,
   isPhysicalItemType,
   normalizeItemSystem,
+  normalizeItemSystemForType,
   physicalTotals,
 } from "../src/data/item-defaults";
 
@@ -56,6 +57,9 @@ describe("noyau commun des Items 10-E1-P", () => {
       equipState: "carried",
       condition: "worn",
       wear: 0,
+      ownershipState: "owned",
+      accessibility: "stored",
+      maintenanceRefs: [],
       identified: true,
     });
     expect(physicalTotals(system.physical)).toEqual({
@@ -63,6 +67,25 @@ describe("noyau commun des Items 10-E1-P", () => {
       volume: null,
       bulk: 6,
     });
+  });
+
+  it("normalise les capacités propres au type Conteneur", () => {
+    const system = normalizeItemSystemForType(
+      {
+        capacity: { mass: -2, volume: 12, bulk: 4, units: 8 },
+        accessRule: "sealed",
+      },
+      "container",
+      () => ULID_A,
+    );
+    expect(system.capacity).toEqual({
+      mass: 0,
+      volume: 12,
+      bulk: 4,
+      units: 8,
+    });
+    expect(system.accessRule).toBe("sealed");
+    expect(system.physical.ownershipState).toBe("owned");
   });
 
   it("sépare qualité, état et usure et borne les registres", () => {

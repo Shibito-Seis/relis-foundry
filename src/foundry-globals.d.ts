@@ -22,8 +22,18 @@ declare class Actor {
   createEmbeddedDocuments(
     documentName: string,
     data: Record<string, unknown>[],
+    options?: Record<string, unknown>,
   ): Promise<any[]>;
-  deleteEmbeddedDocuments(documentName: string, ids: string[]): Promise<any[]>;
+  updateEmbeddedDocuments(
+    documentName: string,
+    data: Record<string, unknown>[],
+    options?: Record<string, unknown>,
+  ): Promise<any[]>;
+  deleteEmbeddedDocuments(
+    documentName: string,
+    ids: string[],
+    options?: Record<string, unknown>,
+  ): Promise<any[]>;
 }
 
 declare class ActiveEffect {
@@ -49,6 +59,7 @@ declare class Item {
   parent: Actor | null;
   documentName: string;
   pack: string | null;
+  flags?: Record<string, any>;
   sheet: { render(force?: boolean): unknown };
   uuid: string;
   isOwner: boolean;

@@ -130,7 +130,7 @@ describe("amorçage Foundry 10-C", () => {
     );
     expect(registeredSettings).toHaveLength(32);
     expect(registeredSheets).toEqual(["Actor", "Item"]);
-    expect(hookNames).toHaveLength(10);
+    expect(hookNames).toHaveLength(11);
     expect((globalThis as any).CONFIG.Actor.documentClass.name).toBe(
       "RelisActor",
     );
@@ -222,6 +222,11 @@ describe("amorçage Foundry 10-C", () => {
         (globalThis as any).CONFIG.Item.dataModels.weapon.defineSchema(),
       ),
     ).toContain("physical");
+    expect(
+      Object.keys(
+        (globalThis as any).CONFIG.Item.dataModels.container.defineSchema(),
+      ),
+    ).toEqual(expect.arrayContaining(["physical", "capacity", "accessRule"]));
     expect(
       Object.keys(
         (globalThis as any).CONFIG.Item.dataModels.ancestry.defineSchema(),
