@@ -1587,3 +1587,74 @@
     transition-duration: 0.01ms !important;
   }
 }
+.relis [data-inventory-view] [hidden] {
+  display: none !important;
+}
+.relis-inventory-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.65rem;
+  margin: 0.8rem 0;
+}
+.relis-inventory-toolbar label:first-child {
+  flex: 1 1 15rem;
+}
+.relis-inventory-toolbar label {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.relis-inventory-toolbar label:first-child {
+  display: grid;
+}
+.relis-inventory-toolbar input[type="search"] {
+  width: 100%;
+}
+.relis-inventory-category {
+  margin-block: 0.75rem;
+}
+.relis-inventory-category h3 {
+  margin: 0;
+}
+.relis-inventory-category h3 button {
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem;
+  background: var(--relis-night);
+  border: 1px solid var(--relis-line);
+}
+.relis-inventory-category h3 small {
+  float: right;
+  font-weight: normal;
+}
+.relis-fold-chevron {
+  display: inline-block;
+}
+[data-inventory-fold][aria-expanded="false"] .relis-fold-chevron {
+  transform: rotate(-90deg);
+}
+.relis-inventory-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.4rem;
+  padding: 0.5rem;
+}
+.relis-inventory-detail-grid span {
+  display: grid;
+}
+.relis-inventory-details summary {
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+.relis-inventory-warning {
+  color: #efbf73;
+}
+.relis-container-toggle {
+  margin-top: 0.3rem;
+}
+[data-inventory-view] button:focus-visible,
+[data-inventory-view] summary:focus-visible {
+  outline: 2px solid var(--relis-cyan);
+  outline-offset: 2px;
+}

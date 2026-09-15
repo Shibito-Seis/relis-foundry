@@ -952,6 +952,7 @@
         role="tabpanel"
         aria-labelledby="relis-tab-{{inventoryTab}}"
         data-tab-panel="{{inventoryTab}}"
+        data-inventory-view
         hidden
       >
         <div class="relis-inventory-summary" aria-label="Charge totale">
@@ -993,134 +994,190 @@
           {{/if}}
         </div>
 
-        {{#if hasInventory}}
-          <div
-            class="relis-inventory-tree"
-            role="tree"
-            aria-label="Inventaire et conteneurs"
-          >
-            {{#each inventoryRows}}
-              <article
-                class="{{rowClasses}}"
-                role="treeitem"
-                aria-level="{{level}}"
-                style="--relis-inventory-depth: {{indent}}px"
-              >
-                <div class="relis-inventory-main">
-                  <img src="{{img}}" alt="" />
-                  <div class="relis-inventory-identity">
-                    <button
-                      type="button"
-                      class="relis-link"
-                      data-action="open-item"
-                      data-item-id="{{id}}"
-                    >{{name}}</button>
-                    <span>{{typeLabel}}
-                      ·
-                      {{condition}}
-                      ·
-                      {{accessibility}}</span>
-                    {{#if lot}}<small>Lot : {{lot}}</small>{{/if}}
-                  </div>
-                  <div class="relis-inventory-quantity">
-                    <b>{{quantity}}</b><span>{{quantityUnit}}</span>
-                  </div>
-                  <div class="relis-inventory-location">
-                    <span>Dans</span><b>{{location}}</b>
-                  </div>
-                  <div class="relis-inventory-load">
-                    <span>Masse propre</span><b>{{ownMass}}</b>
-                    {{#if isContainer}}<small>Avec contenu :
-                        {{subtreeMass}}</small>{{/if}}
-                  </div>
-                </div>
+        <div class="relis-inventory-toolbar">
+          <label>Rechercher par nom
+            <input
+              type="search"
+              data-inventory-search
+              placeholder="Nom d’un objet…"
+            /></label>
+          <button type="button" data-inventory-clear>Effacer</button>
+          <label><input type="checkbox" data-inventory-empty />
+            Catégories vides</label>
+        </div>
+        <p data-inventory-result role="status" aria-live="polite"></p>
 
-                {{#if isContainer}}
-                  <details class="relis-container-capacity">
-                    <summary>{{childCount}}
-                      ligne(s) directe(s) · capacités</summary>
-                    <div>
-                      <span>Masse <b>{{capacityMass}}</b></span>
-                      <span>Volume <b>{{capacityVolume}}</b></span>
-                      <span>Encombrement <b>{{capacityBulk}}</b></span>
-                      <span>Unités <b>{{capacityUnits}}</b></span>
+        <div class="relis-inventory-tree" aria-label="Inventaire et conteneurs">
+          {{#each inventoryGroups}}
+            <section
+              class="relis-inventory-category"
+              data-inventory-category="{{id}}"
+            >
+              <h3><button
+                  type="button"
+                  data-inventory-fold="category:{{id}}"
+                  aria-expanded="true"
+                ><span class="relis-fold-chevron" aria-hidden="true">▾</span>
+                  {{label}}
+                  <small>{{inventoryRows.length}}
+                    ligne(s)</small></button></h3>
+              <div data-category-content>
+                {{#each inventoryRows}}
+                  <article
+                    class="{{rowClasses}}"
+                    data-inventory-row
+                    data-item-id="{{id}}"
+                    data-item-name="{{name}}"
+                    data-ancestors="{{ancestors}}"
+                    style="--relis-inventory-depth: {{indent}}px"
+                  >
+                    <div class="relis-inventory-main">
+                      <img src="{{img}}" alt="" />
+                      <div class="relis-inventory-identity">
+                        <button
+                          type="button"
+                          class="relis-link"
+                          data-action="open-item"
+                          data-item-id="{{id}}"
+                        >{{name}}</button>
+                        {{#if warning}}<span class="relis-inventory-warning">⚠
+                            {{condition}}
+                            ·
+                            {{accessibility}}
+                            · usure
+                            {{wear}}</span>{{/if}}
+                        {{#if lot}}<small>Lot : {{lot}}</small>{{/if}}
+                        {{#if path}}<small>{{path}}</small>{{/if}}
+                      </div>
+                      <div class="relis-inventory-quantity">
+                        <b>{{quantity}}</b><span>{{quantityUnit}}</span>
+                      </div>
+                      <div class="relis-inventory-location">
+                        <span>Dans</span><b>{{location}}</b>
+                      </div>
+                      <div class="relis-inventory-load">
+                        <span>Masse propre</span><b>{{ownMass}}</b>
+                        {{#if isContainer}}<small>Avec contenu :
+                            {{subtreeMass}}</small>{{/if}}
+                      </div>
                     </div>
-                  </details>
-                {{/if}}
 
-                <div
-                  class="relis-inventory-actions"
-                  aria-label="Opérations sur {{name}}"
-                >
-                  {{#if pending}}
-                    <span
-                      class="relis-state-chip relis-state-chip--warning"
-                    >Transfert en récupération</span>
-                  {{else}}
-                    {{#if quarantined}}
-                      <span
-                        class="relis-state-chip relis-state-chip--danger"
-                      >Transfert en quarantaine</span>
-                    {{else}}
-                      {{#if @root.editable}}
-                        {{#if canSplit}}<button
-                            type="button"
-                            data-action="split-inventory-stack"
-                            data-item-id="{{id}}"
-                            data-owner-control
-                            title="Scinder cette pile"
-                          ><i
-                              class="fa-solid fa-scissors"
-                              aria-hidden="true"
-                            ></i>
-                            Scinder</button>{{/if}}
-                        {{#if canMerge}}<button
-                            type="button"
-                            data-action="merge-inventory-stack"
-                            data-item-id="{{id}}"
-                            data-owner-control
-                            title="Fusionner une pile strictement compatible"
-                          ><i
-                              class="fa-solid fa-object-group"
-                              aria-hidden="true"
-                            ></i>
-                            Fusionner</button>{{/if}}
-                        {{#if canMove}}<button
-                            type="button"
-                            data-action="move-inventory-item"
-                            data-item-id="{{id}}"
-                            data-owner-control
-                            title="Déplacer dans ou hors d’un conteneur"
-                          ><i
-                              class="fa-solid fa-box-open"
-                              aria-hidden="true"
-                            ></i>
-                            Déplacer</button>{{/if}}
-                        {{#if canTransfer}}<button
-                            type="button"
-                            data-action="transfer-inventory-item"
-                            data-item-id="{{id}}"
-                            data-owner-control
-                            title="Transférer vers un autre Actor"
-                          ><i
-                              class="fa-solid fa-arrow-right-arrow-left"
-                              aria-hidden="true"
-                            ></i>
-                            Transférer</button>{{/if}}
-                      {{/if}}
+                    {{#if isContainer}}<button
+                        type="button"
+                        class="relis-container-toggle"
+                        data-inventory-fold="item:{{id}}"
+                        aria-expanded="true"
+                      ><span
+                          class="relis-fold-chevron"
+                          aria-hidden="true"
+                        >▾</span>
+                        Contenu de
+                        {{name}}
+                        ·
+                        {{childCount}}
+                        ligne(s)</button>{{/if}}
+                    <details class="relis-inventory-details">
+                      <summary>Détails de l’objet</summary>
+                      <div class="relis-inventory-detail-grid">
+                        <span>Type <b>{{typeLabel}}</b></span>
+                        <span>État <b>{{condition}}</b></span>
+                        <span>Accessibilité <b>{{accessibility}}</b></span>
+                        <span>Usure <b>{{wear}}</b></span>
+                        <span>Provenance <b>{{provenanceSource}}</b></span>
+                        <span>Masse unitaire <b>{{massEach}}</b></span>
+                        <span>Volume unitaire <b>{{volumeEach}}</b></span>
+                        <span>Encombrement unitaire <b>{{bulkEach}}</b></span>
+                      </div>
+                    </details>
+                    {{#if isContainer}}
+                      <details class="relis-container-capacity">
+                        <summary>{{childCount}}
+                          ligne(s) directe(s) · capacités</summary>
+                        <div>
+                          <span>Masse <b>{{capacityMass}}</b></span>
+                          <span>Volume <b>{{capacityVolume}}</b></span>
+                          <span>Encombrement <b>{{capacityBulk}}</b></span>
+                          <span>Unités <b>{{capacityUnits}}</b></span>
+                        </div>
+                      </details>
                     {{/if}}
-                  {{/if}}
-                </div>
-              </article>
-            {{/each}}
-          </div>
-        {{else}}
+
+                    <div
+                      class="relis-inventory-actions"
+                      aria-label="Opérations sur {{name}}"
+                    >
+                      {{#if pending}}
+                        <span
+                          class="relis-state-chip relis-state-chip--warning"
+                        >Transfert en récupération</span>
+                      {{else}}
+                        {{#if quarantined}}
+                          <span
+                            class="relis-state-chip relis-state-chip--danger"
+                          >Transfert en quarantaine</span>
+                        {{else}}
+                          {{#if @root.editable}}
+                            {{#if canSplit}}<button
+                                type="button"
+                                data-action="split-inventory-stack"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Scinder cette pile"
+                              ><i
+                                  class="fa-solid fa-scissors"
+                                  aria-hidden="true"
+                                ></i>
+                                Scinder</button>{{/if}}
+                            {{#if canMerge}}<button
+                                type="button"
+                                data-action="merge-inventory-stack"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Fusionner une pile strictement compatible"
+                              ><i
+                                  class="fa-solid fa-object-group"
+                                  aria-hidden="true"
+                                ></i>
+                                Fusionner</button>{{/if}}
+                            {{#if canMove}}<button
+                                type="button"
+                                data-action="move-inventory-item"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Déplacer dans ou hors d’un conteneur"
+                              ><i
+                                  class="fa-solid fa-box-open"
+                                  aria-hidden="true"
+                                ></i>
+                                Déplacer</button>{{/if}}
+                            {{#if canTransfer}}<button
+                                type="button"
+                                data-action="transfer-inventory-item"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Transférer vers un autre Actor"
+                              ><i
+                                  class="fa-solid fa-arrow-right-arrow-left"
+                                  aria-hidden="true"
+                                ></i>
+                                Transférer</button>{{/if}}
+                          {{/if}}
+                        {{/if}}
+                      {{/if}}
+                    </div>
+                  </article>
+                {{/each}}
+              </div>
+            </section>
+          {{/each}}
+        </div>
+        {{#unless hasInventory}}
           <div class="relis-empty-state"><i
               class="fa-solid fa-box-open"
               aria-hidden="true"
             ></i><p>Aucun objet physique. Créez-en un ici ou déposez une source
               Item sur l’Actor.</p></div>
-        {{/if}}
+        {{/unless}}
 
         <div class="relis-content-grid relis-inventory-secondary">
           <article class="relis-card">
@@ -1165,7 +1222,7 @@
     {{/if}}
   </main>
 
-  <footer class="relis-sheet-footer">10-E1-P validé · inventaire 10-E2-P en
-    recette · paquet
+  <footer class="relis-sheet-footer">10-E2-P validé · revue visuelle en recette
+    · paquet
     {{packageVersion}}</footer>
 </section>

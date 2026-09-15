@@ -4,6 +4,7 @@ import {
   SKILL_DEFINITIONS,
   PACKAGE_VERSION,
 } from "../config";
+import { bindInventoryView, groupInventory } from "../ui/inventory-view";
 import { PHYSICAL_ITEM_TYPES, isPhysicalItemType } from "../data/item-defaults";
 import type { RelisActor } from "../documents/actor";
 import { formatRoundDuration, presentCondition } from "../rules/effects";
@@ -225,6 +226,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   declare actor: RelisActor;
   private activeTab = "summary";
+  private inventoryQuery = { value: "" };
 
   async _prepareContext(options: any): Promise<Record<string, any>> {
     const context = await super._prepareContext(options);
@@ -457,6 +459,19 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         condition:
           INVENTORY_CONDITION_LABELS[String(physical.condition ?? "intact")] ??
           String(physical.condition ?? ""),
+        warning:
+          physical.condition !== "intact" ||
+          physical.accessibility === "unavailable" ||
+          Number(physical.wear ?? 0) > 0 ||
+          row.orphaned ||
+          row.cyclic,
+        wear: physical.wear ?? 0,
+        provenanceSource:
+          row.item.system.provenance?.acquiredFromRef?.labelSnapshot ||
+          "Non renseignée",
+        massEach: displayMeasure(massEach, "kg"),
+        volumeEach: displayMeasure(physical.volumeEach ?? null, "L"),
+        bulkEach: displayMeasure(physical.bulkEach ?? null, ""),
         accessibility:
           INVENTORY_ACCESS_LABELS[String(physical.accessibility ?? "stored")] ??
           String(physical.accessibility ?? ""),
@@ -557,6 +572,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       items: itemRows,
       relatedItems,
       inventoryRows,
+      inventoryGroups: groupInventory(inventoryRows),
       hasInventory: inventoryRows.length > 0,
       inventoryDiagnostics: inventory.diagnostics,
       hasInventoryDiagnostics: inventory.diagnostics.length > 0,
@@ -576,6 +592,11 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await super._onRender(context, options);
     const root = this.element as HTMLElement;
     this.activateTab(root, this.activeTab);
+    bindInventoryView(
+      root,
+      `${game.world?.id}.${game.user?.id}.${this.actor.uuid}`,
+      this.inventoryQuery,
+    );
 
     if (!this.actor.isOwner) {
       for (const control of root.querySelectorAll<

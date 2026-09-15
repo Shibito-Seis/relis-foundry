@@ -1,5 +1,13 @@
 # Journal des versions
 
+## 0.4.3 — revue visuelle de l’inventaire
+
+- Catégories repliables communes aux PJ et PNJ, sans duplication des objets contenus.
+- Recherche par nom insensible aux accents, révélant les ancêtres ; restauration des replis à l’effacement.
+- Préférences locales par utilisateur et Actor, catégories vides optionnelles, détails matériels dépliables.
+- Commandes conditionnelles, permissions, DialogV2 et version dynamique préservés ; schéma 5 inchangé.
+- 10-E2-P validé par l’utilisateur ; cette passe visuelle attend sa recette. Aucun autre participant requis avant la procédure finale.
+
 ## 0.4.2 — inventaire administrable des PNJ
 
 - Inventaire physique partagé entre PJ et PNJ : hiérarchie, lots, charges, capacités et diagnostics.

@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.4.2";
+var PACKAGE_VERSION = "0.4.3";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -3647,6 +3647,123 @@ async function recoverPendingInventoryTransfers() {
 	return recovered;
 }
 //#endregion
+//#region src/ui/inventory-view.ts
+/** Presentation only: never writes Actor or Item data. */
+var INVENTORY_CATEGORIES = [
+	["weapon", "Armes"],
+	["armor", "Armures & protections"],
+	["equipment", "Équipement"],
+	["consumable", "Consommables"],
+	["ammunition", "Munitions"],
+	["resource", "Ressources"],
+	["container", "Conteneurs"]
+];
+function groupInventory(rows) {
+	const groups = INVENTORY_CATEGORIES.map(([id, label]) => ({
+		id,
+		label,
+		inventoryRows: []
+	}));
+	const stack = [];
+	let group = groups[0];
+	for (const row of rows) {
+		while (stack.length && stack[stack.length - 1].depth >= row.depth) stack.pop();
+		if (!stack.length) group = groups.find((entry) => entry.id === row.type) ?? groups[2];
+		group.inventoryRows.push({
+			...row,
+			ancestors: JSON.stringify(stack.map((entry) => entry.id)),
+			path: stack.map((entry) => entry.name).join(" › ")
+		});
+		stack.push(row);
+	}
+	return groups;
+}
+function normalizeInventorySearch(value) {
+	return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr").trim();
+}
+function inventoryMatches(rows, query) {
+	const needle = normalizeInventorySearch(query);
+	const visible = /* @__PURE__ */ new Set();
+	for (const row of rows) if (normalizeInventorySearch(row.name).includes(needle)) {
+		visible.add(row.id);
+		for (const ancestor of row.ancestors) visible.add(ancestor);
+	}
+	return visible;
+}
+function bindInventoryView(root, identity, queryState) {
+	const panel = root.querySelector("[data-inventory-view]");
+	if (!panel) return;
+	const key = `relis.inventory-view.v1.${identity}`;
+	let folded = /* @__PURE__ */ new Set();
+	let showEmpty = false;
+	try {
+		const saved = JSON.parse(localStorage.getItem(key) ?? "null");
+		if (Array.isArray(saved?.folded)) folded = new Set(saved.folded.filter((value) => typeof value === "string"));
+		showEmpty = saved?.showEmpty === true;
+	} catch {}
+	const save = () => {
+		try {
+			localStorage.setItem(key, JSON.stringify({
+				folded: [...folded],
+				showEmpty
+			}));
+		} catch {}
+	};
+	const rows = Array.from(panel.querySelectorAll("[data-inventory-row]"));
+	const descriptors = rows.map((row) => ({
+		id: row.dataset.itemId,
+		name: row.dataset.itemName,
+		ancestors: JSON.parse(row.dataset.ancestors ?? "[]")
+	}));
+	const categories = Array.from(panel.querySelectorAll("[data-inventory-category]"));
+	const search = panel.querySelector("[data-inventory-search]");
+	const emptyToggle = panel.querySelector("[data-inventory-empty]");
+	search.value = queryState.value;
+	emptyToggle.checked = showEmpty;
+	const update = () => {
+		const searching = Boolean(normalizeInventorySearch(search.value));
+		const matches = inventoryMatches(descriptors, search.value);
+		rows.forEach((row, index) => {
+			const descriptor = descriptors[index];
+			row.hidden = searching ? !matches.has(descriptor.id) : descriptor.ancestors.some((id) => folded.has(`item:${id}`));
+		});
+		for (const category of categories) {
+			const children = Array.from(category.querySelectorAll("[data-inventory-row]"));
+			category.hidden = searching ? !children.some((row) => matches.has(row.dataset.itemId)) : !showEmpty && children.length === 0;
+			category.querySelector("[data-category-content]").hidden = !searching && folded.has(`category:${category.dataset.inventoryCategory}`);
+		}
+		for (const button of panel.querySelectorAll("[data-inventory-fold]")) {
+			button.setAttribute("aria-expanded", String(searching || !folded.has(button.dataset.inventoryFold)));
+			button.disabled = searching;
+		}
+		const count = descriptors.filter((row) => normalizeInventorySearch(row.name).includes(normalizeInventorySearch(search.value))).length;
+		panel.querySelector("[data-inventory-result]").textContent = searching ? `${count} résultat(s) — chemin des conteneurs inclus` : "";
+	};
+	search.addEventListener("input", () => {
+		queryState.value = search.value;
+		update();
+	});
+	panel.querySelector("[data-inventory-clear]").addEventListener("click", () => {
+		search.value = "";
+		queryState.value = "";
+		update();
+		search.focus();
+	});
+	emptyToggle.addEventListener("change", () => {
+		showEmpty = emptyToggle.checked;
+		save();
+		update();
+	});
+	for (const button of panel.querySelectorAll("[data-inventory-fold]")) button.addEventListener("click", () => {
+		const id = button.dataset.inventoryFold;
+		if (folded.has(id)) folded.delete(id);
+		else folded.add(id);
+		save();
+		update();
+	});
+	update();
+}
+//#endregion
 //#region src/ui/actor-tabs.ts
 var CHARACTER_TABS = [
 	{
@@ -3898,6 +4015,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 	};
 	static PARTS = { main: { template: "systems/relis/templates/actors/character.hbs" } };
 	activeTab = "summary";
+	inventoryQuery = { value: "" };
 	async _prepareContext(options) {
 		const context = await super._prepareContext(options);
 		const isCharacter = this.actor.type === "character";
@@ -4035,6 +4153,12 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				quantityUnit: QUANTITY_UNIT_LABELS[String(physical.unit ?? "count")] ?? String(physical.unit ?? ""),
 				lot: String(row.item.system.provenance?.lotId ?? physical.batchId ?? "").trim(),
 				condition: INVENTORY_CONDITION_LABELS[String(physical.condition ?? "intact")] ?? String(physical.condition ?? ""),
+				warning: physical.condition !== "intact" || physical.accessibility === "unavailable" || Number(physical.wear ?? 0) > 0 || row.orphaned || row.cyclic,
+				wear: physical.wear ?? 0,
+				provenanceSource: row.item.system.provenance?.acquiredFromRef?.labelSnapshot || "Non renseignée",
+				massEach: displayMeasure(massEach, "kg"),
+				volumeEach: displayMeasure(physical.volumeEach ?? null, "L"),
+				bulkEach: displayMeasure(physical.bulkEach ?? null, ""),
 				accessibility: INVENTORY_ACCESS_LABELS[String(physical.accessibility ?? "stored")] ?? String(physical.accessibility ?? ""),
 				location: row.parentId ? physicalItems.find((candidate) => candidate.id === row.parentId)?.name ?? "Conteneur manquant" : "Inventaire principal",
 				isContainer: row.item.type === "container",
@@ -4098,6 +4222,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			items: itemRows,
 			relatedItems,
 			inventoryRows,
+			inventoryGroups: groupInventory(inventoryRows),
 			hasInventory: inventoryRows.length > 0,
 			inventoryDiagnostics: inventory.diagnostics,
 			hasInventoryDiagnostics: inventory.diagnostics.length > 0,
@@ -4116,6 +4241,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		await super._onRender(context, options);
 		const root = this.element;
 		this.activateTab(root, this.activeTab);
+		bindInventoryView(root, `${game.world?.id}.${game.user?.id}.${this.actor.uuid}`, this.inventoryQuery);
 		if (!this.actor.isOwner) for (const control of root.querySelectorAll("[data-document-field], [data-owner-control]")) control.disabled = true;
 		for (const button of root.querySelectorAll("[data-action='switch-tab']")) {
 			button.addEventListener("click", () => {

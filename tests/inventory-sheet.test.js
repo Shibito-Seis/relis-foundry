@@ -19,7 +19,7 @@ function blocksAt(position) {
   return stack;
 }
 
-describe("inventaire partagé PJ/PNJ 0.4.2", () => {
+describe("inventaire partagé PJ/PNJ 0.4.3", () => {
   it("rend un seul inventaire hors des branches de densité et de type", () => {
     expect(sheet).toContain(
       'inventoryTab: isCharacter ? "inventory" : "capabilities"',
@@ -27,7 +27,6 @@ describe("inventaire partagé PJ/PNJ 0.4.2", () => {
     expect(template.match(/class="relis-inventory-tree"/g)).toHaveLength(1);
     expect(blocksAt(template.indexOf('class="relis-inventory-tree"'))).toEqual([
       "if isPerson",
-      "if hasInventory",
     ]);
     expect(template).toContain('data-tab-panel="{{inventoryTab}}"');
     for (const field of [
@@ -72,7 +71,7 @@ describe("inventaire partagé PJ/PNJ 0.4.2", () => {
     expect(sheet).toContain("editable: this.actor.isOwner");
   });
   it("affiche la version dynamique sans migration", () => {
-    expect(PACKAGE_VERSION).toBe("0.4.2");
+    expect(PACKAGE_VERSION).toBe("0.4.3");
     expect(SCHEMA_VERSION).toBe("5");
     expect(sheet).toContain("packageVersion: PACKAGE_VERSION");
     expect(template).toMatch(
