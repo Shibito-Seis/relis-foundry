@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.4.1` livre 10-E2-P sur le noyau Item validé de 10-E1-P. Les sept
+La version `0.4.2` corrige l’inventaire administrable des PNJ dans 10-E2-P sur le noyau Item validé de 10-E1-P. Les sept
 familles matérielles apparaissent dans un inventaire personnel hiérarchique :
 quantité, lot, masse, volume, encombrement, état, accessibilité et emplacement
 restent portés par les vrais Items de l’Actor.
@@ -20,6 +20,10 @@ détaillées d’armes ou de consommables restent réservés à 10-E3-P et 10-E4
 Aucun catalogue fictif ni contenu canonique n’est livré. Les visuels fonctionnels
 restent réalisés en CSS et en SVG interne jusqu’à la passe graphique finale.
 
+Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
+au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
+10-E2-P reste ouvert jusqu’à validation explicite de la recette 0.4.2.
+
 ## Développement
 
 Prérequis : Node.js 22 ou plus récent.
@@ -30,7 +34,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.4.1.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.4.2.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.

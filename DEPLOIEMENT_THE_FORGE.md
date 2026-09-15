@@ -20,7 +20,7 @@ formatage, les tests unitaires, le build et le manifeste.
 
 Dans `Actions`, ouvrir `Publier une Release Foundry`, choisir `Run workflow`, saisir
 le tag correspondant exactement au manifeste, puis lancer. Pour la recette 10-E2-P,
-utiliser `v0.4.1`. Le workflow construit `relis-v0.4.1.zip`, crée le tag et la
+utiliser `v0.4.2`. Le workflow construit `relis-v0.4.2.zip`, crée le tag et la
 Release, puis y joint l’archive.
 
 Ne pas créer manuellement une archive différente : le ZIP automatisé garantit que
@@ -35,14 +35,14 @@ Utiliser l’URL de manifeste suivante dans le gestionnaire de systèmes :
 
 Le manifeste téléchargera alors :
 
-`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.4.1/relis-v0.4.1.zip`
+`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.4.2/relis-v0.4.2.zip`
 
 ## 5. Recette 10-E2-P
 
 1. Créer un monde avec le système `RE:LIS — RE: Lost in Space`.
 2. Ouvrir la console du navigateur et vérifier l’absence d’erreur rouge `relis`.
 3. Ouvrir l’ancien Personnage de recette 10-C et confirmer sa conservation.
-4. Suivre la recette corrective `RE-LIS_Recette10_E2-P_v0.4.1.md` fournie avec les
+4. Suivre la recette corrective `RE-LIS_Recette10_E2-P_v0.4.2.md` fournie avec les
    livrables de développement.
 5. Vérifier successivement l’arborescence, les capacités, la prévention des
    cycles, la scission, la fusion et les transferts entre deux Actors.

@@ -1,5 +1,13 @@
 # Journal des versions
 
+## 0.4.2 — inventaire administrable des PNJ
+
+- Inventaire physique partagé entre PJ et PNJ : hiérarchie, lots, charges, capacités et diagnostics.
+- Commandes conditionnelles de création, scission, fusion, déplacement et transfert réservées au propriétaire ; densités PNJ conservées.
+- Version du pied de fiche injectée depuis `PACKAGE_VERSION`.
+- Contrat DialogV2 0.4.1 et services transactionnels conservés ; schéma 5 inchangé, sans migration.
+- 10-E2-P reste ouvert jusqu’à validation explicite de la recette 0.4.2 sur The Forge.
+
 ## 0.4.1 — formulaires d’inventaire Foundry 14
 
 - Le nœud racine fourni à `DialogV2.input` est désormais un `div` strictement

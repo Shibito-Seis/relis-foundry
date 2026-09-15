@@ -1,4 +1,9 @@
-import { ATTRIBUTE_LABELS, MASTERY_LABELS, SKILL_DEFINITIONS } from "../config";
+import {
+  ATTRIBUTE_LABELS,
+  MASTERY_LABELS,
+  SKILL_DEFINITIONS,
+  PACKAGE_VERSION,
+} from "../config";
 import { PHYSICAL_ITEM_TYPES, isPhysicalItemType } from "../data/item-defaults";
 import type { RelisActor } from "../documents/actor";
 import { formatRoundDuration, presentCondition } from "../rules/effects";
@@ -9,6 +14,9 @@ import {
 } from "../rules/resources";
 import {
   canMergeStacks,
+  validateStackSplit,
+  validateInventoryMove,
+  descendantIds,
   inventoryContainerTargets,
   presentInventory,
   type InventoryItemLike,
@@ -397,6 +405,27 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       const capacity = row.item.system.capacity ?? {};
       const quantity = Number(physical.quantity ?? 0);
       const counted = String(physical.unit ?? "count") === "count";
+      const transferableIds = new Set([
+        row.item.id,
+        ...descendantIds(physicalSnapshots, row.item.id),
+      ]);
+      const canTransfer = inventory.rows
+        .filter((candidate) => transferableIds.has(candidate.item.id))
+        .every((candidate) => {
+          const state = candidate.item.system.physical ?? {};
+          const amount = Number(state.quantity ?? 0);
+          return (
+            !candidate.orphaned &&
+            !candidate.cyclic &&
+            Number.isFinite(amount) &&
+            amount > 0 &&
+            (state.unit !== "count" || Number.isInteger(amount)) &&
+            (candidate.item.type !== "container" || amount === 1) &&
+            state.accessibility !== "unavailable" &&
+            (candidate.item.flags?.relis?.inventoryTransfer?.state ??
+              "complete") === "complete"
+          );
+        });
       const massEach =
         physical.massEach === null || physical.massEach === undefined
           ? null
@@ -441,13 +470,19 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         quarantined: pendingState === "quarantined",
         hasError: row.orphaned || row.cyclic,
         canSplit:
-          row.item.type !== "container" &&
-          (counted ? quantity > 1 : quantity > 0),
+          Number.isFinite(quantity) &&
+          validateStackSplit(row.item, counted ? 1 : quantity / 2).length === 0,
         canMerge: mergeCandidates.length > 0,
         canMove:
-          inventoryContainerTargets(physicalSnapshots, row.item.id).length >
-            0 || Boolean(row.parentId),
-        canTransfer: quantity > 0,
+          inventoryContainerTargets(physicalSnapshots, row.item.id).some(
+            (target) =>
+              target.id !== row.parentId &&
+              validateInventoryMove(physicalSnapshots, row.item.id, target.id)
+                .valid,
+          ) ||
+          (Boolean(row.parentId) &&
+            validateInventoryMove(physicalSnapshots, row.item.id, null).valid),
+        canTransfer,
         ownMass: displayMeasure(
           massEach !== null && Number.isFinite(massEach)
             ? massEach * quantity
@@ -489,6 +524,8 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       actor: this.actor,
       system: this.actor.system,
       editable: this.actor.isOwner,
+      packageVersion: PACKAGE_VERSION,
+      inventoryTab: isCharacter ? "inventory" : "capabilities",
       isCharacter,
       isNpc,
       isPerson,

@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.4.1";
+var PACKAGE_VERSION = "0.4.2";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -4009,6 +4009,12 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			const capacity = row.item.system.capacity ?? {};
 			const quantity = Number(physical.quantity ?? 0);
 			const counted = String(physical.unit ?? "count") === "count";
+			const transferableIds = /* @__PURE__ */ new Set([row.item.id, ...descendantIds(physicalSnapshots, row.item.id)]);
+			const canTransfer = inventory.rows.filter((candidate) => transferableIds.has(candidate.item.id)).every((candidate) => {
+				const state = candidate.item.system.physical ?? {};
+				const amount = Number(state.quantity ?? 0);
+				return !candidate.orphaned && !candidate.cyclic && Number.isFinite(amount) && amount > 0 && (state.unit !== "count" || Number.isInteger(amount)) && (candidate.item.type !== "container" || amount === 1) && state.accessibility !== "unavailable" && (candidate.item.flags?.relis?.inventoryTransfer?.state ?? "complete") === "complete";
+			});
 			const massEach = physical.massEach === null || physical.massEach === void 0 ? null : Number(physical.massEach);
 			const rowClasses = [
 				"relis-inventory-row",
@@ -4036,10 +4042,10 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				pending: pendingState === "pending",
 				quarantined: pendingState === "quarantined",
 				hasError: row.orphaned || row.cyclic,
-				canSplit: row.item.type !== "container" && (counted ? quantity > 1 : quantity > 0),
+				canSplit: Number.isFinite(quantity) && validateStackSplit(row.item, counted ? 1 : quantity / 2).length === 0,
 				canMerge: mergeCandidates.length > 0,
-				canMove: inventoryContainerTargets(physicalSnapshots, row.item.id).length > 0 || Boolean(row.parentId),
-				canTransfer: quantity > 0,
+				canMove: inventoryContainerTargets(physicalSnapshots, row.item.id).some((target) => target.id !== row.parentId && validateInventoryMove(physicalSnapshots, row.item.id, target.id).valid) || Boolean(row.parentId) && validateInventoryMove(physicalSnapshots, row.item.id, null).valid,
+				canTransfer,
 				ownMass: displayMeasure(massEach !== null && Number.isFinite(massEach) ? massEach * quantity : null, "kg"),
 				subtreeMass: displayMeasure(row.subtreeLoad.mass, "kg"),
 				capacityMass: capacity.mass === null || capacity.mass === void 0 ? "Sans limite définie" : `${row.containerUsage?.mass ?? "?"} / ${capacity.mass} kg`,
@@ -4061,6 +4067,8 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			actor: this.actor,
 			system: this.actor.system,
 			editable: this.actor.isOwner,
+			packageVersion: PACKAGE_VERSION,
+			inventoryTab: isCharacter ? "inventory" : "capabilities",
 			isCharacter,
 			isNpc,
 			isPerson,
