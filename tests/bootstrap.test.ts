@@ -4,6 +4,17 @@ class MockField {
   constructor(..._args: unknown[]) {}
 }
 
+class MockStringField extends MockField {
+  constructor(options: Record<string, unknown> = {}) {
+    super(options);
+    if (options.initial === "" && options.blank !== true) {
+      throw new Error(
+        "Un StringField initialisé à vide doit autoriser explicitement blank.",
+      );
+    }
+  }
+}
+
 class MockTypeDataModel {
   static defineSchema(): Record<string, unknown> {
     return {};
@@ -62,7 +73,7 @@ describe("amorçage Foundry 10-C", () => {
       data: {
         fields: {
           SchemaField: MockField,
-          StringField: MockField,
+          StringField: MockStringField,
           NumberField: MockField,
           BooleanField: MockField,
           HTMLField: MockField,

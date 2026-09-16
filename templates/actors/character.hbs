@@ -3,19 +3,29 @@
   data-document-id="{{actor.id}}"
 >
   <header class="relis-id-header">
-    <button
-      type="button"
-      class="relis-id-portrait"
-      data-action="showPortraitArtwork"
-      title="Afficher le portrait de {{displayName}}"
-      aria-label="Afficher le portrait de {{displayName}}"
-    >
-      <span class="relis-id-portrait__ring" aria-hidden="true"></span>
-      <span class="relis-id-portrait__core">
-        <img src="{{actor.img}}" alt="Portrait de {{displayName}}" />
-      </span>
-      <span class="relis-id-portrait__status" title="Dossier actif"></span>
-    </button>
+    <div class="relis-portrait-controls">
+      <button
+        type="button"
+        class="relis-id-portrait"
+        data-action="showPortraitArtwork"
+        title="Afficher le portrait de {{displayName}}"
+        aria-label="Afficher le portrait de {{displayName}}"
+      >
+        <span class="relis-id-portrait__ring" aria-hidden="true"></span>
+        <span class="relis-id-portrait__core">
+          <img src="{{actor.img}}" alt="Portrait de {{displayName}}" />
+        </span>
+        <span class="relis-id-portrait__status" title="Dossier actif"></span>
+      </button>
+      {{#if editable}}<button
+          type="button"
+          class="relis-edit-portrait"
+          data-edit-actor-portrait
+          data-owner-control
+          title="Choisir le portrait de {{displayName}}"
+        ><i class="fa-solid fa-pen" aria-hidden="true"></i>
+          Modifier le portrait</button>{{/if}}
+    </div>
 
     <div class="relis-id-frame">
       <div class="relis-id-panel">

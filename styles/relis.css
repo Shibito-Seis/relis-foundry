@@ -1729,3 +1729,18 @@
   width: auto;
   flex: 0 0 auto;
 }
+.relis-portrait-controls {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+.relis-edit-portrait {
+  max-width: 100%;
+  padding: 0.35rem 0.45rem;
+  font-size: 0.75rem;
+  white-space: normal;
+  cursor: pointer;
+}

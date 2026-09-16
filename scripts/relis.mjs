@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.5.0";
+var PACKAGE_VERSION = "0.5.1";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -1291,6 +1291,7 @@ function physicalField() {
 		equipmentProfile: new fields$1.SchemaField({
 			family: new fields$1.StringField({
 				required: true,
+				blank: true,
 				initial: "",
 				choices: [
 					"",
@@ -4278,6 +4279,25 @@ function bindInventoryView(root, identity, queryState) {
 	update();
 }
 //#endregion
+//#region src/ui/actor-portrait.ts
+/** Editing the Actor image is distinct from opening its artwork. */
+function openActorPortraitPicker(actor) {
+	if (!actor.isOwner) return;
+	const FilePicker = foundry.applications.apps.FilePicker.implementation;
+	new FilePicker({
+		type: "image",
+		current: actor.img ?? "",
+		callback: async (path) => {
+			if (!actor.isOwner || !path) return;
+			try {
+				await actor.update({ img: path });
+			} catch (error) {
+				ui.notifications.error(error instanceof Error ? error.message : "Le portrait n’a pas pu être enregistré.");
+			}
+		}
+	}).render({ force: true });
+}
+//#endregion
 //#region src/ui/actor-tabs.ts
 var CHARACTER_TABS = [
 	{
@@ -4798,6 +4818,9 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		await super._onRender(context, options);
 		const root = this.element;
 		this.activateTab(root, this.activeTab);
+		root.querySelector("[data-edit-actor-portrait]")?.addEventListener("click", () => {
+			openActorPortraitPicker(this.actor);
+		});
 		for (const button of root.querySelectorAll("[data-equipment-command]")) button.addEventListener("click", () => {
 			this.inventoryTask(async () => {
 				if (!this.actor.isOwner && !game.user?.isGM) return;

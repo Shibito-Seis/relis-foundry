@@ -5,6 +5,7 @@ import {
   PACKAGE_VERSION,
 } from "../config";
 import { bindInventoryView, groupInventory } from "../ui/inventory-view";
+import { openActorPortraitPicker } from "../ui/actor-portrait";
 import {
   carriedMass,
   equipmentLinked,
@@ -679,6 +680,11 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await super._onRender(context, options);
     const root = this.element as HTMLElement;
     this.activateTab(root, this.activeTab);
+    root
+      .querySelector<HTMLButtonElement>("[data-edit-actor-portrait]")
+      ?.addEventListener("click", () => {
+        openActorPortraitPicker(this.actor);
+      });
     for (const button of root.querySelectorAll<HTMLButtonElement>(
       "[data-equipment-command]",
     )) {

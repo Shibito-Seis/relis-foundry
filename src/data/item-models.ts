@@ -182,6 +182,7 @@ function physicalField(): any {
     equipmentProfile: new fields.SchemaField({
       family: new fields.StringField({
         required: true,
+        blank: true,
         initial: "",
         choices: ["", "manipulable", "wearable", "resource"],
       }),

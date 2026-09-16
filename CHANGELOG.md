@@ -1,5 +1,13 @@
 # Journal des versions
 
+## 0.5.1 — correction de recette : Items et portraits
+
+- Autorise explicitement la famille d’usage vide, valeur initiale signifiant « selon le type d’objet ». Corrige la création et l’initialisation des Items existants rejetés par Foundry 14.
+- Ajoute un bouton Modifier le portrait sur les fiches PJ/PNJ, séparé de l’affichage de l’image et soumis à la propriété.
+- Renforce le contrôle des StringField initiaux vides et teste le sélecteur de portrait avec recontrôle des permissions.
+- Conserve le verrouillage des dépendances, les seuils/mains saisis, les données et le schéma 5. Aucune migration ajoutée.
+- 10-E3-P reste en recette : reprendre les contrôles bloqués avant de poursuivre.
+
 ## 0.5.0 — 10-E3-P, équipement personnel et charge lisible
 
 - Bandeau de charge en kg, seuils explicites du corps actif, masse connue et données manquantes ; catégories/recherche/replis 0.4.3 conservés.

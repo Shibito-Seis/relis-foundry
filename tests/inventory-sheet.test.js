@@ -71,7 +71,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(sheet).toContain("editable: this.actor.isOwner");
   });
   it("affiche la version dynamique sans migration", () => {
-    expect(PACKAGE_VERSION).toBe("0.5.0");
+    expect(PACKAGE_VERSION).toBe("0.5.1");
     expect(SCHEMA_VERSION).toBe("5");
     expect(sheet).toContain("packageVersion: PACKAGE_VERSION");
     expect(template).toMatch(
@@ -93,6 +93,13 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(template).not.toContain('class="relis-inventory-summary"');
     expect(template).toContain("data-inventory-search");
     expect(template).toContain("data-inventory-fold");
+  });
+  it("sépare la consultation du portrait et son édition réservée au propriétaire", () => {
+    expect(template).toContain('data-action="showPortraitArtwork"');
+    expect(blocksAt(template.indexOf("data-edit-actor-portrait"))).toContain(
+      "if editable",
+    );
+    expect(sheet).toContain("openActorPortraitPicker(this.actor)");
   });
   it("protège les commandes d’équipement et réserve le portage au MJ", () => {
     for (const command of [
