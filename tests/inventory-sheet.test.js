@@ -19,7 +19,7 @@ function blocksAt(position) {
   return stack;
 }
 
-describe("inventaire partagé PJ/PNJ 0.4.3", () => {
+describe("inventaire partagé PJ/PNJ 0.5.0", () => {
   it("rend un seul inventaire hors des branches de densité et de type", () => {
     expect(sheet).toContain(
       'inventoryTab: isCharacter ? "inventory" : "capabilities"',
@@ -71,7 +71,7 @@ describe("inventaire partagé PJ/PNJ 0.4.3", () => {
     expect(sheet).toContain("editable: this.actor.isOwner");
   });
   it("affiche la version dynamique sans migration", () => {
-    expect(PACKAGE_VERSION).toBe("0.4.3");
+    expect(PACKAGE_VERSION).toBe("0.5.0");
     expect(SCHEMA_VERSION).toBe("5");
     expect(sheet).toContain("packageVersion: PACKAGE_VERSION");
     expect(template).toMatch(
@@ -85,5 +85,37 @@ describe("inventaire partagé PJ/PNJ 0.4.3", () => {
     );
     expect(sheet).toContain('field.className = "relis-inventory-dialog-field"');
     expect(sheet).toContain("foundry.applications.api.DialogV2.input({");
+  });
+  it("présente la charge simplifiée et conserve la recherche validée", () => {
+    expect(template).toContain('role="meter"');
+    expect(template).toContain("carrying.missing");
+    expect(template).toContain("carrying.defined");
+    expect(template).not.toContain('class="relis-inventory-summary"');
+    expect(template).toContain("data-inventory-search");
+    expect(template).toContain("data-inventory-fold");
+  });
+  it("protège les commandes d’équipement et réserve le portage au MJ", () => {
+    for (const command of [
+      "state",
+      "profile",
+      "save",
+      "apply",
+      "body",
+      "recover",
+    ]) {
+      const blocks = blocksAt(
+        template.indexOf(`data-equipment-command="${command}"`),
+      );
+      expect(
+        blocks.some((block) =>
+          ["if editable", "if @root.editable", "if canConfigureBody"].includes(
+            block,
+          ),
+        ),
+      ).toBe(true);
+    }
+    expect(sheet).toContain("canConfigureBody: Boolean(game.user?.isGM)");
+    expect(sheet).toContain("previewEquipment(this.actor");
+    expect(sheet).toContain("preview.fingerprint");
   });
 });

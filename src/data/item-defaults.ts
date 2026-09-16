@@ -1,5 +1,6 @@
 import { CONTENT_VERSION, RULES_VERSION, SCHEMA_VERSION } from "../config";
 import { createRelisId } from "../utils/ulid";
+import { physicalUnitMass } from "../rules/physical-mass";
 import { normalizeTraitIds } from "./item-catalog";
 
 export const PHYSICAL_ITEM_TYPES = [
@@ -29,6 +30,7 @@ export const EQUIP_STATES = [
   "readied",
   "equipped",
   "installed",
+  "ground",
 ] as const;
 
 export const OWNERSHIP_STATES = [
@@ -146,6 +148,10 @@ export function initialPhysicalState(): RecordLike {
     accessibility: "stored",
     maintenanceRefs: [],
     equipState: "stored",
+    bodyId: "",
+    hands: 0,
+    hostRef: initialReference(),
+    equipmentProfile: {},
     condition: "intact",
     wear: 0,
     charges: { current: null, maximum: null, unit: "charge" },
@@ -263,6 +269,10 @@ export function normalizePhysicalState(value: unknown): RecordLike {
     equipState: (EQUIP_STATES as readonly string[]).includes(source.equipState)
       ? source.equipState
       : "stored",
+    bodyId: text(source.bodyId),
+    hands: integer(source.hands, 0, 0, 2),
+    hostRef: normalizeReference(source.hostRef),
+    equipmentProfile: record(source.equipmentProfile),
     condition: (ITEM_CONDITIONS as readonly string[]).includes(source.condition)
       ? source.condition
       : "intact",
@@ -403,7 +413,7 @@ export function physicalTotals(value: unknown): RecordLike {
       ? null
       : Number((quantity * Number(each)).toPrecision(12));
   return {
-    mass: total(physical.massEach),
+    mass: total(physicalUnitMass(physical)),
     volume: total(physical.volumeEach),
     bulk: total(physical.bulkEach),
   };
@@ -421,6 +431,19 @@ export function buildOwnedItemSystem(
   const sourceId = source.meta.relisId;
   return {
     ...source,
+    ...(physical
+      ? {
+          physical: {
+            ...source.physical,
+            equipState: "stored",
+            bodyId: "",
+            hands: 0,
+            containerRef: initialReference(),
+            hostRef: initialReference(),
+            locationKey: "actor-cargo",
+          },
+        }
+      : {}),
     meta: {
       ...source.meta,
       relisId: createWorldItemId(idFactory),

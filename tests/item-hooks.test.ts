@@ -4,10 +4,48 @@ import {
   migrateItemCore,
   preventUnsafeContainerDeletion,
   prepareItemCreation,
+  protectEquipmentUpdate,
   trackLocalItemUpdate,
 } from "../src/hooks/items";
 
 describe("cycle de vie des exemplaires Item", () => {
+  it("protège les états équipés hors du service et les suppressions d’hôtes attachés", () => {
+    (globalThis as any).ui = { notifications: { warn: vi.fn() } };
+    const item = {
+      id: "host",
+      uuid: "Actor.a.Item.host",
+      type: "weapon",
+      parent: {
+        items: [
+          { system: { physical: { hostRef: { uuid: "Actor.a.Item.host" } } } },
+        ],
+      },
+      system: {
+        physical: {
+          equipState: "readied",
+          hands: 2,
+          quantity: 1,
+          unit: "count",
+        },
+      },
+    } as unknown as Item;
+    expect(
+      protectEquipmentUpdate(item, {
+        "system.physical.equipState": "equipped",
+      }),
+    ).toBe(false);
+    expect(
+      protectEquipmentUpdate(
+        item,
+        { "system.physical.equipState": "stored" },
+        { relisInventoryOperation: true },
+      ),
+    ).toBeUndefined();
+    expect(
+      protectEquipmentUpdate(item, { "system.physical.quantity": 2 }),
+    ).toBe(false);
+    expect(preventUnsafeContainerDeletion(item)).toBe(false);
+  });
   it("change l’identifiant d’une copie possédée et conserve sa source", () => {
     const updateSource = vi.fn();
     const item = {

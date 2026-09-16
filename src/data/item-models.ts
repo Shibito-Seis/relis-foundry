@@ -170,6 +170,41 @@ function physicalField(): any {
       choices: EQUIP_STATES,
       initial: "stored",
     }),
+    bodyId: optionalStringField(),
+    hands: new fields.NumberField({
+      required: true,
+      integer: true,
+      min: 0,
+      max: 2,
+      initial: 0,
+    }),
+    hostRef: referenceField(),
+    equipmentProfile: new fields.SchemaField({
+      family: new fields.StringField({
+        required: true,
+        initial: "",
+        choices: ["", "manipulable", "wearable", "resource"],
+      }),
+      slot: optionalStringField(),
+      duration: optionalStringField(),
+      sizes: new fields.ArrayField(new fields.StringField(), {
+        required: true,
+        initial: [],
+      }),
+      natures: new fields.ArrayField(new fields.StringField(), {
+        required: true,
+        initial: [],
+      }),
+      hostTypes: new fields.ArrayField(new fields.StringField(), {
+        required: true,
+        initial: [],
+      }),
+      installable: new fields.BooleanField({ required: true, initial: false }),
+      ordinaryLiquid: new fields.BooleanField({
+        required: true,
+        initial: false,
+      }),
+    }),
     condition: new fields.StringField({
       required: true,
       blank: false,

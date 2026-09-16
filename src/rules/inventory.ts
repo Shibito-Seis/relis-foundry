@@ -1,4 +1,5 @@
 import { isPhysicalItemType } from "../data/item-defaults";
+import { physicalUnitMass } from "./physical-mass";
 
 export interface InventoryItemLike {
   id: string;
@@ -117,7 +118,7 @@ function ownLoad(item: InventoryItemLike): InventoryLoad {
       : Number((Math.max(0, each) * quantity).toPrecision(12));
   };
   return {
-    mass: total(physical.massEach),
+    mass: total(physicalUnitMass(physical)),
     volume: total(physical.volumeEach),
     bulk: total(physical.bulkEach),
     units:
@@ -468,6 +469,14 @@ export function canMergeStacks(
   second: InventoryItemLike,
 ): boolean {
   if (first.id === second.id) return false;
+  if (
+    [first, second].some((item) =>
+      ["readied", "equipped", "installed"].includes(
+        item.system.physical?.equipState,
+      ),
+    )
+  )
+    return false;
   if (!isPhysicalItemType(first.type) || !isPhysicalItemType(second.type))
     return false;
   if (first.type === "container" || second.type === "container") return false;
@@ -486,6 +495,12 @@ export function validateStackSplit(
   requested: number,
 ): string[] {
   if (!isPhysicalItemType(item.type)) return ["L’Item n’est pas physique."];
+  if (
+    ["readied", "equipped", "installed"].includes(
+      item.system.physical?.equipState,
+    )
+  )
+    return ["Ranger ou détacher l’objet avant de scinder."];
   if (item.type === "container")
     return ["Un conteneur et son contenu ne peuvent pas être fractionnés."];
   if (String(item.system.physical?.serialNumber ?? "").trim())

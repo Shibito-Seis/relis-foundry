@@ -5,6 +5,22 @@ import {
   PACKAGE_VERSION,
 } from "../config";
 import { bindInventoryView, groupInventory } from "../ui/inventory-view";
+import {
+  carriedMass,
+  equipmentLinked,
+  equipmentPlan,
+  equipmentState,
+  equipmentStates,
+  EQUIPMENT_LABELS,
+  unitMass,
+  type EquipmentRequest,
+} from "../rules/equipment";
+import {
+  applyEquipment,
+  previewEquipment,
+  recoverEquipment,
+  saveEquipmentOutfit,
+} from "../services/inventory";
 import { PHYSICAL_ITEM_TYPES, isPhysicalItemType } from "../data/item-defaults";
 import type { RelisActor } from "../documents/actor";
 import { formatRoundDuration, presentCondition } from "../rules/effects";
@@ -165,6 +181,29 @@ function dialogText(
   input.autofocus = true;
   field.append(input);
   content.append(field);
+}
+
+function dialogOptional(
+  content: HTMLElement,
+  label: string,
+  name: string,
+  value: unknown = "",
+  numeric = false,
+): void {
+  dialogText(content, label, name, value == null ? "" : String(value));
+  const input = content.querySelector<HTMLInputElement>(`[name="${name}"]`)!;
+  input.required = false;
+  if (numeric) {
+    input.type = "number";
+    input.min = "0";
+    input.step = "any";
+  }
+}
+
+function dialogNote(content: HTMLElement, text: string): void {
+  const paragraph = document.createElement("p");
+  paragraph.textContent = text;
+  content.append(paragraph);
 }
 
 function dialogSelect(
@@ -390,6 +429,30 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     );
     const physicalSnapshots = physicalItems.map(itemSnapshot);
     const inventory = presentInventory(physicalSnapshots);
+    if (activeBody) {
+      for (const item of physicalSnapshots) {
+        const p = item.system.physical ?? {};
+        if (
+          !["readied", "equipped", "installed"].includes(p.equipState) ||
+          (p.bodyId && p.bodyId !== activeBody.id)
+        )
+          continue;
+        const host = physicalSnapshots.find(
+          (entry) => entry.uuid === p.hostRef?.uuid,
+        );
+        const plan = equipmentPlan(physicalSnapshots, activeBody, {
+          itemId: item.id,
+          state: equipmentState(item),
+          hostId: host?.id ?? "",
+        });
+        for (const message of plan.errors)
+          inventory.diagnostics.push({
+            itemId: item.id,
+            level: "warning",
+            message: `${item.name} : ${message}`,
+          });
+      }
+    }
     const inventoryRows = inventory.rows.map((row) => {
       const item = physicalItems.find(
         (candidate) => candidate.id === row.item.id,
@@ -428,10 +491,8 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
               "complete") === "complete"
           );
         });
-      const massEach =
-        physical.massEach === null || physical.massEach === undefined
-          ? null
-          : Number(physical.massEach);
+      const massEach = unitMass(row.item);
+      const linked = equipmentLinked(physicalSnapshots, row.item.id);
       const rowClasses = [
         "relis-inventory-row",
         row.item.type === "container" ? "relis-inventory-row--container" : "",
@@ -442,6 +503,15 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       return {
         id: row.item.id,
         name: row.item.name,
+        equipmentLabel:
+          EQUIPMENT_LABELS[equipmentState(row.item)] ??
+          "État ancien à vérifier",
+        equipmentBody: physical.bodyId
+          ? (bodies.find((body: any) => body.id === physical.bodyId)?.name ??
+            "Corps absent")
+          : "",
+        equipmentHost: physical.hostRef?.labelSnapshot ?? "",
+        equipmentTime: physical.equipmentProfile?.duration || "À arbitrer",
         type: row.item.type,
         typeLabel: game.i18n.localize(`TYPES.Item.${row.item.type}`),
         rowClasses,
@@ -478,26 +548,33 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         location: row.parentId
           ? (physicalItems.find((candidate) => candidate.id === row.parentId)
               ?.name ?? "Conteneur manquant")
-          : "Inventaire principal",
+          : physical.equipState === "ground"
+            ? "Au sol"
+            : physical.hostRef?.labelSnapshot
+              ? `Sur ${physical.hostRef.labelSnapshot}`
+              : "Inventaire principal",
         isContainer: row.item.type === "container",
         childCount: row.childCount,
         pending: pendingState === "pending",
         quarantined: pendingState === "quarantined",
         hasError: row.orphaned || row.cyclic,
         canSplit:
+          !linked &&
           Number.isFinite(quantity) &&
           validateStackSplit(row.item, counted ? 1 : quantity / 2).length === 0,
-        canMerge: mergeCandidates.length > 0,
+        canMerge: !linked && mergeCandidates.length > 0,
         canMove:
-          inventoryContainerTargets(physicalSnapshots, row.item.id).some(
+          !linked &&
+          (inventoryContainerTargets(physicalSnapshots, row.item.id).some(
             (target) =>
               target.id !== row.parentId &&
               validateInventoryMove(physicalSnapshots, row.item.id, target.id)
                 .valid,
           ) ||
-          (Boolean(row.parentId) &&
-            validateInventoryMove(physicalSnapshots, row.item.id, null).valid),
-        canTransfer,
+            (Boolean(row.parentId) &&
+              validateInventoryMove(physicalSnapshots, row.item.id, null)
+                .valid)),
+        canTransfer: canTransfer && !linked,
         ownMass: displayMeasure(
           massEach !== null && Number.isFinite(massEach)
             ? massEach * quantity
@@ -573,6 +650,16 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       relatedItems,
       inventoryRows,
       inventoryGroups: groupInventory(inventoryRows),
+      carrying: carriedMass(physicalSnapshots, activeBody ?? { id: "" }),
+      canConfigureBody: Boolean(game.user?.isGM),
+      equipmentRecovery: Boolean(
+        (this.actor as any).flags?.relis?.equipmentRecovery,
+      ),
+      equipmentOutfits: Array.from(this.actor.system.outfits ?? []).filter(
+        (outfit: any) =>
+          outfit.equipmentEntries?.length ||
+          String(outfit.id).startsWith("equipment-"),
+      ),
       hasInventory: inventoryRows.length > 0,
       inventoryDiagnostics: inventory.diagnostics,
       hasInventoryDiagnostics: inventory.diagnostics.length > 0,
@@ -592,6 +679,35 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await super._onRender(context, options);
     const root = this.element as HTMLElement;
     this.activateTab(root, this.activeTab);
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-equipment-command]",
+    )) {
+      button.addEventListener("click", () => {
+        void this.inventoryTask(async () => {
+          if (!this.actor.isOwner && !game.user?.isGM) return;
+          switch (button.dataset.equipmentCommand) {
+            case "state":
+              await this.changeEquipment(button.dataset.itemId ?? "");
+              break;
+            case "profile":
+              await this.configureEquipment(button.dataset.itemId ?? "");
+              break;
+            case "body":
+              await this.configureCarrying();
+              break;
+            case "save":
+              await this.saveOutfit();
+              break;
+            case "apply":
+              await this.applyOutfit(button.dataset.outfitId ?? "");
+              break;
+            case "recover":
+              await recoverEquipment(this.actor);
+              break;
+          }
+        }, "Commande d’équipement terminée.");
+      });
+    }
     bindInventoryView(
       root,
       `${game.world?.id}.${game.user?.id}.${this.actor.uuid}`,
@@ -835,6 +951,376 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         String(result.sourceId ?? ""),
       );
     }, "Piles fusionnées ; le total est conservé.");
+  }
+
+  private async confirmEquipment(
+    requests: EquipmentRequest[],
+    assisted = false,
+  ): Promise<void> {
+    const preview = previewEquipment(this.actor, requests, assisted);
+    const content = dialogContent();
+    dialogNote(
+      content,
+      `Corps : ${preview.body.name}. Masse finale connue : ${preview.mass.mass} kg ; ${preview.mass.missing} masse(s) manquante(s).`,
+    );
+    for (const row of preview.rows) {
+      dialogNote(
+        content,
+        `${row.name} → ${EQUIPMENT_LABELS[row.request.state] ?? row.request.state}. Temps déclaré : ${row.duration}. ${row.errors.join(" ")} ${row.warnings.join(" ")}`,
+      );
+    }
+    dialogNote(
+      content,
+      "Appliquer confirme que le temps, l’aide et les conditions de la scène ont été respectés. Aucun temps de combat n’est débité automatiquement.",
+    );
+    if (!preview.updates.length) {
+      await askInventoryForm(
+        "Aperçu — changements impossibles",
+        content,
+        "Fermer",
+      );
+      return;
+    }
+    const result = await askInventoryForm(
+      assisted
+        ? "Aperçu assisté — seuls les changements valides seront appliqués"
+        : "Aperçu strict de l’équipement",
+      content,
+      "Appliquer",
+    );
+    if (result)
+      await applyEquipment(this.actor, requests, preview.fingerprint, assisted);
+  }
+
+  private async changeEquipment(itemId: string): Promise<void> {
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const snapshot = itemSnapshot(item);
+    const content = dialogContent();
+    const states = equipmentStates(snapshot);
+    dialogSelect(
+      content,
+      "État souhaité",
+      "state",
+      states.map((state) => ({
+        value: state,
+        label: EQUIPMENT_LABELS[state]!,
+      })),
+    );
+    const current = equipmentState(snapshot);
+    const select = content.querySelector<HTMLSelectElement>('[name="state"]')!;
+    if (states.includes(current)) select.value = current;
+    if (states.includes("installed")) {
+      dialogSelect(
+        content,
+        "Hôte (utilisé seulement pour Installer)",
+        "hostId",
+        [
+          { value: "", label: "Choisir un hôte" },
+          ...(Array.from(this.actor.items ?? []) as Item[])
+            .filter(
+              (candidate) =>
+                candidate.id !== itemId && isPhysicalItemType(candidate.type),
+            )
+            .map((candidate) => ({
+              value: candidate.id,
+              label: candidate.name,
+            })),
+        ],
+      );
+    }
+    dialogNote(
+      content,
+      "Rangé ne choisit pas de conteneur : utilisez Déplacer pour cela. Au sol retire la masse de la charge portée, sans supprimer l’objet.",
+    );
+    const result = await askInventoryForm(item.name, content, "Voir l’aperçu");
+    if (result)
+      await this.confirmEquipment([
+        {
+          itemId,
+          state: String(result.state),
+          hostId: String(result.hostId ?? ""),
+        },
+      ]);
+  }
+
+  private async configureCarrying(): Promise<void> {
+    if (!game.user?.isGM) return;
+    const bodies = JSON.parse(
+      JSON.stringify(Array.from(this.actor.system.bodies ?? [])),
+    );
+    const body = bodies.find(
+      (entry: any) => entry.id === this.actor.system.activeBodyId,
+    );
+    if (!body) throw new Error("Corps actif absent.");
+    const before = JSON.stringify(bodies);
+    const profile = body.carrying ?? {};
+    const content = dialogContent();
+    dialogNote(
+      content,
+      "Renseigner les valeurs de la règle applicable ou une décision MJ. Laisser vide lorsqu’elles sont inconnues ; aucune formule automatique n’est supposée.",
+    );
+    dialogOptional(
+      content,
+      "Nombre de mains utilisables",
+      "hands",
+      profile.hands,
+      true,
+    );
+    content.querySelector<HTMLInputElement>('[name="hands"]')!.step = "1";
+    dialogOptional(
+      content,
+      "Chargé à partir de (kg)",
+      "loaded",
+      profile.loaded,
+      true,
+    );
+    dialogOptional(
+      content,
+      "Surchargé à partir de (kg)",
+      "overloaded",
+      profile.overloaded,
+      true,
+    );
+    dialogText(
+      content,
+      "Source de la règle ou décision MJ",
+      "source",
+      profile.source || "Décision MJ",
+    );
+    const result = await askInventoryForm(
+      `Portage — ${body.name}`,
+      content,
+      "Enregistrer",
+    );
+    if (!result) return;
+    const nullable = (value: unknown) =>
+      value === "" || value == null ? null : Number(value);
+    const hands = nullable(result.hands),
+      loaded = nullable(result.loaded),
+      overloaded = nullable(result.overloaded);
+    if (hands !== null && (!Number.isInteger(hands) || hands < 0))
+      throw new Error("Le nombre de mains doit être un entier positif ou nul.");
+    if (
+      (loaded === null) !== (overloaded === null) ||
+      (loaded !== null &&
+        (!Number.isFinite(loaded) ||
+          loaded <= 0 ||
+          !Number.isFinite(overloaded) ||
+          overloaded! <= loaded))
+    )
+      throw new Error(
+        "Renseigner les deux seuils positifs, avec Surchargé supérieur à Chargé.",
+      );
+    if (JSON.stringify(Array.from(this.actor.system.bodies ?? [])) !== before)
+      throw new Error("Le corps a changé : rouvrir la configuration.");
+    body.carrying = {
+      ...profile,
+      hands,
+      loaded,
+      overloaded,
+      source: String(result.source).trim(),
+    };
+    await this.actor.update({ "system.bodies": bodies });
+  }
+
+  private async configureEquipment(itemId: string): Promise<void> {
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const profile = item.system.physical?.equipmentProfile ?? {};
+    const content = dialogContent();
+    dialogSelect(content, "Usage", "family", [
+      { value: "", label: "Selon le type d’objet" },
+      { value: "manipulable", label: "Objet manipulable" },
+      { value: "wearable", label: "Équipement portable" },
+      { value: "resource", label: "Ressource ou consommable" },
+    ]);
+    content.querySelector<HTMLSelectElement>('[name="family"]')!.value =
+      profile.family ?? "";
+    dialogOptional(
+      content,
+      "Emplacement exclusif (vide si aucun)",
+      "slot",
+      profile.slot,
+    );
+    dialogOptional(
+      content,
+      "Temps et aide nécessaires — selon la source",
+      "duration",
+      profile.duration,
+    );
+    const sizes: Record<string, string> = {
+      tiny: "Très petit",
+      small: "Petit",
+      medium: "Moyen",
+      large: "Grand",
+      huge: "Très grand",
+      gargantuan: "Gigantesque",
+    };
+    for (const [name, title, values, labels] of [
+      ["sizes", "Tailles compatibles", Object.keys(sizes), sizes],
+      [
+        "natures",
+        "Natures corporelles compatibles",
+        Object.keys(BODY_NATURE_LABELS),
+        BODY_NATURE_LABELS,
+      ],
+      ["hostTypes", "Types d’hôte autorisés", [...PHYSICAL_ITEM_TYPES], {}],
+    ] as [string, string, string[], Record<string, string>][]) {
+      const group = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = title;
+      group.append(summary);
+      dialogNote(group, "Aucune case cochée : aucune restriction déclarée.");
+      const grid = document.createElement("div");
+      grid.className = "relis-equipment-options";
+      group.append(grid);
+      content.append(group);
+      const choices = [
+        ...new Set([
+          ...values,
+          ...(Array.isArray(profile[name]) ? profile[name] : []),
+        ]),
+      ];
+      for (const value of choices) {
+        const label = document.createElement("label");
+        label.className = "relis-inventory-dialog-field";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = `${name}_${value}`;
+        checkbox.checked = profile[name]?.includes(value) ?? false;
+        label.append(
+          checkbox,
+          document.createTextNode(
+            labels[value] ??
+              (name === "hostTypes"
+                ? game.i18n.localize(`TYPES.Item.${value}`)
+                : value),
+          ),
+        );
+        grid.append(label);
+      }
+    }
+    dialogSelect(content, "Installation sur un autre objet", "installable", [
+      { value: "no", label: "Non" },
+      { value: "yes", label: "Oui" },
+    ]);
+    content.querySelector<HTMLSelectElement>('[name="installable"]')!.value =
+      profile.installable ? "yes" : "no";
+    dialogSelect(
+      content,
+      "Liquide ordinaire : convention 1 L ≈ 1 kg si masse absente",
+      "ordinaryLiquid",
+      [
+        { value: "no", label: "Non" },
+        { value: "yes", label: "Oui" },
+      ],
+    );
+    content.querySelector<HTMLSelectElement>('[name="ordinaryLiquid"]')!.value =
+      profile.ordinaryLiquid ? "yes" : "no";
+    const result = await askInventoryForm(
+      `Profil — ${item.name}`,
+      content,
+      "Enregistrer le profil",
+    );
+    if (!result) return;
+    const selected = (prefix: string) =>
+      Object.entries(result)
+        .filter(
+          ([key, value]) =>
+            key.startsWith(prefix + "_") && value && value !== "false",
+        )
+        .map(([key]) => key.slice(prefix.length + 1));
+    await item.update({
+      "system.physical.equipmentProfile": {
+        ...profile,
+        family: result.family,
+        slot: String(result.slot ?? "").trim(),
+        duration: String(result.duration ?? "").trim(),
+        sizes: selected("sizes"),
+        natures: selected("natures"),
+        hostTypes: selected("hostTypes"),
+        installable: result.installable === "yes",
+        ordinaryLiquid: result.ordinaryLiquid === "yes",
+      },
+    });
+  }
+
+  private async saveOutfit(): Promise<void> {
+    const content = dialogContent();
+    dialogSelect(
+      content,
+      "Emplacement à enregistrer ou remplacer",
+      "slot",
+      Array.from({ length: 5 }, (_, index) => ({
+        value: String(index),
+        label: `Ensemble ${index + 1}`,
+      })),
+    );
+    dialogText(content, "Nom de l’ensemble", "name");
+    dialogNote(
+      content,
+      "Mémorise les références et états actuels du corps actif. Aucun objet n’est copié. Un emplacement déjà utilisé sera remplacé.",
+    );
+    const result = await askInventoryForm(
+      "Mémoriser l’équipement actuel",
+      content,
+      "Enregistrer",
+    );
+    if (result)
+      await saveEquipmentOutfit(
+        this.actor,
+        Number(result.slot),
+        String(result.name),
+      );
+  }
+
+  private async applyOutfit(outfitId: string): Promise<void> {
+    const outfit = Array.from(this.actor.system.outfits ?? []).find(
+      (entry: any) => entry.id === outfitId,
+    ) as any;
+    if (!outfit) return;
+    if (!outfit.bodyIds?.includes(this.actor.system.activeBodyId))
+      throw new Error("Cet ensemble appartient à un autre corps.");
+    const content = dialogContent();
+    dialogSelect(content, "Application", "mode", [
+      {
+        value: "strict",
+        label: "Stricte — refuser si une pièce est impossible",
+      },
+      {
+        value: "assisted",
+        label: "Assistée — appliquer les changements possibles",
+      },
+    ]);
+    dialogNote(
+      content,
+      "Les objets actuellement actifs mais absents de cet ensemble seront rangés sur le même corps. L’aperçu détaille tous les changements.",
+    );
+    const result = await askInventoryForm(
+      outfit.name,
+      content,
+      "Voir l’aperçu",
+    );
+    if (!result) return;
+    const entries = Array.from(
+      outfit.equipmentEntries ?? [],
+    ) as EquipmentRequest[];
+    const snapshots = (Array.from(this.actor.items ?? []) as Item[])
+      .filter((item) => isPhysicalItemType(item.type))
+      .map(itemSnapshot);
+    const releases = snapshots
+      .filter(
+        (item) =>
+          item.system.physical?.bodyId === this.actor.system.activeBodyId &&
+          ["held-one", "held-two", "equipped"].includes(equipmentState(item)) &&
+          !entries.some((entry) => entry.itemId === item.id),
+      )
+      .map((item) => ({ itemId: item.id, state: "stored" }));
+    await this.confirmEquipment(
+      [...releases, ...entries],
+      result.mode === "assisted",
+    );
   }
 
   private async movePhysicalItem(itemId: string): Promise<void> {

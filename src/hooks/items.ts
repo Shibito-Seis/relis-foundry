@@ -64,6 +64,75 @@ export function prepareItemCreation(
   });
 }
 
+/** Embedded equipment state changes must use the same previewed service. */
+export function protectEquipmentUpdate(
+  item: Item,
+  change: Record<string, any>,
+  options: Record<string, any> = {},
+): boolean | void {
+  if (
+    !item.parent ||
+    !isPhysicalItemType(item.type) ||
+    options.relisInventoryOperation ||
+    options.relisMigration
+  )
+    return;
+  if ((item.parent as any).flags?.relis?.equipmentRecovery) {
+    ui.notifications.warn(
+      "Restaurer d’abord l’opération d’équipement interrompue.",
+    );
+    return false;
+  }
+  const paths = changedPaths(change);
+  const protectedPaths = ["equipState", "bodyId", "hands", "hostRef"].map(
+    (key) => "system.physical." + key,
+  );
+  if (
+    paths.some((path) =>
+      protectedPaths.some((key) => path === key || path.startsWith(key + ".")),
+    )
+  ) {
+    ui.notifications.warn(
+      "Changer l’état d’équipement depuis l’inventaire de l’Actor.",
+    );
+    return false;
+  }
+  if (
+    ["readied", "equipped", "installed"].includes(
+      item.system.physical?.equipState,
+    )
+  ) {
+    if (
+      paths.some(
+        (path) =>
+          path === "system.physical.locationKey" ||
+          path.startsWith("system.physical.containerRef"),
+      )
+    ) {
+      ui.notifications.warn(
+        "Ranger ou détacher l’objet avant de modifier directement son emplacement.",
+      );
+      return false;
+    }
+    const quantity = requestedValue(
+      change,
+      "system.physical.quantity",
+      item.system.physical.quantity,
+    );
+    const unit = requestedValue(
+      change,
+      "system.physical.unit",
+      item.system.physical.unit,
+    );
+    if (Number(quantity) !== 1 || unit !== "count") {
+      ui.notifications.warn(
+        "Ranger ou détacher l’objet avant de modifier sa quantité ou son unité.",
+      );
+      return false;
+    }
+  }
+}
+
 function changedPaths(
   value: unknown,
   prefix = "",
@@ -180,6 +249,19 @@ export function preventUnsafeContainerDeletion(
   item: Item,
   options: Record<string, any> = {},
 ): boolean | void {
+  if (item.parent && !options.relisInventoryOperation) {
+    const attached = (Array.from(item.parent.items ?? []) as Item[]).filter(
+      (entry) =>
+        entry.system.physical?.hostRef?.uuid === item.uuid &&
+        Boolean(item.uuid),
+    );
+    if (attached.length || item.system.physical?.hostRef?.uuid) {
+      ui.notifications.warn(
+        "Détacher les installations avant de supprimer cet objet.",
+      );
+      return false;
+    }
+  }
   if (
     item.type !== "container" ||
     !item.parent ||
@@ -278,6 +360,7 @@ export function registerItemHooks(): void {
   Hooks.on(
     "preUpdateItem",
     (item: Item, change: Record<string, any>, options: Record<string, any>) => {
+      if (protectEquipmentUpdate(item, change, options) === false) return false;
       constrainPhysicalItemUpdate(item, change);
       trackLocalItemUpdate(item, change, options);
     },

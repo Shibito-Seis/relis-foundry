@@ -341,14 +341,17 @@
           </label>
           <label>
             Port
-            <select data-document-field="system.physical.equipState">
-              {{selectOptions
-                equipStateOptions
-                selected=system.physical.equipState
-                valueAttr="value"
-                labelAttr="label"
-              }}
-            </select>
+            {{#if isOwnedPhysical}}<span>{{equipmentLabel}}
+                — utiliser le bouton d’état dans l’inventaire de l’Actor.</span>{{else}}
+              <select data-document-field="system.physical.equipState">
+                {{selectOptions
+                  equipStateOptions
+                  selected=system.physical.equipState
+                  valueAttr="value"
+                  labelAttr="label"
+                }}
+              </select>
+            {{/if}}
           </label>
           <label>
             État

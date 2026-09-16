@@ -12,6 +12,13 @@ import {
   type InventoryItemLike,
 } from "../rules/inventory";
 import { createRelisId } from "../utils/ulid";
+import {
+  equipmentLinked,
+  equipmentState,
+  projectEquipment,
+  type EquipmentRequest,
+  type EquipmentBody,
+} from "../rules/equipment";
 
 type ActorLike = Actor & {
   id?: string;
@@ -26,7 +33,13 @@ type ActorLike = Actor & {
 interface InventoryJournalEntry {
   operationId: string;
   action:
-    "create" | "split" | "merge" | "move" | "transfer-in" | "transfer-out";
+    | "create"
+    | "split"
+    | "merge"
+    | "move"
+    | "transfer-in"
+    | "transfer-out"
+    | "equip";
   at: number;
   userId: string;
   itemIds: string[];
@@ -102,6 +115,178 @@ function assertActorPermission(actor: ActorLike): void {
     throw new Error(
       `Vous ne pouvez pas modifier l’inventaire de ${actor.name}.`,
     );
+  if (actor.flags?.relis?.equipmentRecovery)
+    throw new Error(
+      "Une opération d’équipement doit être récupérée par le MJ avant de poursuivre.",
+    );
+}
+
+function assertDetachedTree(actor: ActorLike, itemId: string): void {
+  const items = actorSnapshots(actor);
+  const ids = [itemId, ...descendantIds(items, itemId)];
+  if (ids.some((id) => equipmentLinked(items, id)))
+    throw new Error(
+      "Détachez les installations avant de déplacer ou transférer cet ensemble.",
+    );
+}
+
+export function previewEquipment(
+  actor: ActorLike,
+  requests: EquipmentRequest[],
+  assisted = false,
+) {
+  const bodies = Array.from(actor.system.bodies ?? []) as EquipmentBody[];
+  const body = bodies.find((entry) => entry.id === actor.system.activeBodyId);
+  if (!body) throw new Error("Corps actif introuvable.");
+  const snapshots = actorSnapshots(actor);
+  return {
+    ...projectEquipment(snapshots, body, requests, assisted),
+    fingerprint: JSON.stringify({ snapshots, body }),
+    body,
+  };
+}
+
+export async function applyEquipment(
+  actor: ActorLike,
+  requests: EquipmentRequest[],
+  fingerprint: string,
+  assisted = false,
+): Promise<void> {
+  assertActorPermission(actor);
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    const preview = previewEquipment(actor, requests, assisted);
+    if (preview.fingerprint !== fingerprint)
+      throw new Error("L’inventaire ou le corps a changé. Refaire l’aperçu.");
+    if (!preview.updates.length)
+      throw new Error("Aucun changement applicable.");
+    const before = preview.updates.map((update) => {
+      const physical = itemById(actor, update._id).system.physical;
+      const restored: Record<string, unknown> = { _id: update._id };
+      for (const path of Object.keys(update).filter((key) => key !== "_id"))
+        restored[path] = JSON.parse(
+          JSON.stringify(
+            physical[path.slice("system.physical.".length)] ??
+              (path.endsWith("Ref")
+                ? initialReference()
+                : path.endsWith("hands")
+                  ? 0
+                  : ""),
+          ),
+        );
+      return restored;
+    });
+    await actor.update({
+      "flags.relis.equipmentRecovery": { before, at: Date.now() },
+    });
+    try {
+      await actor.updateEmbeddedDocuments(
+        "Item",
+        preview.updates,
+        inventoryCreateOptions(),
+      );
+      await actor.update({ "flags.relis.-=equipmentRecovery": null });
+    } catch (error) {
+      try {
+        await actor.updateEmbeddedDocuments(
+          "Item",
+          before,
+          inventoryCreateOptions(),
+        );
+        await actor.update({ "flags.relis.-=equipmentRecovery": null });
+      } catch {
+        throw new Error(
+          "Écriture interrompue : restauration MJ requise, sauvegarde conservée sur l’Actor.",
+        );
+      }
+      throw error;
+    }
+    await appendJournal(
+      actor,
+      journalEntry(
+        "equip",
+        operationId(),
+        preview.updates.map((entry) => entry._id),
+        null,
+      ),
+    );
+  });
+}
+
+export async function recoverEquipment(actor: ActorLike): Promise<void> {
+  if (!game.user?.isGM) throw new Error("Récupération réservée au MJ.");
+  await withActorLocks([actor], async () => {
+    const before = actor.flags?.relis?.equipmentRecovery?.before;
+    if (!Array.isArray(before))
+      throw new Error("Aucune sauvegarde à restaurer.");
+    await actor.updateEmbeddedDocuments(
+      "Item",
+      before,
+      inventoryCreateOptions(),
+    );
+    await actor.update({ "flags.relis.-=equipmentRecovery": null });
+  });
+}
+
+export async function saveEquipmentOutfit(
+  actor: ActorLike,
+  slot: number,
+  name: string,
+): Promise<void> {
+  assertActorPermission(actor);
+  if (!Number.isInteger(slot) || slot < 0 || slot > 4 || !name.trim())
+    throw new Error("Ensemble invalide.");
+  await withActorLocks([actor], async () => {
+    const items = actorSnapshots(actor);
+    const bodyId = String(actor.system.activeBodyId);
+    const selected = items.filter(
+      (item) =>
+        item.system.physical?.bodyId === bodyId ||
+        (equipmentState(item) === "installed" &&
+          items.some(
+            (host) =>
+              host.uuid === item.system.physical?.hostRef?.uuid &&
+              host.system.physical?.bodyId === bodyId,
+          )),
+    );
+    const entries = selected
+      .filter((item) => !["stored", "ground"].includes(equipmentState(item)))
+      .map((item) => ({
+        itemId: item.id,
+        state: equipmentState(item),
+        hostId:
+          items.find(
+            (host) => host.uuid === item.system.physical?.hostRef?.uuid,
+          )?.id ?? "",
+      }));
+    const outfits = JSON.parse(
+      JSON.stringify(Array.from(actor.system.outfits ?? [])),
+    );
+    const id = `equipment-${slot + 1}`;
+    const index = outfits.findIndex((outfit: any) => outfit.id === id);
+    const value = {
+      ...(index < 0 ? {} : outfits[index]),
+      id,
+      sort: slot,
+      name: name.trim(),
+      bodyIds: [bodyId],
+      equipmentEntries: entries,
+      itemRefs: entries.map((entry) => {
+        const item = items.find((candidate) => candidate.id === entry.itemId)!;
+        return {
+          ...initialReference(),
+          uuid: item.uuid,
+          labelSnapshot: item.name,
+          documentName: "Item",
+          state: "resolved",
+        };
+      }),
+      readiness: "incomplete",
+    };
+    if (index < 0) outfits.push(value);
+    else outfits[index] = value;
+    await actor.update({ "system.outfits": outfits });
+  });
 }
 
 function itemById(actor: ActorLike, itemId: string): Item {
@@ -128,7 +313,7 @@ function transferFlag(item: Item): PendingTransfer | null {
 }
 
 function assertAvailable(item: Item): void {
-  if (transferFlag(item)?.state === "pending")
+  if (transferFlag(item) && transferFlag(item)?.state !== "complete")
     throw new Error(
       "Cet Item appartient à un transfert en attente de récupération MJ.",
     );
@@ -216,6 +401,7 @@ export async function splitInventoryStack(
   assertActorPermission(actor);
   return withActorLocks([actor], async () => {
     const source = itemById(actor, itemId);
+    assertDetachedTree(actor, itemId);
     assertAvailable(source);
     const errors = validateStackSplit(itemSnapshot(source), requested);
     if (errors.length) throw new Error(errors.join(" "));
@@ -273,6 +459,8 @@ export async function mergeInventoryStacks(
   await withActorLocks([actor], async () => {
     const target = itemById(actor, targetId);
     const source = itemById(actor, sourceId);
+    assertDetachedTree(actor, targetId);
+    assertDetachedTree(actor, sourceId);
     assertAvailable(target);
     assertAvailable(source);
     if (!canMergeStacks(itemSnapshot(target), itemSnapshot(source)))
@@ -314,6 +502,7 @@ export async function moveInventoryItem(
   assertActorPermission(actor);
   await withActorLocks([actor], async () => {
     const item = itemById(actor, itemId);
+    assertDetachedTree(actor, itemId);
     assertAvailable(item);
     const target = targetContainerId
       ? itemById(actor, targetContainerId)
@@ -340,6 +529,11 @@ export async function moveInventoryItem(
           : initialReference(),
         "system.physical.locationKey": target ? "" : "actor-cargo",
         "system.physical.accessibility": accessibility,
+        "system.physical.equipState": "stored",
+        "system.physical.hands": 0,
+        "system.physical.bodyId": target
+          ? ""
+          : String(actor.system.activeBodyId ?? ""),
       },
       inventoryCreateOptions(),
     );
@@ -404,6 +598,7 @@ export async function transferInventoryItem(
 
   return withActorLocks([sourceActor, destinationActor], async () => {
     const root = itemById(sourceActor, itemId);
+    assertDetachedTree(sourceActor, itemId);
     assertAvailable(root);
     const before = Number(root.system.physical.quantity ?? 0);
     if (root.type === "container" && before !== 1)
@@ -437,6 +632,10 @@ export async function transferInventoryItem(
     const after = partial ? before - quantity : 0;
     const transferData = tree.map((item) => {
       const data = cloneItemData(item);
+      data.system.physical.equipState = "stored";
+      data.system.physical.hands = 0;
+      data.system.physical.bodyId = "";
+      data.system.physical.hostRef = initialReference();
       const originalAccessibility = String(
         item.system.physical?.accessibility ?? "stored",
       );

@@ -1,5 +1,17 @@
 # Journal des versions
 
+## 0.5.0 — 10-E3-P, équipement personnel et charge lisible
+
+- Bandeau de charge en kg, seuils explicites du corps actif, masse connue et données manquantes ; catégories/recherche/replis 0.4.3 conservés.
+- États contextuels : ranger, porter, tenir à une/deux mains, équiper, poser au sol, installer lorsque le profil l’autorise.
+- Contrôle des mains, des accès hérités, des corps, des tailles/natures déclarées, des slots, des quantités et des cycles d’installation.
+- Profil d’usage configurable ; temps et aide affichés dans un aperçu sans coût de combat inventé.
+- Cinq emplacements d’ensembles de références, application stricte ou assistée avec aperçu et contrôle de péremption.
+- Opérations sérialisées localement, compensation et sauvegarde de récupération MJ en cas d’échec d’écriture.
+- Masse des objets au sol et des autres corps exclue ; conversion kg/g et convention explicite pour liquides ordinaires ; anciennes données de volume/encombrement conservées.
+- Champs additifs sans nouvelle migration, schéma stocké 5 ; DialogV2 et versions dynamiques préservés.
+- Revue visuelle 0.4.3 validée ; 10-E3-P en attente de recette utilisateur, sans ajout de lot à la roadmap.
+
 ## 0.4.3 — revue visuelle de l’inventaire
 
 - Catégories repliables communes aux PJ et PNJ, sans duplication des objets contenus.

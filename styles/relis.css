@@ -1658,3 +1658,74 @@
   outline: 2px solid var(--relis-cyan);
   outline-offset: 2px;
 }
+.relis-carrying {
+  border: 1px solid var(--relis-line);
+  border-radius: 0.6rem;
+  padding: 1rem;
+  background: var(--relis-panel);
+  margin-bottom: 1rem;
+}
+.relis-carrying-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+.relis-carrying-heading strong {
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
+}
+.relis-carrying-meter {
+  position: relative;
+  height: 0.8rem;
+  border-radius: 0.4rem;
+  background: var(--relis-night);
+  margin: 0.8rem 0 0.4rem;
+  overflow: hidden;
+  border: 1px solid var(--relis-line);
+}
+.relis-carrying-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--relis-cyan), var(--relis-gold));
+}
+.relis-carrying-marker {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--relis-ink);
+}
+.relis-carrying-thresholds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+}
+.relis-equipment-state {
+  display: block;
+  width: fit-content;
+  font-size: 0.8rem;
+  min-height: 1.8rem;
+  margin-top: 0.3rem;
+  border-color: var(--relis-line);
+}
+.relis-equipment-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+.relis-equipment-options .relis-inventory-dialog-field {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.2rem 0;
+}
+.relis-equipment-options input[type="checkbox"] {
+  width: auto;
+  flex: 0 0 auto;
+}

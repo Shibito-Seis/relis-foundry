@@ -391,6 +391,28 @@ function ageField(): any {
 
 function bodyField(): any {
   return new fields.SchemaField({
+    carrying: new fields.SchemaField({
+      hands: new fields.NumberField({
+        required: false,
+        nullable: true,
+        initial: null,
+        min: 0,
+        integer: true,
+      }),
+      loaded: new fields.NumberField({
+        required: false,
+        nullable: true,
+        initial: null,
+        min: 0,
+      }),
+      overloaded: new fields.NumberField({
+        required: false,
+        nullable: true,
+        initial: null,
+        min: 0,
+      }),
+      source: optionalStringField(),
+    }),
     id: new fields.StringField({
       required: true,
       blank: false,
@@ -470,6 +492,14 @@ function presentationField(): any {
 
 function outfitField(): any {
   return new fields.SchemaField({
+    equipmentEntries: new fields.ArrayField(
+      new fields.SchemaField({
+        itemId: optionalStringField(),
+        state: optionalStringField(),
+        hostId: optionalStringField(),
+      }),
+      { required: true, initial: [] },
+    ),
     id: optionalStringField(),
     sort: new fields.NumberField({
       required: true,

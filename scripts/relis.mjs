@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.4.3";
+var PACKAGE_VERSION = "0.5.0";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -342,6 +342,22 @@ function encodeRandom() {
 }
 function createRelisId(now = Date.now()) {
 	return `${encodeTime(now)}${encodeRandom()}`;
+}
+//#endregion
+//#region src/rules/physical-mass.ts
+/** Explicit catalogue mass wins; unknown mass is never silently zero. */
+function physicalUnitMass(p) {
+	if (p.massEach !== null && p.massEach !== void 0 && p.massEach !== "") {
+		const mass = Number(p.massEach);
+		return Number.isFinite(mass) && mass >= 0 ? mass : null;
+	}
+	if (p.unit === "kg") return 1;
+	if (p.unit === "g") return .001;
+	if (p.equipmentProfile?.ordinaryLiquid === true) {
+		if (p.unit === "l") return 1;
+		if (p.unit === "ml") return .001;
+	}
+	return null;
 }
 //#endregion
 //#region src/data/item-catalog.ts
@@ -777,7 +793,8 @@ var EQUIP_STATES = [
 	"carried",
 	"readied",
 	"equipped",
-	"installed"
+	"installed",
+	"ground"
 ];
 var OWNERSHIP_STATES = [
 	"owned",
@@ -868,6 +885,10 @@ function initialPhysicalState() {
 		accessibility: "stored",
 		maintenanceRefs: [],
 		equipState: "stored",
+		bodyId: "",
+		hands: 0,
+		hostRef: initialReference(),
+		equipmentProfile: {},
 		condition: "intact",
 		wear: 0,
 		charges: {
@@ -941,6 +962,10 @@ function normalizePhysicalState(value) {
 		accessibility: ACCESSIBILITY_STATES.includes(source.accessibility) ? source.accessibility : "stored",
 		maintenanceRefs: referenceArray(source.maintenanceRefs),
 		equipState: EQUIP_STATES.includes(source.equipState) ? source.equipState : "stored",
+		bodyId: text(source.bodyId),
+		hands: integer(source.hands, 0, 0, 2),
+		hostRef: normalizeReference(source.hostRef),
+		equipmentProfile: record(source.equipmentProfile),
 		condition: ITEM_CONDITIONS.includes(source.condition) ? source.condition : "intact",
 		wear: integer(source.wear, 0, 0, 6),
 		charges: {
@@ -1047,7 +1072,7 @@ function physicalTotals(value) {
 	const quantity = Number(physical.quantity);
 	const total = (each) => each === null || !Number.isFinite(Number(each)) ? null : Number((quantity * Number(each)).toPrecision(12));
 	return {
-		mass: total(physical.massEach),
+		mass: total(physicalUnitMass(physical)),
 		volume: total(physical.volumeEach),
 		bulk: total(physical.bulkEach)
 	};
@@ -1057,6 +1082,15 @@ function buildOwnedItemSystem(value, sourceUuid, sourceName, sourceType, physica
 	const sourceId = source.meta.relisId;
 	return {
 		...source,
+		...physical ? { physical: {
+			...source.physical,
+			equipState: "stored",
+			bodyId: "",
+			hands: 0,
+			containerRef: initialReference(),
+			hostRef: initialReference(),
+			locationKey: "actor-cargo"
+		} } : {},
 		meta: {
 			...source.meta,
 			relisId: createWorldItemId(idFactory),
@@ -1244,6 +1278,49 @@ function physicalField() {
 			blank: false,
 			choices: EQUIP_STATES,
 			initial: "stored"
+		}),
+		bodyId: optionalStringField$1(),
+		hands: new fields$1.NumberField({
+			required: true,
+			integer: true,
+			min: 0,
+			max: 2,
+			initial: 0
+		}),
+		hostRef: referenceField$1(),
+		equipmentProfile: new fields$1.SchemaField({
+			family: new fields$1.StringField({
+				required: true,
+				initial: "",
+				choices: [
+					"",
+					"manipulable",
+					"wearable",
+					"resource"
+				]
+			}),
+			slot: optionalStringField$1(),
+			duration: optionalStringField$1(),
+			sizes: new fields$1.ArrayField(new fields$1.StringField(), {
+				required: true,
+				initial: []
+			}),
+			natures: new fields$1.ArrayField(new fields$1.StringField(), {
+				required: true,
+				initial: []
+			}),
+			hostTypes: new fields$1.ArrayField(new fields$1.StringField(), {
+				required: true,
+				initial: []
+			}),
+			installable: new fields$1.BooleanField({
+				required: true,
+				initial: false
+			}),
+			ordinaryLiquid: new fields$1.BooleanField({
+				required: true,
+				initial: false
+			})
 		}),
 		condition: new fields$1.StringField({
 			required: true,
@@ -1775,6 +1852,28 @@ function ageField() {
 }
 function bodyField() {
 	return new fields.SchemaField({
+		carrying: new fields.SchemaField({
+			hands: new fields.NumberField({
+				required: false,
+				nullable: true,
+				initial: null,
+				min: 0,
+				integer: true
+			}),
+			loaded: new fields.NumberField({
+				required: false,
+				nullable: true,
+				initial: null,
+				min: 0
+			}),
+			overloaded: new fields.NumberField({
+				required: false,
+				nullable: true,
+				initial: null,
+				min: 0
+			}),
+			source: optionalStringField()
+		}),
 		id: new fields.StringField({
 			required: true,
 			blank: false,
@@ -1856,6 +1955,14 @@ function presentationField() {
 }
 function outfitField() {
 	return new fields.SchemaField({
+		equipmentEntries: new fields.ArrayField(new fields.SchemaField({
+			itemId: optionalStringField(),
+			state: optionalStringField(),
+			hostId: optionalStringField()
+		}), {
+			required: true,
+			initial: []
+		}),
 		id: optionalStringField(),
 		sort: new fields.NumberField({
 			required: true,
@@ -2604,6 +2711,41 @@ function prepareItemCreation(item, data, options = {}) {
 	}
 	item.updateSource({ system: normalizeItemSystemForType(item.system ?? incomingSystem, item.type) });
 }
+/** Embedded equipment state changes must use the same previewed service. */
+function protectEquipmentUpdate(item, change, options = {}) {
+	if (!item.parent || !isPhysicalItemType(item.type) || options.relisInventoryOperation || options.relisMigration) return;
+	if (item.parent.flags?.relis?.equipmentRecovery) {
+		ui.notifications.warn("Restaurer d’abord l’opération d’équipement interrompue.");
+		return false;
+	}
+	const paths = changedPaths(change);
+	const protectedPaths = [
+		"equipState",
+		"bodyId",
+		"hands",
+		"hostRef"
+	].map((key) => "system.physical." + key);
+	if (paths.some((path) => protectedPaths.some((key) => path === key || path.startsWith(key + ".")))) {
+		ui.notifications.warn("Changer l’état d’équipement depuis l’inventaire de l’Actor.");
+		return false;
+	}
+	if ([
+		"readied",
+		"equipped",
+		"installed"
+	].includes(item.system.physical?.equipState)) {
+		if (paths.some((path) => path === "system.physical.locationKey" || path.startsWith("system.physical.containerRef"))) {
+			ui.notifications.warn("Ranger ou détacher l’objet avant de modifier directement son emplacement.");
+			return false;
+		}
+		const quantity = requestedValue(change, "system.physical.quantity", item.system.physical.quantity);
+		const unit = requestedValue(change, "system.physical.unit", item.system.physical.unit);
+		if (Number(quantity) !== 1 || unit !== "count") {
+			ui.notifications.warn("Ranger ou détacher l’objet avant de modifier sa quantité ou son unité.");
+			return false;
+		}
+	}
+}
 function changedPaths(value, prefix = "", output = []) {
 	if (!value || typeof value !== "object" || Array.isArray(value)) {
 		if (prefix) output.push(prefix);
@@ -2655,6 +2797,12 @@ function constrainPhysicalItemUpdate(item, change) {
 	if ((Object.hasOwn(change, "system.physical.locationKey") || Boolean(change.system?.physical && "locationKey" in change.system.physical)) && String(requestedLocation ?? "").trim() && currentContainer) setRequestedValue(change, "system.physical.containerRef", initialReference());
 }
 function preventUnsafeContainerDeletion(item, options = {}) {
+	if (item.parent && !options.relisInventoryOperation) {
+		if (Array.from(item.parent.items ?? []).filter((entry) => entry.system.physical?.hostRef?.uuid === item.uuid && Boolean(item.uuid)).length || item.system.physical?.hostRef?.uuid) {
+			ui.notifications.warn("Détacher les installations avant de supprimer cet objet.");
+			return false;
+		}
+	}
 	if (item.type !== "container" || !item.parent || options.relisInventoryOperation) return;
 	const relisId = String(item.system.meta?.relisId ?? "");
 	const uuid = String(item.uuid ?? "");
@@ -2703,6 +2851,7 @@ function registerItemHooks() {
 	Hooks.on("preCreateItem", prepareItemCreation);
 	Hooks.on("preDeleteItem", preventUnsafeContainerDeletion);
 	Hooks.on("preUpdateItem", (item, change, options) => {
+		if (protectEquipmentUpdate(item, change, options) === false) return false;
 		constrainPhysicalItemUpdate(item, change);
 		trackLocalItemUpdate(item, change, options);
 	});
@@ -3038,7 +3187,7 @@ function ownLoad(item) {
 		return each === null ? null : Number((Math.max(0, each) * quantity).toPrecision(12));
 	};
 	return {
-		mass: total(physical.massEach),
+		mass: total(physicalUnitMass(physical)),
 		volume: total(physical.volumeEach),
 		bulk: total(physical.bulkEach),
 		units: String(physical.unit ?? "count") === "count" ? quantity : quantity > 0 ? 1 : 0
@@ -3302,6 +3451,11 @@ function stackPayload(item) {
 }
 function canMergeStacks(first, second) {
 	if (first.id === second.id) return false;
+	if ([first, second].some((item) => [
+		"readied",
+		"equipped",
+		"installed"
+	].includes(item.system.physical?.equipState))) return false;
 	if (!isPhysicalItemType(first.type) || !isPhysicalItemType(second.type)) return false;
 	if (first.type === "container" || second.type === "container") return false;
 	if (String(first.system.physical?.serialNumber ?? "").trim() || String(second.system.physical?.serialNumber ?? "").trim()) return false;
@@ -3309,6 +3463,11 @@ function canMergeStacks(first, second) {
 }
 function validateStackSplit(item, requested) {
 	if (!isPhysicalItemType(item.type)) return ["L’Item n’est pas physique."];
+	if ([
+		"readied",
+		"equipped",
+		"installed"
+	].includes(item.system.physical?.equipState)) return ["Ranger ou détacher l’objet avant de scinder."];
 	if (item.type === "container") return ["Un conteneur et son contenu ne peuvent pas être fractionnés."];
 	if (String(item.system.physical?.serialNumber ?? "").trim()) return ["Un objet sérialisé ne peut pas être fractionné."];
 	const quantity = Number(item.system.physical?.quantity ?? 0);
@@ -3320,6 +3479,252 @@ function validateStackSplit(item, requested) {
 function inventoryContainerTargets(items, itemId) {
 	const forbidden = /* @__PURE__ */ new Set([itemId, ...descendantIds(items, itemId)]);
 	return items.filter((item) => item.type === "container" && !forbidden.has(item.id));
+}
+//#endregion
+//#region src/rules/equipment.ts
+var EQUIPMENT_LABELS = {
+	stored: "Rangé",
+	carried: "Porté sur soi",
+	readied: "Préparé — mains à préciser",
+	"held-one": "Tenu à une main",
+	"held-two": "Tenu à deux mains",
+	equipped: "Équipé",
+	installed: "Installé",
+	ground: "Au sol"
+};
+function equipmentLinked(items, itemId) {
+	const item = items.find((entry) => entry.id === itemId);
+	if (!item) return false;
+	return Boolean(referenceIdentity(item.system.physical?.hostRef)) || items.some((entry) => entry.system.physical?.hostRef?.uuid === item.uuid && Boolean(item.uuid));
+}
+function unitMass(item) {
+	return physicalUnitMass(item.system.physical ?? {});
+}
+function equipmentState(item) {
+	const physical = item.system.physical ?? {};
+	return physical.equipState === "readied" ? physical.hands === 2 ? "held-two" : physical.hands === 1 ? "held-one" : "readied" : physical.equipState ?? "stored";
+}
+function equipmentStates(item) {
+	const profile = item.system.physical?.equipmentProfile ?? {};
+	const family = profile.family || (item.type === "weapon" ? "manipulable" : [
+		"armor",
+		"equipment",
+		"container"
+	].includes(item.type) ? "wearable" : "resource");
+	const states = family === "manipulable" ? [
+		"carried",
+		"held-one",
+		"held-two",
+		"ground"
+	] : family === "wearable" ? [
+		"carried",
+		"equipped",
+		"ground"
+	] : [
+		"stored",
+		"carried",
+		"ground"
+	];
+	if (profile.installable === true) states.push("installed");
+	if (!states.includes("stored")) states.unshift("stored");
+	return states;
+}
+function ancestors(items, itemId) {
+	const rows = presentInventory(items).rows;
+	const result = [];
+	const seen = /* @__PURE__ */ new Set([itemId]);
+	let row = rows.find((entry) => entry.item.id === itemId);
+	while (row?.parentId && !seen.has(row.parentId)) {
+		seen.add(row.parentId);
+		row = rows.find((entry) => entry.item.id === row.parentId);
+		if (row) result.push(row.item);
+	}
+	return result;
+}
+function equipmentChain(items, itemId) {
+	const rows = presentInventory(items).rows;
+	const chain = [];
+	const seen = /* @__PURE__ */ new Set();
+	let invalid = false;
+	let current = items.find((item) => item.id === itemId);
+	while (current) {
+		if (seen.has(current.id)) {
+			invalid = true;
+			break;
+		}
+		seen.add(current.id);
+		chain.push(current);
+		const row = rows.find((entry) => entry.item.id === current.id);
+		if (row?.orphaned || row?.cyclic) invalid = true;
+		const host = current.system.physical?.hostRef;
+		if (referenceIdentity(host)) {
+			if (row?.parentId) invalid = true;
+			current = items.find((entry) => host.uuid && entry.uuid === host.uuid || host.relisId && entry.system.meta?.relisId === host.relisId);
+			if (!current) invalid = true;
+		} else current = row?.parentId ? items.find((entry) => entry.id === row.parentId) : void 0;
+	}
+	return {
+		chain,
+		invalid
+	};
+}
+function equipmentPlan(items, body, request) {
+	const errors = [];
+	const warnings = [];
+	const item = items.find((entry) => entry.id === request.itemId);
+	if (!item) return {
+		errors: ["Item absent."],
+		warnings,
+		patch: {},
+		duration: "Non renseignée"
+	};
+	const physical = item.system.physical ?? {};
+	const profile = physical.equipmentProfile ?? {};
+	const state = request.state;
+	if (!body.id) errors.push("Corps actif introuvable.");
+	const lineage = equipmentChain(items, item.id);
+	const chain = lineage.chain;
+	if (lineage.invalid) errors.push("Chaîne de conteneurs ou d’installation invalide.");
+	const rows = presentInventory(items).rows;
+	if (!equipmentStates(item).includes(state)) errors.push("État incompatible avec cet objet.");
+	if (rows.some((row) => chain.some((entry) => entry.id === row.item.id) && (row.cyclic || row.orphaned))) errors.push("Localisation invalide : corriger les diagnostics.");
+	if (chain.some((entry) => entry.system.physical?.accessibility === "unavailable" || ["restricted", "sealed"].includes(entry.system.accessRule) && entry.id !== item.id || (entry.flags?.relis?.inventoryTransfer?.state ?? "complete") !== "complete")) errors.push("Objet ou contenant indisponible.");
+	if (chain.some((entry) => entry.system.physical?.bodyId && entry.system.physical.bodyId !== body.id)) errors.push("Objet associé à un autre corps : aucun déplacement automatique.");
+	if (chain.slice(1).some((entry) => entry.system.physical?.equipState === "ground") && state !== "ground") errors.push("Reprendre d’abord le conteneur au sol ou l’hôte posé au sol.");
+	if (!(Number(physical.quantity) > 0) || !Number.isFinite(Number(physical.quantity))) errors.push("Quantité invalide.");
+	if (physical.unit === "count" && !Number.isInteger(Number(physical.quantity))) errors.push("Quantité comptée non entière.");
+	const active = [
+		"held-one",
+		"held-two",
+		"equipped",
+		"installed"
+	].includes(state);
+	if (active && (Number(physical.quantity) !== 1 || physical.unit !== "count")) errors.push("Scinder une unité avant de la tenir, équiper ou installer.");
+	if (active && ["broken", "destroyed"].includes(physical.condition)) errors.push("Objet brisé ou détruit.");
+	if (active && profile.sizes?.length && !profile.sizes.includes(body.size)) errors.push("Taille incompatible avec le corps actif.");
+	if (active && profile.natures?.length && !profile.natures.includes(body.nature)) errors.push("Nature corporelle incompatible.");
+	const hands = state === "held-two" ? 2 : state === "held-one" ? 1 : 0;
+	const others = items.filter((entry) => entry.id !== item.id && (entry.system.physical?.bodyId || body.id) === body.id);
+	const usedHands = others.reduce((sum, entry) => sum + (equipmentState(entry) === "held-two" ? 2 : equipmentState(entry) === "held-one" ? 1 : 0), 0);
+	if (hands && others.some((entry) => equipmentState(entry) === "readied")) errors.push("Préciser d’abord les mains des objets anciennement préparés.");
+	if (hands && (body.carrying?.hands == null || !Number.isInteger(Number(body.carrying.hands)) || Number(body.carrying.hands) < 0)) errors.push("Nombre de mains utilisables non renseigné pour ce corps.");
+	else if (hands && usedHands + hands > Number(body.carrying?.hands)) errors.push("Mains utilisables insuffisantes.");
+	if (state === "equipped" && profile.slot && others.some((entry) => equipmentState(entry) === "equipped" && entry.system.physical?.equipmentProfile?.slot === profile.slot)) errors.push("Emplacement d’équipement déjà occupé.");
+	const host = items.find((entry) => entry.id === request.hostId);
+	if (state === "installed") {
+		if (!host || host.id === item.id) errors.push("Hôte d’installation invalide.");
+		else {
+			if (Number(host.system.physical?.quantity) !== 1 || host.system.physical?.unit !== "count") errors.push("L’hôte doit être un exemplaire unique compté.");
+			const hostLineage = equipmentChain(items, host.id);
+			if (hostLineage.invalid || hostLineage.chain.some((entry) => entry.id === item.id)) errors.push("Cycle ou chaîne d’installation invalide.");
+			const hostChain = hostLineage.chain;
+			if (hostChain.some((entry) => ancestors(items, entry.id).length > 0)) errors.push("Sortir l’hôte de son conteneur avant l’installation.");
+			if (hostChain.some((entry) => entry.system.physical?.equipState === "ground" || entry.system.physical?.bodyId && entry.system.physical.bodyId !== body.id || entry.system.physical?.accessibility === "unavailable" || entry.id !== host.id && ["restricted", "sealed"].includes(entry.system.accessRule))) errors.push("Hôte hors de portée du corps actif.");
+			if (host.system.physical?.accessibility === "unavailable" || (host.flags?.relis?.inventoryTransfer?.state ?? "complete") !== "complete") errors.push("Hôte indisponible.");
+			if (host.system.physical?.bodyId && host.system.physical.bodyId !== body.id) errors.push("Hôte sur un autre corps.");
+			if (profile.hostTypes?.length && !profile.hostTypes.includes(host.type)) errors.push("Type d’hôte incompatible.");
+			if (profile.slot && others.some((entry) => entry.system.physical?.hostRef?.uuid === host.uuid && entry.system.physical?.equipmentProfile?.slot === profile.slot)) errors.push("Slot d’installation occupé.");
+		}
+	}
+	if (active && !profile.sizes?.length && !profile.natures?.length) warnings.push("Aucune restriction corporelle déclarée : compatibilité à vérifier selon la source.");
+	if (equipmentState(item) === "installed" && state === "stored") warnings.push("L’objet sera détaché de son hôte et rangé dans l’inventaire principal.");
+	if (active && !profile.duration) warnings.push("Temps et aide nécessaires à arbitrer selon la règle ou le MJ.");
+	const patch = {
+		"system.physical.equipState": hands ? "readied" : state,
+		"system.physical.hands": hands,
+		"system.physical.bodyId": state === "ground" || state === "installed" ? "" : body.id,
+		"system.physical.hostRef": state === "installed" && host ? {
+			...initialReference(),
+			uuid: host.uuid,
+			documentName: "Item",
+			state: "resolved",
+			labelSnapshot: host.name
+		} : initialReference()
+	};
+	if (state !== "stored") {
+		patch["system.physical.containerRef"] = initialReference();
+		patch["system.physical.locationKey"] = state === "ground" ? "ground" : "body";
+	}
+	if (state === "stored" && !referenceIdentity(physical.containerRef)) patch["system.physical.locationKey"] = "actor-cargo";
+	if (state !== "stored" && ancestors(items, item.id).length) warnings.push("L’objet sera sorti de son conteneur ; aucun autre objet ne sera déplacé.");
+	return {
+		errors,
+		warnings,
+		patch,
+		duration: String(profile.duration || "Non renseignée")
+	};
+}
+function carriedMass(items, body) {
+	let mass = 0;
+	let missing = 0;
+	for (const item of items) {
+		const { chain, invalid } = equipmentChain(items, item.id);
+		if (chain.some((entry) => entry.system.physical?.equipState === "ground" || entry.system.physical?.bodyId && entry.system.physical.bodyId !== body.id)) continue;
+		if (invalid) {
+			missing++;
+			continue;
+		}
+		const p = item.system.physical ?? {};
+		const quantity = Number(p.quantity);
+		const each = unitMass(item);
+		if (each == null || !Number.isFinite(Number(each)) || Number(each) < 0 || !Number.isFinite(quantity) || quantity < 0) missing++;
+		else mass += Number(each) * quantity;
+	}
+	mass = Math.round(mass * 1e6) / 1e6;
+	const loaded = Number(body.carrying?.loaded);
+	const overloaded = Number(body.carrying?.overloaded);
+	const defined = Number.isFinite(loaded) && loaded > 0 && Number.isFinite(overloaded) && overloaded > loaded;
+	return {
+		mass,
+		missing,
+		defined,
+		loaded,
+		overloaded,
+		status: !defined ? "Seuils non renseignés" : mass >= overloaded ? "Surchargé" : mass >= loaded ? "Chargé" : missing ? "Charge incomplète" : "Charge normale",
+		meterValue: defined ? Math.min(mass, overloaded) : 0,
+		percent: defined ? Math.min(100, mass / overloaded * 100) : 0,
+		marker: defined ? loaded / overloaded * 100 : 0
+	};
+}
+function projectEquipment(items, body, requests, assisted = false) {
+	const projected = JSON.parse(JSON.stringify(items));
+	const rows = [];
+	const duplicate = /* @__PURE__ */ new Set();
+	const ordered = [...requests].sort((a, b) => Number([
+		"equipped",
+		"held-one",
+		"held-two",
+		"installed"
+	].includes(a.state)) - Number([
+		"equipped",
+		"held-one",
+		"held-two",
+		"installed"
+	].includes(b.state)));
+	for (const request of ordered) {
+		const plan = equipmentPlan(projected, body, request);
+		if (duplicate.has(request.itemId)) plan.errors.push("Item répété dans l’ensemble.");
+		duplicate.add(request.itemId);
+		rows.push({
+			request,
+			name: items.find((item) => item.id === request.itemId)?.name ?? "Item absent",
+			...plan
+		});
+		if (!plan.errors.length) {
+			const item = projected.find((entry) => entry.id === request.itemId);
+			for (const [path, value] of Object.entries(plan.patch)) item.system.physical[path.slice(16)] = value;
+		}
+	}
+	const failed = rows.some((row) => row.errors.length);
+	return {
+		rows,
+		updates: failed && !assisted ? [] : rows.filter((row) => !row.errors.length).map((row) => ({
+			_id: row.request.itemId,
+			...row.patch
+		})),
+		mass: carriedMass(failed && !assisted ? items : projected, body),
+		failed
+	};
 }
 //#endregion
 //#region src/services/inventory.ts
@@ -3361,6 +3766,103 @@ async function withActorLocks(actors, callback) {
 }
 function assertActorPermission(actor) {
 	if (!game.user?.isGM && !actor.isOwner) throw new Error(`Vous ne pouvez pas modifier l’inventaire de ${actor.name}.`);
+	if (actor.flags?.relis?.equipmentRecovery) throw new Error("Une opération d’équipement doit être récupérée par le MJ avant de poursuivre.");
+}
+function assertDetachedTree(actor, itemId) {
+	const items = actorSnapshots(actor);
+	if ([itemId, ...descendantIds(items, itemId)].some((id) => equipmentLinked(items, id))) throw new Error("Détachez les installations avant de déplacer ou transférer cet ensemble.");
+}
+function previewEquipment(actor, requests, assisted = false) {
+	const body = Array.from(actor.system.bodies ?? []).find((entry) => entry.id === actor.system.activeBodyId);
+	if (!body) throw new Error("Corps actif introuvable.");
+	const snapshots = actorSnapshots(actor);
+	return {
+		...projectEquipment(snapshots, body, requests, assisted),
+		fingerprint: JSON.stringify({
+			snapshots,
+			body
+		}),
+		body
+	};
+}
+async function applyEquipment(actor, requests, fingerprint, assisted = false) {
+	assertActorPermission(actor);
+	await withActorLocks([actor], async () => {
+		assertActorPermission(actor);
+		const preview = previewEquipment(actor, requests, assisted);
+		if (preview.fingerprint !== fingerprint) throw new Error("L’inventaire ou le corps a changé. Refaire l’aperçu.");
+		if (!preview.updates.length) throw new Error("Aucun changement applicable.");
+		const before = preview.updates.map((update) => {
+			const physical = itemById(actor, update._id).system.physical;
+			const restored = { _id: update._id };
+			for (const path of Object.keys(update).filter((key) => key !== "_id")) restored[path] = JSON.parse(JSON.stringify(physical[path.slice(16)] ?? (path.endsWith("Ref") ? initialReference() : path.endsWith("hands") ? 0 : "")));
+			return restored;
+		});
+		await actor.update({ "flags.relis.equipmentRecovery": {
+			before,
+			at: Date.now()
+		} });
+		try {
+			await actor.updateEmbeddedDocuments("Item", preview.updates, inventoryCreateOptions());
+			await actor.update({ "flags.relis.-=equipmentRecovery": null });
+		} catch (error) {
+			try {
+				await actor.updateEmbeddedDocuments("Item", before, inventoryCreateOptions());
+				await actor.update({ "flags.relis.-=equipmentRecovery": null });
+			} catch {
+				throw new Error("Écriture interrompue : restauration MJ requise, sauvegarde conservée sur l’Actor.");
+			}
+			throw error;
+		}
+		await appendJournal(actor, journalEntry("equip", operationId(), preview.updates.map((entry) => entry._id), null));
+	});
+}
+async function recoverEquipment(actor) {
+	if (!game.user?.isGM) throw new Error("Récupération réservée au MJ.");
+	await withActorLocks([actor], async () => {
+		const before = actor.flags?.relis?.equipmentRecovery?.before;
+		if (!Array.isArray(before)) throw new Error("Aucune sauvegarde à restaurer.");
+		await actor.updateEmbeddedDocuments("Item", before, inventoryCreateOptions());
+		await actor.update({ "flags.relis.-=equipmentRecovery": null });
+	});
+}
+async function saveEquipmentOutfit(actor, slot, name) {
+	assertActorPermission(actor);
+	if (!Number.isInteger(slot) || slot < 0 || slot > 4 || !name.trim()) throw new Error("Ensemble invalide.");
+	await withActorLocks([actor], async () => {
+		const items = actorSnapshots(actor);
+		const bodyId = String(actor.system.activeBodyId);
+		const entries = items.filter((item) => item.system.physical?.bodyId === bodyId || equipmentState(item) === "installed" && items.some((host) => host.uuid === item.system.physical?.hostRef?.uuid && host.system.physical?.bodyId === bodyId)).filter((item) => !["stored", "ground"].includes(equipmentState(item))).map((item) => ({
+			itemId: item.id,
+			state: equipmentState(item),
+			hostId: items.find((host) => host.uuid === item.system.physical?.hostRef?.uuid)?.id ?? ""
+		}));
+		const outfits = JSON.parse(JSON.stringify(Array.from(actor.system.outfits ?? [])));
+		const id = `equipment-${slot + 1}`;
+		const index = outfits.findIndex((outfit) => outfit.id === id);
+		const value = {
+			...index < 0 ? {} : outfits[index],
+			id,
+			sort: slot,
+			name: name.trim(),
+			bodyIds: [bodyId],
+			equipmentEntries: entries,
+			itemRefs: entries.map((entry) => {
+				const item = items.find((candidate) => candidate.id === entry.itemId);
+				return {
+					...initialReference(),
+					uuid: item.uuid,
+					labelSnapshot: item.name,
+					documentName: "Item",
+					state: "resolved"
+				};
+			}),
+			readiness: "incomplete"
+		};
+		if (index < 0) outfits.push(value);
+		else outfits[index] = value;
+		await actor.update({ "system.outfits": outfits });
+	});
 }
 function itemById(actor, itemId) {
 	const item = actor.items?.get?.(itemId);
@@ -3382,7 +3884,7 @@ function transferFlag(item) {
 	return value && typeof value === "object" ? value : null;
 }
 function assertAvailable(item) {
-	if (transferFlag(item)?.state === "pending") throw new Error("Cet Item appartient à un transfert en attente de récupération MJ.");
+	if (transferFlag(item) && transferFlag(item)?.state !== "complete") throw new Error("Cet Item appartient à un transfert en attente de récupération MJ.");
 }
 async function appendJournal(actor, entry) {
 	const current = Array.from(actor.flags?.relis?.inventoryJournal ?? []);
@@ -3436,6 +3938,7 @@ async function splitInventoryStack(actor, itemId, requested) {
 	assertActorPermission(actor);
 	return withActorLocks([actor], async () => {
 		const source = itemById(actor, itemId);
+		assertDetachedTree(actor, itemId);
 		assertAvailable(source);
 		const errors = validateStackSplit(itemSnapshot$1(source), requested);
 		if (errors.length) throw new Error(errors.join(" "));
@@ -3469,6 +3972,8 @@ async function mergeInventoryStacks(actor, targetId, sourceId) {
 	await withActorLocks([actor], async () => {
 		const target = itemById(actor, targetId);
 		const source = itemById(actor, sourceId);
+		assertDetachedTree(actor, targetId);
+		assertDetachedTree(actor, sourceId);
 		assertAvailable(target);
 		assertAvailable(source);
 		if (!canMergeStacks(itemSnapshot$1(target), itemSnapshot$1(source))) throw new Error("Ces piles diffèrent par leur source, leur lot, leur état, leurs charges ou leur emplacement.");
@@ -3489,6 +3994,7 @@ async function moveInventoryItem(actor, itemId, targetContainerId) {
 	assertActorPermission(actor);
 	await withActorLocks([actor], async () => {
 		const item = itemById(actor, itemId);
+		assertDetachedTree(actor, itemId);
 		assertAvailable(item);
 		const target = targetContainerId ? itemById(actor, targetContainerId) : null;
 		const validation = validateInventoryMove(actorSnapshots(actor), item.id, target?.id ?? null);
@@ -3499,7 +4005,10 @@ async function moveInventoryItem(actor, itemId, targetContainerId) {
 		await item.update({
 			"system.physical.containerRef": target ? containerReference(target) : initialReference(),
 			"system.physical.locationKey": target ? "" : "actor-cargo",
-			"system.physical.accessibility": accessibility
+			"system.physical.accessibility": accessibility,
+			"system.physical.equipState": "stored",
+			"system.physical.hands": 0,
+			"system.physical.bodyId": target ? "" : String(actor.system.activeBodyId ?? "")
 		}, inventoryCreateOptions());
 		await appendJournal(actor, journalEntry("move", operation, [item.id], null, { targetContainerId: target?.id ?? null }));
 	});
@@ -3535,6 +4044,7 @@ async function transferInventoryItem(sourceActor, destinationActor, itemId, requ
 	if (sourceActor.uuid === destinationActor.uuid) throw new Error("Choisissez un autre Actor pour un transfert.");
 	return withActorLocks([sourceActor, destinationActor], async () => {
 		const root = itemById(sourceActor, itemId);
+		assertDetachedTree(sourceActor, itemId);
 		assertAvailable(root);
 		const before = Number(root.system.physical.quantity ?? 0);
 		if (root.type === "container" && before !== 1) throw new Error("Ce conteneur porte une quantité incohérente. Ramenez-la à 1 avant le transfert.");
@@ -3553,6 +4063,10 @@ async function transferInventoryItem(sourceActor, destinationActor, itemId, requ
 		const after = partial ? before - quantity : 0;
 		const transferData = tree.map((item) => {
 			const data = cloneItemData(item);
+			data.system.physical.equipState = "stored";
+			data.system.physical.hands = 0;
+			data.system.physical.bodyId = "";
+			data.system.physical.hostRef = initialReference();
 			const originalAccessibility = String(item.system.physical?.accessibility ?? "stored");
 			data.system.meta.relisId = newRelisIds.get(item.id);
 			data.system.meta.revision = 0;
@@ -3969,6 +4483,21 @@ function dialogText(content, label, name, value = "") {
 	field.append(input);
 	content.append(field);
 }
+function dialogOptional(content, label, name, value = "", numeric = false) {
+	dialogText(content, label, name, value == null ? "" : String(value));
+	const input = content.querySelector(`[name="${name}"]`);
+	input.required = false;
+	if (numeric) {
+		input.type = "number";
+		input.min = "0";
+		input.step = "any";
+	}
+}
+function dialogNote(content, text) {
+	const paragraph = document.createElement("p");
+	paragraph.textContent = text;
+	content.append(paragraph);
+}
 function dialogSelect(content, label, name, choices) {
 	const field = document.createElement("label");
 	field.className = "relis-inventory-dialog-field";
@@ -4119,6 +4648,25 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		const physicalItems = actorItems.filter((item) => isPhysicalItemType(item.type));
 		const physicalSnapshots = physicalItems.map(itemSnapshot);
 		const inventory = presentInventory(physicalSnapshots);
+		if (activeBody) for (const item of physicalSnapshots) {
+			const p = item.system.physical ?? {};
+			if (![
+				"readied",
+				"equipped",
+				"installed"
+			].includes(p.equipState) || p.bodyId && p.bodyId !== activeBody.id) continue;
+			const host = physicalSnapshots.find((entry) => entry.uuid === p.hostRef?.uuid);
+			const plan = equipmentPlan(physicalSnapshots, activeBody, {
+				itemId: item.id,
+				state: equipmentState(item),
+				hostId: host?.id ?? ""
+			});
+			for (const message of plan.errors) inventory.diagnostics.push({
+				itemId: item.id,
+				level: "warning",
+				message: `${item.name} : ${message}`
+			});
+		}
 		const inventoryRows = inventory.rows.map((row) => {
 			const item = physicalItems.find((candidate) => candidate.id === row.item.id);
 			const physical = row.item.system.physical ?? {};
@@ -4133,7 +4681,8 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				const amount = Number(state.quantity ?? 0);
 				return !candidate.orphaned && !candidate.cyclic && Number.isFinite(amount) && amount > 0 && (state.unit !== "count" || Number.isInteger(amount)) && (candidate.item.type !== "container" || amount === 1) && state.accessibility !== "unavailable" && (candidate.item.flags?.relis?.inventoryTransfer?.state ?? "complete") === "complete";
 			});
-			const massEach = physical.massEach === null || physical.massEach === void 0 ? null : Number(physical.massEach);
+			const massEach = unitMass(row.item);
+			const linked = equipmentLinked(physicalSnapshots, row.item.id);
 			const rowClasses = [
 				"relis-inventory-row",
 				row.item.type === "container" ? "relis-inventory-row--container" : "",
@@ -4142,6 +4691,10 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			return {
 				id: row.item.id,
 				name: row.item.name,
+				equipmentLabel: EQUIPMENT_LABELS[equipmentState(row.item)] ?? "État ancien à vérifier",
+				equipmentBody: physical.bodyId ? bodies.find((body) => body.id === physical.bodyId)?.name ?? "Corps absent" : "",
+				equipmentHost: physical.hostRef?.labelSnapshot ?? "",
+				equipmentTime: physical.equipmentProfile?.duration || "À arbitrer",
 				type: row.item.type,
 				typeLabel: game.i18n.localize(`TYPES.Item.${row.item.type}`),
 				rowClasses,
@@ -4160,16 +4713,16 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				volumeEach: displayMeasure(physical.volumeEach ?? null, "L"),
 				bulkEach: displayMeasure(physical.bulkEach ?? null, ""),
 				accessibility: INVENTORY_ACCESS_LABELS[String(physical.accessibility ?? "stored")] ?? String(physical.accessibility ?? ""),
-				location: row.parentId ? physicalItems.find((candidate) => candidate.id === row.parentId)?.name ?? "Conteneur manquant" : "Inventaire principal",
+				location: row.parentId ? physicalItems.find((candidate) => candidate.id === row.parentId)?.name ?? "Conteneur manquant" : physical.equipState === "ground" ? "Au sol" : physical.hostRef?.labelSnapshot ? `Sur ${physical.hostRef.labelSnapshot}` : "Inventaire principal",
 				isContainer: row.item.type === "container",
 				childCount: row.childCount,
 				pending: pendingState === "pending",
 				quarantined: pendingState === "quarantined",
 				hasError: row.orphaned || row.cyclic,
-				canSplit: Number.isFinite(quantity) && validateStackSplit(row.item, counted ? 1 : quantity / 2).length === 0,
-				canMerge: mergeCandidates.length > 0,
-				canMove: inventoryContainerTargets(physicalSnapshots, row.item.id).some((target) => target.id !== row.parentId && validateInventoryMove(physicalSnapshots, row.item.id, target.id).valid) || Boolean(row.parentId) && validateInventoryMove(physicalSnapshots, row.item.id, null).valid,
-				canTransfer,
+				canSplit: !linked && Number.isFinite(quantity) && validateStackSplit(row.item, counted ? 1 : quantity / 2).length === 0,
+				canMerge: !linked && mergeCandidates.length > 0,
+				canMove: !linked && (inventoryContainerTargets(physicalSnapshots, row.item.id).some((target) => target.id !== row.parentId && validateInventoryMove(physicalSnapshots, row.item.id, target.id).valid) || Boolean(row.parentId) && validateInventoryMove(physicalSnapshots, row.item.id, null).valid),
+				canTransfer: canTransfer && !linked,
 				ownMass: displayMeasure(massEach !== null && Number.isFinite(massEach) ? massEach * quantity : null, "kg"),
 				subtreeMass: displayMeasure(row.subtreeLoad.mass, "kg"),
 				capacityMass: capacity.mass === null || capacity.mass === void 0 ? "Sans limite définie" : `${row.containerUsage?.mass ?? "?"} / ${capacity.mass} kg`,
@@ -4223,6 +4776,10 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			relatedItems,
 			inventoryRows,
 			inventoryGroups: groupInventory(inventoryRows),
+			carrying: carriedMass(physicalSnapshots, activeBody ?? { id: "" }),
+			canConfigureBody: Boolean(game.user?.isGM),
+			equipmentRecovery: Boolean(this.actor.flags?.relis?.equipmentRecovery),
+			equipmentOutfits: Array.from(this.actor.system.outfits ?? []).filter((outfit) => outfit.equipmentEntries?.length || String(outfit.id).startsWith("equipment-")),
 			hasInventory: inventoryRows.length > 0,
 			inventoryDiagnostics: inventory.diagnostics,
 			hasInventoryDiagnostics: inventory.diagnostics.length > 0,
@@ -4241,6 +4798,29 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		await super._onRender(context, options);
 		const root = this.element;
 		this.activateTab(root, this.activeTab);
+		for (const button of root.querySelectorAll("[data-equipment-command]")) button.addEventListener("click", () => {
+			this.inventoryTask(async () => {
+				if (!this.actor.isOwner && !game.user?.isGM) return;
+				switch (button.dataset.equipmentCommand) {
+					case "state":
+						await this.changeEquipment(button.dataset.itemId ?? "");
+						break;
+					case "profile":
+						await this.configureEquipment(button.dataset.itemId ?? "");
+						break;
+					case "body":
+						await this.configureCarrying();
+						break;
+					case "save":
+						await this.saveOutfit();
+						break;
+					case "apply":
+						await this.applyOutfit(button.dataset.outfitId ?? "");
+						break;
+					case "recover": await recoverEquipment(this.actor);
+				}
+			}, "Commande d’équipement terminée.");
+		});
 		bindInventoryView(root, `${game.world?.id}.${game.user?.id}.${this.actor.uuid}`, this.inventoryQuery);
 		if (!this.actor.isOwner) for (const control of root.querySelectorAll("[data-document-field], [data-owner-control]")) control.disabled = true;
 		for (const button of root.querySelectorAll("[data-action='switch-tab']")) {
@@ -4361,6 +4941,219 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		await this.inventoryTask(async () => {
 			await mergeInventoryStacks(this.actor, itemId, String(result.sourceId ?? ""));
 		}, "Piles fusionnées ; le total est conservé.");
+	}
+	async confirmEquipment(requests, assisted = false) {
+		const preview = previewEquipment(this.actor, requests, assisted);
+		const content = dialogContent();
+		dialogNote(content, `Corps : ${preview.body.name}. Masse finale connue : ${preview.mass.mass} kg ; ${preview.mass.missing} masse(s) manquante(s).`);
+		for (const row of preview.rows) dialogNote(content, `${row.name} → ${EQUIPMENT_LABELS[row.request.state] ?? row.request.state}. Temps déclaré : ${row.duration}. ${row.errors.join(" ")} ${row.warnings.join(" ")}`);
+		dialogNote(content, "Appliquer confirme que le temps, l’aide et les conditions de la scène ont été respectés. Aucun temps de combat n’est débité automatiquement.");
+		if (!preview.updates.length) {
+			await askInventoryForm("Aperçu — changements impossibles", content, "Fermer");
+			return;
+		}
+		if (await askInventoryForm(assisted ? "Aperçu assisté — seuls les changements valides seront appliqués" : "Aperçu strict de l’équipement", content, "Appliquer")) await applyEquipment(this.actor, requests, preview.fingerprint, assisted);
+	}
+	async changeEquipment(itemId) {
+		const item = this.actor.items.get(itemId);
+		if (!item) return;
+		const snapshot = itemSnapshot(item);
+		const content = dialogContent();
+		const states = equipmentStates(snapshot);
+		dialogSelect(content, "État souhaité", "state", states.map((state) => ({
+			value: state,
+			label: EQUIPMENT_LABELS[state]
+		})));
+		const current = equipmentState(snapshot);
+		const select = content.querySelector("[name=\"state\"]");
+		if (states.includes(current)) select.value = current;
+		if (states.includes("installed")) dialogSelect(content, "Hôte (utilisé seulement pour Installer)", "hostId", [{
+			value: "",
+			label: "Choisir un hôte"
+		}, ...Array.from(this.actor.items ?? []).filter((candidate) => candidate.id !== itemId && isPhysicalItemType(candidate.type)).map((candidate) => ({
+			value: candidate.id,
+			label: candidate.name
+		}))]);
+		dialogNote(content, "Rangé ne choisit pas de conteneur : utilisez Déplacer pour cela. Au sol retire la masse de la charge portée, sans supprimer l’objet.");
+		const result = await askInventoryForm(item.name, content, "Voir l’aperçu");
+		if (result) await this.confirmEquipment([{
+			itemId,
+			state: String(result.state),
+			hostId: String(result.hostId ?? "")
+		}]);
+	}
+	async configureCarrying() {
+		if (!game.user?.isGM) return;
+		const bodies = JSON.parse(JSON.stringify(Array.from(this.actor.system.bodies ?? [])));
+		const body = bodies.find((entry) => entry.id === this.actor.system.activeBodyId);
+		if (!body) throw new Error("Corps actif absent.");
+		const before = JSON.stringify(bodies);
+		const profile = body.carrying ?? {};
+		const content = dialogContent();
+		dialogNote(content, "Renseigner les valeurs de la règle applicable ou une décision MJ. Laisser vide lorsqu’elles sont inconnues ; aucune formule automatique n’est supposée.");
+		dialogOptional(content, "Nombre de mains utilisables", "hands", profile.hands, true);
+		content.querySelector("[name=\"hands\"]").step = "1";
+		dialogOptional(content, "Chargé à partir de (kg)", "loaded", profile.loaded, true);
+		dialogOptional(content, "Surchargé à partir de (kg)", "overloaded", profile.overloaded, true);
+		dialogText(content, "Source de la règle ou décision MJ", "source", profile.source || "Décision MJ");
+		const result = await askInventoryForm(`Portage — ${body.name}`, content, "Enregistrer");
+		if (!result) return;
+		const nullable = (value) => value === "" || value == null ? null : Number(value);
+		const hands = nullable(result.hands), loaded = nullable(result.loaded), overloaded = nullable(result.overloaded);
+		if (hands !== null && (!Number.isInteger(hands) || hands < 0)) throw new Error("Le nombre de mains doit être un entier positif ou nul.");
+		if (loaded === null !== (overloaded === null) || loaded !== null && (!Number.isFinite(loaded) || loaded <= 0 || !Number.isFinite(overloaded) || overloaded <= loaded)) throw new Error("Renseigner les deux seuils positifs, avec Surchargé supérieur à Chargé.");
+		if (JSON.stringify(Array.from(this.actor.system.bodies ?? [])) !== before) throw new Error("Le corps a changé : rouvrir la configuration.");
+		body.carrying = {
+			...profile,
+			hands,
+			loaded,
+			overloaded,
+			source: String(result.source).trim()
+		};
+		await this.actor.update({ "system.bodies": bodies });
+	}
+	async configureEquipment(itemId) {
+		const item = this.actor.items.get(itemId);
+		if (!item) return;
+		const profile = item.system.physical?.equipmentProfile ?? {};
+		const content = dialogContent();
+		dialogSelect(content, "Usage", "family", [
+			{
+				value: "",
+				label: "Selon le type d’objet"
+			},
+			{
+				value: "manipulable",
+				label: "Objet manipulable"
+			},
+			{
+				value: "wearable",
+				label: "Équipement portable"
+			},
+			{
+				value: "resource",
+				label: "Ressource ou consommable"
+			}
+		]);
+		content.querySelector("[name=\"family\"]").value = profile.family ?? "";
+		dialogOptional(content, "Emplacement exclusif (vide si aucun)", "slot", profile.slot);
+		dialogOptional(content, "Temps et aide nécessaires — selon la source", "duration", profile.duration);
+		const sizes = {
+			tiny: "Très petit",
+			small: "Petit",
+			medium: "Moyen",
+			large: "Grand",
+			huge: "Très grand",
+			gargantuan: "Gigantesque"
+		};
+		for (const [name, title, values, labels] of [
+			[
+				"sizes",
+				"Tailles compatibles",
+				Object.keys(sizes),
+				sizes
+			],
+			[
+				"natures",
+				"Natures corporelles compatibles",
+				Object.keys(BODY_NATURE_LABELS),
+				BODY_NATURE_LABELS
+			],
+			[
+				"hostTypes",
+				"Types d’hôte autorisés",
+				[...PHYSICAL_ITEM_TYPES],
+				{}
+			]
+		]) {
+			const group = document.createElement("details");
+			const summary = document.createElement("summary");
+			summary.textContent = title;
+			group.append(summary);
+			dialogNote(group, "Aucune case cochée : aucune restriction déclarée.");
+			const grid = document.createElement("div");
+			grid.className = "relis-equipment-options";
+			group.append(grid);
+			content.append(group);
+			const choices = [.../* @__PURE__ */ new Set([...values, ...Array.isArray(profile[name]) ? profile[name] : []])];
+			for (const value of choices) {
+				const label = document.createElement("label");
+				label.className = "relis-inventory-dialog-field";
+				const checkbox = document.createElement("input");
+				checkbox.type = "checkbox";
+				checkbox.name = `${name}_${value}`;
+				checkbox.checked = profile[name]?.includes(value) ?? false;
+				label.append(checkbox, document.createTextNode(labels[value] ?? (name === "hostTypes" ? game.i18n.localize(`TYPES.Item.${value}`) : value)));
+				grid.append(label);
+			}
+		}
+		dialogSelect(content, "Installation sur un autre objet", "installable", [{
+			value: "no",
+			label: "Non"
+		}, {
+			value: "yes",
+			label: "Oui"
+		}]);
+		content.querySelector("[name=\"installable\"]").value = profile.installable ? "yes" : "no";
+		dialogSelect(content, "Liquide ordinaire : convention 1 L ≈ 1 kg si masse absente", "ordinaryLiquid", [{
+			value: "no",
+			label: "Non"
+		}, {
+			value: "yes",
+			label: "Oui"
+		}]);
+		content.querySelector("[name=\"ordinaryLiquid\"]").value = profile.ordinaryLiquid ? "yes" : "no";
+		const result = await askInventoryForm(`Profil — ${item.name}`, content, "Enregistrer le profil");
+		if (!result) return;
+		const selected = (prefix) => Object.entries(result).filter(([key, value]) => key.startsWith(prefix + "_") && value && value !== "false").map(([key]) => key.slice(prefix.length + 1));
+		await item.update({ "system.physical.equipmentProfile": {
+			...profile,
+			family: result.family,
+			slot: String(result.slot ?? "").trim(),
+			duration: String(result.duration ?? "").trim(),
+			sizes: selected("sizes"),
+			natures: selected("natures"),
+			hostTypes: selected("hostTypes"),
+			installable: result.installable === "yes",
+			ordinaryLiquid: result.ordinaryLiquid === "yes"
+		} });
+	}
+	async saveOutfit() {
+		const content = dialogContent();
+		dialogSelect(content, "Emplacement à enregistrer ou remplacer", "slot", Array.from({ length: 5 }, (_, index) => ({
+			value: String(index),
+			label: `Ensemble ${index + 1}`
+		})));
+		dialogText(content, "Nom de l’ensemble", "name");
+		dialogNote(content, "Mémorise les références et états actuels du corps actif. Aucun objet n’est copié. Un emplacement déjà utilisé sera remplacé.");
+		const result = await askInventoryForm("Mémoriser l’équipement actuel", content, "Enregistrer");
+		if (result) await saveEquipmentOutfit(this.actor, Number(result.slot), String(result.name));
+	}
+	async applyOutfit(outfitId) {
+		const outfit = Array.from(this.actor.system.outfits ?? []).find((entry) => entry.id === outfitId);
+		if (!outfit) return;
+		if (!outfit.bodyIds?.includes(this.actor.system.activeBodyId)) throw new Error("Cet ensemble appartient à un autre corps.");
+		const content = dialogContent();
+		dialogSelect(content, "Application", "mode", [{
+			value: "strict",
+			label: "Stricte — refuser si une pièce est impossible"
+		}, {
+			value: "assisted",
+			label: "Assistée — appliquer les changements possibles"
+		}]);
+		dialogNote(content, "Les objets actuellement actifs mais absents de cet ensemble seront rangés sur le même corps. L’aperçu détaille tous les changements.");
+		const result = await askInventoryForm(outfit.name, content, "Voir l’aperçu");
+		if (!result) return;
+		const entries = Array.from(outfit.equipmentEntries ?? []);
+		const releases = Array.from(this.actor.items ?? []).filter((item) => isPhysicalItemType(item.type)).map(itemSnapshot).filter((item) => item.system.physical?.bodyId === this.actor.system.activeBodyId && [
+			"held-one",
+			"held-two",
+			"equipped"
+		].includes(equipmentState(item)) && !entries.some((entry) => entry.itemId === item.id)).map((item) => ({
+			itemId: item.id,
+			state: "stored"
+		}));
+		await this.confirmEquipment([...releases, ...entries], result.mode === "assisted");
 	}
 	async movePhysicalItem(itemId) {
 		if (!this.actor.isOwner) return;
@@ -4680,7 +5473,8 @@ var EQUIP_STATE_LABELS = {
 	carried: "Transporté",
 	readied: "Préparé",
 	equipped: "Équipé",
-	installed: "Installé"
+	installed: "Installé",
+	ground: "Au sol"
 };
 var CONDITION_LABELS = {
 	intact: "Intact",
@@ -4829,6 +5623,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			hasCatalog: hasCatalogFields(applicability),
 			hasSourceRef,
 			itemRole: this.item.parent ? hasSourceRef ? "Exemplaire lié à une source" : "Exemplaire autonome" : "Source ou modèle de monde",
+			isOwnedPhysical: Boolean(this.item.parent && hasPhysical),
+			equipmentLabel: EQUIP_STATE_LABELS[system.physical?.equipState] ?? "Rangé",
 			badges,
 			diagnostics,
 			manualOverrides,

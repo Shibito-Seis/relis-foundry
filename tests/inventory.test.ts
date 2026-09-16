@@ -11,6 +11,11 @@ import {
   mergeInventoryStacks,
   splitInventoryStack,
   transferInventoryItem,
+  applyEquipment,
+  previewEquipment,
+  recoverEquipment,
+  saveEquipmentOutfit,
+  moveInventoryItem,
 } from "../src/services/inventory";
 
 function reference(relisId = ""): Record<string, unknown> {
@@ -213,7 +218,9 @@ function setPath(
   const parts = path.split(".");
   let current = target;
   for (const part of parts.slice(0, -1)) current = current[part] ??= {};
-  current[String(parts.at(-1))] = value;
+  const last = String(parts.at(-1));
+  if (last.startsWith("-=")) delete current[last.slice(2)];
+  else current[last] = value;
 }
 
 class MockItem {
@@ -263,6 +270,21 @@ class MockActor {
   type = "character";
   isOwner = true;
   flags: Record<string, any> = {};
+  system: Record<string, any> = {
+    activeBodyId: "primary",
+    bodies: [
+      {
+        id: "primary",
+        name: "Corps de test",
+        size: "medium",
+        nature: "biological",
+        carrying: { hands: 2, loaded: 10, overloaded: 20 },
+      },
+    ],
+    outfits: [],
+  };
+  failEquipmentWrites = 0;
+  failAfterFirstEquipmentWrite = false;
   items = new Map<string, MockItem>();
   failDelete = false;
   nextId = 0;
@@ -294,11 +316,19 @@ class MockActor {
     _documentName: string,
     changes: Record<string, any>[],
   ): Promise<MockItem[]> {
+    if (this.failEquipmentWrites > 0) {
+      this.failEquipmentWrites--;
+      throw new Error("Écriture interrompue");
+    }
     return changes.map((change) => {
       const item = this.items.get(String(change._id));
       if (!item) throw new Error("Item absent");
       for (const [path, value] of Object.entries(change))
         if (path !== "_id") setPath(item as any, path, value);
+      if (this.failAfterFirstEquipmentWrite) {
+        this.failAfterFirstEquipmentWrite = false;
+        throw new Error("Écriture partielle interrompue");
+      }
       return item;
     });
   }
@@ -323,6 +353,143 @@ class MockActor {
     return this;
   }
 }
+
+describe("opérations d’équipement avec aperçu et récupération", () => {
+  it("compense une écriture partielle sans déplacer ni dupliquer de pièces", async () => {
+    const actor = new MockActor("a");
+    actor.add(inventoryItem("a", "weapon"));
+    actor.add(inventoryItem("b", "weapon"));
+    const requests = [
+      { itemId: "a", state: "held-one" },
+      { itemId: "b", state: "held-one" },
+    ];
+    actor.failAfterFirstEquipmentWrite = true;
+    await expect(
+      applyEquipment(
+        actor as any,
+        requests,
+        previewEquipment(actor as any, requests).fingerprint,
+      ),
+    ).rejects.toThrow(/partielle/);
+    expect(actor.items.size).toBe(2);
+    expect(
+      [...actor.items.values()].map((item) => item.system.physical.equipState),
+    ).toEqual(["stored", "stored"]);
+    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+  });
+  beforeEach(() => {
+    (globalThis as any).game = { user: { id: "owner", isGM: false } };
+  });
+  it("refuse sans propriété, puis applique une opération sans créer d’Item", async () => {
+    const actor = new MockActor("a");
+    actor.add(inventoryItem("weapon", "weapon"));
+    const request = [{ itemId: "weapon", state: "held-two" }];
+    const preview = previewEquipment(actor as any, request);
+    actor.isOwner = false;
+    await expect(
+      applyEquipment(actor as any, request, preview.fingerprint),
+    ).rejects.toThrow(/modifier/);
+    actor.isOwner = true;
+    await applyEquipment(actor as any, request, preview.fingerprint);
+    expect(actor.items.size).toBe(1);
+    expect(actor.items.get("weapon")!.system.physical).toMatchObject({
+      hands: 2,
+      bodyId: "primary",
+      equipState: "readied",
+    });
+    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+    expect(actor.flags.relis.inventoryJournal[0].action).toBe("equip");
+  });
+  it("refuse un aperçu périmé après modification de la masse ou du corps", async () => {
+    const actor = new MockActor("a");
+    const item = actor.add(inventoryItem("w", "weapon"));
+    const requests = [{ itemId: "w", state: "held-one" }];
+    const preview = previewEquipment(actor as any, requests);
+    item.system.physical.massEach = 20;
+    await expect(
+      applyEquipment(actor as any, requests, preview.fingerprint),
+    ).rejects.toThrow(/changé/);
+    expect(item.system.physical.equipState).toBe("stored");
+  });
+  it("restaure après échec d’écriture et garde un verrou récupérable si la restauration échoue", async () => {
+    const actor = new MockActor("a");
+    const item = actor.add(inventoryItem("w", "weapon"));
+    const requests = [{ itemId: "w", state: "held-one" }];
+    actor.failEquipmentWrites = 1;
+    await expect(
+      applyEquipment(
+        actor as any,
+        requests,
+        previewEquipment(actor as any, requests).fingerprint,
+      ),
+    ).rejects.toThrow(/interrompue/);
+    expect(item.system.physical.equipState).toBe("stored");
+    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+    actor.failEquipmentWrites = 2;
+    await expect(
+      applyEquipment(
+        actor as any,
+        requests,
+        previewEquipment(actor as any, requests).fingerprint,
+      ),
+    ).rejects.toThrow(/MJ requise/);
+    expect(actor.flags.relis.equipmentRecovery.before).toHaveLength(1);
+    await expect(recoverEquipment(actor as any)).rejects.toThrow(/MJ/);
+    (globalThis as any).game.user.isGM = true;
+    await recoverEquipment(actor as any);
+    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+  });
+  it("enregistre des références et remplace seulement l’emplacement choisi", async () => {
+    const actor = new MockActor("a");
+    const item = actor.add(inventoryItem("w", "weapon"));
+    item.system.physical = {
+      ...item.system.physical,
+      equipState: "readied",
+      hands: 1,
+      bodyId: "primary",
+    };
+    actor.system.outfits = [
+      { id: "existing", name: "Historique", itemRefs: [] },
+    ];
+    await saveEquipmentOutfit(actor as any, 0, "Test local");
+    await saveEquipmentOutfit(actor as any, 0, "Test remplacé");
+    expect(actor.items.size).toBe(1);
+    expect(actor.system.outfits).toHaveLength(2);
+    expect(actor.system.outfits[0].name).toBe("Historique");
+    expect(actor.system.outfits[1].itemRefs[0].uuid).toBe(item.uuid);
+    expect(actor.system.outfits[1].equipmentEntries[0]).toMatchObject({
+      itemId: "w",
+      state: "held-one",
+    });
+  });
+  it("interdit de déplacer/transférer un hôte attaché et remet à zéro les attaches à réception", async () => {
+    const actor = new MockActor("a"),
+      target = new MockActor("b");
+    const host = actor.add(inventoryItem("h", "weapon"));
+    const module = actor.add(inventoryItem("m"));
+    module.system.physical.hostRef = { uuid: host.uuid };
+    await expect(moveInventoryItem(actor as any, "h", null)).rejects.toThrow(
+      /Détachez/,
+    );
+    await expect(
+      transferInventoryItem(actor as any, target as any, "h"),
+    ).rejects.toThrow(/Détachez/);
+    module.system.physical.hostRef = {};
+    host.system.physical.equipState = "readied";
+    host.system.physical.hands = 2;
+    host.system.physical.bodyId = "primary";
+    const received = await transferInventoryItem(
+      actor as any,
+      target as any,
+      "h",
+    );
+    expect(received[0]!.system.physical).toMatchObject({
+      equipState: "stored",
+      hands: 0,
+      bodyId: "",
+    });
+  });
+});
 
 describe("opérations documentaires compensées 10-E2-P", () => {
   beforeEach(() => {

@@ -311,6 +311,7 @@ const EQUIP_STATE_LABELS: Record<string, string> = {
   readied: "Préparé",
   equipped: "Équipé",
   installed: "Installé",
+  ground: "Au sol",
 };
 
 const CONDITION_LABELS: Record<string, string> = {
@@ -526,6 +527,9 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
           ? "Exemplaire lié à une source"
           : "Exemplaire autonome"
         : "Source ou modèle de monde",
+      isOwnedPhysical: Boolean(this.item.parent && hasPhysical),
+      equipmentLabel:
+        EQUIP_STATE_LABELS[system.physical?.equipState] ?? "Rangé",
       badges,
       diagnostics,
       manualOverrides,
