@@ -185,7 +185,10 @@ export async function applyEquipment(
         preview.updates,
         inventoryCreateOptions(),
       );
-      await actor.update({ "flags.relis.-=equipmentRecovery": null });
+      await actor.update({
+        "flags.relis.equipmentRecovery":
+          new foundry.data.operators.ForcedDeletion(),
+      });
     } catch (error) {
       try {
         await actor.updateEmbeddedDocuments(
@@ -193,7 +196,10 @@ export async function applyEquipment(
           before,
           inventoryCreateOptions(),
         );
-        await actor.update({ "flags.relis.-=equipmentRecovery": null });
+        await actor.update({
+          "flags.relis.equipmentRecovery":
+            new foundry.data.operators.ForcedDeletion(),
+        });
       } catch {
         throw new Error(
           "Écriture interrompue : restauration MJ requise, sauvegarde conservée sur l’Actor.",
@@ -224,7 +230,10 @@ export async function recoverEquipment(actor: ActorLike): Promise<void> {
       before,
       inventoryCreateOptions(),
     );
-    await actor.update({ "flags.relis.-=equipmentRecovery": null });
+    await actor.update({
+      "flags.relis.equipmentRecovery":
+        new foundry.data.operators.ForcedDeletion(),
+    });
   });
 }
 

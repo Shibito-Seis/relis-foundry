@@ -1,4 +1,8 @@
 import {
+  equipmentProfileGroups,
+  bindEquipmentProfile,
+} from "../ui/equipment-profile";
+import {
   ACCESSIBILITY_STATES,
   CONTAINER_ACCESS_RULES,
   EQUIP_STATES,
@@ -518,6 +522,18 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       })),
       isAction: this.item.type === "action",
       hasPhysical,
+      equipmentFamilies: {
+        "": "Selon le type d’objet",
+        manipulable: "Objet manipulable",
+        wearable: "Équipement portable",
+        resource: "Ressource ou consommable",
+      },
+      equipmentProfileGroups: hasPhysical
+        ? equipmentProfileGroups(
+            system.physical?.equipmentProfile ?? {},
+            (value) => game.i18n.localize(value),
+          )
+        : [],
       isContainer,
       applicability,
       hasCatalog: hasCatalogFields(applicability),
@@ -579,6 +595,9 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   async _onRender(context: any, optionsValue: any): Promise<void> {
     await super._onRender(context, optionsValue);
     const root = this.element as HTMLElement;
+    bindEquipmentProfile(root, this.item, (message) =>
+      ui.notifications.error(message),
+    );
     const descriptionHost = root.querySelector<HTMLElement>(
       "[data-description-editor-host]",
     );

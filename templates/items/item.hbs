@@ -234,6 +234,68 @@
     {{/if}}
 
     {{#if hasPhysical}}
+      <section
+        class="relis-card relis-equipment-profile"
+        data-equipment-profile
+      >
+        <p class="relis-kicker">Propriétés de l’objet</p>
+        <h2>Usage et compatibilités</h2>
+        <div class="relis-grid relis-grid--form relis-item-form">
+          <label>Usage<select data-profile-field="family">
+              {{selectOptions
+                equipmentFamilies
+                selected=system.physical.equipmentProfile.family
+              }}
+            </select></label>
+          <label>Emplacement exclusif (vide si aucun)<input
+              type="text"
+              data-profile-field="slot"
+              value="{{system.physical.equipmentProfile.slot}}"
+            /></label>
+          <label>Temps et aide nécessaires — selon la source<input
+              type="text"
+              data-profile-field="duration"
+              value="{{system.physical.equipmentProfile.duration}}"
+            /></label>
+          <label><input
+              type="checkbox"
+              data-profile-field="installable"
+              {{checked system.physical.equipmentProfile.installable}}
+            />
+            Installable sur un autre objet</label>
+          <label><input
+              type="checkbox"
+              data-profile-field="ordinaryLiquid"
+              {{checked system.physical.equipmentProfile.ordinaryLiquid}}
+            />
+            Liquide ordinaire : 1 L ≈ 1 kg si masse absente</label>
+        </div>
+        {{#each equipmentProfileGroups}}
+          <fieldset><legend>{{title}}</legend>
+            <p>{{#if count}}{{count}} choix enregistré(s).{{else}}Aucune
+                restriction déclarée.{{/if}}</p>
+            <div class="relis-profile-choices">
+              {{#each choices}}<label><input
+                    type="checkbox"
+                    data-profile-list="{{groupKey}}"
+                    value="{{value}}"
+                    {{checked checked}}
+                  />
+                  {{label}}</label>{{/each}}
+            </div>
+          </fieldset>
+        {{/each}}
+        <p>Une liste vide n’impose aucune restriction. Les choix s’appliquent
+          après enregistrement.</p>
+        {{#if editable}}<button
+            type="button"
+            data-save-equipment-profile
+          >Enregistrer les propriétés d’équipement</button><p
+            data-profile-status
+            role="status"
+          >Propriétés enregistrées affichées.</p>{{/if}}
+      </section>
+
       <section class="relis-card">
         <p class="relis-kicker">Exemplaire matériel</p>
         <h2>État physique</h2>

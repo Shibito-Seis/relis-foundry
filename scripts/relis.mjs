@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.5.1";
+var PACKAGE_VERSION = "0.5.2";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -3805,11 +3805,11 @@ async function applyEquipment(actor, requests, fingerprint, assisted = false) {
 		} });
 		try {
 			await actor.updateEmbeddedDocuments("Item", preview.updates, inventoryCreateOptions());
-			await actor.update({ "flags.relis.-=equipmentRecovery": null });
+			await actor.update({ "flags.relis.equipmentRecovery": new foundry.data.operators.ForcedDeletion() });
 		} catch (error) {
 			try {
 				await actor.updateEmbeddedDocuments("Item", before, inventoryCreateOptions());
-				await actor.update({ "flags.relis.-=equipmentRecovery": null });
+				await actor.update({ "flags.relis.equipmentRecovery": new foundry.data.operators.ForcedDeletion() });
 			} catch {
 				throw new Error("Écriture interrompue : restauration MJ requise, sauvegarde conservée sur l’Actor.");
 			}
@@ -3824,7 +3824,7 @@ async function recoverEquipment(actor) {
 		const before = actor.flags?.relis?.equipmentRecovery?.before;
 		if (!Array.isArray(before)) throw new Error("Aucune sauvegarde à restaurer.");
 		await actor.updateEmbeddedDocuments("Item", before, inventoryCreateOptions());
-		await actor.update({ "flags.relis.-=equipmentRecovery": null });
+		await actor.update({ "flags.relis.equipmentRecovery": new foundry.data.operators.ForcedDeletion() });
 	});
 }
 async function saveEquipmentOutfit(actor, slot, name) {
@@ -4828,9 +4828,6 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 					case "state":
 						await this.changeEquipment(button.dataset.itemId ?? "");
 						break;
-					case "profile":
-						await this.configureEquipment(button.dataset.itemId ?? "");
-						break;
 					case "body":
 						await this.configureCarrying();
 						break;
@@ -5035,112 +5032,6 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		};
 		await this.actor.update({ "system.bodies": bodies });
 	}
-	async configureEquipment(itemId) {
-		const item = this.actor.items.get(itemId);
-		if (!item) return;
-		const profile = item.system.physical?.equipmentProfile ?? {};
-		const content = dialogContent();
-		dialogSelect(content, "Usage", "family", [
-			{
-				value: "",
-				label: "Selon le type d’objet"
-			},
-			{
-				value: "manipulable",
-				label: "Objet manipulable"
-			},
-			{
-				value: "wearable",
-				label: "Équipement portable"
-			},
-			{
-				value: "resource",
-				label: "Ressource ou consommable"
-			}
-		]);
-		content.querySelector("[name=\"family\"]").value = profile.family ?? "";
-		dialogOptional(content, "Emplacement exclusif (vide si aucun)", "slot", profile.slot);
-		dialogOptional(content, "Temps et aide nécessaires — selon la source", "duration", profile.duration);
-		const sizes = {
-			tiny: "Très petit",
-			small: "Petit",
-			medium: "Moyen",
-			large: "Grand",
-			huge: "Très grand",
-			gargantuan: "Gigantesque"
-		};
-		for (const [name, title, values, labels] of [
-			[
-				"sizes",
-				"Tailles compatibles",
-				Object.keys(sizes),
-				sizes
-			],
-			[
-				"natures",
-				"Natures corporelles compatibles",
-				Object.keys(BODY_NATURE_LABELS),
-				BODY_NATURE_LABELS
-			],
-			[
-				"hostTypes",
-				"Types d’hôte autorisés",
-				[...PHYSICAL_ITEM_TYPES],
-				{}
-			]
-		]) {
-			const group = document.createElement("details");
-			const summary = document.createElement("summary");
-			summary.textContent = title;
-			group.append(summary);
-			dialogNote(group, "Aucune case cochée : aucune restriction déclarée.");
-			const grid = document.createElement("div");
-			grid.className = "relis-equipment-options";
-			group.append(grid);
-			content.append(group);
-			const choices = [.../* @__PURE__ */ new Set([...values, ...Array.isArray(profile[name]) ? profile[name] : []])];
-			for (const value of choices) {
-				const label = document.createElement("label");
-				label.className = "relis-inventory-dialog-field";
-				const checkbox = document.createElement("input");
-				checkbox.type = "checkbox";
-				checkbox.name = `${name}_${value}`;
-				checkbox.checked = profile[name]?.includes(value) ?? false;
-				label.append(checkbox, document.createTextNode(labels[value] ?? (name === "hostTypes" ? game.i18n.localize(`TYPES.Item.${value}`) : value)));
-				grid.append(label);
-			}
-		}
-		dialogSelect(content, "Installation sur un autre objet", "installable", [{
-			value: "no",
-			label: "Non"
-		}, {
-			value: "yes",
-			label: "Oui"
-		}]);
-		content.querySelector("[name=\"installable\"]").value = profile.installable ? "yes" : "no";
-		dialogSelect(content, "Liquide ordinaire : convention 1 L ≈ 1 kg si masse absente", "ordinaryLiquid", [{
-			value: "no",
-			label: "Non"
-		}, {
-			value: "yes",
-			label: "Oui"
-		}]);
-		content.querySelector("[name=\"ordinaryLiquid\"]").value = profile.ordinaryLiquid ? "yes" : "no";
-		const result = await askInventoryForm(`Profil — ${item.name}`, content, "Enregistrer le profil");
-		if (!result) return;
-		const selected = (prefix) => Object.entries(result).filter(([key, value]) => key.startsWith(prefix + "_") && value && value !== "false").map(([key]) => key.slice(prefix.length + 1));
-		await item.update({ "system.physical.equipmentProfile": {
-			...profile,
-			family: result.family,
-			slot: String(result.slot ?? "").trim(),
-			duration: String(result.duration ?? "").trim(),
-			sizes: selected("sizes"),
-			natures: selected("natures"),
-			hostTypes: selected("hostTypes"),
-			installable: result.installable === "yes",
-			ordinaryLiquid: result.ordinaryLiquid === "yes"
-		} });
-	}
 	async saveOutfit() {
 		const content = dialogContent();
 		dialogSelect(content, "Emplacement à enregistrer ou remplacer", "slot", Array.from({ length: 5 }, (_, index) => ({
@@ -5295,6 +5186,89 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		ui.notifications.info("Démonstration 10-C préparée : Action, Équipement et 3 CE de test.");
 	}
 };
+//#endregion
+//#region src/ui/equipment-profile.ts
+var GROUPS = {
+	sizes: {
+		title: "Tailles compatibles",
+		labels: {
+			tiny: "Très petit",
+			small: "Petit",
+			medium: "Moyen",
+			large: "Grand",
+			huge: "Très grand",
+			gargantuan: "Gigantesque"
+		}
+	},
+	natures: {
+		title: "Natures corporelles compatibles",
+		labels: {
+			biological: "Biologique",
+			synthetic: "Synthétique",
+			hybrid: "Hybride",
+			energetic: "Énergétique",
+			atypical: "Atypique"
+		}
+	},
+	hostTypes: {
+		title: "Types d’hôte autorisés pour l’installation",
+		labels: Object.fromEntries(PHYSICAL_ITEM_TYPES.map((type) => [type, type]))
+	}
+};
+function equipmentProfileGroups(profile, localize = (value) => value) {
+	return Object.entries(GROUPS).map(([key, { title, labels }]) => {
+		const selected = Array.isArray(profile[key]) ? profile[key] : [];
+		return {
+			key,
+			title,
+			count: selected.length,
+			choices: [.../* @__PURE__ */ new Set([...Object.keys(labels), ...selected])].map((value) => ({
+				value,
+				groupKey: key,
+				checked: selected.includes(value),
+				label: key === "hostTypes" && value in labels ? localize(`TYPES.Item.${value}`) : labels[value] ?? value
+			}))
+		};
+	});
+}
+/** Read live checkbox state, never serialized attributes or truthy form strings. */
+function equipmentProfileUpdate(root) {
+	const patch = {};
+	for (const key of Object.keys(GROUPS)) patch[`system.physical.equipmentProfile.${key}`] = Array.from(root.querySelectorAll(`[data-profile-list="${key}"]`)).filter((input) => input.checked).map((input) => input.value);
+	for (const control of root.querySelectorAll("[data-profile-field]")) {
+		const key = control.dataset.profileField;
+		if (![
+			"family",
+			"slot",
+			"duration",
+			"installable",
+			"ordinaryLiquid"
+		].includes(key ?? "")) continue;
+		patch[`system.physical.equipmentProfile.${key}`] = control.type === "checkbox" ? control.checked : control.value.trim();
+	}
+	return patch;
+}
+function bindEquipmentProfile(root, item, reportError) {
+	const section = root.querySelector("[data-equipment-profile]");
+	const button = section?.querySelector("[data-save-equipment-profile]");
+	if (!section || !button || !item.isOwner) return;
+	const status = section.querySelector("[data-profile-status]");
+	section.addEventListener("change", () => {
+		if (status) status.textContent = "Modifications non enregistrées.";
+	});
+	button.addEventListener("click", async () => {
+		if (!item.isOwner || button.disabled) return;
+		button.disabled = true;
+		try {
+			await item.update(equipmentProfileUpdate(section));
+			if (status) status.textContent = "Propriétés enregistrées.";
+		} catch (error) {
+			reportError(error instanceof Error ? error.message : "Les propriétés n’ont pas pu être enregistrées.");
+		} finally {
+			button.disabled = !item.isOwner;
+		}
+	});
+}
 //#endregion
 //#region src/sheets/item-sheet.ts
 var ItemSheetV2 = foundry.applications.sheets.ItemSheetV2;
@@ -5641,6 +5615,13 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			})),
 			isAction: this.item.type === "action",
 			hasPhysical,
+			equipmentFamilies: {
+				"": "Selon le type d’objet",
+				manipulable: "Objet manipulable",
+				wearable: "Équipement portable",
+				resource: "Ressource ou consommable"
+			},
+			equipmentProfileGroups: hasPhysical ? equipmentProfileGroups(system.physical?.equipmentProfile ?? {}, (value) => game.i18n.localize(value)) : [],
 			isContainer,
 			applicability,
 			hasCatalog: hasCatalogFields(applicability),
@@ -5693,6 +5674,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 	async _onRender(context, optionsValue) {
 		await super._onRender(context, optionsValue);
 		const root = this.element;
+		bindEquipmentProfile(root, this.item, (message) => ui.notifications.error(message));
 		const descriptionHost = root.querySelector("[data-description-editor-host]");
 		if (descriptionHost) {
 			const descriptionEditor = foundry.applications.elements.HTMLProseMirrorElement.create({

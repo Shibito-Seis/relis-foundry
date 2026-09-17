@@ -1,5 +1,13 @@
 # Journal des versions
 
+## 0.5.2 — Propriétés d’équipement dans la fiche Item
+
+- Remplace le dialogue de profil par une section de la fiche Item : choix persistants, enregistrement explicite, lecture seule sans propriété.
+- Enregistre les listes de compatibilité à partir des cases réellement cochées ; une liste vide signifie aucune restriction déclarée.
+- Emploie ForcedDeletion de Foundry 14 pour effacer le seul marqueur de récupération transactionnelle.
+- Protège la réouverture des choix et le refus « toutes tailles sauf Moyen » sur un corps moyen.
+- Schéma 5 inchangé ; aucune migration. 10-E3-P reste en recette.
+
 ## 0.5.1 — correction de recette : Items et portraits
 
 - Autorise explicitement la famille d’usage vide, valeur initiale signifiant « selon le type d’objet ». Corrige la création et l’initialisation des Items existants rejetés par Foundry 14.

@@ -71,7 +71,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(sheet).toContain("editable: this.actor.isOwner");
   });
   it("affiche la version dynamique sans migration", () => {
-    expect(PACKAGE_VERSION).toBe("0.5.1");
+    expect(PACKAGE_VERSION).toBe("0.5.2");
     expect(SCHEMA_VERSION).toBe("5");
     expect(sheet).toContain("packageVersion: PACKAGE_VERSION");
     expect(template).toMatch(
@@ -102,14 +102,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(sheet).toContain("openActorPortraitPicker(this.actor)");
   });
   it("protège les commandes d’équipement et réserve le portage au MJ", () => {
-    for (const command of [
-      "state",
-      "profile",
-      "save",
-      "apply",
-      "body",
-      "recover",
-    ]) {
+    for (const command of ["state", "save", "apply", "body", "recover"]) {
       const blocks = blocksAt(
         template.indexOf(`data-equipment-command="${command}"`),
       );
@@ -125,4 +118,13 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(sheet).toContain("previewEquipment(this.actor");
     expect(sheet).toContain("preview.fingerprint");
   });
+});
+
+it("place le profil dans la fiche Item et conserve la sélection dans le HTML", () => {
+  const itemTemplate = readFileSync("templates/items/item.hbs", "utf8");
+  expect(sheet).not.toContain("configureEquipment");
+  expect(template).not.toContain('data-equipment-command="profile"');
+  expect(itemTemplate).toContain("data-equipment-profile");
+  expect(itemTemplate).toContain("{{checked checked}}");
+  expect(itemTemplate).toContain("{{#if editable}}");
 });

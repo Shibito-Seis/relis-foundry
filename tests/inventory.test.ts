@@ -210,6 +210,11 @@ describe("règles d’inventaire 10-E2-P", () => {
   });
 });
 
+class ForcedDeletion {}
+beforeEach(() => {
+  (globalThis as any).foundry = { data: { operators: { ForcedDeletion } } };
+});
+
 function setPath(
   target: Record<string, any>,
   path: string,
@@ -219,7 +224,8 @@ function setPath(
   let current = target;
   for (const part of parts.slice(0, -1)) current = current[part] ??= {};
   const last = String(parts.at(-1));
-  if (last.startsWith("-=")) delete current[last.slice(2)];
+  if (value instanceof ForcedDeletion) delete current[last];
+  else if (last.startsWith("-=")) delete current[last.slice(2)];
   else current[last] = value;
 }
 

@@ -695,9 +695,6 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
             case "state":
               await this.changeEquipment(button.dataset.itemId ?? "");
               break;
-            case "profile":
-              await this.configureEquipment(button.dataset.itemId ?? "");
-              break;
             case "body":
               await this.configureCarrying();
               break;
@@ -1128,128 +1125,6 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       source: String(result.source).trim(),
     };
     await this.actor.update({ "system.bodies": bodies });
-  }
-
-  private async configureEquipment(itemId: string): Promise<void> {
-    const item = this.actor.items.get(itemId) as Item | undefined;
-    if (!item) return;
-    const profile = item.system.physical?.equipmentProfile ?? {};
-    const content = dialogContent();
-    dialogSelect(content, "Usage", "family", [
-      { value: "", label: "Selon le type d’objet" },
-      { value: "manipulable", label: "Objet manipulable" },
-      { value: "wearable", label: "Équipement portable" },
-      { value: "resource", label: "Ressource ou consommable" },
-    ]);
-    content.querySelector<HTMLSelectElement>('[name="family"]')!.value =
-      profile.family ?? "";
-    dialogOptional(
-      content,
-      "Emplacement exclusif (vide si aucun)",
-      "slot",
-      profile.slot,
-    );
-    dialogOptional(
-      content,
-      "Temps et aide nécessaires — selon la source",
-      "duration",
-      profile.duration,
-    );
-    const sizes: Record<string, string> = {
-      tiny: "Très petit",
-      small: "Petit",
-      medium: "Moyen",
-      large: "Grand",
-      huge: "Très grand",
-      gargantuan: "Gigantesque",
-    };
-    for (const [name, title, values, labels] of [
-      ["sizes", "Tailles compatibles", Object.keys(sizes), sizes],
-      [
-        "natures",
-        "Natures corporelles compatibles",
-        Object.keys(BODY_NATURE_LABELS),
-        BODY_NATURE_LABELS,
-      ],
-      ["hostTypes", "Types d’hôte autorisés", [...PHYSICAL_ITEM_TYPES], {}],
-    ] as [string, string, string[], Record<string, string>][]) {
-      const group = document.createElement("details");
-      const summary = document.createElement("summary");
-      summary.textContent = title;
-      group.append(summary);
-      dialogNote(group, "Aucune case cochée : aucune restriction déclarée.");
-      const grid = document.createElement("div");
-      grid.className = "relis-equipment-options";
-      group.append(grid);
-      content.append(group);
-      const choices = [
-        ...new Set([
-          ...values,
-          ...(Array.isArray(profile[name]) ? profile[name] : []),
-        ]),
-      ];
-      for (const value of choices) {
-        const label = document.createElement("label");
-        label.className = "relis-inventory-dialog-field";
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.name = `${name}_${value}`;
-        checkbox.checked = profile[name]?.includes(value) ?? false;
-        label.append(
-          checkbox,
-          document.createTextNode(
-            labels[value] ??
-              (name === "hostTypes"
-                ? game.i18n.localize(`TYPES.Item.${value}`)
-                : value),
-          ),
-        );
-        grid.append(label);
-      }
-    }
-    dialogSelect(content, "Installation sur un autre objet", "installable", [
-      { value: "no", label: "Non" },
-      { value: "yes", label: "Oui" },
-    ]);
-    content.querySelector<HTMLSelectElement>('[name="installable"]')!.value =
-      profile.installable ? "yes" : "no";
-    dialogSelect(
-      content,
-      "Liquide ordinaire : convention 1 L ≈ 1 kg si masse absente",
-      "ordinaryLiquid",
-      [
-        { value: "no", label: "Non" },
-        { value: "yes", label: "Oui" },
-      ],
-    );
-    content.querySelector<HTMLSelectElement>('[name="ordinaryLiquid"]')!.value =
-      profile.ordinaryLiquid ? "yes" : "no";
-    const result = await askInventoryForm(
-      `Profil — ${item.name}`,
-      content,
-      "Enregistrer le profil",
-    );
-    if (!result) return;
-    const selected = (prefix: string) =>
-      Object.entries(result)
-        .filter(
-          ([key, value]) =>
-            key.startsWith(prefix + "_") && value && value !== "false",
-        )
-        .map(([key]) => key.slice(prefix.length + 1));
-    await item.update({
-      "system.physical.equipmentProfile": {
-        ...profile,
-        family: result.family,
-        slot: String(result.slot ?? "").trim(),
-        duration: String(result.duration ?? "").trim(),
-        sizes: selected("sizes"),
-        natures: selected("natures"),
-        hostTypes: selected("hostTypes"),
-        installable: result.installable === "yes",
-        ordinaryLiquid: result.ordinaryLiquid === "yes",
-      },
-    });
   }
 
   private async saveOutfit(): Promise<void> {
