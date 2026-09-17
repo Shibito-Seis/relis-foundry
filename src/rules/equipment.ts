@@ -8,7 +8,7 @@ import { physicalUnitMass } from "./physical-mass";
 
 export const EQUIPMENT_LABELS: Record<string, string> = {
   stored: "Rangé",
-  carried: "Porté sur soi",
+  carried: "Rangé",
   readied: "Préparé — mains à préciser",
   "held-one": "Tenu à une main",
   "held-two": "Tenu à deux mains",
@@ -51,6 +51,7 @@ export function unitMass(item: InventoryItemLike): number | null {
 
 export function equipmentState(item: InventoryItemLike): string {
   const physical = item.system.physical ?? {};
+  if (physical.equipState === "carried") return "stored";
   return physical.equipState === "readied"
     ? physical.hands === 2
       ? "held-two"
@@ -71,10 +72,10 @@ export function equipmentStates(item: InventoryItemLike): string[] {
         : "resource");
   const states =
     family === "manipulable"
-      ? ["carried", "held-one", "held-two", "ground"]
+      ? ["stored", "held-one", "held-two", "ground"]
       : family === "wearable"
-        ? ["carried", "equipped", "ground"]
-        : ["stored", "carried", "ground"];
+        ? ["stored", "equipped", "ground"]
+        : ["stored", "ground"];
   if (profile.installable === true) states.push("installed");
   // An explicit return to storage is always possible; container movement remains separate.
   if (!states.includes("stored")) states.unshift("stored");
@@ -146,7 +147,8 @@ export function equipmentPlan(
     };
   const physical = item.system.physical ?? {};
   const profile = physical.equipmentProfile ?? {};
-  const state = request.state;
+  // Read legacy outfit requests without rewriting saved Items on load.
+  const state = request.state === "carried" ? "stored" : request.state;
   if (!body.id) errors.push("Corps actif introuvable.");
   const lineage = equipmentChain(items, item.id);
   const chain = lineage.chain;
@@ -468,4 +470,15 @@ export function projectEquipment(
     mass: carriedMass(failed && !assisted ? items : projected, body),
     failed,
   };
+}
+
+export function equipmentFailureMessage(preview: {
+  rows: { name: string; errors: string[] }[];
+}): string {
+  const reasons = preview.rows
+    .filter((row) => row.errors.length)
+    .map((row) => `${row.name} : ${row.errors.join(" ")}`);
+  return reasons.length
+    ? `Équipement refusé — ${reasons.join(" · ")}`
+    : "Aucun changement d’équipement applicable.";
 }

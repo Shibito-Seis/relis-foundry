@@ -361,6 +361,27 @@ class MockActor {
 }
 
 describe("opérations d’équipement avec aperçu et récupération", () => {
+  it("remonte un refus précis sans écrire ni laisser de marqueur de récupération", async () => {
+    const actor = new MockActor("a");
+    const occupied = inventoryItem("occupée", "weapon");
+    Object.assign(occupied.system.physical, {
+      equipState: "readied",
+      hands: 1,
+      bodyId: "primary",
+    });
+    actor.add(occupied);
+    actor.add(inventoryItem("deux-mains", "weapon"));
+    const requests = [{ itemId: "deux-mains", state: "held-two" }];
+    const preview = previewEquipment(actor as any, requests);
+    await expect(
+      applyEquipment(actor as any, requests, preview.fingerprint),
+    ).rejects.toThrow(/Équipement refusé.*Mains/);
+    expect(actor.items.get("deux-mains")!.system.physical.equipState).toBe(
+      "stored",
+    );
+    expect(actor.flags.relis?.equipmentRecovery).toBeUndefined();
+  });
+
   it("compense une écriture partielle sans déplacer ni dupliquer de pièces", async () => {
     const actor = new MockActor("a");
     actor.add(inventoryItem("a", "weapon"));
@@ -381,7 +402,7 @@ describe("opérations d’équipement avec aperçu et récupération", () => {
     expect(
       [...actor.items.values()].map((item) => item.system.physical.equipState),
     ).toEqual(["stored", "stored"]);
-    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+    expect(actor.flags.relis?.equipmentRecovery).toBeUndefined();
   });
   beforeEach(() => {
     (globalThis as any).game = { user: { id: "owner", isGM: false } };
@@ -403,7 +424,7 @@ describe("opérations d’équipement avec aperçu et récupération", () => {
       bodyId: "primary",
       equipState: "readied",
     });
-    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+    expect(actor.flags.relis?.equipmentRecovery).toBeUndefined();
     expect(actor.flags.relis.inventoryJournal[0].action).toBe("equip");
   });
   it("refuse un aperçu périmé après modification de la masse ou du corps", async () => {
@@ -430,7 +451,7 @@ describe("opérations d’équipement avec aperçu et récupération", () => {
       ),
     ).rejects.toThrow(/interrompue/);
     expect(item.system.physical.equipState).toBe("stored");
-    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+    expect(actor.flags.relis?.equipmentRecovery).toBeUndefined();
     actor.failEquipmentWrites = 2;
     await expect(
       applyEquipment(
@@ -443,7 +464,7 @@ describe("opérations d’équipement avec aperçu et récupération", () => {
     await expect(recoverEquipment(actor as any)).rejects.toThrow(/MJ/);
     (globalThis as any).game.user.isGM = true;
     await recoverEquipment(actor as any);
-    expect(actor.flags.relis.equipmentRecovery).toBeUndefined();
+    expect(actor.flags.relis?.equipmentRecovery).toBeUndefined();
   });
   it("enregistre des références et remplace seulement l’emplacement choisi", async () => {
     const actor = new MockActor("a");

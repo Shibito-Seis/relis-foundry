@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   carriedMass,
   equipmentPlan,
+  equipmentFailureMessage,
   equipmentState,
   equipmentStates,
   projectEquipment,
@@ -325,5 +326,54 @@ describe("10-E3-P — charge en kilogrammes", () => {
       percent: 100,
       meterValue: 20,
     });
+  });
+});
+
+describe("retours de recette 0.5.3", () => {
+  it("ne propose plus Porté sur soi et conserve les anciens exemplaires et ensembles", () => {
+    for (const type of [
+      "weapon",
+      "armor",
+      "equipment",
+      "consumable",
+      "resource",
+      "container",
+      "ammunition",
+    ]) {
+      const object = item("legacy", { equipState: "carried" }, type);
+      expect(equipmentStates(object)).not.toContain("carried");
+      expect(equipmentStates(object)[0]).toBe("stored");
+      expect(equipmentState(object)).toBe("stored");
+      expect(object.system.physical.equipState).toBe("carried");
+      const plan = equipmentPlan([object], body, {
+        itemId: object.id,
+        state: "carried",
+      });
+      expect(plan.errors).toEqual([]);
+      expect(plan.patch["system.physical.equipState"]).toBe("stored");
+    }
+  });
+  it("explique un manque de mains et une taille incompatible avec le nom de chaque objet", () => {
+    const projection = projectEquipment(
+      [
+        held("arme déjà tenue"),
+        item("arme à deux mains"),
+        item(
+          "armure trop grande",
+          { equipmentProfile: { sizes: ["large"] } },
+          "armor",
+        ),
+      ],
+      body,
+      [
+        { itemId: "arme à deux mains", state: "held-two" },
+        { itemId: "armure trop grande", state: "equipped" },
+      ],
+    );
+    const message = equipmentFailureMessage(projection);
+    expect(message).toMatch(/Équipement refusé/);
+    expect(message).toMatch(/arme à deux mains.*Mains/);
+    expect(message).toMatch(/armure trop grande.*taille/i);
+    expect(projection.updates).toEqual([]);
   });
 });

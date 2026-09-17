@@ -9,6 +9,7 @@ import { openActorPortraitPicker } from "../ui/actor-portrait";
 import {
   carriedMass,
   equipmentLinked,
+  equipmentFailureMessage,
   equipmentPlan,
   equipmentState,
   equipmentStates,
@@ -693,8 +694,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           if (!this.actor.isOwner && !game.user?.isGM) return;
           switch (button.dataset.equipmentCommand) {
             case "state":
-              await this.changeEquipment(button.dataset.itemId ?? "");
-              break;
+              return this.changeEquipment(button.dataset.itemId ?? "");
             case "body":
               await this.configureCarrying();
               break;
@@ -702,8 +702,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
               await this.saveOutfit();
               break;
             case "apply":
-              await this.applyOutfit(button.dataset.outfitId ?? "");
-              break;
+              return this.applyOutfit(button.dataset.outfitId ?? "");
             case "recover":
               await recoverEquipment(this.actor);
               break;
@@ -848,11 +847,12 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   }
 
   private async inventoryTask(
-    task: () => Promise<void>,
+    task: () => Promise<void | boolean>,
     success: string,
   ): Promise<void> {
     try {
-      await task();
+      const applied = await task();
+      if (applied === false) return;
       ui.notifications.info(success);
       await this.render({ force: true });
     } catch (error) {
@@ -959,8 +959,10 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   private async confirmEquipment(
     requests: EquipmentRequest[],
     assisted = false,
-  ): Promise<void> {
+  ): Promise<boolean> {
     const preview = previewEquipment(this.actor, requests, assisted);
+    if (!preview.updates.length)
+      throw new Error(equipmentFailureMessage(preview));
     const content = dialogContent();
     dialogNote(
       content,
@@ -976,14 +978,6 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       content,
       "Appliquer confirme que le temps, l’aide et les conditions de la scène ont été respectés. Aucun temps de combat n’est débité automatiquement.",
     );
-    if (!preview.updates.length) {
-      await askInventoryForm(
-        "Aperçu — changements impossibles",
-        content,
-        "Fermer",
-      );
-      return;
-    }
     const result = await askInventoryForm(
       assisted
         ? "Aperçu assisté — seuls les changements valides seront appliqués"
@@ -991,13 +985,14 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       content,
       "Appliquer",
     );
-    if (result)
-      await applyEquipment(this.actor, requests, preview.fingerprint, assisted);
+    if (!result) return false;
+    await applyEquipment(this.actor, requests, preview.fingerprint, assisted);
+    return true;
   }
 
-  private async changeEquipment(itemId: string): Promise<void> {
+  private async changeEquipment(itemId: string): Promise<boolean> {
     const item = this.actor.items.get(itemId) as Item | undefined;
-    if (!item) return;
+    if (!item) return false;
     const snapshot = itemSnapshot(item);
     const content = dialogContent();
     const states = equipmentStates(snapshot);
@@ -1037,14 +1032,14 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       "Rangé ne choisit pas de conteneur : utilisez Déplacer pour cela. Au sol retire la masse de la charge portée, sans supprimer l’objet.",
     );
     const result = await askInventoryForm(item.name, content, "Voir l’aperçu");
-    if (result)
-      await this.confirmEquipment([
-        {
-          itemId,
-          state: String(result.state),
-          hostId: String(result.hostId ?? ""),
-        },
-      ]);
+    if (!result) return false;
+    return this.confirmEquipment([
+      {
+        itemId,
+        state: String(result.state),
+        hostId: String(result.hostId ?? ""),
+      },
+    ]);
   }
 
   private async configureCarrying(): Promise<void> {
@@ -1156,11 +1151,11 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       );
   }
 
-  private async applyOutfit(outfitId: string): Promise<void> {
+  private async applyOutfit(outfitId: string): Promise<boolean> {
     const outfit = Array.from(this.actor.system.outfits ?? []).find(
       (entry: any) => entry.id === outfitId,
     ) as any;
-    if (!outfit) return;
+    if (!outfit) return false;
     if (!outfit.bodyIds?.includes(this.actor.system.activeBodyId))
       throw new Error("Cet ensemble appartient à un autre corps.");
     const content = dialogContent();
@@ -1183,7 +1178,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       content,
       "Voir l’aperçu",
     );
-    if (!result) return;
+    if (!result) return false;
     const entries = Array.from(
       outfit.equipmentEntries ?? [],
     ) as EquipmentRequest[];
@@ -1198,7 +1193,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           !entries.some((entry) => entry.itemId === item.id),
       )
       .map((item) => ({ itemId: item.id, state: "stored" }));
-    await this.confirmEquipment(
+    return this.confirmEquipment(
       [...releases, ...entries],
       result.mode === "assisted",
     );
@@ -1363,7 +1358,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
             quantity: 1,
             massEach: 1,
             bulkEach: 1,
-            equipState: "carried",
+            equipState: "stored",
             condition: "intact",
           },
         },

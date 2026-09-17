@@ -1,5 +1,12 @@
 # Journal des versions
 
+## 0.5.3 — Retours de validation de 10-E3-P
+
+- Supprime Porté sur soi des choix ; Rangé reste l’état par défaut. Les anciens Items et ensembles carried sont interprétés comme rangés sans migration destructive.
+- Affiche les motifs précis d’un refus d’équipement. Un refus ou une annulation ne produit plus de notification de réussite pour la commande d’état ou l’application d’un ensemble.
+- Validation utilisateur de la passe 0.5.2 ; contrôle manuel sans propriété non effectué (MJ seul). Préparation de 10-E4-P selon la roadmap existante.
+- Schéma 5 conservé, aucune dépendance modifiée.
+
 ## 0.5.2 — Propriétés d’équipement dans la fiche Item
 
 - Remplace le dialogue de profil par une section de la fiche Item : choix persistants, enregistrement explicite, lecture seule sans propriété.

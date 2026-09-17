@@ -311,7 +311,7 @@ const LEGALITY_LABELS: Record<string, string> = {
 
 const EQUIP_STATE_LABELS: Record<string, string> = {
   stored: "Rangé",
-  carried: "Transporté",
+  carried: "Rangé",
   readied: "Préparé",
   equipped: "Équipé",
   installed: "Installé",
@@ -569,7 +569,14 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       ],
       legalityOptions: options(["", ...LEGALITY_STATES], LEGALITY_LABELS),
       quantityUnitOptions: options(QUANTITY_UNITS, {}),
-      equipStateOptions: options(EQUIP_STATES, EQUIP_STATE_LABELS),
+      equipStateOptions: options(
+        EQUIP_STATES.filter((state) => state !== "carried"),
+        EQUIP_STATE_LABELS,
+      ),
+      selectedEquipState:
+        system.physical?.equipState === "carried"
+          ? "stored"
+          : system.physical?.equipState,
       conditionOptions: options(ITEM_CONDITIONS, CONDITION_LABELS),
       ownershipOptions: options(OWNERSHIP_STATES, OWNERSHIP_LABELS),
       accessibilityOptions: options(ACCESSIBILITY_STATES, ACCESSIBILITY_LABELS),

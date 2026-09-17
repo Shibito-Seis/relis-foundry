@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.5.2";
+var PACKAGE_VERSION = "0.5.3";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -3485,7 +3485,7 @@ function inventoryContainerTargets(items, itemId) {
 //#region src/rules/equipment.ts
 var EQUIPMENT_LABELS = {
 	stored: "Rangé",
-	carried: "Porté sur soi",
+	carried: "Rangé",
 	readied: "Préparé — mains à préciser",
 	"held-one": "Tenu à une main",
 	"held-two": "Tenu à deux mains",
@@ -3503,6 +3503,7 @@ function unitMass(item) {
 }
 function equipmentState(item) {
 	const physical = item.system.physical ?? {};
+	if (physical.equipState === "carried") return "stored";
 	return physical.equipState === "readied" ? physical.hands === 2 ? "held-two" : physical.hands === 1 ? "held-one" : "readied" : physical.equipState ?? "stored";
 }
 function equipmentStates(item) {
@@ -3513,19 +3514,15 @@ function equipmentStates(item) {
 		"container"
 	].includes(item.type) ? "wearable" : "resource");
 	const states = family === "manipulable" ? [
-		"carried",
+		"stored",
 		"held-one",
 		"held-two",
 		"ground"
 	] : family === "wearable" ? [
-		"carried",
+		"stored",
 		"equipped",
 		"ground"
-	] : [
-		"stored",
-		"carried",
-		"ground"
-	];
+	] : ["stored", "ground"];
 	if (profile.installable === true) states.push("installed");
 	if (!states.includes("stored")) states.unshift("stored");
 	return states;
@@ -3581,7 +3578,7 @@ function equipmentPlan(items, body, request) {
 	};
 	const physical = item.system.physical ?? {};
 	const profile = physical.equipmentProfile ?? {};
-	const state = request.state;
+	const state = request.state === "carried" ? "stored" : request.state;
 	if (!body.id) errors.push("Corps actif introuvable.");
 	const lineage = equipmentChain(items, item.id);
 	const chain = lineage.chain;
@@ -3727,6 +3724,10 @@ function projectEquipment(items, body, requests, assisted = false) {
 		failed
 	};
 }
+function equipmentFailureMessage(preview) {
+	const reasons = preview.rows.filter((row) => row.errors.length).map((row) => `${row.name} : ${row.errors.join(" ")}`);
+	return reasons.length ? `Équipement refusé — ${reasons.join(" · ")}` : "Aucun changement d’équipement applicable.";
+}
 //#endregion
 //#region src/services/inventory.ts
 var activeLocks = /* @__PURE__ */ new Set();
@@ -3792,7 +3793,7 @@ async function applyEquipment(actor, requests, fingerprint, assisted = false) {
 		assertActorPermission(actor);
 		const preview = previewEquipment(actor, requests, assisted);
 		if (preview.fingerprint !== fingerprint) throw new Error("L’inventaire ou le corps a changé. Refaire l’aperçu.");
-		if (!preview.updates.length) throw new Error("Aucun changement applicable.");
+		if (!preview.updates.length) throw new Error(equipmentFailureMessage(preview));
 		const before = preview.updates.map((update) => {
 			const physical = itemById(actor, update._id).system.physical;
 			const restored = { _id: update._id };
@@ -4825,18 +4826,14 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			this.inventoryTask(async () => {
 				if (!this.actor.isOwner && !game.user?.isGM) return;
 				switch (button.dataset.equipmentCommand) {
-					case "state":
-						await this.changeEquipment(button.dataset.itemId ?? "");
-						break;
+					case "state": return this.changeEquipment(button.dataset.itemId ?? "");
 					case "body":
 						await this.configureCarrying();
 						break;
 					case "save":
 						await this.saveOutfit();
 						break;
-					case "apply":
-						await this.applyOutfit(button.dataset.outfitId ?? "");
-						break;
+					case "apply": return this.applyOutfit(button.dataset.outfitId ?? "");
 					case "recover": await recoverEquipment(this.actor);
 				}
 			}, "Commande d’équipement terminée.");
@@ -4905,7 +4902,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 	}
 	async inventoryTask(task, success) {
 		try {
-			await task();
+			if (await task() === false) return;
 			ui.notifications.info(success);
 			await this.render({ force: true });
 		} catch (error) {
@@ -4964,19 +4961,18 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 	}
 	async confirmEquipment(requests, assisted = false) {
 		const preview = previewEquipment(this.actor, requests, assisted);
+		if (!preview.updates.length) throw new Error(equipmentFailureMessage(preview));
 		const content = dialogContent();
 		dialogNote(content, `Corps : ${preview.body.name}. Masse finale connue : ${preview.mass.mass} kg ; ${preview.mass.missing} masse(s) manquante(s).`);
 		for (const row of preview.rows) dialogNote(content, `${row.name} → ${EQUIPMENT_LABELS[row.request.state] ?? row.request.state}. Temps déclaré : ${row.duration}. ${row.errors.join(" ")} ${row.warnings.join(" ")}`);
 		dialogNote(content, "Appliquer confirme que le temps, l’aide et les conditions de la scène ont été respectés. Aucun temps de combat n’est débité automatiquement.");
-		if (!preview.updates.length) {
-			await askInventoryForm("Aperçu — changements impossibles", content, "Fermer");
-			return;
-		}
-		if (await askInventoryForm(assisted ? "Aperçu assisté — seuls les changements valides seront appliqués" : "Aperçu strict de l’équipement", content, "Appliquer")) await applyEquipment(this.actor, requests, preview.fingerprint, assisted);
+		if (!await askInventoryForm(assisted ? "Aperçu assisté — seuls les changements valides seront appliqués" : "Aperçu strict de l’équipement", content, "Appliquer")) return false;
+		await applyEquipment(this.actor, requests, preview.fingerprint, assisted);
+		return true;
 	}
 	async changeEquipment(itemId) {
 		const item = this.actor.items.get(itemId);
-		if (!item) return;
+		if (!item) return false;
 		const snapshot = itemSnapshot(item);
 		const content = dialogContent();
 		const states = equipmentStates(snapshot);
@@ -4996,7 +4992,8 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		}))]);
 		dialogNote(content, "Rangé ne choisit pas de conteneur : utilisez Déplacer pour cela. Au sol retire la masse de la charge portée, sans supprimer l’objet.");
 		const result = await askInventoryForm(item.name, content, "Voir l’aperçu");
-		if (result) await this.confirmEquipment([{
+		if (!result) return false;
+		return this.confirmEquipment([{
 			itemId,
 			state: String(result.state),
 			hostId: String(result.hostId ?? "")
@@ -5045,7 +5042,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 	}
 	async applyOutfit(outfitId) {
 		const outfit = Array.from(this.actor.system.outfits ?? []).find((entry) => entry.id === outfitId);
-		if (!outfit) return;
+		if (!outfit) return false;
 		if (!outfit.bodyIds?.includes(this.actor.system.activeBodyId)) throw new Error("Cet ensemble appartient à un autre corps.");
 		const content = dialogContent();
 		dialogSelect(content, "Application", "mode", [{
@@ -5057,7 +5054,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		}]);
 		dialogNote(content, "Les objets actuellement actifs mais absents de cet ensemble seront rangés sur le même corps. L’aperçu détaille tous les changements.");
 		const result = await askInventoryForm(outfit.name, content, "Voir l’aperçu");
-		if (!result) return;
+		if (!result) return false;
 		const entries = Array.from(outfit.equipmentEntries ?? []);
 		const releases = Array.from(this.actor.items ?? []).filter((item) => isPhysicalItemType(item.type)).map(itemSnapshot).filter((item) => item.system.physical?.bodyId === this.actor.system.activeBodyId && [
 			"held-one",
@@ -5067,7 +5064,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			itemId: item.id,
 			state: "stored"
 		}));
-		await this.confirmEquipment([...releases, ...entries], result.mode === "assisted");
+		return this.confirmEquipment([...releases, ...entries], result.mode === "assisted");
 	}
 	async movePhysicalItem(itemId) {
 		if (!this.actor.isOwner) return;
@@ -5160,7 +5157,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				quantity: 1,
 				massEach: 1,
 				bulkEach: 1,
-				equipState: "carried",
+				equipState: "stored",
 				condition: "intact"
 			} }
 		});
@@ -5467,7 +5464,7 @@ var LEGALITY_LABELS = {
 };
 var EQUIP_STATE_LABELS = {
 	stored: "Rangé",
-	carried: "Transporté",
+	carried: "Rangé",
 	readied: "Préparé",
 	equipped: "Équipé",
 	installed: "Installé",
@@ -5652,7 +5649,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			}))],
 			legalityOptions: options(["", ...LEGALITY_STATES], LEGALITY_LABELS),
 			quantityUnitOptions: options(QUANTITY_UNITS, {}),
-			equipStateOptions: options(EQUIP_STATES, EQUIP_STATE_LABELS),
+			equipStateOptions: options(EQUIP_STATES.filter((state) => state !== "carried"), EQUIP_STATE_LABELS),
+			selectedEquipState: system.physical?.equipState === "carried" ? "stored" : system.physical?.equipState,
 			conditionOptions: options(ITEM_CONDITIONS, CONDITION_LABELS),
 			ownershipOptions: options(OWNERSHIP_STATES, OWNERSHIP_LABELS),
 			accessibilityOptions: options(ACCESSIBILITY_STATES, ACCESSIBILITY_LABELS),

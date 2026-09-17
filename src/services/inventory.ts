@@ -14,6 +14,7 @@ import {
 import { createRelisId } from "../utils/ulid";
 import {
   equipmentLinked,
+  equipmentFailureMessage,
   equipmentState,
   projectEquipment,
   type EquipmentRequest,
@@ -159,7 +160,7 @@ export async function applyEquipment(
     if (preview.fingerprint !== fingerprint)
       throw new Error("L’inventaire ou le corps a changé. Refaire l’aperçu.");
     if (!preview.updates.length)
-      throw new Error("Aucun changement applicable.");
+      throw new Error(equipmentFailureMessage(preview));
     const before = preview.updates.map((update) => {
       const physical = itemById(actor, update._id).system.physical;
       const restored: Record<string, unknown> = { _id: update._id };
