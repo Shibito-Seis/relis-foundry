@@ -1,3 +1,4 @@
+import { TECHNICAL_SLOTS } from "../rules/equipment-slots";
 import { CONTENT_VERSION, RULES_VERSION, SCHEMA_VERSION } from "../config";
 import {
   ACCESSIBILITY_STATES,
@@ -187,6 +188,40 @@ function physicalField(): any {
         choices: ["", "manipulable", "wearable", "resource"],
       }),
       slot: optionalStringField(),
+      slotsConfigured: new fields.BooleanField({
+        required: true,
+        initial: false,
+      }),
+      bodySlots: new fields.ArrayField(new fields.StringField(), {
+        required: true,
+        initial: [],
+      }),
+      requiredSlots: new fields.SchemaField(
+        Object.fromEntries(
+          Object.keys(TECHNICAL_SLOTS).map((key) => [
+            key,
+            new fields.NumberField({
+              required: true,
+              integer: true,
+              min: 0,
+              initial: 0,
+            }),
+          ]),
+        ),
+      ),
+      providedSlots: new fields.SchemaField(
+        Object.fromEntries(
+          Object.keys(TECHNICAL_SLOTS).map((key) => [
+            key,
+            new fields.NumberField({
+              required: true,
+              integer: true,
+              min: 0,
+              initial: 0,
+            }),
+          ]),
+        ),
+      ),
       duration: optionalStringField(),
       sizes: new fields.ArrayField(new fields.StringField(), {
         required: true,

@@ -1117,6 +1117,9 @@
                           >{{equipmentLabel}}</span>{{/if}}
                         {{#if equipmentBody}}<small>Corps :
                             {{equipmentBody}}</small>{{/if}}
+                        <small>Emplacements : {{equipmentSlots}}</small>
+                        {{#if technicalCapacity}}<small>Modules :
+                            {{technicalCapacity}}</small>{{/if}}
                         {{#if equipmentHost}}<small>Installé sur :
                             {{equipmentHost}}</small>{{/if}}
                         {{#if warning}}<span class="relis-inventory-warning">⚠
@@ -1166,6 +1169,8 @@
                         <span>Masse unitaire <b>{{massEach}}</b></span>
                         <span>Volume unitaire <b>{{volumeEach}}</b></span>
                         <span>Encombrement unitaire <b>{{bulkEach}}</b></span>
+                        <span>Installation requise
+                          <b>{{technicalNeeds}}</b></span>
                         <span>Temps / aide <b>{{equipmentTime}}</b></span>
                         {{#if @root.editable}}<button
                             type="button"

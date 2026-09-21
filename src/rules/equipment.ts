@@ -1,4 +1,11 @@
 import {
+  bodySlots,
+  BODY_SLOTS,
+  legacySlot,
+  slotProfileErrors,
+  installationSlotErrors,
+} from "./equipment-slots";
+import {
   presentInventory,
   referenceIdentity,
   type InventoryItemLike,
@@ -130,6 +137,18 @@ function equipmentChain(items: InventoryItemLike[], itemId: string) {
   return { chain, invalid };
 }
 
+export function equipmentBodyId(
+  items: InventoryItemLike[],
+  item: InventoryItemLike,
+): string {
+  const { chain, invalid } = equipmentChain(items, item.id);
+  if (invalid) return "";
+  return String(
+    chain.find((entry) => entry.system.physical?.bodyId)?.system.physical
+      .bodyId ?? "",
+  );
+}
+
 export function equipmentPlan(
   items: InventoryItemLike[],
   body: EquipmentBody,
@@ -242,16 +261,47 @@ export function equipmentPlan(
     errors.push("Nombre de mains utilisables non renseigné pour ce corps.");
   else if (hands && usedHands + hands > Number(body.carrying?.hands))
     errors.push("Mains utilisables insuffisantes.");
-  if (
-    state === "equipped" &&
-    profile.slot &&
-    others.some(
-      (entry) =>
-        equipmentState(entry) === "equipped" &&
-        entry.system.physical?.equipmentProfile?.slot === profile.slot,
+  if (active) errors.push(...slotProfileErrors(profile));
+  if (state === "equipped") {
+    if (
+      others.some(
+        (entry) =>
+          equipmentState(entry) === "equipped" &&
+          legacySlot(entry.system.physical?.equipmentProfile ?? {}),
+      )
     )
-  )
-    errors.push("Emplacement d’équipement déjà occupé.");
+      errors.push(
+        "Reconfigurer les anciens emplacements des autres objets équipés avant d’équiper une nouvelle pièce.",
+      );
+    if (legacySlot(profile))
+      errors.push(
+        "Ancien emplacement corporel à reconfigurer dans la fiche Item.",
+      );
+    for (const key of bodySlots(profile)) {
+      const conflicts = others.filter(
+        (entry) =>
+          equipmentState(entry) === "equipped" &&
+          bodySlots(entry.system.physical?.equipmentProfile ?? {}).includes(
+            key,
+          ),
+      );
+      if (conflicts.length)
+        errors.push(
+          `${BODY_SLOTS[key] ?? key} : emplacement occupé par ${conflicts.map((entry) => entry.name).join(", ")}.`,
+        );
+    }
+    // Retain old collisions until the user explicitly configures both old profiles.
+    if (
+      legacySlot(profile) &&
+      others.some(
+        (entry) =>
+          equipmentState(entry) === "equipped" &&
+          legacySlot(entry.system.physical?.equipmentProfile ?? {}) ===
+            legacySlot(profile),
+      )
+    )
+      errors.push("Ancien emplacement d’équipement déjà occupé.");
+  }
   const host = items.find((entry) => entry.id === request.hostId);
   if (state === "installed") {
     if (!host || host.id === item.id)
@@ -296,15 +346,7 @@ export function equipmentPlan(
         errors.push("Hôte sur un autre corps.");
       if (profile.hostTypes?.length && !profile.hostTypes.includes(host.type))
         errors.push("Type d’hôte incompatible.");
-      if (
-        profile.slot &&
-        others.some(
-          (entry) =>
-            entry.system.physical?.hostRef?.uuid === host.uuid &&
-            entry.system.physical?.equipmentProfile?.slot === profile.slot,
-        )
-      )
-        errors.push("Slot d’installation occupé.");
+      errors.push(...installationSlotErrors(items, item, host));
     }
   }
   if (active && !profile.sizes?.length && !profile.natures?.length)

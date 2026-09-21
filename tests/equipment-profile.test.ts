@@ -20,6 +20,56 @@ function form(profile: Record<string, any>): ParentNode {
 }
 
 describe("propriétés d’équipement dans la fiche Item", () => {
+  it("ne remplace pas un ancien texte sans confirmation explicite", () => {
+    const control = { checked: false };
+    const root = {
+      querySelectorAll(selector: string) {
+        return selector === "[data-legacy-slots-confirm]" ? [control] : [];
+      },
+    } as unknown as ParentNode;
+    expect(() => equipmentProfileUpdate(root)).toThrow(/Confirmez/);
+    control.checked = true;
+    expect(
+      equipmentProfileUpdate(root)[
+        "system.physical.equipmentProfile.slotsConfigured"
+      ],
+    ).toBe(true);
+  });
+  it("enregistre puis restitue plusieurs emplacements corporels", () => {
+    const update = equipmentProfileUpdate(
+      form({ bodySlots: ["underlayer", "armor"] }),
+    );
+    expect(update["system.physical.equipmentProfile.bodySlots"]).toEqual([
+      "underlayer",
+      "armor",
+    ]);
+    const groups = equipmentProfileGroups({
+      bodySlots: update["system.physical.equipmentProfile.bodySlots"],
+    });
+    expect(
+      groups
+        .find((group) => group.key === "bodySlots")
+        ?.choices.filter((choice) => choice.checked)
+        .map((choice) => choice.value),
+    ).toEqual(["underlayer", "armor"]);
+  });
+  it("lit les quantités techniques et refuse les décimales sans modifier le profil", () => {
+    let value = "2";
+    const root = {
+      querySelectorAll(selector: string) {
+        return selector === '[data-profile-technical="requiredSlots"]'
+          ? [{ dataset: { slotKey: "optic" }, value }]
+          : [];
+      },
+    } as unknown as ParentNode;
+    expect(
+      equipmentProfileUpdate(root)[
+        "system.physical.equipmentProfile.requiredSlots.optic"
+      ],
+    ).toBe(2);
+    value = "0.5";
+    expect(() => equipmentProfileUpdate(root)).toThrow(/entiers/);
+  });
   it("restaure les choix enregistrés et préserve les valeurs personnalisées", () => {
     const groups = equipmentProfileGroups({ sizes: ["medium", "custom"] });
     expect(
@@ -34,7 +84,11 @@ describe("propriétés d’équipement dans la fiche Item", () => {
     expect(update["system.physical.equipmentProfile.sizes"]).toEqual([]);
     expect(update["system.physical.equipmentProfile.natures"]).toEqual([]);
     expect(update["system.physical.equipmentProfile.hostTypes"]).toEqual([]);
-    expect(Object.keys(update)).toHaveLength(3);
+    expect(Object.keys(update)).toHaveLength(5);
+    expect(update["system.physical.equipmentProfile.bodySlots"]).toEqual([]);
+    expect(update["system.physical.equipmentProfile.slotsConfigured"]).toBe(
+      true,
+    );
   });
   it("relit les cases après plusieurs remplacements et refuse toutes tailles sauf Moyen", () => {
     const body = {

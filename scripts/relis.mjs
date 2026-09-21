@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.5.3";
+var PACKAGE_VERSION = "0.5.4";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -322,6 +322,81 @@ function normalizePersonSource(source) {
 	source.activeBodyId = typeof source.activeBodyId === "string" && source.activeBodyId.length > 0 ? source.activeBodyId : String(source.bodies[0]?.id ?? "primary");
 	source.presentations = Array.isArray(source.presentations) && source.presentations.length > 0 ? source.presentations.map(normalizePresentation) : [initialPresentation()];
 	return source;
+}
+//#endregion
+//#region src/rules/equipment-slots.ts
+/** Bible 41.137: occupancy is distinct from protective coverage. */
+var BODY_SLOTS = {
+	underlayer: "Sous-couche corporelle",
+	armor: "Armure principale",
+	underhelmet: "Sous-casque",
+	helmet: "Casque principal",
+	arms: "Protections de bras",
+	legs: "Jambières",
+	shield: "Bouclier porté"
+};
+/** Bible 41.53: a host provides quantities, a module requires quantities. */
+var TECHNICAL_SLOTS = {
+	muzzle: "Bouche",
+	barrel: "Canon",
+	optic: "Optique",
+	underbarrel: "Sous-canon",
+	stock: "Crosse ou poignée",
+	internal: "Interne",
+	power: "Alimentation",
+	utility: "Utilitaire",
+	plates: "Plaques",
+	mobility: "Mobilité",
+	sensors: "Capteurs",
+	environment: "Environnement",
+	interface: "Interface",
+	edge: "Bord",
+	projector: "Projecteur"
+};
+function bodySlots(profile) {
+	return Array.isArray(profile.bodySlots) ? [...new Set(profile.bodySlots)] : [];
+}
+function legacySlot(profile) {
+	return !profile.slotsConfigured ? String(profile.slot ?? "").trim() : "";
+}
+function slotProfileErrors(profile) {
+	const errors = [];
+	if (profile.bodySlots != null && !Array.isArray(profile.bodySlots)) errors.push("Liste d’emplacements corporels invalide.");
+	for (const key of bodySlots(profile)) if (!Object.hasOwn(BODY_SLOTS, key)) errors.push(`Emplacement corporel inconnu : ${key}.`);
+	for (const field of ["requiredSlots", "providedSlots"]) for (const [key, value] of Object.entries(profile[field] ?? {})) if (!Object.hasOwn(TECHNICAL_SLOTS, key) || !Number.isSafeInteger(value) || Number(value) < 0) errors.push(`Emplacement technique invalide : ${key} (entier positif ou nul requis).`);
+	return errors;
+}
+function installedOn(item, host) {
+	const ref = item.system.physical?.hostRef;
+	return item.system.physical?.equipState === "installed" && Boolean(ref?.uuid && host.uuid && ref.uuid === host.uuid || ref?.relisId && host.system.meta?.relisId && ref.relisId === host.system.meta.relisId);
+}
+function technicalUsage(items, host, excludeId = "") {
+	const used = {};
+	for (const item of items) {
+		if (item.id === excludeId || !installedOn(item, host)) continue;
+		for (const [key, value] of Object.entries(item.system.physical?.equipmentProfile?.requiredSlots ?? {})) used[key] = (used[key] ?? 0) + Number(value);
+	}
+	return used;
+}
+function installationSlotErrors(items, item, host) {
+	const p = item.system.physical?.equipmentProfile ?? {}, h = host.system.physical?.equipmentProfile ?? {};
+	const errors = slotProfileErrors(h);
+	if (legacySlot(p)) errors.push("Ancien emplacement d’installation à reconfigurer dans la fiche Item.");
+	if (items.some((entry) => entry.id !== item.id && installedOn(entry, host) && legacySlot(entry.system.physical?.equipmentProfile ?? {}))) errors.push("Reconfigurer les anciens emplacements des modules déjà installés sur cet hôte.");
+	const used = technicalUsage(items, host, item.id);
+	for (const key of Object.keys(TECHNICAL_SLOTS)) {
+		const required = Number(p.requiredSlots?.[key] ?? 0);
+		const occupied = used[key] ?? 0, capacity = Number(h.providedSlots?.[key] ?? 0);
+		if (!Number.isFinite(occupied) || occupied + required > capacity) errors.push(`${TECHNICAL_SLOTS[key]} sur ${host.name} : ${required} requis, ${occupied} occupé(s), ${capacity} disponible(s) au total.`);
+	}
+	return errors;
+}
+function slotSummary(profile) {
+	if (legacySlot(profile)) return `Ancien emplacement à reconfigurer : ${legacySlot(profile)}`;
+	return bodySlots(profile).map((key) => BODY_SLOTS[key] ?? `Inconnu : ${key}`).join(" + ") || "Aucun emplacement corporel déclaré";
+}
+function technicalSummary(profile, field) {
+	return Object.entries(profile[field] ?? {}).filter(([, n]) => Number(n) > 0).map(([key, n]) => `${TECHNICAL_SLOTS[key] ?? key} × ${n}`).join(" ; ") || "Aucun";
 }
 //#endregion
 //#region src/utils/ulid.ts
@@ -1301,6 +1376,26 @@ function physicalField() {
 				]
 			}),
 			slot: optionalStringField$1(),
+			slotsConfigured: new fields$1.BooleanField({
+				required: true,
+				initial: false
+			}),
+			bodySlots: new fields$1.ArrayField(new fields$1.StringField(), {
+				required: true,
+				initial: []
+			}),
+			requiredSlots: new fields$1.SchemaField(Object.fromEntries(Object.keys(TECHNICAL_SLOTS).map((key) => [key, new fields$1.NumberField({
+				required: true,
+				integer: true,
+				min: 0,
+				initial: 0
+			})]))),
+			providedSlots: new fields$1.SchemaField(Object.fromEntries(Object.keys(TECHNICAL_SLOTS).map((key) => [key, new fields$1.NumberField({
+				required: true,
+				integer: true,
+				min: 0,
+				initial: 0
+			})]))),
 			duration: optionalStringField$1(),
 			sizes: new fields$1.ArrayField(new fields$1.StringField(), {
 				required: true,
@@ -3566,6 +3661,11 @@ function equipmentChain(items, itemId) {
 		invalid
 	};
 }
+function equipmentBodyId(items, item) {
+	const { chain, invalid } = equipmentChain(items, item.id);
+	if (invalid) return "";
+	return String(chain.find((entry) => entry.system.physical?.bodyId)?.system.physical.bodyId ?? "");
+}
 function equipmentPlan(items, body, request) {
 	const errors = [];
 	const warnings = [];
@@ -3607,7 +3707,16 @@ function equipmentPlan(items, body, request) {
 	if (hands && others.some((entry) => equipmentState(entry) === "readied")) errors.push("Préciser d’abord les mains des objets anciennement préparés.");
 	if (hands && (body.carrying?.hands == null || !Number.isInteger(Number(body.carrying.hands)) || Number(body.carrying.hands) < 0)) errors.push("Nombre de mains utilisables non renseigné pour ce corps.");
 	else if (hands && usedHands + hands > Number(body.carrying?.hands)) errors.push("Mains utilisables insuffisantes.");
-	if (state === "equipped" && profile.slot && others.some((entry) => equipmentState(entry) === "equipped" && entry.system.physical?.equipmentProfile?.slot === profile.slot)) errors.push("Emplacement d’équipement déjà occupé.");
+	if (active) errors.push(...slotProfileErrors(profile));
+	if (state === "equipped") {
+		if (others.some((entry) => equipmentState(entry) === "equipped" && legacySlot(entry.system.physical?.equipmentProfile ?? {}))) errors.push("Reconfigurer les anciens emplacements des autres objets équipés avant d’équiper une nouvelle pièce.");
+		if (legacySlot(profile)) errors.push("Ancien emplacement corporel à reconfigurer dans la fiche Item.");
+		for (const key of bodySlots(profile)) {
+			const conflicts = others.filter((entry) => equipmentState(entry) === "equipped" && bodySlots(entry.system.physical?.equipmentProfile ?? {}).includes(key));
+			if (conflicts.length) errors.push(`${BODY_SLOTS[key] ?? key} : emplacement occupé par ${conflicts.map((entry) => entry.name).join(", ")}.`);
+		}
+		if (legacySlot(profile) && others.some((entry) => equipmentState(entry) === "equipped" && legacySlot(entry.system.physical?.equipmentProfile ?? {}) === legacySlot(profile))) errors.push("Ancien emplacement d’équipement déjà occupé.");
+	}
 	const host = items.find((entry) => entry.id === request.hostId);
 	if (state === "installed") {
 		if (!host || host.id === item.id) errors.push("Hôte d’installation invalide.");
@@ -3621,7 +3730,7 @@ function equipmentPlan(items, body, request) {
 			if (host.system.physical?.accessibility === "unavailable" || (host.flags?.relis?.inventoryTransfer?.state ?? "complete") !== "complete") errors.push("Hôte indisponible.");
 			if (host.system.physical?.bodyId && host.system.physical.bodyId !== body.id) errors.push("Hôte sur un autre corps.");
 			if (profile.hostTypes?.length && !profile.hostTypes.includes(host.type)) errors.push("Type d’hôte incompatible.");
-			if (profile.slot && others.some((entry) => entry.system.physical?.hostRef?.uuid === host.uuid && entry.system.physical?.equipmentProfile?.slot === profile.slot)) errors.push("Slot d’installation occupé.");
+			errors.push(...installationSlotErrors(items, item, host));
 		}
 	}
 	if (active && !profile.sizes?.length && !profile.natures?.length) warnings.push("Aucune restriction corporelle déclarée : compatibilité à vérifier selon la source.");
@@ -3834,10 +3943,10 @@ async function saveEquipmentOutfit(actor, slot, name) {
 	await withActorLocks([actor], async () => {
 		const items = actorSnapshots(actor);
 		const bodyId = String(actor.system.activeBodyId);
-		const entries = items.filter((item) => item.system.physical?.bodyId === bodyId || equipmentState(item) === "installed" && items.some((host) => host.uuid === item.system.physical?.hostRef?.uuid && host.system.physical?.bodyId === bodyId)).filter((item) => !["stored", "ground"].includes(equipmentState(item))).map((item) => ({
+		const entries = items.filter((item) => equipmentBodyId(items, item) === bodyId).filter((item) => !["stored", "ground"].includes(equipmentState(item))).map((item) => ({
 			itemId: item.id,
 			state: equipmentState(item),
-			hostId: items.find((host) => host.uuid === item.system.physical?.hostRef?.uuid)?.id ?? ""
+			hostId: items.find((host) => installedOn(item, host))?.id ?? ""
 		}));
 		const outfits = JSON.parse(JSON.stringify(Array.from(actor.system.outfits ?? [])));
 		const id = `equipment-${slot + 1}`;
@@ -4161,6 +4270,57 @@ async function recoverPendingInventoryTransfers() {
 		}
 	}
 	return recovered;
+}
+/** Profile edits share the inventory lock and cannot silently invalidate equipment. */
+async function saveEquipmentProfile(item, patch) {
+	if (!item.isOwner) throw new Error("Vous ne pouvez pas modifier cet objet.");
+	const actor = item.parent;
+	if (!actor) {
+		await item.update(patch);
+		return;
+	}
+	await withActorLocks([actor], async () => {
+		assertActorPermission(actor);
+		if (!item.isOwner) throw new Error("Vous ne pouvez pas modifier cet objet.");
+		const before = actorSnapshots(actor);
+		const after = JSON.parse(JSON.stringify(before));
+		const target = after.find((entry) => entry.id === item.id);
+		if (!target) throw new Error("Objet absent de l’inventaire.");
+		const profile = target.system.physical.equipmentProfile ??= {};
+		for (const [path, value] of Object.entries(patch)) {
+			if (!path.startsWith("system.physical.equipmentProfile.")) throw new Error("Champ hors du profil d’équipement.");
+			const keys = path.slice(33).split(".");
+			if (keys.some((key) => [
+				"__proto__",
+				"constructor",
+				"prototype"
+			].includes(key))) throw new Error("Champ invalide.");
+			let current = profile;
+			for (const key of keys.slice(0, -1)) current = current[key] ??= {};
+			current[keys.at(-1)] = value;
+		}
+		const bodies = Array.from(actor.system.bodies ?? []);
+		const inspect = (items) => items.flatMap((entry) => {
+			const p = entry.system.physical ?? {};
+			if (![
+				"readied",
+				"equipped",
+				"installed"
+			].includes(p.equipState)) return [];
+			const body = bodies.find((candidate) => candidate.id === (equipmentBodyId(items, entry) || actor.system.activeBodyId));
+			if (!body) return [`${entry.id} : corps absent.`];
+			const host = items.find((candidate) => p.hostRef?.uuid && p.hostRef.uuid === candidate.uuid || p.hostRef?.relisId && p.hostRef.relisId === candidate.system.meta?.relisId);
+			return equipmentPlan(items, body, {
+				itemId: entry.id,
+				state: equipmentState(entry),
+				hostId: host?.id ?? ""
+			}).errors.map((message) => `${entry.name} : ${message}`);
+		});
+		const oldErrors = new Set(inspect(before));
+		const introduced = inspect(after).filter((message) => !oldErrors.has(message));
+		if (introduced.length) throw new Error(`Profil refusé — ${introduced.join(" · ")} Ranger ou détacher les objets concernés avant de reconfigurer.`);
+		await item.update(patch);
+	});
 }
 //#endregion
 //#region src/ui/inventory-view.ts
@@ -4675,8 +4835,8 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				"readied",
 				"equipped",
 				"installed"
-			].includes(p.equipState) || p.bodyId && p.bodyId !== activeBody.id) continue;
-			const host = physicalSnapshots.find((entry) => entry.uuid === p.hostRef?.uuid);
+			].includes(p.equipState) || equipmentBodyId(physicalSnapshots, item) && equipmentBodyId(physicalSnapshots, item) !== activeBody.id) continue;
+			const host = physicalSnapshots.find((entry) => p.hostRef?.uuid && entry.uuid === p.hostRef.uuid || p.hostRef?.relisId && entry.system.meta?.relisId === p.hostRef.relisId);
 			const plan = equipmentPlan(physicalSnapshots, activeBody, {
 				itemId: item.id,
 				state: equipmentState(item),
@@ -4715,6 +4875,9 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				equipmentLabel: EQUIPMENT_LABELS[equipmentState(row.item)] ?? "État ancien à vérifier",
 				equipmentBody: physical.bodyId ? bodies.find((body) => body.id === physical.bodyId)?.name ?? "Corps absent" : "",
 				equipmentHost: physical.hostRef?.labelSnapshot ?? "",
+				equipmentSlots: slotSummary(physical.equipmentProfile ?? {}),
+				technicalNeeds: technicalSummary(physical.equipmentProfile ?? {}, "requiredSlots"),
+				technicalCapacity: Object.entries(physical.equipmentProfile?.providedSlots ?? {}).filter(([, n]) => Number(n) > 0).map(([key, n]) => `${TECHNICAL_SLOTS[key] ?? key} : ${technicalUsage(physicalSnapshots, row.item)[key] ?? 0} / ${n}`).join(" ; "),
 				equipmentTime: physical.equipmentProfile?.duration || "À arbitrer",
 				type: row.item.type,
 				typeLabel: game.i18n.localize(`TYPES.Item.${row.item.type}`),
@@ -4734,7 +4897,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				volumeEach: displayMeasure(physical.volumeEach ?? null, "L"),
 				bulkEach: displayMeasure(physical.bulkEach ?? null, ""),
 				accessibility: INVENTORY_ACCESS_LABELS[String(physical.accessibility ?? "stored")] ?? String(physical.accessibility ?? ""),
-				location: row.parentId ? physicalItems.find((candidate) => candidate.id === row.parentId)?.name ?? "Conteneur manquant" : physical.equipState === "ground" ? "Au sol" : physical.hostRef?.labelSnapshot ? `Sur ${physical.hostRef.labelSnapshot}` : "Inventaire principal",
+				location: row.parentId ? physicalItems.find((candidate) => candidate.id === row.parentId)?.name ?? "Conteneur manquant" : physical.equipState === "ground" ? "Au sol" : physical.hostRef?.labelSnapshot ? `Sur ${physical.hostRef.labelSnapshot}` : equipmentState(row.item) === "equipped" ? slotSummary(physical.equipmentProfile ?? {}) : "Inventaire principal",
 				isContainer: row.item.type === "container",
 				childCount: row.childCount,
 				pending: pendingState === "pending",
@@ -5210,6 +5373,10 @@ var GROUPS = {
 	hostTypes: {
 		title: "Types d’hôte autorisés pour l’installation",
 		labels: Object.fromEntries(PHYSICAL_ITEM_TYPES.map((type) => [type, type]))
+	},
+	bodySlots: {
+		title: "Emplacements corporels occupés simultanément",
+		labels: BODY_SLOTS
 	}
 };
 function equipmentProfileGroups(profile, localize = (value) => value) {
@@ -5219,6 +5386,7 @@ function equipmentProfileGroups(profile, localize = (value) => value) {
 			key,
 			title,
 			count: selected.length,
+			emptyLabel: key === "bodySlots" ? "Aucun emplacement corporel déclaré." : "Aucune restriction déclarée.",
 			choices: [.../* @__PURE__ */ new Set([...Object.keys(labels), ...selected])].map((value) => ({
 				value,
 				groupKey: key,
@@ -5230,19 +5398,31 @@ function equipmentProfileGroups(profile, localize = (value) => value) {
 }
 /** Read live checkbox state, never serialized attributes or truthy form strings. */
 function equipmentProfileUpdate(root) {
-	const patch = {};
+	const legacyConfirmation = root.querySelectorAll("[data-legacy-slots-confirm]")[0];
+	if (legacyConfirmation && !legacyConfirmation.checked) throw new Error("Confirmez le remplacement de l’ancien emplacement après avoir vérifié les choix corporels et techniques.");
+	const patch = { "system.physical.equipmentProfile.slotsConfigured": true };
 	for (const key of Object.keys(GROUPS)) patch[`system.physical.equipmentProfile.${key}`] = Array.from(root.querySelectorAll(`[data-profile-list="${key}"]`)).filter((input) => input.checked).map((input) => input.value);
 	for (const control of root.querySelectorAll("[data-profile-field]")) {
 		const key = control.dataset.profileField;
 		if (![
 			"family",
-			"slot",
 			"duration",
 			"installable",
 			"ordinaryLiquid"
 		].includes(key ?? "")) continue;
 		patch[`system.physical.equipmentProfile.${key}`] = control.type === "checkbox" ? control.checked : control.value.trim();
 	}
+	for (const field of ["requiredSlots", "providedSlots"]) {
+		const controls = root.querySelectorAll(`[data-profile-technical="${field}"]`);
+		for (const control of controls) {
+			const key = control.dataset.slotKey ?? "";
+			const value = control.value.trim() === "" ? 0 : Number(control.value);
+			if (!Object.hasOwn(TECHNICAL_SLOTS, key) || !Number.isSafeInteger(value) || value < 0) throw new Error("Les capacités et besoins doivent être des entiers positifs ou nuls.");
+			patch[`system.physical.equipmentProfile.${field}.${key}`] = value;
+		}
+	}
+	const errors = slotProfileErrors({ bodySlots: patch["system.physical.equipmentProfile.bodySlots"] });
+	if (errors.length) throw new Error(errors.join(" "));
 	return patch;
 }
 function bindEquipmentProfile(root, item, reportError) {
@@ -5257,7 +5437,7 @@ function bindEquipmentProfile(root, item, reportError) {
 		if (!item.isOwner || button.disabled) return;
 		button.disabled = true;
 		try {
-			await item.update(equipmentProfileUpdate(section));
+			await saveEquipmentProfile(item, equipmentProfileUpdate(section));
 			if (status) status.textContent = "Propriétés enregistrées.";
 		} catch (error) {
 			reportError(error instanceof Error ? error.message : "Les propriétés n’ont pas pu être enregistrées.");
@@ -5265,6 +5445,14 @@ function bindEquipmentProfile(root, item, reportError) {
 			button.disabled = !item.isOwner;
 		}
 	});
+}
+function technicalSlotRows(profile) {
+	return Object.entries(TECHNICAL_SLOTS).map(([key, label]) => ({
+		key,
+		label,
+		required: profile.requiredSlots?.[key] ?? 0,
+		provided: profile.providedSlots?.[key] ?? 0
+	}));
 }
 //#endregion
 //#region src/sheets/item-sheet.ts
@@ -5612,6 +5800,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			})),
 			isAction: this.item.type === "action",
 			hasPhysical,
+			technicalSlotRows: technicalSlotRows(system.physical?.equipmentProfile ?? {}),
+			legacyEquipmentSlot: legacySlot(system.physical?.equipmentProfile ?? {}),
 			equipmentFamilies: {
 				"": "Selon le type d’objet",
 				manipulable: "Objet manipulable",

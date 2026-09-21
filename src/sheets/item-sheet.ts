@@ -1,5 +1,7 @@
+import { legacySlot } from "../rules/equipment-slots";
 import {
   equipmentProfileGroups,
+  technicalSlotRows,
   bindEquipmentProfile,
 } from "../ui/equipment-profile";
 import {
@@ -522,6 +524,10 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       })),
       isAction: this.item.type === "action",
       hasPhysical,
+      technicalSlotRows: technicalSlotRows(
+        system.physical?.equipmentProfile ?? {},
+      ),
+      legacyEquipmentSlot: legacySlot(system.physical?.equipmentProfile ?? {}),
       equipmentFamilies: {
         "": "Selon le type d’objet",
         manipulable: "Objet manipulable",

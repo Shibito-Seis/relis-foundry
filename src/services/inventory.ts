@@ -1,3 +1,4 @@
+import { installedOn } from "../rules/equipment-slots";
 import {
   createWorldItemId,
   initialReference,
@@ -14,6 +15,8 @@ import {
 import { createRelisId } from "../utils/ulid";
 import {
   equipmentLinked,
+  equipmentBodyId,
+  equipmentPlan,
   equipmentFailureMessage,
   equipmentState,
   projectEquipment,
@@ -250,24 +253,14 @@ export async function saveEquipmentOutfit(
     const items = actorSnapshots(actor);
     const bodyId = String(actor.system.activeBodyId);
     const selected = items.filter(
-      (item) =>
-        item.system.physical?.bodyId === bodyId ||
-        (equipmentState(item) === "installed" &&
-          items.some(
-            (host) =>
-              host.uuid === item.system.physical?.hostRef?.uuid &&
-              host.system.physical?.bodyId === bodyId,
-          )),
+      (item) => equipmentBodyId(items, item) === bodyId,
     );
     const entries = selected
       .filter((item) => !["stored", "ground"].includes(equipmentState(item)))
       .map((item) => ({
         itemId: item.id,
         state: equipmentState(item),
-        hostId:
-          items.find(
-            (host) => host.uuid === item.system.physical?.hostRef?.uuid,
-          )?.id ?? "",
+        hostId: items.find((host) => installedOn(item, host))?.id ?? "",
       }));
     const outfits = JSON.parse(
       JSON.stringify(Array.from(actor.system.outfits ?? [])),
@@ -841,4 +834,80 @@ export function inventoryDiagnostics(actor: ActorLike): string[] {
   return presentInventory(actorSnapshots(actor)).diagnostics.map(
     (diagnostic) => diagnostic.message,
   );
+}
+
+/** Profile edits share the inventory lock and cannot silently invalidate equipment. */
+export async function saveEquipmentProfile(
+  item: {
+    id?: string;
+    isOwner: boolean;
+    parent?: Actor | null;
+    update(data: Record<string, unknown>): Promise<unknown>;
+  },
+  patch: Record<string, unknown>,
+): Promise<void> {
+  if (!item.isOwner) throw new Error("Vous ne pouvez pas modifier cet objet.");
+  const actor = item.parent as ActorLike | undefined;
+  if (!actor) {
+    await item.update(patch);
+    return;
+  }
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    if (!item.isOwner)
+      throw new Error("Vous ne pouvez pas modifier cet objet.");
+    const before = actorSnapshots(actor);
+    const after: InventoryItemLike[] = JSON.parse(JSON.stringify(before));
+    const target = after.find((entry) => entry.id === item.id);
+    if (!target) throw new Error("Objet absent de l’inventaire.");
+    const profile = (target.system.physical.equipmentProfile ??= {});
+    for (const [path, value] of Object.entries(patch)) {
+      const prefix = "system.physical.equipmentProfile.";
+      if (!path.startsWith(prefix))
+        throw new Error("Champ hors du profil d’équipement.");
+      const keys = path.slice(prefix.length).split(".");
+      if (
+        keys.some((key) =>
+          ["__proto__", "constructor", "prototype"].includes(key),
+        )
+      )
+        throw new Error("Champ invalide.");
+      let current = profile;
+      for (const key of keys.slice(0, -1)) current = current[key] ??= {};
+      current[keys.at(-1)!] = value;
+    }
+    const bodies = Array.from(actor.system.bodies ?? []) as EquipmentBody[];
+    const inspect = (items: InventoryItemLike[]) =>
+      items.flatMap((entry) => {
+        const p = entry.system.physical ?? {};
+        if (!["readied", "equipped", "installed"].includes(p.equipState))
+          return [];
+        const body = bodies.find(
+          (candidate) =>
+            candidate.id ===
+            (equipmentBodyId(items, entry) || actor.system.activeBodyId),
+        );
+        if (!body) return [`${entry.id} : corps absent.`];
+        const host = items.find(
+          (candidate) =>
+            (p.hostRef?.uuid && p.hostRef.uuid === candidate.uuid) ||
+            (p.hostRef?.relisId &&
+              p.hostRef.relisId === candidate.system.meta?.relisId),
+        );
+        return equipmentPlan(items, body, {
+          itemId: entry.id,
+          state: equipmentState(entry),
+          hostId: host?.id ?? "",
+        }).errors.map((message) => `${entry.name} : ${message}`);
+      });
+    const oldErrors = new Set(inspect(before));
+    const introduced = inspect(after).filter(
+      (message) => !oldErrors.has(message),
+    );
+    if (introduced.length)
+      throw new Error(
+        `Profil refusé — ${introduced.join(" · ")} Ranger ou détacher les objets concernés avant de reconfigurer.`,
+      );
+    await item.update(patch);
+  });
 }

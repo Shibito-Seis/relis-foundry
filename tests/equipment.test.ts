@@ -172,14 +172,18 @@ describe("10-E3-P — équipement personnel", () => {
     ).not.toHaveProperty("system.physical.containerRef");
   });
   it("valide l’installation et interdit les cycles mixtes hôte/conteneur", () => {
-    const host = item("host", {}, "container");
+    const host = item(
+      "host",
+      { equipmentProfile: { providedSlots: { utility: 1 } } },
+      "container",
+    );
     const module = item(
       "module",
       {
         equipmentProfile: {
           installable: true,
           hostTypes: ["container"],
-          slot: "rail",
+          requiredSlots: { utility: 1 },
         },
       },
       "equipment",

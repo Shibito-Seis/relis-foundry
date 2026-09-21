@@ -1,5 +1,14 @@
 # Journal des versions
 
+## 0.5.4 — Complément 10-E3-P : emplacements structurés
+
+- Sept emplacements corporels canoniques en sélection multiple, distincts de la couverture. Conflits nommés, occupation simultanée et ensembles stricts/assistés contrôlés.
+- Capacités fournies et besoins techniques par type d’emplacement : nombres entiers, consommation cumulée par hôte, refus des capacités insuffisantes.
+- Fiche Item unique, choix persistants, inventaires PJ/PNJ avec emplacements et usage des capacités.
+- Modification des profils sous verrou d’inventaire : refus des nouveaux conflits sur les objets déjà équipés/installés.
+- Ancien texte conservé et signalé pour reconfiguration explicite ; schéma 5, ajout de champs neutres sans migration destructive.
+- Matrice Bible → implémentation → tests dans docs/10-E3-P-conformite.md. Complément en attente de recette, aucune clôture anticipée ni passage à 10-E4-P.
+
 ## 0.5.3 — Retours de validation de 10-E3-P
 
 - Supprime Porté sur soi des choix ; Rangé reste l’état par défaut. Les anciens Items et ensembles carried sont interprétés comme rangés sans migration destructive.

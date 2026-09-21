@@ -15,6 +15,7 @@ import {
   previewEquipment,
   recoverEquipment,
   saveEquipmentOutfit,
+  saveEquipmentProfile,
   moveInventoryItem,
 } from "../src/services/inventory";
 
@@ -361,6 +362,82 @@ class MockActor {
 }
 
 describe("opérations d’équipement avec aperçu et récupération", () => {
+  it("mémorise les modules imbriqués et retrouve les hôtes par identifiant stable", async () => {
+    const actor = new MockActor("a");
+    const h = actor.add(inventoryItem("h"));
+    Object.assign(h.system.physical, {
+      equipState: "equipped",
+      bodyId: "primary",
+    });
+    const m = actor.add(inventoryItem("m"));
+    Object.assign(m.system.physical, {
+      equipState: "installed",
+      hostRef: { relisId: h.system.meta.relisId },
+    });
+    const n = actor.add(inventoryItem("n"));
+    Object.assign(n.system.physical, {
+      equipState: "installed",
+      hostRef: { relisId: m.system.meta.relisId },
+    });
+    await saveEquipmentOutfit(actor as any, 0, "Local");
+    expect(actor.system.outfits[0].equipmentEntries).toEqual(
+      expect.arrayContaining([
+        { itemId: "m", state: "installed", hostId: "h" },
+        { itemId: "n", state: "installed", hostId: "m" },
+      ]),
+    );
+  });
+  it("refuse une capacité réduite sous les besoins des modules déjà installés", async () => {
+    const actor = new MockActor("a");
+    const h = actor.add(inventoryItem("host"));
+    h.system.physical.equipmentProfile = { providedSlots: { optic: 2 } };
+    const m = actor.add(inventoryItem("module"));
+    Object.assign(m.system.physical, {
+      equipState: "installed",
+      hostRef: { relisId: h.system.meta.relisId },
+      equipmentProfile: { installable: true, requiredSlots: { optic: 2 } },
+    });
+    const owned = Object.assign(h, { isOwner: true });
+    await expect(
+      saveEquipmentProfile(owned as any, {
+        "system.physical.equipmentProfile.providedSlots.optic": 1,
+      }),
+    ).rejects.toThrow(/Profil refusé.*Optique/);
+    expect(h.system.physical.equipmentProfile.providedSlots.optic).toBe(2);
+    await saveEquipmentProfile(owned as any, {
+      "system.physical.equipmentProfile.providedSlots.optic": 3,
+    });
+    expect(h.system.physical.equipmentProfile.providedSlots.optic).toBe(3);
+    owned.isOwner = false;
+    await expect(
+      saveEquipmentProfile(owned as any, {
+        "system.physical.equipmentProfile.providedSlots.optic": 4,
+      }),
+    ).rejects.toThrow(/modifier/);
+  });
+  it("refuse un changement de profil qui crée un conflit corporel", async () => {
+    const actor = new MockActor("a");
+    const a = actor.add(inventoryItem("a"));
+    const b = actor.add(inventoryItem("b"));
+    Object.assign(a.system.physical, {
+      equipState: "equipped",
+      bodyId: "primary",
+      equipmentProfile: { bodySlots: ["helmet"] },
+    });
+    Object.assign(b.system.physical, {
+      equipState: "equipped",
+      bodyId: "primary",
+      equipmentProfile: { bodySlots: ["underhelmet"] },
+    });
+    await expect(
+      saveEquipmentProfile(Object.assign(b, { isOwner: true }) as any, {
+        "system.physical.equipmentProfile.bodySlots": ["helmet"],
+      }),
+    ).rejects.toThrow(/Casque principal/);
+    expect(b.system.physical.equipmentProfile.bodySlots).toEqual([
+      "underhelmet",
+    ]);
+  });
   it("remonte un refus précis sans écrire ni laisser de marqueur de récupération", async () => {
     const actor = new MockActor("a");
     const occupied = inventoryItem("occupée", "weapon");

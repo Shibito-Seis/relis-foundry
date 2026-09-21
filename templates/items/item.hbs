@@ -247,11 +247,6 @@
                 selected=system.physical.equipmentProfile.family
               }}
             </select></label>
-          <label>Emplacement exclusif (vide si aucun)<input
-              type="text"
-              data-profile-field="slot"
-              value="{{system.physical.equipmentProfile.slot}}"
-            /></label>
           <label>Temps et aide nécessaires — selon la source<input
               type="text"
               data-profile-field="duration"
@@ -272,8 +267,8 @@
         </div>
         {{#each equipmentProfileGroups}}
           <fieldset><legend>{{title}}</legend>
-            <p>{{#if count}}{{count}} choix enregistré(s).{{else}}Aucune
-                restriction déclarée.{{/if}}</p>
+            <p>{{#if count}}{{count}}
+                choix enregistré(s).{{else}}{{emptyLabel}}{{/if}}</p>
             <div class="relis-profile-choices">
               {{#each choices}}<label><input
                     type="checkbox"
@@ -285,8 +280,49 @@
             </div>
           </fieldset>
         {{/each}}
-        <p>Une liste vide n’impose aucune restriction. Les choix s’appliquent
-          après enregistrement.</p>
+        <p>Les emplacements corporels cochés sont occupés ensemble quand l’objet
+          est équipé. Ils ne décrivent pas les zones protégées. Les listes de
+          tailles et natures vides n’imposent aucune restriction.</p>
+        {{#if legacyEquipmentSlot}}<aside
+            class="relis-inventory-diagnostics"
+          >Ancien emplacement conservé :
+            {{legacyEquipmentSlot}}. Reconfigurez les choix ci-dessus et les
+            besoins techniques ci-dessous, puis enregistrez. Aucune conversion
+            automatique.
+            <label><input type="checkbox" data-legacy-slots-confirm />
+              Je remplace l’ancien emplacement par les choix corporels et
+              techniques de cette fiche, y compris si je les laisse vides.</label>
+          </aside>{{/if}}
+        <details class="relis-technical-slots"><summary>Emplacements techniques
+            — capacités et besoins</summary>
+          <p>Fourni : capacité de cet objet comme hôte. Requis : quantité
+            occupée sur l’hôte lorsque cet objet est installé. Zéro signifie
+            aucun. Vérifier aussi les compatibilités déclarées par la source de
+            l’objet.</p>
+          <div class="relis-slot-grid"><b>Type</b><b>Fourni par cet objet</b><b
+            >Requis sur l’hôte</b>
+            {{#each technicalSlotRows}}
+              <span>{{label}}</span>
+              <label><span class="relis-slot-input-label">{{label}}
+                  fourni</span><input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="{{provided}}"
+                  data-profile-technical="providedSlots"
+                  data-slot-key="{{key}}"
+                /></label>
+              <label><span class="relis-slot-input-label">{{label}}
+                  requis</span><input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="{{required}}"
+                  data-profile-technical="requiredSlots"
+                  data-slot-key="{{key}}"
+                /></label>
+            {{/each}}</div>
+        </details>
         {{#if editable}}<button
             type="button"
             data-save-equipment-profile

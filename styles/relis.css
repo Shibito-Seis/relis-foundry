@@ -1766,3 +1766,23 @@
   flex: 0 0 auto;
   margin: 0;
 }
+
+.relis-slot-grid {
+  display: grid;
+  grid-template-columns: minmax(100px, 1.2fr) repeat(2, minmax(80px, 1fr));
+  gap: 0.4rem;
+  align-items: center;
+}
+.relis-slot-grid input {
+  width: 100%;
+}
+.relis-slot-input-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.relis-technical-slots {
+  margin-block: 1rem;
+}

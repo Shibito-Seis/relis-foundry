@@ -1,4 +1,10 @@
 import {
+  slotSummary,
+  technicalSummary,
+  technicalUsage,
+  TECHNICAL_SLOTS,
+} from "../rules/equipment-slots";
+import {
   ATTRIBUTE_LABELS,
   MASTERY_LABELS,
   SKILL_DEFINITIONS,
@@ -9,6 +15,7 @@ import { openActorPortraitPicker } from "../ui/actor-portrait";
 import {
   carriedMass,
   equipmentLinked,
+  equipmentBodyId,
   equipmentFailureMessage,
   equipmentPlan,
   equipmentState,
@@ -436,11 +443,15 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         const p = item.system.physical ?? {};
         if (
           !["readied", "equipped", "installed"].includes(p.equipState) ||
-          (p.bodyId && p.bodyId !== activeBody.id)
+          (equipmentBodyId(physicalSnapshots, item) &&
+            equipmentBodyId(physicalSnapshots, item) !== activeBody.id)
         )
           continue;
         const host = physicalSnapshots.find(
-          (entry) => entry.uuid === p.hostRef?.uuid,
+          (entry) =>
+            (p.hostRef?.uuid && entry.uuid === p.hostRef.uuid) ||
+            (p.hostRef?.relisId &&
+              entry.system.meta?.relisId === p.hostRef.relisId),
         );
         const plan = equipmentPlan(physicalSnapshots, activeBody, {
           itemId: item.id,
@@ -513,6 +524,20 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
             "Corps absent")
           : "",
         equipmentHost: physical.hostRef?.labelSnapshot ?? "",
+        equipmentSlots: slotSummary(physical.equipmentProfile ?? {}),
+        technicalNeeds: technicalSummary(
+          physical.equipmentProfile ?? {},
+          "requiredSlots",
+        ),
+        technicalCapacity: Object.entries(
+          physical.equipmentProfile?.providedSlots ?? {},
+        )
+          .filter(([, n]) => Number(n) > 0)
+          .map(
+            ([key, n]) =>
+              `${TECHNICAL_SLOTS[key] ?? key} : ${technicalUsage(physicalSnapshots, row.item)[key] ?? 0} / ${n}`,
+          )
+          .join(" ; "),
         equipmentTime: physical.equipmentProfile?.duration || "À arbitrer",
         type: row.item.type,
         typeLabel: game.i18n.localize(`TYPES.Item.${row.item.type}`),
@@ -554,7 +579,9 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
             ? "Au sol"
             : physical.hostRef?.labelSnapshot
               ? `Sur ${physical.hostRef.labelSnapshot}`
-              : "Inventaire principal",
+              : equipmentState(row.item) === "equipped"
+                ? slotSummary(physical.equipmentProfile ?? {})
+                : "Inventaire principal",
         isContainer: row.item.type === "container",
         childCount: row.childCount,
         pending: pendingState === "pending",

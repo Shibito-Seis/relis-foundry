@@ -1,3 +1,9 @@
+import {
+  BODY_SLOTS,
+  TECHNICAL_SLOTS,
+  slotProfileErrors,
+} from "../rules/equipment-slots";
+import { saveEquipmentProfile } from "../services/inventory";
 import { PHYSICAL_ITEM_TYPES } from "../data/item-defaults";
 
 const GROUPS: Record<
@@ -29,6 +35,10 @@ const GROUPS: Record<
     title: "Types d’hôte autorisés pour l’installation",
     labels: Object.fromEntries(PHYSICAL_ITEM_TYPES.map((type) => [type, type])),
   },
+  bodySlots: {
+    title: "Emplacements corporels occupés simultanément",
+    labels: BODY_SLOTS,
+  },
 };
 
 export function equipmentProfileGroups(
@@ -41,6 +51,10 @@ export function equipmentProfileGroups(
       key,
       title,
       count: selected.length,
+      emptyLabel:
+        key === "bodySlots"
+          ? "Aucun emplacement corporel déclaré."
+          : "Aucune restriction déclarée.",
       choices: [...new Set([...Object.keys(labels), ...selected])].map(
         (value) => ({
           value,
@@ -60,7 +74,16 @@ export function equipmentProfileGroups(
 export function equipmentProfileUpdate(
   root: ParentNode,
 ): Record<string, unknown> {
-  const patch: Record<string, unknown> = {};
+  const legacyConfirmation = root.querySelectorAll<HTMLInputElement>(
+    "[data-legacy-slots-confirm]",
+  )[0];
+  if (legacyConfirmation && !legacyConfirmation.checked)
+    throw new Error(
+      "Confirmez le remplacement de l’ancien emplacement après avoir vérifié les choix corporels et techniques.",
+    );
+  const patch: Record<string, unknown> = {
+    "system.physical.equipmentProfile.slotsConfigured": true,
+  };
   for (const key of Object.keys(GROUPS)) {
     patch[`system.physical.equipmentProfile.${key}`] = Array.from(
       root.querySelectorAll<HTMLInputElement>(`[data-profile-list="${key}"]`),
@@ -73,7 +96,7 @@ export function equipmentProfileUpdate(
   >("[data-profile-field]")) {
     const key = control.dataset.profileField;
     if (
-      !["family", "slot", "duration", "installable", "ordinaryLiquid"].includes(
+      !["family", "duration", "installable", "ordinaryLiquid"].includes(
         key ?? "",
       )
     )
@@ -83,6 +106,28 @@ export function equipmentProfileUpdate(
         ? (control as HTMLInputElement).checked
         : control.value.trim();
   }
+  for (const field of ["requiredSlots", "providedSlots"]) {
+    const controls = root.querySelectorAll<HTMLInputElement>(
+      `[data-profile-technical="${field}"]`,
+    );
+    for (const control of controls) {
+      const key = control.dataset.slotKey ?? "";
+      const value = control.value.trim() === "" ? 0 : Number(control.value);
+      if (
+        !Object.hasOwn(TECHNICAL_SLOTS, key) ||
+        !Number.isSafeInteger(value) ||
+        value < 0
+      )
+        throw new Error(
+          "Les capacités et besoins doivent être des entiers positifs ou nuls.",
+        );
+      patch[`system.physical.equipmentProfile.${field}.${key}`] = value;
+    }
+  }
+  const errors = slotProfileErrors({
+    bodySlots: patch["system.physical.equipmentProfile.bodySlots"],
+  });
+  if (errors.length) throw new Error(errors.join(" "));
   return patch;
 }
 
@@ -90,6 +135,8 @@ export function bindEquipmentProfile(
   root: HTMLElement,
   item: {
     isOwner: boolean;
+    id?: string;
+    parent?: Actor | null;
     update(data: Record<string, unknown>): Promise<unknown>;
   },
   reportError: (message: string) => void,
@@ -107,7 +154,7 @@ export function bindEquipmentProfile(
     if (!item.isOwner || button.disabled) return;
     button.disabled = true;
     try {
-      await item.update(equipmentProfileUpdate(section));
+      await saveEquipmentProfile(item, equipmentProfileUpdate(section));
       if (status) status.textContent = "Propriétés enregistrées.";
     } catch (error) {
       reportError(
@@ -119,4 +166,13 @@ export function bindEquipmentProfile(
       button.disabled = !item.isOwner;
     }
   });
+}
+
+export function technicalSlotRows(profile: Record<string, any>) {
+  return Object.entries(TECHNICAL_SLOTS).map(([key, label]) => ({
+    key,
+    label,
+    required: profile.requiredSlots?.[key] ?? 0,
+    provided: profile.providedSlots?.[key] ?? 0,
+  }));
 }
