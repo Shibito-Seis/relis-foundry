@@ -1,5 +1,6 @@
 import {
   BODY_SLOTS,
+  allowedBodySlots,
   TECHNICAL_SLOTS,
   slotProfileErrors,
 } from "../rules/equipment-slots";
@@ -44,8 +45,11 @@ const GROUPS: Record<
 export function equipmentProfileGroups(
   profile: Record<string, any>,
   localize = (value: string) => value,
+  itemType = "armor",
 ) {
-  return Object.entries(GROUPS).map(([key, { title, labels }]) => {
+  return Object.entries(GROUPS).map(([key, { title, labels: groupLabels }]) => {
+    const labels =
+      key === "bodySlots" ? allowedBodySlots(itemType) : groupLabels;
     const selected: string[] = Array.isArray(profile[key]) ? profile[key] : [];
     return {
       key,
@@ -55,17 +59,20 @@ export function equipmentProfileGroups(
         key === "bodySlots"
           ? "Aucun emplacement corporel déclaré."
           : "Aucune restriction déclarée.",
-      choices: [...new Set([...Object.keys(labels), ...selected])].map(
-        (value) => ({
-          value,
-          groupKey: key,
-          checked: selected.includes(value),
-          label:
-            key === "hostTypes" && value in labels
-              ? localize(`TYPES.Item.${value}`)
-              : (labels[value] ?? value),
-        }),
-      ),
+      choices: [
+        ...new Set([
+          ...Object.keys(labels),
+          ...(key === "bodySlots" ? [] : selected),
+        ]),
+      ].map((value) => ({
+        value,
+        groupKey: key,
+        checked: selected.includes(value),
+        label:
+          key === "hostTypes" && value in labels
+            ? localize(`TYPES.Item.${value}`)
+            : (labels[value] ?? value),
+      })),
     };
   });
 }
@@ -73,6 +80,7 @@ export function equipmentProfileGroups(
 /** Read live checkbox state, never serialized attributes or truthy form strings. */
 export function equipmentProfileUpdate(
   root: ParentNode,
+  itemType?: string,
 ): Record<string, unknown> {
   const legacyConfirmation = root.querySelectorAll<HTMLInputElement>(
     "[data-legacy-slots-confirm]",
@@ -124,9 +132,12 @@ export function equipmentProfileUpdate(
       patch[`system.physical.equipmentProfile.${field}.${key}`] = value;
     }
   }
-  const errors = slotProfileErrors({
-    bodySlots: patch["system.physical.equipmentProfile.bodySlots"],
-  });
+  const errors = slotProfileErrors(
+    {
+      bodySlots: patch["system.physical.equipmentProfile.bodySlots"],
+    },
+    itemType,
+  );
   if (errors.length) throw new Error(errors.join(" "));
   return patch;
 }
@@ -136,6 +147,7 @@ export function bindEquipmentProfile(
   item: {
     isOwner: boolean;
     id?: string;
+    type?: string;
     parent?: Actor | null;
     update(data: Record<string, unknown>): Promise<unknown>;
   },
@@ -154,7 +166,10 @@ export function bindEquipmentProfile(
     if (!item.isOwner || button.disabled) return;
     button.disabled = true;
     try {
-      await saveEquipmentProfile(item, equipmentProfileUpdate(section));
+      await saveEquipmentProfile(
+        item,
+        equipmentProfileUpdate(section, item.type),
+      );
       if (status) status.textContent = "Propriétés enregistrées.";
     } catch (error) {
       reportError(

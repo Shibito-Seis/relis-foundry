@@ -38,3 +38,23 @@ La recette 0.5.3 est validée. La clôture globale antérieure était trop large
 ## Règle de clôture
 
 Lire le canon avant le code et relire cette matrice avant toute clôture ; consigner chaque écart. La réussite de tests ne remplace ni l’exhaustivité du périmètre ni la recette utilisateur. Aucune étape supplémentaire n’est créée.
+
+## Correctif prioritaire 0.5.5 — retour utilisateur sur 0.5.4
+
+Le retour A.1–6 est positif, mais accompagné d’une régression bloquante entre exemplaires et d’une révision explicite des catégories. Le complément reste non clos ; B et C ne sont pas validés. Base inspectée : 6560d14, paquet public 0.5.4. Les constats historiques ci-dessus ne valent pas validation du correctif.
+
+| Exigence actuelle                                                       | Implémentation et contrôle                                                                                                                                                                       | Recette |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| Un profil appartient à un seul Item, pas à une catégorie, source ou lot | Initialisateurs de listes indépendants dans les modèles ; item-isolation.test.ts exerce les vrais schémas et les écritures en place ; inventory.test.ts vérifie les autres exemplaires inchangés | A.1–3   |
+| Plusieurs fiches ouvertes restent isolées                               | Gestionnaire limité à la section et à l’Item fourni ; contrôle DOM/Handlebars sans navigateur sur deux fiches et réouverture                                                                     | A.2     |
+| Arme : bouclier seulement ; armure : six emplacements défensifs         | allowedBodySlots, validation de profil monde/embarqué et contrôle au changement d’état ; tests equipment-profile et equipment-slots                                                              | A.4     |
+| Équipement : accessoires, sans armure ni bouclier                       | Collier/Bracelet/Anneau ; équipements sans emplacement toujours possibles pour les outils ; aucun reclassement automatique                                                                       | A.4     |
+| Dix anneaux ordinaires, saturation et libération                        | Compteur par corps et par Item équipé, capacité modifiable par le MJ ; onzième refusé, rangement libère, autre corps séparé                                                                      | B       |
+| Capacités de collier et bracelet                                        | Valeurs de fonctionnement 1 et 2, ajustables par corps ; elles ne sont pas une formule anatomique définitive ni un bonus cumulatif                                                               | B       |
+| Occupation multiple et bouclier                                         | Toutes les cases sélectionnées consomment une place ; un bouclier tenu ou équipé réserve Bouclier porté                                                                                          | B/C     |
+| Anciennes valeurs conservées                                            | Diagnostic des choix interdits ; correction explicite de la fiche ; aucun effacement, aucune conversion de type, aucune migration                                                                | A.5     |
+| Pas de régression des installations, ensembles, mains et permissions    | Suite existante et recette précédente conservées ; schéma 5, versions dynamiques, portraits et DialogV2                                                                                          | C       |
+
+Le défaut trouvé concerne les valeurs initiales `initial: []` réutilisables dans un schéma partagé. Le correctif emploie `initial: () => []`. Le test de contrat reproduit des modifications en place, conformément au comportement documenté de [ArrayField dans Foundry 14](https://foundryvtt.com/api/v14/classes/foundry.data.fields.ArrayField.html). Il ne constitue pas une exécution du runtime Foundry complet ni une inspection du monde Forge de l’utilisateur. La recette reste nécessaire pour confirmer la disparition du phénomène observé.
+
+Les valeurs déjà enregistrées avec une mauvaise sélection ne permettent pas de retrouver automatiquement l’intention initiale : aucune réparation supposée. Capacités d’accessoires dérivées de l’anatomie plus tard dans les lots du corps déjà prévus ; effets d’objets et profils canoniques en 10-E4-P. Aucune nouvelle étape.

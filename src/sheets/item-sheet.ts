@@ -1,4 +1,4 @@
-import { legacySlot } from "../rules/equipment-slots";
+import { legacySlot, slotProfileErrors } from "../rules/equipment-slots";
 import {
   equipmentProfileGroups,
   technicalSlotRows,
@@ -527,6 +527,18 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       technicalSlotRows: technicalSlotRows(
         system.physical?.equipmentProfile ?? {},
       ),
+      equipmentSlotHint:
+        this.item.type === "weapon"
+          ? "Cocher Bouclier porté uniquement si cet objet est un bouclier."
+          : this.item.type === "armor"
+            ? "Casques, protections de membres, combinaisons et exo-armures utilisent les emplacements d’armure."
+            : this.item.type === "equipment"
+              ? "Une case Anneau consomme une place parmi dix ; Bracelet une place parmi deux ; Collier une place. Capacités ajustables par corps par le MJ. Les outils peuvent ne déclarer aucun emplacement."
+              : "Aucun emplacement corporel pour ce type ; l’installation sur un hôte reste distincte.",
+      equipmentSlotErrors: slotProfileErrors(
+        system.physical?.equipmentProfile ?? {},
+        this.item.type,
+      ),
       legacyEquipmentSlot: legacySlot(system.physical?.equipmentProfile ?? {}),
       equipmentFamilies: {
         "": "Selon le type d’objet",
@@ -538,6 +550,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         ? equipmentProfileGroups(
             system.physical?.equipmentProfile ?? {},
             (value) => game.i18n.localize(value),
+            this.item.type,
           )
         : [],
       isContainer,

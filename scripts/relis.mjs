@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.5.4";
+var PACKAGE_VERSION = "0.5.5";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -333,8 +333,40 @@ var BODY_SLOTS = {
 	helmet: "Casque principal",
 	arms: "Protections de bras",
 	legs: "Jambières",
-	shield: "Bouclier porté"
+	shield: "Bouclier porté",
+	necklace: "Collier",
+	bracelet: "Bracelet",
+	ring: "Anneau"
 };
+/** Category restricts available choices; selections belong only to the Item. */
+function allowedBodySlots(type) {
+	return Object.fromEntries((type === "armor" ? [
+		"underlayer",
+		"armor",
+		"underhelmet",
+		"helmet",
+		"arms",
+		"legs"
+	] : type === "weapon" ? ["shield"] : type === "equipment" ? [
+		"necklace",
+		"bracelet",
+		"ring"
+	] : []).map((key) => [key, BODY_SLOTS[key]]));
+}
+var ACCESSORY_CAPACITIES = {
+	necklace: 1,
+	bracelet: 2,
+	ring: 10
+};
+function bodySlotCapacity(key, carrying = {}) {
+	const value = carrying.accessorySlots?.[key] ?? ACCESSORY_CAPACITIES[key] ?? 1;
+	return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+}
+/** Equipped accessories and held shields reserve their slots; storage does not. */
+function occupiesBodySlot(item, key) {
+	const p = item.system.physical ?? {};
+	return bodySlots(p.equipmentProfile ?? {}).includes(key) && (p.equipState === "equipped" || key === "shield" && p.equipState === "readied");
+}
 /** Bible 41.53: a host provides quantities, a module requires quantities. */
 var TECHNICAL_SLOTS = {
 	muzzle: "Bouche",
@@ -359,10 +391,11 @@ function bodySlots(profile) {
 function legacySlot(profile) {
 	return !profile.slotsConfigured ? String(profile.slot ?? "").trim() : "";
 }
-function slotProfileErrors(profile) {
+function slotProfileErrors(profile, type) {
 	const errors = [];
 	if (profile.bodySlots != null && !Array.isArray(profile.bodySlots)) errors.push("Liste d’emplacements corporels invalide.");
 	for (const key of bodySlots(profile)) if (!Object.hasOwn(BODY_SLOTS, key)) errors.push(`Emplacement corporel inconnu : ${key}.`);
+	else if (type !== void 0 && !Object.hasOwn(allowedBodySlots(type), key)) errors.push(`${BODY_SLOTS[key]} : emplacement interdit pour ce type d’objet (${type}). Reconfigurer cette fiche Item.`);
 	for (const field of ["requiredSlots", "providedSlots"]) for (const [key, value] of Object.entries(profile[field] ?? {})) if (!Object.hasOwn(TECHNICAL_SLOTS, key) || !Number.isSafeInteger(value) || Number(value) < 0) errors.push(`Emplacement technique invalide : ${key} (entier positif ou nul requis).`);
 	return errors;
 }
@@ -1229,7 +1262,7 @@ function referenceField$1() {
 function referenceArrayField$1() {
 	return new fields$1.ArrayField(referenceField$1(), {
 		required: true,
-		initial: []
+		initial: () => []
 	});
 }
 function fictionStampField$1() {
@@ -1284,7 +1317,7 @@ function itemMetaField() {
 		causeRefs: referenceArrayField$1(),
 		tags: new fields$1.ArrayField(new fields$1.StringField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		})
 	});
 }
@@ -1306,7 +1339,7 @@ function provenanceField() {
 		}),
 		manualOverrides: new fields$1.ArrayField(new fields$1.StringField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		upgradeState: new fields$1.StringField({
 			required: true,
@@ -1382,7 +1415,7 @@ function physicalField() {
 			}),
 			bodySlots: new fields$1.ArrayField(new fields$1.StringField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			requiredSlots: new fields$1.SchemaField(Object.fromEntries(Object.keys(TECHNICAL_SLOTS).map((key) => [key, new fields$1.NumberField({
 				required: true,
@@ -1399,15 +1432,15 @@ function physicalField() {
 			duration: optionalStringField$1(),
 			sizes: new fields$1.ArrayField(new fields$1.StringField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			natures: new fields$1.ArrayField(new fields$1.StringField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			hostTypes: new fields$1.ArrayField(new fields$1.StringField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			installable: new fields$1.BooleanField({
 				required: true,
@@ -1459,7 +1492,7 @@ var RelisItemData = class extends foundry.abstract.TypeDataModel {
 			}),
 			traits: new fields$1.ArrayField(new fields$1.StringField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			requirementRefs: referenceArrayField$1(),
 			effectRefs: referenceArrayField$1(),
@@ -1630,7 +1663,7 @@ function attributeField() {
 		}),
 		modifiers: new fields.ArrayField(modifierField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		})
 	});
 }
@@ -1652,7 +1685,7 @@ function skillField(defaultAttribute) {
 		}),
 		modifiers: new fields.ArrayField(modifierField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		})
 	});
 }
@@ -1732,7 +1765,7 @@ function referenceField() {
 function referenceArrayField() {
 	return new fields.ArrayField(referenceField(), {
 		required: true,
-		initial: []
+		initial: () => []
 	});
 }
 function measurementField(unit = "count") {
@@ -1880,7 +1913,7 @@ function identityField() {
 		callsign: optionalStringField(),
 		aliases: new fields.ArrayField(stableTextEntryField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		languages: referenceArrayField(),
 		cultureRefs: referenceArrayField(),
@@ -1909,7 +1942,7 @@ function identityField() {
 		}),
 		goals: new fields.ArrayField(stableTextEntryField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		anchors: referenceArrayField()
 	});
@@ -1928,7 +1961,7 @@ function buildField() {
 			sourceRef: referenceField()
 		}), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		advantageRefs: referenceArrayField(),
 		drawbackRefs: referenceArrayField()
@@ -1949,6 +1982,16 @@ function ageField() {
 function bodyField() {
 	return new fields.SchemaField({
 		carrying: new fields.SchemaField({
+			accessorySlots: new fields.SchemaField(Object.fromEntries(Object.entries({
+				necklace: 1,
+				bracelet: 2,
+				ring: 10
+			}).map(([key, initial]) => [key, new fields.NumberField({
+				required: true,
+				integer: true,
+				min: 0,
+				initial
+			})]))),
 			hands: new fields.NumberField({
 				required: false,
 				nullable: true,
@@ -1993,7 +2036,7 @@ function bodyField() {
 		}),
 		criticalFunctions: new fields.ArrayField(stableTextEntryField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		locations: new fields.ArrayField(stableTextEntryField(), {
 			required: true,
@@ -2007,7 +2050,7 @@ function bodyField() {
 		}),
 		needs: new fields.ArrayField(needField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		integratedItemRefs: referenceArrayField()
 	});
@@ -2057,7 +2100,7 @@ function outfitField() {
 			hostId: optionalStringField()
 		}), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		id: optionalStringField(),
 		sort: new fields.NumberField({
@@ -2074,7 +2117,7 @@ function outfitField() {
 		function: optionalStringField(),
 		bodyIds: new fields.ArrayField(new fields.StringField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		}),
 		itemRefs: referenceArrayField(),
 		containerRefs: referenceArrayField(),
@@ -2087,7 +2130,7 @@ function outfitField() {
 		}),
 		conflicts: new fields.ArrayField(new fields.StringField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		})
 	});
 }
@@ -2133,7 +2176,7 @@ function defensesField() {
 		}),
 		resistances: new fields.ArrayField(stableTextEntryField(), {
 			required: true,
-			initial: []
+			initial: () => []
 		})
 	});
 }
@@ -2212,12 +2255,12 @@ var PersonData = class extends ReservedData {
 			}),
 			outfits: new fields.ArrayField(outfitField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			defenses: defensesField(),
 			movements: new fields.ArrayField(movementField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			turn: new fields.SchemaField({
 				actionsCurrent: new fields.NumberField({
@@ -2234,21 +2277,21 @@ var PersonData = class extends ReservedData {
 			health: healthField(),
 			needs: new fields.ArrayField(needField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			energyPools: new fields.ArrayField(resourcePoolField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			biometricSummary: new fields.SchemaField({
 				state: optionalStringField(),
 				alerts: new fields.ArrayField(new fields.StringField(), {
 					required: true,
-					initial: []
+					initial: () => []
 				}),
 				limitations: new fields.ArrayField(new fields.StringField(), {
 					required: true,
-					initial: []
+					initial: () => []
 				}),
 				updatedAt: fictionStampField()
 			}),
@@ -2323,11 +2366,11 @@ var CharacterData = class extends PersonData {
 			progression: new fields.SchemaField({
 				pendingChoices: new fields.ArrayField(stableTextEntryField(), {
 					required: true,
-					initial: []
+					initial: () => []
 				}),
 				automaticGrants: new fields.ArrayField(stableTextEntryField(), {
 					required: true,
-					initial: []
+					initial: () => []
 				}),
 				historyRefs: referenceArrayField(),
 				mythicStars: new fields.NumberField({
@@ -2359,7 +2402,7 @@ var NpcData = class extends PersonData {
 			behavior: new fields.SchemaField({
 				tactics: new fields.ArrayField(new fields.StringField(), {
 					required: true,
-					initial: []
+					initial: () => []
 				}),
 				retreatThreshold: new fields.NumberField({
 					required: false,
@@ -2370,11 +2413,11 @@ var NpcData = class extends PersonData {
 				surrender: optionalStringField(),
 				priorities: new fields.ArrayField(new fields.StringField(), {
 					required: true,
-					initial: []
+					initial: () => []
 				}),
 				limits: new fields.ArrayField(new fields.StringField(), {
 					required: true,
-					initial: []
+					initial: () => []
 				})
 			}),
 			promotion: new fields.SchemaField({ sourceCharacterRef: referenceField() })
@@ -2397,7 +2440,7 @@ var RelisEffectData = class extends foundry.abstract.TypeDataModel {
 				value: optionalStringField()
 			}), {
 				required: true,
-				initial: []
+				initial: () => []
 			}),
 			meta: metaField(),
 			sourceRef: new fields.StringField({
@@ -2495,7 +2538,7 @@ var RelisCardData = class extends foundry.abstract.TypeDataModel {
 			}),
 			rollBreakdown: new fields.ArrayField(new fields.StringField(), {
 				required: true,
-				initial: []
+				initial: () => []
 			})
 		};
 	}
@@ -3618,6 +3661,7 @@ function equipmentStates(item) {
 		"equipped",
 		"ground"
 	] : ["stored", "ground"];
+	if (item.type === "weapon" && bodySlots(profile).includes("shield") && !states.includes("equipped")) states.push("equipped");
 	if (profile.installable === true) states.push("installed");
 	if (!states.includes("stored")) states.unshift("stored");
 	return states;
@@ -3707,13 +3751,14 @@ function equipmentPlan(items, body, request) {
 	if (hands && others.some((entry) => equipmentState(entry) === "readied")) errors.push("Préciser d’abord les mains des objets anciennement préparés.");
 	if (hands && (body.carrying?.hands == null || !Number.isInteger(Number(body.carrying.hands)) || Number(body.carrying.hands) < 0)) errors.push("Nombre de mains utilisables non renseigné pour ce corps.");
 	else if (hands && usedHands + hands > Number(body.carrying?.hands)) errors.push("Mains utilisables insuffisantes.");
-	if (active) errors.push(...slotProfileErrors(profile));
-	if (state === "equipped") {
+	if (active) errors.push(...slotProfileErrors(profile, item.type));
+	if (state === "equipped" || state.startsWith("held-") && bodySlots(profile).includes("shield")) {
 		if (others.some((entry) => equipmentState(entry) === "equipped" && legacySlot(entry.system.physical?.equipmentProfile ?? {}))) errors.push("Reconfigurer les anciens emplacements des autres objets équipés avant d’équiper une nouvelle pièce.");
 		if (legacySlot(profile)) errors.push("Ancien emplacement corporel à reconfigurer dans la fiche Item.");
 		for (const key of bodySlots(profile)) {
-			const conflicts = others.filter((entry) => equipmentState(entry) === "equipped" && bodySlots(entry.system.physical?.equipmentProfile ?? {}).includes(key));
-			if (conflicts.length) errors.push(`${BODY_SLOTS[key] ?? key} : emplacement occupé par ${conflicts.map((entry) => entry.name).join(", ")}.`);
+			const conflicts = others.filter((entry) => occupiesBodySlot(entry, key));
+			const capacity = bodySlotCapacity(key, body.carrying);
+			if (conflicts.length + 1 > capacity) errors.push(`${BODY_SLOTS[key] ?? key} : emplacement occupé, ${conflicts.length}/${capacity} place(s), par ${conflicts.map((entry) => entry.name).join(", ") || "aucun objet (capacité nulle)"}.`);
 		}
 		if (legacySlot(profile) && others.some((entry) => equipmentState(entry) === "equipped" && legacySlot(entry.system.physical?.equipmentProfile ?? {}) === legacySlot(profile))) errors.push("Ancien emplacement d’équipement déjà occupé.");
 	}
@@ -4274,19 +4319,8 @@ async function recoverPendingInventoryTransfers() {
 /** Profile edits share the inventory lock and cannot silently invalidate equipment. */
 async function saveEquipmentProfile(item, patch) {
 	if (!item.isOwner) throw new Error("Vous ne pouvez pas modifier cet objet.");
-	const actor = item.parent;
-	if (!actor) {
-		await item.update(patch);
-		return;
-	}
-	await withActorLocks([actor], async () => {
-		assertActorPermission(actor);
-		if (!item.isOwner) throw new Error("Vous ne pouvez pas modifier cet objet.");
-		const before = actorSnapshots(actor);
-		const after = JSON.parse(JSON.stringify(before));
-		const target = after.find((entry) => entry.id === item.id);
-		if (!target) throw new Error("Objet absent de l’inventaire.");
-		const profile = target.system.physical.equipmentProfile ??= {};
+	const updatedProfile = (source, type) => {
+		const profile = JSON.parse(JSON.stringify(source ?? {}));
 		for (const [path, value] of Object.entries(patch)) {
 			if (!path.startsWith("system.physical.equipmentProfile.")) throw new Error("Champ hors du profil d’équipement.");
 			const keys = path.slice(33).split(".");
@@ -4297,8 +4331,26 @@ async function saveEquipmentProfile(item, patch) {
 			].includes(key))) throw new Error("Champ invalide.");
 			let current = profile;
 			for (const key of keys.slice(0, -1)) current = current[key] ??= {};
-			current[keys.at(-1)] = value;
+			current[keys.at(-1)] = JSON.parse(JSON.stringify(value));
 		}
+		const errors = slotProfileErrors(profile, type);
+		if (errors.length) throw new Error(errors.join(" "));
+		return profile;
+	};
+	const actor = item.parent;
+	if (!actor) {
+		updatedProfile(item.system?.physical?.equipmentProfile ?? {}, item.type);
+		await item.update(patch);
+		return;
+	}
+	await withActorLocks([actor], async () => {
+		assertActorPermission(actor);
+		if (!item.isOwner) throw new Error("Vous ne pouvez pas modifier cet objet.");
+		const before = actorSnapshots(actor);
+		const after = JSON.parse(JSON.stringify(before));
+		const target = after.find((entry) => entry.id === item.id);
+		if (!target) throw new Error("Objet absent de l’inventaire.");
+		target.system.physical.equipmentProfile = updatedProfile(target.system.physical.equipmentProfile, target.type);
 		const bodies = Array.from(actor.system.bodies ?? []);
 		const inspect = (items) => items.flatMap((entry) => {
 			const p = entry.system.physical ?? {};
@@ -5173,6 +5225,26 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		dialogNote(content, "Renseigner les valeurs de la règle applicable ou une décision MJ. Laisser vide lorsqu’elles sont inconnues ; aucune formule automatique n’est supposée.");
 		dialogOptional(content, "Nombre de mains utilisables", "hands", profile.hands, true);
 		content.querySelector("[name=\"hands\"]").step = "1";
+		for (const [key, label, fallback] of [
+			[
+				"necklace",
+				"Places de colliers",
+				1
+			],
+			[
+				"bracelet",
+				"Places de bracelets",
+				2
+			],
+			[
+				"ring",
+				"Places d’anneaux",
+				10
+			]
+		]) {
+			dialogOptional(content, label, key, profile.accessorySlots?.[key] ?? fallback, true);
+			content.querySelector(`[name="${key}"]`).step = "1";
+		}
 		dialogOptional(content, "Chargé à partir de (kg)", "loaded", profile.loaded, true);
 		dialogOptional(content, "Surchargé à partir de (kg)", "overloaded", profile.overloaded, true);
 		dialogText(content, "Source de la règle ou décision MJ", "source", profile.source || "Décision MJ");
@@ -5183,8 +5255,15 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		if (hands !== null && (!Number.isInteger(hands) || hands < 0)) throw new Error("Le nombre de mains doit être un entier positif ou nul.");
 		if (loaded === null !== (overloaded === null) || loaded !== null && (!Number.isFinite(loaded) || loaded <= 0 || !Number.isFinite(overloaded) || overloaded <= loaded)) throw new Error("Renseigner les deux seuils positifs, avec Surchargé supérieur à Chargé.");
 		if (JSON.stringify(Array.from(this.actor.system.bodies ?? [])) !== before) throw new Error("Le corps a changé : rouvrir la configuration.");
+		const accessorySlots = Object.fromEntries([
+			"necklace",
+			"bracelet",
+			"ring"
+		].map((key) => [key, Number(result[key])]));
+		if (Object.values(accessorySlots).some((value) => !Number.isSafeInteger(value) || value < 0)) throw new Error("Les places d’accessoires doivent être des entiers positifs ou nuls.");
 		body.carrying = {
 			...profile,
+			accessorySlots,
 			hands,
 			loaded,
 			overloaded,
@@ -5379,15 +5458,16 @@ var GROUPS = {
 		labels: BODY_SLOTS
 	}
 };
-function equipmentProfileGroups(profile, localize = (value) => value) {
-	return Object.entries(GROUPS).map(([key, { title, labels }]) => {
+function equipmentProfileGroups(profile, localize = (value) => value, itemType = "armor") {
+	return Object.entries(GROUPS).map(([key, { title, labels: groupLabels }]) => {
+		const labels = key === "bodySlots" ? allowedBodySlots(itemType) : groupLabels;
 		const selected = Array.isArray(profile[key]) ? profile[key] : [];
 		return {
 			key,
 			title,
 			count: selected.length,
 			emptyLabel: key === "bodySlots" ? "Aucun emplacement corporel déclaré." : "Aucune restriction déclarée.",
-			choices: [.../* @__PURE__ */ new Set([...Object.keys(labels), ...selected])].map((value) => ({
+			choices: [.../* @__PURE__ */ new Set([...Object.keys(labels), ...key === "bodySlots" ? [] : selected])].map((value) => ({
 				value,
 				groupKey: key,
 				checked: selected.includes(value),
@@ -5397,7 +5477,7 @@ function equipmentProfileGroups(profile, localize = (value) => value) {
 	});
 }
 /** Read live checkbox state, never serialized attributes or truthy form strings. */
-function equipmentProfileUpdate(root) {
+function equipmentProfileUpdate(root, itemType) {
 	const legacyConfirmation = root.querySelectorAll("[data-legacy-slots-confirm]")[0];
 	if (legacyConfirmation && !legacyConfirmation.checked) throw new Error("Confirmez le remplacement de l’ancien emplacement après avoir vérifié les choix corporels et techniques.");
 	const patch = { "system.physical.equipmentProfile.slotsConfigured": true };
@@ -5421,7 +5501,7 @@ function equipmentProfileUpdate(root) {
 			patch[`system.physical.equipmentProfile.${field}.${key}`] = value;
 		}
 	}
-	const errors = slotProfileErrors({ bodySlots: patch["system.physical.equipmentProfile.bodySlots"] });
+	const errors = slotProfileErrors({ bodySlots: patch["system.physical.equipmentProfile.bodySlots"] }, itemType);
 	if (errors.length) throw new Error(errors.join(" "));
 	return patch;
 }
@@ -5437,7 +5517,7 @@ function bindEquipmentProfile(root, item, reportError) {
 		if (!item.isOwner || button.disabled) return;
 		button.disabled = true;
 		try {
-			await saveEquipmentProfile(item, equipmentProfileUpdate(section));
+			await saveEquipmentProfile(item, equipmentProfileUpdate(section, item.type));
 			if (status) status.textContent = "Propriétés enregistrées.";
 		} catch (error) {
 			reportError(error instanceof Error ? error.message : "Les propriétés n’ont pas pu être enregistrées.");
@@ -5801,6 +5881,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			isAction: this.item.type === "action",
 			hasPhysical,
 			technicalSlotRows: technicalSlotRows(system.physical?.equipmentProfile ?? {}),
+			equipmentSlotHint: this.item.type === "weapon" ? "Cocher Bouclier porté uniquement si cet objet est un bouclier." : this.item.type === "armor" ? "Casques, protections de membres, combinaisons et exo-armures utilisent les emplacements d’armure." : this.item.type === "equipment" ? "Une case Anneau consomme une place parmi dix ; Bracelet une place parmi deux ; Collier une place. Capacités ajustables par corps par le MJ. Les outils peuvent ne déclarer aucun emplacement." : "Aucun emplacement corporel pour ce type ; l’installation sur un hôte reste distincte.",
+			equipmentSlotErrors: slotProfileErrors(system.physical?.equipmentProfile ?? {}, this.item.type),
 			legacyEquipmentSlot: legacySlot(system.physical?.equipmentProfile ?? {}),
 			equipmentFamilies: {
 				"": "Selon le type d’objet",
@@ -5808,7 +5890,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				wearable: "Équipement portable",
 				resource: "Ressource ou consommable"
 			},
-			equipmentProfileGroups: hasPhysical ? equipmentProfileGroups(system.physical?.equipmentProfile ?? {}, (value) => game.i18n.localize(value)) : [],
+			equipmentProfileGroups: hasPhysical ? equipmentProfileGroups(system.physical?.equipmentProfile ?? {}, (value) => game.i18n.localize(value), this.item.type) : [],
 			isContainer,
 			applicability,
 			hasCatalog: hasCatalogFields(applicability),

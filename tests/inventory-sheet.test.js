@@ -71,7 +71,12 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(sheet).toContain("editable: this.actor.isOwner");
   });
   it("affiche la version dynamique sans migration", () => {
-    expect(PACKAGE_VERSION).toBe("0.5.4");
+    expect(PACKAGE_VERSION).toBe(
+      JSON.parse(readFileSync("system.json", "utf8")).version,
+    );
+    expect(PACKAGE_VERSION).toBe(
+      JSON.parse(readFileSync("package.json", "utf8")).version,
+    );
     expect(SCHEMA_VERSION).toBe("5");
     expect(sheet).toContain("packageVersion: PACKAGE_VERSION");
     expect(template).toMatch(

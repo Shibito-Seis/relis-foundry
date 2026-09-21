@@ -9,7 +9,47 @@ export const BODY_SLOTS: Record<string, string> = {
   arms: "Protections de bras",
   legs: "Jambières",
   shield: "Bouclier porté",
+  necklace: "Collier",
+  bracelet: "Bracelet",
+  ring: "Anneau",
 };
+/** Category restricts available choices; selections belong only to the Item. */
+export function allowedBodySlots(type: string): Record<string, string> {
+  const keys =
+    type === "armor"
+      ? ["underlayer", "armor", "underhelmet", "helmet", "arms", "legs"]
+      : type === "weapon"
+        ? ["shield"]
+        : type === "equipment"
+          ? ["necklace", "bracelet", "ring"]
+          : [];
+  return Object.fromEntries(keys.map((key) => [key, BODY_SLOTS[key]!]));
+}
+export const ACCESSORY_CAPACITIES: Record<string, number> = {
+  necklace: 1,
+  bracelet: 2,
+  ring: 10,
+};
+export function bodySlotCapacity(
+  key: string,
+  carrying: Record<string, any> = {},
+): number {
+  const value =
+    carrying.accessorySlots?.[key] ?? ACCESSORY_CAPACITIES[key] ?? 1;
+  return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+}
+/** Equipped accessories and held shields reserve their slots; storage does not. */
+export function occupiesBodySlot(
+  item: InventoryItemLike,
+  key: string,
+): boolean {
+  const p = item.system.physical ?? {};
+  return (
+    bodySlots(p.equipmentProfile ?? {}).includes(key) &&
+    (p.equipState === "equipped" ||
+      (key === "shield" && p.equipState === "readied"))
+  );
+}
 /** Bible 41.53: a host provides quantities, a module requires quantities. */
 export const TECHNICAL_SLOTS: Record<string, string> = {
   muzzle: "Bouche",
@@ -36,13 +76,21 @@ export function bodySlots(profile: Record<string, any>): string[] {
 export function legacySlot(profile: Record<string, any>): string {
   return !profile.slotsConfigured ? String(profile.slot ?? "").trim() : "";
 }
-export function slotProfileErrors(profile: Record<string, any>): string[] {
+export function slotProfileErrors(
+  profile: Record<string, any>,
+  type?: string,
+): string[] {
   const errors: string[] = [];
   if (profile.bodySlots != null && !Array.isArray(profile.bodySlots))
     errors.push("Liste d’emplacements corporels invalide.");
-  for (const key of bodySlots(profile))
+  for (const key of bodySlots(profile)) {
     if (!Object.hasOwn(BODY_SLOTS, key))
       errors.push(`Emplacement corporel inconnu : ${key}.`);
+    else if (type !== undefined && !Object.hasOwn(allowedBodySlots(type), key))
+      errors.push(
+        `${BODY_SLOTS[key]} : emplacement interdit pour ce type d’objet (${type}). Reconfigurer cette fiche Item.`,
+      );
+  }
   for (const field of ["requiredSlots", "providedSlots"]) {
     for (const [key, value] of Object.entries(profile[field] ?? {})) {
       if (

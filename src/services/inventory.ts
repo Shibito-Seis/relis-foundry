@@ -1,4 +1,4 @@
-import { installedOn } from "../rules/equipment-slots";
+import { installedOn, slotProfileErrors } from "../rules/equipment-slots";
 import {
   createWorldItemId,
   initialReference,
@@ -840,6 +840,8 @@ export function inventoryDiagnostics(actor: ActorLike): string[] {
 export async function saveEquipmentProfile(
   item: {
     id?: string;
+    type?: string;
+    system?: Record<string, any>;
     isOwner: boolean;
     parent?: Actor | null;
     update(data: Record<string, unknown>): Promise<unknown>;
@@ -847,20 +849,8 @@ export async function saveEquipmentProfile(
   patch: Record<string, unknown>,
 ): Promise<void> {
   if (!item.isOwner) throw new Error("Vous ne pouvez pas modifier cet objet.");
-  const actor = item.parent as ActorLike | undefined;
-  if (!actor) {
-    await item.update(patch);
-    return;
-  }
-  await withActorLocks([actor], async () => {
-    assertActorPermission(actor);
-    if (!item.isOwner)
-      throw new Error("Vous ne pouvez pas modifier cet objet.");
-    const before = actorSnapshots(actor);
-    const after: InventoryItemLike[] = JSON.parse(JSON.stringify(before));
-    const target = after.find((entry) => entry.id === item.id);
-    if (!target) throw new Error("Objet absent de l’inventaire.");
-    const profile = (target.system.physical.equipmentProfile ??= {});
+  const updatedProfile = (source: Record<string, any>, type?: string) => {
+    const profile = JSON.parse(JSON.stringify(source ?? {}));
     for (const [path, value] of Object.entries(patch)) {
       const prefix = "system.physical.equipmentProfile.";
       if (!path.startsWith(prefix))
@@ -874,8 +864,30 @@ export async function saveEquipmentProfile(
         throw new Error("Champ invalide.");
       let current = profile;
       for (const key of keys.slice(0, -1)) current = current[key] ??= {};
-      current[keys.at(-1)!] = value;
+      current[keys.at(-1)!] = JSON.parse(JSON.stringify(value));
     }
+    const errors = slotProfileErrors(profile, type);
+    if (errors.length) throw new Error(errors.join(" "));
+    return profile;
+  };
+  const actor = item.parent as ActorLike | undefined;
+  if (!actor) {
+    updatedProfile(item.system?.physical?.equipmentProfile ?? {}, item.type);
+    await item.update(patch);
+    return;
+  }
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    if (!item.isOwner)
+      throw new Error("Vous ne pouvez pas modifier cet objet.");
+    const before = actorSnapshots(actor);
+    const after: InventoryItemLike[] = JSON.parse(JSON.stringify(before));
+    const target = after.find((entry) => entry.id === item.id);
+    if (!target) throw new Error("Objet absent de l’inventaire.");
+    target.system.physical.equipmentProfile = updatedProfile(
+      target.system.physical.equipmentProfile,
+      target.type,
+    );
     const bodies = Array.from(actor.system.bodies ?? []) as EquipmentBody[];
     const inspect = (items: InventoryItemLike[]) =>
       items.flatMap((entry) => {

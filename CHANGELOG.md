@@ -1,5 +1,14 @@
 # Journal des versions
 
+## 0.5.5 — Isolation des exemplaires et emplacements par type
+
+- Remplace les tableaux initiaux mutables par des fabriques de listes indépendantes dans les modèles ; protège les mises à jour en place de Foundry 14.
+- Filtre et valide les emplacements par type : bouclier pour les armes, six emplacements défensifs pour les armures, collier/bracelet/anneau pour les équipements.
+- Compte les accessoires par corps (1 collier, 2 bracelets, 10 anneaux par défaut, ajustables par le MJ) et les boucliers portés ou tenus ; refus explicites.
+- Vérifie aussi les profils des Items monde ; conserve les anciennes valeurs incompatibles avec diagnostic pour correction explicite.
+- Tests d’isolation entre exemplaires de même catégorie/source/lot, fiches simultanées, permissions et saturation des places.
+- Schéma 5 conservé, dépendances inchangées ; 10-E3-P toujours en recette, blocs B/C de 0.5.4 non validés.
+
 ## 0.5.4 — Complément 10-E3-P : emplacements structurés
 
 - Sept emplacements corporels canoniques en sélection multiple, distincts de la couverture. Conflits nommés, occupation simultanée et ensembles stricts/assistés contrôlés.

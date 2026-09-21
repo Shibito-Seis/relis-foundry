@@ -415,10 +415,50 @@ describe("opérations d’équipement avec aperçu et récupération", () => {
       }),
     ).rejects.toThrow(/modifier/);
   });
+  it("modifie un seul exemplaire malgré une catégorie, source et lot communs", async () => {
+    const actor = new MockActor("pj"),
+      other = new MockActor("pnj");
+    const a = Object.assign(actor.add(inventoryItem("a", "armor")), {
+      isOwner: true,
+    });
+    const b = actor.add(inventoryItem("b", "armor"));
+    const c = other.add(inventoryItem("c", "armor"));
+    const snapshots = [b.toObject(), c.toObject()];
+    await saveEquipmentProfile(a as any, {
+      "system.physical.equipmentProfile.bodySlots": ["legs"],
+    });
+    expect(a.system.physical.equipmentProfile.bodySlots).toEqual(["legs"]);
+    expect([b.toObject(), c.toObject()]).toEqual(snapshots);
+    await saveEquipmentProfile(a as any, {
+      "system.physical.equipmentProfile.bodySlots": ["helmet"],
+    });
+    expect([b.toObject(), c.toObject()]).toEqual(snapshots);
+  });
+  it("refuse une sélection interdite dans un Item monde avant toute écriture", async () => {
+    let written = false;
+    const world = {
+      type: "weapon",
+      isOwner: true,
+      system: {},
+      update: async () => {
+        written = true;
+      },
+    };
+    await expect(
+      saveEquipmentProfile(world, {
+        "system.physical.equipmentProfile.bodySlots": ["armor"],
+      }),
+    ).rejects.toThrow(/interdit/);
+    expect(written).toBe(false);
+    await saveEquipmentProfile(world, {
+      "system.physical.equipmentProfile.bodySlots": ["shield"],
+    });
+    expect(written).toBe(true);
+  });
   it("refuse un changement de profil qui crée un conflit corporel", async () => {
     const actor = new MockActor("a");
-    const a = actor.add(inventoryItem("a"));
-    const b = actor.add(inventoryItem("b"));
+    const a = actor.add(inventoryItem("a", "armor"));
+    const b = actor.add(inventoryItem("b", "armor"));
     Object.assign(a.system.physical, {
       equipState: "equipped",
       bodyId: "primary",

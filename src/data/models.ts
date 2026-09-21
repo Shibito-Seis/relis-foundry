@@ -74,7 +74,7 @@ function attributeField(): any {
     partial: new fields.BooleanField({ required: true, initial: false }),
     modifiers: new fields.ArrayField(modifierField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
   });
 }
@@ -94,7 +94,7 @@ function skillField(defaultAttribute: string): any {
     favorite: new fields.BooleanField({ required: true, initial: false }),
     modifiers: new fields.ArrayField(modifierField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
   });
 }
@@ -169,7 +169,7 @@ function referenceField(): any {
 function referenceArrayField(): any {
   return new fields.ArrayField(referenceField(), {
     required: true,
-    initial: [],
+    initial: () => [],
   });
 }
 
@@ -320,7 +320,7 @@ function identityField(): any {
     callsign: optionalStringField(),
     aliases: new fields.ArrayField(stableTextEntryField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
     languages: referenceArrayField(),
     cultureRefs: referenceArrayField(),
@@ -349,7 +349,7 @@ function identityField(): any {
     }),
     goals: new fields.ArrayField(stableTextEntryField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
     anchors: referenceArrayField(),
   });
@@ -369,7 +369,7 @@ function buildField(): any {
         rank: optionalStringField(),
         sourceRef: referenceField(),
       }),
-      { required: true, initial: [] },
+      { required: true, initial: () => [] },
     ),
     advantageRefs: referenceArrayField(),
     drawbackRefs: referenceArrayField(),
@@ -392,6 +392,21 @@ function ageField(): any {
 function bodyField(): any {
   return new fields.SchemaField({
     carrying: new fields.SchemaField({
+      accessorySlots: new fields.SchemaField(
+        Object.fromEntries(
+          Object.entries({ necklace: 1, bracelet: 2, ring: 10 }).map(
+            ([key, initial]) => [
+              key,
+              new fields.NumberField({
+                required: true,
+                integer: true,
+                min: 0,
+                initial,
+              }),
+            ],
+          ),
+        ),
+      ),
       hands: new fields.NumberField({
         required: false,
         nullable: true,
@@ -436,7 +451,7 @@ function bodyField(): any {
     }),
     criticalFunctions: new fields.ArrayField(stableTextEntryField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
     locations: new fields.ArrayField(stableTextEntryField(), {
       required: true,
@@ -452,7 +467,7 @@ function bodyField(): any {
     }),
     needs: new fields.ArrayField(needField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
     integratedItemRefs: referenceArrayField(),
   });
@@ -498,7 +513,7 @@ function outfitField(): any {
         state: optionalStringField(),
         hostId: optionalStringField(),
       }),
-      { required: true, initial: [] },
+      { required: true, initial: () => [] },
     ),
     id: optionalStringField(),
     sort: new fields.NumberField({
@@ -515,7 +530,7 @@ function outfitField(): any {
     function: optionalStringField(),
     bodyIds: new fields.ArrayField(new fields.StringField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
     itemRefs: referenceArrayField(),
     containerRefs: referenceArrayField(),
@@ -528,7 +543,7 @@ function outfitField(): any {
     }),
     conflicts: new fields.ArrayField(new fields.StringField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
   });
 }
@@ -572,7 +587,7 @@ function defensesField(): any {
     }),
     resistances: new fields.ArrayField(stableTextEntryField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
   });
 }
@@ -661,12 +676,12 @@ export class PersonData extends ReservedData {
       }),
       outfits: new fields.ArrayField(outfitField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       defenses: defensesField(),
       movements: new fields.ArrayField(movementField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       turn: new fields.SchemaField({
         actionsCurrent: new fields.NumberField({
@@ -683,21 +698,21 @@ export class PersonData extends ReservedData {
       health: healthField(),
       needs: new fields.ArrayField(needField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       energyPools: new fields.ArrayField(resourcePoolField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       biometricSummary: new fields.SchemaField({
         state: optionalStringField(),
         alerts: new fields.ArrayField(new fields.StringField(), {
           required: true,
-          initial: [],
+          initial: () => [],
         }),
         limitations: new fields.ArrayField(new fields.StringField(), {
           required: true,
-          initial: [],
+          initial: () => [],
         }),
         updatedAt: fictionStampField(),
       }),
@@ -797,11 +812,11 @@ export class CharacterData extends PersonData {
       progression: new fields.SchemaField({
         pendingChoices: new fields.ArrayField(stableTextEntryField(), {
           required: true,
-          initial: [],
+          initial: () => [],
         }),
         automaticGrants: new fields.ArrayField(stableTextEntryField(), {
           required: true,
-          initial: [],
+          initial: () => [],
         }),
         historyRefs: referenceArrayField(),
         mythicStars: new fields.NumberField({
@@ -834,7 +849,7 @@ export class NpcData extends PersonData {
       behavior: new fields.SchemaField({
         tactics: new fields.ArrayField(new fields.StringField(), {
           required: true,
-          initial: [],
+          initial: () => [],
         }),
         retreatThreshold: new fields.NumberField({
           required: false,
@@ -845,11 +860,11 @@ export class NpcData extends PersonData {
         surrender: optionalStringField(),
         priorities: new fields.ArrayField(new fields.StringField(), {
           required: true,
-          initial: [],
+          initial: () => [],
         }),
         limits: new fields.ArrayField(new fields.StringField(), {
           required: true,
-          initial: [],
+          initial: () => [],
         }),
       }),
       promotion: new fields.SchemaField({
@@ -875,7 +890,7 @@ export class RelisEffectData extends foundry.abstract.TypeDataModel {
           type: optionalStringField(),
           value: optionalStringField(),
         }),
-        { required: true, initial: [] },
+        { required: true, initial: () => [] },
       ),
       meta: metaField(),
       sourceRef: new fields.StringField({
@@ -976,7 +991,7 @@ export class RelisCardData extends foundry.abstract.TypeDataModel {
       }),
       rollBreakdown: new fields.ArrayField(new fields.StringField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
     };
   }

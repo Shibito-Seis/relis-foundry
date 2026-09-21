@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   BODY_SLOTS,
+  allowedBodySlots,
   slotSummary,
   slotProfileErrors,
   technicalUsage,
@@ -23,7 +24,7 @@ function item(
     id,
     uuid: `Actor.test.Item.${id}`,
     name: id,
-    type: "equipment",
+    type: "armor",
     system: {
       meta: { relisId: id },
       physical: {
@@ -38,7 +39,8 @@ const equip = (items: InventoryItemLike[], id: string) =>
   equipmentPlan(items, body, { itemId: id, state: "equipped" });
 describe("emplacements canoniques — Bible 41.137, 41.145, 41.146 et 41.53", () => {
   it("définit les sept emplacements indépendamment des zones protégées", () => {
-    expect(Object.keys(BODY_SLOTS)).toHaveLength(7);
+    expect(Object.keys(allowedBodySlots("armor"))).toHaveLength(6);
+    expect(Object.keys(BODY_SLOTS)).toHaveLength(10);
     expect(slotSummary({ bodySlots: ["underlayer", "armor"] })).toBe(
       "Sous-couche corporelle + Armure principale",
     );
@@ -187,5 +189,97 @@ describe("emplacements canoniques — Bible 41.137, 41.145, 41.146 et 41.53", ()
         hostId: "h",
       }).errors,
     ).toEqual([]);
+  });
+});
+
+describe("types et capacités d’accessoires — retour 0.5.4", () => {
+  it("sépare les choix d’armes, d’armures, d’équipements et de ressources", () => {
+    expect(Object.keys(allowedBodySlots("weapon"))).toEqual(["shield"]);
+    expect(Object.keys(allowedBodySlots("equipment"))).toEqual([
+      "necklace",
+      "bracelet",
+      "ring",
+    ]);
+    expect(allowedBodySlots("consumable")).toEqual({});
+    for (const type of ["weapon", "equipment", "resource"])
+      expect(slotProfileErrors({ bodySlots: ["armor"] }, type).join()).toMatch(
+        /interdit/,
+      );
+    for (const type of ["armor", "equipment"])
+      expect(slotProfileErrors({ bodySlots: ["shield"] }, type).join()).toMatch(
+        /interdit/,
+      );
+    const weapon = {
+      ...item("arme", { bodySlots: ["armor"] }),
+      type: "weapon",
+    };
+    expect(
+      equipmentPlan([weapon], body, {
+        itemId: weapon.id,
+        state: "held-one",
+      }).errors.join(),
+    ).toMatch(/interdit/);
+  });
+  it("autorise dix anneaux distincts, refuse le onzième et libère après rangement", () => {
+    const rings = Array.from({ length: 11 }, (_, i) => ({
+      ...item(`anneau-${i}`, { bodySlots: ["ring"] }),
+      type: "equipment",
+    }));
+    for (const ring of rings.slice(0, 10)) {
+      expect(equip(rings, ring.id).errors).toEqual([]);
+      Object.assign(ring.system.physical, {
+        equipState: "equipped",
+        bodyId: body.id,
+      });
+    }
+    expect(equip(rings, rings[10]!.id).errors.join()).toMatch(/Anneau.*10\/10/);
+    rings[0]!.system.physical.equipState = "stored";
+    expect(equip(rings, rings[10]!.id).errors).toEqual([]);
+    expect(
+      equipmentPlan(
+        rings,
+        { ...body, carrying: { accessorySlots: { ring: 0 } } },
+        { itemId: rings[10]!.id, state: "equipped" },
+      ).errors.join(),
+    ).toMatch(/9\/0/);
+    expect(
+      equipmentPlan(
+        rings,
+        { ...body, id: "other" },
+        { itemId: rings[10]!.id, state: "equipped" },
+      ).errors,
+    ).toEqual([]);
+  });
+  it("compte les bracelets et colliers séparément des protections", () => {
+    for (const [slot, capacity] of [
+      ["bracelet", 2],
+      ["necklace", 1],
+    ] as const) {
+      const items = Array.from({ length: capacity + 1 }, (_, i) => ({
+        ...item(
+          String(i),
+          { bodySlots: [slot] },
+          i < capacity ? { equipState: "equipped", bodyId: body.id } : {},
+        ),
+        type: "equipment",
+      }));
+      expect(equip(items, String(capacity)).errors.join()).toMatch(/occupé/);
+      items.push(item("protection", { bodySlots: ["arms"] }));
+      expect(equip(items, "protection").errors).toEqual([]);
+    }
+  });
+  it("un bouclier en main ou porté réserve la place de bouclier", () => {
+    const a = {
+      ...item(
+        "bouclier",
+        { bodySlots: ["shield"] },
+        { equipState: "readied", hands: 1, bodyId: body.id },
+      ),
+      type: "weapon",
+    };
+    const b = { ...item("autre", { bodySlots: ["shield"] }), type: "weapon" };
+    expect(equip([a, b], b.id).errors.join()).toMatch(/Bouclier porté.*occupé/);
+    a.system.physical.equipState = "stored";
+    expect(equip([a, b], b.id).errors).toEqual([]);
   });
 });

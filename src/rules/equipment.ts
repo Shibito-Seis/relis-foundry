@@ -1,5 +1,7 @@
 import {
   bodySlots,
+  bodySlotCapacity,
+  occupiesBodySlot,
   BODY_SLOTS,
   legacySlot,
   slotProfileErrors,
@@ -83,6 +85,12 @@ export function equipmentStates(item: InventoryItemLike): string[] {
       : family === "wearable"
         ? ["stored", "equipped", "ground"]
         : ["stored", "ground"];
+  if (
+    item.type === "weapon" &&
+    bodySlots(profile).includes("shield") &&
+    !states.includes("equipped")
+  )
+    states.push("equipped");
   if (profile.installable === true) states.push("installed");
   // An explicit return to storage is always possible; container movement remains separate.
   if (!states.includes("stored")) states.unshift("stored");
@@ -261,8 +269,11 @@ export function equipmentPlan(
     errors.push("Nombre de mains utilisables non renseigné pour ce corps.");
   else if (hands && usedHands + hands > Number(body.carrying?.hands))
     errors.push("Mains utilisables insuffisantes.");
-  if (active) errors.push(...slotProfileErrors(profile));
-  if (state === "equipped") {
+  if (active) errors.push(...slotProfileErrors(profile, item.type));
+  if (
+    state === "equipped" ||
+    (state.startsWith("held-") && bodySlots(profile).includes("shield"))
+  ) {
     if (
       others.some(
         (entry) =>
@@ -278,16 +289,11 @@ export function equipmentPlan(
         "Ancien emplacement corporel à reconfigurer dans la fiche Item.",
       );
     for (const key of bodySlots(profile)) {
-      const conflicts = others.filter(
-        (entry) =>
-          equipmentState(entry) === "equipped" &&
-          bodySlots(entry.system.physical?.equipmentProfile ?? {}).includes(
-            key,
-          ),
-      );
-      if (conflicts.length)
+      const conflicts = others.filter((entry) => occupiesBodySlot(entry, key));
+      const capacity = bodySlotCapacity(key, body.carrying);
+      if (conflicts.length + 1 > capacity)
         errors.push(
-          `${BODY_SLOTS[key] ?? key} : emplacement occupé par ${conflicts.map((entry) => entry.name).join(", ")}.`,
+          `${BODY_SLOTS[key] ?? key} : emplacement occupé, ${conflicts.length}/${capacity} place(s), par ${conflicts.map((entry) => entry.name).join(", ") || "aucun objet (capacité nulle)"}.`,
         );
     }
     // Retain old collisions until the user explicitly configures both old profiles.

@@ -280,6 +280,15 @@
             </div>
           </fieldset>
         {{/each}}
+        {{#if equipmentSlotErrors}}
+          <aside class="relis-inventory-diagnostics">{{#each
+              equipmentSlotErrors
+            }}<p>{{this}}</p>{{/each}}
+            Les anciennes valeurs sont conservées jusqu’à l’enregistrement de
+            vos choix corrigés sur cet objet.
+          </aside>
+        {{/if}}
+        <p>Ces choix concernent uniquement cet objet. {{equipmentSlotHint}}</p>
         <p>Les emplacements corporels cochés sont occupés ensemble quand l’objet
           est équipé. Ils ne décrivent pas les zones protégées. Les listes de
           tailles et natures vides n’imposent aucune restriction.</p>

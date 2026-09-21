@@ -130,3 +130,32 @@ describe("propriétés d’équipement dans la fiche Item", () => {
     }
   });
 });
+
+describe("choix corporels propres au type et à la fiche", () => {
+  it("ne présente jamais les emplacements incompatibles, même anciennement enregistrés", () => {
+    for (const [type, allowed] of [
+      ["weapon", ["shield"]],
+      [
+        "armor",
+        ["underlayer", "armor", "underhelmet", "helmet", "arms", "legs"],
+      ],
+      ["equipment", ["necklace", "bracelet", "ring"]],
+      ["resource", []],
+    ] as [string, string[]][]) {
+      const group = equipmentProfileGroups(
+        { bodySlots: ["armor", "shield"] },
+        undefined,
+        type,
+      ).find((entry) => entry.key === "bodySlots")!;
+      expect(group.choices.map((choice) => choice.value)).toEqual(allowed);
+    }
+    const first = equipmentProfileGroups({ bodySlots: ["legs"] });
+    const second = equipmentProfileGroups({ bodySlots: ["helmet"] });
+    first[3]!.choices[0]!.checked = true;
+    expect(
+      second[3]!.choices
+        .filter((choice) => choice.checked)
+        .map((choice) => choice.value),
+    ).toEqual(["helmet"]);
+  });
+});

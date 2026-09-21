@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.5.4` corrige la création/lecture des Items et ajoute l’édition du portrait PJ/PNJ. Elle reprend 10-E3-P, équipement personnel et refonte du bandeau de charge : états contextuels, mains, compatibilités, installation personnelle, temps déclarés et ensembles avec aperçu. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
+La version `0.5.5` corrige l’isolation des listes entre exemplaires et répartit les emplacements selon le type d’Item. Les corrections de création/lecture et de portrait PJ/PNJ sont conservées. Elle reprend 10-E3-P, équipement personnel et refonte du bandeau de charge : états contextuels, mains, compatibilités, installation personnelle, temps déclarés et ensembles avec aperçu. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
 familles matérielles apparaissent dans un inventaire personnel hiérarchique :
 quantité, lot, masse, volume, encombrement, état, accessibilité et emplacement
 restent portés par les vrais Items de l’Actor.
@@ -41,7 +41,7 @@ restent réalisés en CSS et en SVG interne jusqu’à la passe graphique finale
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P et la revue visuelle 0.4.3 sont validés. 10-E3-P attend sa recette
-0.5.4 sur The Forge. Aucun contrôle visuel automatisé par navigateur :
+0.5.5 sur The Forge. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -64,7 +64,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.5.4.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.5.5.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -73,3 +73,14 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## Correctif 0.5.5 — emplacements propres à chaque objet
+
+Chaque liste initiale est créée séparément par document, sans tableau mutable partagé entre exemplaires. Les cases et l’enregistrement sont limités à la fiche de l’Item ciblé, jamais à sa catégorie, sa source ou son lot.
+
+- Arme : Bouclier porté uniquement, en cochant ce choix pour déclarer un bouclier. Les prises en main restent disponibles.
+- Armure : Sous-couche, Armure principale, Sous-casque, Casque, Protections de bras, Jambières. Cela inclut les combinaisons et exo-armures.
+- Équipement : Collier, Bracelet, Anneau. Chaque case consomme une place ; les capacités ordinaires sont 1, 2 et 10, ajustables par le MJ dans la configuration du corps actif. Cela ne donne aucun effet ni protection automatique.
+- Autres types physiques : aucun choix corporel de ces catégories. Les installations techniques restent distinctes.
+
+Les anciennes valeurs incompatibles sont signalées. Corriger uniquement les objets concernés et enregistrer leur fiche ; aucune remise à zéro ni conversion automatique du type. Recharger complètement le monde après mise à jour, puis commencer la recette par l’isolation entre objets.

@@ -1093,6 +1093,21 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       true,
     );
     content.querySelector<HTMLInputElement>('[name="hands"]')!.step = "1";
+    for (const [key, label, fallback] of [
+      ["necklace", "Places de colliers", 1],
+      ["bracelet", "Places de bracelets", 2],
+      ["ring", "Places d’anneaux", 10],
+    ] as const) {
+      dialogOptional(
+        content,
+        label,
+        key,
+        profile.accessorySlots?.[key] ?? fallback,
+        true,
+      );
+      content.querySelector<HTMLInputElement>(`[name="${key}"]`)!.step = "1";
+    }
+
     dialogOptional(
       content,
       "Chargé à partir de (kg)",
@@ -1139,8 +1154,20 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       );
     if (JSON.stringify(Array.from(this.actor.system.bodies ?? [])) !== before)
       throw new Error("Le corps a changé : rouvrir la configuration.");
+    const accessorySlots = Object.fromEntries(
+      ["necklace", "bracelet", "ring"].map((key) => [key, Number(result[key])]),
+    );
+    if (
+      Object.values(accessorySlots).some(
+        (value) => !Number.isSafeInteger(value) || value < 0,
+      )
+    )
+      throw new Error(
+        "Les places d’accessoires doivent être des entiers positifs ou nuls.",
+      );
     body.carrying = {
       ...profile,
+      accessorySlots,
       hands,
       loaded,
       overloaded,

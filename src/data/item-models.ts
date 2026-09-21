@@ -51,7 +51,7 @@ function referenceField(): any {
 function referenceArrayField(): any {
   return new fields.ArrayField(referenceField(), {
     required: true,
-    initial: [],
+    initial: () => [],
   });
 }
 
@@ -103,7 +103,7 @@ function itemMetaField(): any {
     causeRefs: referenceArrayField(),
     tags: new fields.ArrayField(new fields.StringField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
   });
 }
@@ -126,7 +126,7 @@ function provenanceField(): any {
     }),
     manualOverrides: new fields.ArrayField(new fields.StringField(), {
       required: true,
-      initial: [],
+      initial: () => [],
     }),
     upgradeState: new fields.StringField({
       required: true,
@@ -194,7 +194,7 @@ function physicalField(): any {
       }),
       bodySlots: new fields.ArrayField(new fields.StringField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       requiredSlots: new fields.SchemaField(
         Object.fromEntries(
@@ -225,15 +225,15 @@ function physicalField(): any {
       duration: optionalStringField(),
       sizes: new fields.ArrayField(new fields.StringField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       natures: new fields.ArrayField(new fields.StringField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       hostTypes: new fields.ArrayField(new fields.StringField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       installable: new fields.BooleanField({ required: true, initial: false }),
       ordinaryLiquid: new fields.BooleanField({
@@ -283,7 +283,7 @@ export class RelisItemData extends foundry.abstract.TypeDataModel {
       }),
       traits: new fields.ArrayField(new fields.StringField(), {
         required: true,
-        initial: [],
+        initial: () => [],
       }),
       requirementRefs: referenceArrayField(),
       effectRefs: referenceArrayField(),
