@@ -40,7 +40,17 @@ const equip = (items: InventoryItemLike[], id: string) =>
 describe("emplacements canoniques — Bible 41.137, 41.145, 41.146 et 41.53", () => {
   it("définit les sept emplacements indépendamment des zones protégées", () => {
     expect(Object.keys(allowedBodySlots("armor"))).toHaveLength(6);
-    expect(Object.keys(BODY_SLOTS)).toHaveLength(10);
+    expect(Object.keys(BODY_SLOTS)).toEqual(
+      expect.arrayContaining([
+        "underlayer",
+        "armor",
+        "underhelmet",
+        "helmet",
+        "arms",
+        "legs",
+        "shield",
+      ]),
+    );
     expect(slotSummary({ bodySlots: ["underlayer", "armor"] })).toBe(
       "Sous-couche corporelle + Armure principale",
     );
@@ -195,11 +205,17 @@ describe("emplacements canoniques — Bible 41.137, 41.145, 41.146 et 41.53", ()
 describe("types et capacités d’accessoires — retour 0.5.4", () => {
   it("sépare les choix d’armes, d’armures, d’équipements et de ressources", () => {
     expect(Object.keys(allowedBodySlots("weapon"))).toEqual(["shield"]);
-    expect(Object.keys(allowedBodySlots("equipment"))).toEqual([
-      "necklace",
-      "bracelet",
-      "ring",
-    ]);
+    expect(Object.keys(allowedBodySlots("equipment"))).toEqual(
+      expect.arrayContaining([
+        "necklace",
+        "bracelet",
+        "ring",
+        "cape",
+        "belt",
+        "gloves",
+        "helmet",
+      ]),
+    );
     expect(allowedBodySlots("consumable")).toEqual({});
     for (const type of ["weapon", "equipment", "resource"])
       expect(slotProfileErrors({ bodySlots: ["armor"] }, type).join()).toMatch(
@@ -277,7 +293,10 @@ describe("types et capacités d’accessoires — retour 0.5.4", () => {
       ),
       type: "weapon",
     };
-    const b = { ...item("autre", { bodySlots: ["shield"] }), type: "weapon" };
+    const b = {
+      ...item("autre", { bodySlots: ["shield"], shieldHands: 1 }),
+      type: "weapon",
+    };
     expect(equip([a, b], b.id).errors.join()).toMatch(/Bouclier porté.*occupé/);
     a.system.physical.equipState = "stored";
     expect(equip([a, b], b.id).errors).toEqual([]);

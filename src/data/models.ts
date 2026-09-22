@@ -1,3 +1,4 @@
+import { ACCESSORY_CAPACITIES } from "../rules/equipment-slots";
 import {
   ACTOR_TYPES,
   ATTRIBUTE_LABELS,
@@ -394,17 +395,15 @@ function bodyField(): any {
     carrying: new fields.SchemaField({
       accessorySlots: new fields.SchemaField(
         Object.fromEntries(
-          Object.entries({ necklace: 1, bracelet: 2, ring: 10 }).map(
-            ([key, initial]) => [
-              key,
-              new fields.NumberField({
-                required: true,
-                integer: true,
-                min: 0,
-                initial,
-              }),
-            ],
-          ),
+          Object.entries(ACCESSORY_CAPACITIES).map(([key, initial]) => [
+            key,
+            new fields.NumberField({
+              required: true,
+              integer: true,
+              min: 0,
+              initial,
+            }),
+          ]),
         ),
       ),
       hands: new fields.NumberField({

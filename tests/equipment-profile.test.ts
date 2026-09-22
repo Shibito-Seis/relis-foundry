@@ -1,3 +1,4 @@
+import { allowedBodySlots } from "../src/rules/equipment-slots";
 import { describe, expect, it } from "vitest";
 import {
   equipmentProfileGroups,
@@ -139,7 +140,7 @@ describe("choix corporels propres au type et à la fiche", () => {
         "armor",
         ["underlayer", "armor", "underhelmet", "helmet", "arms", "legs"],
       ],
-      ["equipment", ["necklace", "bracelet", "ring"]],
+      ["equipment", Object.keys(allowedBodySlots("equipment"))],
       ["resource", []],
     ] as [string, string[]][]) {
       const group = equipmentProfileGroups(

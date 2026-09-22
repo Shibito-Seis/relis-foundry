@@ -1,5 +1,6 @@
 import {
   bodySlots,
+  slotCost,
   bodySlotCapacity,
   occupiesBodySlot,
   BODY_SLOTS,
@@ -76,9 +77,12 @@ export function equipmentStates(item: InventoryItemLike): string[] {
     profile.family ||
     (item.type === "weapon"
       ? "manipulable"
-      : ["armor", "equipment", "container"].includes(item.type)
-        ? "wearable"
-        : "resource");
+      : profile.wearForm === "none"
+        ? "manipulable"
+        : profile.wearForm ||
+            ["armor", "equipment", "container"].includes(item.type)
+          ? "wearable"
+          : "resource");
   const states =
     family === "manipulable"
       ? ["stored", "held-one", "held-two", "ground"]
@@ -242,7 +246,19 @@ export function equipmentPlan(
     !profile.natures.includes(body.nature)
   )
     errors.push("Nature corporelle incompatible.");
-  const hands = state === "held-two" ? 2 : state === "held-one" ? 1 : 0;
+  const shield = bodySlots(profile).includes("shield");
+  if (state === "equipped" && shield && profile.shieldHands == null)
+    errors.push(
+      "Renseigner dans la fiche du bouclier les mains nécessaires selon sa source, ou choisir une prise en main explicite.",
+    );
+  const hands =
+    state === "held-two"
+      ? 2
+      : state === "held-one"
+        ? 1
+        : state === "equipped" && shield
+          ? Number(profile.shieldHands ?? 0)
+          : 0;
   const others = items.filter(
     (entry) =>
       entry.id !== item.id &&
@@ -255,7 +271,9 @@ export function equipmentPlan(
         ? 2
         : equipmentState(entry) === "held-one"
           ? 1
-          : 0),
+          : equipmentState(entry) === "equipped"
+            ? Number(entry.system.physical?.hands ?? 0)
+            : 0),
     0,
   );
   if (hands && others.some((entry) => equipmentState(entry) === "readied"))
@@ -291,9 +309,14 @@ export function equipmentPlan(
     for (const key of bodySlots(profile)) {
       const conflicts = others.filter((entry) => occupiesBodySlot(entry, key));
       const capacity = bodySlotCapacity(key, body.carrying);
-      if (conflicts.length + 1 > capacity)
+      const used = conflicts.reduce(
+        (sum, entry) =>
+          sum + slotCost(entry.system.physical?.equipmentProfile ?? {}, key),
+        0,
+      );
+      if (used + slotCost(profile, key) > capacity)
         errors.push(
-          `${BODY_SLOTS[key] ?? key} : emplacement occupé, ${conflicts.length}/${capacity} place(s), par ${conflicts.map((entry) => entry.name).join(", ") || "aucun objet (capacité nulle)"}.`,
+          `${BODY_SLOTS[key] ?? key} : emplacement occupé, ${used}/${capacity} place(s), par ${conflicts.map((entry) => entry.name).join(", ") || "aucun objet (capacité nulle)"}.`,
         );
     }
     // Retain old collisions until the user explicitly configures both old profiles.
@@ -368,7 +391,7 @@ export function equipmentPlan(
       "Temps et aide nécessaires à arbitrer selon la règle ou le MJ.",
     );
   const patch: Record<string, unknown> = {
-    "system.physical.equipState": hands ? "readied" : state,
+    "system.physical.equipState": state.startsWith("held-") ? "readied" : state,
     "system.physical.hands": hands,
     "system.physical.bodyId":
       state === "ground" || state === "installed" ? "" : body.id,

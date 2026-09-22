@@ -1018,6 +1018,32 @@
               {{inventoryTotals.mass}}. Les volumes et capacités restent
               consultables sur les objets et conteneurs.</p></details>
         </section>
+        <section
+          class="relis-equipment-overview"
+          aria-label="Équipement du corps actif"
+        >
+          {{#each equipmentOverview.entries}}<details
+              class="relis-equipment-counter {{warningClass}}"
+            >
+              <summary>{{label}} <b>{{count}} / {{capacity}}</b></summary>
+              {{#each items}}<button
+                  type="button"
+                  class="relis-link"
+                  data-action="open-item"
+                  data-item-id="{{id}}"
+                >{{name}}</button>{{else}}<p>Aucun objet.</p>{{/each}}
+            </details>{{/each}}
+          {{#if equipmentOverview.uncounted}}<details
+              class="relis-equipment-counter"
+            ><summary>Vêtements et objets sans quota</summary>{{#each
+                equipmentOverview.uncounted
+              }}<button
+                  type="button"
+                  class="relis-link"
+                  data-action="open-item"
+                  data-item-id="{{id}}"
+                >{{name}}</button>{{/each}}</details>{{/if}}
+        </section>
         {{#if equipmentRecovery}}<aside class="relis-inventory-diagnostics"><p
             >Une opération d’équipement a été interrompue. Restaurer sa
               sauvegarde avant de poursuivre.</p>{{#if canConfigureBody}}<button
@@ -1105,16 +1131,46 @@
                           data-action="open-item"
                           data-item-id="{{id}}"
                         >{{name}}</button>
-                        {{#if @root.editable}}<button
-                            type="button"
-                            class="relis-equipment-state"
-                            data-equipment-command="state"
-                            data-item-id="{{id}}"
+                        {{#if classificationLabel}}<small
+                          >{{classificationLabel}}</small>{{/if}}
+                        {{#if @root.editable}}<details
+                            class="relis-equipment-menu"
+                            data-equipment-menu
                             data-owner-control
-                            title="Changer l’état d’usage"
-                          >{{equipmentLabel}} ▾</button>{{else}}<span
-                            class="relis-state-chip"
-                          >{{equipmentLabel}}</span>{{/if}}
+                          >
+                            <summary
+                              class="relis-equipment-state"
+                              aria-label="Changer l’état de {{name}}"
+                            ><i
+                                class="fa-solid {{equipmentIcon}}"
+                                aria-hidden="true"
+                              ></i>
+                              {{equipmentLabel}}</summary>
+                            <div class="relis-equipment-options">
+                              {{#each equipmentActions}}<button
+                                  type="button"
+                                  data-equipment-command="state"
+                                  data-item-id="{{itemId}}"
+                                  data-equipment-state="{{state}}"
+                                  aria-disabled="{{unavailable}}"
+                                >
+                                  <i
+                                    class="fa-solid {{icon}}"
+                                    aria-hidden="true"
+                                  ></i><span>{{label}}{{#if current}}
+                                      · actuel{{/if}}{{#if reason}}<small
+                                      >{{reason}}</small>{{/if}}</span>
+                                </button>{{/each}}
+                              <small>Choisir confirme le temps et l’aide requis
+                                par la source :
+                                {{equipmentDuration}}. Aucun débit automatique
+                                d’Actions. Déplacer choisit le conteneur.</small>
+                            </div>
+                          </details>{{else}}<span class="relis-state-chip"><i
+                              class="fa-solid {{equipmentIcon}}"
+                              aria-hidden="true"
+                            ></i>
+                            {{equipmentLabel}}</span>{{/if}}
                         {{#if equipmentBody}}<small>Corps :
                             {{equipmentBody}}</small>{{/if}}
                         <small>Emplacements : {{equipmentSlots}}</small>

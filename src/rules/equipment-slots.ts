@@ -1,3 +1,8 @@
+import {
+  effectiveBodySlots,
+  classificationErrors,
+  PIERCING_LOCATIONS,
+} from "./equipment-classification";
 import type { InventoryItemLike } from "./inventory";
 
 /** Bible 41.137: occupancy is distinct from protective coverage. */
@@ -12,6 +17,17 @@ export const BODY_SLOTS: Record<string, string> = {
   necklace: "Collier",
   bracelet: "Bracelet",
   ring: "Anneau",
+  cape: "Cape",
+  belt: "Ceinture",
+  gloves: "Paire de gants",
+  earLeft: "Boucle gauche",
+  earRight: "Boucle droite",
+  ...Object.fromEntries(
+    Object.entries(PIERCING_LOCATIONS).map(([key, label]) => [
+      `piercing_${key}`,
+      `Piercing · ${label}`,
+    ]),
+  ),
 };
 /** Category restricts available choices; selections belong only to the Item. */
 export function allowedBodySlots(type: string): Record<string, string> {
@@ -20,8 +36,21 @@ export function allowedBodySlots(type: string): Record<string, string> {
       ? ["underlayer", "armor", "underhelmet", "helmet", "arms", "legs"]
       : type === "weapon"
         ? ["shield"]
-        : type === "equipment"
-          ? ["necklace", "bracelet", "ring"]
+        : ["equipment", "container"].includes(type)
+          ? [
+              "necklace",
+              "bracelet",
+              "ring",
+              "cape",
+              "belt",
+              "gloves",
+              "helmet",
+              "earLeft",
+              "earRight",
+              ...Object.keys(PIERCING_LOCATIONS).map(
+                (key) => `piercing_${key}`,
+              ),
+            ]
           : [];
   return Object.fromEntries(keys.map((key) => [key, BODY_SLOTS[key]!]));
 }
@@ -29,6 +58,14 @@ export const ACCESSORY_CAPACITIES: Record<string, number> = {
   necklace: 1,
   bracelet: 2,
   ring: 10,
+  cape: 1,
+  belt: 1,
+  gloves: 1,
+  earLeft: 1,
+  earRight: 1,
+  ...Object.fromEntries(
+    Object.keys(PIERCING_LOCATIONS).map((key) => [`piercing_${key}`, 0]),
+  ),
 };
 export function bodySlotCapacity(
   key: string,
@@ -69,9 +106,7 @@ export const TECHNICAL_SLOTS: Record<string, string> = {
   projector: "Projecteur",
 };
 export function bodySlots(profile: Record<string, any>): string[] {
-  return Array.isArray(profile.bodySlots)
-    ? [...new Set<string>(profile.bodySlots)]
-    : [];
+  return effectiveBodySlots(profile);
 }
 export function legacySlot(profile: Record<string, any>): string {
   return !profile.slotsConfigured ? String(profile.slot ?? "").trim() : "";
@@ -80,7 +115,7 @@ export function slotProfileErrors(
   profile: Record<string, any>,
   type?: string,
 ): string[] {
-  const errors: string[] = [];
+  const errors: string[] = classificationErrors(profile, type);
   if (profile.bodySlots != null && !Array.isArray(profile.bodySlots))
     errors.push("Liste d’emplacements corporels invalide.");
   for (const key of bodySlots(profile)) {
@@ -91,6 +126,13 @@ export function slotProfileErrors(
         `${BODY_SLOTS[key]} : emplacement interdit pour ce type d’objet (${type}). Reconfigurer cette fiche Item.`,
       );
   }
+  for (const [key, value] of Object.entries(profile.slotCosts ?? {}))
+    if (
+      !Object.hasOwn(BODY_SLOTS, key) ||
+      !Number.isSafeInteger(value) ||
+      Number(value) < 1
+    )
+      errors.push("Quantité d’occupation corporelle invalide.");
   for (const field of ["requiredSlots", "providedSlots"]) {
     for (const [key, value] of Object.entries(profile[field] ?? {})) {
       if (
@@ -175,7 +217,10 @@ export function slotSummary(profile: Record<string, any>): string {
     return `Ancien emplacement à reconfigurer : ${legacySlot(profile)}`;
   return (
     bodySlots(profile)
-      .map((key) => BODY_SLOTS[key] ?? `Inconnu : ${key}`)
+      .map(
+        (key) =>
+          `${BODY_SLOTS[key] ?? `Inconnu : ${key}`}${slotCost(profile, key) > 1 ? ` × ${slotCost(profile, key)}` : ""}`,
+      )
       .join(" + ") || "Aucun emplacement corporel déclaré"
   );
 }
@@ -189,4 +234,10 @@ export function technicalSummary(
       .map(([key, n]) => `${TECHNICAL_SLOTS[key] ?? key} × ${n}`)
       .join(" ; ") || "Aucun"
   );
+}
+
+export function slotCost(profile: Record<string, any>, key: string): number {
+  return profile.wearForm === "composite"
+    ? Number(profile.slotCosts?.[key] ?? 1)
+    : 1;
 }

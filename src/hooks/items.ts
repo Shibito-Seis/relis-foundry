@@ -1,3 +1,5 @@
+import { assertProfilePermission } from "../rules/equipment-classification";
+import { slotProfileErrors } from "../rules/equipment-slots";
 import { PACKAGE_VERSION, SCHEMA_VERSION, SYSTEM_ID } from "../config";
 import {
   buildOwnedItemSystem,
@@ -70,6 +72,66 @@ export function protectEquipmentUpdate(
   change: Record<string, any>,
   options: Record<string, any> = {},
 ): boolean | void {
+  if (isPhysicalItemType(item.type) && !options.relisMigration) {
+    const prefix = "system.physical.equipmentProfile";
+    const paths = changedPaths(change);
+    if (
+      paths.some((path) => path === prefix || path.startsWith(prefix + "."))
+    ) {
+      const before = item.system.physical?.equipmentProfile ?? {};
+      const after = JSON.parse(
+        JSON.stringify(requestedValue(change, prefix, before)),
+      );
+      for (const key of [
+        "slotCosts",
+        "wearForm",
+        "bodySlots",
+        "functionalCategory",
+        "piercingLocation",
+        "ornamental",
+        "shieldHands",
+        "family",
+        "sizes",
+        "natures",
+        "hostTypes",
+        "requiredSlots",
+        "providedSlots",
+        "installable",
+        "ordinaryLiquid",
+        "duration",
+        "slot",
+        "slotsConfigured",
+      ])
+        after[key] = requestedValue(change, `${prefix}.${key}`, after[key]);
+      // Include dotted subfields (e.g. a composite's slotCosts.bracelet).
+      for (const path of paths.filter((path) =>
+        path.startsWith(prefix + "."),
+      )) {
+        const keys = path.slice(prefix.length + 1).split(".");
+        if (
+          keys.some((key) =>
+            ["__proto__", "prototype", "constructor"].includes(key),
+          )
+        )
+          return false;
+        const value = requestedValue(change, path, undefined);
+        if (value === undefined) continue;
+        let current = after;
+        for (const key of keys.slice(0, -1)) current = current[key] ??= {};
+        current[keys.at(-1)!] = JSON.parse(JSON.stringify(value));
+      }
+      try {
+        assertProfilePermission(before, after, Boolean(game.user?.isGM));
+        const errors = slotProfileErrors(after, item.type);
+        if (errors.length) throw new Error(errors.join(" "));
+      } catch (error) {
+        ui.notifications.warn(
+          error instanceof Error ? error.message : "Profil refusé.",
+        );
+        return false;
+      }
+    }
+  }
   if (
     !item.parent ||
     !isPhysicalItemType(item.type) ||

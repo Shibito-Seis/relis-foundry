@@ -1,5 +1,17 @@
 # Journal des versions
 
+## 0.5.6 — Classification, menu d’état et suivi d’équipement
+
+- Forme unique par Item, familles fonctionnelles, sous-couche vestimentaire et formes de port étendues ; aucune conversion automatique.
+- Profils composés et quantités de places réservés au MJ ; ornements esthétiques distincts des objets à bonus.
+- Limites validées de bijoux, cape, ceinture et gants ; coiffe partageant le casque ; piercings rattachés à une capacité corporelle explicite.
+- Menu d’état à icônes et libellés avec motifs des refus ; remplacement du sélecteur d’état provisoire.
+- Suivi sous la charge : mains, protections, accessoires et ouverture des vrais Items.
+- Installation sur supports compatibles avec places libres et refus expliqués à la demande.
+- Bouclier porté : mains requises déclarées selon sa source ; aucune fixation mains libres supposée.
+- Permissions vérifiées sur la fiche, dans le service et sur les modifications de profil monde/embarqué ; non-régressions portraits, DialogV2, versions dynamiques et isolation.
+- Schéma 5 et dépendances inchangés ; 10-E3-P reste ouvert jusqu’à validation de cette recette.
+
 ## 0.5.5 — Isolation des exemplaires et emplacements par type
 
 - Remplace les tableaux initiaux mutables par des fabriques de listes indépendantes dans les modèles ; protège les mises à jour en place de Foundry 14.

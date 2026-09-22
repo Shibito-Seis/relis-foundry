@@ -240,6 +240,51 @@
       >
         <p class="relis-kicker">Propriétés de l’objet</p>
         <h2>Usage et compatibilités</h2>
+        <fieldset>
+          <legend>Classification de cet objet</legend>
+          <div class="relis-grid relis-grid--form">
+            <label>Famille fonctionnelle<select
+                data-profile-field="functionalCategory"
+              >{{selectOptions
+                  functionalCategories
+                  selected=system.physical.equipmentProfile.functionalCategory
+                }}</select></label>
+            <label>Forme de port — un seul choix<select
+                data-profile-field="wearForm"
+              >{{selectOptions
+                  wearFormOptions
+                  selected=system.physical.equipmentProfile.wearForm
+                }}</select></label>
+            <label data-piercing-fields>Emplacement du piercing<select
+                data-profile-field="piercingLocation"
+              >{{selectOptions
+                  piercingLocations
+                  selected=system.physical.equipmentProfile.piercingLocation
+                  blank="Choisir un emplacement"
+                }}</select></label>
+            {{#if profileIsGM}}<label><input
+                  type="checkbox"
+                  data-profile-field="ornamental"
+                  {{checked system.physical.equipmentProfile.ornamental}}
+                />Ornement purement esthétique, sans bonus ni place mécanique</label>
+              <label data-shield-fields>Mains nécessaires pour porter ce
+                bouclier<input
+                  type="number"
+                  min="0"
+                  max="2"
+                  step="1"
+                  data-profile-field="shieldHands"
+                  value="{{system.physical.equipmentProfile.shieldHands}}"
+                />Selon sa source ; vide = non renseigné, 0 = fixation
+                explicitement prévue.</label>{{/if}}
+          </div>
+          <p>Les vêtements et accessoires sans quota restent décrits par leur
+            forme. Un piercing à bonus exige une capacité définie pour son
+            emplacement sur le corps ; aucune anatomie n’est supposée.</p>
+        </fieldset>
+        {{#if profileLocked}}<p>Profil composé défini par le MJ : utilisable
+            depuis l’inventaire, modification réservée au MJ.</p>{{/if}}
+
         <div class="relis-grid relis-grid--form relis-item-form">
           <label>Usage<select data-profile-field="family">
               {{selectOptions
@@ -266,7 +311,8 @@
             Liquide ordinaire : 1 L ≈ 1 kg si masse absente</label>
         </div>
         {{#each equipmentProfileGroups}}
-          <fieldset><legend>{{title}}</legend>
+          <fieldset data-profile-group="{{key}}" {{hiddenAttribute}}><legend
+            >{{title}}</legend>
             <p>{{#if count}}{{count}}
                 choix enregistré(s).{{else}}{{emptyLabel}}{{/if}}</p>
             <div class="relis-profile-choices">
@@ -276,7 +322,15 @@
                     value="{{value}}"
                     {{checked checked}}
                   />
-                  {{label}}</label>{{/each}}
+                  {{label}}</label>{{#if isBodySlot}}{{#if
+                    @root.profileIsGM
+                  }}<label>Places<input
+                        type="number"
+                        min="1"
+                        step="1"
+                        data-profile-cost="{{value}}"
+                        value="{{units}}"
+                      /></label>{{/if}}{{/if}}{{/each}}
             </div>
           </fieldset>
         {{/each}}
@@ -289,9 +343,9 @@
           </aside>
         {{/if}}
         <p>Ces choix concernent uniquement cet objet. {{equipmentSlotHint}}</p>
-        <p>Les emplacements corporels cochés sont occupés ensemble quand l’objet
-          est équipé. Ils ne décrivent pas les zones protégées. Les listes de
-          tailles et natures vides n’imposent aucune restriction.</p>
+        <p>Seul un profil composé défini par le MJ occupe plusieurs places.
+          L’occupation ne décrit pas les zones protégées. Tailles et natures
+          vides : aucune restriction déclarée.</p>
         {{#if legacyEquipmentSlot}}<aside
             class="relis-inventory-diagnostics"
           >Ancien emplacement conservé :
@@ -302,14 +356,14 @@
               Je remplace l’ancien emplacement par les choix corporels et
               techniques de cette fiche, y compris si je les laisse vides.</label>
           </aside>{{/if}}
-        <details class="relis-technical-slots"><summary>Emplacements techniques
-            — capacités et besoins</summary>
+        <details class="relis-technical-slots"><summary>Installation et accueil
+            de modules — détails</summary>
           <p>Fourni : capacité de cet objet comme hôte. Requis : quantité
             occupée sur l’hôte lorsque cet objet est installé. Zéro signifie
             aucun. Vérifier aussi les compatibilités déclarées par la source de
             l’objet.</p>
-          <div class="relis-slot-grid"><b>Type</b><b>Fourni par cet objet</b><b
-            >Requis sur l’hôte</b>
+          <div class="relis-slot-grid"><b>Type</b><b>Places offertes par cet
+              objet</b><b>Places nécessaires pour installer cet objet</b>
             {{#each technicalSlotRows}}
               <span>{{label}}</span>
               <label><span class="relis-slot-input-label">{{label}}

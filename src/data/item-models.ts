@@ -1,4 +1,4 @@
-import { TECHNICAL_SLOTS } from "../rules/equipment-slots";
+import { BODY_SLOTS, TECHNICAL_SLOTS } from "../rules/equipment-slots";
 import { CONTENT_VERSION, RULES_VERSION, SCHEMA_VERSION } from "../config";
 import {
   ACCESSIBILITY_STATES,
@@ -181,6 +181,30 @@ function physicalField(): any {
     }),
     hostRef: referenceField(),
     equipmentProfile: new fields.SchemaField({
+      slotCosts: new fields.SchemaField(
+        Object.fromEntries(
+          Object.keys(BODY_SLOTS).map((key) => [
+            key,
+            new fields.NumberField({
+              required: true,
+              integer: true,
+              min: 1,
+              initial: 1,
+            }),
+          ]),
+        ),
+      ),
+      wearForm: optionalStringField(),
+      functionalCategory: optionalStringField(),
+      piercingLocation: optionalStringField(),
+      ornamental: new fields.BooleanField({ required: true, initial: false }),
+      shieldHands: new fields.NumberField({
+        nullable: true,
+        initial: null,
+        integer: true,
+        min: 0,
+        max: 2,
+      }),
       family: new fields.StringField({
         required: true,
         blank: true,

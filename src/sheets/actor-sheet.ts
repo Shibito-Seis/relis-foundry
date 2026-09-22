@@ -1,5 +1,18 @@
 import {
+  equipmentActions,
+  equipmentOverview,
+  EQUIPMENT_ICONS,
+  installationTargets,
+  bindEquipmentMenus,
+} from "../ui/equipment-presentation";
+import {
+  WEAR_FORMS,
+  EQUIPMENT_CATEGORIES,
+} from "../rules/equipment-classification";
+import {
   slotSummary,
+  ACCESSORY_CAPACITIES,
+  BODY_SLOTS,
   technicalSummary,
   technicalUsage,
   TECHNICAL_SLOTS,
@@ -19,7 +32,6 @@ import {
   equipmentFailureMessage,
   equipmentPlan,
   equipmentState,
-  equipmentStates,
   EQUIPMENT_LABELS,
   unitMass,
   type EquipmentRequest,
@@ -516,6 +528,20 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       return {
         id: row.item.id,
         name: row.item.name,
+        equipmentDuration:
+          physical.equipmentProfile?.duration || "à arbitrer avec le MJ",
+        equipmentIcon: EQUIPMENT_ICONS[equipmentState(row.item)] ?? "fa-box",
+        equipmentActions: equipmentActions(
+          physicalSnapshots,
+          activeBody ?? { id: "" },
+          row.item,
+        ),
+        classificationLabel: [
+          EQUIPMENT_CATEGORIES[physical.equipmentProfile?.functionalCategory],
+          WEAR_FORMS[physical.equipmentProfile?.wearForm]?.label,
+        ]
+          .filter(Boolean)
+          .join(" · "),
         equipmentLabel:
           EQUIPMENT_LABELS[equipmentState(row.item)] ??
           "État ancien à vérifier",
@@ -679,6 +705,10 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       relatedItems,
       inventoryRows,
       inventoryGroups: groupInventory(inventoryRows),
+      equipmentOverview: equipmentOverview(
+        physicalSnapshots,
+        activeBody ?? { id: "" },
+      ),
       carrying: carriedMass(physicalSnapshots, activeBody ?? { id: "" }),
       canConfigureBody: Boolean(game.user?.isGM),
       equipmentRecovery: Boolean(
@@ -708,6 +738,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     await super._onRender(context, options);
     const root = this.element as HTMLElement;
     this.activateTab(root, this.activeTab);
+    bindEquipmentMenus(root);
     root
       .querySelector<HTMLButtonElement>("[data-edit-actor-portrait]")
       ?.addEventListener("click", () => {
@@ -721,7 +752,10 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           if (!this.actor.isOwner && !game.user?.isGM) return;
           switch (button.dataset.equipmentCommand) {
             case "state":
-              return this.changeEquipment(button.dataset.itemId ?? "");
+              return this.changeEquipment(
+                button.dataset.itemId ?? "",
+                button.dataset.equipmentState ?? "",
+              );
             case "body":
               await this.configureCarrying();
               break;
@@ -1017,56 +1051,71 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     return true;
   }
 
-  private async changeEquipment(itemId: string): Promise<boolean> {
+  private async changeEquipment(
+    itemId: string,
+    state: string,
+  ): Promise<boolean> {
     const item = this.actor.items.get(itemId) as Item | undefined;
     if (!item) return false;
-    const snapshot = itemSnapshot(item);
-    const content = dialogContent();
-    const states = equipmentStates(snapshot);
-    dialogSelect(
-      content,
-      "État souhaité",
-      "state",
-      states.map((state) => ({
-        value: state,
-        label: EQUIPMENT_LABELS[state]!,
-      })),
-    );
-    const current = equipmentState(snapshot);
-    const select = content.querySelector<HTMLSelectElement>('[name="state"]')!;
-    if (states.includes(current)) select.value = current;
-    if (states.includes("installed")) {
-      dialogSelect(
-        content,
-        "Hôte (utilisé seulement pour Installer)",
-        "hostId",
-        [
-          { value: "", label: "Choisir un hôte" },
-          ...(Array.from(this.actor.items ?? []) as Item[])
-            .filter(
-              (candidate) =>
-                candidate.id !== itemId && isPhysicalItemType(candidate.type),
-            )
-            .map((candidate) => ({
-              value: candidate.id,
-              label: candidate.name,
-            })),
-        ],
+    let hostId = "";
+    if (state === "installed") {
+      const items = (Array.from(this.actor.items ?? []) as Item[])
+        .filter((entry) => isPhysicalItemType(entry.type))
+        .map(itemSnapshot);
+      const body = Array.from(this.actor.system.bodies ?? []).find(
+        (entry: any) => entry.id === this.actor.system.activeBodyId,
+      ) as any;
+      const targets = installationTargets(
+        items,
+        body ?? { id: "" },
+        itemSnapshot(item),
       );
+      const compatible = targets.filter((target) => !target.errors.length);
+      if (!compatible.length)
+        throw new Error("Aucun support compatible et disponible.");
+      const content = dialogContent();
+      dialogNote(
+        content,
+        "Choisir le support. Les places sont vérifiées de nouveau au moment de l’installation.",
+      );
+      for (const target of compatible) {
+        const label = document.createElement("label");
+        label.className = "relis-install-target";
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "hostId";
+        input.value = target.id;
+        input.required = true;
+        label.append(
+          input,
+          document.createTextNode(`${target.name} — ${target.capacity}`),
+        );
+        content.append(label);
+      }
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = "Pourquoi les autres supports sont indisponibles ?";
+      details.append(summary);
+      for (const target of targets.filter((entry) => entry.errors.length)) {
+        const p = document.createElement("p");
+        p.textContent = `${target.name} : ${target.errors.join(" ")}`;
+        details.append(p);
+      }
+      content.append(details);
+      const result = await askInventoryForm(
+        `Installer ${item.name} sur…`,
+        content,
+        "Installer",
+      );
+      if (!result) return false;
+      hostId = String(result.hostId ?? "");
     }
-    dialogNote(
-      content,
-      "Rangé ne choisit pas de conteneur : utilisez Déplacer pour cela. Au sol retire la masse de la charge portée, sans supprimer l’objet.",
-    );
-    const result = await askInventoryForm(item.name, content, "Voir l’aperçu");
-    if (!result) return false;
-    return this.confirmEquipment([
-      {
-        itemId,
-        state: String(result.state),
-        hostId: String(result.hostId ?? ""),
-      },
-    ]);
+    const requests = [{ itemId, state, hostId }];
+    const preview = previewEquipment(this.actor, requests);
+    if (!preview.updates.length)
+      throw new Error(equipmentFailureMessage(preview));
+    await applyEquipment(this.actor, requests, preview.fingerprint);
+    return true;
   }
 
   private async configureCarrying(): Promise<void> {
@@ -1093,11 +1142,14 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       true,
     );
     content.querySelector<HTMLInputElement>('[name="hands"]')!.step = "1";
-    for (const [key, label, fallback] of [
-      ["necklace", "Places de colliers", 1],
-      ["bracelet", "Places de bracelets", 2],
-      ["ring", "Places d’anneaux", 10],
-    ] as const) {
+    const advanced = document.createElement("details");
+    const advancedSummary = document.createElement("summary");
+    advancedSummary.textContent =
+      "Capacités d’accessoires — règles du corps (réservé au MJ)";
+    advanced.append(advancedSummary);
+    content.append(advanced);
+    for (const [key, fallback] of Object.entries(ACCESSORY_CAPACITIES)) {
+      const label = BODY_SLOTS[key] ?? key;
       dialogOptional(
         content,
         label,
@@ -1105,7 +1157,8 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         profile.accessorySlots?.[key] ?? fallback,
         true,
       );
-      content.querySelector<HTMLInputElement>(`[name="${key}"]`)!.step = "1";
+      advanced.append(content.lastElementChild!);
+      advanced.querySelector<HTMLInputElement>(`[name="${key}"]`)!.step = "1";
     }
 
     dialogOptional(
@@ -1155,7 +1208,10 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (JSON.stringify(Array.from(this.actor.system.bodies ?? [])) !== before)
       throw new Error("Le corps a changé : rouvrir la configuration.");
     const accessorySlots = Object.fromEntries(
-      ["necklace", "bracelet", "ring"].map((key) => [key, Number(result[key])]),
+      Object.keys(ACCESSORY_CAPACITIES).map((key) => [
+        key,
+        Number(result[key]),
+      ]),
     );
     if (
       Object.values(accessorySlots).some(

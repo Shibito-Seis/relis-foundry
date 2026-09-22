@@ -1,4 +1,11 @@
 import {
+  WEAR_FORMS,
+  wearForms,
+  EQUIPMENT_CATEGORIES,
+  PIERCING_LOCATIONS,
+  effectiveBodySlots,
+} from "../rules/equipment-classification";
+import {
   BODY_SLOTS,
   allowedBodySlots,
   TECHNICAL_SLOTS,
@@ -53,6 +60,8 @@ export function equipmentProfileGroups(
     const selected: string[] = Array.isArray(profile[key]) ? profile[key] : [];
     return {
       key,
+      isBodySlots: key === "bodySlots",
+      hiddenAttribute: key === "bodySlots" ? "hidden" : "",
       title,
       count: selected.length,
       emptyLabel:
@@ -68,6 +77,8 @@ export function equipmentProfileGroups(
         value,
         groupKey: key,
         checked: selected.includes(value),
+        units: profile.slotCosts?.[value] ?? 1,
+        isBodySlot: key === "bodySlots",
         label:
           key === "hostTypes" && value in labels
             ? localize(`TYPES.Item.${value}`)
@@ -102,17 +113,30 @@ export function equipmentProfileUpdate(
   for (const control of root.querySelectorAll<
     HTMLInputElement | HTMLSelectElement
   >("[data-profile-field]")) {
+    if (control.disabled) continue;
     const key = control.dataset.profileField;
     if (
-      !["family", "duration", "installable", "ordinaryLiquid"].includes(
-        key ?? "",
-      )
+      ![
+        "family",
+        "duration",
+        "installable",
+        "ordinaryLiquid",
+        "wearForm",
+        "functionalCategory",
+        "piercingLocation",
+        "ornamental",
+        "shieldHands",
+      ].includes(key ?? "")
     )
       continue;
     patch[`system.physical.equipmentProfile.${key}`] =
-      control.type === "checkbox"
-        ? (control as HTMLInputElement).checked
-        : control.value.trim();
+      control.type === "number"
+        ? control.value.trim() === ""
+          ? null
+          : Number(control.value)
+        : control.type === "checkbox"
+          ? (control as HTMLInputElement).checked
+          : control.value.trim();
   }
   for (const field of ["requiredSlots", "providedSlots"]) {
     const controls = root.querySelectorAll<HTMLInputElement>(
@@ -132,12 +156,32 @@ export function equipmentProfileUpdate(
       patch[`system.physical.equipmentProfile.${field}.${key}`] = value;
     }
   }
-  const errors = slotProfileErrors(
-    {
-      bodySlots: patch["system.physical.equipmentProfile.bodySlots"],
-    },
-    itemType,
+  for (const control of root.querySelectorAll<HTMLInputElement>(
+    "[data-profile-cost]",
+  )) {
+    if (control.disabled) continue;
+    const key = control.dataset.profileCost ?? "";
+    const units = Number(control.value);
+    if (
+      !Object.hasOwn(BODY_SLOTS, key) ||
+      !Number.isSafeInteger(units) ||
+      units < 1
+    )
+      throw new Error(
+        "Le nombre de places occupées doit être un entier positif.",
+      );
+    patch[`system.physical.equipmentProfile.slotCosts.${key}`] = units;
+  }
+  const profile = Object.fromEntries(
+    Object.entries(patch).map(([key, value]) => [
+      key.slice("system.physical.equipmentProfile.".length),
+      value,
+    ]),
   );
+  if (profile.wearForm && profile.wearForm !== "composite")
+    patch["system.physical.equipmentProfile.bodySlots"] =
+      effectiveBodySlots(profile);
+  const errors = slotProfileErrors(profile, itemType);
   if (errors.length) throw new Error(errors.join(" "));
   return patch;
 }
@@ -149,6 +193,7 @@ export function bindEquipmentProfile(
     id?: string;
     type?: string;
     parent?: Actor | null;
+    system?: Record<string, any>;
     update(data: Record<string, unknown>): Promise<unknown>;
   },
   reportError: (message: string) => void,
@@ -158,8 +203,43 @@ export function bindEquipmentProfile(
     "[data-save-equipment-profile]",
   );
   if (!section || !button || !item.isOwner) return;
+  if (
+    item.system?.physical?.equipmentProfile?.wearForm === "composite" &&
+    !game.user?.isGM
+  ) {
+    section
+      .querySelectorAll<
+        HTMLInputElement | HTMLSelectElement | HTMLButtonElement
+      >("input, select, button")
+      .forEach((control) => {
+        control.disabled = true;
+      });
+    return;
+  }
   const status = section.querySelector<HTMLElement>("[data-profile-status]");
+  const refresh = () => {
+    const selected = section.querySelector<HTMLSelectElement>(
+      '[data-profile-field="wearForm"]',
+    )?.value;
+    section
+      .querySelectorAll<HTMLElement>('[data-profile-group="bodySlots"]')
+      .forEach((el) => {
+        el.hidden = selected !== "composite";
+      });
+    section
+      .querySelectorAll<HTMLElement>("[data-piercing-fields]")
+      .forEach((el) => {
+        el.hidden = selected !== "piercing";
+      });
+    section
+      .querySelectorAll<HTMLElement>("[data-shield-fields]")
+      .forEach((el) => {
+        el.hidden = selected !== "shield";
+      });
+  };
+  refresh();
   section.addEventListener("change", () => {
+    refresh();
     if (status) status.textContent = "Modifications non enregistrées.";
   });
   button.addEventListener("click", async () => {
@@ -190,4 +270,28 @@ export function technicalSlotRows(profile: Record<string, any>) {
     required: profile.requiredSlots?.[key] ?? 0,
     provided: profile.providedSlots?.[key] ?? 0,
   }));
+}
+
+export function classificationContext(
+  profile: Record<string, any>,
+  type: string,
+  isGM: boolean,
+) {
+  const forms: Record<string, string> = {
+    "": "Ancien profil / à configurer",
+    ...Object.fromEntries(
+      Object.entries(wearForms(type)).map(([key, value]) => [key, value.label]),
+    ),
+  };
+  if (isGM || profile.wearForm === "composite")
+    forms.composite = "Profil composé — définition réservée au MJ";
+  return {
+    wearFormOptions: forms,
+    functionalCategories: EQUIPMENT_CATEGORIES,
+    piercingLocations: PIERCING_LOCATIONS,
+    profileIsGM: isGM,
+    profileLocked: !isGM && profile.wearForm === "composite",
+    wearFormLabel:
+      WEAR_FORMS[profile.wearForm]?.label ?? "Profil ancien ou composé",
+  };
 }

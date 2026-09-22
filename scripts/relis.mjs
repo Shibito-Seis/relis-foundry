@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.5.5";
+var PACKAGE_VERSION = "0.5.6";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -120,6 +120,247 @@ var MASTERY_LABELS = {
 	legendary: "Légendaire",
 	mythic: "Mythique"
 };
+//#endregion
+//#region src/rules/equipment-classification.ts
+/** UI taxonomy, not new canonical Items or bonuses. Empty form preserves old data. */
+var EQUIPMENT_CATEGORIES = {
+	"": "À classer selon la source",
+	underclothing: "Sous-couche vestimentaire",
+	accessory: "Accessoire personnel",
+	tool: "Outil ou trousse",
+	medical: "Matériel médical",
+	survival: "Survie et campement",
+	communication: "Communication",
+	sensor: "Capteur",
+	terminal: "Terminal / Datapad",
+	security: "Sécurité",
+	generator: "Générateur de champ",
+	power: "Alimentation électrique",
+	focus: "Focalisateur",
+	module: "Module à installer",
+	storage: "Portage et rangement",
+	document: "Document ou badge matériel"
+};
+var accessories = ["equipment", "container"];
+var form = (label, slots = [], types = accessories, ornamental = false) => ({
+	label,
+	slots,
+	types,
+	ornamental
+});
+var WEAR_FORMS = {
+	none: form("Sans port corporel", [], [
+		"weapon",
+		"armor",
+		"equipment",
+		"container",
+		"consumable",
+		"resource",
+		"ammunition"
+	]),
+	shield: form("Bouclier", ["shield"], ["weapon"]),
+	underlayer: form("Sous-couche défensive", ["underlayer"], ["armor"]),
+	armor: form("Armure principale", ["armor"], ["armor"]),
+	underhelmet: form("Sous-casque", ["underhelmet"], ["armor"]),
+	helmet: form("Casque", ["helmet"], ["armor"]),
+	arms: form("Protections de bras", ["arms"], ["armor"]),
+	legs: form("Jambières", ["legs"], ["armor"]),
+	coif: form("Coiffe / diadème", ["helmet"], accessories, true),
+	eyes: form("Lunettes / dispositif oculaire"),
+	face: form("Masque / appareil facial"),
+	ears: form("Dispositif auriculaire"),
+	eyesEars: form("Kit de protection yeux et oreilles"),
+	necklace: form("Collier", ["necklace"], accessories, true),
+	cape: form("Cape / manteau extérieur", ["cape"]),
+	top: form("Vêtement du haut"),
+	bottom: form("Vêtement du bas"),
+	clothing: form("Tenue complète / combinaison civile", [], [...accessories, "consumable"]),
+	gloves: form("Paire de gants", ["gloves"]),
+	bracelet: form("Bracelet", ["bracelet"], accessories, true),
+	ring: form("Anneau", ["ring"], accessories, true),
+	belt: form("Ceinture", ["belt"]),
+	harness: form("Harnais"),
+	shoes: form("Paire de chaussures / bottes"),
+	back: form("Appareil dorsal"),
+	bag: form("Sac / sacoche"),
+	badge: form("Badge / broche / insigne"),
+	earringLeft: form("Boucle d’oreille gauche", ["earLeft"], accessories, true),
+	earringRight: form("Boucle d’oreille droite", ["earRight"], accessories, true),
+	piercing: form("Piercing à emplacement défini", [], accessories, true)
+};
+var PIERCING_LOCATIONS = {
+	earLeft: "Oreille gauche",
+	earRight: "Oreille droite",
+	brow: "Arcade",
+	nose: "Nez",
+	lip: "Lèvre",
+	tongue: "Langue",
+	navel: "Nombril",
+	other: "Autre emplacement anatomique"
+};
+function wearForms(type) {
+	return Object.fromEntries(Object.entries(WEAR_FORMS).filter(([, value]) => value.types.includes(type)));
+}
+function effectiveBodySlots(profile) {
+	if (profile.wearForm && profile.wearForm !== "composite") {
+		const selected = WEAR_FORMS[profile.wearForm];
+		if (!selected) return [];
+		if (profile.ornamental && selected.ornamental) return [];
+		if (profile.wearForm === "piercing") return profile.piercingLocation ? [`piercing_${profile.piercingLocation}`] : [];
+		return [...selected.slots];
+	}
+	return Array.isArray(profile.bodySlots) ? [...new Set(profile.bodySlots)] : [];
+}
+function classificationErrors(profile, type) {
+	const errors = [];
+	const selected = profile.wearForm;
+	if (profile.shieldHands != null && (!Number.isInteger(profile.shieldHands) || profile.shieldHands < 0 || profile.shieldHands > 2)) errors.push("Mains du bouclier : entier entre 0 et 2 requis.");
+	if (selected && selected !== "composite" && (!WEAR_FORMS[selected] || type && !WEAR_FORMS[selected].types.includes(type))) errors.push("Forme de port incompatible avec le type d’objet.");
+	if (selected === "piercing" && !Object.hasOwn(PIERCING_LOCATIONS, profile.piercingLocation ?? "")) errors.push("Choisir l’emplacement du piercing.");
+	if (profile.ornamental && !WEAR_FORMS[selected]?.ornamental) errors.push("La dispense décorative concerne uniquement les ornements personnels.");
+	if (profile.functionalCategory && !Object.hasOwn(EQUIPMENT_CATEGORIES, profile.functionalCategory)) errors.push("Famille fonctionnelle inconnue.");
+	if (profile.functionalCategory === "underclothing" && type !== "equipment") errors.push("La sous-couche vestimentaire appartient aux Équipements.");
+	if (!selected && ["equipment", "container"].includes(type ?? "") && effectiveBodySlots(profile).length > 1) errors.push("Ancien accessoire à plusieurs formes : choisir une forme unique ou faire définir un profil composé par le MJ.");
+	return errors;
+}
+/** Owners can use GM-authored composites but cannot author or alter them. */
+function assertProfilePermission(before, after, isGM) {
+	if (isGM) return;
+	if (after.wearForm !== "composite" && Array.isArray(after.bodySlots) && after.bodySlots.length > 1 && JSON.stringify(before.bodySlots) !== JSON.stringify(after.bodySlots)) throw new Error("Une occupation composée doit être définie par le MJ.");
+	if (["ornamental", "shieldHands"].some((key) => JSON.stringify(before[key] ?? (key === "ornamental" ? false : null)) !== JSON.stringify(after[key] ?? (key === "ornamental" ? false : null))) || (before.wearForm === "composite" || after.wearForm === "composite") && JSON.stringify(before) !== JSON.stringify(after)) throw new Error("Seul le MJ peut modifier un profil composé ou sa dispense décorative et les mains d’un bouclier.");
+}
+//#endregion
+//#region src/rules/equipment-slots.ts
+/** Bible 41.137: occupancy is distinct from protective coverage. */
+var BODY_SLOTS = {
+	underlayer: "Sous-couche corporelle",
+	armor: "Armure principale",
+	underhelmet: "Sous-casque",
+	helmet: "Casque principal",
+	arms: "Protections de bras",
+	legs: "Jambières",
+	shield: "Bouclier porté",
+	necklace: "Collier",
+	bracelet: "Bracelet",
+	ring: "Anneau",
+	cape: "Cape",
+	belt: "Ceinture",
+	gloves: "Paire de gants",
+	earLeft: "Boucle gauche",
+	earRight: "Boucle droite",
+	...Object.fromEntries(Object.entries(PIERCING_LOCATIONS).map(([key, label]) => [`piercing_${key}`, `Piercing · ${label}`]))
+};
+/** Category restricts available choices; selections belong only to the Item. */
+function allowedBodySlots(type) {
+	const keys = type === "armor" ? [
+		"underlayer",
+		"armor",
+		"underhelmet",
+		"helmet",
+		"arms",
+		"legs"
+	] : type === "weapon" ? ["shield"] : ["equipment", "container"].includes(type) ? [
+		"necklace",
+		"bracelet",
+		"ring",
+		"cape",
+		"belt",
+		"gloves",
+		"helmet",
+		"earLeft",
+		"earRight",
+		...Object.keys(PIERCING_LOCATIONS).map((key) => `piercing_${key}`)
+	] : [];
+	return Object.fromEntries(keys.map((key) => [key, BODY_SLOTS[key]]));
+}
+var ACCESSORY_CAPACITIES = {
+	necklace: 1,
+	bracelet: 2,
+	ring: 10,
+	cape: 1,
+	belt: 1,
+	gloves: 1,
+	earLeft: 1,
+	earRight: 1,
+	...Object.fromEntries(Object.keys(PIERCING_LOCATIONS).map((key) => [`piercing_${key}`, 0]))
+};
+function bodySlotCapacity(key, carrying = {}) {
+	const value = carrying.accessorySlots?.[key] ?? ACCESSORY_CAPACITIES[key] ?? 1;
+	return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+}
+/** Equipped accessories and held shields reserve their slots; storage does not. */
+function occupiesBodySlot(item, key) {
+	const p = item.system.physical ?? {};
+	return bodySlots(p.equipmentProfile ?? {}).includes(key) && (p.equipState === "equipped" || key === "shield" && p.equipState === "readied");
+}
+/** Bible 41.53: a host provides quantities, a module requires quantities. */
+var TECHNICAL_SLOTS = {
+	muzzle: "Bouche",
+	barrel: "Canon",
+	optic: "Optique",
+	underbarrel: "Sous-canon",
+	stock: "Crosse ou poignée",
+	internal: "Interne",
+	power: "Alimentation",
+	utility: "Utilitaire",
+	plates: "Plaques",
+	mobility: "Mobilité",
+	sensors: "Capteurs",
+	environment: "Environnement",
+	interface: "Interface",
+	edge: "Bord",
+	projector: "Projecteur"
+};
+function bodySlots(profile) {
+	return effectiveBodySlots(profile);
+}
+function legacySlot(profile) {
+	return !profile.slotsConfigured ? String(profile.slot ?? "").trim() : "";
+}
+function slotProfileErrors(profile, type) {
+	const errors = classificationErrors(profile, type);
+	if (profile.bodySlots != null && !Array.isArray(profile.bodySlots)) errors.push("Liste d’emplacements corporels invalide.");
+	for (const key of bodySlots(profile)) if (!Object.hasOwn(BODY_SLOTS, key)) errors.push(`Emplacement corporel inconnu : ${key}.`);
+	else if (type !== void 0 && !Object.hasOwn(allowedBodySlots(type), key)) errors.push(`${BODY_SLOTS[key]} : emplacement interdit pour ce type d’objet (${type}). Reconfigurer cette fiche Item.`);
+	for (const [key, value] of Object.entries(profile.slotCosts ?? {})) if (!Object.hasOwn(BODY_SLOTS, key) || !Number.isSafeInteger(value) || Number(value) < 1) errors.push("Quantité d’occupation corporelle invalide.");
+	for (const field of ["requiredSlots", "providedSlots"]) for (const [key, value] of Object.entries(profile[field] ?? {})) if (!Object.hasOwn(TECHNICAL_SLOTS, key) || !Number.isSafeInteger(value) || Number(value) < 0) errors.push(`Emplacement technique invalide : ${key} (entier positif ou nul requis).`);
+	return errors;
+}
+function installedOn(item, host) {
+	const ref = item.system.physical?.hostRef;
+	return item.system.physical?.equipState === "installed" && Boolean(ref?.uuid && host.uuid && ref.uuid === host.uuid || ref?.relisId && host.system.meta?.relisId && ref.relisId === host.system.meta.relisId);
+}
+function technicalUsage(items, host, excludeId = "") {
+	const used = {};
+	for (const item of items) {
+		if (item.id === excludeId || !installedOn(item, host)) continue;
+		for (const [key, value] of Object.entries(item.system.physical?.equipmentProfile?.requiredSlots ?? {})) used[key] = (used[key] ?? 0) + Number(value);
+	}
+	return used;
+}
+function installationSlotErrors(items, item, host) {
+	const p = item.system.physical?.equipmentProfile ?? {}, h = host.system.physical?.equipmentProfile ?? {};
+	const errors = slotProfileErrors(h);
+	if (legacySlot(p)) errors.push("Ancien emplacement d’installation à reconfigurer dans la fiche Item.");
+	if (items.some((entry) => entry.id !== item.id && installedOn(entry, host) && legacySlot(entry.system.physical?.equipmentProfile ?? {}))) errors.push("Reconfigurer les anciens emplacements des modules déjà installés sur cet hôte.");
+	const used = technicalUsage(items, host, item.id);
+	for (const key of Object.keys(TECHNICAL_SLOTS)) {
+		const required = Number(p.requiredSlots?.[key] ?? 0);
+		const occupied = used[key] ?? 0, capacity = Number(h.providedSlots?.[key] ?? 0);
+		if (!Number.isFinite(occupied) || occupied + required > capacity) errors.push(`${TECHNICAL_SLOTS[key]} sur ${host.name} : ${required} requis, ${occupied} occupé(s), ${capacity} disponible(s) au total.`);
+	}
+	return errors;
+}
+function slotSummary(profile) {
+	if (legacySlot(profile)) return `Ancien emplacement à reconfigurer : ${legacySlot(profile)}`;
+	return bodySlots(profile).map((key) => `${BODY_SLOTS[key] ?? `Inconnu : ${key}`}${slotCost(profile, key) > 1 ? ` × ${slotCost(profile, key)}` : ""}`).join(" + ") || "Aucun emplacement corporel déclaré";
+}
+function technicalSummary(profile, field) {
+	return Object.entries(profile[field] ?? {}).filter(([, n]) => Number(n) > 0).map(([key, n]) => `${TECHNICAL_SLOTS[key] ?? key} × ${n}`).join(" ; ") || "Aucun";
+}
+function slotCost(profile, key) {
+	return profile.wearForm === "composite" ? Number(profile.slotCosts?.[key] ?? 1) : 1;
+}
 //#endregion
 //#region src/rules/check.ts
 var DEGREE_ORDER = [
@@ -322,114 +563,6 @@ function normalizePersonSource(source) {
 	source.activeBodyId = typeof source.activeBodyId === "string" && source.activeBodyId.length > 0 ? source.activeBodyId : String(source.bodies[0]?.id ?? "primary");
 	source.presentations = Array.isArray(source.presentations) && source.presentations.length > 0 ? source.presentations.map(normalizePresentation) : [initialPresentation()];
 	return source;
-}
-//#endregion
-//#region src/rules/equipment-slots.ts
-/** Bible 41.137: occupancy is distinct from protective coverage. */
-var BODY_SLOTS = {
-	underlayer: "Sous-couche corporelle",
-	armor: "Armure principale",
-	underhelmet: "Sous-casque",
-	helmet: "Casque principal",
-	arms: "Protections de bras",
-	legs: "Jambières",
-	shield: "Bouclier porté",
-	necklace: "Collier",
-	bracelet: "Bracelet",
-	ring: "Anneau"
-};
-/** Category restricts available choices; selections belong only to the Item. */
-function allowedBodySlots(type) {
-	return Object.fromEntries((type === "armor" ? [
-		"underlayer",
-		"armor",
-		"underhelmet",
-		"helmet",
-		"arms",
-		"legs"
-	] : type === "weapon" ? ["shield"] : type === "equipment" ? [
-		"necklace",
-		"bracelet",
-		"ring"
-	] : []).map((key) => [key, BODY_SLOTS[key]]));
-}
-var ACCESSORY_CAPACITIES = {
-	necklace: 1,
-	bracelet: 2,
-	ring: 10
-};
-function bodySlotCapacity(key, carrying = {}) {
-	const value = carrying.accessorySlots?.[key] ?? ACCESSORY_CAPACITIES[key] ?? 1;
-	return Number.isSafeInteger(value) && value >= 0 ? value : 0;
-}
-/** Equipped accessories and held shields reserve their slots; storage does not. */
-function occupiesBodySlot(item, key) {
-	const p = item.system.physical ?? {};
-	return bodySlots(p.equipmentProfile ?? {}).includes(key) && (p.equipState === "equipped" || key === "shield" && p.equipState === "readied");
-}
-/** Bible 41.53: a host provides quantities, a module requires quantities. */
-var TECHNICAL_SLOTS = {
-	muzzle: "Bouche",
-	barrel: "Canon",
-	optic: "Optique",
-	underbarrel: "Sous-canon",
-	stock: "Crosse ou poignée",
-	internal: "Interne",
-	power: "Alimentation",
-	utility: "Utilitaire",
-	plates: "Plaques",
-	mobility: "Mobilité",
-	sensors: "Capteurs",
-	environment: "Environnement",
-	interface: "Interface",
-	edge: "Bord",
-	projector: "Projecteur"
-};
-function bodySlots(profile) {
-	return Array.isArray(profile.bodySlots) ? [...new Set(profile.bodySlots)] : [];
-}
-function legacySlot(profile) {
-	return !profile.slotsConfigured ? String(profile.slot ?? "").trim() : "";
-}
-function slotProfileErrors(profile, type) {
-	const errors = [];
-	if (profile.bodySlots != null && !Array.isArray(profile.bodySlots)) errors.push("Liste d’emplacements corporels invalide.");
-	for (const key of bodySlots(profile)) if (!Object.hasOwn(BODY_SLOTS, key)) errors.push(`Emplacement corporel inconnu : ${key}.`);
-	else if (type !== void 0 && !Object.hasOwn(allowedBodySlots(type), key)) errors.push(`${BODY_SLOTS[key]} : emplacement interdit pour ce type d’objet (${type}). Reconfigurer cette fiche Item.`);
-	for (const field of ["requiredSlots", "providedSlots"]) for (const [key, value] of Object.entries(profile[field] ?? {})) if (!Object.hasOwn(TECHNICAL_SLOTS, key) || !Number.isSafeInteger(value) || Number(value) < 0) errors.push(`Emplacement technique invalide : ${key} (entier positif ou nul requis).`);
-	return errors;
-}
-function installedOn(item, host) {
-	const ref = item.system.physical?.hostRef;
-	return item.system.physical?.equipState === "installed" && Boolean(ref?.uuid && host.uuid && ref.uuid === host.uuid || ref?.relisId && host.system.meta?.relisId && ref.relisId === host.system.meta.relisId);
-}
-function technicalUsage(items, host, excludeId = "") {
-	const used = {};
-	for (const item of items) {
-		if (item.id === excludeId || !installedOn(item, host)) continue;
-		for (const [key, value] of Object.entries(item.system.physical?.equipmentProfile?.requiredSlots ?? {})) used[key] = (used[key] ?? 0) + Number(value);
-	}
-	return used;
-}
-function installationSlotErrors(items, item, host) {
-	const p = item.system.physical?.equipmentProfile ?? {}, h = host.system.physical?.equipmentProfile ?? {};
-	const errors = slotProfileErrors(h);
-	if (legacySlot(p)) errors.push("Ancien emplacement d’installation à reconfigurer dans la fiche Item.");
-	if (items.some((entry) => entry.id !== item.id && installedOn(entry, host) && legacySlot(entry.system.physical?.equipmentProfile ?? {}))) errors.push("Reconfigurer les anciens emplacements des modules déjà installés sur cet hôte.");
-	const used = technicalUsage(items, host, item.id);
-	for (const key of Object.keys(TECHNICAL_SLOTS)) {
-		const required = Number(p.requiredSlots?.[key] ?? 0);
-		const occupied = used[key] ?? 0, capacity = Number(h.providedSlots?.[key] ?? 0);
-		if (!Number.isFinite(occupied) || occupied + required > capacity) errors.push(`${TECHNICAL_SLOTS[key]} sur ${host.name} : ${required} requis, ${occupied} occupé(s), ${capacity} disponible(s) au total.`);
-	}
-	return errors;
-}
-function slotSummary(profile) {
-	if (legacySlot(profile)) return `Ancien emplacement à reconfigurer : ${legacySlot(profile)}`;
-	return bodySlots(profile).map((key) => BODY_SLOTS[key] ?? `Inconnu : ${key}`).join(" + ") || "Aucun emplacement corporel déclaré";
-}
-function technicalSummary(profile, field) {
-	return Object.entries(profile[field] ?? {}).filter(([, n]) => Number(n) > 0).map(([key, n]) => `${TECHNICAL_SLOTS[key] ?? key} × ${n}`).join(" ; ") || "Aucun";
 }
 //#endregion
 //#region src/utils/ulid.ts
@@ -1397,6 +1530,26 @@ function physicalField() {
 		}),
 		hostRef: referenceField$1(),
 		equipmentProfile: new fields$1.SchemaField({
+			slotCosts: new fields$1.SchemaField(Object.fromEntries(Object.keys(BODY_SLOTS).map((key) => [key, new fields$1.NumberField({
+				required: true,
+				integer: true,
+				min: 1,
+				initial: 1
+			})]))),
+			wearForm: optionalStringField$1(),
+			functionalCategory: optionalStringField$1(),
+			piercingLocation: optionalStringField$1(),
+			ornamental: new fields$1.BooleanField({
+				required: true,
+				initial: false
+			}),
+			shieldHands: new fields$1.NumberField({
+				nullable: true,
+				initial: null,
+				integer: true,
+				min: 0,
+				max: 2
+			}),
 			family: new fields$1.StringField({
 				required: true,
 				blank: true,
@@ -1982,11 +2135,7 @@ function ageField() {
 function bodyField() {
 	return new fields.SchemaField({
 		carrying: new fields.SchemaField({
-			accessorySlots: new fields.SchemaField(Object.fromEntries(Object.entries({
-				necklace: 1,
-				bracelet: 2,
-				ring: 10
-			}).map(([key, initial]) => [key, new fields.NumberField({
+			accessorySlots: new fields.SchemaField(Object.fromEntries(Object.entries(ACCESSORY_CAPACITIES).map(([key, initial]) => [key, new fields.NumberField({
 				required: true,
 				integer: true,
 				min: 0,
@@ -2852,6 +3001,55 @@ function prepareItemCreation(item, data, options = {}) {
 }
 /** Embedded equipment state changes must use the same previewed service. */
 function protectEquipmentUpdate(item, change, options = {}) {
+	if (isPhysicalItemType(item.type) && !options.relisMigration) {
+		const prefix = "system.physical.equipmentProfile";
+		const paths = changedPaths(change);
+		if (paths.some((path) => path === prefix || path.startsWith(prefix + "."))) {
+			const before = item.system.physical?.equipmentProfile ?? {};
+			const after = JSON.parse(JSON.stringify(requestedValue(change, prefix, before)));
+			for (const key of [
+				"slotCosts",
+				"wearForm",
+				"bodySlots",
+				"functionalCategory",
+				"piercingLocation",
+				"ornamental",
+				"shieldHands",
+				"family",
+				"sizes",
+				"natures",
+				"hostTypes",
+				"requiredSlots",
+				"providedSlots",
+				"installable",
+				"ordinaryLiquid",
+				"duration",
+				"slot",
+				"slotsConfigured"
+			]) after[key] = requestedValue(change, `${prefix}.${key}`, after[key]);
+			for (const path of paths.filter((path) => path.startsWith(prefix + "."))) {
+				const keys = path.slice(33).split(".");
+				if (keys.some((key) => [
+					"__proto__",
+					"prototype",
+					"constructor"
+				].includes(key))) return false;
+				const value = requestedValue(change, path, void 0);
+				if (value === void 0) continue;
+				let current = after;
+				for (const key of keys.slice(0, -1)) current = current[key] ??= {};
+				current[keys.at(-1)] = JSON.parse(JSON.stringify(value));
+			}
+			try {
+				assertProfilePermission(before, after, Boolean(game.user?.isGM));
+				const errors = slotProfileErrors(after, item.type);
+				if (errors.length) throw new Error(errors.join(" "));
+			} catch (error) {
+				ui.notifications.warn(error instanceof Error ? error.message : "Profil refusé.");
+				return false;
+			}
+		}
+	}
 	if (!item.parent || !isPhysicalItemType(item.type) || options.relisInventoryOperation || options.relisMigration) return;
 	if (item.parent.flags?.relis?.equipmentRecovery) {
 		ui.notifications.warn("Restaurer d’abord l’opération d’équipement interrompue.");
@@ -3646,7 +3844,7 @@ function equipmentState(item) {
 }
 function equipmentStates(item) {
 	const profile = item.system.physical?.equipmentProfile ?? {};
-	const family = profile.family || (item.type === "weapon" ? "manipulable" : [
+	const family = profile.family || (item.type === "weapon" ? "manipulable" : profile.wearForm === "none" ? "manipulable" : profile.wearForm || [
 		"armor",
 		"equipment",
 		"container"
@@ -3745,9 +3943,11 @@ function equipmentPlan(items, body, request) {
 	if (active && ["broken", "destroyed"].includes(physical.condition)) errors.push("Objet brisé ou détruit.");
 	if (active && profile.sizes?.length && !profile.sizes.includes(body.size)) errors.push("Taille incompatible avec le corps actif.");
 	if (active && profile.natures?.length && !profile.natures.includes(body.nature)) errors.push("Nature corporelle incompatible.");
-	const hands = state === "held-two" ? 2 : state === "held-one" ? 1 : 0;
+	const shield = bodySlots(profile).includes("shield");
+	if (state === "equipped" && shield && profile.shieldHands == null) errors.push("Renseigner dans la fiche du bouclier les mains nécessaires selon sa source, ou choisir une prise en main explicite.");
+	const hands = state === "held-two" ? 2 : state === "held-one" ? 1 : state === "equipped" && shield ? Number(profile.shieldHands ?? 0) : 0;
 	const others = items.filter((entry) => entry.id !== item.id && (entry.system.physical?.bodyId || body.id) === body.id);
-	const usedHands = others.reduce((sum, entry) => sum + (equipmentState(entry) === "held-two" ? 2 : equipmentState(entry) === "held-one" ? 1 : 0), 0);
+	const usedHands = others.reduce((sum, entry) => sum + (equipmentState(entry) === "held-two" ? 2 : equipmentState(entry) === "held-one" ? 1 : equipmentState(entry) === "equipped" ? Number(entry.system.physical?.hands ?? 0) : 0), 0);
 	if (hands && others.some((entry) => equipmentState(entry) === "readied")) errors.push("Préciser d’abord les mains des objets anciennement préparés.");
 	if (hands && (body.carrying?.hands == null || !Number.isInteger(Number(body.carrying.hands)) || Number(body.carrying.hands) < 0)) errors.push("Nombre de mains utilisables non renseigné pour ce corps.");
 	else if (hands && usedHands + hands > Number(body.carrying?.hands)) errors.push("Mains utilisables insuffisantes.");
@@ -3758,7 +3958,8 @@ function equipmentPlan(items, body, request) {
 		for (const key of bodySlots(profile)) {
 			const conflicts = others.filter((entry) => occupiesBodySlot(entry, key));
 			const capacity = bodySlotCapacity(key, body.carrying);
-			if (conflicts.length + 1 > capacity) errors.push(`${BODY_SLOTS[key] ?? key} : emplacement occupé, ${conflicts.length}/${capacity} place(s), par ${conflicts.map((entry) => entry.name).join(", ") || "aucun objet (capacité nulle)"}.`);
+			const used = conflicts.reduce((sum, entry) => sum + slotCost(entry.system.physical?.equipmentProfile ?? {}, key), 0);
+			if (used + slotCost(profile, key) > capacity) errors.push(`${BODY_SLOTS[key] ?? key} : emplacement occupé, ${used}/${capacity} place(s), par ${conflicts.map((entry) => entry.name).join(", ") || "aucun objet (capacité nulle)"}.`);
 		}
 		if (legacySlot(profile) && others.some((entry) => equipmentState(entry) === "equipped" && legacySlot(entry.system.physical?.equipmentProfile ?? {}) === legacySlot(profile))) errors.push("Ancien emplacement d’équipement déjà occupé.");
 	}
@@ -3782,7 +3983,7 @@ function equipmentPlan(items, body, request) {
 	if (equipmentState(item) === "installed" && state === "stored") warnings.push("L’objet sera détaché de son hôte et rangé dans l’inventaire principal.");
 	if (active && !profile.duration) warnings.push("Temps et aide nécessaires à arbitrer selon la règle ou le MJ.");
 	const patch = {
-		"system.physical.equipState": hands ? "readied" : state,
+		"system.physical.equipState": state.startsWith("held-") ? "readied" : state,
 		"system.physical.hands": hands,
 		"system.physical.bodyId": state === "ground" || state === "installed" ? "" : body.id,
 		"system.physical.hostRef": state === "installed" && host ? {
@@ -4333,6 +4534,7 @@ async function saveEquipmentProfile(item, patch) {
 			for (const key of keys.slice(0, -1)) current = current[key] ??= {};
 			current[keys.at(-1)] = JSON.parse(JSON.stringify(value));
 		}
+		assertProfilePermission(source ?? {}, profile, Boolean(game.user?.isGM));
 		const errors = slotProfileErrors(profile, type);
 		if (errors.length) throw new Error(errors.join(" "));
 		return profile;
@@ -4372,6 +4574,114 @@ async function saveEquipmentProfile(item, patch) {
 		const introduced = inspect(after).filter((message) => !oldErrors.has(message));
 		if (introduced.length) throw new Error(`Profil refusé — ${introduced.join(" · ")} Ranger ou détacher les objets concernés avant de reconfigurer.`);
 		await item.update(patch);
+	});
+}
+//#endregion
+//#region src/ui/equipment-presentation.ts
+var EQUIPMENT_ICONS = {
+	stored: "fa-box",
+	"held-one": "fa-hand",
+	"held-two": "fa-hands",
+	equipped: "fa-user-shield",
+	installed: "fa-screwdriver-wrench",
+	ground: "fa-arrow-down",
+	readied: "fa-hand",
+	carried: "fa-box"
+};
+function installationTargets(items, body, item) {
+	return items.filter((host) => host.id !== item.id).map((host) => {
+		const plan = equipmentPlan(items, body, {
+			itemId: item.id,
+			state: "installed",
+			hostId: host.id
+		});
+		const usage = technicalUsage(items, host, item.id);
+		const capacity = Object.entries(item.system.physical?.equipmentProfile?.requiredSlots ?? {}).filter(([, n]) => Number(n) > 0).map(([key, n]) => {
+			const total = Number(host.system.physical?.equipmentProfile?.providedSlots?.[key] ?? 0);
+			return `${TECHNICAL_SLOTS[key] ?? key} : ${Math.max(0, total - (usage[key] ?? 0))} libre(s) / ${total} ; ${n} nécessaire(s)`;
+		}).join(" · ");
+		return {
+			id: host.id,
+			name: host.name,
+			errors: plan.errors,
+			capacity: capacity || "Aucun besoin de place déclaré : vérifier la source."
+		};
+	});
+}
+function equipmentActions(items, body, item) {
+	return equipmentStates(item).map((state) => {
+		const errors = state === "installed" ? installationTargets(items, body, item).some((host) => !host.errors.length) ? [] : ["Aucun support compatible et disponible. Vérifier les besoins de cet objet et les capacités de son support dans leurs fiches."] : equipmentPlan(items, body, {
+			itemId: item.id,
+			state
+		}).errors;
+		return {
+			state,
+			itemId: item.id,
+			label: state === "installed" ? "Installer sur…" : EQUIPMENT_LABELS[state],
+			icon: EQUIPMENT_ICONS[state],
+			reason: errors.join(" "),
+			unavailable: errors.length > 0,
+			current: equipmentState(item) === state
+		};
+	});
+}
+function equipmentOverview(items, body) {
+	const local = items.filter((item) => (equipmentBodyId(items, item) || body.id) === body.id);
+	const handsItems = local.filter((item) => equipmentState(item).startsWith("held-") || equipmentState(item) === "equipped" && Number(item.system.physical?.hands) > 0);
+	const hands = handsItems.reduce((sum, item) => sum + Number(item.system.physical?.hands ?? 0), 0);
+	const entries = [{
+		key: "hands",
+		label: "Mains",
+		count: hands,
+		capacity: body.carrying?.hands ?? "?",
+		items: handsItems,
+		over: body.carrying?.hands != null && hands > body.carrying.hands
+	}];
+	for (const [key, label] of Object.entries(BODY_SLOTS)) {
+		const equipped = local.filter((item) => occupiesBodySlot(item, key));
+		if (!equipped.length && ![
+			"necklace",
+			"bracelet",
+			"ring"
+		].includes(key)) continue;
+		const capacity = bodySlotCapacity(key, body.carrying);
+		const count = equipped.reduce((sum, item) => sum + slotCost(item.system.physical?.equipmentProfile ?? {}, key), 0);
+		entries.push({
+			key,
+			label,
+			count,
+			capacity,
+			items: equipped,
+			over: count > capacity
+		});
+	}
+	const uncounted = local.filter((item) => equipmentState(item) === "equipped" && !bodySlots(item.system.physical?.equipmentProfile ?? {}).length);
+	return {
+		entries: entries.map((entry) => ({
+			...entry,
+			warningClass: entry.over ? "relis-inventory-warning" : ""
+		})),
+		uncounted
+	};
+}
+/** Native disclosures retain keyboard activation; only one state menu stays open. */
+function bindEquipmentMenus(root) {
+	const menus = Array.from(root.querySelectorAll("[data-equipment-menu]"));
+	for (const menu of menus) menu.addEventListener("toggle", () => {
+		if (menu.open) {
+			for (const other of menus) if (other !== menu) other.open = false;
+		}
+	});
+	root.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") {
+			for (const menu of menus) if (menu.open) {
+				menu.open = false;
+				menu.querySelector("summary")?.focus();
+			}
+		}
+	});
+	root.addEventListener("click", (event) => {
+		for (const menu of menus) if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
 	});
 }
 //#endregion
@@ -4924,6 +5234,10 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			return {
 				id: row.item.id,
 				name: row.item.name,
+				equipmentDuration: physical.equipmentProfile?.duration || "à arbitrer avec le MJ",
+				equipmentIcon: EQUIPMENT_ICONS[equipmentState(row.item)] ?? "fa-box",
+				equipmentActions: equipmentActions(physicalSnapshots, activeBody ?? { id: "" }, row.item),
+				classificationLabel: [EQUIPMENT_CATEGORIES[physical.equipmentProfile?.functionalCategory], WEAR_FORMS[physical.equipmentProfile?.wearForm]?.label].filter(Boolean).join(" · "),
 				equipmentLabel: EQUIPMENT_LABELS[equipmentState(row.item)] ?? "État ancien à vérifier",
 				equipmentBody: physical.bodyId ? bodies.find((body) => body.id === physical.bodyId)?.name ?? "Corps absent" : "",
 				equipmentHost: physical.hostRef?.labelSnapshot ?? "",
@@ -5012,6 +5326,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			relatedItems,
 			inventoryRows,
 			inventoryGroups: groupInventory(inventoryRows),
+			equipmentOverview: equipmentOverview(physicalSnapshots, activeBody ?? { id: "" }),
 			carrying: carriedMass(physicalSnapshots, activeBody ?? { id: "" }),
 			canConfigureBody: Boolean(game.user?.isGM),
 			equipmentRecovery: Boolean(this.actor.flags?.relis?.equipmentRecovery),
@@ -5034,6 +5349,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		await super._onRender(context, options);
 		const root = this.element;
 		this.activateTab(root, this.activeTab);
+		bindEquipmentMenus(root);
 		root.querySelector("[data-edit-actor-portrait]")?.addEventListener("click", () => {
 			openActorPortraitPicker(this.actor);
 		});
@@ -5041,7 +5357,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			this.inventoryTask(async () => {
 				if (!this.actor.isOwner && !game.user?.isGM) return;
 				switch (button.dataset.equipmentCommand) {
-					case "state": return this.changeEquipment(button.dataset.itemId ?? "");
+					case "state": return this.changeEquipment(button.dataset.itemId ?? "", button.dataset.equipmentState ?? "");
 					case "body":
 						await this.configureCarrying();
 						break;
@@ -5185,34 +5501,50 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		await applyEquipment(this.actor, requests, preview.fingerprint, assisted);
 		return true;
 	}
-	async changeEquipment(itemId) {
+	async changeEquipment(itemId, state) {
 		const item = this.actor.items.get(itemId);
 		if (!item) return false;
-		const snapshot = itemSnapshot(item);
-		const content = dialogContent();
-		const states = equipmentStates(snapshot);
-		dialogSelect(content, "État souhaité", "state", states.map((state) => ({
-			value: state,
-			label: EQUIPMENT_LABELS[state]
-		})));
-		const current = equipmentState(snapshot);
-		const select = content.querySelector("[name=\"state\"]");
-		if (states.includes(current)) select.value = current;
-		if (states.includes("installed")) dialogSelect(content, "Hôte (utilisé seulement pour Installer)", "hostId", [{
-			value: "",
-			label: "Choisir un hôte"
-		}, ...Array.from(this.actor.items ?? []).filter((candidate) => candidate.id !== itemId && isPhysicalItemType(candidate.type)).map((candidate) => ({
-			value: candidate.id,
-			label: candidate.name
-		}))]);
-		dialogNote(content, "Rangé ne choisit pas de conteneur : utilisez Déplacer pour cela. Au sol retire la masse de la charge portée, sans supprimer l’objet.");
-		const result = await askInventoryForm(item.name, content, "Voir l’aperçu");
-		if (!result) return false;
-		return this.confirmEquipment([{
+		let hostId = "";
+		if (state === "installed") {
+			const targets = installationTargets(Array.from(this.actor.items ?? []).filter((entry) => isPhysicalItemType(entry.type)).map(itemSnapshot), Array.from(this.actor.system.bodies ?? []).find((entry) => entry.id === this.actor.system.activeBodyId) ?? { id: "" }, itemSnapshot(item));
+			const compatible = targets.filter((target) => !target.errors.length);
+			if (!compatible.length) throw new Error("Aucun support compatible et disponible.");
+			const content = dialogContent();
+			dialogNote(content, "Choisir le support. Les places sont vérifiées de nouveau au moment de l’installation.");
+			for (const target of compatible) {
+				const label = document.createElement("label");
+				label.className = "relis-install-target";
+				const input = document.createElement("input");
+				input.type = "radio";
+				input.name = "hostId";
+				input.value = target.id;
+				input.required = true;
+				label.append(input, document.createTextNode(`${target.name} — ${target.capacity}`));
+				content.append(label);
+			}
+			const details = document.createElement("details");
+			const summary = document.createElement("summary");
+			summary.textContent = "Pourquoi les autres supports sont indisponibles ?";
+			details.append(summary);
+			for (const target of targets.filter((entry) => entry.errors.length)) {
+				const p = document.createElement("p");
+				p.textContent = `${target.name} : ${target.errors.join(" ")}`;
+				details.append(p);
+			}
+			content.append(details);
+			const result = await askInventoryForm(`Installer ${item.name} sur…`, content, "Installer");
+			if (!result) return false;
+			hostId = String(result.hostId ?? "");
+		}
+		const requests = [{
 			itemId,
-			state: String(result.state),
-			hostId: String(result.hostId ?? "")
-		}]);
+			state,
+			hostId
+		}];
+		const preview = previewEquipment(this.actor, requests);
+		if (!preview.updates.length) throw new Error(equipmentFailureMessage(preview));
+		await applyEquipment(this.actor, requests, preview.fingerprint);
+		return true;
 	}
 	async configureCarrying() {
 		if (!game.user?.isGM) return;
@@ -5225,25 +5557,15 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		dialogNote(content, "Renseigner les valeurs de la règle applicable ou une décision MJ. Laisser vide lorsqu’elles sont inconnues ; aucune formule automatique n’est supposée.");
 		dialogOptional(content, "Nombre de mains utilisables", "hands", profile.hands, true);
 		content.querySelector("[name=\"hands\"]").step = "1";
-		for (const [key, label, fallback] of [
-			[
-				"necklace",
-				"Places de colliers",
-				1
-			],
-			[
-				"bracelet",
-				"Places de bracelets",
-				2
-			],
-			[
-				"ring",
-				"Places d’anneaux",
-				10
-			]
-		]) {
-			dialogOptional(content, label, key, profile.accessorySlots?.[key] ?? fallback, true);
-			content.querySelector(`[name="${key}"]`).step = "1";
+		const advanced = document.createElement("details");
+		const advancedSummary = document.createElement("summary");
+		advancedSummary.textContent = "Capacités d’accessoires — règles du corps (réservé au MJ)";
+		advanced.append(advancedSummary);
+		content.append(advanced);
+		for (const [key, fallback] of Object.entries(ACCESSORY_CAPACITIES)) {
+			dialogOptional(content, BODY_SLOTS[key] ?? key, key, profile.accessorySlots?.[key] ?? fallback, true);
+			advanced.append(content.lastElementChild);
+			advanced.querySelector(`[name="${key}"]`).step = "1";
 		}
 		dialogOptional(content, "Chargé à partir de (kg)", "loaded", profile.loaded, true);
 		dialogOptional(content, "Surchargé à partir de (kg)", "overloaded", profile.overloaded, true);
@@ -5255,11 +5577,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		if (hands !== null && (!Number.isInteger(hands) || hands < 0)) throw new Error("Le nombre de mains doit être un entier positif ou nul.");
 		if (loaded === null !== (overloaded === null) || loaded !== null && (!Number.isFinite(loaded) || loaded <= 0 || !Number.isFinite(overloaded) || overloaded <= loaded)) throw new Error("Renseigner les deux seuils positifs, avec Surchargé supérieur à Chargé.");
 		if (JSON.stringify(Array.from(this.actor.system.bodies ?? [])) !== before) throw new Error("Le corps a changé : rouvrir la configuration.");
-		const accessorySlots = Object.fromEntries([
-			"necklace",
-			"bracelet",
-			"ring"
-		].map((key) => [key, Number(result[key])]));
+		const accessorySlots = Object.fromEntries(Object.keys(ACCESSORY_CAPACITIES).map((key) => [key, Number(result[key])]));
 		if (Object.values(accessorySlots).some((value) => !Number.isSafeInteger(value) || value < 0)) throw new Error("Les places d’accessoires doivent être des entiers positifs ou nuls.");
 		body.carrying = {
 			...profile,
@@ -5464,6 +5782,8 @@ function equipmentProfileGroups(profile, localize = (value) => value, itemType =
 		const selected = Array.isArray(profile[key]) ? profile[key] : [];
 		return {
 			key,
+			isBodySlots: key === "bodySlots",
+			hiddenAttribute: key === "bodySlots" ? "hidden" : "",
 			title,
 			count: selected.length,
 			emptyLabel: key === "bodySlots" ? "Aucun emplacement corporel déclaré." : "Aucune restriction déclarée.",
@@ -5471,6 +5791,8 @@ function equipmentProfileGroups(profile, localize = (value) => value, itemType =
 				value,
 				groupKey: key,
 				checked: selected.includes(value),
+				units: profile.slotCosts?.[value] ?? 1,
+				isBodySlot: key === "bodySlots",
 				label: key === "hostTypes" && value in labels ? localize(`TYPES.Item.${value}`) : labels[value] ?? value
 			}))
 		};
@@ -5483,14 +5805,20 @@ function equipmentProfileUpdate(root, itemType) {
 	const patch = { "system.physical.equipmentProfile.slotsConfigured": true };
 	for (const key of Object.keys(GROUPS)) patch[`system.physical.equipmentProfile.${key}`] = Array.from(root.querySelectorAll(`[data-profile-list="${key}"]`)).filter((input) => input.checked).map((input) => input.value);
 	for (const control of root.querySelectorAll("[data-profile-field]")) {
+		if (control.disabled) continue;
 		const key = control.dataset.profileField;
 		if (![
 			"family",
 			"duration",
 			"installable",
-			"ordinaryLiquid"
+			"ordinaryLiquid",
+			"wearForm",
+			"functionalCategory",
+			"piercingLocation",
+			"ornamental",
+			"shieldHands"
 		].includes(key ?? "")) continue;
-		patch[`system.physical.equipmentProfile.${key}`] = control.type === "checkbox" ? control.checked : control.value.trim();
+		patch[`system.physical.equipmentProfile.${key}`] = control.type === "number" ? control.value.trim() === "" ? null : Number(control.value) : control.type === "checkbox" ? control.checked : control.value.trim();
 	}
 	for (const field of ["requiredSlots", "providedSlots"]) {
 		const controls = root.querySelectorAll(`[data-profile-technical="${field}"]`);
@@ -5501,7 +5829,16 @@ function equipmentProfileUpdate(root, itemType) {
 			patch[`system.physical.equipmentProfile.${field}.${key}`] = value;
 		}
 	}
-	const errors = slotProfileErrors({ bodySlots: patch["system.physical.equipmentProfile.bodySlots"] }, itemType);
+	for (const control of root.querySelectorAll("[data-profile-cost]")) {
+		if (control.disabled) continue;
+		const key = control.dataset.profileCost ?? "";
+		const units = Number(control.value);
+		if (!Object.hasOwn(BODY_SLOTS, key) || !Number.isSafeInteger(units) || units < 1) throw new Error("Le nombre de places occupées doit être un entier positif.");
+		patch[`system.physical.equipmentProfile.slotCosts.${key}`] = units;
+	}
+	const profile = Object.fromEntries(Object.entries(patch).map(([key, value]) => [key.slice(33), value]));
+	if (profile.wearForm && profile.wearForm !== "composite") patch["system.physical.equipmentProfile.bodySlots"] = effectiveBodySlots(profile);
+	const errors = slotProfileErrors(profile, itemType);
 	if (errors.length) throw new Error(errors.join(" "));
 	return patch;
 }
@@ -5509,8 +5846,28 @@ function bindEquipmentProfile(root, item, reportError) {
 	const section = root.querySelector("[data-equipment-profile]");
 	const button = section?.querySelector("[data-save-equipment-profile]");
 	if (!section || !button || !item.isOwner) return;
+	if (item.system?.physical?.equipmentProfile?.wearForm === "composite" && !game.user?.isGM) {
+		section.querySelectorAll("input, select, button").forEach((control) => {
+			control.disabled = true;
+		});
+		return;
+	}
 	const status = section.querySelector("[data-profile-status]");
+	const refresh = () => {
+		const selected = section.querySelector("[data-profile-field=\"wearForm\"]")?.value;
+		section.querySelectorAll("[data-profile-group=\"bodySlots\"]").forEach((el) => {
+			el.hidden = selected !== "composite";
+		});
+		section.querySelectorAll("[data-piercing-fields]").forEach((el) => {
+			el.hidden = selected !== "piercing";
+		});
+		section.querySelectorAll("[data-shield-fields]").forEach((el) => {
+			el.hidden = selected !== "shield";
+		});
+	};
+	refresh();
 	section.addEventListener("change", () => {
+		refresh();
 		if (status) status.textContent = "Modifications non enregistrées.";
 	});
 	button.addEventListener("click", async () => {
@@ -5533,6 +5890,21 @@ function technicalSlotRows(profile) {
 		required: profile.requiredSlots?.[key] ?? 0,
 		provided: profile.providedSlots?.[key] ?? 0
 	}));
+}
+function classificationContext(profile, type, isGM) {
+	const forms = {
+		"": "Ancien profil / à configurer",
+		...Object.fromEntries(Object.entries(wearForms(type)).map(([key, value]) => [key, value.label]))
+	};
+	if (isGM || profile.wearForm === "composite") forms.composite = "Profil composé — définition réservée au MJ";
+	return {
+		wearFormOptions: forms,
+		functionalCategories: EQUIPMENT_CATEGORIES,
+		piercingLocations: PIERCING_LOCATIONS,
+		profileIsGM: isGM,
+		profileLocked: !isGM && profile.wearForm === "composite",
+		wearFormLabel: WEAR_FORMS[profile.wearForm]?.label ?? "Profil ancien ou composé"
+	};
 }
 //#endregion
 //#region src/sheets/item-sheet.ts
@@ -5881,7 +6253,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			isAction: this.item.type === "action",
 			hasPhysical,
 			technicalSlotRows: technicalSlotRows(system.physical?.equipmentProfile ?? {}),
-			equipmentSlotHint: this.item.type === "weapon" ? "Cocher Bouclier porté uniquement si cet objet est un bouclier." : this.item.type === "armor" ? "Casques, protections de membres, combinaisons et exo-armures utilisent les emplacements d’armure." : this.item.type === "equipment" ? "Une case Anneau consomme une place parmi dix ; Bracelet une place parmi deux ; Collier une place. Capacités ajustables par corps par le MJ. Les outils peuvent ne déclarer aucun emplacement." : "Aucun emplacement corporel pour ce type ; l’installation sur un hôte reste distincte.",
+			...classificationContext(system.physical?.equipmentProfile ?? {}, this.item.type, Boolean(game.user?.isGM)),
+			equipmentSlotHint: this.item.type === "weapon" ? "Choisir Bouclier uniquement pour un véritable bouclier ; les mains nécessaires viennent de sa source." : this.item.type === "armor" ? "Casques, protections de membres, combinaisons et exo-armures utilisent les emplacements d’armure." : this.item.type === "equipment" ? "Une forme unique par objet. Les ornements décoratifs ne donnent aucun bonus implicite. Les capacités appartiennent au corps." : "Aucun emplacement corporel pour ce type ; l’installation sur un hôte reste distincte.",
 			equipmentSlotErrors: slotProfileErrors(system.physical?.equipmentProfile ?? {}, this.item.type),
 			legacyEquipmentSlot: legacySlot(system.physical?.equipmentProfile ?? {}),
 			equipmentFamilies: {

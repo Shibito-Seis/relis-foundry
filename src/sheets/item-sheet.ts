@@ -1,3 +1,4 @@
+import { classificationContext } from "../ui/equipment-profile";
 import { legacySlot, slotProfileErrors } from "../rules/equipment-slots";
 import {
   equipmentProfileGroups,
@@ -527,13 +528,18 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       technicalSlotRows: technicalSlotRows(
         system.physical?.equipmentProfile ?? {},
       ),
+      ...classificationContext(
+        system.physical?.equipmentProfile ?? {},
+        this.item.type,
+        Boolean(game.user?.isGM),
+      ),
       equipmentSlotHint:
         this.item.type === "weapon"
-          ? "Cocher Bouclier porté uniquement si cet objet est un bouclier."
+          ? "Choisir Bouclier uniquement pour un véritable bouclier ; les mains nécessaires viennent de sa source."
           : this.item.type === "armor"
             ? "Casques, protections de membres, combinaisons et exo-armures utilisent les emplacements d’armure."
             : this.item.type === "equipment"
-              ? "Une case Anneau consomme une place parmi dix ; Bracelet une place parmi deux ; Collier une place. Capacités ajustables par corps par le MJ. Les outils peuvent ne déclarer aucun emplacement."
+              ? "Une forme unique par objet. Les ornements décoratifs ne donnent aucun bonus implicite. Les capacités appartiennent au corps."
               : "Aucun emplacement corporel pour ce type ; l’installation sur un hôte reste distincte.",
       equipmentSlotErrors: slotProfileErrors(
         system.physical?.equipmentProfile ?? {},

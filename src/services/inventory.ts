@@ -1,3 +1,4 @@
+import { assertProfilePermission } from "../rules/equipment-classification";
 import { installedOn, slotProfileErrors } from "../rules/equipment-slots";
 import {
   createWorldItemId,
@@ -866,6 +867,7 @@ export async function saveEquipmentProfile(
       for (const key of keys.slice(0, -1)) current = current[key] ??= {};
       current[keys.at(-1)!] = JSON.parse(JSON.stringify(value));
     }
+    assertProfilePermission(source ?? {}, profile, Boolean(game.user?.isGM));
     const errors = slotProfileErrors(profile, type);
     if (errors.length) throw new Error(errors.join(" "));
     return profile;

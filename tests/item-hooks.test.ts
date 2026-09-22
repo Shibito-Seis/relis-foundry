@@ -214,3 +214,59 @@ describe("cycle de vie des exemplaires Item", () => {
     log.mockRestore();
   });
 });
+
+it("réserve les profils composés au MJ même pour les Items monde et les écritures imbriquées", () => {
+  (globalThis as any).game = { user: { isGM: false } };
+  (globalThis as any).ui = { notifications: { warn: vi.fn() } };
+  const item = {
+    type: "equipment",
+    system: { physical: { equipmentProfile: { wearForm: "ring" } } },
+  } as unknown as Item;
+  for (const change of [
+    {
+      "system.physical.equipmentProfile.wearForm": "composite",
+      "system.physical.equipmentProfile.bodySlots": ["ring", "necklace"],
+    },
+    {
+      system: {
+        physical: {
+          equipmentProfile: {
+            wearForm: "composite",
+            bodySlots: ["ring", "necklace"],
+          },
+        },
+      },
+    },
+    { "system.physical.equipmentProfile.ornamental": true },
+  ])
+    expect(protectEquipmentUpdate(item, change)).toBe(false);
+  (globalThis as any).game.user.isGM = true;
+  expect(
+    protectEquipmentUpdate(item, {
+      "system.physical.equipmentProfile.wearForm": "composite",
+      "system.physical.equipmentProfile.bodySlots": ["ring", "necklace"],
+    }),
+  ).toBeUndefined();
+});
+
+it("protège aussi les sous-champs pointés d’un profil composé", () => {
+  (globalThis as any).game = { user: { isGM: false } };
+  (globalThis as any).ui = { notifications: { warn: vi.fn() } };
+  const item = {
+    type: "equipment",
+    system: {
+      physical: {
+        equipmentProfile: {
+          wearForm: "composite",
+          bodySlots: ["bracelet"],
+          slotCosts: { bracelet: 2 },
+        },
+      },
+    },
+  } as unknown as Item;
+  expect(
+    protectEquipmentUpdate(item, {
+      "system.physical.equipmentProfile.slotCosts.bracelet": 1,
+    }),
+  ).toBe(false);
+});
