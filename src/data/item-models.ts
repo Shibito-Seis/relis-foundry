@@ -11,6 +11,38 @@ import {
   UPGRADE_STATES,
   physicalTotals,
 } from "./item-defaults";
+import {
+  ACTIVATION_METHODS,
+  ACOUSTIC_SIGNATURES,
+  AMMUNITION_FAMILIES,
+  AMMUNITION_VARIANTS,
+  AREA_SHAPES,
+  ARMOR_KINDS,
+  BATTERY_FORMATS,
+  CHAMBERINGS,
+  CONSUMABLE_DOSES,
+  DAMAGE_ATTRIBUTES,
+  DAMAGE_DICE,
+  DEFENSE_TARGETS,
+  DURATIONS,
+  FEED_INTERFACES,
+  FEED_KINDS,
+  FIRE_CADENCES,
+  POWER_CLASSES,
+  PRESSURE_CLASSES,
+  RECHARGE_METHODS,
+  SAFETY_STATES,
+  TECHNICAL_SIZES,
+  TECHNOLOGIES,
+  TECHNO_BLADE_VARIANTS,
+  TREATMENT_FAMILIES,
+  WEAPON_ACCESS,
+  WEAPON_ATTRIBUTES,
+  WEAPON_FAMILIES,
+  WEAPON_HANDS,
+  WEAPON_SKILLS,
+  WEAPON_SUPPORTS,
+} from "./material-catalog";
 
 const fields = foundry.data.fields;
 
@@ -47,6 +79,8 @@ function stringArrayField(): any {
     initial: () => [],
   });
 }
+
+const keys = (value: Record<string, string>): string[] => Object.keys(value);
 
 function durabilityField(): any {
   return new fields.SchemaField({
@@ -296,6 +330,8 @@ function physicalField(): any {
       }),
       technology: optionalStringField(),
       technicalSize: optionalStringField(),
+      technologyId: stringChoiceField(["", ...keys(TECHNOLOGIES)], ""),
+      technicalSizeId: stringChoiceField(["", ...keys(TECHNICAL_SIZES)], ""),
       installationKind: stringChoiceField(
         ["", "accessory", "modification", "improvement"],
         "",
@@ -379,6 +415,9 @@ function energyProfileField(): any {
     format: optionalStringField(),
     powerClass: optionalStringField(),
     technology: optionalStringField(),
+    formatId: stringChoiceField(["", ...keys(BATTERY_FORMATS)], ""),
+    powerClassId: stringChoiceField(["", ...keys(POWER_CLASSES)], ""),
+    technologyId: stringChoiceField(["", ...keys(TECHNOLOGIES)], ""),
     current: optionalNumberField(),
     maximum: optionalNumberField(),
     output: optionalNumberField(),
@@ -387,6 +426,9 @@ function energyProfileField(): any {
     rechargeMethod: optionalStringField(),
     rechargeDuration: optionalStringField(),
     signature: optionalStringField(),
+    rechargeMethodId: stringChoiceField(["", ...keys(RECHARGE_METHODS)], ""),
+    rechargeDurationId: stringChoiceField(["", ...keys(DURATIONS)], ""),
+    signatureId: stringChoiceField(["", ...keys(ACOUSTIC_SIGNATURES)], ""),
     heatCurrent: optionalNumberField(),
     heatMaximum: optionalNumberField(),
     rechargeable: new fields.BooleanField({ required: true, initial: false }),
@@ -395,28 +437,31 @@ function energyProfileField(): any {
 
 function weaponProfileField(): any {
   return new fields.SchemaField({
+    familyId: stringChoiceField(["", ...keys(WEAPON_FAMILIES)], ""),
     family: optionalStringField(),
-    support: stringChoiceField(
-      ["", "personal", "vehicle", "mecha", "spatial", "natural"],
+    technoBladeVariant: stringChoiceField(
+      ["", ...keys(TECHNO_BLADE_VARIANTS)],
       "",
     ),
-    access: stringChoiceField(
-      ["", "common", "martial", "specialized", "heavy"],
-      "",
-    ),
+    support: stringChoiceField(["", ...keys(WEAPON_SUPPORTS)], ""),
+    access: stringChoiceField(["", ...keys(WEAPON_ACCESS)], ""),
     attackMode: stringChoiceField(
       ["", "melee", "ranged", "thrown", "mounted", "natural"],
       "",
     ),
-    defenseTarget: stringChoiceField(
-      ["", "cap", "cae", "maneuver", "profile"],
-      "",
-    ),
+    defenseTarget: stringChoiceField(["", ...keys(DEFENSE_TARGETS)], ""),
+    handsMode: stringChoiceField(["", ...keys(WEAPON_HANDS)], ""),
     handsRequired: optionalNumberField(0, 2),
     handsFlexible: new fields.BooleanField({ required: true, initial: false }),
+    skillId: stringChoiceField(["", ...keys(WEAPON_SKILLS)], ""),
+    attributeId: stringChoiceField(["", ...keys(WEAPON_ATTRIBUTES)], ""),
     skillKey: optionalStringField(),
     attributeKey: optionalStringField(),
     accuracy: optionalNumberField(-20, 20),
+    damageDice: optionalNumberField(1, 5),
+    damageDie: stringChoiceField(["", ...DAMAGE_DICE], ""),
+    damageBonus: optionalNumberField(-20, 20),
+    damageAttribute: stringChoiceField(["", ...keys(DAMAGE_ATTRIBUTES)], ""),
     damageFormula: optionalStringField(),
     damageTypes: stringArrayField(),
     penetration: optionalNumberField(),
@@ -432,11 +477,19 @@ function weaponProfileField(): any {
     rangeMaximum: optionalNumberField(),
     reach: optionalNumberField(),
     cadence: optionalStringField(),
-    recoil: optionalNumberField(),
-    feedKind: stringChoiceField(
-      ["", "none", "internal", "detachable", "energy", "hybrid"],
+    cadenceId: stringChoiceField(["", ...keys(FIRE_CADENCES)], ""),
+    acousticSignature: stringChoiceField(
+      ["", ...keys(ACOUSTIC_SIGNATURES)],
       "",
     ),
+    modeIds: stringArrayField(),
+    signatureIds: stringArrayField(),
+    ammunitionFamilyIds: stringArrayField(),
+    recoil: optionalNumberField(),
+    feedKind: stringChoiceField(["", ...keys(FEED_KINDS)], ""),
+    chamberingId: stringChoiceField(["", ...keys(CHAMBERINGS)], ""),
+    pressureClassId: stringChoiceField(["", ...keys(PRESSURE_CLASSES)], ""),
+    feedInterfaceId: stringChoiceField(["", ...keys(FEED_INTERFACES)], ""),
     chamberId: optionalStringField(),
     pressureClass: optionalStringField(),
     feedInterface: optionalStringField(),
@@ -491,24 +544,7 @@ function supplyProfileField(): any {
 
 function protectionProfileField(): any {
   return new fields.SchemaField({
-    kind: stringChoiceField(
-      [
-        "",
-        "underlayer",
-        "light",
-        "intermediate",
-        "heavy",
-        "exo",
-        "underhelmet",
-        "helmet",
-        "arms",
-        "legs",
-        "eva",
-        "shield",
-        "barrier",
-      ],
-      "",
-    ),
+    kind: stringChoiceField(["", ...keys(ARMOR_KINDS), "shield"], ""),
     access: stringChoiceField(
       ["", "common", "martial", "specialized", "heavy"],
       "",
@@ -528,6 +564,7 @@ function protectionProfileField(): any {
     stealthModifier: optionalNumberField(-20, 20),
     sealing: stringChoiceField(["", "none", "partial", "sealed"], ""),
     equipTime: optionalStringField(),
+    equipTimeId: stringChoiceField(["", ...keys(DURATIONS)], ""),
     barrierCurrent: optionalNumberField(),
     barrierMaximum: optionalNumberField(),
     barrierKind: optionalStringField(),
@@ -546,7 +583,12 @@ function protectionProfileField(): any {
 
 function ammunitionProfileField(): any {
   return new fields.SchemaField({
+    familyId: stringChoiceField(["", ...keys(AMMUNITION_FAMILIES)], ""),
+    variantId: stringChoiceField(["", ...keys(AMMUNITION_VARIANTS)], ""),
     family: optionalStringField(),
+    chamberingId: stringChoiceField(["", ...keys(CHAMBERINGS)], ""),
+    pressureClassId: stringChoiceField(["", ...keys(PRESSURE_CLASSES)], ""),
+    feedInterfaceIds: stringArrayField(),
     chamberId: optionalStringField(),
     pressureClass: optionalStringField(),
     feedInterfaces: stringArrayField(),
@@ -587,6 +629,8 @@ function consumableProfileField(): any {
     ),
     dose: optionalStringField(),
     treatmentFamily: optionalStringField(),
+    doseId: stringChoiceField(["", ...keys(CONSUMABLE_DOSES)], ""),
+    treatmentFamilyId: stringChoiceField(["", ...keys(TREATMENT_FAMILIES)], ""),
     route: stringChoiceField(
       [
         "",
@@ -601,6 +645,7 @@ function consumableProfileField(): any {
       "",
     ),
     duration: optionalStringField(),
+    durationId: stringChoiceField(["", ...keys(DURATIONS)], ""),
     toxicity: optionalNumberField(0, 5),
     dependency: optionalNumberField(0, 4),
     usesPerUnit: optionalNumberField(1),
@@ -608,6 +653,12 @@ function consumableProfileField(): any {
     activation: optionalStringField(),
     rangeOrPlacement: optionalStringField(),
     area: optionalStringField(),
+    activationId: stringChoiceField(["", ...keys(ACTIVATION_METHODS)], ""),
+    areaId: stringChoiceField(["", ...keys(AREA_SHAPES)], ""),
+    rangeOptimal: optionalNumberField(),
+    rangeMaximum: optionalNumberField(),
+    damageDice: optionalNumberField(1, 5),
+    damageDie: stringChoiceField(["", ...DAMAGE_DICE], ""),
     damageFormula: optionalStringField(),
     damageTypes: stringArrayField(),
     trigger: optionalStringField(),
@@ -625,10 +676,7 @@ function consumableProfileField(): any {
     residue: optionalStringField(),
     effectSummary: optionalStringField(),
     limitation: optionalStringField(),
-    safetyState: stringChoiceField(
-      ["", "usable", "uncertain", "contaminated", "expired"],
-      "",
-    ),
+    safetyState: stringChoiceField(["", ...keys(SAFETY_STATES)], ""),
     sterility: optionalStringField(),
     storageConditions: optionalStringField(),
     openedAt: optionalStringField(),

@@ -7,6 +7,7 @@ import {
   isPhysicalItemType,
   normalizeItemSystemForType,
 } from "../data/item-defaults";
+import { migrateMaterialSystem } from "../data/material-migration";
 
 function sourceUuid(
   data: Record<string, any>,
@@ -37,8 +38,8 @@ export function prepareItemCreation(
 
   if (options.relisInventoryOperation) {
     item.updateSource({
-      system: normalizeItemSystemForType(
-        item.system ?? incomingSystem,
+      system: migrateMaterialSystem(
+        normalizeItemSystemForType(item.system ?? incomingSystem, item.type),
         item.type,
       ),
     });
@@ -47,20 +48,23 @@ export function prepareItemCreation(
 
   if (isOwnedCopy || isImportedCopy) {
     item.updateSource({
-      system: buildOwnedItemSystem(
-        incomingSystem,
-        inferredSourceUuid,
-        String(data.name ?? item.name),
-        String(data.type ?? item.type),
-        physical,
+      system: migrateMaterialSystem(
+        buildOwnedItemSystem(
+          incomingSystem,
+          inferredSourceUuid,
+          String(data.name ?? item.name),
+          String(data.type ?? item.type),
+          physical,
+        ),
+        item.type,
       ),
     });
     return;
   }
 
   item.updateSource({
-    system: normalizeItemSystemForType(
-      item.system ?? incomingSystem,
+    system: migrateMaterialSystem(
+      normalizeItemSystemForType(item.system ?? incomingSystem, item.type),
       item.type,
     ),
   });
@@ -392,7 +396,7 @@ function worldItems(): Item[] {
 
 export async function migrateItemCore(): Promise<number> {
   if (!game.user?.isGM) return 0;
-  const migrationId = `10-E2-P-schema-${SCHEMA_VERSION}`;
+  const migrationId = `10-E4-P-schema-${SCHEMA_VERSION}`;
   const migrationState = game.settings.get(SYSTEM_ID, "migrations.state") ?? {};
   if (migrationState.lastMigrationId === migrationId) return 0;
 
@@ -400,7 +404,12 @@ export async function migrateItemCore(): Promise<number> {
   for (const item of items) {
     const source = item.toObject(true).system ?? item.system ?? {};
     await item.update(
-      { system: normalizeItemSystemForType(source, item.type) },
+      {
+        system: migrateMaterialSystem(
+          normalizeItemSystemForType(source, item.type),
+          item.type,
+        ),
+      },
       { relisMigration: true },
     );
   }
@@ -411,7 +420,7 @@ export async function migrateItemCore(): Promise<number> {
     errors: [],
   });
   console.log(
-    `RE:LIS | Migration 10-E2-P : ${items.length} Item(s) contrôlé(s).`,
+    `RE:LIS | Migration 10-E4-P : ${items.length} Item(s) contrôlé(s).`,
   );
   return items.length;
 }

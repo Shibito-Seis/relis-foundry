@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.6.0";
+var PACKAGE_VERSION = "0.6.1";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -1251,7 +1251,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 		...source,
 		meta: {
 			...meta,
-			schemaVersion: "5",
+			schemaVersion: "6",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
 			contentVersion: text(meta.contentVersion, "1.0.0") || "1.0.0",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
@@ -1355,6 +1355,454 @@ function buildOwnedItemSystem(value, sourceUuid, sourceName, sourceType, physica
 	};
 }
 //#endregion
+//#region src/data/material-catalog.ts
+/**
+* Registres matériels canoniques employés par les fiches 10-E4-P.
+*
+* Les identifiants sont stables et indépendants des libellés français. Les
+* anciens champs texte du schéma 5 restent lisibles pour la migration, mais
+* aucune fiche 0.6.1 ne permet d'y saisir de nouvelles valeurs libres.
+*/
+var WEAPON_FAMILIES = {
+	improvisedMelee: "Mêlée courante et improvisée",
+	martialTechnoBlade: "Mêlée martiale et techno-lames",
+	handgun: "Armes de poing",
+	physicalLongGun: "Armes longues physiques",
+	energyLongGun: "Armes longues énergétiques",
+	bowCrossbowThrown: "Arcs, arbalètes et armes lancées",
+	heavyLauncher: "Armes lourdes et lanceurs",
+	naturalSpecial: "Armes naturelles et profils spéciaux"
+};
+var WEAPON_SUPPORTS = {
+	personal: "Personnel",
+	vehicle: "Véhicule",
+	mecha: "Mecha",
+	spatial: "Spatial",
+	natural: "Naturel matériel"
+};
+var WEAPON_ACCESS = {
+	common: "Courante",
+	martial: "Martiale",
+	specialized: "Spécialisée",
+	heavy: "Lourde",
+	natural: "Naturelle / innée",
+	improvised: "Improvisée"
+};
+var WEAPON_HANDS = {
+	one: "1 main",
+	versatile: "1+ — une ou deux mains",
+	two: "2 mains",
+	natural: "0 — arme naturelle",
+	mountedOrTwo: "Montée ou 2 mains"
+};
+var WEAPON_SKILLS = {
+	melee: "Mêlée",
+	shooting: "Tir",
+	heavyWeapons: "Armes lourdes"
+};
+var WEAPON_ATTRIBUTES = {
+	force: "Force",
+	dexterity: "Dextérité",
+	technology: "Technologie",
+	magicMastery: "Maîtrise Magique"
+};
+var DEFENSE_TARGETS = {
+	cap: "CAP",
+	cae: "CAE",
+	maneuver: "DD de manœuvre",
+	profile: "Selon le mode ou le profil"
+};
+var ACCURACY_VALUES = [
+	-4,
+	-3,
+	-2,
+	-1,
+	0,
+	1,
+	2,
+	3,
+	4
+];
+var DAMAGE_DICE = [
+	"d4",
+	"d6",
+	"d8",
+	"d10",
+	"d12"
+];
+var DAMAGE_ATTRIBUTES = {
+	none: "Aucun Attribut",
+	force: "Force",
+	halfForce: "Moitié de Force",
+	dexterity: "Dextérité selon le profil",
+	technology: "Technologie selon le profil",
+	magicMastery: "Maîtrise Magique selon le profil"
+};
+var DAMAGE_TYPES = {
+	blunt: "Contondant",
+	slashing: "Tranchant",
+	piercing: "Perforant",
+	thermal: "Thermique",
+	cryogenic: "Cryogénique",
+	electric: "Électrique",
+	photonic: "Photonique",
+	plasma: "Plasma",
+	sonic: "Sonique",
+	chemical: "Chimique",
+	psychic: "Psychique"
+};
+var DAMAGE_SOURCES = {
+	ballistic: "Balistique",
+	energy: "Énergétique",
+	explosive: "Explosif",
+	magical: "Magique",
+	technomagical: "Techno-magique",
+	prana: "Prana",
+	emp: "EMP"
+};
+var FIRE_CADENCES = {
+	single: "Coup par coup",
+	sequential: "Semi-automatique",
+	burst: "Rafale",
+	automatic: "Automatique",
+	continuous: "Continu",
+	volley: "Salve"
+};
+var FIRE_MODES = {
+	single: "Tir simple",
+	volley: "Salve",
+	burst: "Rafale",
+	automatic: "Automatique",
+	suppression: "Suppression",
+	emptyMagazine: "Vider le chargeur"
+};
+var ACOUSTIC_SIGNATURES = {
+	silent: "Silencieuse",
+	discreet: "Discrète",
+	loud: "Bruyante",
+	detonating: "Détonante"
+};
+var SIGNATURE_TAGS = {
+	flash: "Flash ou traînée visible",
+	tracer: "Traceur",
+	thermal: "Thermique",
+	energy: "Énergétique",
+	electromagnetic: "Électromagnétique",
+	smoke: "Fumée",
+	chemical: "Chimique"
+};
+var FEED_KINDS = {
+	none: "Aucune alimentation",
+	internal: "Magasin interne",
+	detachable: "Chargeur détachable",
+	energy: "Batterie ou cellule",
+	hybrid: "Hybride physique et énergétique",
+	pranaCrystal: "Cristal accordé au Prana"
+};
+var TECHNO_BLADE_VARIANTS = {
+	vibratoryMaterial: "Lame matérielle à champ vibratoire",
+	retractableConductor: "Lame énergétique sur conducteur rétractable",
+	pranaCrystal: "Lame de Prana à cristal accordé"
+};
+var BATTERY_FORMATS = {
+	micro: "Microcellule — 6 CE",
+	light: "Cellule légère — 12 CE",
+	standard: "Batterie standard — 24 CE",
+	heavy: "Batterie lourde — 48 CE",
+	industrial: "Bloc industriel — 120 CE",
+	special: "Format spécial référencé"
+};
+var POWER_CLASSES = {
+	micro: "Micro",
+	light: "Légère",
+	standard: "Standard",
+	heavy: "Lourde",
+	industrial: "Industrielle",
+	special: "Spéciale référencée"
+};
+var TECHNOLOGIES = {
+	mechanical: "Mécanique",
+	ballistic: "Balistique",
+	electric: "Électrique",
+	electromagnetic: "Électromagnétique",
+	laser: "Laser",
+	plasma: "Plasma",
+	sonic: "Sonique",
+	chemical: "Chimique",
+	technomagical: "Techno-magique",
+	pranaCrystal: "Cristal accordé au Prana"
+};
+var TECHNICAL_SIZES = {
+	micro: "Micro",
+	compact: "Compact",
+	personal: "Personnel",
+	heavy: "Lourd",
+	vehicle: "Véhicule",
+	mecha: "Mecha",
+	spatial: "Spatial"
+};
+var FEED_INTERFACES = {
+	boxMagazine: "Chargeur droit ou boîte",
+	tubularMagazine: "Magasin tubulaire",
+	cylinder: "Barillet",
+	belt: "Bande",
+	cassette: "Cassette",
+	cell: "Cellule ou batterie",
+	singleProjectile: "Projectile unitaire",
+	reservoir: "Réservoir",
+	rail: "Rail guidé",
+	crystalSocket: "Logement de cristal accordé"
+};
+var PRESSURE_CLASSES = {
+	low: "Faible",
+	lightStandard: "Standard légère",
+	standard: "Standard",
+	heavyStandard: "Standard lourde",
+	highPressure: "Haute pression",
+	highVelocity: "Haute vélocité",
+	magnum: "Magnum",
+	heavyMagnum: "Magnum lourde",
+	rifleLight: "Fusil léger",
+	rifleIntermediate: "Fusil intermédiaire",
+	rifleHeavy: "Fusil lourd",
+	antiMateriel: "Anti-matériel",
+	electromagnetic: "Électromagnétique",
+	energyMicro: "Énergie micro",
+	energyLight: "Énergie légère",
+	energyStandard: "Énergie standard",
+	energyHeavy: "Énergie lourde",
+	prana: "Accord de Prana"
+};
+var CHAMBERINGS = {
+	"BAL-22LR": ".22 LR",
+	"BAL-635": "6,35 × 16 mm",
+	"BAL-765": "7,65 × 17 mm",
+	"BAL-9P": "9 × 19 mm",
+	"BAL-57": "5,7 × 28 mm",
+	"BAL-10A": "10 × 25 mm",
+	"BAL-45": "11,43 × 23 mm",
+	"BAL-357M": ".357 Magnum",
+	"BAL-44M": ".44 Magnum",
+	"BAL-50AE": "12,7 × 33 mm",
+	"BAL-556": "5,56 × 45 mm",
+	"BAL-762C": "7,62 × 39 mm",
+	"BAL-300S": "7,62 × 35 mm subsonique",
+	"BAL-65P": "6,5 × 48 mm précision",
+	"BAL-762L": "7,62 × 51 mm",
+	"BAL-86P": "8,6 × 70 mm",
+	"BAL-127L": "12,7 × 99 mm",
+	"CART-20": "Calibre 20, chambre 70 mm",
+	"CART-12": "Calibre 12, chambre 70 mm",
+	"CART-12M": "Calibre 12, chambre 76 mm",
+	"CART-10M": "Calibre 10, chambre 89 mm",
+	"DARD-9": "Dard médical 9 mm",
+	"AIG-3": "Aiguille balistique 3 mm",
+	"TRANQ-13": "Dard tranquillisant 13 mm",
+	"HARP-20": "Harpon 20 mm",
+	"EM-4": "Fléchette ferromagnétique 4 mm",
+	"GAUSS-8": "Pénétrateur Gauss 8 mm",
+	"GL-40B": "Grenade 40 × 46 mm",
+	"ROQ-70": "Roquette 70 mm",
+	"MIS-90": "Missile guidé 90 mm"
+};
+var ARMOR_KINDS = {
+	underlayer: "Sous-couche",
+	light: "Armure légère",
+	intermediate: "Armure intermédiaire",
+	heavy: "Armure lourde",
+	exo: "Exo-armure",
+	underhelmet: "Sous-casque",
+	helmet: "Casque ou coiffe mécanique",
+	arms: "Protections de bras",
+	legs: "Jambières",
+	eva: "Combinaison EVA",
+	barrier: "Champ ou barrière"
+};
+var COVERAGE_ZONES = {
+	head: "Tête",
+	face: "Visage",
+	neck: "Cou",
+	torso: "Torse",
+	abdomen: "Abdomen",
+	arms: "Bras",
+	hands: "Mains",
+	legs: "Jambes",
+	feet: "Pieds",
+	fullBody: "Corps complet"
+};
+var ENVIRONMENT_PROTECTIONS = {
+	vacuum: "Vide",
+	pressure: "Pression",
+	thermal: "Températures extrêmes",
+	radiation: "Rayonnements",
+	chemical: "Agents chimiques",
+	biological: "Agents biologiques",
+	underwater: "Milieu subaquatique"
+};
+var BARRIER_KINDS = {
+	personal: "Champ personnel",
+	directional: "Champ directionnel",
+	zone: "Champ de zone",
+	structural: "Barrière structurelle"
+};
+var CURRENCIES = { credits: "Crédits" };
+var AMMUNITION_FAMILIES = {
+	ballistic: "Cartouche balistique",
+	shotgun: "Cartouche de fusil",
+	dart: "Dard ou aiguille",
+	arrow: "Flèche ou carreau",
+	projectile: "Projectile spécialisé",
+	grenade: "Grenade ou roquette",
+	battery: "Cellule ou batterie énergétique",
+	technomagical: "Charge techno-magique",
+	pranaCrystal: "Cristal accordé au Prana"
+};
+var AMMUNITION_VARIANTS = {
+	standard: "Standard",
+	subsonic: "Subsonique",
+	tracer: "Traçante",
+	penetrating: "Pénétrante",
+	nonlethal: "Non létale",
+	incendiary: "Incendiaire",
+	cryogenic: "Cryogénique",
+	electricEmp: "Électrique ou EMP",
+	explosive: "Explosive",
+	chemical: "Chimique ou toxique",
+	technomagical: "Techno-magique",
+	buckshot: "Chevrotine",
+	slug: "Balle de cartouche",
+	breaching: "Projectile de brèche"
+};
+var RECHARGE_METHODS = {
+	none: "Non rechargeable",
+	charger: "Chargeur compatible",
+	generator: "Générateur compatible",
+	station: "Station de recharge",
+	external: "Alimentation externe",
+	technomagical: "Procédure techno-magique référencée"
+};
+var DURATIONS = {
+	instant: "Instantané",
+	oneRound: "1 round",
+	oneMinute: "1 minute",
+	tenMinutes: "10 minutes",
+	oneHour: "1 heure",
+	eightHours: "8 heures",
+	oneDay: "1 jour",
+	persistent: "Persistant selon sa source"
+};
+var CONSUMABLE_DOSES = {
+	unit: "Une unité",
+	tablet: "Un comprimé",
+	inhalation: "Une inhalation",
+	injection: "Une injection",
+	infusion: "Une perfusion",
+	application: "Une application cutanée",
+	sip: "Une gorgée"
+};
+var TREATMENT_FAMILIES = {
+	analgesic: "Antalgique",
+	antibiotic: "Antibiotique",
+	antidote: "Antidote",
+	stimulant: "Stimulant",
+	sedative: "Sédatif",
+	antiradiation: "Antiradiation",
+	regeneration: "Régénération",
+	detoxification: "Détoxification"
+};
+var ACTIVATION_METHODS = {
+	immediate: "Immédiate",
+	manual: "Manuelle",
+	timer: "Minuteur",
+	proximity: "Proximité",
+	remote: "À distance",
+	impact: "Impact",
+	pressure: "Pression",
+	command: "Commande autorisée"
+};
+var AREA_SHAPES = {
+	none: "Aucune zone",
+	explosion1: "Explosion 1",
+	explosion2: "Explosion 2",
+	explosion3: "Explosion 3",
+	cone4: "Cône 4",
+	cone8: "Cône 8",
+	line3: "Ligne 3",
+	cloud2: "Nuage rayon 2",
+	cloud3: "Nuage rayon 3"
+};
+var SAFETY_STATES = {
+	usable: "Utilisable",
+	uncertain: "Incertain",
+	contaminated: "Contaminé",
+	expired: "Périmé"
+};
+function labelsWithBlank(values, blank = "Non renseigné") {
+	return {
+		"": blank,
+		...values
+	};
+}
+function allowedFeedKinds(family, technoBladeVariant = "") {
+	if (family === "energyLongGun") return ["energy"];
+	if (family === "martialTechnoBlade" && technoBladeVariant) return [requiredTechnoBladeFeed(technoBladeVariant) ?? "none"];
+	if (family === "martialTechnoBlade") return [
+		"none",
+		"energy",
+		"pranaCrystal"
+	];
+	if (family === "handgun") return [
+		"none",
+		"internal",
+		"detachable",
+		"energy",
+		"hybrid"
+	];
+	if ([
+		"improvisedMelee",
+		"bowCrossbowThrown",
+		"naturalSpecial"
+	].includes(family)) return [
+		"none",
+		"internal",
+		"energy",
+		"pranaCrystal"
+	];
+	return [
+		"none",
+		"internal",
+		"detachable",
+		"energy",
+		"hybrid"
+	];
+}
+function allowedAmmunitionFamilies(family, technoBladeVariant = "") {
+	if (family === "energyLongGun") return ["battery", "technomagical"];
+	if (family === "martialTechnoBlade" && technoBladeVariant === "pranaCrystal") return ["pranaCrystal"];
+	if (family === "martialTechnoBlade" && ["vibratoryMaterial", "retractableConductor"].includes(technoBladeVariant)) return ["battery"];
+	if (family === "martialTechnoBlade") return ["battery", "pranaCrystal"];
+	if (family === "physicalLongGun") return [
+		"ballistic",
+		"shotgun",
+		"dart",
+		"projectile",
+		"grenade"
+	];
+	if (family === "bowCrossbowThrown") return ["arrow", "projectile"];
+	if (family === "heavyLauncher") return [
+		"ballistic",
+		"grenade",
+		"projectile",
+		"battery"
+	];
+	return Object.keys(AMMUNITION_FAMILIES);
+}
+function requiredTechnoBladeFeed(variant) {
+	if (["vibratoryMaterial", "retractableConductor"].includes(variant)) return "energy";
+	if (variant === "pranaCrystal") return "pranaCrystal";
+	return null;
+}
+//#endregion
 //#region src/data/item-models.ts
 var fields$1 = foundry.data.fields;
 function optionalStringField$1(initial = "") {
@@ -1387,6 +1835,7 @@ function stringArrayField() {
 		initial: () => []
 	});
 }
+var keys = (value) => Object.keys(value);
 function durabilityField() {
 	return new fields$1.SchemaField({
 		solidity: optionalNumberField(),
@@ -1449,7 +1898,7 @@ function itemMetaField() {
 		schemaVersion: new fields$1.StringField({
 			required: true,
 			blank: false,
-			initial: "5"
+			initial: "6"
 		}),
 		rulesVersion: new fields$1.StringField({
 			required: true,
@@ -1625,6 +2074,8 @@ function physicalField() {
 			}),
 			technology: optionalStringField$1(),
 			technicalSize: optionalStringField$1(),
+			technologyId: stringChoiceField(["", ...keys(TECHNOLOGIES)], ""),
+			technicalSizeId: stringChoiceField(["", ...keys(TECHNICAL_SIZES)], ""),
 			installationKind: stringChoiceField([
 				"",
 				"accessory",
@@ -1720,6 +2171,9 @@ function energyProfileField() {
 		format: optionalStringField$1(),
 		powerClass: optionalStringField$1(),
 		technology: optionalStringField$1(),
+		formatId: stringChoiceField(["", ...keys(BATTERY_FORMATS)], ""),
+		powerClassId: stringChoiceField(["", ...keys(POWER_CLASSES)], ""),
+		technologyId: stringChoiceField(["", ...keys(TECHNOLOGIES)], ""),
 		current: optionalNumberField(),
 		maximum: optionalNumberField(),
 		output: optionalNumberField(),
@@ -1733,6 +2187,9 @@ function energyProfileField() {
 		rechargeMethod: optionalStringField$1(),
 		rechargeDuration: optionalStringField$1(),
 		signature: optionalStringField$1(),
+		rechargeMethodId: stringChoiceField(["", ...keys(RECHARGE_METHODS)], ""),
+		rechargeDurationId: stringChoiceField(["", ...keys(DURATIONS)], ""),
+		signatureId: stringChoiceField(["", ...keys(ACOUSTIC_SIGNATURES)], ""),
 		heatCurrent: optionalNumberField(),
 		heatMaximum: optionalNumberField(),
 		rechargeable: new fields$1.BooleanField({
@@ -1743,22 +2200,11 @@ function energyProfileField() {
 }
 function weaponProfileField() {
 	return new fields$1.SchemaField({
+		familyId: stringChoiceField(["", ...keys(WEAPON_FAMILIES)], ""),
 		family: optionalStringField$1(),
-		support: stringChoiceField([
-			"",
-			"personal",
-			"vehicle",
-			"mecha",
-			"spatial",
-			"natural"
-		], ""),
-		access: stringChoiceField([
-			"",
-			"common",
-			"martial",
-			"specialized",
-			"heavy"
-		], ""),
+		technoBladeVariant: stringChoiceField(["", ...keys(TECHNO_BLADE_VARIANTS)], ""),
+		support: stringChoiceField(["", ...keys(WEAPON_SUPPORTS)], ""),
+		access: stringChoiceField(["", ...keys(WEAPON_ACCESS)], ""),
 		attackMode: stringChoiceField([
 			"",
 			"melee",
@@ -1767,21 +2213,22 @@ function weaponProfileField() {
 			"mounted",
 			"natural"
 		], ""),
-		defenseTarget: stringChoiceField([
-			"",
-			"cap",
-			"cae",
-			"maneuver",
-			"profile"
-		], ""),
+		defenseTarget: stringChoiceField(["", ...keys(DEFENSE_TARGETS)], ""),
+		handsMode: stringChoiceField(["", ...keys(WEAPON_HANDS)], ""),
 		handsRequired: optionalNumberField(0, 2),
 		handsFlexible: new fields$1.BooleanField({
 			required: true,
 			initial: false
 		}),
+		skillId: stringChoiceField(["", ...keys(WEAPON_SKILLS)], ""),
+		attributeId: stringChoiceField(["", ...keys(WEAPON_ATTRIBUTES)], ""),
 		skillKey: optionalStringField$1(),
 		attributeKey: optionalStringField$1(),
 		accuracy: optionalNumberField(-20, 20),
+		damageDice: optionalNumberField(1, 5),
+		damageDie: stringChoiceField(["", ...DAMAGE_DICE], ""),
+		damageBonus: optionalNumberField(-20, 20),
+		damageAttribute: stringChoiceField(["", ...keys(DAMAGE_ATTRIBUTES)], ""),
 		damageFormula: optionalStringField$1(),
 		damageTypes: stringArrayField(),
 		penetration: optionalNumberField(),
@@ -1801,15 +2248,16 @@ function weaponProfileField() {
 		rangeMaximum: optionalNumberField(),
 		reach: optionalNumberField(),
 		cadence: optionalStringField$1(),
+		cadenceId: stringChoiceField(["", ...keys(FIRE_CADENCES)], ""),
+		acousticSignature: stringChoiceField(["", ...keys(ACOUSTIC_SIGNATURES)], ""),
+		modeIds: stringArrayField(),
+		signatureIds: stringArrayField(),
+		ammunitionFamilyIds: stringArrayField(),
 		recoil: optionalNumberField(),
-		feedKind: stringChoiceField([
-			"",
-			"none",
-			"internal",
-			"detachable",
-			"energy",
-			"hybrid"
-		], ""),
+		feedKind: stringChoiceField(["", ...keys(FEED_KINDS)], ""),
+		chamberingId: stringChoiceField(["", ...keys(CHAMBERINGS)], ""),
+		pressureClassId: stringChoiceField(["", ...keys(PRESSURE_CLASSES)], ""),
+		feedInterfaceId: stringChoiceField(["", ...keys(FEED_INTERFACES)], ""),
 		chamberId: optionalStringField$1(),
 		pressureClass: optionalStringField$1(),
 		feedInterface: optionalStringField$1(),
@@ -1867,18 +2315,8 @@ function protectionProfileField() {
 	return new fields$1.SchemaField({
 		kind: stringChoiceField([
 			"",
-			"underlayer",
-			"light",
-			"intermediate",
-			"heavy",
-			"exo",
-			"underhelmet",
-			"helmet",
-			"arms",
-			"legs",
-			"eva",
-			"shield",
-			"barrier"
+			...keys(ARMOR_KINDS),
+			"shield"
 		], ""),
 		access: stringChoiceField([
 			"",
@@ -1907,6 +2345,7 @@ function protectionProfileField() {
 			"sealed"
 		], ""),
 		equipTime: optionalStringField$1(),
+		equipTimeId: stringChoiceField(["", ...keys(DURATIONS)], ""),
 		barrierCurrent: optionalNumberField(),
 		barrierMaximum: optionalNumberField(),
 		barrierKind: optionalStringField$1(),
@@ -1924,7 +2363,12 @@ function protectionProfileField() {
 }
 function ammunitionProfileField() {
 	return new fields$1.SchemaField({
+		familyId: stringChoiceField(["", ...keys(AMMUNITION_FAMILIES)], ""),
+		variantId: stringChoiceField(["", ...keys(AMMUNITION_VARIANTS)], ""),
 		family: optionalStringField$1(),
+		chamberingId: stringChoiceField(["", ...keys(CHAMBERINGS)], ""),
+		pressureClassId: stringChoiceField(["", ...keys(PRESSURE_CLASSES)], ""),
+		feedInterfaceIds: stringArrayField(),
 		chamberId: optionalStringField$1(),
 		pressureClass: optionalStringField$1(),
 		feedInterfaces: stringArrayField(),
@@ -1964,6 +2408,8 @@ function consumableProfileField() {
 		], ""),
 		dose: optionalStringField$1(),
 		treatmentFamily: optionalStringField$1(),
+		doseId: stringChoiceField(["", ...keys(CONSUMABLE_DOSES)], ""),
+		treatmentFamilyId: stringChoiceField(["", ...keys(TREATMENT_FAMILIES)], ""),
 		route: stringChoiceField([
 			"",
 			"oral",
@@ -1975,6 +2421,7 @@ function consumableProfileField() {
 			"other"
 		], ""),
 		duration: optionalStringField$1(),
+		durationId: stringChoiceField(["", ...keys(DURATIONS)], ""),
 		toxicity: optionalNumberField(0, 5),
 		dependency: optionalNumberField(0, 4),
 		usesPerUnit: optionalNumberField(1),
@@ -1982,6 +2429,12 @@ function consumableProfileField() {
 		activation: optionalStringField$1(),
 		rangeOrPlacement: optionalStringField$1(),
 		area: optionalStringField$1(),
+		activationId: stringChoiceField(["", ...keys(ACTIVATION_METHODS)], ""),
+		areaId: stringChoiceField(["", ...keys(AREA_SHAPES)], ""),
+		rangeOptimal: optionalNumberField(),
+		rangeMaximum: optionalNumberField(),
+		damageDice: optionalNumberField(1, 5),
+		damageDie: stringChoiceField(["", ...DAMAGE_DICE], ""),
 		damageFormula: optionalStringField$1(),
 		damageTypes: stringArrayField(),
 		trigger: optionalStringField$1(),
@@ -2006,13 +2459,7 @@ function consumableProfileField() {
 		residue: optionalStringField$1(),
 		effectSummary: optionalStringField$1(),
 		limitation: optionalStringField$1(),
-		safetyState: stringChoiceField([
-			"",
-			"usable",
-			"uncertain",
-			"contaminated",
-			"expired"
-		], ""),
+		safetyState: stringChoiceField(["", ...keys(SAFETY_STATES)], ""),
 		sterility: optionalStringField$1(),
 		storageConditions: optionalStringField$1(),
 		openedAt: optionalStringField$1()
@@ -2232,7 +2679,7 @@ function metaField() {
 		schemaVersion: new fields.StringField({
 			required: true,
 			blank: false,
-			initial: "5"
+			initial: "6"
 		}),
 		rulesVersion: new fields.StringField({
 			required: true,
@@ -2919,7 +3366,7 @@ var PersonData = class extends ReservedData {
 		if (options.partial) return source;
 		normalizePersonSource(source);
 		source.meta ??= {};
-		source.meta.schemaVersion = "5";
+		source.meta.schemaVersion = "6";
 		source.health ??= {};
 		source.health.hitPoints ??= {
 			current: 10,
@@ -3433,6 +3880,150 @@ function registerIntegrityHooks() {
 	});
 }
 //#endregion
+//#region src/data/material-migration.ts
+function normalized(value) {
+	return String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase().replace(/[^a-z0-9+]+/g, " ").trim();
+}
+function idFor(value, registry, aliases = {}) {
+	const raw = String(value ?? "").trim();
+	if (!raw) return "";
+	if (Object.hasOwn(registry, raw)) return raw;
+	const key = normalized(raw);
+	if (aliases[key] && Object.hasOwn(registry, aliases[key])) return aliases[key];
+	return Object.entries(registry).find(([, label]) => normalized(label) === key)?.[0] ?? "";
+}
+function idsFor(values, registry, aliases = {}) {
+	if (!Array.isArray(values)) return [];
+	return [...new Set(values.map((value) => idFor(value, registry, aliases) || String(value).trim()).filter(Boolean))];
+}
+var FAMILY_ALIASES = {
+	"melee courante": "improvisedMelee",
+	"melee improvisee": "improvisedMelee",
+	"arme improvisee": "improvisedMelee",
+	"melee martiale": "martialTechnoBlade",
+	"techno lame": "martialTechnoBlade",
+	"techno lames": "martialTechnoBlade",
+	"arme de poing": "handgun",
+	"armes de poing": "handgun",
+	pistolet: "handgun",
+	"arme longue": "physicalLongGun",
+	"armes longues physiques": "physicalLongGun",
+	"arme longue energetique": "energyLongGun",
+	"armes longues energetiques": "energyLongGun",
+	arc: "bowCrossbowThrown",
+	arbalete: "bowCrossbowThrown",
+	"arme lancee": "bowCrossbowThrown",
+	"arme lourde": "heavyLauncher",
+	lanceur: "heavyLauncher",
+	"arme naturelle": "naturalSpecial"
+};
+var SKILL_ALIASES = {
+	melee: "melee",
+	tir: "shooting",
+	shooting: "shooting",
+	"armes lourdes": "heavyWeapons",
+	heavyweapons: "heavyWeapons"
+};
+var ATTRIBUTE_ALIASES = {
+	force: "force",
+	dexterite: "dexterity",
+	dexterity: "dexterity",
+	technologie: "technology",
+	technology: "technology",
+	"maitrise magique": "magicMastery",
+	magicmastery: "magicMastery"
+};
+var CADENCE_ALIASES = {
+	"coup par coup": "single",
+	simple: "single",
+	"semi automatique": "sequential",
+	rafale: "burst",
+	automatique: "automatic",
+	continu: "continuous",
+	salve: "volley"
+};
+var MODE_ALIASES = {
+	"tir simple": "single",
+	salve: "volley",
+	rafale: "burst",
+	automatique: "automatic",
+	suppression: "suppression",
+	"vider le chargeur": "emptyMagazine"
+};
+function migrateWeapon(system) {
+	const profile = system.weaponProfile ??= {};
+	profile.familyId ||= idFor(profile.family, WEAPON_FAMILIES, FAMILY_ALIASES);
+	profile.skillId ||= idFor(profile.skillKey, WEAPON_SKILLS, SKILL_ALIASES);
+	profile.attributeId ||= idFor(profile.attributeKey, WEAPON_ATTRIBUTES, ATTRIBUTE_ALIASES);
+	profile.cadenceId ||= idFor(profile.cadence, FIRE_CADENCES, CADENCE_ALIASES);
+	profile.chamberingId ||= idFor(profile.chamberId, CHAMBERINGS);
+	profile.pressureClassId ||= idFor(profile.pressureClass, PRESSURE_CLASSES);
+	profile.feedInterfaceId ||= idFor(profile.feedInterface, FEED_INTERFACES);
+	if (profile.familyId) profile.family = profile.familyId;
+	if (profile.skillId) profile.skillKey = profile.skillId;
+	if (profile.attributeId) profile.attributeKey = profile.attributeId;
+	if (profile.cadenceId) profile.cadence = profile.cadenceId;
+	if (profile.chamberingId) profile.chamberId = profile.chamberingId;
+	if (profile.pressureClassId) profile.pressureClass = profile.pressureClassId;
+	if (profile.feedInterfaceId) profile.feedInterface = profile.feedInterfaceId;
+	profile.modeIds = profile.modeIds?.length ? profile.modeIds : idsFor(profile.modes, FIRE_MODES, MODE_ALIASES);
+	profile.signatureIds = profile.signatureIds?.length ? profile.signatureIds : idsFor(profile.signatures, SIGNATURE_TAGS);
+	if (!profile.ammunitionFamilyIds?.length && (profile.familyId === "energyLongGun" || profile.familyId === "martialTechnoBlade" && profile.technoBladeVariant)) profile.ammunitionFamilyIds = [...allowedAmmunitionFamilies(profile.familyId, String(profile.technoBladeVariant ?? ""))];
+	profile.damageTypes = idsFor(profile.damageTypes, DAMAGE_TYPES);
+	profile.damageSources = idsFor(profile.damageSources, DAMAGE_SOURCES);
+	if (!profile.handsMode && profile.handsRequired != null) {
+		const hands = Number(profile.handsRequired);
+		profile.handsMode = hands === 0 ? "natural" : hands === 2 ? "two" : profile.handsFlexible ? "versatile" : hands === 1 ? "one" : "";
+	}
+}
+function migrateEnergy(system) {
+	const profile = system.energyProfile;
+	if (!profile) return;
+	profile.formatId ||= idFor(profile.format, BATTERY_FORMATS);
+	profile.powerClassId ||= idFor(profile.powerClass, POWER_CLASSES);
+	profile.technologyId ||= idFor(profile.technology, TECHNOLOGIES);
+	profile.signatureId ||= idFor(profile.signature, ACOUSTIC_SIGNATURES);
+	if (profile.formatId) profile.format = profile.formatId;
+	if (profile.powerClassId) profile.powerClass = profile.powerClassId;
+	if (profile.technologyId) profile.technology = profile.technologyId;
+	if (profile.signatureId) profile.signature = profile.signatureId;
+}
+function migrateEquipment(system) {
+	const profile = system.physical?.equipmentProfile;
+	if (!profile) return;
+	profile.technologyId ||= idFor(profile.technology, TECHNOLOGIES);
+	profile.technicalSizeId ||= idFor(profile.technicalSize, TECHNICAL_SIZES);
+	profile.interfaceIds = idsFor(profile.interfaceIds, FEED_INTERFACES);
+	profile.compatibleInterfaces = idsFor(profile.compatibleInterfaces, FEED_INTERFACES);
+	profile.compatibleSizes = idsFor(profile.compatibleSizes, TECHNICAL_SIZES);
+	profile.compatibleTechnologies = idsFor(profile.compatibleTechnologies, TECHNOLOGIES);
+	if (profile.technologyId) profile.technology = profile.technologyId;
+	if (profile.technicalSizeId) profile.technicalSize = profile.technicalSizeId;
+}
+function migrateAmmunition(system) {
+	const profile = system.ammunitionProfile;
+	if (!profile) return;
+	profile.familyId ||= idFor(profile.family, AMMUNITION_FAMILIES);
+	profile.chamberingId ||= idFor(profile.chamberId, CHAMBERINGS);
+	profile.pressureClassId ||= idFor(profile.pressureClass, PRESSURE_CLASSES);
+	profile.feedInterfaceIds = profile.feedInterfaceIds?.length ? profile.feedInterfaceIds : idsFor(profile.feedInterfaces, FEED_INTERFACES);
+	profile.damageTypes = idsFor(profile.damageTypes, DAMAGE_TYPES);
+	profile.damageSources = idsFor(profile.damageSources, DAMAGE_SOURCES);
+	profile.signatureModifiers = idsFor(profile.signatureModifiers, SIGNATURE_TAGS);
+	if (profile.familyId) profile.family = profile.familyId;
+	if (profile.chamberingId) profile.chamberId = profile.chamberingId;
+	if (profile.pressureClassId) profile.pressureClass = profile.pressureClassId;
+	if (profile.feedInterfaceIds?.length) profile.feedInterfaces = [...profile.feedInterfaceIds];
+}
+/** Convertit uniquement les anciennes valeurs reconnues sans rien inventer. */
+function migrateMaterialSystem(system, itemType) {
+	if (itemType === "weapon") migrateWeapon(system);
+	if (itemType === "ammunition") migrateAmmunition(system);
+	migrateEnergy(system);
+	migrateEquipment(system);
+	return system;
+}
+//#endregion
 //#region src/hooks/items.ts
 function sourceUuid(data, options) {
 	const candidates = [
@@ -3451,14 +4042,14 @@ function prepareItemCreation(item, data, options = {}) {
 	const isOwnedCopy = Boolean(item.parent && incomingId);
 	const isImportedCopy = Boolean(inferredSourceUuid && incomingId);
 	if (options.relisInventoryOperation) {
-		item.updateSource({ system: normalizeItemSystemForType(item.system ?? incomingSystem, item.type) });
+		item.updateSource({ system: migrateMaterialSystem(normalizeItemSystemForType(item.system ?? incomingSystem, item.type), item.type) });
 		return;
 	}
 	if (isOwnedCopy || isImportedCopy) {
-		item.updateSource({ system: buildOwnedItemSystem(incomingSystem, inferredSourceUuid, String(data.name ?? item.name), String(data.type ?? item.type), physical) });
+		item.updateSource({ system: migrateMaterialSystem(buildOwnedItemSystem(incomingSystem, inferredSourceUuid, String(data.name ?? item.name), String(data.type ?? item.type), physical), item.type) });
 		return;
 	}
-	item.updateSource({ system: normalizeItemSystemForType(item.system ?? incomingSystem, item.type) });
+	item.updateSource({ system: migrateMaterialSystem(normalizeItemSystemForType(item.system ?? incomingSystem, item.type), item.type) });
 }
 /** Embedded equipment state changes must use the same previewed service. */
 function protectEquipmentUpdate(item, change, options = {}) {
@@ -3629,12 +4220,12 @@ function worldItems() {
 }
 async function migrateItemCore() {
 	if (!game.user?.isGM) return 0;
-	const migrationId = `10-E2-P-schema-5`;
+	const migrationId = `10-E4-P-schema-6`;
 	if ((game.settings.get("relis", "migrations.state") ?? {}).lastMigrationId === migrationId) return 0;
 	const items = worldItems();
 	for (const item of items) {
 		const source = item.toObject(true).system ?? item.system ?? {};
-		await item.update({ system: normalizeItemSystemForType(source, item.type) }, { relisMigration: true });
+		await item.update({ system: migrateMaterialSystem(normalizeItemSystemForType(source, item.type), item.type) }, { relisMigration: true });
 	}
 	await game.settings.set(SYSTEM_ID, "migrations.state", {
 		packageVersion: PACKAGE_VERSION,
@@ -3642,7 +4233,7 @@ async function migrateItemCore() {
 		lastMigrationId: migrationId,
 		errors: []
 	});
-	console.log(`RE:LIS | Migration 10-E2-P : ${items.length} Item(s) contrôlé(s).`);
+	console.log(`RE:LIS | Migration 10-E4-P : ${items.length} Item(s) contrôlé(s).`);
 	return items.length;
 }
 function registerItemHooks() {
@@ -3878,7 +4469,7 @@ var HIDDEN_SETTINGS = [
 		scope: "world",
 		config: false,
 		type: String,
-		default: "5"
+		default: "6"
 	},
 	{
 		key: "versions.rules",
@@ -4329,6 +4920,42 @@ function materialDiagnostics(item) {
 	const energy = item.system.energyProfile ?? {};
 	const durability = item.system.physical?.durability ?? {};
 	if (item.type === "weapon") {
+		const family = String(weapon.familyId ?? "");
+		if (!family || !Object.hasOwn(WEAPON_FAMILIES, family)) errors.push({
+			level: "warning",
+			message: "Famille d’arme canonique non renseignée."
+		});
+		const accuracy = finite(weapon.accuracy);
+		if (accuracy !== null && !ACCURACY_VALUES.includes(accuracy)) errors.push({
+			level: "error",
+			message: "La Précision d’arme doit être comprise entre -4 et +4."
+		});
+		if (family && weapon.feedKind && !allowedFeedKinds(family, String(weapon.technoBladeVariant ?? "")).includes(String(weapon.feedKind))) errors.push({
+			level: "error",
+			message: "Le mode d’alimentation ne correspond pas à la famille ou à la variante de cette arme."
+		});
+		const allowedAmmunition = allowedAmmunitionFamilies(family, String(weapon.technoBladeVariant ?? ""));
+		const invalidAmmunition = Array.from(weapon.ammunitionFamilyIds ?? [], String).filter((entry) => !allowedAmmunition.includes(entry));
+		if (family && invalidAmmunition.length) errors.push({
+			level: "error",
+			message: `Familles de munitions incompatibles avec cette arme : ${invalidAmmunition.join(", ")}.`
+		});
+		if (family === "energyLongGun" && weapon.feedKind !== "energy") errors.push({
+			level: "error",
+			message: "Une arme longue énergétique exige une batterie ou cellule ; les cartouches physiques sont exclues."
+		});
+		if (family === "martialTechnoBlade") {
+			const variant = String(weapon.technoBladeVariant ?? "");
+			const expected = requiredTechnoBladeFeed(variant);
+			if (!variant) errors.push({
+				level: "warning",
+				message: "Choisir l’une des trois variantes de techno-lame."
+			});
+			else if (expected && weapon.feedKind !== expected) errors.push({
+				level: "error",
+				message: expected === "pranaCrystal" ? "La techno-lame à cristal exige un accord de Prana, jamais une batterie de CE." : "Cette variante de techno-lame exige une batterie ou cellule de CE."
+			});
+		}
 		if (finite(weapon.handsRequired) !== null && (!Number.isSafeInteger(Number(weapon.handsRequired)) || Number(weapon.handsRequired) > 2)) errors.push({
 			level: "error",
 			message: "Le nombre de mains requis doit être un entier de 0 à 2."
@@ -4472,6 +5099,9 @@ function ammunitionCompatibility(ammunition, target) {
 	if (ammunition.type !== "ammunition") return ["L’Item choisi n’est pas une munition."];
 	const ammo = ammunition.system.ammunitionProfile ?? {};
 	const targetProfile = target.type === "container" && target.system.containerKind === "magazine" ? target.system.magazineProfile ?? {} : target.system.weaponProfile ?? target.system.supplyProfile ?? {};
+	const allowedFamilies = Array.from(targetProfile.ammunitionFamilyIds ?? [], String);
+	const ammunitionFamily = String(ammo.familyId ?? ammo.family ?? "");
+	if (allowedFamilies.length && (!ammunitionFamily || !allowedFamilies.includes(ammunitionFamily))) return [`Famille de munition incompatible : ${ammunitionFamily || "non renseignée"}.`];
 	if (!targetProfile.chamberId) return ["La cible ne possède aucun identifiant de chambre exploitable."];
 	const errors = [];
 	if (!ammo.chamberId || ammo.chamberId !== targetProfile.chamberId) errors.push(`Chambre incompatible : ${ammo.chamberId || "non renseignée"} / ${targetProfile.chamberId}.`);
@@ -4798,8 +5428,11 @@ function equipmentPlan(items, body, request) {
 	const shield = bodySlots(profile).includes("shield");
 	if (state === "equipped" && shield && profile.shieldHands == null) errors.push("Renseigner dans la fiche du bouclier les mains nécessaires selon sa source, ou choisir une prise en main explicite.");
 	const hands = state === "held-two" ? 2 : state === "held-one" ? 1 : state === "equipped" && shield ? Number(profile.shieldHands ?? 0) : 0;
-	const weaponHands = Number(item.system.weaponProfile?.handsRequired);
-	if (item.type === "weapon" && state.startsWith("held-") && item.system.weaponProfile?.handsRequired != null && (weaponHands === 2 && hands !== 2 || weaponHands === 1 && hands !== 1 && item.system.weaponProfile?.handsFlexible !== true)) errors.push(`Prise incompatible : ce profil exige ${weaponHands} main${weaponHands > 1 ? "s" : ""}${item.system.weaponProfile?.handsFlexible ? " au minimum" : ""}.`);
+	const weaponProfile = item.system.weaponProfile ?? {};
+	const handsMode = String(weaponProfile.handsMode ?? "");
+	const weaponHands = handsMode === "natural" ? 0 : handsMode === "two" || handsMode === "mountedOrTwo" ? 2 : handsMode === "one" || handsMode === "versatile" ? 1 : Number(weaponProfile.handsRequired);
+	const handsFlexible = handsMode === "versatile" || weaponProfile.handsFlexible === true;
+	if (item.type === "weapon" && state.startsWith("held-") && (handsMode || weaponProfile.handsRequired != null) && (weaponHands === 2 && hands !== 2 || weaponHands === 1 && hands !== 1 && !handsFlexible)) errors.push(`Prise incompatible : ce profil exige ${weaponHands} main${weaponHands > 1 ? "s" : ""}${handsFlexible ? " au minimum" : ""}.`);
 	const others = items.filter((entry) => entry.id !== item.id && (entry.system.physical?.bodyId || body.id) === body.id);
 	const usedHands = others.reduce((sum, entry) => sum + (equipmentState(entry) === "held-two" ? 2 : equipmentState(entry) === "held-one" ? 1 : equipmentState(entry) === "equipped" ? Number(entry.system.physical?.hands ?? 0) : 0), 0);
 	if (hands && others.some((entry) => equipmentState(entry) === "readied")) errors.push("Préciser d’abord les mains des objets anciennement préparés.");
@@ -7155,6 +7788,8 @@ function equipmentProfileUpdate(root, itemType) {
 			"shieldHands",
 			"technology",
 			"technicalSize",
+			"technologyId",
+			"technicalSizeId",
 			"installationKind",
 			"effectSummary",
 			"interfaceIds",
@@ -7163,7 +7798,10 @@ function equipmentProfileUpdate(root, itemType) {
 			"compatibleTechnologies",
 			"compatibleInterfaces"
 		].includes(key ?? "")) continue;
-		patch[`system.physical.equipmentProfile.${key}`] = control.dataset.profileValueType === "string-list" ? Array.from(new Set(control.value.split(/[,;\n]/).map((value) => value.trim()).filter(Boolean))) : control.type === "number" ? control.value.trim() === "" ? null : Number(control.value) : control.type === "checkbox" ? control.checked : control.value.trim();
+		const controlValue = control.value;
+		patch[`system.physical.equipmentProfile.${key}`] = control.dataset.profileValueType === "string-set" ? Array.from(new Set((controlValue instanceof Set ? Array.from(controlValue) : Array.isArray(controlValue) ? controlValue : []).map(String).filter(Boolean))) : control.dataset.profileValueType === "string-list" ? Array.from(new Set(control.value.split(/[,;\n]/).map((value) => value.trim()).filter(Boolean))) : control.type === "number" ? control.value.trim() === "" ? null : Number(control.value) : control.type === "checkbox" ? control.checked : String(controlValue ?? "").trim();
+		if (key === "technologyId") patch["system.physical.equipmentProfile.technology"] = patch[`system.physical.equipmentProfile.${key}`];
+		if (key === "technicalSizeId") patch["system.physical.equipmentProfile.technicalSize"] = patch[`system.physical.equipmentProfile.${key}`];
 	}
 	for (const field of ["requiredSlots", "providedSlots"]) {
 		const controls = root.querySelectorAll(`[data-profile-technical="${field}"]`);
@@ -7435,7 +8073,55 @@ function fieldValue(target) {
 	if (target.dataset.valueType === "boolean") return target.checked;
 	if (target.dataset.valueType === "nullable-number") return target.value === "" ? null : Number(target.value);
 	if (target.dataset.valueType === "string-list") return Array.from(new Set(target.value.split(/[,;\n]/).map((value) => value.trim()).filter(Boolean)));
+	if (target.dataset.valueType === "string-set") {
+		const value = target.value;
+		return Array.from(new Set((value instanceof Set ? Array.from(value) : Array.isArray(value) ? value : []).map(String).filter(Boolean)));
+	}
 	return target.dataset.valueType === "number" ? Number(target.value) : target.value;
+}
+function structuredFieldUpdate(path, value) {
+	const update = { [path]: value };
+	const alias = {
+		"system.weaponProfile.familyId": "system.weaponProfile.family",
+		"system.weaponProfile.skillId": "system.weaponProfile.skillKey",
+		"system.weaponProfile.attributeId": "system.weaponProfile.attributeKey",
+		"system.weaponProfile.cadenceId": "system.weaponProfile.cadence",
+		"system.weaponProfile.chamberingId": "system.weaponProfile.chamberId",
+		"system.weaponProfile.pressureClassId": "system.weaponProfile.pressureClass",
+		"system.weaponProfile.feedInterfaceId": "system.weaponProfile.feedInterface",
+		"system.ammunitionProfile.familyId": "system.ammunitionProfile.family",
+		"system.ammunitionProfile.chamberingId": "system.ammunitionProfile.chamberId",
+		"system.ammunitionProfile.pressureClassId": "system.ammunitionProfile.pressureClass",
+		"system.ammunitionProfile.feedInterfaceIds": "system.ammunitionProfile.feedInterfaces",
+		"system.energyProfile.formatId": "system.energyProfile.format",
+		"system.energyProfile.powerClassId": "system.energyProfile.powerClass",
+		"system.energyProfile.technologyId": "system.energyProfile.technology",
+		"system.energyProfile.rechargeMethodId": "system.energyProfile.rechargeMethod",
+		"system.energyProfile.rechargeDurationId": "system.energyProfile.rechargeDuration",
+		"system.energyProfile.signatureId": "system.energyProfile.signature",
+		"system.physical.equipmentProfile.technologyId": "system.physical.equipmentProfile.technology",
+		"system.physical.equipmentProfile.technicalSizeId": "system.physical.equipmentProfile.technicalSize",
+		"system.protectionProfile.equipTimeId": "system.protectionProfile.equipTime",
+		"system.consumableProfile.doseId": "system.consumableProfile.dose",
+		"system.consumableProfile.treatmentFamilyId": "system.consumableProfile.treatmentFamily",
+		"system.consumableProfile.durationId": "system.consumableProfile.duration",
+		"system.consumableProfile.activationId": "system.consumableProfile.activation",
+		"system.consumableProfile.areaId": "system.consumableProfile.area"
+	}[path];
+	if (alias) update[alias] = value;
+	if (path === "system.weaponProfile.handsMode") {
+		const hands = {
+			one: [1, false],
+			versatile: [1, true],
+			two: [2, false],
+			natural: [0, false],
+			mountedOrTwo: [2, false]
+		}[String(value)] ?? [null, false];
+		update["system.weaponProfile.handsRequired"] = hands[0];
+		update["system.weaponProfile.handsFlexible"] = hands[1];
+	}
+	if (path === "system.currencyProfile.currencyId") update["system.currencyProfile.currencyLabel"] = value === "credits" ? "Crédits" : "";
+	return update;
 }
 var LEGALITY_LABELS = {
 	"": "Non applicable",
@@ -7504,6 +8190,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		const system = this.item.system;
 		const hasPhysical = isPhysicalItemType(this.item.type);
 		const isContainer = this.item.type === "container";
+		const isEquipment = this.item.type === "equipment";
 		const applicability = itemFieldApplicability(this.item.type);
 		const canEditDescription = Boolean(this.item.isOwner && (game.user?.isGM || system.permissions?.playerEditableDescription));
 		const canManageDescriptionPermission = Boolean(this.item.isOwner && game.user?.isGM);
@@ -7618,9 +8305,28 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			isAmmunition: this.item.type === "ammunition",
 			isConsumable: this.item.type === "consumable",
 			isResource: this.item.type === "resource",
-			hasProtectionProfile: this.item.type === "armor" || this.item.type === "weapon" && (system.physical?.equipmentProfile?.wearForm === "shield" || Boolean(system.protectionProfile?.kind)),
-			hasEnergyProfile: [
+			isEquipment,
+			showsEquipmentProfile: [
 				"weapon",
+				"armor",
+				"equipment"
+			].includes(this.item.type),
+			isTechnoBladeFamily: system.weaponProfile?.familyId === "martialTechnoBlade",
+			usesProjectileFeed: [
+				"internal",
+				"detachable",
+				"hybrid"
+			].includes(String(system.weaponProfile?.feedKind ?? "")),
+			usesEnergyFeed: ["energy", "hybrid"].includes(String(system.weaponProfile?.feedKind ?? "")),
+			usesPranaCrystal: system.weaponProfile?.feedKind === "pranaCrystal",
+			showsWeaponCapacity: [
+				"internal",
+				"detachable",
+				"energy",
+				"hybrid"
+			].includes(String(system.weaponProfile?.feedKind ?? "")),
+			hasProtectionProfile: this.item.type === "armor" || this.item.type === "weapon" && (system.physical?.equipmentProfile?.wearForm === "shield" || Boolean(system.protectionProfile?.kind)),
+			hasEnergyProfile: this.item.type === "weapon" ? ["energy", "hybrid"].includes(String(system.weaponProfile?.feedKind ?? "")) : [
 				"armor",
 				"equipment",
 				"consumable",
@@ -7688,21 +8394,24 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				key,
 				label
 			})),
-			weaponSupportOptions: {
-				"": "Non renseigné",
-				personal: "Personnel",
-				vehicle: "Véhicule",
-				mecha: "Mecha",
-				spatial: "Spatial",
-				natural: "Naturel matériel"
-			},
-			accessOptions: {
-				"": "Non renseigné",
-				common: "Courante",
-				martial: "Martiale",
-				specialized: "Spécialisée",
-				heavy: "Lourde"
-			},
+			weaponFamilyOptions: labelsWithBlank(WEAPON_FAMILIES),
+			weaponSupportOptions: labelsWithBlank(WEAPON_SUPPORTS),
+			accessOptions: labelsWithBlank(WEAPON_ACCESS),
+			weaponHandsOptions: labelsWithBlank(WEAPON_HANDS),
+			weaponSkillOptions: labelsWithBlank(WEAPON_SKILLS),
+			weaponAttributeOptions: labelsWithBlank(WEAPON_ATTRIBUTES),
+			accuracyOptions: [{
+				value: "",
+				label: "Non renseignée"
+			}, ...ACCURACY_VALUES.map((value) => ({
+				value,
+				label: value > 0 ? `+${value}` : String(value)
+			}))],
+			damageDieOptions: labelsWithBlank(Object.fromEntries(DAMAGE_DICE.map((value) => [value, value]))),
+			damageAttributeOptions: labelsWithBlank(DAMAGE_ATTRIBUTES),
+			damageTypeOptions: DAMAGE_TYPES,
+			damageSourceOptions: DAMAGE_SOURCES,
+			technoBladeOptions: labelsWithBlank(TECHNO_BLADE_VARIANTS),
 			attackModeOptions: {
 				"": "Non renseigné",
 				melee: "Mêlée",
@@ -7711,13 +8420,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				mounted: "Montée",
 				natural: "Naturelle matérielle"
 			},
-			defenseTargetOptions: {
-				"": "Non renseignée",
-				cap: "CAP",
-				cae: "CAE",
-				maneuver: "DD de manœuvre",
-				profile: "Selon le mode ou le profil"
-			},
+			defenseTargetOptions: labelsWithBlank(DEFENSE_TARGETS, "Non renseignée"),
 			rangeKindOptions: {
 				"": "Non renseigné",
 				contact: "Contact",
@@ -7726,29 +8429,59 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				zone: "Zone",
 				special: "Spéciale"
 			},
-			feedKindOptions: {
-				"": "Non renseigné",
-				none: "Aucune alimentation",
-				internal: "Magasin interne",
-				detachable: "Chargeur détachable",
-				energy: "Énergie",
-				hybrid: "Hybride"
+			feedKindOptions: Object.fromEntries(["", ...allowedFeedKinds(String(system.weaponProfile?.familyId ?? ""), String(system.weaponProfile?.technoBladeVariant ?? ""))].map((value) => [value, value ? FEED_KINDS[value] : "Non renseignée"])),
+			protectionKindOptions: this.item.type === "weapon" ? labelsWithBlank({ shield: "Bouclier porté" }) : labelsWithBlank(ARMOR_KINDS),
+			armorLayerOptions: ARMOR_KINDS,
+			barrierKindOptions: labelsWithBlank(BARRIER_KINDS),
+			chamberingOptions: labelsWithBlank(CHAMBERINGS),
+			pressureClassOptions: labelsWithBlank(PRESSURE_CLASSES),
+			feedInterfaceOptions: labelsWithBlank(FEED_INTERFACES),
+			cadenceOptions: labelsWithBlank(FIRE_CADENCES),
+			recoilOptions: [{
+				value: "",
+				label: "Non renseigné"
+			}, ...[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			].map((value) => ({
+				value,
+				label: String(value)
+			}))],
+			fireModeOptions: FIRE_MODES,
+			acousticSignatureOptions: labelsWithBlank(ACOUSTIC_SIGNATURES),
+			signatureTagOptions: SIGNATURE_TAGS,
+			technologyOptions: labelsWithBlank(TECHNOLOGIES),
+			technicalSizeOptions: labelsWithBlank(TECHNICAL_SIZES),
+			technicalInterfaceOptions: FEED_INTERFACES,
+			materialFamilyOptions: {
+				...WEAPON_FAMILIES,
+				...ARMOR_KINDS,
+				equipment: "Équipement",
+				container: "Conteneur"
 			},
-			protectionKindOptions: {
-				"": "Non renseigné",
-				underlayer: "Sous-couche",
-				light: "Armure légère",
-				intermediate: "Armure intermédiaire",
-				heavy: "Armure lourde",
-				exo: "Exo-armure",
-				underhelmet: "Sous-casque",
-				helmet: "Casque",
-				arms: "Protections de bras",
-				legs: "Jambières",
-				eva: "Combinaison EVA",
-				shield: "Bouclier",
-				barrier: "Champ ou barrière"
-			},
+			batteryFormatOptions: labelsWithBlank(BATTERY_FORMATS),
+			powerClassOptions: labelsWithBlank(POWER_CLASSES),
+			rechargeMethodOptions: labelsWithBlank(RECHARGE_METHODS),
+			durationOptions: labelsWithBlank(DURATIONS),
+			coverageOptions: COVERAGE_ZONES,
+			environmentProtectionOptions: ENVIRONMENT_PROTECTIONS,
+			supplyFeedKindOptions: labelsWithBlank({
+				none: FEED_KINDS.none,
+				internal: FEED_KINDS.internal,
+				detachable: FEED_KINDS.detachable,
+				hybrid: FEED_KINDS.hybrid
+			}),
+			ammunitionFamilyOptions: labelsWithBlank(AMMUNITION_FAMILIES),
+			weaponAmmunitionFamilyOptions: Object.fromEntries(allowedAmmunitionFamilies(String(system.weaponProfile?.familyId ?? ""), String(system.weaponProfile?.technoBladeVariant ?? "")).map((value) => [value, AMMUNITION_FAMILIES[value]])),
+			ammunitionVariantOptions: labelsWithBlank(AMMUNITION_VARIANTS),
+			consumableDoseOptions: labelsWithBlank(CONSUMABLE_DOSES),
+			treatmentFamilyOptions: labelsWithBlank(TREATMENT_FAMILIES),
+			activationOptions: labelsWithBlank(ACTIVATION_METHODS),
+			areaOptions: labelsWithBlank(AREA_SHAPES),
 			sealingOptions: {
 				"": "Non renseigné",
 				none: "Non scellable",
@@ -7784,9 +8517,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				"": "Aucune ou non renseignée",
 				mana: "Mana",
 				prana: "Prana investi",
-				flux: "Flux",
-				technomagic: "Techno-magique",
-				other: "Autre source encodée"
+				flux: "Flux"
 			},
 			routeOptions: {
 				"": "Non renseignée",
@@ -7808,13 +8539,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				modification: "Modification intégrée",
 				improvement: "Amélioration de grade ou valeur"
 			},
-			consumableSafetyOptions: {
-				"": "Non renseigné",
-				usable: "Utilisable",
-				uncertain: "Incertain",
-				contaminated: "Contaminé",
-				expired: "Périmé"
-			}
+			consumableSafetyOptions: labelsWithBlank(SAFETY_STATES),
+			currencyOptions: labelsWithBlank(CURRENCIES, "Non renseignée")
 		};
 	}
 	async _onRender(context, optionsValue) {
@@ -7857,7 +8583,24 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			if (!this.item.isOwner) return;
 			const path = element.dataset.documentField;
 			if (!path) return;
-			this.item.update({ [path]: fieldValue(element) });
+			const value = fieldValue(element);
+			const update = structuredFieldUpdate(path, value);
+			if (path === "system.weaponProfile.familyId") {
+				const family = String(value ?? "");
+				const currentFeed = String(this.item.system.weaponProfile?.feedKind ?? "");
+				const allowed = allowedFeedKinds(family);
+				const allowedAmmunition = allowedAmmunitionFamilies(family);
+				const currentAmmunition = Array.from(this.item.system.weaponProfile?.ammunitionFamilyIds ?? [], String).filter((entry) => allowedAmmunition.includes(entry));
+				update["system.weaponProfile.ammunitionFamilyIds"] = family === "energyLongGun" ? [...allowedAmmunition] : currentAmmunition;
+				if (family === "energyLongGun") update["system.weaponProfile.feedKind"] = "energy";
+				else if (currentFeed && !allowed.includes(currentFeed)) update["system.weaponProfile.feedKind"] = "";
+			}
+			if (path === "system.weaponProfile.technoBladeVariant") {
+				const feed = requiredTechnoBladeFeed(String(value ?? ""));
+				if (feed) update["system.weaponProfile.feedKind"] = feed;
+				update["system.weaponProfile.ammunitionFamilyIds"] = [...allowedAmmunitionFamilies("martialTechnoBlade", String(value ?? ""))];
+			}
+			this.item.update(update);
 		});
 		const traitSelector = root.querySelector("[data-trait-selector]");
 		if (traitSelector) {

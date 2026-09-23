@@ -109,6 +109,9 @@ describe("isolation des données entre exemplaires Item", () => {
       "damageSources",
       "modes",
       "signatures",
+      "modeIds",
+      "signatureIds",
+      "ammunitionFamilyIds",
       "loadSequence",
       "chamberLoad",
     ]);
@@ -145,6 +148,7 @@ describe("isolation des données entre exemplaires Item", () => {
     const ammunitionSchema = AmmunitionData.defineSchema();
     expectIndependentArrays(ammunitionSchema.ammunitionProfile, [
       "feedInterfaces",
+      "feedInterfaceIds",
       "damageTypes",
       "damageSources",
       "signatureModifiers",

@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.6.0` livre la mécanique de recette de 10-E4-P : profils spécialisés d’armes, protections, alimentations, munitions et consommables directement dans chaque fiche Item ; chargeurs réutilisables ; chargement interne ou en chambre ; transfert de CE ; usages de consommables ; durabilité et diagnostics. Les modules et munitions sont présentés sous leur hôte, avec ports, capacité et chambres vides visibles. Le liquide physique porté est résumé par devise, tandis que la banque reste explicitement non raccordée. 10-E3-P est validé et toutes ses protections restent actives. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
+La version `0.6.1` corrige la conception des fiches 10-E4-P : les valeurs mécaniques utilisent des registres fermés tirés de la Bible, les profils sont spécialisés par type d’Item et les anciennes chaînes 0.6.0 reconnues sont migrées sans perte. Les armes longues énergétiques n’acceptent que les batteries et cellules ; les armes de poing conservent leurs alimentations physiques, énergétiques ou hybrides. Les trois techno-lames distinguent deux variantes alimentées en CE d’une variante à cristal accordé au Prana. La précision va de -4 à +4. Les chargeurs, CE, consommables, modules, monnaie physique, durabilité et diagnostics de 0.6.0 restent opératoires. Les modules et munitions sont présentés sous leur hôte, avec ports, capacité et chambres vides visibles. Le liquide physique porté est résumé par devise, tandis que la banque reste explicitement non raccordée. 10-E3-P est validé et toutes ses protections restent actives. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
 familles matérielles apparaissent dans un inventaire personnel hiérarchique :
 quantité, lot, masse, volume, encombrement, état, accessibilité et emplacement
 restent portés par les vrais Items de l’Actor.
@@ -42,13 +42,13 @@ restent réalisés en CSS et en SVG interne jusqu’à la passe graphique finale
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3 et 10-E3-P sont validés. 10-E4-P attend sa
-recette 0.6.0 sur The Forge. Aucun contrôle visuel automatisé par navigateur :
+recette 0.6.1 sur The Forge. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
-Les nouveaux champs sont additifs avec valeurs initiales neutres : aucun
-reclassement automatique des objets existants, aucune nouvelle migration,
-version de schéma stockée 5 conservée. Les anciens états « préparés » sans
+Les nouveaux champs structurés sont additifs. La migration idempotente vers le
+schéma 6 traduit seulement les anciennes valeurs reconnues et conserve les
+valeurs locales ambiguës sans les deviner. Les anciens états « préparés » sans
 nombre de mains demandent une clarification explicite.
 
 Le liquide est porté par de vrais Items et le résumé n’inclut ni argent au sol,
@@ -65,7 +65,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.6.0.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.6.1.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -74,6 +74,15 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.6.1 — registres fermés et fiches spécialisées 10-E4-P
+
+- Remplace les champs mécaniques libres du matériel personnel par des listes, sélecteurs multiples et valeurs chiffrées bornées issus de la Bible.
+- Sépare les huit familles d’armes, les accès, mains `1`, `1+`, `2`, compétences, Attributs, dégâts structurés, portées, cadences, modes, signatures et alimentations.
+- Filtre les alimentations par famille : armes longues énergétiques sans balles physiques ; armes de poing polyvalentes ; techno-lames vibratoire et à conducteur sur CE, techno-lame à cristal sur Prana sans batterie.
+- Spécialise les fiches : aucun réglage d’armure sur une arme ordinaire, aucun réglage de bouclier sur une armure ou un équipement, et aucun profil énergétique sur une arme qui n’en consomme pas.
+- Passe au schéma 6 avec une migration additive et idempotente des valeurs 0.6.0 reconnues. Les données ambiguës restent conservées et diagnostiquées.
+- Ajoute les contrôles automatisés des dépendances, de la précision `-4…+4`, de l’absence de champ texte mécanique dans les profils spécialisés et des non-régressions 10-E3-P/10-E4-P.
 
 ## 0.6.0 — matériel personnel 10-E4-P
 

@@ -77,7 +77,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(PACKAGE_VERSION).toBe(
       JSON.parse(readFileSync("package.json", "utf8")).version,
     );
-    expect(SCHEMA_VERSION).toBe("5");
+    expect(SCHEMA_VERSION).toBe("6");
     expect(sheet).toContain("packageVersion: PACKAGE_VERSION");
     expect(template).toMatch(
       /<footer[^>]*>[\s\S]*?{{packageVersion}}<\/footer>/,
@@ -173,27 +173,29 @@ it("place le profil dans la fiche Item et conserve la sélection dans le HTML", 
 it("porte les profils spécialisés 10-E4-P dans les fiches Item", () => {
   const itemTemplate = readFileSync("templates/items/item.hbs", "utf8");
   for (const field of [
+    "system.weaponProfile.familyId",
+    "system.weaponProfile.handsMode",
+    "system.weaponProfile.skillId",
+    "system.weaponProfile.attributeId",
+    "system.weaponProfile.damageDie",
+    "system.weaponProfile.cadenceId",
+    "system.weaponProfile.chamberingId",
     "system.weaponProfile.defenseTarget",
-    "system.weaponProfile.prerequisiteSummary",
-    "system.weaponProfile.reloadProcedure",
     "system.protectionProfile.barrierCurrent",
     "system.protectionProfile.environmentProtections",
-    "system.protectionProfile.returnProcedure",
     "system.energyProfile.outputClass",
-    "system.ammunitionProfile.chamberId",
+    "system.energyProfile.formatId",
+    "system.ammunitionProfile.chamberingId",
     "system.consumableProfile.toxicity",
-    "system.consumableProfile.encodedFormula",
-    "system.consumableProfile.treatmentFamily",
+    "system.consumableProfile.treatmentFamilyId",
     "system.consumableProfile.safetyState",
     "system.currencyProfile.physicalCash",
     "system.magazineProfile.interfaceId",
     "system.physical.durability.reliability",
     "system.physical.equipmentProfile.compatibleInterfaces",
     "system.physical.equipmentProfile.installationKind",
-    "system.physical.equipmentProfile.effectSummary",
+    "system.physical.equipmentProfile.technologyId",
   ])
     expect(itemTemplate).toContain(field);
-  expect(itemTemplate).toMatch(
-    /Les jets\s+d’attaque,\s+dégâts et blessures seront automatisés en 10-F/,
-  );
+  expect(itemTemplate).toMatch(/seront\s+automatisés en 10-F/);
 });

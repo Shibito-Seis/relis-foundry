@@ -265,18 +265,27 @@ export function equipmentPlan(
         : state === "equipped" && shield
           ? Number(profile.shieldHands ?? 0)
           : 0;
-  const weaponHands = Number(item.system.weaponProfile?.handsRequired);
+  const weaponProfile = item.system.weaponProfile ?? {};
+  const handsMode = String(weaponProfile.handsMode ?? "");
+  const weaponHands =
+    handsMode === "natural"
+      ? 0
+      : handsMode === "two" || handsMode === "mountedOrTwo"
+        ? 2
+        : handsMode === "one" || handsMode === "versatile"
+          ? 1
+          : Number(weaponProfile.handsRequired);
+  const handsFlexible =
+    handsMode === "versatile" || weaponProfile.handsFlexible === true;
   if (
     item.type === "weapon" &&
     state.startsWith("held-") &&
-    item.system.weaponProfile?.handsRequired != null &&
+    (handsMode || weaponProfile.handsRequired != null) &&
     ((weaponHands === 2 && hands !== 2) ||
-      (weaponHands === 1 &&
-        hands !== 1 &&
-        item.system.weaponProfile?.handsFlexible !== true))
+      (weaponHands === 1 && hands !== 1 && !handsFlexible))
   )
     errors.push(
-      `Prise incompatible : ce profil exige ${weaponHands} main${weaponHands > 1 ? "s" : ""}${item.system.weaponProfile?.handsFlexible ? " au minimum" : ""}.`,
+      `Prise incompatible : ce profil exige ${weaponHands} main${weaponHands > 1 ? "s" : ""}${handsFlexible ? " au minimum" : ""}.`,
     );
   const others = items.filter(
     (entry) =>

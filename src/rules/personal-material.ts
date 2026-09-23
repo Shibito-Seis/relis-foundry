@@ -4,6 +4,13 @@ import {
   TECHNICAL_SLOTS,
   technicalUsage,
 } from "./equipment-slots";
+import {
+  ACCURACY_VALUES,
+  WEAPON_FAMILIES,
+  allowedAmmunitionFamilies,
+  allowedFeedKinds,
+  requiredTechnoBladeFeed,
+} from "../data/material-catalog";
 
 export interface MaterialDiagnostic {
   level: "warning" | "error";
@@ -74,6 +81,70 @@ export function materialDiagnostics(
   const durability = item.system.physical?.durability ?? {};
 
   if (item.type === "weapon") {
+    const family = String(weapon.familyId ?? "");
+    if (!family || !Object.hasOwn(WEAPON_FAMILIES, family))
+      errors.push({
+        level: "warning",
+        message: "Famille d’arme canonique non renseignée.",
+      });
+    const accuracy = finite(weapon.accuracy);
+    if (
+      accuracy !== null &&
+      !(ACCURACY_VALUES as readonly number[]).includes(accuracy)
+    )
+      errors.push({
+        level: "error",
+        message: "La Précision d’arme doit être comprise entre -4 et +4.",
+      });
+    if (
+      family &&
+      weapon.feedKind &&
+      !allowedFeedKinds(
+        family,
+        String(weapon.technoBladeVariant ?? ""),
+      ).includes(String(weapon.feedKind))
+    )
+      errors.push({
+        level: "error",
+        message:
+          "Le mode d’alimentation ne correspond pas à la famille ou à la variante de cette arme.",
+      });
+    const allowedAmmunition = allowedAmmunitionFamilies(
+      family,
+      String(weapon.technoBladeVariant ?? ""),
+    );
+    const invalidAmmunition = Array.from(
+      weapon.ammunitionFamilyIds ?? [],
+      String,
+    ).filter((entry) => !allowedAmmunition.includes(entry));
+    if (family && invalidAmmunition.length)
+      errors.push({
+        level: "error",
+        message: `Familles de munitions incompatibles avec cette arme : ${invalidAmmunition.join(", ")}.`,
+      });
+    if (family === "energyLongGun" && weapon.feedKind !== "energy")
+      errors.push({
+        level: "error",
+        message:
+          "Une arme longue énergétique exige une batterie ou cellule ; les cartouches physiques sont exclues.",
+      });
+    if (family === "martialTechnoBlade") {
+      const variant = String(weapon.technoBladeVariant ?? "");
+      const expected = requiredTechnoBladeFeed(variant);
+      if (!variant)
+        errors.push({
+          level: "warning",
+          message: "Choisir l’une des trois variantes de techno-lame.",
+        });
+      else if (expected && weapon.feedKind !== expected)
+        errors.push({
+          level: "error",
+          message:
+            expected === "pranaCrystal"
+              ? "La techno-lame à cristal exige un accord de Prana, jamais une batterie de CE."
+              : "Cette variante de techno-lame exige une batterie ou cellule de CE.",
+        });
+    }
     if (
       finite(weapon.handsRequired) !== null &&
       (!Number.isSafeInteger(Number(weapon.handsRequired)) ||
@@ -321,6 +392,18 @@ export function ammunitionCompatibility(
     target.type === "container" && target.system.containerKind === "magazine"
       ? (target.system.magazineProfile ?? {})
       : (target.system.weaponProfile ?? target.system.supplyProfile ?? {});
+  const allowedFamilies = Array.from(
+    targetProfile.ammunitionFamilyIds ?? [],
+    String,
+  );
+  const ammunitionFamily = String(ammo.familyId ?? ammo.family ?? "");
+  if (
+    allowedFamilies.length &&
+    (!ammunitionFamily || !allowedFamilies.includes(ammunitionFamily))
+  )
+    return [
+      `Famille de munition incompatible : ${ammunitionFamily || "non renseignée"}.`,
+    ];
   if (!targetProfile.chamberId)
     return ["La cible ne possède aucun identifiant de chambre exploitable."];
   const errors: string[] = [];

@@ -38,6 +38,51 @@ import {
 } from "../config";
 import type { RelisActor } from "../documents/actor";
 import { materialDiagnostics } from "../rules/personal-material";
+import {
+  ACCURACY_VALUES,
+  ACTIVATION_METHODS,
+  ACOUSTIC_SIGNATURES,
+  AMMUNITION_FAMILIES,
+  AMMUNITION_VARIANTS,
+  AREA_SHAPES,
+  ARMOR_KINDS,
+  BARRIER_KINDS,
+  BATTERY_FORMATS,
+  CHAMBERINGS,
+  CONSUMABLE_DOSES,
+  COVERAGE_ZONES,
+  CURRENCIES,
+  DAMAGE_ATTRIBUTES,
+  DAMAGE_DICE,
+  DAMAGE_SOURCES,
+  DAMAGE_TYPES,
+  DEFENSE_TARGETS,
+  DURATIONS,
+  ENVIRONMENT_PROTECTIONS,
+  FEED_INTERFACES,
+  FEED_KINDS,
+  FIRE_CADENCES,
+  FIRE_MODES,
+  POWER_CLASSES,
+  PRESSURE_CLASSES,
+  RECHARGE_METHODS,
+  SAFETY_STATES,
+  SIGNATURE_TAGS,
+  TECHNICAL_SIZES,
+  TECHNOLOGIES,
+  TECHNO_BLADE_VARIANTS,
+  TREATMENT_FAMILIES,
+  WEAPON_ACCESS,
+  WEAPON_ATTRIBUTES,
+  WEAPON_FAMILIES,
+  WEAPON_HANDS,
+  WEAPON_SKILLS,
+  WEAPON_SUPPORTS,
+  allowedAmmunitionFamilies,
+  allowedFeedKinds,
+  labelsWithBlank,
+  requiredTechnoBladeFeed,
+} from "../data/material-catalog";
 
 const ItemSheetV2 = foundry.applications.sheets.ItemSheetV2;
 const HandlebarsApplicationMixin =
@@ -312,9 +357,87 @@ function fieldValue(
           .filter(Boolean),
       ),
     );
+  if (target.dataset.valueType === "string-set") {
+    const value = (target as any).value;
+    return Array.from(
+      new Set(
+        (value instanceof Set
+          ? Array.from(value)
+          : Array.isArray(value)
+            ? value
+            : []
+        )
+          .map(String)
+          .filter(Boolean),
+      ),
+    );
+  }
   return target.dataset.valueType === "number"
     ? Number(target.value)
     : target.value;
+}
+
+function structuredFieldUpdate(
+  path: string,
+  value: string | string[] | number | boolean | null,
+): Record<string, unknown> {
+  const update: Record<string, unknown> = { [path]: value };
+  const legacyAliases: Record<string, string> = {
+    "system.weaponProfile.familyId": "system.weaponProfile.family",
+    "system.weaponProfile.skillId": "system.weaponProfile.skillKey",
+    "system.weaponProfile.attributeId": "system.weaponProfile.attributeKey",
+    "system.weaponProfile.cadenceId": "system.weaponProfile.cadence",
+    "system.weaponProfile.chamberingId": "system.weaponProfile.chamberId",
+    "system.weaponProfile.pressureClassId":
+      "system.weaponProfile.pressureClass",
+    "system.weaponProfile.feedInterfaceId":
+      "system.weaponProfile.feedInterface",
+    "system.ammunitionProfile.familyId": "system.ammunitionProfile.family",
+    "system.ammunitionProfile.chamberingId":
+      "system.ammunitionProfile.chamberId",
+    "system.ammunitionProfile.pressureClassId":
+      "system.ammunitionProfile.pressureClass",
+    "system.ammunitionProfile.feedInterfaceIds":
+      "system.ammunitionProfile.feedInterfaces",
+    "system.energyProfile.formatId": "system.energyProfile.format",
+    "system.energyProfile.powerClassId": "system.energyProfile.powerClass",
+    "system.energyProfile.technologyId": "system.energyProfile.technology",
+    "system.energyProfile.rechargeMethodId":
+      "system.energyProfile.rechargeMethod",
+    "system.energyProfile.rechargeDurationId":
+      "system.energyProfile.rechargeDuration",
+    "system.energyProfile.signatureId": "system.energyProfile.signature",
+    "system.physical.equipmentProfile.technologyId":
+      "system.physical.equipmentProfile.technology",
+    "system.physical.equipmentProfile.technicalSizeId":
+      "system.physical.equipmentProfile.technicalSize",
+    "system.protectionProfile.equipTimeId":
+      "system.protectionProfile.equipTime",
+    "system.consumableProfile.doseId": "system.consumableProfile.dose",
+    "system.consumableProfile.treatmentFamilyId":
+      "system.consumableProfile.treatmentFamily",
+    "system.consumableProfile.durationId": "system.consumableProfile.duration",
+    "system.consumableProfile.activationId":
+      "system.consumableProfile.activation",
+    "system.consumableProfile.areaId": "system.consumableProfile.area",
+  };
+  const alias = legacyAliases[path];
+  if (alias) update[alias] = value;
+  if (path === "system.weaponProfile.handsMode") {
+    const hands = {
+      one: [1, false],
+      versatile: [1, true],
+      two: [2, false],
+      natural: [0, false],
+      mountedOrTwo: [2, false],
+    }[String(value)] ?? [null, false];
+    update["system.weaponProfile.handsRequired"] = hands[0];
+    update["system.weaponProfile.handsFlexible"] = hands[1];
+  }
+  if (path === "system.currencyProfile.currencyId")
+    update["system.currencyProfile.currencyLabel"] =
+      value === "credits" ? "Crédits" : "";
+  return update;
 }
 
 const LEGALITY_LABELS: Record<string, string> = {
@@ -394,6 +517,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const system = this.item.system;
     const hasPhysical = isPhysicalItemType(this.item.type);
     const isContainer = this.item.type === "container";
+    const isEquipment = this.item.type === "equipment";
     const applicability = itemFieldApplicability(this.item.type);
     const canEditDescription = Boolean(
       this.item.isOwner &&
@@ -566,18 +690,38 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       isAmmunition: this.item.type === "ammunition",
       isConsumable: this.item.type === "consumable",
       isResource: this.item.type === "resource",
+      isEquipment,
+      showsEquipmentProfile: ["weapon", "armor", "equipment"].includes(
+        this.item.type,
+      ),
+      isTechnoBladeFamily:
+        system.weaponProfile?.familyId === "martialTechnoBlade",
+      usesProjectileFeed: ["internal", "detachable", "hybrid"].includes(
+        String(system.weaponProfile?.feedKind ?? ""),
+      ),
+      usesEnergyFeed: ["energy", "hybrid"].includes(
+        String(system.weaponProfile?.feedKind ?? ""),
+      ),
+      usesPranaCrystal: system.weaponProfile?.feedKind === "pranaCrystal",
+      showsWeaponCapacity: [
+        "internal",
+        "detachable",
+        "energy",
+        "hybrid",
+      ].includes(String(system.weaponProfile?.feedKind ?? "")),
       hasProtectionProfile:
         this.item.type === "armor" ||
         (this.item.type === "weapon" &&
           (system.physical?.equipmentProfile?.wearForm === "shield" ||
             Boolean(system.protectionProfile?.kind))),
-      hasEnergyProfile: [
-        "weapon",
-        "armor",
-        "equipment",
-        "consumable",
-        "resource",
-      ].includes(this.item.type),
+      hasEnergyProfile:
+        this.item.type === "weapon"
+          ? ["energy", "hybrid"].includes(
+              String(system.weaponProfile?.feedKind ?? ""),
+            )
+          : ["armor", "equipment", "consumable", "resource"].includes(
+              this.item.type,
+            ),
       hasSupplyProfile: ["armor", "equipment"].includes(this.item.type),
       hasPhysical,
       technicalSlotRows: technicalSlotRows(
@@ -676,21 +820,26 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         key,
         label,
       })),
-      weaponSupportOptions: {
-        "": "Non renseigné",
-        personal: "Personnel",
-        vehicle: "Véhicule",
-        mecha: "Mecha",
-        spatial: "Spatial",
-        natural: "Naturel matériel",
-      },
-      accessOptions: {
-        "": "Non renseigné",
-        common: "Courante",
-        martial: "Martiale",
-        specialized: "Spécialisée",
-        heavy: "Lourde",
-      },
+      weaponFamilyOptions: labelsWithBlank(WEAPON_FAMILIES),
+      weaponSupportOptions: labelsWithBlank(WEAPON_SUPPORTS),
+      accessOptions: labelsWithBlank(WEAPON_ACCESS),
+      weaponHandsOptions: labelsWithBlank(WEAPON_HANDS),
+      weaponSkillOptions: labelsWithBlank(WEAPON_SKILLS),
+      weaponAttributeOptions: labelsWithBlank(WEAPON_ATTRIBUTES),
+      accuracyOptions: [
+        { value: "", label: "Non renseignée" },
+        ...ACCURACY_VALUES.map((value) => ({
+          value,
+          label: value > 0 ? `+${value}` : String(value),
+        })),
+      ],
+      damageDieOptions: labelsWithBlank(
+        Object.fromEntries(DAMAGE_DICE.map((value) => [value, value])),
+      ),
+      damageAttributeOptions: labelsWithBlank(DAMAGE_ATTRIBUTES),
+      damageTypeOptions: DAMAGE_TYPES,
+      damageSourceOptions: DAMAGE_SOURCES,
+      technoBladeOptions: labelsWithBlank(TECHNO_BLADE_VARIANTS),
       attackModeOptions: {
         "": "Non renseigné",
         melee: "Mêlée",
@@ -699,13 +848,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         mounted: "Montée",
         natural: "Naturelle matérielle",
       },
-      defenseTargetOptions: {
-        "": "Non renseignée",
-        cap: "CAP",
-        cae: "CAE",
-        maneuver: "DD de manœuvre",
-        profile: "Selon le mode ou le profil",
-      },
+      defenseTargetOptions: labelsWithBlank(DEFENSE_TARGETS, "Non renseignée"),
       rangeKindOptions: {
         "": "Non renseigné",
         contact: "Contact",
@@ -714,29 +857,76 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         zone: "Zone",
         special: "Spéciale",
       },
-      feedKindOptions: {
-        "": "Non renseigné",
-        none: "Aucune alimentation",
-        internal: "Magasin interne",
-        detachable: "Chargeur détachable",
-        energy: "Énergie",
-        hybrid: "Hybride",
+      feedKindOptions: Object.fromEntries(
+        [
+          "",
+          ...allowedFeedKinds(
+            String(system.weaponProfile?.familyId ?? ""),
+            String(system.weaponProfile?.technoBladeVariant ?? ""),
+          ),
+        ].map((value) => [
+          value,
+          value
+            ? FEED_KINDS[value as keyof typeof FEED_KINDS]
+            : "Non renseignée",
+        ]),
+      ),
+      protectionKindOptions:
+        this.item.type === "weapon"
+          ? labelsWithBlank({ shield: "Bouclier porté" })
+          : labelsWithBlank(ARMOR_KINDS),
+      armorLayerOptions: ARMOR_KINDS,
+      barrierKindOptions: labelsWithBlank(BARRIER_KINDS),
+      chamberingOptions: labelsWithBlank(CHAMBERINGS),
+      pressureClassOptions: labelsWithBlank(PRESSURE_CLASSES),
+      feedInterfaceOptions: labelsWithBlank(FEED_INTERFACES),
+      cadenceOptions: labelsWithBlank(FIRE_CADENCES),
+      recoilOptions: [
+        { value: "", label: "Non renseigné" },
+        ...[0, 1, 2, 3, 4, 5].map((value) => ({
+          value,
+          label: String(value),
+        })),
+      ],
+      fireModeOptions: FIRE_MODES,
+      acousticSignatureOptions: labelsWithBlank(ACOUSTIC_SIGNATURES),
+      signatureTagOptions: SIGNATURE_TAGS,
+      technologyOptions: labelsWithBlank(TECHNOLOGIES),
+      technicalSizeOptions: labelsWithBlank(TECHNICAL_SIZES),
+      technicalInterfaceOptions: FEED_INTERFACES,
+      materialFamilyOptions: {
+        ...WEAPON_FAMILIES,
+        ...ARMOR_KINDS,
+        equipment: "Équipement",
+        container: "Conteneur",
       },
-      protectionKindOptions: {
-        "": "Non renseigné",
-        underlayer: "Sous-couche",
-        light: "Armure légère",
-        intermediate: "Armure intermédiaire",
-        heavy: "Armure lourde",
-        exo: "Exo-armure",
-        underhelmet: "Sous-casque",
-        helmet: "Casque",
-        arms: "Protections de bras",
-        legs: "Jambières",
-        eva: "Combinaison EVA",
-        shield: "Bouclier",
-        barrier: "Champ ou barrière",
-      },
+      batteryFormatOptions: labelsWithBlank(BATTERY_FORMATS),
+      powerClassOptions: labelsWithBlank(POWER_CLASSES),
+      rechargeMethodOptions: labelsWithBlank(RECHARGE_METHODS),
+      durationOptions: labelsWithBlank(DURATIONS),
+      coverageOptions: COVERAGE_ZONES,
+      environmentProtectionOptions: ENVIRONMENT_PROTECTIONS,
+      supplyFeedKindOptions: labelsWithBlank({
+        none: FEED_KINDS.none,
+        internal: FEED_KINDS.internal,
+        detachable: FEED_KINDS.detachable,
+        hybrid: FEED_KINDS.hybrid,
+      }),
+      ammunitionFamilyOptions: labelsWithBlank(AMMUNITION_FAMILIES),
+      weaponAmmunitionFamilyOptions: Object.fromEntries(
+        allowedAmmunitionFamilies(
+          String(system.weaponProfile?.familyId ?? ""),
+          String(system.weaponProfile?.technoBladeVariant ?? ""),
+        ).map((value) => [
+          value,
+          AMMUNITION_FAMILIES[value as keyof typeof AMMUNITION_FAMILIES],
+        ]),
+      ),
+      ammunitionVariantOptions: labelsWithBlank(AMMUNITION_VARIANTS),
+      consumableDoseOptions: labelsWithBlank(CONSUMABLE_DOSES),
+      treatmentFamilyOptions: labelsWithBlank(TREATMENT_FAMILIES),
+      activationOptions: labelsWithBlank(ACTIVATION_METHODS),
+      areaOptions: labelsWithBlank(AREA_SHAPES),
       sealingOptions: {
         "": "Non renseigné",
         none: "Non scellable",
@@ -773,8 +963,6 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         mana: "Mana",
         prana: "Prana investi",
         flux: "Flux",
-        technomagic: "Techno-magique",
-        other: "Autre source encodée",
       },
       routeOptions: {
         "": "Non renseignée",
@@ -796,13 +984,8 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         modification: "Modification intégrée",
         improvement: "Amélioration de grade ou valeur",
       },
-      consumableSafetyOptions: {
-        "": "Non renseigné",
-        usable: "Utilisable",
-        uncertain: "Incertain",
-        contaminated: "Contaminé",
-        expired: "Périmé",
-      },
+      consumableSafetyOptions: labelsWithBlank(SAFETY_STATES),
+      currencyOptions: labelsWithBlank(CURRENCIES, "Non renseignée"),
     };
   }
 
@@ -869,7 +1052,39 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         if (!this.item.isOwner) return;
         const path = element.dataset.documentField;
         if (!path) return;
-        void this.item.update({ [path]: fieldValue(element) });
+        const value = fieldValue(element);
+        const update = structuredFieldUpdate(path, value);
+        if (path === "system.weaponProfile.familyId") {
+          const family = String(value ?? "");
+          const currentFeed = String(
+            this.item.system.weaponProfile?.feedKind ?? "",
+          );
+          const allowed = allowedFeedKinds(family);
+          const allowedAmmunition = allowedAmmunitionFamilies(family);
+          const currentAmmunition = Array.from(
+            this.item.system.weaponProfile?.ammunitionFamilyIds ?? [],
+            String,
+          ).filter((entry) => allowedAmmunition.includes(entry));
+          update["system.weaponProfile.ammunitionFamilyIds"] =
+            family === "energyLongGun"
+              ? [...allowedAmmunition]
+              : currentAmmunition;
+          if (family === "energyLongGun")
+            update["system.weaponProfile.feedKind"] = "energy";
+          else if (currentFeed && !allowed.includes(currentFeed))
+            update["system.weaponProfile.feedKind"] = "";
+        }
+        if (path === "system.weaponProfile.technoBladeVariant") {
+          const feed = requiredTechnoBladeFeed(String(value ?? ""));
+          if (feed) update["system.weaponProfile.feedKind"] = feed;
+          update["system.weaponProfile.ammunitionFamilyIds"] = [
+            ...allowedAmmunitionFamilies(
+              "martialTechnoBlade",
+              String(value ?? ""),
+            ),
+          ];
+        }
+        void this.item.update(update);
       });
     }
     const traitSelector = root.querySelector<HTMLElement>(

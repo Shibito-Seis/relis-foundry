@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.6.1 — 10-E4-P, registres fermés et fiches spécialisées
+
+- Remplace les champs mécaniques libres du matériel personnel par des registres canoniques, sélecteurs multiples et valeurs bornées ; la description reste le seul espace narratif général.
+- Structure les huit familles d’armes, six accès, mains `1`/`1+`/`2`, compétences, Attributs, précision `-4…+4`, dégâts, portée, cadence, modes, signatures et alimentation.
+- Relie famille, munitions et alimentation : les armes longues énergétiques excluent les projectiles physiques ; les armes de poing conservent toutes les solutions prévues.
+- Ajoute les trois techno-lames validées : lame matérielle vibratoire et conducteur rétractable alimentés en CE ; lame à cristal accordé activée par le Prana, sans assimilation à une batterie.
+- N’affiche que les blocs applicables au type : une arme ordinaire ne reçoit aucun réglage d’armure, un bouclier reste un profil d’arme explicite, et les réglages énergétiques n’apparaissent que lorsqu’ils sont utiles.
+- Migre de façon additive et idempotente le schéma 5 vers le schéma 6. Seules les anciennes valeurs reconnues sont converties ; les valeurs locales ambiguës sont préservées et diagnostiquées.
+- Renforce les tests des dépendances de famille, de l’échelle de précision, de la migration et de l’absence de champ texte mécanique dans les profils spécialisés. Les protections DialogV2, portraits, permissions, inventaires PJ/PNJ et transactions restent couvertes.
+- 10-E4-P reste en recette jusqu’à validation explicite de la v0.6.1.
+
 ## 0.6.0 — 10-E4-P, matériel personnel
 
 - Profils spécialisés édités dans chaque fiche Item : armes, protections et environnement, boucliers/champs, batteries et réserves CE, munitions, consommables PHA/MYS, chargeurs, monnaie physique et durabilité.

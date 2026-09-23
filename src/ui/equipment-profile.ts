@@ -128,6 +128,8 @@ export function equipmentProfileUpdate(
         "shieldHands",
         "technology",
         "technicalSize",
+        "technologyId",
+        "technicalSizeId",
         "installationKind",
         "effectSummary",
         "interfaceIds",
@@ -138,23 +140,43 @@ export function equipmentProfileUpdate(
       ].includes(key ?? "")
     )
       continue;
+    const controlValue = (control as any).value;
     patch[`system.physical.equipmentProfile.${key}`] =
-      control.dataset.profileValueType === "string-list"
+      control.dataset.profileValueType === "string-set"
         ? Array.from(
             new Set(
-              control.value
-                .split(/[,;\n]/)
-                .map((value) => value.trim())
+              (controlValue instanceof Set
+                ? Array.from(controlValue)
+                : Array.isArray(controlValue)
+                  ? controlValue
+                  : []
+              )
+                .map(String)
                 .filter(Boolean),
             ),
           )
-        : control.type === "number"
-          ? control.value.trim() === ""
-            ? null
-            : Number(control.value)
-          : control.type === "checkbox"
-            ? (control as HTMLInputElement).checked
-            : control.value.trim();
+        : control.dataset.profileValueType === "string-list"
+          ? Array.from(
+              new Set(
+                control.value
+                  .split(/[,;\n]/)
+                  .map((value) => value.trim())
+                  .filter(Boolean),
+              ),
+            )
+          : control.type === "number"
+            ? control.value.trim() === ""
+              ? null
+              : Number(control.value)
+            : control.type === "checkbox"
+              ? (control as HTMLInputElement).checked
+              : String(controlValue ?? "").trim();
+    if (key === "technologyId")
+      patch["system.physical.equipmentProfile.technology"] =
+        patch[`system.physical.equipmentProfile.${key}`];
+    if (key === "technicalSizeId")
+      patch["system.physical.equipmentProfile.technicalSize"] =
+        patch[`system.physical.equipmentProfile.${key}`];
   }
   for (const field of ["requiredSlots", "providedSlots"]) {
     const controls = root.querySelectorAll<HTMLInputElement>(

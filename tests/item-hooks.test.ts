@@ -210,7 +210,7 @@ describe("cycle de vie des exemplaires Item", () => {
     });
     await expect(migrateItemCore()).resolves.toBe(0);
     expect(worldItem.update).toHaveBeenCalledTimes(1);
-    expect(setting.lastMigrationId).toBe("10-E2-P-schema-5");
+    expect(setting.lastMigrationId).toBe("10-E4-P-schema-6");
     log.mockRestore();
   });
 });
