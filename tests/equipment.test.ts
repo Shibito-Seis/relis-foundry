@@ -59,6 +59,12 @@ describe("10-E3-P — équipement personnel", () => {
     const magazine = item("magazine", {}, "container");
     magazine.system.containerKind = "magazine";
     expect(equipmentStates(magazine)).toContain("installed");
+    const battery = item("battery", {}, "resource");
+    battery.system.energyProfile = { kind: "battery" };
+    expect(equipmentStates(battery)).toContain("installed");
+    const crystal = item("crystal", {}, "resource");
+    crystal.system.energyProfile = { kind: "pranaCrystal" };
+    expect(equipmentStates(crystal)).toContain("installed");
   });
   it("refuse deux mains occupées et permet une libération avant acquisition", () => {
     const items = [held("a"), held("b"), item("c")];
@@ -75,6 +81,32 @@ describe("10-E3-P — équipement personnel", () => {
     ]);
     expect(projection.failed).toBe(false);
     expect(projection.updates).toHaveLength(3);
+  });
+  it("installe un cristal de Prana uniquement dans sa techno-lame", () => {
+    const blade = item("blade");
+    blade.system.weaponProfile = {
+      familyId: "martialTechnoBlade",
+      technoBladeVariant: "pranaCrystal",
+      feedKind: "pranaCrystal",
+    };
+    const crystal = item("crystal", {}, "resource");
+    crystal.system.energyProfile = { kind: "pranaCrystal" };
+    expect(
+      equipmentPlan([blade, crystal], body, {
+        itemId: crystal.id,
+        state: "installed",
+        hostId: blade.id,
+      }).errors,
+    ).toEqual([]);
+    const pistol = item("pistol");
+    pistol.system.weaponProfile = { familyId: "handgun", feedKind: "none" };
+    expect(
+      equipmentPlan([pistol, crystal], body, {
+        itemId: crystal.id,
+        state: "installed",
+        hostId: pistol.id,
+      }).errors.join(" "),
+    ).toMatch(/cristal de Prana|techno-lame/i);
   });
   it("ne suppose jamais deux mains quand le corps ne les fournit pas", () => {
     expect(

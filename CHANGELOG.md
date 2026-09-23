@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.6.2 — 10-E4-P, batteries insérées et cristal de Prana
+
+- Remplace la fausse réserve intégrée des armes énergétiques par une batterie Item réellement installée ; les CE actuels et maximaux restent portés par cette batterie.
+- Refuse tout transfert direct de CE vers une arme. La recharge d’une batterie ou d’une véritable réserve reste disponible hors de l’arme.
+- Ajoute l’insertion, le remplacement et l’éjection d’une batterie compatible par format, interface, classe de puissance et technologie, avec affichage de sa charge sous l’arme.
+- Rend le cristal de Prana incolore et non accordé réellement installable dans la seule techno-lame à cristal ; il ne porte aucun CE et ne peut jamais être utilisé comme batterie.
+- Distingue le chargement unitaire en chambre, le magasin interne et le chargeur détachable. Seul le magasin interne expose une capacité d’arme ; le chargeur conserve sa propre capacité et ses vrais Items de munitions.
+- Structure la consommation de munitions et de CE par mode de tir, ainsi que le coût d’activation des techno-lames énergétiques, sans anticiper l’exécution des attaques de 10-F.
+- Migre vers le schéma 7 de façon additive et idempotente : seules une capacité interne et une consommation non ambiguës sont reprises ; les champs historiques restent conservés.
+- Préserve les protections PJ/PNJ, permissions, portraits, DialogV2, transactions, modules, monnaie, versions dynamiques et données existantes. 10-E4-P reste en recette jusqu’à validation explicite de la v0.6.2.
+
 ## 0.6.1 — 10-E4-P, registres fermés et fiches spécialisées
 
 - Remplace les champs mécaniques libres du matériel personnel par des registres canoniques, sélecteurs multiples et valeurs bornées ; la description reste le seul espace narratif général.

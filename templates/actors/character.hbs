@@ -1345,6 +1345,17 @@
                                   aria-hidden="true"
                                 ></i>
                                 Recharger</button>{{/if}}
+                            {{#if canManagePowerSource}}<button
+                                type="button"
+                                data-material-command="power-source"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Insérer, remplacer ou éjecter la source d’alimentation"
+                              ><i
+                                  class="fa-solid fa-plug-circle-bolt"
+                                  aria-hidden="true"
+                                ></i>
+                                Alimentation</button>{{/if}}
                             {{#if canConsume}}<button
                                 type="button"
                                 data-material-command="consume"

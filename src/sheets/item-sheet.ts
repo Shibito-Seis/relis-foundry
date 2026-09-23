@@ -64,6 +64,7 @@ import {
   FIRE_CADENCES,
   FIRE_MODES,
   POWER_CLASSES,
+  PHYSICAL_FEED_KINDS,
   PRESSURE_CLASSES,
   RECHARGE_METHODS,
   SAFETY_STATES,
@@ -81,6 +82,7 @@ import {
   allowedAmmunitionFamilies,
   allowedFeedKinds,
   labelsWithBlank,
+  physicalFeedKind,
   requiredTechnoBladeFeed,
 } from "../data/material-catalog";
 
@@ -437,6 +439,16 @@ function structuredFieldUpdate(
   if (path === "system.currencyProfile.currencyId")
     update["system.currencyProfile.currencyLabel"] =
       value === "credits" ? "Crédits" : "";
+  if (
+    path === "system.energyProfile.kind" &&
+    String(value) === "pranaCrystal"
+  ) {
+    update["system.energyProfile.interfaceId"] = "crystalSocket";
+    update["system.energyProfile.technologyId"] = "pranaCrystal";
+    update["system.energyProfile.technology"] = "pranaCrystal";
+    update["system.energyProfile.current"] = null;
+    update["system.energyProfile.maximum"] = null;
+  }
   return update;
 }
 
@@ -666,6 +678,24 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         presentInventory(owned).rows.find((row) => row.item.id === this.item.id)
           ?.containerUsage ?? null;
     }
+    const weaponFeedKind = String(system.weaponProfile?.feedKind ?? "");
+    const weaponPhysicalFeedKind = physicalFeedKind(
+      weaponFeedKind,
+      String(system.weaponProfile?.hybridPhysicalFeedKind ?? ""),
+    );
+    const weaponModeIds = [
+      ...new Set([
+        "single",
+        ...Array.from(system.weaponProfile?.modeIds ?? [], String),
+      ]),
+    ].filter((value) => Object.hasOwn(FIRE_MODES, value));
+    const modeConsumptionRows = (kind: "ammunition" | "energy") =>
+      weaponModeIds.map((mode) => ({
+        mode,
+        label: FIRE_MODES[mode as keyof typeof FIRE_MODES],
+        value: system.weaponProfile?.[`${kind}Consumption`]?.[mode] ?? null,
+        path: `system.weaponProfile.${kind}Consumption.${mode}`,
+      }));
 
     return {
       ...context,
@@ -696,32 +726,53 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       ),
       isTechnoBladeFamily:
         system.weaponProfile?.familyId === "martialTechnoBlade",
-      usesProjectileFeed: ["internal", "detachable", "hybrid"].includes(
-        String(system.weaponProfile?.feedKind ?? ""),
+      usesProjectileFeed: ["chamber", "internal", "detachable"].includes(
+        weaponPhysicalFeedKind,
       ),
-      usesEnergyFeed: ["energy", "hybrid"].includes(
-        String(system.weaponProfile?.feedKind ?? ""),
-      ),
-      usesPranaCrystal: system.weaponProfile?.feedKind === "pranaCrystal",
-      showsWeaponCapacity: [
-        "internal",
-        "detachable",
-        "energy",
-        "hybrid",
-      ].includes(String(system.weaponProfile?.feedKind ?? "")),
+      usesEnergyFeed: ["energy", "hybrid"].includes(weaponFeedKind),
+      usesPranaCrystal: weaponFeedKind === "pranaCrystal",
+      usesHybridFeed: weaponFeedKind === "hybrid",
+      usesInternalFeed: weaponPhysicalFeedKind === "internal",
+      usesChamberFeed: weaponPhysicalFeedKind === "chamber",
+      showsWeaponChamber:
+        weaponPhysicalFeedKind === "chamber" ||
+        system.weaponProfile?.chamberSeparate,
+      usesDetachableFeed: weaponPhysicalFeedKind === "detachable",
+      usesReloadProcedure:
+        ["chamber", "internal", "detachable"].includes(
+          weaponPhysicalFeedKind,
+        ) || ["energy", "hybrid"].includes(weaponFeedKind),
+      ammunitionConsumptionRows: modeConsumptionRows("ammunition"),
+      energyConsumptionRows: modeConsumptionRows("energy"),
+      isEnergyTechnoBlade:
+        system.weaponProfile?.familyId === "martialTechnoBlade" &&
+        ["vibratoryMaterial", "retractableConductor"].includes(
+          String(system.weaponProfile?.technoBladeVariant ?? ""),
+        ),
+      showsEnergyModeConsumption:
+        ["energy", "hybrid"].includes(weaponFeedKind) &&
+        !(
+          system.weaponProfile?.familyId === "martialTechnoBlade" &&
+          ["vibratoryMaterial", "retractableConductor"].includes(
+            String(system.weaponProfile?.technoBladeVariant ?? ""),
+          )
+        ),
       hasProtectionProfile:
         this.item.type === "armor" ||
         (this.item.type === "weapon" &&
           (system.physical?.equipmentProfile?.wearForm === "shield" ||
             Boolean(system.protectionProfile?.kind))),
-      hasEnergyProfile:
-        this.item.type === "weapon"
-          ? ["energy", "hybrid"].includes(
-              String(system.weaponProfile?.feedKind ?? ""),
-            )
-          : ["armor", "equipment", "consumable", "resource"].includes(
-              this.item.type,
-            ),
+      hasEnergyProfile: [
+        "armor",
+        "equipment",
+        "consumable",
+        "resource",
+      ].includes(this.item.type),
+      isPranaCrystalResource:
+        this.item.type === "resource" &&
+        system.energyProfile?.kind === "pranaCrystal",
+      isEnergyResource:
+        this.item.type === "resource" && Boolean(system.energyProfile?.kind),
       hasSupplyProfile: ["armor", "equipment"].includes(this.item.type),
       hasPhysical,
       technicalSlotRows: technicalSlotRows(
@@ -871,6 +922,10 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
             : "Non renseignée",
         ]),
       ),
+      hybridPhysicalFeedOptions: labelsWithBlank(
+        PHYSICAL_FEED_KINDS,
+        "Choisir le côté physique",
+      ),
       protectionKindOptions:
         this.item.type === "weapon"
           ? labelsWithBlank({ shield: "Bouclier porté" })
@@ -939,6 +994,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         internal: "Réserve interne",
         generator: "Générateur",
         singleUse: "Source à usage unique",
+        pranaCrystal: "Cristal de Prana — incolore, non accordé",
       },
       energyCycleOptions: {
         "": "Non renseigné",

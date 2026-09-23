@@ -658,6 +658,12 @@
                   feedKindOptions
                   selected=system.weaponProfile.feedKind
                 }}</select></label>
+            {{#if usesHybridFeed}}<label>Côté physique de l’alimentation<select
+                  data-document-field="system.weaponProfile.hybridPhysicalFeedKind"
+                >{{selectOptions
+                    hybridPhysicalFeedOptions
+                    selected=system.weaponProfile.hybridPhysicalFeedKind
+                  }}</select></label>{{/if}}
             <label>Familles de munitions ou sources compatibles<multi-select
                 name="system.weaponProfile.ammunitionFamilyIds"
                 data-document-field="system.weaponProfile.ammunitionFamilyIds"
@@ -686,24 +692,18 @@
                     selected=system.weaponProfile.feedInterfaceId
                   }}</select></label>
             {{/if}}
-            {{#if showsWeaponCapacity}}
-              <label>Capacité<input
+            {{#if usesInternalFeed}}
+              <label>Capacité du magasin interne<input
                   type="number"
-                  min="0"
+                  min="1"
                   step="1"
-                  value="{{system.weaponProfile.capacity}}"
+                  value="{{system.weaponProfile.internalCapacity}}"
                   data-value-type="nullable-number"
-                  data-document-field="system.weaponProfile.capacity"
+                  data-document-field="system.weaponProfile.internalCapacity"
                 /></label>
-              <label>Consommation ordinaire<input
-                  type="number"
-                  min="0"
-                  step="any"
-                  value="{{system.weaponProfile.consumption}}"
-                  data-value-type="nullable-number"
-                  data-document-field="system.weaponProfile.consumption"
-                /></label>
-              <label>Actions de recharge ordinaires<input
+            {{/if}}
+            {{#if usesReloadProcedure}}
+              <label>Actions pour recharger ou remplacer la source<input
                   type="number"
                   min="0"
                   step="any"
@@ -712,29 +712,101 @@
                   data-document-field="system.weaponProfile.reloadActions"
                 /></label>
             {{/if}}
-            {{#if usesProjectileFeed}}<label><input
-                  type="checkbox"
-                  {{checked system.weaponProfile.chamberSeparate}}
-                  data-value-type="boolean"
-                  data-document-field="system.weaponProfile.chamberSeparate"
-                />Chambre suivie séparément si la source le prévoit</label>{{/if}}
+            {{#if usesDetachableFeed}}<p class="relis-scope-note">La capacité
+                appartient au chargeur Item installé, jamais à l’arme.</p>{{/if}}
+            {{#if usesChamberFeed}}<p class="relis-scope-note">Une munition peut
+                être placée directement dans la chambre. La capacité implicite
+                est de 1.</p>{{/if}}
+            {{#if usesProjectileFeed}}{{#unless usesChamberFeed}}<label><input
+                    type="checkbox"
+                    {{checked system.weaponProfile.chamberSeparate}}
+                    data-value-type="boolean"
+                    data-document-field="system.weaponProfile.chamberSeparate"
+                  />Chambre suivie séparément si la source le prévoit</label>{{/unless}}{{/if}}
           </div>
-          {{#if usesEnergyFeed}}<p class="relis-scope-note">Cette arme utilise
-              une batterie ou cellule. Son format, sa classe de puissance et sa
-              charge se règlent uniquement dans le bloc énergétique de cette
-              fiche ; aucune cartouche physique n’est proposée.</p>{{/if}}
-          {{#if usesPranaCrystal}}<p class="relis-scope-note">Cette lame emploie
-              un cristal accordé et le Prana de son porteur. Le Prana n’est pas
-              une batterie et aucune CE n’est créée par ce choix.</p>{{/if}}
-          {{#if system.weaponProfile.loadSequence.length}}
-            <div class="relis-loaded-sequence"><h3>Séquence interne chargée</h3>
-              {{#each system.weaponProfile.loadSequence}}<p>{{quantity}}
-                  ×
-                  {{ammunitionRef.labelSnapshot}}
-                  {{#if lotId}}· lot {{lotId}}{{/if}}</p>{{/each}}
+          {{#if usesProjectileFeed}}<h3>Consommation de munitions par mode</h3>
+            <div class="relis-grid relis-grid--form relis-item-form">{{#each
+                ammunitionConsumptionRows
+              }}<label>{{label}}<input
+                    type="number"
+                    min="1"
+                    step="1"
+                    value="{{value}}"
+                    data-value-type="nullable-number"
+                    data-document-field="{{path}}"
+                  /></label>{{/each}}</div>{{/if}}
+          {{#if usesEnergyFeed}}<h3>Batterie acceptée</h3>
+            <p class="relis-scope-note">La batterie Item installée porte sa
+              propre charge. L’arme ne possède ni réserve ni maximum de CE.</p>
+            <div class="relis-grid relis-grid--form relis-item-form">
+              <label>Format accepté<select
+                  data-document-field="system.energyProfile.formatId"
+                >{{selectOptions
+                    batteryFormatOptions
+                    selected=system.energyProfile.formatId
+                  }}</select></label>
+              <label>Classe de puissance requise<select
+                  data-document-field="system.energyProfile.powerClassId"
+                >{{selectOptions
+                    powerClassOptions
+                    selected=system.energyProfile.powerClassId
+                  }}</select></label>
+              <label>Technologie compatible<select
+                  data-document-field="system.energyProfile.technologyId"
+                >{{selectOptions
+                    technologyOptions
+                    selected=system.energyProfile.technologyId
+                  }}</select></label>
+              <label>Interface de batterie<select
+                  data-document-field="system.energyProfile.interfaceId"
+                >{{selectOptions
+                    feedInterfaceOptions
+                    selected=system.energyProfile.interfaceId
+                  }}</select></label>
+              <label>Nombre de logements<input
+                  type="number"
+                  min="1"
+                  max="4"
+                  step="1"
+                  value="{{system.weaponProfile.batterySlotCount}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.weaponProfile.batterySlotCount"
+                /></label>
+              {{#if isEnergyTechnoBlade}}<label>Coût d’activation (CE)<input
+                    type="number"
+                    min="1"
+                    step="1"
+                    value="{{system.weaponProfile.activationCostCe}}"
+                    data-value-type="nullable-number"
+                    data-document-field="system.weaponProfile.activationCostCe"
+                  /></label>{{/if}}
             </div>
-          {{else}}<p class="relis-muted">Magasin interne vide ou non applicable.</p>{{/if}}
-          {{#if system.weaponProfile.chamberSeparate}}
+            {{#if showsEnergyModeConsumption}}<h3>Consommation de CE par mode</h3>
+              <div class="relis-grid relis-grid--form relis-item-form">{{#each
+                  energyConsumptionRows
+                }}<label>{{label}}<input
+                      type="number"
+                      min="1"
+                      step="1"
+                      value="{{value}}"
+                      data-value-type="nullable-number"
+                      data-document-field="{{path}}"
+                    /></label>{{/each}}</div>{{/if}}{{/if}}
+          {{#if usesPranaCrystal}}<p class="relis-scope-note">Cette lame emploie
+              un cristal de Prana Item, encore incolore et non accordé en 0.6.2.
+              Il s’installe dans la lame ; ce n’est jamais une batterie et il ne
+              porte aucun CE.</p>{{/if}}
+          {{#if usesInternalFeed}}{{#if
+              system.weaponProfile.loadSequence.length
+            }}
+              <div class="relis-loaded-sequence"><h3>Séquence interne chargée</h3>
+                {{#each system.weaponProfile.loadSequence}}<p>{{quantity}}
+                    ×
+                    {{ammunitionRef.labelSnapshot}}
+                    {{#if lotId}}· lot {{lotId}}{{/if}}</p>{{/each}}
+              </div>
+            {{else}}<p class="relis-muted">Magasin interne vide.</p>{{/if}}{{/if}}
+          {{#if showsWeaponChamber}}
             {{#if system.weaponProfile.chamberLoad.length}}<div
                 class="relis-loaded-sequence"
               ><h3>Chambre séparée</h3>{{#each
@@ -950,100 +1022,112 @@
                   energyKindOptions
                   selected=system.energyProfile.kind
                 }}</select></label>
-            <label>Format<select
-                data-document-field="system.energyProfile.formatId"
-              >{{selectOptions
-                  batteryFormatOptions
-                  selected=system.energyProfile.formatId
-                }}</select></label>
-            <label>Classe de puissance requise<select
-                data-document-field="system.energyProfile.powerClassId"
-              >{{selectOptions
-                  powerClassOptions
-                  selected=system.energyProfile.powerClassId
-                }}</select></label>
-            <label>Technologie<select
-                data-document-field="system.energyProfile.technologyId"
-              >{{selectOptions
-                  technologyOptions
-                  selected=system.energyProfile.technologyId
-                }}</select></label>
-            <label>CE actuels<input
-                type="number"
-                min="0"
-                step="any"
-                value="{{system.energyProfile.current}}"
-                data-value-type="nullable-number"
-                data-document-field="system.energyProfile.current"
-              /></label>
-            <label>CE maximum<input
-                type="number"
-                min="0"
-                step="any"
-                value="{{system.energyProfile.maximum}}"
-                data-value-type="nullable-number"
-                data-document-field="system.energyProfile.maximum"
-              /></label>
-            <label>Sortie maximale<input
-                type="number"
-                min="0"
-                step="any"
-                value="{{system.energyProfile.output}}"
-                data-value-type="nullable-number"
-                data-document-field="system.energyProfile.output"
-              /></label>
-            <label>Classe de sortie<select
-                data-document-field="system.energyProfile.outputClass"
-              >{{selectOptions
-                  powerClassOptions
-                  selected=system.energyProfile.outputClass
-                }}</select></label>
-            <label>Cycle<select
-                data-document-field="system.energyProfile.cycle"
-              >{{selectOptions
-                  energyCycleOptions
-                  selected=system.energyProfile.cycle
-                }}</select></label>
-            <label>Méthode de recharge<select
-                data-document-field="system.energyProfile.rechargeMethodId"
-              >{{selectOptions
-                  rechargeMethodOptions
-                  selected=system.energyProfile.rechargeMethodId
-                }}</select></label>
-            <label>Durée de recharge<select
-                data-document-field="system.energyProfile.rechargeDurationId"
-              >{{selectOptions
-                  durationOptions
-                  selected=system.energyProfile.rechargeDurationId
-                }}</select></label>
-            <label>Signature acoustique<select
-                data-document-field="system.energyProfile.signatureId"
-              >{{selectOptions
-                  acousticSignatureOptions
-                  selected=system.energyProfile.signatureId
-                }}</select></label>
-            <label>Chaleur actuelle<input
-                type="number"
-                min="0"
-                step="any"
-                value="{{system.energyProfile.heatCurrent}}"
-                data-value-type="nullable-number"
-                data-document-field="system.energyProfile.heatCurrent"
-              /></label>
-            <label>Chaleur maximale<input
-                type="number"
-                min="0"
-                step="any"
-                value="{{system.energyProfile.heatMaximum}}"
-                data-value-type="nullable-number"
-                data-document-field="system.energyProfile.heatMaximum"
-              /></label>
-            <label><input
-                type="checkbox"
-                {{checked system.energyProfile.rechargeable}}
-                data-value-type="boolean"
-                data-document-field="system.energyProfile.rechargeable"
-              />Rechargeable selon sa source</label>
+            {{#if isPranaCrystalResource}}
+              <p class="relis-scope-note">Cristal de Prana incolore et non
+                accordé. Son nom diégétique définitif, sa couleur et son accord
+                seront traités ultérieurement ; aucun CE ne s’applique.</p>
+            {{else}}
+              <label>Format<select
+                  data-document-field="system.energyProfile.formatId"
+                >{{selectOptions
+                    batteryFormatOptions
+                    selected=system.energyProfile.formatId
+                  }}</select></label>
+              <label>Classe de puissance requise<select
+                  data-document-field="system.energyProfile.powerClassId"
+                >{{selectOptions
+                    powerClassOptions
+                    selected=system.energyProfile.powerClassId
+                  }}</select></label>
+              <label>Technologie<select
+                  data-document-field="system.energyProfile.technologyId"
+                >{{selectOptions
+                    technologyOptions
+                    selected=system.energyProfile.technologyId
+                  }}</select></label>
+              <label>Interface énergétique<select
+                  data-document-field="system.energyProfile.interfaceId"
+                >{{selectOptions
+                    feedInterfaceOptions
+                    selected=system.energyProfile.interfaceId
+                  }}</select></label>
+              <label>CE actuels<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.energyProfile.current}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.energyProfile.current"
+                /></label>
+              <label>CE maximum<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.energyProfile.maximum}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.energyProfile.maximum"
+                /></label>
+              <label>Sortie maximale<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.energyProfile.output}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.energyProfile.output"
+                /></label>
+              <label>Classe de sortie<select
+                  data-document-field="system.energyProfile.outputClass"
+                >{{selectOptions
+                    powerClassOptions
+                    selected=system.energyProfile.outputClass
+                  }}</select></label>
+              <label>Cycle<select
+                  data-document-field="system.energyProfile.cycle"
+                >{{selectOptions
+                    energyCycleOptions
+                    selected=system.energyProfile.cycle
+                  }}</select></label>
+              <label>Méthode de recharge<select
+                  data-document-field="system.energyProfile.rechargeMethodId"
+                >{{selectOptions
+                    rechargeMethodOptions
+                    selected=system.energyProfile.rechargeMethodId
+                  }}</select></label>
+              <label>Durée de recharge<select
+                  data-document-field="system.energyProfile.rechargeDurationId"
+                >{{selectOptions
+                    durationOptions
+                    selected=system.energyProfile.rechargeDurationId
+                  }}</select></label>
+              <label>Signature acoustique<select
+                  data-document-field="system.energyProfile.signatureId"
+                >{{selectOptions
+                    acousticSignatureOptions
+                    selected=system.energyProfile.signatureId
+                  }}</select></label>
+              <label>Chaleur actuelle<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.energyProfile.heatCurrent}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.energyProfile.heatCurrent"
+                /></label>
+              <label>Chaleur maximale<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.energyProfile.heatMaximum}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.energyProfile.heatMaximum"
+                /></label>
+              <label><input
+                  type="checkbox"
+                  {{checked system.energyProfile.rechargeable}}
+                  data-value-type="boolean"
+                  data-document-field="system.energyProfile.rechargeable"
+                />Rechargeable selon sa source</label>
+            {{/if}}
           </div>
         </section>
       {{/if}}
@@ -1384,34 +1468,36 @@
       {{/if}}
 
       {{#if isResource}}
-        <section class="relis-card relis-material-profile">
-          <p class="relis-kicker">Argent physique seulement</p><h2>Monnaie
-            portée</h2>
-          <p class="relis-scope-note">Le compte bancaire et les virements ne
-            sont pas stockés ici : Datapad 10-G7, service financier 10-J1.</p>
-          <div class="relis-grid relis-grid--form relis-item-form">
-            <label><input
-                type="checkbox"
-                {{checked system.currencyProfile.physicalCash}}
-                data-value-type="boolean"
-                data-document-field="system.currencyProfile.physicalCash"
-              />Cet Item représente du liquide physique</label>
-            <label>Devise<select
-                data-document-field="system.currencyProfile.currencyId"
-              >{{selectOptions
-                  currencyOptions
-                  selected=system.currencyProfile.currencyId
-                }}</select></label>
-            <label>Valeur faciale par unité<input
-                type="number"
-                min="0.000001"
-                step="any"
-                value="{{system.currencyProfile.denomination}}"
-                data-value-type="number"
-                data-document-field="system.currencyProfile.denomination"
-              /></label>
-          </div>
-        </section>
+        {{#unless isEnergyResource}}
+          <section class="relis-card relis-material-profile">
+            <p class="relis-kicker">Argent physique seulement</p><h2>Monnaie
+              portée</h2>
+            <p class="relis-scope-note">Le compte bancaire et les virements ne
+              sont pas stockés ici : Datapad 10-G7, service financier 10-J1.</p>
+            <div class="relis-grid relis-grid--form relis-item-form">
+              <label><input
+                  type="checkbox"
+                  {{checked system.currencyProfile.physicalCash}}
+                  data-value-type="boolean"
+                  data-document-field="system.currencyProfile.physicalCash"
+                />Cet Item représente du liquide physique</label>
+              <label>Devise<select
+                  data-document-field="system.currencyProfile.currencyId"
+                >{{selectOptions
+                    currencyOptions
+                    selected=system.currencyProfile.currencyId
+                  }}</select></label>
+              <label>Valeur faciale par unité<input
+                  type="number"
+                  min="0.000001"
+                  step="any"
+                  value="{{system.currencyProfile.denomination}}"
+                  data-value-type="number"
+                  data-document-field="system.currencyProfile.denomination"
+                /></label>
+            </div>
+          </section>
+        {{/unless}}
       {{/if}}
 
       {{#if isContainer}}

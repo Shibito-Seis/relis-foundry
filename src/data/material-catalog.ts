@@ -3,7 +3,7 @@
  *
  * Les identifiants sont stables et indépendants des libellés français. Les
  * anciens champs texte du schéma 5 restent lisibles pour la migration, mais
- * aucune fiche 0.6.1 ne permet d'y saisir de nouvelles valeurs libres.
+ * aucune fiche 0.6.2 ne permet d'y saisir de nouvelles valeurs libres.
  */
 
 export const WEAPON_FAMILIES = {
@@ -144,17 +144,24 @@ export const SIGNATURE_TAGS = {
 
 export const FEED_KINDS = {
   none: "Aucune alimentation",
+  chamber: "Chargement unitaire / chambre seule",
   internal: "Magasin interne",
   detachable: "Chargeur détachable",
   energy: "Batterie ou cellule",
   hybrid: "Hybride physique et énergétique",
-  pranaCrystal: "Cristal accordé au Prana",
+  pranaCrystal: "Cristal de Prana",
+} as const;
+
+export const PHYSICAL_FEED_KINDS = {
+  chamber: FEED_KINDS.chamber,
+  internal: FEED_KINDS.internal,
+  detachable: FEED_KINDS.detachable,
 } as const;
 
 export const TECHNO_BLADE_VARIANTS = {
   vibratoryMaterial: "Lame matérielle à champ vibratoire",
   retractableConductor: "Lame énergétique sur conducteur rétractable",
-  pranaCrystal: "Lame de Prana à cristal accordé",
+  pranaCrystal: "Lame de Prana à cristal",
 } as const;
 
 export const BATTERY_FORMATS = {
@@ -162,7 +169,7 @@ export const BATTERY_FORMATS = {
   light: "Cellule légère — 12 CE",
   standard: "Batterie standard — 24 CE",
   heavy: "Batterie lourde — 48 CE",
-  industrial: "Bloc industriel — 120 CE",
+  industrial: "Bloc industriel — 96 CE",
   special: "Format spécial référencé",
 } as const;
 
@@ -185,7 +192,7 @@ export const TECHNOLOGIES = {
   sonic: "Sonique",
   chemical: "Chimique",
   technomagical: "Techno-magique",
-  pranaCrystal: "Cristal accordé au Prana",
+  pranaCrystal: "Cristal de Prana",
 } as const;
 
 export const TECHNICAL_SIZES = {
@@ -208,7 +215,7 @@ export const FEED_INTERFACES = {
   singleProjectile: "Projectile unitaire",
   reservoir: "Réservoir",
   rail: "Rail guidé",
-  crystalSocket: "Logement de cristal accordé",
+  crystalSocket: "Logement de cristal de Prana",
 } as const;
 
 export const PRESSURE_CLASSES = {
@@ -333,7 +340,7 @@ export const AMMUNITION_FAMILIES = {
   grenade: "Grenade ou roquette",
   battery: "Cellule ou batterie énergétique",
   technomagical: "Charge techno-magique",
-  pranaCrystal: "Cristal accordé au Prana",
+  pranaCrystal: "Cristal de Prana",
 } as const;
 
 export const AMMUNITION_VARIANTS = {
@@ -444,12 +451,20 @@ export function allowedFeedKinds(
   if (family === "martialTechnoBlade")
     return ["none", "energy", "pranaCrystal"];
   if (family === "handgun")
-    return ["none", "internal", "detachable", "energy", "hybrid"];
+    return ["none", "chamber", "internal", "detachable", "energy", "hybrid"];
   if (
     ["improvisedMelee", "bowCrossbowThrown", "naturalSpecial"].includes(family)
   )
-    return ["none", "internal", "energy", "pranaCrystal"];
-  return ["none", "internal", "detachable", "energy", "hybrid"];
+    return ["none", "chamber", "internal", "energy", "pranaCrystal"];
+  return ["none", "chamber", "internal", "detachable", "energy", "hybrid"];
+}
+
+/** Le côté physique d'une alimentation hybride reste explicite. */
+export function physicalFeedKind(
+  feedKind: string,
+  hybridPhysicalFeedKind = "",
+): string {
+  return feedKind === "hybrid" ? hybridPhysicalFeedKind : feedKind;
 }
 
 export function allowedAmmunitionFamilies(

@@ -16,6 +16,7 @@ import {
   technicalSummary,
   technicalUsage,
   TECHNICAL_SLOTS,
+  installedOn,
 } from "../rules/equipment-slots";
 import {
   ATTRIBUTE_LABELS,
@@ -79,7 +80,9 @@ import {
   materialDiagnostics,
   materialStatus,
   nestInstalledRows,
+  powerSourceCompatibility,
 } from "../rules/personal-material";
+import { physicalFeedKind } from "../data/material-catalog";
 
 const ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 const HandlebarsApplicationMixin =
@@ -563,6 +566,16 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           : ["armor", "equipment"].includes(row.item.type)
             ? row.item.system.supplyProfile
             : null;
+      const rowPhysicalFeed = supplyProfile
+        ? row.item.type === "weapon"
+          ? physicalFeedKind(
+              String(supplyProfile.feedKind ?? ""),
+              String(supplyProfile.hybridPhysicalFeedKind ?? ""),
+            )
+          : supplyProfile.feedKind === "hybrid"
+            ? "internal"
+            : String(supplyProfile.feedKind ?? "")
+        : "";
       const compatibleAmmunitionAvailable = physicalSnapshots.some(
         (candidate) =>
           candidate.type === "ammunition" &&
@@ -581,10 +594,17 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         0,
       );
       const internalFree = supplyProfile
-        ? Math.max(0, Number(supplyProfile.capacity ?? 0) - internalLoaded)
+        ? Math.max(
+            0,
+            Number(
+              row.item.type === "weapon"
+                ? (supplyProfile.internalCapacity ?? 0)
+                : (supplyProfile.capacity ?? 0),
+            ) - internalLoaded,
+          )
         : 0;
       const chamberFree =
-        supplyProfile?.chamberSeparate &&
+        (rowPhysicalFeed === "chamber" || supplyProfile?.chamberSeparate) &&
         Array.from(supplyProfile.chamberLoad ?? []).length === 0;
       const magazineLoaded =
         row.item.type === "container" &&
@@ -734,7 +754,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
             : quantity > 0),
         canLoadAmmunition:
           (supplyProfile &&
-            ["internal", "hybrid"].includes(supplyProfile.feedKind) &&
+            ["chamber", "internal"].includes(rowPhysicalFeed) &&
             (internalFree > 0 || chamberFree) &&
             compatibleAmmunitionAvailable) ||
           (row.item.type === "container" &&
@@ -763,11 +783,18 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
                     row.item.system.meta?.relisId),
             )),
         canReceiveEnergy:
+          row.item.type !== "weapon" &&
           Boolean(row.item.system.energyProfile?.kind) &&
+          row.item.system.energyProfile?.kind !== "pranaCrystal" &&
           physicalSnapshots.some(
             (candidate) =>
               candidate.id !== row.item.id &&
               energyCompatibility(candidate, row.item).length === 0,
+          ),
+        canManagePowerSource:
+          row.item.type === "weapon" &&
+          ["energy", "hybrid", "pranaCrystal"].includes(
+            String(row.item.system.weaponProfile?.feedKind ?? ""),
           ),
         pending: pendingState === "pending",
         quarantined: pendingState === "quarantined",
@@ -954,6 +981,8 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
               break;
             case "energy":
               return this.transferMaterialEnergy(itemId);
+            case "power-source":
+              return this.manageWeaponPowerSource(itemId);
             case "consume":
               return this.consumeMaterial(itemId);
             case "port":
@@ -1359,11 +1388,30 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         sum + Math.max(0, Number(segment.quantity ?? 0)),
       0,
     );
+    const targetPhysicalFeed = supplyProfile
+      ? target.type === "weapon"
+        ? physicalFeedKind(
+            String(supplyProfile.feedKind ?? ""),
+            String(supplyProfile.hybridPhysicalFeedKind ?? ""),
+          )
+        : supplyProfile.feedKind === "hybrid"
+          ? "internal"
+          : String(supplyProfile.feedKind ?? "")
+      : "";
     const internalFree = supplyProfile
-      ? Math.max(0, Number(supplyProfile.capacity ?? 0) - internalLoaded)
+      ? targetPhysicalFeed === "internal"
+        ? Math.max(
+            0,
+            Number(
+              target.type === "weapon"
+                ? (supplyProfile.internalCapacity ?? 0)
+                : (supplyProfile.capacity ?? 0),
+            ) - internalLoaded,
+          )
+        : 0
       : 0;
     const chamberFree = Boolean(
-      supplyProfile?.chamberSeparate &&
+      (targetPhysicalFeed === "chamber" || supplyProfile?.chamberSeparate) &&
       Array.from(supplyProfile.chamberLoad ?? []).length === 0,
     );
     const magazineLoaded = targetIsMagazine
@@ -1395,7 +1443,17 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
             },
           ]
         : []),
-      ...(chamberFree ? [{ value: "chamber", label: "Chambre séparée" }] : []),
+      ...(chamberFree
+        ? [
+            {
+              value: "chamber",
+              label:
+                targetPhysicalFeed === "chamber"
+                  ? "Chambre"
+                  : "Chambre séparée",
+            },
+          ]
+        : []),
     ];
     if (!locations.length)
       throw new Error("Aucune place de chargement n’est disponible.");
@@ -1464,6 +1522,92 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       Number(result.quantity),
     );
     return true;
+  }
+
+  private async manageWeaponPowerSource(weaponId: string): Promise<boolean> {
+    const items = this.physicalSnapshots();
+    const weapon = items.find(
+      (candidate) => candidate.id === weaponId && candidate.type === "weapon",
+    );
+    if (!weapon) return false;
+    const sourceKind =
+      weapon.system.weaponProfile?.feedKind === "pranaCrystal"
+        ? "pranaCrystal"
+        : "battery";
+    const installed = items.filter(
+      (candidate) =>
+        candidate.system.energyProfile?.kind === sourceKind &&
+        installedOn(candidate, weapon),
+    );
+    const withoutInstalled = items.filter(
+      (candidate) => !installed.some((entry) => entry.id === candidate.id),
+    );
+    const body = Array.from(this.actor.system.bodies ?? []).find(
+      (entry: any) => entry.id === this.actor.system.activeBodyId,
+    ) as any;
+    const candidates = items.filter(
+      (candidate) =>
+        candidate.id !== weapon.id &&
+        candidate.system.energyProfile?.kind === sourceKind &&
+        !installed.some((entry) => entry.id === candidate.id) &&
+        candidate.system.physical?.equipState !== "installed" &&
+        powerSourceCompatibility(candidate, weapon, withoutInstalled).length ===
+          0 &&
+        equipmentPlan(withoutInstalled, body ?? { id: "" }, {
+          itemId: candidate.id,
+          state: "installed",
+          hostId: weapon.id,
+        }).errors.length === 0,
+    );
+    const content = dialogContent();
+    dialogNote(
+      content,
+      sourceKind === "pranaCrystal"
+        ? "Choisir le cristal de Prana Item installé dans cette lame. En 0.6.2, il reste incolore et non accordé."
+        : "Choisir la batterie Item insérée. Ses CE restent portés par la batterie et ne sont jamais transférés dans l’arme.",
+    );
+    dialogSelect(content, "Source", "choice", [
+      { value: "none", label: "Ne rien installer — éjecter la source" },
+      ...installed.map((source) => ({
+        value: `keep:${source.id}`,
+        label: `Conserver ${source.name}`,
+      })),
+      ...candidates.map((source) => ({
+        value: `install:${source.id}`,
+        label:
+          sourceKind === "battery"
+            ? `Installer ${source.name} — ${source.system.energyProfile?.current ?? "?"}/${source.system.energyProfile?.maximum ?? "?"} CE`
+            : `Installer ${source.name} — incolore, non accordé`,
+      })),
+    ]);
+    if (!installed.length && !candidates.length)
+      throw new Error(
+        sourceKind === "battery"
+          ? "Aucune batterie exactement compatible n’est disponible."
+          : "Aucun cristal de Prana disponible n’est compatible avec cette lame.",
+      );
+    const result = await askInventoryForm(
+      sourceKind === "battery"
+        ? `Alimentation de « ${weapon.name} »`
+        : `Cristal de « ${weapon.name} »`,
+      content,
+      "Appliquer",
+    );
+    if (!result) return false;
+    const choice = String(result.choice ?? "");
+    if (choice.startsWith("keep:")) return false;
+    const requests: EquipmentRequest[] = installed.map((source) => ({
+      itemId: source.id,
+      state: "stored",
+    }));
+    if (choice.startsWith("install:"))
+      requests.push({
+        itemId: choice.slice("install:".length),
+        state: "installed",
+        hostId: weapon.id,
+      });
+    if (!requests.length) return false;
+    return this.confirmEquipment(requests);
   }
 
   private async consumeMaterial(itemId: string): Promise<boolean> {

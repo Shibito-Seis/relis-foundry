@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.6.1";
+var PACKAGE_VERSION = "0.6.2";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.0.0";
 var ACTOR_TYPES = [
@@ -1251,7 +1251,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 		...source,
 		meta: {
 			...meta,
-			schemaVersion: "6",
+			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
 			contentVersion: text(meta.contentVersion, "1.0.0") || "1.0.0",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
@@ -1361,7 +1361,7 @@ function buildOwnedItemSystem(value, sourceUuid, sourceName, sourceType, physica
 *
 * Les identifiants sont stables et indépendants des libellés français. Les
 * anciens champs texte du schéma 5 restent lisibles pour la migration, mais
-* aucune fiche 0.6.1 ne permet d'y saisir de nouvelles valeurs libres.
+* aucune fiche 0.6.2 ne permet d'y saisir de nouvelles valeurs libres.
 */
 var WEAPON_FAMILIES = {
 	improvisedMelee: "Mêlée courante et improvisée",
@@ -1493,23 +1493,29 @@ var SIGNATURE_TAGS = {
 };
 var FEED_KINDS = {
 	none: "Aucune alimentation",
+	chamber: "Chargement unitaire / chambre seule",
 	internal: "Magasin interne",
 	detachable: "Chargeur détachable",
 	energy: "Batterie ou cellule",
 	hybrid: "Hybride physique et énergétique",
-	pranaCrystal: "Cristal accordé au Prana"
+	pranaCrystal: "Cristal de Prana"
+};
+var PHYSICAL_FEED_KINDS = {
+	chamber: FEED_KINDS.chamber,
+	internal: FEED_KINDS.internal,
+	detachable: FEED_KINDS.detachable
 };
 var TECHNO_BLADE_VARIANTS = {
 	vibratoryMaterial: "Lame matérielle à champ vibratoire",
 	retractableConductor: "Lame énergétique sur conducteur rétractable",
-	pranaCrystal: "Lame de Prana à cristal accordé"
+	pranaCrystal: "Lame de Prana à cristal"
 };
 var BATTERY_FORMATS = {
 	micro: "Microcellule — 6 CE",
 	light: "Cellule légère — 12 CE",
 	standard: "Batterie standard — 24 CE",
 	heavy: "Batterie lourde — 48 CE",
-	industrial: "Bloc industriel — 120 CE",
+	industrial: "Bloc industriel — 96 CE",
 	special: "Format spécial référencé"
 };
 var POWER_CLASSES = {
@@ -1530,7 +1536,7 @@ var TECHNOLOGIES = {
 	sonic: "Sonique",
 	chemical: "Chimique",
 	technomagical: "Techno-magique",
-	pranaCrystal: "Cristal accordé au Prana"
+	pranaCrystal: "Cristal de Prana"
 };
 var TECHNICAL_SIZES = {
 	micro: "Micro",
@@ -1551,7 +1557,7 @@ var FEED_INTERFACES = {
 	singleProjectile: "Projectile unitaire",
 	reservoir: "Réservoir",
 	rail: "Rail guidé",
-	crystalSocket: "Logement de cristal accordé"
+	crystalSocket: "Logement de cristal de Prana"
 };
 var PRESSURE_CLASSES = {
 	low: "Faible",
@@ -1655,7 +1661,7 @@ var AMMUNITION_FAMILIES = {
 	grenade: "Grenade ou roquette",
 	battery: "Cellule ou batterie énergétique",
 	technomagical: "Charge techno-magique",
-	pranaCrystal: "Cristal accordé au Prana"
+	pranaCrystal: "Cristal de Prana"
 };
 var AMMUNITION_VARIANTS = {
 	standard: "Standard",
@@ -1753,6 +1759,7 @@ function allowedFeedKinds(family, technoBladeVariant = "") {
 	];
 	if (family === "handgun") return [
 		"none",
+		"chamber",
 		"internal",
 		"detachable",
 		"energy",
@@ -1764,17 +1771,23 @@ function allowedFeedKinds(family, technoBladeVariant = "") {
 		"naturalSpecial"
 	].includes(family)) return [
 		"none",
+		"chamber",
 		"internal",
 		"energy",
 		"pranaCrystal"
 	];
 	return [
 		"none",
+		"chamber",
 		"internal",
 		"detachable",
 		"energy",
 		"hybrid"
 	];
+}
+/** Le côté physique d'une alimentation hybride reste explicite. */
+function physicalFeedKind(feedKind, hybridPhysicalFeedKind = "") {
+	return feedKind === "hybrid" ? hybridPhysicalFeedKind : feedKind;
 }
 function allowedAmmunitionFamilies(family, technoBladeVariant = "") {
 	if (family === "energyLongGun") return ["battery", "technomagical"];
@@ -1898,7 +1911,7 @@ function itemMetaField() {
 		schemaVersion: new fields$1.StringField({
 			required: true,
 			blank: false,
-			initial: "6"
+			initial: "7"
 		}),
 		rulesVersion: new fields$1.StringField({
 			required: true,
@@ -2166,7 +2179,8 @@ function energyProfileField() {
 			"battery",
 			"internal",
 			"generator",
-			"singleUse"
+			"singleUse",
+			"pranaCrystal"
 		], ""),
 		format: optionalStringField$1(),
 		powerClass: optionalStringField$1(),
@@ -2174,6 +2188,7 @@ function energyProfileField() {
 		formatId: stringChoiceField(["", ...keys(BATTERY_FORMATS)], ""),
 		powerClassId: stringChoiceField(["", ...keys(POWER_CLASSES)], ""),
 		technologyId: stringChoiceField(["", ...keys(TECHNOLOGIES)], ""),
+		interfaceId: stringChoiceField(["", ...keys(FEED_INTERFACES)], ""),
 		current: optionalNumberField(),
 		maximum: optionalNumberField(),
 		output: optionalNumberField(),
@@ -2197,6 +2212,9 @@ function energyProfileField() {
 			initial: false
 		})
 	});
+}
+function modeConsumptionField() {
+	return new fields$1.SchemaField(Object.fromEntries(keys(FIRE_MODES).map((key) => [key, optionalNumberField(1)])));
 }
 function weaponProfileField() {
 	return new fields$1.SchemaField({
@@ -2255,12 +2273,18 @@ function weaponProfileField() {
 		ammunitionFamilyIds: stringArrayField(),
 		recoil: optionalNumberField(),
 		feedKind: stringChoiceField(["", ...keys(FEED_KINDS)], ""),
+		hybridPhysicalFeedKind: stringChoiceField(["", ...keys(PHYSICAL_FEED_KINDS)], ""),
 		chamberingId: stringChoiceField(["", ...keys(CHAMBERINGS)], ""),
 		pressureClassId: stringChoiceField(["", ...keys(PRESSURE_CLASSES)], ""),
 		feedInterfaceId: stringChoiceField(["", ...keys(FEED_INTERFACES)], ""),
 		chamberId: optionalStringField$1(),
 		pressureClass: optionalStringField$1(),
 		feedInterface: optionalStringField$1(),
+		internalCapacity: optionalNumberField(1),
+		batterySlotCount: optionalNumberField(1, 4),
+		activationCostCe: optionalNumberField(1),
+		ammunitionConsumption: modeConsumptionField(),
+		energyConsumption: modeConsumptionField(),
 		capacity: optionalNumberField(),
 		consumption: optionalNumberField(),
 		reloadActions: optionalNumberField(),
@@ -2679,7 +2703,7 @@ function metaField() {
 		schemaVersion: new fields.StringField({
 			required: true,
 			blank: false,
-			initial: "6"
+			initial: "7"
 		}),
 		rulesVersion: new fields.StringField({
 			required: true,
@@ -3366,7 +3390,7 @@ var PersonData = class extends ReservedData {
 		if (options.partial) return source;
 		normalizePersonSource(source);
 		source.meta ??= {};
-		source.meta.schemaVersion = "6";
+		source.meta.schemaVersion = "7";
 		source.health ??= {};
 		source.health.hitPoints ??= {
 			current: 10,
@@ -3975,6 +3999,15 @@ function migrateWeapon(system) {
 		const hands = Number(profile.handsRequired);
 		profile.handsMode = hands === 0 ? "natural" : hands === 2 ? "two" : profile.handsFlexible ? "versatile" : hands === 1 ? "one" : "";
 	}
+	const legacyConsumption = Number(profile.consumption);
+	const hasLegacyConsumption = Number.isFinite(legacyConsumption) && legacyConsumption > 0;
+	if (hasLegacyConsumption && [
+		"chamber",
+		"internal",
+		"detachable"
+	].includes(profile.feedKind) && profile.ammunitionConsumption?.single == null) (profile.ammunitionConsumption ??= {}).single = legacyConsumption;
+	if (hasLegacyConsumption && profile.feedKind === "energy" && profile.energyConsumption?.single == null) (profile.energyConsumption ??= {}).single = legacyConsumption;
+	if (profile.feedKind === "internal" && profile.internalCapacity == null && Number(profile.capacity) > 0) profile.internalCapacity = Number(profile.capacity);
 }
 function migrateEnergy(system) {
 	const profile = system.energyProfile;
@@ -3987,6 +4020,11 @@ function migrateEnergy(system) {
 	if (profile.powerClassId) profile.powerClass = profile.powerClassId;
 	if (profile.technologyId) profile.technology = profile.technologyId;
 	if (profile.signatureId) profile.signature = profile.signatureId;
+	if (profile.kind === "pranaCrystal") {
+		profile.interfaceId ||= "crystalSocket";
+		profile.technologyId ||= "pranaCrystal";
+		profile.technology = profile.technologyId;
+	}
 }
 function migrateEquipment(system) {
 	const profile = system.physical?.equipmentProfile;
@@ -4220,7 +4258,7 @@ function worldItems() {
 }
 async function migrateItemCore() {
 	if (!game.user?.isGM) return 0;
-	const migrationId = `10-E4-P-schema-6`;
+	const migrationId = `10-E4-P-schema-7`;
 	if ((game.settings.get("relis", "migrations.state") ?? {}).lastMigrationId === migrationId) return 0;
 	const items = worldItems();
 	for (const item of items) {
@@ -4469,7 +4507,7 @@ var HIDDEN_SETTINGS = [
 		scope: "world",
 		config: false,
 		type: String,
-		default: "6"
+		default: "7"
 	},
 	{
 		key: "versions.rules",
@@ -4953,18 +4991,23 @@ function materialDiagnostics(item) {
 			});
 			else if (expected && weapon.feedKind !== expected) errors.push({
 				level: "error",
-				message: expected === "pranaCrystal" ? "La techno-lame à cristal exige un accord de Prana, jamais une batterie de CE." : "Cette variante de techno-lame exige une batterie ou cellule de CE."
+				message: expected === "pranaCrystal" ? "La techno-lame à cristal exige un cristal de Prana, jamais une batterie de CE." : "Cette variante de techno-lame exige une batterie ou cellule de CE."
 			});
 		}
 		if (finite(weapon.handsRequired) !== null && (!Number.isSafeInteger(Number(weapon.handsRequired)) || Number(weapon.handsRequired) > 2)) errors.push({
 			level: "error",
 			message: "Le nombre de mains requis doit être un entier de 0 à 2."
 		});
+		const physicalFeed = physicalFeedKind(String(weapon.feedKind ?? ""), String(weapon.hybridPhysicalFeedKind ?? ""));
+		if (weapon.feedKind === "hybrid" && !physicalFeed) errors.push({
+			level: "error",
+			message: "Choisir le côté physique de l’alimentation hybride."
+		});
 		if ([
+			"chamber",
 			"internal",
-			"detachable",
-			"hybrid"
-		].includes(weapon.feedKind)) {
+			"detachable"
+		].includes(physicalFeed)) {
 			if (!String(weapon.chamberId ?? "").trim()) errors.push({
 				level: "error",
 				message: "Identifiant de chambre requis pour cette alimentation."
@@ -4973,24 +5016,64 @@ function materialDiagnostics(item) {
 				level: "error",
 				message: "Classe de pression ou d’énergie requise."
 			});
-			if (!(finite(weapon.capacity) ?? 0)) errors.push({
-				level: "error",
-				message: "Capacité positive requise pour cette alimentation."
-			});
 		}
-		if (["detachable", "hybrid"].includes(weapon.feedKind) && !String(weapon.feedInterface ?? "").trim()) errors.push({
+		if (physicalFeed === "internal" && !(finite(weapon.internalCapacity) ?? 0)) errors.push({
+			level: "error",
+			message: "Capacité positive requise pour le magasin interne."
+		});
+		if (physicalFeed === "detachable" && !String(weapon.feedInterface ?? "").trim()) errors.push({
 			level: "error",
 			message: "Interface de chargeur requise pour une alimentation détachable."
 		});
 		const loaded = Array.from(weapon.loadSequence ?? []).reduce((sum, segment) => sum + Math.max(0, Number(segment.quantity)), 0);
-		if (finite(weapon.capacity) !== null && loaded > Number(weapon.capacity)) errors.push({
+		if (finite(weapon.internalCapacity) !== null && loaded > Number(weapon.internalCapacity)) errors.push({
 			level: "error",
-			message: `Séquence interne surchargée : ${loaded}/${weapon.capacity}.`
+			message: `Séquence interne surchargée : ${loaded}/${weapon.internalCapacity}.`
 		});
 		const chamber = Array.from(weapon.chamberLoad ?? []);
-		if (!weapon.chamberSeparate && chamber.length || chamber.length > 1 || chamber.some((segment) => Number(segment.quantity) !== 1)) errors.push({
+		if (physicalFeed !== "chamber" && !weapon.chamberSeparate && chamber.length || chamber.length > 1 || chamber.some((segment) => Number(segment.quantity) !== 1)) errors.push({
 			level: "error",
 			message: "Chambre séparée invalide : au plus une munition, uniquement si la source prévoit ce suivi."
+		});
+		if (["energy", "hybrid"].includes(weapon.feedKind)) {
+			for (const [value, label] of [
+				[energy.formatId ?? energy.format, "format de batterie"],
+				[energy.powerClassId ?? energy.powerClass, "classe de puissance"],
+				[energy.interfaceId, "interface de batterie"]
+			]) if (!String(value ?? "").trim()) errors.push({
+				level: "error",
+				message: `Arme énergétique incomplète : ${label} requis.`
+			});
+			if (!(finite(weapon.batterySlotCount) ?? 0)) errors.push({
+				level: "error",
+				message: "Nombre de logements de batterie positif requis."
+			});
+		}
+		const modes = [.../* @__PURE__ */ new Set(["single", ...Array.from(weapon.modeIds ?? [], String)])];
+		const validateConsumption = (profile, label) => {
+			for (const mode of modes) {
+				const value = finite(profile?.[mode]);
+				if (value === null) continue;
+				if (!Number.isSafeInteger(value) || value < 1) errors.push({
+					level: "error",
+					message: `${label} invalide pour le mode ${mode} : entier positif requis.`
+				});
+			}
+			if (finite(profile?.single) === null) errors.push({
+				level: "warning",
+				message: `${label} du tir simple non renseignée.`
+			});
+		};
+		if ([
+			"chamber",
+			"internal",
+			"detachable"
+		].includes(physicalFeed)) validateConsumption(weapon.ammunitionConsumption ?? {}, "Consommation de munitions");
+		const energyBlade = family === "martialTechnoBlade" && ["vibratoryMaterial", "retractableConductor"].includes(String(weapon.technoBladeVariant ?? ""));
+		if (["energy", "hybrid"].includes(weapon.feedKind) && !energyBlade) validateConsumption(weapon.energyConsumption ?? {}, "Consommation de CE");
+		if (energyBlade && !(finite(weapon.activationCostCe) ?? 0)) errors.push({
+			level: "warning",
+			message: "Coût d’activation de la techno-lame en CE non renseigné."
 		});
 	}
 	if (["armor", "equipment"].includes(item.type) && supply.feedKind) {
@@ -5053,7 +5136,7 @@ function materialDiagnostics(item) {
 			message: "Chargeur incomplet : capacité positive requise."
 		});
 	}
-	errors.push(...boundedPair(durability.structureCurrent, durability.structureMaximum, "Structure"), ...boundedPair(protection.barrierCurrent, protection.barrierMaximum, "Réserve de Barrière"), ...boundedPair(energy.current, energy.maximum, "Charge énergétique"), ...boundedPair(energy.heatCurrent, energy.heatMaximum, "Chaleur énergétique"), ...boundedPair(durability.heatCurrent, durability.heatMaximum, "Chaleur matérielle"));
+	errors.push(...boundedPair(durability.structureCurrent, durability.structureMaximum, "Structure"), ...boundedPair(protection.barrierCurrent, protection.barrierMaximum, "Réserve de Barrière"), ...item.type === "weapon" || energy.kind === "pranaCrystal" ? [] : boundedPair(energy.current, energy.maximum, "Charge énergétique"), ...boundedPair(energy.heatCurrent, energy.heatMaximum, "Chaleur énergétique"), ...boundedPair(durability.heatCurrent, durability.heatMaximum, "Chaleur matérielle"));
 	if (finite(durability.breakingThreshold) !== null && finite(durability.structureMaximum) !== null && Number(durability.breakingThreshold) > Number(durability.structureMaximum)) errors.push({
 		level: "error",
 		message: "Le Seuil de brisure dépasse les PV structurels maximaux."
@@ -5062,7 +5145,7 @@ function materialDiagnostics(item) {
 		level: "error",
 		message: "La Fiabilité doit être un entier de 0 à 5."
 	});
-	if (energy.kind && !String(energy.format ?? "").trim() && energy.kind !== "generator") errors.push({
+	if (energy.kind && energy.kind !== "pranaCrystal" && item.type !== "weapon" && !String(energy.format ?? "").trim() && energy.kind !== "generator") errors.push({
 		level: "warning",
 		message: "Format énergétique non renseigné : raccordement impossible."
 	});
@@ -5121,7 +5204,7 @@ function magazineCompatibility(magazine, weapon) {
 	const magazineProfile = magazine.system.magazineProfile ?? {};
 	const weaponProfile = weapon.system.weaponProfile ?? weapon.system.supplyProfile ?? {};
 	const errors = [];
-	if (!["detachable", "hybrid"].includes(weaponProfile.feedKind)) errors.push("L’hôte n’accepte aucun chargeur détachable.");
+	if (physicalFeedKind(String(weaponProfile.feedKind ?? ""), String(weaponProfile.hybridPhysicalFeedKind ?? "")) !== "detachable") errors.push("L’hôte n’accepte aucun chargeur détachable.");
 	for (const [magazineKey, weaponKey, label] of [
 		[
 			"chamberId",
@@ -5150,6 +5233,8 @@ function energyCompatibility(source, target) {
 	const to = target.system.energyProfile ?? {};
 	const errors = [];
 	if (source.id === target.id) errors.push("Une réserve ne peut pas se recharger elle-même.");
+	if (target.type === "weapon") errors.push("Une arme reçoit une batterie Item ; elle ne stocke aucun CE transféré.");
+	if (to.kind === "pranaCrystal") errors.push("Un cristal de Prana n’est pas une réserve de CE.");
 	if (![
 		"battery",
 		"generator",
@@ -5161,6 +5246,43 @@ function energyCompatibility(source, target) {
 	if (!(finite(from.current) ?? 0)) errors.push("La source est vide.");
 	if (finite(to.maximum) === null || finite(to.current) === null) errors.push("La réserve cible est incomplète.");
 	else if (Number(to.current) >= Number(to.maximum)) errors.push("La réserve cible est déjà pleine.");
+	return errors;
+}
+/** Vérifie une source installée ; cette opération ne transfère aucun CE. */
+function powerSourceCompatibility(source, weapon, items = []) {
+	if (weapon.type !== "weapon") return ["La cible n’est pas une arme compatible."];
+	const feed = String(weapon.system.weaponProfile?.feedKind ?? "");
+	const sourceEnergy = source.system.energyProfile ?? {};
+	if (sourceEnergy.kind === "pranaCrystal") {
+		const errors = [];
+		if (feed !== "pranaCrystal") errors.push("Cette arme ne reçoit aucun cristal de Prana.");
+		if (String(weapon.system.weaponProfile?.technoBladeVariant ?? "") !== "pranaCrystal") errors.push("Seule une techno-lame à cristal reçoit cette source.");
+		if (items.some((candidate) => candidate.id !== source.id && candidate.system.energyProfile?.kind === "pranaCrystal" && installedOn(candidate, weapon))) errors.push("Le logement de cristal est déjà occupé.");
+		return errors;
+	}
+	const errors = [];
+	if (sourceEnergy.kind !== "battery") errors.push("La source choisie n’est pas une batterie Item.");
+	if (!["energy", "hybrid"].includes(feed)) errors.push("Cette arme ne reçoit aucune batterie.");
+	const targetEnergy = weapon.system.energyProfile ?? {};
+	for (const [sourceValue, targetValue, label] of [[
+		sourceEnergy.formatId ?? sourceEnergy.format,
+		targetEnergy.formatId ?? targetEnergy.format,
+		"format"
+	], [
+		sourceEnergy.interfaceId,
+		targetEnergy.interfaceId,
+		"interface"
+	]]) if (!sourceValue || !targetValue || sourceValue !== targetValue) errors.push(`${label} incompatible : ${sourceValue || "non renseigné"} / ${targetValue || "non renseigné"}.`);
+	const requiredClass = String(targetEnergy.powerClassId ?? targetEnergy.powerClass ?? "");
+	const outputClass = String(sourceEnergy.outputClass ?? "");
+	if (!requiredClass || !outputClass || requiredClass !== outputClass) errors.push(`Classe de puissance incompatible : ${outputClass || "sortie non renseignée"} / ${requiredClass || "besoin non renseigné"}.`);
+	const targetTechnology = String(targetEnergy.technologyId ?? targetEnergy.technology ?? "");
+	const sourceTechnology = String(sourceEnergy.technologyId ?? sourceEnergy.technology ?? "");
+	if (targetTechnology && (!sourceTechnology || sourceTechnology !== targetTechnology)) errors.push(`Technologie incompatible : ${sourceTechnology || "non renseignée"} / ${targetTechnology}.`);
+	const capacity = Number(weapon.system.weaponProfile?.batterySlotCount ?? 0);
+	const occupied = items.filter((candidate) => candidate.id !== source.id && candidate.system.energyProfile?.kind === "battery" && installedOn(candidate, weapon)).length;
+	if (!Number.isSafeInteger(capacity) || capacity < 1) errors.push("Nombre de logements de batterie invalide.");
+	else if (occupied >= capacity) errors.push("Tous les logements de batterie sont occupés.");
 	return errors;
 }
 function isCarriedByBody(item, items, bodyId) {
@@ -5248,19 +5370,20 @@ function materialStatus(item, items) {
 	const weapon = item.system.weaponProfile ?? {};
 	const supply = item.system.supplyProfile ?? {};
 	const feed = item.type === "weapon" ? weapon : supply;
+	const physicalFeed = item.type === "weapon" ? physicalFeedKind(String(weapon.feedKind ?? ""), String(weapon.hybridPhysicalFeedKind ?? "")) : supply.feedKind === "hybrid" ? "internal" : String(supply.feedKind ?? "");
 	if ([
 		"weapon",
 		"armor",
 		"equipment"
-	].includes(item.type) && ["internal", "hybrid"].includes(feed.feedKind)) {
+	].includes(item.type) && physicalFeed === "internal") {
 		const loaded = Array.from(feed.loadSequence ?? []).reduce((sum, segment) => sum + Number(segment.quantity ?? 0), 0);
-		status.push(`Magasin interne : ${loaded}/${feed.capacity ?? "?"}`);
+		status.push(`Magasin interne : ${loaded}/${item.type === "weapon" ? weapon.internalCapacity ?? "?" : feed.capacity ?? "?"}`);
 	}
 	if ([
 		"weapon",
 		"armor",
 		"equipment"
-	].includes(item.type) && feed.chamberSeparate) {
+	].includes(item.type) && (physicalFeed === "chamber" || feed.chamberSeparate)) {
 		const chamber = Array.from(feed.chamberLoad ?? []);
 		status.push(chamber.length ? `Chambre : ${chamber[0]?.ammunitionRef?.labelSnapshot || "munition chargée"}` : "Chambre vide");
 	}
@@ -5268,12 +5391,19 @@ function materialStatus(item, items) {
 		"weapon",
 		"armor",
 		"equipment"
-	].includes(item.type) && ["detachable", "hybrid"].includes(feed.feedKind)) {
+	].includes(item.type) && physicalFeed === "detachable") {
 		const magazine = items.find((candidate) => candidate.type === "container" && candidate.system.containerKind === "magazine" && installedOn(candidate, item));
 		status.push(magazine ? `Chargeur : ${magazine.name}` : "Chargeur vide");
 	}
 	const energy = item.system.energyProfile ?? {};
-	if (energy.kind) status.push(`Énergie : ${energy.current ?? "?"}/${energy.maximum ?? "?"} CE`);
+	if (item.type === "weapon" && ["energy", "hybrid"].includes(weapon.feedKind)) {
+		const batteries = items.filter((candidate) => candidate.system.energyProfile?.kind === "battery" && installedOn(candidate, item));
+		status.push(batteries.length ? `Batterie : ${batteries.map((battery) => `${battery.name} (${battery.system.energyProfile?.current ?? "?"}/${battery.system.energyProfile?.maximum ?? "?"} CE)`).join(", ")}` : "Aucune batterie installée");
+	} else if (item.type === "weapon" && weapon.feedKind === "pranaCrystal") {
+		const crystal = items.find((candidate) => candidate.system.energyProfile?.kind === "pranaCrystal" && installedOn(candidate, item));
+		status.push(crystal ? `Cristal de Prana : ${crystal.name} · incolore, non accordé` : "Aucun cristal de Prana installé");
+	} else if (energy.kind === "pranaCrystal") status.push("Cristal de Prana : incolore, non accordé");
+	else if (energy.kind && item.type !== "weapon") status.push(`Énergie : ${energy.current ?? "?"}/${energy.maximum ?? "?"} CE`);
 	const charges = item.system.physical?.charges ?? {};
 	if (charges.current !== null && charges.current !== void 0) status.push(`Usages : ${charges.current}/${charges.maximum ?? "?"}`);
 	if (finite(durability.structureCurrent) !== null || finite(durability.structureMaximum) !== null) status.push(`Structure : ${durability.structureCurrent ?? "?"}/${durability.structureMaximum ?? "?"} PV`);
@@ -5342,7 +5472,7 @@ function equipmentStates(item) {
 		"ground"
 	] : ["stored", "ground"];
 	if (item.type === "weapon" && bodySlots(profile).includes("shield") && !states.includes("equipped")) states.push("equipped");
-	if (profile.installable === true || item.type === "container" && item.system.containerKind === "magazine") states.push("installed");
+	if (profile.installable === true || item.type === "container" && item.system.containerKind === "magazine" || ["battery", "pranaCrystal"].includes(item.system.energyProfile?.kind)) states.push("installed");
 	if (!states.includes("stored")) states.unshift("stored");
 	return states;
 }
@@ -5486,11 +5616,7 @@ function equipmentPlan(items, body, request) {
 				if (!profile.compatibleInterfaces.some((value) => hostInterfaces.includes(value))) errors.push("Aucune interface technique compatible avec cet hôte.");
 			}
 			if (item.type === "container" && item.system.containerKind === "magazine") errors.push(...magazineCompatibility(item, host));
-			if (item.system.energyProfile?.kind === "battery") {
-				const sourceFormat = String(item.system.energyProfile?.format ?? "");
-				const targetFormat = String(host.system.energyProfile?.format ?? "");
-				if (!sourceFormat || !targetFormat || sourceFormat !== targetFormat) errors.push(`Format énergétique incompatible : ${sourceFormat || "non renseigné"} / ${targetFormat || "non renseigné"}.`);
-			}
+			if (["battery", "pranaCrystal"].includes(item.system.energyProfile?.kind)) errors.push(...powerSourceCompatibility(item, host, items));
 			errors.push(...installationSlotErrors(items, item, host));
 		}
 	}
@@ -6075,14 +6201,16 @@ async function loadAmmunition(actor, targetId, ammunitionId, requested, location
 		].includes(target.type)) {
 			const profileKey = target.type === "weapon" ? "weaponProfile" : "supplyProfile";
 			const profile = target.system[profileKey] ?? {};
-			if (!["internal", "hybrid"].includes(profile.feedKind)) throw new Error("Cet objet ne possède pas de magasin interne.");
+			const physicalFeed = target.type === "weapon" ? physicalFeedKind(String(profile.feedKind ?? ""), String(profile.hybridPhysicalFeedKind ?? "")) : profile.feedKind === "hybrid" ? "internal" : String(profile.feedKind ?? "");
+			if (!["chamber", "internal"].includes(physicalFeed)) throw new Error("Cet objet ne possède ni chambre ni magasin interne.");
 			const sequenceKey = location === "chamber" ? "chamberLoad" : "loadSequence";
 			const sequence = JSON.parse(JSON.stringify(Array.from(profile[sequenceKey] ?? [])));
 			if (location === "chamber") {
-				if (!profile.chamberSeparate) throw new Error("Cet objet ne suit pas une chambre séparée.");
+				if (physicalFeed !== "chamber" && !profile.chamberSeparate) throw new Error("Cet objet ne suit pas une chambre séparée.");
 				if (requested !== 1 || sequence.length) throw new Error("La chambre accepte exactement une munition et doit être vide.");
 			} else {
-				const capacity = Number(profile.capacity ?? 0);
+				if (physicalFeed !== "internal") throw new Error("Cette alimentation ne possède aucun magasin interne.");
+				const capacity = Number(target.type === "weapon" ? profile.internalCapacity ?? 0 : profile.capacity ?? 0);
 				if (!Number.isSafeInteger(capacity) || capacity <= 0) throw new Error("Capacité interne invalide.");
 				if (loadSequenceQuantity(sequence) + requested > capacity) throw new Error(`Chargement refusé : ${loadSequenceQuantity(sequence)} déjà chargé(s), ${capacity} place(s).`);
 			}
@@ -6236,6 +6364,8 @@ async function transferItemEnergy(actor, sourceId, targetId, requested) {
 		assertMaterialItem(target);
 		assertUniqueMaterialItem(source);
 		assertUniqueMaterialItem(target);
+		if (target.type === "weapon") throw new Error("Une arme ne reçoit pas de CE par transfert : insérer une batterie Item.");
+		if (target.system.energyProfile?.kind === "pranaCrystal") throw new Error("Un cristal de Prana n’est pas une réserve de CE.");
 		const errors = energyCompatibility(itemSnapshot$1(source), itemSnapshot$1(target));
 		if (errors.length) throw new Error(errors.join(" "));
 		const available = Number(source.system.energyProfile.current);
@@ -7050,10 +7180,11 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			const massEach = unitMass(row.item);
 			const linked = equipmentLinked(physicalSnapshots, row.item.id);
 			const supplyProfile = row.item.type === "weapon" ? row.item.system.weaponProfile : ["armor", "equipment"].includes(row.item.type) ? row.item.system.supplyProfile : null;
+			const rowPhysicalFeed = supplyProfile ? row.item.type === "weapon" ? physicalFeedKind(String(supplyProfile.feedKind ?? ""), String(supplyProfile.hybridPhysicalFeedKind ?? "")) : supplyProfile.feedKind === "hybrid" ? "internal" : String(supplyProfile.feedKind ?? "") : "";
 			const compatibleAmmunitionAvailable = physicalSnapshots.some((candidate) => candidate.type === "ammunition" && Number(candidate.system.physical?.quantity ?? 0) > 0 && candidate.system.physical?.accessibility !== "unavailable" && !["broken", "destroyed"].includes(candidate.system.physical?.condition) && ammunitionCompatibility(candidate, row.item).length === 0);
 			const internalLoaded = Array.from(supplyProfile?.loadSequence ?? []).reduce((sum, segment) => sum + Math.max(0, Number(segment.quantity ?? 0)), 0);
-			const internalFree = supplyProfile ? Math.max(0, Number(supplyProfile.capacity ?? 0) - internalLoaded) : 0;
-			const chamberFree = supplyProfile?.chamberSeparate && Array.from(supplyProfile.chamberLoad ?? []).length === 0;
+			const internalFree = supplyProfile ? Math.max(0, Number(row.item.type === "weapon" ? supplyProfile.internalCapacity ?? 0 : supplyProfile.capacity ?? 0) - internalLoaded) : 0;
+			const chamberFree = (rowPhysicalFeed === "chamber" || supplyProfile?.chamberSeparate) && Array.from(supplyProfile.chamberLoad ?? []).length === 0;
 			const magazineLoaded = row.item.type === "container" && row.item.system.containerKind === "magazine" ? physicalSnapshots.filter((candidate) => candidate.type === "ammunition" && (candidate.system.physical?.containerRef?.uuid === row.item.uuid || candidate.system.physical?.containerRef?.relisId === row.item.system.meta?.relisId)).reduce((sum, candidate) => sum + Number(candidate.system.physical?.quantity ?? 0), 0) : 0;
 			const magazineFree = Math.max(0, Number(row.item.system.magazineProfile?.capacity ?? 0) - magazineLoaded);
 			const rowClasses = [
@@ -7106,9 +7237,14 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 				hasModulePorts: hostPortSummary(physicalSnapshots, row.item).length > 0,
 				isConsumable: row.item.type === "consumable",
 				canConsume: row.item.type === "consumable" && physical.accessibility !== "unavailable" && !["broken", "destroyed"].includes(physical.condition) && (physical.charges?.current !== null && physical.charges?.current !== void 0 ? Number(physical.charges.current) > 0 : quantity > 0),
-				canLoadAmmunition: supplyProfile && ["internal", "hybrid"].includes(supplyProfile.feedKind) && (internalFree > 0 || chamberFree) && compatibleAmmunitionAvailable || row.item.type === "container" && row.item.system.containerKind === "magazine" && magazineFree > 0 && physicalSnapshots.some((candidate) => candidate.type === "ammunition" && !candidate.system.physical?.containerRef?.uuid && !candidate.system.physical?.containerRef?.relisId && candidate.system.physical?.quantity > 0 && ammunitionCompatibility(candidate, row.item).length === 0),
+				canLoadAmmunition: supplyProfile && ["chamber", "internal"].includes(rowPhysicalFeed) && (internalFree > 0 || chamberFree) && compatibleAmmunitionAvailable || row.item.type === "container" && row.item.system.containerKind === "magazine" && magazineFree > 0 && physicalSnapshots.some((candidate) => candidate.type === "ammunition" && !candidate.system.physical?.containerRef?.uuid && !candidate.system.physical?.containerRef?.relisId && candidate.system.physical?.quantity > 0 && ammunitionCompatibility(candidate, row.item).length === 0),
 				canUnloadAmmunition: supplyProfile && (Array.from(supplyProfile.loadSequence ?? []).length > 0 || Array.from(supplyProfile.chamberLoad ?? []).length > 0) || row.item.type === "container" && row.item.system.containerKind === "magazine" && physicalSnapshots.some((candidate) => candidate.type === "ammunition" && (candidate.system.physical?.containerRef?.uuid === row.item.uuid || candidate.system.physical?.containerRef?.relisId === row.item.system.meta?.relisId)),
-				canReceiveEnergy: Boolean(row.item.system.energyProfile?.kind) && physicalSnapshots.some((candidate) => candidate.id !== row.item.id && energyCompatibility(candidate, row.item).length === 0),
+				canReceiveEnergy: row.item.type !== "weapon" && Boolean(row.item.system.energyProfile?.kind) && row.item.system.energyProfile?.kind !== "pranaCrystal" && physicalSnapshots.some((candidate) => candidate.id !== row.item.id && energyCompatibility(candidate, row.item).length === 0),
+				canManagePowerSource: row.item.type === "weapon" && [
+					"energy",
+					"hybrid",
+					"pranaCrystal"
+				].includes(String(row.item.system.weaponProfile?.feedKind ?? "")),
 				pending: pendingState === "pending",
 				quarantined: pendingState === "quarantined",
 				hasError: row.orphaned || row.cyclic,
@@ -7226,6 +7362,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 						await unloadAmmunition(this.actor, itemId);
 						break;
 					case "energy": return this.transferMaterialEnergy(itemId);
+					case "power-source": return this.manageWeaponPowerSource(itemId);
 					case "consume": return this.consumeMaterial(itemId);
 					case "port": return this.manageMaterialPort(itemId, button.dataset.slotKey ?? "");
 				}
@@ -7425,8 +7562,9 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		})));
 		const supplyProfile = target.type === "weapon" ? target.system.weaponProfile : ["armor", "equipment"].includes(target.type) ? target.system.supplyProfile : null;
 		const internalLoaded = Array.from(supplyProfile?.loadSequence ?? []).reduce((sum, segment) => sum + Math.max(0, Number(segment.quantity ?? 0)), 0);
-		const internalFree = supplyProfile ? Math.max(0, Number(supplyProfile.capacity ?? 0) - internalLoaded) : 0;
-		const chamberFree = Boolean(supplyProfile?.chamberSeparate && Array.from(supplyProfile.chamberLoad ?? []).length === 0);
+		const targetPhysicalFeed = supplyProfile ? target.type === "weapon" ? physicalFeedKind(String(supplyProfile.feedKind ?? ""), String(supplyProfile.hybridPhysicalFeedKind ?? "")) : supplyProfile.feedKind === "hybrid" ? "internal" : String(supplyProfile.feedKind ?? "") : "";
+		const internalFree = supplyProfile ? targetPhysicalFeed === "internal" ? Math.max(0, Number(target.type === "weapon" ? supplyProfile.internalCapacity ?? 0 : supplyProfile.capacity ?? 0) - internalLoaded) : 0 : 0;
+		const chamberFree = Boolean((targetPhysicalFeed === "chamber" || supplyProfile?.chamberSeparate) && Array.from(supplyProfile.chamberLoad ?? []).length === 0);
 		const magazineLoaded = targetIsMagazine ? Array.from(this.actor.items ?? []).filter((item) => item.type === "ammunition" && (item.system.physical?.containerRef?.uuid === target.uuid || item.system.physical?.containerRef?.relisId === target.system.meta?.relisId)).reduce((sum, item) => sum + Number(item.system.physical?.quantity ?? 0), 0) : 0;
 		const magazineFree = targetIsMagazine ? Math.max(0, Number(target.system.magazineProfile?.capacity ?? 0) - magazineLoaded) : 0;
 		const locations = [...targetIsMagazine || internalFree > 0 ? [{
@@ -7434,7 +7572,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			label: targetIsMagazine ? "Chargeur" : "Magasin interne"
 		}] : [], ...chamberFree ? [{
 			value: "chamber",
-			label: "Chambre séparée"
+			label: targetPhysicalFeed === "chamber" ? "Chambre" : "Chambre séparée"
 		}] : []];
 		if (!locations.length) throw new Error("Aucune place de chargement n’est disponible.");
 		if (locations.length > 1) dialogSelect(content, "Destination", "location", [...locations]);
@@ -7460,6 +7598,52 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		if (!result) return false;
 		await transferItemEnergy(this.actor, String(result.sourceId ?? ""), targetId, Number(result.quantity));
 		return true;
+	}
+	async manageWeaponPowerSource(weaponId) {
+		const items = this.physicalSnapshots();
+		const weapon = items.find((candidate) => candidate.id === weaponId && candidate.type === "weapon");
+		if (!weapon) return false;
+		const sourceKind = weapon.system.weaponProfile?.feedKind === "pranaCrystal" ? "pranaCrystal" : "battery";
+		const installed = items.filter((candidate) => candidate.system.energyProfile?.kind === sourceKind && installedOn(candidate, weapon));
+		const withoutInstalled = items.filter((candidate) => !installed.some((entry) => entry.id === candidate.id));
+		const body = Array.from(this.actor.system.bodies ?? []).find((entry) => entry.id === this.actor.system.activeBodyId);
+		const candidates = items.filter((candidate) => candidate.id !== weapon.id && candidate.system.energyProfile?.kind === sourceKind && !installed.some((entry) => entry.id === candidate.id) && candidate.system.physical?.equipState !== "installed" && powerSourceCompatibility(candidate, weapon, withoutInstalled).length === 0 && equipmentPlan(withoutInstalled, body ?? { id: "" }, {
+			itemId: candidate.id,
+			state: "installed",
+			hostId: weapon.id
+		}).errors.length === 0);
+		const content = dialogContent();
+		dialogNote(content, sourceKind === "pranaCrystal" ? "Choisir le cristal de Prana Item installé dans cette lame. En 0.6.2, il reste incolore et non accordé." : "Choisir la batterie Item insérée. Ses CE restent portés par la batterie et ne sont jamais transférés dans l’arme.");
+		dialogSelect(content, "Source", "choice", [
+			{
+				value: "none",
+				label: "Ne rien installer — éjecter la source"
+			},
+			...installed.map((source) => ({
+				value: `keep:${source.id}`,
+				label: `Conserver ${source.name}`
+			})),
+			...candidates.map((source) => ({
+				value: `install:${source.id}`,
+				label: sourceKind === "battery" ? `Installer ${source.name} — ${source.system.energyProfile?.current ?? "?"}/${source.system.energyProfile?.maximum ?? "?"} CE` : `Installer ${source.name} — incolore, non accordé`
+			}))
+		]);
+		if (!installed.length && !candidates.length) throw new Error(sourceKind === "battery" ? "Aucune batterie exactement compatible n’est disponible." : "Aucun cristal de Prana disponible n’est compatible avec cette lame.");
+		const result = await askInventoryForm(sourceKind === "battery" ? `Alimentation de « ${weapon.name} »` : `Cristal de « ${weapon.name} »`, content, "Appliquer");
+		if (!result) return false;
+		const choice = String(result.choice ?? "");
+		if (choice.startsWith("keep:")) return false;
+		const requests = installed.map((source) => ({
+			itemId: source.id,
+			state: "stored"
+		}));
+		if (choice.startsWith("install:")) requests.push({
+			itemId: choice.slice(8),
+			state: "installed",
+			hostId: weapon.id
+		});
+		if (!requests.length) return false;
+		return this.confirmEquipment(requests);
 	}
 	async consumeMaterial(itemId) {
 		const item = this.actor.items.get(itemId);
@@ -8121,6 +8305,13 @@ function structuredFieldUpdate(path, value) {
 		update["system.weaponProfile.handsFlexible"] = hands[1];
 	}
 	if (path === "system.currencyProfile.currencyId") update["system.currencyProfile.currencyLabel"] = value === "credits" ? "Crédits" : "";
+	if (path === "system.energyProfile.kind" && String(value) === "pranaCrystal") {
+		update["system.energyProfile.interfaceId"] = "crystalSocket";
+		update["system.energyProfile.technologyId"] = "pranaCrystal";
+		update["system.energyProfile.technology"] = "pranaCrystal";
+		update["system.energyProfile.current"] = null;
+		update["system.energyProfile.maximum"] = null;
+	}
 	return update;
 }
 var LEGALITY_LABELS = {
@@ -8282,6 +8473,15 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				flags: source.flags ?? item.flags ?? {}
 			};
 		})).rows.find((row) => row.item.id === this.item.id)?.containerUsage ?? null;
+		const weaponFeedKind = String(system.weaponProfile?.feedKind ?? "");
+		const weaponPhysicalFeedKind = physicalFeedKind(weaponFeedKind, String(system.weaponProfile?.hybridPhysicalFeedKind ?? ""));
+		const weaponModeIds = [.../* @__PURE__ */ new Set(["single", ...Array.from(system.weaponProfile?.modeIds ?? [], String)])].filter((value) => Object.hasOwn(FIRE_MODES, value));
+		const modeConsumptionRows = (kind) => weaponModeIds.map((mode) => ({
+			mode,
+			label: FIRE_MODES[mode],
+			value: system.weaponProfile?.[`${kind}Consumption`]?.[mode] ?? null,
+			path: `system.weaponProfile.${kind}Consumption.${mode}`
+		}));
 		return {
 			...context,
 			item: this.item,
@@ -8313,25 +8513,35 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			].includes(this.item.type),
 			isTechnoBladeFamily: system.weaponProfile?.familyId === "martialTechnoBlade",
 			usesProjectileFeed: [
+				"chamber",
 				"internal",
-				"detachable",
-				"hybrid"
-			].includes(String(system.weaponProfile?.feedKind ?? "")),
-			usesEnergyFeed: ["energy", "hybrid"].includes(String(system.weaponProfile?.feedKind ?? "")),
-			usesPranaCrystal: system.weaponProfile?.feedKind === "pranaCrystal",
-			showsWeaponCapacity: [
+				"detachable"
+			].includes(weaponPhysicalFeedKind),
+			usesEnergyFeed: ["energy", "hybrid"].includes(weaponFeedKind),
+			usesPranaCrystal: weaponFeedKind === "pranaCrystal",
+			usesHybridFeed: weaponFeedKind === "hybrid",
+			usesInternalFeed: weaponPhysicalFeedKind === "internal",
+			usesChamberFeed: weaponPhysicalFeedKind === "chamber",
+			showsWeaponChamber: weaponPhysicalFeedKind === "chamber" || system.weaponProfile?.chamberSeparate,
+			usesDetachableFeed: weaponPhysicalFeedKind === "detachable",
+			usesReloadProcedure: [
+				"chamber",
 				"internal",
-				"detachable",
-				"energy",
-				"hybrid"
-			].includes(String(system.weaponProfile?.feedKind ?? "")),
+				"detachable"
+			].includes(weaponPhysicalFeedKind) || ["energy", "hybrid"].includes(weaponFeedKind),
+			ammunitionConsumptionRows: modeConsumptionRows("ammunition"),
+			energyConsumptionRows: modeConsumptionRows("energy"),
+			isEnergyTechnoBlade: system.weaponProfile?.familyId === "martialTechnoBlade" && ["vibratoryMaterial", "retractableConductor"].includes(String(system.weaponProfile?.technoBladeVariant ?? "")),
+			showsEnergyModeConsumption: ["energy", "hybrid"].includes(weaponFeedKind) && !(system.weaponProfile?.familyId === "martialTechnoBlade" && ["vibratoryMaterial", "retractableConductor"].includes(String(system.weaponProfile?.technoBladeVariant ?? ""))),
 			hasProtectionProfile: this.item.type === "armor" || this.item.type === "weapon" && (system.physical?.equipmentProfile?.wearForm === "shield" || Boolean(system.protectionProfile?.kind)),
-			hasEnergyProfile: this.item.type === "weapon" ? ["energy", "hybrid"].includes(String(system.weaponProfile?.feedKind ?? "")) : [
+			hasEnergyProfile: [
 				"armor",
 				"equipment",
 				"consumable",
 				"resource"
 			].includes(this.item.type),
+			isPranaCrystalResource: this.item.type === "resource" && system.energyProfile?.kind === "pranaCrystal",
+			isEnergyResource: this.item.type === "resource" && Boolean(system.energyProfile?.kind),
 			hasSupplyProfile: ["armor", "equipment"].includes(this.item.type),
 			hasPhysical,
 			technicalSlotRows: technicalSlotRows(system.physical?.equipmentProfile ?? {}),
@@ -8430,6 +8640,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				special: "Spéciale"
 			},
 			feedKindOptions: Object.fromEntries(["", ...allowedFeedKinds(String(system.weaponProfile?.familyId ?? ""), String(system.weaponProfile?.technoBladeVariant ?? ""))].map((value) => [value, value ? FEED_KINDS[value] : "Non renseignée"])),
+			hybridPhysicalFeedOptions: labelsWithBlank(PHYSICAL_FEED_KINDS, "Choisir le côté physique"),
 			protectionKindOptions: this.item.type === "weapon" ? labelsWithBlank({ shield: "Bouclier porté" }) : labelsWithBlank(ARMOR_KINDS),
 			armorLayerOptions: ARMOR_KINDS,
 			barrierKindOptions: labelsWithBlank(BARRIER_KINDS),
@@ -8493,7 +8704,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				battery: "Batterie",
 				internal: "Réserve interne",
 				generator: "Générateur",
-				singleUse: "Source à usage unique"
+				singleUse: "Source à usage unique",
+				pranaCrystal: "Cristal de Prana — incolore, non accordé"
 			},
 			energyCycleOptions: {
 				"": "Non renseigné",

@@ -28,6 +28,8 @@ import {
   FEED_INTERFACES,
   FEED_KINDS,
   FIRE_CADENCES,
+  FIRE_MODES,
+  PHYSICAL_FEED_KINDS,
   POWER_CLASSES,
   PRESSURE_CLASSES,
   RECHARGE_METHODS,
@@ -409,7 +411,7 @@ function loadSegmentField(): any {
 function energyProfileField(): any {
   return new fields.SchemaField({
     kind: stringChoiceField(
-      ["", "battery", "internal", "generator", "singleUse"],
+      ["", "battery", "internal", "generator", "singleUse", "pranaCrystal"],
       "",
     ),
     format: optionalStringField(),
@@ -418,6 +420,7 @@ function energyProfileField(): any {
     formatId: stringChoiceField(["", ...keys(BATTERY_FORMATS)], ""),
     powerClassId: stringChoiceField(["", ...keys(POWER_CLASSES)], ""),
     technologyId: stringChoiceField(["", ...keys(TECHNOLOGIES)], ""),
+    interfaceId: stringChoiceField(["", ...keys(FEED_INTERFACES)], ""),
     current: optionalNumberField(),
     maximum: optionalNumberField(),
     output: optionalNumberField(),
@@ -433,6 +436,14 @@ function energyProfileField(): any {
     heatMaximum: optionalNumberField(),
     rechargeable: new fields.BooleanField({ required: true, initial: false }),
   });
+}
+
+function modeConsumptionField(): any {
+  return new fields.SchemaField(
+    Object.fromEntries(
+      keys(FIRE_MODES).map((key) => [key, optionalNumberField(1)]),
+    ),
+  );
 }
 
 function weaponProfileField(): any {
@@ -487,12 +498,22 @@ function weaponProfileField(): any {
     ammunitionFamilyIds: stringArrayField(),
     recoil: optionalNumberField(),
     feedKind: stringChoiceField(["", ...keys(FEED_KINDS)], ""),
+    hybridPhysicalFeedKind: stringChoiceField(
+      ["", ...keys(PHYSICAL_FEED_KINDS)],
+      "",
+    ),
     chamberingId: stringChoiceField(["", ...keys(CHAMBERINGS)], ""),
     pressureClassId: stringChoiceField(["", ...keys(PRESSURE_CLASSES)], ""),
     feedInterfaceId: stringChoiceField(["", ...keys(FEED_INTERFACES)], ""),
     chamberId: optionalStringField(),
     pressureClass: optionalStringField(),
     feedInterface: optionalStringField(),
+    internalCapacity: optionalNumberField(1),
+    batterySlotCount: optionalNumberField(1, 4),
+    activationCostCe: optionalNumberField(1),
+    ammunitionConsumption: modeConsumptionField(),
+    energyConsumption: modeConsumptionField(),
+    // Champs 0.6.1 conservés pour une migration additive et sans perte.
     capacity: optionalNumberField(),
     consumption: optionalNumberField(),
     reloadActions: optionalNumberField(),

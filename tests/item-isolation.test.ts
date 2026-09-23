@@ -157,5 +157,11 @@ describe("isolation des données entre exemplaires Item", () => {
     expect(weaponSchema.weaponProfile.initial().loadSequence).not.toBe(
       weaponSchema.weaponProfile.initial().loadSequence,
     );
+    const firstWeapon = weaponSchema.weaponProfile.initial();
+    const secondWeapon = weaponSchema.weaponProfile.initial();
+    firstWeapon.energyConsumption.single = 2;
+    firstWeapon.ammunitionConsumption.burst = 3;
+    expect(secondWeapon.energyConsumption.single).toBeNull();
+    expect(secondWeapon.ammunitionConsumption.burst).toBeNull();
   });
 });

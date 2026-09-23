@@ -29,6 +29,7 @@ import {
   energyCompatibility,
 } from "../rules/personal-material";
 import { physicalUnitMass } from "../rules/physical-mass";
+import { physicalFeedKind } from "../data/material-catalog";
 
 type ActorLike = Actor & {
   id?: string;
@@ -909,22 +910,39 @@ export async function loadAmmunition(
       const profileKey =
         target.type === "weapon" ? "weaponProfile" : "supplyProfile";
       const profile = target.system[profileKey] ?? {};
-      if (!["internal", "hybrid"].includes(profile.feedKind))
-        throw new Error("Cet objet ne possède pas de magasin interne.");
+      const physicalFeed =
+        target.type === "weapon"
+          ? physicalFeedKind(
+              String(profile.feedKind ?? ""),
+              String(profile.hybridPhysicalFeedKind ?? ""),
+            )
+          : profile.feedKind === "hybrid"
+            ? "internal"
+            : String(profile.feedKind ?? "");
+      if (!["chamber", "internal"].includes(physicalFeed))
+        throw new Error("Cet objet ne possède ni chambre ni magasin interne.");
       const sequenceKey =
         location === "chamber" ? "chamberLoad" : "loadSequence";
       const sequence = JSON.parse(
         JSON.stringify(Array.from(profile[sequenceKey] ?? [])),
       );
       if (location === "chamber") {
-        if (!profile.chamberSeparate)
+        if (physicalFeed !== "chamber" && !profile.chamberSeparate)
           throw new Error("Cet objet ne suit pas une chambre séparée.");
         if (requested !== 1 || sequence.length)
           throw new Error(
             "La chambre accepte exactement une munition et doit être vide.",
           );
       } else {
-        const capacity = Number(profile.capacity ?? 0);
+        if (physicalFeed !== "internal")
+          throw new Error(
+            "Cette alimentation ne possède aucun magasin interne.",
+          );
+        const capacity = Number(
+          target.type === "weapon"
+            ? (profile.internalCapacity ?? 0)
+            : (profile.capacity ?? 0),
+        );
         if (!Number.isSafeInteger(capacity) || capacity <= 0)
           throw new Error("Capacité interne invalide.");
         if (loadSequenceQuantity(sequence) + requested > capacity)
@@ -1192,6 +1210,12 @@ export async function transferItemEnergy(
     assertMaterialItem(target);
     assertUniqueMaterialItem(source);
     assertUniqueMaterialItem(target);
+    if (target.type === "weapon")
+      throw new Error(
+        "Une arme ne reçoit pas de CE par transfert : insérer une batterie Item.",
+      );
+    if (target.system.energyProfile?.kind === "pranaCrystal")
+      throw new Error("Un cristal de Prana n’est pas une réserve de CE.");
     const errors = energyCompatibility(
       itemSnapshot(source),
       itemSnapshot(target),

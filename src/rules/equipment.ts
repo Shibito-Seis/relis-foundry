@@ -16,7 +16,10 @@ import {
 } from "./inventory";
 import { initialReference } from "../data/item-defaults";
 import { physicalUnitMass } from "./physical-mass";
-import { magazineCompatibility } from "./personal-material";
+import {
+  magazineCompatibility,
+  powerSourceCompatibility,
+} from "./personal-material";
 
 export const EQUIPMENT_LABELS: Record<string, string> = {
   stored: "Rangé",
@@ -99,7 +102,8 @@ export function equipmentStates(item: InventoryItemLike): string[] {
     states.push("equipped");
   if (
     profile.installable === true ||
-    (item.type === "container" && item.system.containerKind === "magazine")
+    (item.type === "container" && item.system.containerKind === "magazine") ||
+    ["battery", "pranaCrystal"].includes(item.system.energyProfile?.kind)
   )
     states.push("installed");
   // An explicit return to storage is always possible; container movement remains separate.
@@ -440,14 +444,8 @@ export function equipmentPlan(
       }
       if (item.type === "container" && item.system.containerKind === "magazine")
         errors.push(...magazineCompatibility(item, host));
-      if (item.system.energyProfile?.kind === "battery") {
-        const sourceFormat = String(item.system.energyProfile?.format ?? "");
-        const targetFormat = String(host.system.energyProfile?.format ?? "");
-        if (!sourceFormat || !targetFormat || sourceFormat !== targetFormat)
-          errors.push(
-            `Format énergétique incompatible : ${sourceFormat || "non renseigné"} / ${targetFormat || "non renseigné"}.`,
-          );
-      }
+      if (["battery", "pranaCrystal"].includes(item.system.energyProfile?.kind))
+        errors.push(...powerSourceCompatibility(item, host, items));
       errors.push(...installationSlotErrors(items, item, host));
     }
   }

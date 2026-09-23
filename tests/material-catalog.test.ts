@@ -11,7 +11,7 @@ import { migrateMaterialSystem } from "../src/data/material-migration";
 import { initialPhysicalState } from "../src/data/item-defaults";
 import { materialDiagnostics } from "../src/rules/personal-material";
 
-describe("10-E4-P v0.6.1 — registres matériels fermés", () => {
+describe("10-E4-P v0.6.2 — registres matériels fermés", () => {
   it("réserve les armes longues énergétiques aux batteries", () => {
     expect(allowedFeedKinds("energyLongGun")).toEqual(["energy"]);
     expect(allowedAmmunitionFamilies("energyLongGun")).toEqual([
@@ -23,6 +23,7 @@ describe("10-E4-P v0.6.1 — registres matériels fermés", () => {
     );
     expect(allowedFeedKinds("handgun")).toEqual([
       "none",
+      "chamber",
       "internal",
       "detachable",
       "energy",
@@ -77,6 +78,9 @@ describe("10-E4-P v0.6.1 — registres matériels fermés", () => {
           handsFlexible: true,
           cadence: "Semi-automatique",
           chamberId: "BAL-9P",
+          feedKind: "internal",
+          capacity: 5,
+          consumption: 1,
           damageTypes: ["Perforant", "valeur locale conservée"],
         },
       },
@@ -90,7 +94,25 @@ describe("10-E4-P v0.6.1 — registres matériels fermés", () => {
       cadenceId: "sequential",
       chamberingId: "BAL-9P",
       damageTypes: ["piercing", "valeur locale conservée"],
+      internalCapacity: 5,
+      ammunitionConsumption: { single: 1 },
     });
+  });
+
+  it("ne transforme pas une capacité détachable en capacité d’arme", () => {
+    const system = migrateMaterialSystem(
+      {
+        weaponProfile: {
+          feedKind: "detachable",
+          capacity: 7,
+          consumption: 1,
+        },
+      },
+      "weapon",
+    );
+    expect(system.weaponProfile.internalCapacity).toBeUndefined();
+    expect(system.weaponProfile.ammunitionConsumption.single).toBe(1);
+    expect(system.weaponProfile.capacity).toBe(7);
   });
 
   it("ne présente aucun champ texte libre dans les profils spécialisés", () => {
@@ -111,5 +133,14 @@ describe("10-E4-P v0.6.1 — registres matériels fermés", () => {
     expect(template).toContain("multi-select");
     expect(template).toContain("system.weaponProfile.familyId");
     expect(template).not.toContain("system.weaponProfile.prerequisiteSummary");
+    const weaponSection = template.slice(
+      template.indexOf("{{#if isWeapon}}"),
+      template.indexOf("{{#if hasProtectionProfile}}"),
+    );
+    expect(weaponSection).not.toContain("system.energyProfile.current");
+    expect(weaponSection).not.toContain("system.energyProfile.maximum");
+    expect(weaponSection).not.toContain("system.weaponProfile.capacity");
+    expect(weaponSection).toContain("system.weaponProfile.internalCapacity");
+    expect(weaponSection).toContain("energyConsumptionRows");
   });
 });

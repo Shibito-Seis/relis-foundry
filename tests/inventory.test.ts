@@ -753,7 +753,7 @@ describe("opérations matérielles 10-E4-P", () => {
           chamberId: "CH-9X",
           pressureClass: "P2",
           feedInterface: "",
-          capacity: 6,
+          internalCapacity: 6,
           chamberSeparate: false,
           loadSequence: [],
           chamberLoad: [],
@@ -826,7 +826,7 @@ describe("opérations matérielles 10-E4-P", () => {
           chamberId: "CH-REC",
           pressureClass: "P1",
           feedInterface: "",
-          capacity: 4,
+          internalCapacity: 4,
           chamberSeparate: false,
           loadSequence: [],
           chamberLoad: [],
@@ -937,6 +937,17 @@ describe("opérations matérielles 10-E4-P", () => {
         consumableProfile: { kind: "medical" },
       }),
     );
+    const weapon = actor.add(
+      inventoryItem("laser", "weapon", {
+        weaponProfile: { feedKind: "energy", batterySlotCount: 1 },
+        energyProfile: {
+          kind: "internal",
+          format: "BAT-S",
+          current: 0,
+          maximum: 8,
+        },
+      }),
+    );
 
     await transferItemEnergy(actor as any, battery.id, device.id, 5);
     expect(battery.system.energyProfile.current).toBe(5);
@@ -944,6 +955,9 @@ describe("opérations matérielles 10-E4-P", () => {
     await expect(
       transferItemEnergy(actor as any, battery.id, battery.id, 1),
     ).rejects.toThrow(/elle-même/);
+    await expect(
+      transferItemEnergy(actor as any, battery.id, weapon.id, 1),
+    ).rejects.toThrow(/insérer une batterie Item/);
     await consumeInventoryItem(actor as any, consumable.id);
     expect(consumable.system.physical.quantity).toBe(1);
   });
@@ -992,7 +1006,7 @@ describe("opérations matérielles 10-E4-P", () => {
           feedKind: "internal",
           chamberId: "CH-U",
           pressureClass: "P1",
-          capacity: 2,
+          internalCapacity: 2,
           loadSequence: [],
           chamberLoad: [],
         },

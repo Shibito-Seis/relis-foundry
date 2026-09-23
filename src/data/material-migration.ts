@@ -175,6 +175,27 @@ function migrateWeapon(system: RecordLike): void {
               ? "one"
               : "";
   }
+  const legacyConsumption = Number(profile.consumption);
+  const hasLegacyConsumption =
+    Number.isFinite(legacyConsumption) && legacyConsumption > 0;
+  if (
+    hasLegacyConsumption &&
+    ["chamber", "internal", "detachable"].includes(profile.feedKind) &&
+    profile.ammunitionConsumption?.single == null
+  )
+    (profile.ammunitionConsumption ??= {}).single = legacyConsumption;
+  if (
+    hasLegacyConsumption &&
+    profile.feedKind === "energy" &&
+    profile.energyConsumption?.single == null
+  )
+    (profile.energyConsumption ??= {}).single = legacyConsumption;
+  if (
+    profile.feedKind === "internal" &&
+    profile.internalCapacity == null &&
+    Number(profile.capacity) > 0
+  )
+    profile.internalCapacity = Number(profile.capacity);
 }
 
 function migrateEnergy(system: RecordLike): void {
@@ -188,6 +209,11 @@ function migrateEnergy(system: RecordLike): void {
   if (profile.powerClassId) profile.powerClass = profile.powerClassId;
   if (profile.technologyId) profile.technology = profile.technologyId;
   if (profile.signatureId) profile.signature = profile.signatureId;
+  if (profile.kind === "pranaCrystal") {
+    profile.interfaceId ||= "crystalSocket";
+    profile.technologyId ||= "pranaCrystal";
+    profile.technology = profile.technologyId;
+  }
 }
 
 function migrateEquipment(system: RecordLike): void {

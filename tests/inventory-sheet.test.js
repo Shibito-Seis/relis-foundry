@@ -77,7 +77,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(PACKAGE_VERSION).toBe(
       JSON.parse(readFileSync("package.json", "utf8")).version,
     );
-    expect(SCHEMA_VERSION).toBe("6");
+    expect(SCHEMA_VERSION).toBe("7");
     expect(sheet).toContain("packageVersion: PACKAGE_VERSION");
     expect(template).toMatch(
       /<footer[^>]*>[\s\S]*?{{packageVersion}}<\/footer>/,
@@ -135,6 +135,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
       ["load", "if canLoadAmmunition"],
       ["unload", "if canUnloadAmmunition"],
       ["energy", "if canReceiveEnergy"],
+      ["power-source", "if canManagePowerSource"],
       ["consume", "if canConsume"],
       ["port", "if @root.editable"],
     ]) {
@@ -149,6 +150,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(template).toContain("modulePorts");
     expect(sheet).toContain("ammunitionCompatibility");
     expect(sheet).toContain("energyCompatibility");
+    expect(sheet).toContain("powerSourceCompatibility");
   });
   it("sépare le liquide physique de la banque future", () => {
     expect(template).toContain("physicalCash");

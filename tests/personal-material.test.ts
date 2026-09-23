@@ -10,6 +10,7 @@ import {
   materialDiagnostics,
   materialStatus,
   nestInstalledRows,
+  powerSourceCompatibility,
 } from "../src/rules/personal-material";
 
 function item(
@@ -230,15 +231,12 @@ describe("10-E4-P — profils matériels personnels", () => {
     );
   });
 
-  it("présente explicitement un chargeur vide et une réserve énergétique", () => {
+  it("présente explicitement un chargeur vide sans fausse réserve sur l’arme", () => {
     const weapon = item("weapon", "weapon", {
       weaponProfile: { feedKind: "detachable" },
       energyProfile: { kind: "internal", current: 3, maximum: 12 },
     });
-    expect(materialStatus(weapon, [weapon])).toEqual([
-      "Chargeur vide",
-      "Énergie : 3/12 CE",
-    ]);
+    expect(materialStatus(weapon, [weapon])).toEqual(["Chargeur vide"]);
   });
 
   it("transfère seulement entre réserves énergétiques de même format", () => {
@@ -269,5 +267,99 @@ describe("10-E4-P — profils matériels personnels", () => {
     expect(energyCompatibility(source, target).join(" ")).toMatch(
       /Classe de puissance incompatible/,
     );
+  });
+
+  it("installe une batterie compatible sans transférer ses CE dans l’arme", () => {
+    const weapon = item("laser", "weapon", {
+      weaponProfile: {
+        familyId: "energyLongGun",
+        feedKind: "energy",
+        batterySlotCount: 1,
+      },
+      energyProfile: {
+        formatId: "standard",
+        format: "standard",
+        powerClassId: "standard",
+        powerClass: "standard",
+        technologyId: "laser",
+        technology: "laser",
+        interfaceId: "cell",
+      },
+    });
+    const battery = item("battery", "resource", {
+      energyProfile: {
+        kind: "battery",
+        formatId: "standard",
+        format: "standard",
+        outputClass: "standard",
+        technologyId: "laser",
+        technology: "laser",
+        interfaceId: "cell",
+        current: 17,
+        maximum: 24,
+      },
+    });
+    expect(
+      powerSourceCompatibility(battery, weapon, [weapon, battery]),
+    ).toEqual([]);
+    battery.system.physical.equipState = "installed";
+    battery.system.physical.hostRef = { uuid: weapon.uuid };
+    expect(materialStatus(weapon, [weapon, battery])).toContain(
+      "Batterie : battery (17/24 CE)",
+    );
+    expect(energyCompatibility(battery, weapon).join(" ")).toMatch(
+      /ne stocke aucun CE transféré/,
+    );
+  });
+
+  it("installe seulement un cristal de Prana incolore dans la techno-lame dédiée", () => {
+    const blade = item("blade", "weapon", {
+      weaponProfile: {
+        familyId: "martialTechnoBlade",
+        technoBladeVariant: "pranaCrystal",
+        feedKind: "pranaCrystal",
+      },
+    });
+    const crystal = item("crystal", "resource", {
+      energyProfile: {
+        kind: "pranaCrystal",
+        technologyId: "pranaCrystal",
+        interfaceId: "crystalSocket",
+      },
+    });
+    expect(powerSourceCompatibility(crystal, blade, [blade, crystal])).toEqual(
+      [],
+    );
+    crystal.system.physical.equipState = "installed";
+    crystal.system.physical.hostRef = { uuid: blade.uuid };
+    expect(materialStatus(blade, [blade, crystal])).toContain(
+      "Cristal de Prana : crystal · incolore, non accordé",
+    );
+    expect(energyCompatibility(crystal, blade).join(" ")).toMatch(
+      /Prana|aucun CE/i,
+    );
+  });
+
+  it("ne demande une capacité qu’au magasin interne", () => {
+    const detachable = item("pistol", "weapon", {
+      weaponProfile: {
+        familyId: "handgun",
+        feedKind: "detachable",
+        chamberId: "BAL-9P",
+        pressureClass: "standard",
+        feedInterface: "boxMagazine",
+      },
+    });
+    expect(
+      materialDiagnostics(detachable)
+        .map(({ message }) => message)
+        .join(" "),
+    ).not.toMatch(/Capacité/);
+    detachable.system.weaponProfile.feedKind = "internal";
+    expect(
+      materialDiagnostics(detachable)
+        .map(({ message }) => message)
+        .join(" "),
+    ).toMatch(/Capacité positive.*magasin interne/i);
   });
 });
