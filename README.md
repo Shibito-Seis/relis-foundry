@@ -2,7 +2,9 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.6.2` corrige l’alimentation des armes de 10-E4-P. Une arme énergétique n’est plus une réserve rechargeable : une batterie Item compatible s’insère dans l’arme et conserve ses propres CE. Les consommations de CE ou de munitions sont structurées par mode pour le futur moteur 10-F. Un chargeur détachable porte seul sa capacité et ses vrais Items de munitions ; une chambre seule vaut 1, tandis qu’un magasin interne déclare sa propre capacité. Les techno-lames à Prana reçoivent désormais un véritable cristal Item, incolore et non accordé dans cette version, jamais assimilé à une batterie. Son nom diégétique définitif, la piste d’une origine ou variante des cristaux noirs liés à la Malédiction écarlate et son futur accord seront conçus ultérieurement sans reprendre le nom « kyber ». Les registres fermés et fiches spécialisées de 0.6.1 sont conservés. Les modules, munitions et sources installées sont présentés sous leur hôte ; l’inventaire affiche aussi les logements vides et la charge restante de la batterie insérée. Le liquide physique porté est résumé par devise, tandis que la banque reste explicitement non raccordée. 10-E3-P est validé et toutes ses protections restent actives. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
+La version `0.7.0` ouvre 10-K1-P après la validation fonctionnelle de 10-E4-P. Elle fournit le pipeline reconstructible des données personnelles : sources JSON versionnées, identifiants canoniques, `_id` Foundry stables, aliases, validation croisée, génération déterministe et compilation des futurs packs par l’outil officiel Foundry. Les familles Création, Progression et Matériel sont préparées mais restent volontairement vides jusqu’à 10-K2-P : aucun faux Item ni faux compendium n’est publié. La nomenclature **Écarlithe**, sa taxonomie et le contrat déterministe du questionnaire d’accord sont fixés comme données sources ; les vrais Cœurs d’Écarlithe et leur interface appartiennent à 10-K2-P, tandis que l’activation et la surcharge au Prana restent en 10-F. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
+
+Le matériel validé en `0.6.2` reste intégralement protégé. Une arme énergétique n’est plus une réserve rechargeable : une batterie Item compatible s’insère dans l’arme et conserve ses propres CE. Les consommations de CE ou de munitions sont structurées par mode pour le futur moteur 10-F. Un chargeur détachable porte seul sa capacité et ses vrais Items de munitions ; une chambre seule vaut 1, tandis qu’un magasin interne déclare sa propre capacité. Les techno-lames à Prana reçoivent un véritable cristal Item, incolore et non accordé, jamais assimilé à une batterie. Les modules, munitions et sources installées sont présentés sous leur hôte ; l’inventaire affiche aussi les logements vides et la charge restante de la batterie insérée. Le liquide physique porté est résumé par devise, tandis que la banque reste explicitement non raccordée. 10-E3-P et 10-E4-P sont validés et toutes leurs protections restent actives. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
 familles matérielles apparaissent dans un inventaire personnel hiérarchique :
 quantité, lot, masse, volume, encombrement, état, accessibilité et emplacement
 restent portés par les vrais Items de l’Actor.
@@ -30,8 +32,8 @@ présente les changements avant écriture. Les temps/aides sont affichés et
 confirmés, sans débiter automatiquement une horloge ou des actions de combat.
 Une interruption conserve une sauvegarde récupérable par le MJ.
 
-La résolution des attaques, dégâts, protections et effets reste dans 10-F ; les
-sources générées et vrais compendiums restent dans 10-K1-P/K2-P. Les
+La résolution des attaques, dégâts, protections et effets reste dans 10-F ; le
+pipeline de sources relève de 10-K1-P et les vrais compendiums de 10-K2-P. Les
 images/Présentations de Garde-Robe restent dans 10-D5. L’installation de ce lot
 concerne un hôte physique personnel unique, hors conteneur. Détacher ses
 installations avant de déplacer/transférer cet ensemble ; les plateformes
@@ -41,8 +43,8 @@ restent réalisés en CSS et en SVG interne jusqu’à la passe graphique finale
 
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
-10-E2-P, la revue visuelle 0.4.3 et 10-E3-P sont validés. 10-E4-P attend sa
-recette 0.6.2 sur The Forge. Aucun contrôle visuel automatisé par navigateur :
+10-E2-P, la revue visuelle 0.4.3, 10-E3-P et 10-E4-P sont validés. 10-K1-P attend
+sa recette 0.7.0. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -61,11 +63,12 @@ Prérequis : Node.js 22 ou plus récent.
 
 ```bash
 npm ci
+npm run content:check
 npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.6.2.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.7.0.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -74,6 +77,15 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.7.0 — pipeline des données personnelles 10-K1-P
+
+- Ajoute trois familles de sources versionnées pour la création, la progression et le matériel personnel, sans livrer de contenu fictif.
+- Valide formats, types, doublons, identifiants, aliases, références, versions et champs réservés avant toute construction.
+- Dérive des `_id` Foundry stables depuis les identifiants canoniques et produit deux fois les mêmes sources à entrées identiques.
+- Compile les futures bases LevelDB au moyen de `@foundryvtt/foundryvtt-cli` ; seules les familles contenant de vrais Items seront intégrées au paquet.
+- Fixe la nomenclature Écarlithe, les états brut/incolore/accordé et le contrat du questionnaire de couleur. La couleur n’est ni un alignement ni un bonus mécanique.
+- Conserve le schéma Item 7 et toutes les données existantes. 10-K1-P reste en recette jusqu’à validation explicite de la v0.7.0 ; 10-K2-P produira ensuite tous les compendiums personnels canoniques.
 
 ## 0.6.2 — sources installées et consommation structurée 10-E4-P
 

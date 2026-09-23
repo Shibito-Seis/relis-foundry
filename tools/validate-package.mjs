@@ -9,6 +9,19 @@ const manifest = JSON.parse(
 const packageJson = JSON.parse(
   fs.readFileSync(path.join(root, "package.json"), "utf8"),
 );
+const personalContentManifest = JSON.parse(
+  fs.readFileSync(path.join(root, "content/personal/manifest.json"), "utf8"),
+);
+const crystalAttunement = JSON.parse(
+  fs.readFileSync(
+    path.join(root, "content/personal/crystal-attunement.json"),
+    "utf8",
+  ),
+);
+const personalContentTool = fs.readFileSync(
+  path.join(root, "tools/personal-content.mjs"),
+  "utf8",
+);
 const french = JSON.parse(
   fs.readFileSync(path.join(root, "lang/fr.json"), "utf8"),
 );
@@ -311,6 +324,52 @@ assert.equal(fs.existsSync(path.join(root, "templates/items/item.hbs")), true);
 assert.equal(
   fs.existsSync(path.join(root, "templates/chat/check-card.hbs")),
   true,
+);
+
+assert.equal(
+  personalContentManifest.format,
+  "relis.personal-content",
+  "Format source personnel 10-K1-P absent",
+);
+assert.deepEqual(
+  personalContentManifest.packs.map((pack) => pack.id),
+  ["creation", "progression", "material"],
+  "Les trois familles de compendiums personnels doivent être préparées ensemble",
+);
+assert.equal(
+  personalContentManifest.strictReferences,
+  false,
+  "K1-P doit diagnostiquer les références avant le blocage strict de K2-P/Audit P",
+);
+assert.equal(
+  crystalAttunement.nomenclature.canonicalTerm,
+  "Écarlithe",
+  "Nomenclature canonique du cristal absente",
+);
+assert.equal(
+  crystalAttunement.permissions.directColorEdit,
+  "gm",
+  "La couleur directe du cristal doit rester une décision MJ",
+);
+assert.equal(
+  crystalAttunement.mechanics.grantsMechanicalBonus,
+  false,
+  "Le questionnaire ne doit pas inventer de bonus mécanique",
+);
+assert.match(
+  personalContentTool,
+  /compilePack/,
+  "Compilation officielle des packs Foundry non raccordée",
+);
+assert.equal(
+  packageJson.devDependencies["@foundryvtt/foundryvtt-cli"],
+  "3.0.4",
+  "Version de l’outil officiel Foundry non verrouillée",
+);
+assert.equal(
+  manifest.packs,
+  undefined,
+  "10-K1-P ne doit pas publier de compendium vide avant 10-K2-P",
 );
 
 console.log("Manifest RE:LIS valide : 64 types, chemins et URLs contrôlés.");

@@ -1,6 +1,6 @@
 # 10-E4-P — Matrice de conformité du matériel personnel v0.6.2
 
-Base publique inspectée avant modification : `d92f1c0`. Canon relu avant et après codage : Bible v159, notamment §38.16, §38.18, §41.2, §41.11–41.16, §41.46–41.58, §41.85, §41.90 et §77–83 ; roadmap révisée, ligne 10-E4-P ; décisions utilisateur validées pendant la conception. 10-E3-P est validé. 10-E4-P reste **en recette** jusqu’à validation explicite de la v0.6.2.
+Base publique du lot : `d92f1c0`, complétée par les releases 0.6.0 à 0.6.2. Canon relu avant et après codage : Bible v159 puis v160, notamment §38.16, §38.18, §41.2, §41.11–41.16, §41.46–41.58, §41.85, §41.90 et §77–88 ; roadmap révisée, ligne 10-E4-P ; décisions utilisateur validées pendant la conception. La recette 0.6.2 a été déclarée entièrement fonctionnelle le 23 septembre 2026. **10-E4-P est validé et clos.**
 
 | Exigence canonique ou décision                                         | Implémentation v0.6.2                                                                                                                                                        | Contrôle automatisé                                                          | Recette |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------- |
@@ -30,10 +30,10 @@ Base publique inspectée avant modification : `d92f1c0`. Canon relu avant et apr
 - **10-F** résoudra les attaques, dégâts, blessures, protections, modes de tir et effets. La v0.6.2 prépare les consommations et les vrais contenus sans déclencher d’attaque.
 - **10-K1-P/K2-P** produiront les sources reconstructibles, validateurs, vrais compendiums et dotations. Aucun faux catalogue n’est créé.
 - **10-G7/10-J1** restent responsables de la Banque du Datapad, des comptes, virements, dépôts et retraits.
-- Le Prana n’est jamais une CE ni une batterie. Le cristal reste incolore et non accordé en 0.6.2. Son nom définitif, sa palette, le questionnaire d’accord et la piste des cristaux noirs liés à la Malédiction écarlate seront conçus dans un lot ultérieur pertinent, sans employer « kyber ».
+- Le Prana n’est jamais une CE ni une batterie. Le cristal reste incolore et non accordé en 0.6.2. Sa nomenclature, sa taxonomie et le contrat de son questionnaire sont arrêtés en 10-K1-P ; les vrais Items et l’interface restent 10-K2-P ; l’activation demeure 10-F.
 - Aucun glisser-déposer vers un schéma corporel n’est ajouté. Anatomie et blessures restent biomédicales.
 - La recette est réalisée seul en MJ, sans navigateur automatisé et sans autre participant avant la procédure finale.
 
 ## État
 
-La fabrication locale et les contrôles automatisés ne valent pas validation de recette. Livrer la v0.6.2, exécuter la recette bloc par bloc et attendre le retour explicite. Ne pas déclarer 10-E4-P clos avant validation.
+La fabrication locale et les contrôles automatisés ne valaient pas validation de recette. Le retour utilisateur confirme tous les blocs fonctionnels de la v0.6.2. 10-E4-P est clos ; ses garanties deviennent des non-régressions obligatoires pour 10-K1-P et les lots suivants.

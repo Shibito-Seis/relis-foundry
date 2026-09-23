@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.7.0 — 10-K1-P, pipeline des données personnelles
+
+- Clôt 10-E4-P après validation fonctionnelle explicite de la recette 0.6.2 et conserve toutes ses non-régressions.
+- Ajoute un format source JSON versionné, une entrée canonique par fichier, trois familles de packs personnels et des schémas documentaires pour l’auteur.
+- Refuse identifiants, types et fichiers incohérents, doublons, aliases invalides, collisions d’identifiants Foundry et métadonnées réservées au générateur.
+- Dérive des `_id` Foundry stables, injecte les versions et métadonnées canoniques, trie les sorties et contrôle leur reproductibilité bit à bit.
+- Intègre l’outil officiel `@foundryvtt/foundryvtt-cli` pour construire les futurs packs LevelDB ; les familles vides ne sont pas publiées dans le paquet 0.7.0.
+- Fixe Écarlithe comme nomenclature, distingue matière noire brute, Cœur incolore et Cœur accordé, puis structure le questionnaire déterministe, sa palette et ses permissions.
+- N’ajoute aucun Item ni compendium canonique : Ascendances, Profils, Origines, Atouts, Handicaps, Voies, Spécialisations, Talents, Actions, Pouvoirs et dotations restent à produire ensemble en 10-K2-P.
+- Conserve le schéma Item 7 sans migration de monde. 10-K1-P reste en recette jusqu’à validation explicite de la v0.7.0.
+
 ## 0.6.2 — 10-E4-P, batteries insérées et cristal de Prana
 
 - Remplace la fausse réserve intégrée des armes énergétiques par une batterie Item réellement installée ; les CE actuels et maximaux restent portés par cette batterie.

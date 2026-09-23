@@ -1,0 +1,6 @@
+{
+  "$schema": "../schemas/personal-aliases.schema.json",
+  "format": "relis.personal-aliases",
+  "formatVersion": 1,
+  "aliases": []
+}

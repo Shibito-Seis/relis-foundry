@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Shibito-Seis/relis-foundry/content/schemas/crystal-attunement.schema.json",
+  "title": "Contrat d’accord des Cœurs d’Écarlithe",
+  "type": "object",
+  "required": [
+    "format",
+    "formatVersion",
+    "relisId",
+    "contentVersion",
+    "nomenclature",
+    "taxonomy",
+    "axes",
+    "palette",
+    "questions",
+    "tieBreaker",
+    "permissions",
+    "persistence",
+    "mechanics"
+  ],
+  "properties": {
+    "format": { "const": "relis.crystal-attunement" },
+    "formatVersion": { "const": 1 },
+    "relisId": { "type": "string" },
+    "contentVersion": { "type": "string" },
+    "nomenclature": { "type": "object" },
+    "taxonomy": { "type": "array", "minItems": 3 },
+    "axes": { "type": "array", "minItems": 2 },
+    "palette": { "type": "array", "minItems": 2 },
+    "questions": { "type": "array", "minItems": 1 },
+    "tieBreaker": { "type": "object" },
+    "permissions": { "type": "object" },
+    "persistence": { "type": "object" },
+    "mechanics": { "type": "object" }
+  }
+}

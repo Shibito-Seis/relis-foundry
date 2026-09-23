@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Shibito-Seis/relis-foundry/content/schemas/personal-item.schema.json",
+  "title": "Source d’Item personnel RE:LIS",
+  "type": "object",
+  "required": ["relisId", "name", "type", "system"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "relisId": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$"
+    },
+    "contentVersion": { "type": "string" },
+    "name": { "type": "string", "minLength": 1 },
+    "type": { "type": "string" },
+    "img": { "type": "string", "minLength": 1 },
+    "folder": { "type": ["string", "null"] },
+    "sort": { "type": "integer", "minimum": 0 },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "system": { "type": "object" },
+    "effects": { "type": "array" },
+    "flags": { "type": "object" }
+  }
+}

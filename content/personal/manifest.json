@@ -1,0 +1,49 @@
+{
+  "$schema": "../schemas/personal-manifest.schema.json",
+  "format": "relis.personal-content",
+  "formatVersion": 1,
+  "system": "relis",
+  "contentVersion": "1.0.0",
+  "strictReferences": false,
+  "packs": [
+    {
+      "id": "creation",
+      "name": "personal-creation",
+      "label": "RE:LIS — Création de personnage",
+      "documentType": "Item",
+      "source": "packs/creation",
+      "itemTypes": [
+        "ancestry",
+        "profile",
+        "origin",
+        "advantage",
+        "drawback",
+        "post"
+      ]
+    },
+    {
+      "id": "progression",
+      "name": "personal-progression",
+      "label": "RE:LIS — Progression personnelle",
+      "documentType": "Item",
+      "source": "packs/progression",
+      "itemTypes": ["path", "specialization", "talent", "action", "power"]
+    },
+    {
+      "id": "material",
+      "name": "personal-material",
+      "label": "RE:LIS — Matériel personnel",
+      "documentType": "Item",
+      "source": "packs/material",
+      "itemTypes": [
+        "weapon",
+        "armor",
+        "equipment",
+        "consumable",
+        "ammunition",
+        "resource",
+        "container"
+      ]
+    }
+  ]
+}

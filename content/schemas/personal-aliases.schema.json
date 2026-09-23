@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Shibito-Seis/relis-foundry/content/schemas/personal-aliases.schema.json",
+  "title": "Aliases de contenu personnel RE:LIS",
+  "type": "object",
+  "required": ["format", "formatVersion", "aliases"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "relis.personal-aliases" },
+    "formatVersion": { "const": 1 },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "introducedIn", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "introducedIn": { "type": "string" },
+          "retiredIn": { "type": ["string", "null"] },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -19,8 +19,8 @@ formatage, les tests unitaires, le build et le manifeste.
 ## 3. Créer ou actualiser une Release
 
 Dans `Actions`, ouvrir `Publier une Release Foundry`, choisir `Run workflow`, saisir
-le tag correspondant exactement au manifeste, puis lancer. Pour la recette 10-E4-P,
-utiliser `v0.6.2`. Le workflow construit `relis-v0.6.2.zip`, crée le tag et la
+le tag correspondant exactement au manifeste, puis lancer. Pour la recette 10-K1-P,
+utiliser `v0.7.0`. Le workflow construit `relis-v0.7.0.zip`, crée le tag et la
 Release, puis y joint l’archive.
 
 Ne pas créer manuellement une archive différente : le ZIP automatisé garantit que
@@ -35,23 +35,22 @@ Utiliser l’URL de manifeste suivante dans le gestionnaire de systèmes :
 
 Le manifeste téléchargera alors :
 
-`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.6.2/relis-v0.6.2.zip`
+`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.7.0/relis-v0.7.0.zip`
 
-## 5. Recette 10-E4-P
+## 5. Recette 10-K1-P
 
 1. Créer un monde avec le système `RE:LIS — RE: Lost in Space`.
 2. Ouvrir la console du navigateur et vérifier l’absence d’erreur rouge `relis`.
 3. Ouvrir l’ancien Personnage de recette 10-C et confirmer sa conservation.
-4. Suivre la recette `RE-LIS_Recette10_E4-P_v0.6.2.md` fournie avec les
+4. Suivre la recette `RE-LIS_Recette10_K1-P_v0.7.0.md` fournie avec les
    livrables de développement.
-5. Vérifier bloc par bloc les batteries installées, munitions/chargeurs, cristal
-   de Prana incolore, consommations structurées et non-régressions.
-6. Actualiser le navigateur et confirmer la persistance. La migration additive vers le schéma 7 s’exécute une seule fois et ne supprime aucun Item. Effectuer la recette seul ; ne solliciter aucun autre participant avant la procédure finale.
+5. Vérifier le chargement, la version, la conservation des inventaires et l’absence de compendium personnel fictif. Le pipeline K1-P est contrôlé par GitHub Actions ; les vrais compendiums seront livrés ensemble en 10-K2-P.
+6. Actualiser le navigateur et confirmer la persistance. Le schéma reste 7 et aucune migration de monde n’est ajoutée. Effectuer la recette seul ; ne solliciter aucun autre participant avant la procédure finale.
 7. Signaler la version Foundry affichée, les erreurs de console et l’étape exacte
    du premier échec éventuel.
 
-## Recette 0.6.2
+## Recette 0.7.0
 
-Arrêter le monde avant de remplacer le système, puis le relancer après installation. Vérifier 0.6.2 dans le manifeste et les pieds de fiches Actor et Item. Conserver une sauvegarde du monde. L’archive update conserve la racine relis-foundry/ et contient les fichiers modifiés depuis le commit public d92f1c0 ; l’archive installable a system.json à sa racine. La migration vers le schéma 7 est additive, idempotente et ne supprime aucun Item. Ne pas utiliser un remplacement global de version sur package-lock.json.
+Arrêter le monde avant de remplacer le système, puis le relancer après installation. Vérifier 0.7.0 dans le manifeste et les pieds de fiches Actor et Item. Conserver une sauvegarde du monde. L’archive update conserve la racine relis-foundry/ et contient les fichiers modifiés depuis le commit public `86f5bb5` ; l’archive installable a `system.json` à sa racine. Le schéma reste 7 et aucune migration n’est déclenchée. Ne pas utiliser un remplacement global de version sur package-lock.json.
 
-Exécuter RE-LIS_Recette10_E4-P_v0.6.2.md, bloc A d’abord. Recette seul en MJ, aucune invitation d’un autre utilisateur et aucun contrôle visuel automatisé par navigateur. La clôture de 10-E4-P attend la validation explicite.
+Exécuter `RE-LIS_Recette10_K1-P_v0.7.0.md`, bloc A d’abord. Recette seul en MJ, aucune invitation d’un autre utilisateur et aucun contrôle visuel automatisé par navigateur. La clôture de 10-K1-P attend la validation explicite.

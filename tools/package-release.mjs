@@ -33,6 +33,17 @@ for (const entry of entries)
   fs.cpSync(path.join(root, entry), path.join(stage, entry), {
     recursive: true,
   });
+const generatedPacks = path.join(buildRoot, "content-packs");
+if (fs.existsSync(generatedPacks)) {
+  for (const entry of fs.readdirSync(generatedPacks, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    fs.cpSync(
+      path.join(generatedPacks, entry.name),
+      path.join(stage, "packs", entry.name),
+      { recursive: true },
+    );
+  }
+}
 fs.rmSync(archive, { force: true });
 execFileSync("zip", ["-q", "-r", archive, "."], {
   cwd: stage,

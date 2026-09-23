@@ -1,0 +1,348 @@
+{
+  "$schema": "../schemas/crystal-attunement.schema.json",
+  "format": "relis.crystal-attunement",
+  "formatVersion": 1,
+  "relisId": "QST-ECARLITHE-001",
+  "contentVersion": "1.0.0",
+  "name": "Accord d’un Cœur d’Écarlithe",
+  "nomenclature": {
+    "canonicalTerm": "Écarlithe",
+    "rawTerm": "Écarlithe noire",
+    "focusTerm": "Cœur d’Écarlithe",
+    "attunedTerm": "Cœur d’Écarlithe accordé",
+    "forbiddenBorrowedTerms": ["kyber"],
+    "originStatement": "L’Écarlithe est une famille cristalline issue des cristaux noirs associés à la Malédiction écarlate. Le lien exact entre ses formes brutes, les anneaux noirs et les autres manifestations cristallines reste un sujet de recherche, pas une équivalence automatique."
+  },
+  "taxonomy": [
+    {
+      "id": "raw-black",
+      "label": "Écarlithe noire brute",
+      "colorState": "black",
+      "installable": false,
+      "attunementState": "not-applicable"
+    },
+    {
+      "id": "colorless-focus",
+      "label": "Cœur d’Écarlithe incolore",
+      "colorState": "colorless",
+      "installable": true,
+      "attunementState": "unattuned"
+    },
+    {
+      "id": "attuned-focus",
+      "label": "Cœur d’Écarlithe accordé",
+      "colorState": "attuned",
+      "installable": true,
+      "attunementState": "attuned"
+    }
+  ],
+  "axes": [
+    {
+      "id": "guard",
+      "label": "Garde",
+      "description": "Protéger, tenir et assumer une responsabilité."
+    },
+    {
+      "id": "drive",
+      "label": "Élan",
+      "description": "Agir, décider et traverser le danger."
+    },
+    {
+      "id": "insight",
+      "label": "Clairvoyance",
+      "description": "Comprendre, observer et rechercher la vérité."
+    },
+    {
+      "id": "harmony",
+      "label": "Harmonie",
+      "description": "Relier, apaiser et préserver les personnes."
+    },
+    {
+      "id": "creation",
+      "label": "Création",
+      "description": "Transformer, réparer et inventer une solution."
+    },
+    {
+      "id": "freedom",
+      "label": "Liberté",
+      "description": "Choisir sa voie, s’adapter et refuser l’enfermement."
+    }
+  ],
+  "palette": [
+    { "id": "azure", "label": "Azur", "hex": "#3A8DFF", "axis": "guard" },
+    { "id": "scarlet", "label": "Écarlate", "hex": "#F04455", "axis": "drive" },
+    { "id": "cyan", "label": "Cyan", "hex": "#59DDE8", "axis": "insight" },
+    {
+      "id": "emerald",
+      "label": "Émeraude",
+      "hex": "#3DCE7A",
+      "axis": "harmony"
+    },
+    { "id": "amber", "label": "Ambre", "hex": "#F2AD3F", "axis": "creation" },
+    { "id": "violet", "label": "Violet", "hex": "#9A68E8", "axis": "freedom" }
+  ],
+  "questions": [
+    {
+      "id": "failing-system",
+      "prompt": "Un système vital cède au milieu d’une crise. Quelle est ta première priorité ?",
+      "options": [
+        {
+          "id": "secure-people",
+          "label": "Mettre les personnes à l’abri et tenir une zone sûre.",
+          "weights": { "guard": 2, "harmony": 1 }
+        },
+        {
+          "id": "understand-failure",
+          "label": "Isoler la panne et comprendre précisément sa cause.",
+          "weights": { "insight": 2, "creation": 1 }
+        },
+        {
+          "id": "improvise-bypass",
+          "label": "Improviser une dérivation pour rétablir immédiatement la fonction.",
+          "weights": { "creation": 2, "drive": 1 }
+        },
+        {
+          "id": "enter-breach",
+          "label": "Aller directement au point de rupture malgré le danger.",
+          "weights": { "drive": 2, "guard": 1 }
+        }
+      ]
+    },
+    {
+      "id": "unknown-signal",
+      "prompt": "Un signal inconnu répond depuis une zone interdite. Que fais-tu ?",
+      "options": [
+        {
+          "id": "observe-patterns",
+          "label": "Observer longtemps ses motifs avant toute réponse.",
+          "weights": { "insight": 2, "guard": 1 }
+        },
+        {
+          "id": "answer-openly",
+          "label": "Répondre avec prudence mais sans dissimuler l’intention de dialogue.",
+          "weights": { "harmony": 2, "freedom": 1 }
+        },
+        {
+          "id": "build-probe",
+          "label": "Construire un relais ou une sonde pour établir un contact indirect.",
+          "weights": { "creation": 2, "insight": 1 }
+        },
+        {
+          "id": "cross-boundary",
+          "label": "Franchir la limite et aller chercher la réponse soi-même.",
+          "weights": { "freedom": 2, "drive": 1 }
+        }
+      ]
+    },
+    {
+      "id": "unjust-order",
+      "prompt": "Une autorité légitime donne un ordre que tu estimes injuste. Que privilégies-tu ?",
+      "options": [
+        {
+          "id": "protect-targets",
+          "label": "Protéger d’abord ceux que l’ordre met en danger.",
+          "weights": { "guard": 2, "harmony": 1 }
+        },
+        {
+          "id": "seek-evidence",
+          "label": "Rassembler des preuves et confronter la décision à ses conséquences.",
+          "weights": { "insight": 2, "guard": 1 }
+        },
+        {
+          "id": "refuse-openly",
+          "label": "Refuser ouvertement et accepter les conséquences.",
+          "weights": { "freedom": 2, "drive": 1 }
+        },
+        {
+          "id": "change-method",
+          "label": "Modifier l’exécution pour atteindre l’objectif sans commettre l’injustice.",
+          "weights": { "creation": 2, "harmony": 1 }
+        }
+      ]
+    },
+    {
+      "id": "scarce-seat",
+      "prompt": "Il ne reste qu’une place dans une capsule de sauvetage. Comment tranches-tu ?",
+      "options": [
+        {
+          "id": "stay-behind",
+          "label": "Rester pour que quelqu’un d’autre parte.",
+          "weights": { "guard": 2, "harmony": 1 }
+        },
+        {
+          "id": "maximize-survival",
+          "label": "Choisir la personne dont la survie donne le plus de chances au groupe.",
+          "weights": { "insight": 2, "guard": 1 }
+        },
+        {
+          "id": "make-another-way",
+          "label": "Refuser le choix imposé et fabriquer une autre possibilité.",
+          "weights": { "creation": 2, "freedom": 1 }
+        },
+        {
+          "id": "draw-lots",
+          "label": "Donner à chacun une chance égale, toi compris.",
+          "weights": { "freedom": 2, "harmony": 1 }
+        }
+      ]
+    },
+    {
+      "id": "dangerous-discovery",
+      "prompt": "Tu découvres une connaissance capable d’aider autant que de détruire. Que fais-tu ?",
+      "options": [
+        {
+          "id": "seal-it",
+          "label": "La sceller jusqu’à ce qu’une garde fiable soit possible.",
+          "weights": { "guard": 2, "insight": 1 }
+        },
+        {
+          "id": "study-it",
+          "label": "L’étudier entièrement avant de décider de son usage.",
+          "weights": { "insight": 2, "creation": 1 }
+        },
+        {
+          "id": "share-carefully",
+          "label": "La partager avec un cercle capable d’en porter collectivement la responsabilité.",
+          "weights": { "harmony": 2, "guard": 1 }
+        },
+        {
+          "id": "break-monopoly",
+          "label": "Empêcher qu’une seule autorité puisse en contrôler l’accès.",
+          "weights": { "freedom": 2, "drive": 1 }
+        }
+      ]
+    },
+    {
+      "id": "broken-companion",
+      "prompt": "Un compagnon est brisé par l’échec et veut abandonner. Comment l’aides-tu ?",
+      "options": [
+        {
+          "id": "stand-watch",
+          "label": "Rester près de lui et porter sa part jusqu’à ce qu’il se relève.",
+          "weights": { "harmony": 2, "guard": 1 }
+        },
+        {
+          "id": "give-truth",
+          "label": "L’aider à nommer lucidement ce qui s’est passé et ce qui reste possible.",
+          "weights": { "insight": 2, "harmony": 1 }
+        },
+        {
+          "id": "new-task",
+          "label": "Lui proposer une tâche concrète qui transforme l’échec en prochaine étape.",
+          "weights": { "creation": 2, "drive": 1 }
+        },
+        {
+          "id": "respect-choice",
+          "label": "Respecter son choix tout en lui laissant une voie de retour.",
+          "weights": { "freedom": 2, "harmony": 1 }
+        }
+      ]
+    },
+    {
+      "id": "blocked-route",
+      "prompt": "La route prévue est définitivement fermée. Quel réflexe te ressemble le plus ?",
+      "options": [
+        {
+          "id": "hold-position",
+          "label": "Consolider la position et protéger ce qui peut encore l’être.",
+          "weights": { "guard": 2, "creation": 1 }
+        },
+        {
+          "id": "map-causes",
+          "label": "Comprendre pourquoi la route s’est fermée avant de repartir.",
+          "weights": { "insight": 2, "guard": 1 }
+        },
+        {
+          "id": "open-route",
+          "label": "Créer un passage que personne n’avait prévu.",
+          "weights": { "creation": 2, "freedom": 1 }
+        },
+        {
+          "id": "move-now",
+          "label": "Choisir une direction imparfaite et avancer avant d’être immobilisé.",
+          "weights": { "drive": 2, "freedom": 1 }
+        }
+      ]
+    },
+    {
+      "id": "lasting-mark",
+      "prompt": "Si ton passage devait laisser une seule trace, laquelle choisirais-tu ?",
+      "options": [
+        {
+          "id": "shelter",
+          "label": "Un refuge qui continue de protéger après ton départ.",
+          "weights": { "guard": 2, "harmony": 1 }
+        },
+        {
+          "id": "truth",
+          "label": "Une vérité comprise et transmissible.",
+          "weights": { "insight": 2, "creation": 1 }
+        },
+        {
+          "id": "work",
+          "label": "Une œuvre utile que d’autres pourront améliorer.",
+          "weights": { "creation": 2, "harmony": 1 }
+        },
+        {
+          "id": "open-door",
+          "label": "Une porte ouverte que personne ne pourra refermer entièrement.",
+          "weights": { "freedom": 2, "drive": 1 }
+        }
+      ]
+    }
+  ],
+  "tieBreaker": {
+    "prompt": "Lorsque deux résonances demeurent égales, quelle phrase veux-tu conserver au moment de l’accord ?",
+    "showOnlyTiedAxes": true,
+    "options": [
+      {
+        "axis": "guard",
+        "label": "Je resterai quand les autres devront partir."
+      },
+      {
+        "axis": "drive",
+        "label": "J’agirai quand l’instant exigera une décision."
+      },
+      {
+        "axis": "insight",
+        "label": "Je chercherai ce qui est vrai avant ce qui rassure."
+      },
+      {
+        "axis": "harmony",
+        "label": "Je préserverai les liens qui nous empêchent de nous perdre."
+      },
+      {
+        "axis": "creation",
+        "label": "Je bâtirai une réponse là où il n’en existe pas encore."
+      },
+      {
+        "axis": "freedom",
+        "label": "Je garderai le droit de choisir ma propre voie."
+      }
+    ]
+  },
+  "permissions": {
+    "answer": "owner-or-gm",
+    "answerForNpc": "gm",
+    "directColorEdit": "gm",
+    "reset": "gm",
+    "observer": "result-only"
+  },
+  "persistence": {
+    "owner": "crystal-item",
+    "subjectReference": true,
+    "questionnaireVersion": true,
+    "answers": true,
+    "scores": true,
+    "completedAt": true,
+    "resetOnTransfer": false,
+    "keepHistory": true,
+    "automaticReattunement": false
+  },
+  "mechanics": {
+    "grantsMechanicalBonus": false,
+    "usesChargeUnits": false,
+    "usesCE": false,
+    "pranaResolutionLot": "10-F"
+  }
+}
