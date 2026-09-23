@@ -117,8 +117,13 @@ function ownLoad(item: InventoryItemLike): InventoryLoad {
       ? null
       : Number((Math.max(0, each) * quantity).toPrecision(12));
   };
+  const ownMass = total(physicalUnitMass(physical));
+  const ammunitionMass = internalAmmunitionMass(item);
   return {
-    mass: total(physicalUnitMass(physical)),
+    mass:
+      ownMass === null || ammunitionMass === null
+        ? null
+        : Number((ownMass + ammunitionMass).toPrecision(12)),
     volume: total(physical.volumeEach),
     bulk: total(physical.bulkEach),
     units:
@@ -128,6 +133,30 @@ function ownLoad(item: InventoryItemLike): InventoryLoad {
           ? 1
           : 0,
   };
+}
+
+/** Internal magazines and separate chambers are snapshots, not duplicate Items. */
+export function internalAmmunitionMass(item: InventoryItemLike): number | null {
+  const profile =
+    item.type === "weapon"
+      ? item.system.weaponProfile
+      : ["armor", "equipment"].includes(item.type)
+        ? item.system.supplyProfile
+        : null;
+  if (!profile) return 0;
+  const segments = [
+    ...Array.from(profile.loadSequence ?? []),
+    ...Array.from(profile.chamberLoad ?? []),
+  ] as any[];
+  let total = 0;
+  for (const segment of segments) {
+    const quantity = Number(segment.quantity);
+    const massEach = finite(segment.massEach);
+    if (!Number.isSafeInteger(quantity) || quantity <= 0 || massEach === null)
+      return null;
+    total += quantity * massEach;
+  }
+  return Number(total.toPrecision(12));
 }
 
 function addLoads(loads: InventoryLoad[]): InventoryLoad {

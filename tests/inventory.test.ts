@@ -17,6 +17,10 @@ import {
   saveEquipmentOutfit,
   saveEquipmentProfile,
   moveInventoryItem,
+  loadAmmunition,
+  unloadAmmunition,
+  transferItemEnergy,
+  consumeInventoryItem,
 } from "../src/services/inventory";
 
 function reference(relisId = ""): Record<string, unknown> {
@@ -729,5 +733,283 @@ describe("opérations documentaires compensées 10-E2-P", () => {
     ).rejects.toThrow(/suppression simulée/u);
     expect(source.items.has("item")).toBe(true);
     expect(destination.items.size).toBe(0);
+  });
+});
+
+describe("opérations matérielles 10-E4-P", () => {
+  beforeEach(() => {
+    (globalThis as any).game = {
+      user: { id: "gm", isGM: true },
+      actors: { contents: [] },
+    };
+  });
+
+  it("charge puis décharge un magasin interne sans perdre le profil ni la quantité", async () => {
+    const actor = new MockActor("source");
+    const weapon = actor.add(
+      inventoryItem("weapon", "weapon", {
+        weaponProfile: {
+          feedKind: "internal",
+          chamberId: "CH-9X",
+          pressureClass: "P2",
+          feedInterface: "",
+          capacity: 6,
+          chamberSeparate: false,
+          loadSequence: [],
+          chamberLoad: [],
+        },
+      }),
+    );
+    const ammunition = actor.add(
+      inventoryItem("ammo", "ammunition", {
+        physical: {
+          ...inventoryItem("x").system.physical,
+          quantity: 5,
+          massEach: 0.02,
+        },
+        ammunitionProfile: {
+          family: "balistique",
+          chamberId: "CH-9X",
+          pressureClass: "P2",
+          feedInterfaces: [],
+          impactModifier: "standard",
+          damageTypes: ["Perforant"],
+          damageSources: ["Balistique"],
+          penetrationModifier: 1,
+          rangeModifier: "",
+          signatureModifiers: [],
+          effectSummary: "",
+          specialTraits: ["traçante"],
+          recoverable: false,
+          loadOrder: 0,
+        },
+      }),
+    );
+
+    expect(
+      presentInventory([weapon as any, ammunition as any]).totalLoad.mass,
+    ).toBe(1.1);
+
+    await loadAmmunition(actor as any, weapon.id, ammunition.id, 3);
+    expect(ammunition.system.physical.quantity).toBe(2);
+    expect(weapon.system.weaponProfile.loadSequence).toEqual([
+      expect.objectContaining({
+        quantity: 3,
+        profile: expect.objectContaining({
+          chamberId: "CH-9X",
+          damageTypes: ["Perforant"],
+          penetrationModifier: 1,
+        }),
+      }),
+    ]);
+    expect(
+      presentInventory([weapon as any, ammunition as any]).totalLoad.mass,
+    ).toBe(1.1);
+
+    await unloadAmmunition(actor as any, weapon.id);
+    expect(ammunition.system.physical.quantity).toBe(5);
+    expect(weapon.system.weaponProfile.loadSequence).toEqual([]);
+    expect(
+      presentInventory([weapon as any, ammunition as any]).totalLoad.mass,
+    ).toBe(1.1);
+    expect(
+      actor.flags.relis.inventoryJournal.map((entry: any) => entry.action),
+    ).toEqual(["load", "unload"]);
+  });
+
+  it("restaure intégralement un chargement interrompu avant de journaliser", async () => {
+    const actor = new MockActor("source");
+    const weapon = actor.add(
+      inventoryItem("weapon", "weapon", {
+        weaponProfile: {
+          feedKind: "internal",
+          chamberId: "CH-REC",
+          pressureClass: "P1",
+          feedInterface: "",
+          capacity: 4,
+          chamberSeparate: false,
+          loadSequence: [],
+          chamberLoad: [],
+        },
+      }),
+    );
+    const ammunition = actor.add(
+      inventoryItem("ammo", "ammunition", {
+        physical: {
+          ...inventoryItem("x").system.physical,
+          quantity: 3,
+        },
+        ammunitionProfile: {
+          chamberId: "CH-REC",
+          pressureClass: "P1",
+          feedInterfaces: [],
+        },
+      }),
+    );
+    actor.failAfterFirstEquipmentWrite = true;
+
+    await expect(
+      loadAmmunition(actor as any, weapon.id, ammunition.id, 2),
+    ).rejects.toThrow(/partielle/);
+    expect(ammunition.system.physical.quantity).toBe(3);
+    expect(weapon.system.weaponProfile.loadSequence).toEqual([]);
+    expect(actor.flags.relis?.equipmentRecovery).toBeUndefined();
+    expect(actor.flags.relis?.inventoryJournal).toBeUndefined();
+  });
+
+  it("conserve de vrais Items ordonnés dans un chargeur détachable", async () => {
+    const actor = new MockActor("source");
+    const magazine = actor.add(
+      inventoryItem("magazine", "container", {
+        containerKind: "magazine",
+        magazineProfile: {
+          chamberId: "CH-A",
+          pressureClass: "P1",
+          interfaceId: "IF-A",
+          capacity: 4,
+        },
+      }),
+    );
+    const ammunition = actor.add(
+      inventoryItem("ammo", "ammunition", {
+        physical: {
+          ...inventoryItem("x").system.physical,
+          quantity: 4,
+        },
+        ammunitionProfile: {
+          chamberId: "CH-A",
+          pressureClass: "P1",
+          feedInterfaces: ["IF-A"],
+          loadOrder: 0,
+        },
+      }),
+    );
+
+    await loadAmmunition(actor as any, magazine.id, ammunition.id, 2);
+    const loaded = [...actor.items.values()].find(
+      (item) => item.id !== ammunition.id && item.type === "ammunition",
+    )!;
+    expect(ammunition.system.physical.quantity).toBe(2);
+    expect(loaded.system.physical).toMatchObject({ quantity: 2 });
+    expect(loaded.system.physical.containerRef.relisId).toBe(
+      magazine.system.meta.relisId,
+    );
+    expect(loaded.system.ammunitionProfile.loadOrder).toBe(1);
+
+    await unloadAmmunition(actor as any, magazine.id);
+    expect(loaded.system.physical.containerRef.relisId).toBe("");
+    expect(
+      [...actor.items.values()]
+        .filter((item) => item.type === "ammunition")
+        .reduce((sum, item) => sum + Number(item.system.physical.quantity), 0),
+    ).toBe(4);
+  });
+
+  it("conserve les CE, refuse l’auto-recharge et consomme une seule unité", async () => {
+    const actor = new MockActor("source");
+    const battery = actor.add(
+      inventoryItem("battery", "equipment", {
+        energyProfile: {
+          kind: "battery",
+          format: "BAT-S",
+          current: 10,
+          maximum: 12,
+          output: 6,
+        },
+      }),
+    );
+    const device = actor.add(
+      inventoryItem("device", "equipment", {
+        energyProfile: {
+          kind: "internal",
+          format: "BAT-S",
+          current: 1,
+          maximum: 8,
+        },
+      }),
+    );
+    const consumable = actor.add(
+      inventoryItem("dose", "consumable", {
+        physical: {
+          ...inventoryItem("x").system.physical,
+          quantity: 2,
+        },
+        consumableProfile: { kind: "medical" },
+      }),
+    );
+
+    await transferItemEnergy(actor as any, battery.id, device.id, 5);
+    expect(battery.system.energyProfile.current).toBe(5);
+    expect(device.system.energyProfile.current).toBe(6);
+    await expect(
+      transferItemEnergy(actor as any, battery.id, battery.id, 1),
+    ).rejects.toThrow(/elle-même/);
+    await consumeInventoryItem(actor as any, consumable.id);
+    expect(consumable.system.physical.quantity).toBe(1);
+  });
+
+  it("suit les usages d’un consommable multi-usage sans détruire son Item", async () => {
+    const actor = new MockActor("source");
+    const injector = actor.add(
+      inventoryItem("injector", "consumable", {
+        consumableProfile: { kind: "medical", usesPerUnit: 3 },
+      }),
+    );
+    await consumeInventoryItem(actor as any, injector.id);
+    expect(injector.system.physical.quantity).toBe(1);
+    expect(injector.system.physical.charges).toMatchObject({
+      current: 2,
+      maximum: 3,
+    });
+    await consumeInventoryItem(actor as any, injector.id);
+    await consumeInventoryItem(actor as any, injector.id);
+    expect(injector.system.physical.charges.current).toBe(0);
+    await expect(
+      consumeInventoryItem(actor as any, injector.id),
+    ).rejects.toThrow(/plus de charge/);
+  });
+
+  it("recontrôle la propriété avant toute mutation matérielle", async () => {
+    const actor = new MockActor("source");
+    actor.isOwner = false;
+    (globalThis as any).game.user.isGM = false;
+    actor.add(inventoryItem("dose", "consumable"));
+    await expect(consumeInventoryItem(actor as any, "dose")).rejects.toThrow(
+      /ne pouvez pas modifier/,
+    );
+    expect(actor.items.get("dose")!.system.physical.quantity).toBe(1);
+  });
+
+  it("exige un exemplaire unique pour les chargeurs et réserves à état propre", async () => {
+    const actor = new MockActor("source");
+    const weapon = actor.add(
+      inventoryItem("weapons", "weapon", {
+        physical: {
+          ...inventoryItem("x").system.physical,
+          quantity: 2,
+        },
+        weaponProfile: {
+          feedKind: "internal",
+          chamberId: "CH-U",
+          pressureClass: "P1",
+          capacity: 2,
+          loadSequence: [],
+          chamberLoad: [],
+        },
+      }),
+    );
+    const ammunition = actor.add(
+      inventoryItem("ammo-u", "ammunition", {
+        ammunitionProfile: {
+          chamberId: "CH-U",
+          pressureClass: "P1",
+          feedInterfaces: [],
+        },
+      }),
+    );
+    await expect(
+      loadAmmunition(actor as any, weapon.id, ammunition.id, 1),
+    ).rejects.toThrow(/exemplaire unique/);
+    expect(ammunition.system.physical.quantity).toBe(1);
   });
 });

@@ -28,6 +28,41 @@ function optionalNumberField(minimum = 0, maximum?: number): any {
   });
 }
 
+function stringChoiceField(
+  choices: readonly string[],
+  initial = "",
+  blank = initial === "",
+): any {
+  return new fields.StringField({
+    required: true,
+    blank,
+    choices,
+    initial,
+  });
+}
+
+function stringArrayField(): any {
+  return new fields.ArrayField(new fields.StringField(), {
+    required: true,
+    initial: () => [],
+  });
+}
+
+function durabilityField(): any {
+  return new fields.SchemaField({
+    solidity: optionalNumberField(),
+    structureCurrent: optionalNumberField(),
+    structureMaximum: optionalNumberField(),
+    breakingThreshold: optionalNumberField(),
+    reliability: optionalNumberField(0, 5),
+    serviceLife: optionalStringField(),
+    maintenanceInterval: optionalStringField(),
+    signature: optionalStringField(),
+    heatCurrent: optionalNumberField(),
+    heatMaximum: optionalNumberField(),
+  });
+}
+
 function referenceField(): any {
   return new fields.SchemaField({
     relisId: optionalStringField(),
@@ -259,6 +294,18 @@ function physicalField(): any {
         required: true,
         initial: () => [],
       }),
+      technology: optionalStringField(),
+      technicalSize: optionalStringField(),
+      installationKind: stringChoiceField(
+        ["", "accessory", "modification", "improvement"],
+        "",
+      ),
+      effectSummary: optionalStringField(),
+      interfaceIds: stringArrayField(),
+      compatibleFamilies: stringArrayField(),
+      compatibleSizes: stringArrayField(),
+      compatibleTechnologies: stringArrayField(),
+      compatibleInterfaces: stringArrayField(),
       installable: new fields.BooleanField({ required: true, initial: false }),
       ordinaryLiquid: new fields.BooleanField({
         required: true,
@@ -271,6 +318,7 @@ function physicalField(): any {
       choices: ITEM_CONDITIONS,
       initial: "intact",
     }),
+    durability: durabilityField(),
     wear: new fields.NumberField({
       required: true,
       integer: true,
@@ -289,6 +337,314 @@ function physicalField(): any {
     }),
     expiresAt: fictionStampField(),
     identified: new fields.BooleanField({ required: true, initial: true }),
+  });
+}
+
+function loadSegmentField(): any {
+  return new fields.SchemaField({
+    ammunitionRef: referenceField(),
+    quantity: new fields.NumberField({
+      required: true,
+      integer: true,
+      min: 1,
+      initial: 1,
+    }),
+    massEach: optionalNumberField(),
+    lotId: optionalStringField(),
+    variantId: optionalStringField(),
+    profile: new fields.SchemaField({
+      family: optionalStringField(),
+      chamberId: optionalStringField(),
+      pressureClass: optionalStringField(),
+      feedInterfaces: stringArrayField(),
+      impactModifier: optionalStringField(),
+      damageTypes: stringArrayField(),
+      damageSources: stringArrayField(),
+      penetrationModifier: optionalNumberField(),
+      rangeModifier: optionalStringField(),
+      signatureModifiers: stringArrayField(),
+      effectSummary: optionalStringField(),
+      specialTraits: stringArrayField(),
+      recoverable: new fields.BooleanField({ required: true, initial: false }),
+    }),
+  });
+}
+
+function energyProfileField(): any {
+  return new fields.SchemaField({
+    kind: stringChoiceField(
+      ["", "battery", "internal", "generator", "singleUse"],
+      "",
+    ),
+    format: optionalStringField(),
+    powerClass: optionalStringField(),
+    technology: optionalStringField(),
+    current: optionalNumberField(),
+    maximum: optionalNumberField(),
+    output: optionalNumberField(),
+    outputClass: optionalStringField(),
+    cycle: stringChoiceField(["", "rechargeable", "consumable", "hybrid"], ""),
+    rechargeMethod: optionalStringField(),
+    rechargeDuration: optionalStringField(),
+    signature: optionalStringField(),
+    heatCurrent: optionalNumberField(),
+    heatMaximum: optionalNumberField(),
+    rechargeable: new fields.BooleanField({ required: true, initial: false }),
+  });
+}
+
+function weaponProfileField(): any {
+  return new fields.SchemaField({
+    family: optionalStringField(),
+    support: stringChoiceField(
+      ["", "personal", "vehicle", "mecha", "spatial", "natural"],
+      "",
+    ),
+    access: stringChoiceField(
+      ["", "common", "martial", "specialized", "heavy"],
+      "",
+    ),
+    attackMode: stringChoiceField(
+      ["", "melee", "ranged", "thrown", "mounted", "natural"],
+      "",
+    ),
+    defenseTarget: stringChoiceField(
+      ["", "cap", "cae", "maneuver", "profile"],
+      "",
+    ),
+    handsRequired: optionalNumberField(0, 2),
+    handsFlexible: new fields.BooleanField({ required: true, initial: false }),
+    skillKey: optionalStringField(),
+    attributeKey: optionalStringField(),
+    accuracy: optionalNumberField(-20, 20),
+    damageFormula: optionalStringField(),
+    damageTypes: stringArrayField(),
+    penetration: optionalNumberField(),
+    critical: optionalStringField(),
+    prerequisiteSummary: optionalStringField(),
+    damageSources: stringArrayField(),
+    rangeKind: stringChoiceField(
+      ["", "contact", "thrown", "increments", "zone", "special"],
+      "",
+    ),
+    range: optionalStringField(),
+    rangeOptimal: optionalNumberField(),
+    rangeMaximum: optionalNumberField(),
+    reach: optionalNumberField(),
+    cadence: optionalStringField(),
+    recoil: optionalNumberField(),
+    feedKind: stringChoiceField(
+      ["", "none", "internal", "detachable", "energy", "hybrid"],
+      "",
+    ),
+    chamberId: optionalStringField(),
+    pressureClass: optionalStringField(),
+    feedInterface: optionalStringField(),
+    capacity: optionalNumberField(),
+    consumption: optionalNumberField(),
+    reloadActions: optionalNumberField(),
+    reloadProcedure: optionalStringField(),
+    chamberSeparate: new fields.BooleanField({
+      required: true,
+      initial: false,
+    }),
+    modes: stringArrayField(),
+    signatures: stringArrayField(),
+    loadSequence: new fields.ArrayField(loadSegmentField(), {
+      required: true,
+      initial: () => [],
+    }),
+    chamberLoad: new fields.ArrayField(loadSegmentField(), {
+      required: true,
+      initial: () => [],
+    }),
+  });
+}
+
+function supplyProfileField(): any {
+  return new fields.SchemaField({
+    feedKind: stringChoiceField(
+      ["", "none", "internal", "detachable", "hybrid"],
+      "",
+    ),
+    chamberId: optionalStringField(),
+    pressureClass: optionalStringField(),
+    feedInterface: optionalStringField(),
+    capacity: optionalNumberField(),
+    consumption: optionalNumberField(),
+    reloadActions: optionalNumberField(),
+    reloadProcedure: optionalStringField(),
+    chamberSeparate: new fields.BooleanField({
+      required: true,
+      initial: false,
+    }),
+    loadSequence: new fields.ArrayField(loadSegmentField(), {
+      required: true,
+      initial: () => [],
+    }),
+    chamberLoad: new fields.ArrayField(loadSegmentField(), {
+      required: true,
+      initial: () => [],
+    }),
+  });
+}
+
+function protectionProfileField(): any {
+  return new fields.SchemaField({
+    kind: stringChoiceField(
+      [
+        "",
+        "underlayer",
+        "light",
+        "intermediate",
+        "heavy",
+        "exo",
+        "underhelmet",
+        "helmet",
+        "arms",
+        "legs",
+        "eva",
+        "shield",
+        "barrier",
+      ],
+      "",
+    ),
+    access: stringChoiceField(
+      ["", "common", "martial", "specialized", "heavy"],
+      "",
+    ),
+    dexterityCap: optionalNumberField(),
+    capBonus: optionalNumberField(0, 20),
+    caeBonus: optionalNumberField(0, 20),
+    solidityPhysical: optionalNumberField(),
+    solidityEnergy: optionalNumberField(),
+    coverage: stringArrayField(),
+    layers: stringArrayField(),
+    compatibilities: stringArrayField(),
+    environmentCoverage: stringArrayField(),
+    environmentProtections: stringArrayField(),
+    strengthRequirement: optionalNumberField(),
+    speedModifier: optionalNumberField(-20, 20),
+    stealthModifier: optionalNumberField(-20, 20),
+    sealing: stringChoiceField(["", "none", "partial", "sealed"], ""),
+    equipTime: optionalStringField(),
+    barrierCurrent: optionalNumberField(),
+    barrierMaximum: optionalNumberField(),
+    barrierKind: optionalStringField(),
+    barrierCompatibilities: stringArrayField(),
+    absorptionFormula: optionalStringField(),
+    activationCost: optionalNumberField(),
+    upkeep: optionalStringField(),
+    rechargeRatePerCe: optionalNumberField(),
+    rechargeDuration: optionalStringField(),
+    interception: optionalStringField(),
+    collapseEffect: optionalStringField(),
+    returnProcedure: optionalStringField(),
+    constraintSummary: optionalStringField(),
+  });
+}
+
+function ammunitionProfileField(): any {
+  return new fields.SchemaField({
+    family: optionalStringField(),
+    chamberId: optionalStringField(),
+    pressureClass: optionalStringField(),
+    feedInterfaces: stringArrayField(),
+    impactModifier: optionalStringField(),
+    damageTypes: stringArrayField(),
+    damageSources: stringArrayField(),
+    penetrationModifier: optionalNumberField(),
+    rangeModifier: optionalStringField(),
+    signatureModifiers: stringArrayField(),
+    effectSummary: optionalStringField(),
+    specialTraits: stringArrayField(),
+    recoverable: new fields.BooleanField({ required: true, initial: false }),
+    loadOrder: new fields.NumberField({
+      required: true,
+      integer: true,
+      min: 0,
+      initial: 0,
+    }),
+  });
+}
+
+function consumableProfileField(): any {
+  return new fields.SchemaField({
+    kind: stringChoiceField(
+      [
+        "",
+        "medical",
+        "drug",
+        "toxin",
+        "potion",
+        "matrix",
+        "grenade",
+        "mine",
+        "charge",
+        "utility",
+      ],
+      "",
+    ),
+    dose: optionalStringField(),
+    treatmentFamily: optionalStringField(),
+    route: stringChoiceField(
+      [
+        "",
+        "oral",
+        "inhaled",
+        "cutaneous",
+        "injected",
+        "infused",
+        "contact",
+        "other",
+      ],
+      "",
+    ),
+    duration: optionalStringField(),
+    toxicity: optionalNumberField(0, 5),
+    dependency: optionalNumberField(0, 4),
+    usesPerUnit: optionalNumberField(1),
+    actionCost: optionalNumberField(),
+    activation: optionalStringField(),
+    rangeOrPlacement: optionalStringField(),
+    area: optionalStringField(),
+    damageFormula: optionalStringField(),
+    damageTypes: stringArrayField(),
+    trigger: optionalStringField(),
+    guidance: optionalStringField(),
+    energySource: stringChoiceField(
+      ["", "mana", "prana", "flux", "technomagic", "other"],
+      "",
+    ),
+    encodedFormula: optionalStringField(),
+    formulaRank: optionalNumberField(),
+    autonomous: new fields.BooleanField({ required: true, initial: false }),
+    bufferKind: optionalStringField(),
+    bufferCurrent: optionalNumberField(),
+    bufferMaximum: optionalNumberField(),
+    residue: optionalStringField(),
+    effectSummary: optionalStringField(),
+    limitation: optionalStringField(),
+    safetyState: stringChoiceField(
+      ["", "usable", "uncertain", "contaminated", "expired"],
+      "",
+    ),
+    sterility: optionalStringField(),
+    storageConditions: optionalStringField(),
+    openedAt: optionalStringField(),
+  });
+}
+
+function currencyProfileField(): any {
+  return new fields.SchemaField({
+    physicalCash: new fields.BooleanField({ required: true, initial: false }),
+    currencyId: optionalStringField(),
+    currencyLabel: optionalStringField(),
+    denomination: new fields.NumberField({
+      required: true,
+      min: Number.EPSILON,
+      initial: 1,
+    }),
   });
 }
 
@@ -411,7 +767,66 @@ export class ActionData extends RelisItemData {
   }
 }
 
-export class EquipmentData extends PhysicalItemData {}
+export class WeaponData extends PhysicalItemData {
+  static defineSchema(): Record<string, any> {
+    return {
+      ...super.defineSchema(),
+      weaponProfile: weaponProfileField(),
+      protectionProfile: protectionProfileField(),
+      energyProfile: energyProfileField(),
+    };
+  }
+}
+
+export class ArmorData extends PhysicalItemData {
+  static defineSchema(): Record<string, any> {
+    return {
+      ...super.defineSchema(),
+      protectionProfile: protectionProfileField(),
+      energyProfile: energyProfileField(),
+      supplyProfile: supplyProfileField(),
+    };
+  }
+}
+
+export class EquipmentData extends PhysicalItemData {
+  static defineSchema(): Record<string, any> {
+    return {
+      ...super.defineSchema(),
+      energyProfile: energyProfileField(),
+      supplyProfile: supplyProfileField(),
+    };
+  }
+}
+
+export class ConsumableData extends PhysicalItemData {
+  static defineSchema(): Record<string, any> {
+    return {
+      ...super.defineSchema(),
+      consumableProfile: consumableProfileField(),
+      energyProfile: energyProfileField(),
+    };
+  }
+}
+
+export class AmmunitionData extends PhysicalItemData {
+  static defineSchema(): Record<string, any> {
+    return {
+      ...super.defineSchema(),
+      ammunitionProfile: ammunitionProfileField(),
+    };
+  }
+}
+
+export class ResourceData extends PhysicalItemData {
+  static defineSchema(): Record<string, any> {
+    return {
+      ...super.defineSchema(),
+      energyProfile: energyProfileField(),
+      currencyProfile: currencyProfileField(),
+    };
+  }
+}
 
 export class ContainerData extends PhysicalItemData {
   static defineSchema(): Record<string, any> {
@@ -428,6 +843,13 @@ export class ContainerData extends PhysicalItemData {
         blank: false,
         choices: CONTAINER_ACCESS_RULES,
         initial: "normal",
+      }),
+      containerKind: stringChoiceField(["general", "magazine"], "general"),
+      magazineProfile: new fields.SchemaField({
+        chamberId: optionalStringField(),
+        pressureClass: optionalStringField(),
+        interfaceId: optionalStringField(),
+        capacity: optionalNumberField(1),
       }),
     };
   }

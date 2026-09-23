@@ -11,7 +11,7 @@ function blocksAt(position) {
   for (const match of template
     .slice(0, position)
     .matchAll(/{{([#/]\w+[^}]*|else)}}/g)) {
-    const token = match[1];
+    const token = match[1].replace(/\s+/g, " ").trim();
     if (token.startsWith("#")) stack.push(token.slice(1));
     else if (token.startsWith("/")) stack.pop();
     else stack[stack.length - 1] += " else";
@@ -83,6 +83,13 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
       /<footer[^>]*>[\s\S]*?{{packageVersion}}<\/footer>/,
     );
     expect(template).not.toContain("0.3.6");
+    const itemSheet = readFileSync("src/sheets/item-sheet.ts", "utf8");
+    const itemTemplate = readFileSync("templates/items/item.hbs", "utf8");
+    expect(itemSheet).toContain("packageVersion: PACKAGE_VERSION");
+    expect(itemTemplate).toMatch(
+      /<footer[^>]*>[\s\S]*?{{packageVersion}}[\s\S]*?<\/footer>/,
+    );
+    expect(itemTemplate).not.toContain("0.3.6");
   });
   it("préserve le div neutre du contrat DialogV2 0.4.1", () => {
     expect(sheet).toMatch(
@@ -123,6 +130,35 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(sheet).toContain("previewEquipment(this.actor");
     expect(sheet).toContain("preview.fingerprint");
   });
+  it("présente les opérations 10-E4-P dans l’inventaire commun sous propriété", () => {
+    for (const [command, condition] of [
+      ["load", "if canLoadAmmunition"],
+      ["unload", "if canUnloadAmmunition"],
+      ["energy", "if canReceiveEnergy"],
+      ["consume", "if canConsume"],
+      ["port", "if @root.editable"],
+    ]) {
+      const position = template.indexOf(`data-material-command="${command}"`);
+      expect(position).toBeGreaterThan(0);
+      const blocks = blocksAt(position);
+      expect(blocks).toContain("if @root.editable");
+      expect(blocks).toContain(condition);
+      expect(blocks).toContain("if isPerson");
+    }
+    expect(template).toContain("loadedContentLines");
+    expect(template).toContain("modulePorts");
+    expect(sheet).toContain("ammunitionCompatibility");
+    expect(sheet).toContain("energyCompatibility");
+  });
+  it("sépare le liquide physique de la banque future", () => {
+    expect(template).toContain("physicalCash");
+    expect(template).toContain("Argent en banque");
+    expect(template).toMatch(/Non\s+raccordé/);
+    expect(template).toContain("Datapad 10-G7");
+    expect(template).not.toMatch(/system\.(bank|bankBalance|accountBalance)/);
+    expect(sheet).toContain("physicalCash: cashSummary(");
+    expect(sheet).toContain('String(activeBody?.id ?? "")');
+  });
 });
 
 it("place le profil dans la fiche Item et conserve la sélection dans le HTML", () => {
@@ -132,4 +168,32 @@ it("place le profil dans la fiche Item et conserve la sélection dans le HTML", 
   expect(itemTemplate).toContain("data-equipment-profile");
   expect(itemTemplate).toContain("{{checked checked}}");
   expect(itemTemplate).toContain("{{#if editable}}");
+});
+
+it("porte les profils spécialisés 10-E4-P dans les fiches Item", () => {
+  const itemTemplate = readFileSync("templates/items/item.hbs", "utf8");
+  for (const field of [
+    "system.weaponProfile.defenseTarget",
+    "system.weaponProfile.prerequisiteSummary",
+    "system.weaponProfile.reloadProcedure",
+    "system.protectionProfile.barrierCurrent",
+    "system.protectionProfile.environmentProtections",
+    "system.protectionProfile.returnProcedure",
+    "system.energyProfile.outputClass",
+    "system.ammunitionProfile.chamberId",
+    "system.consumableProfile.toxicity",
+    "system.consumableProfile.encodedFormula",
+    "system.consumableProfile.treatmentFamily",
+    "system.consumableProfile.safetyState",
+    "system.currencyProfile.physicalCash",
+    "system.magazineProfile.interfaceId",
+    "system.physical.durability.reliability",
+    "system.physical.equipmentProfile.compatibleInterfaces",
+    "system.physical.equipmentProfile.installationKind",
+    "system.physical.equipmentProfile.effectSummary",
+  ])
+    expect(itemTemplate).toContain(field);
+  expect(itemTemplate).toMatch(
+    /Les jets\s+d’attaque,\s+dégâts et blessures seront automatisés en 10-F/,
+  );
 });

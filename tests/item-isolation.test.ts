@@ -47,13 +47,40 @@ describe("isolation des données entre exemplaires Item", () => {
         },
       },
     });
-    const { PhysicalItemData, EquipmentData, ContainerData } =
-      await import("../src/data/item-models");
-    for (const Model of [PhysicalItemData, EquipmentData, ContainerData]) {
+    const {
+      PhysicalItemData,
+      EquipmentData,
+      ContainerData,
+      WeaponData,
+      ArmorData,
+      ConsumableData,
+      AmmunitionData,
+      ResourceData,
+    } = await import("../src/data/item-models");
+    for (const Model of [
+      PhysicalItemData,
+      EquipmentData,
+      ContainerData,
+      WeaponData,
+      ArmorData,
+      ConsumableData,
+      AmmunitionData,
+      ResourceData,
+    ]) {
       const schema = Model.defineSchema();
       const a = schema.physical.initial(),
         b = schema.physical.initial();
-      for (const key of ["bodySlots", "sizes", "natures", "hostTypes"]) {
+      for (const key of [
+        "bodySlots",
+        "sizes",
+        "natures",
+        "hostTypes",
+        "interfaceIds",
+        "compatibleFamilies",
+        "compatibleSizes",
+        "compatibleTechnologies",
+        "compatibleInterfaces",
+      ]) {
         expect(a.equipmentProfile[key]).not.toBe(b.equipmentProfile[key]);
         a.equipmentProfile[key].splice(
           0,
@@ -66,5 +93,65 @@ describe("isolation des données entre exemplaires Item", () => {
       a.equipmentProfile.providedSlots.optic = 4;
       expect(b.equipmentProfile.providedSlots.optic).toBe(0);
     }
+    const expectIndependentArrays = (field: Field, keys: string[]): void => {
+      const a = field.initial();
+      const b = field.initial();
+      for (const key of keys) {
+        expect(a[key]).not.toBe(b[key]);
+        a[key].push("local");
+        expect(b[key]).toEqual([]);
+        expect(field.initial()[key]).toEqual([]);
+      }
+    };
+    const weaponSchema = WeaponData.defineSchema();
+    expectIndependentArrays(weaponSchema.weaponProfile, [
+      "damageTypes",
+      "damageSources",
+      "modes",
+      "signatures",
+      "loadSequence",
+      "chamberLoad",
+    ]);
+    expectIndependentArrays(weaponSchema.protectionProfile, [
+      "coverage",
+      "layers",
+      "compatibilities",
+      "environmentCoverage",
+      "environmentProtections",
+      "barrierCompatibilities",
+    ]);
+    const armorSchema = ArmorData.defineSchema();
+    expectIndependentArrays(armorSchema.protectionProfile, [
+      "coverage",
+      "layers",
+      "compatibilities",
+      "environmentCoverage",
+      "environmentProtections",
+      "barrierCompatibilities",
+    ]);
+    expectIndependentArrays(armorSchema.supplyProfile, [
+      "loadSequence",
+      "chamberLoad",
+    ]);
+    const equipmentSchema = EquipmentData.defineSchema();
+    expectIndependentArrays(equipmentSchema.supplyProfile, [
+      "loadSequence",
+      "chamberLoad",
+    ]);
+    const consumableSchema = ConsumableData.defineSchema();
+    expectIndependentArrays(consumableSchema.consumableProfile, [
+      "damageTypes",
+    ]);
+    const ammunitionSchema = AmmunitionData.defineSchema();
+    expectIndependentArrays(ammunitionSchema.ammunitionProfile, [
+      "feedInterfaces",
+      "damageTypes",
+      "damageSources",
+      "signatureModifiers",
+      "specialTraits",
+    ]);
+    expect(weaponSchema.weaponProfile.initial().loadSequence).not.toBe(
+      weaponSchema.weaponProfile.initial().loadSequence,
+    );
   });
 });

@@ -9,12 +9,14 @@ import {
   installationSlotErrors,
 } from "./equipment-slots";
 import {
+  internalAmmunitionMass,
   presentInventory,
   referenceIdentity,
   type InventoryItemLike,
 } from "./inventory";
 import { initialReference } from "../data/item-defaults";
 import { physicalUnitMass } from "./physical-mass";
+import { magazineCompatibility } from "./personal-material";
 
 export const EQUIPMENT_LABELS: Record<string, string> = {
   stored: "Rangé",
@@ -95,7 +97,11 @@ export function equipmentStates(item: InventoryItemLike): string[] {
     !states.includes("equipped")
   )
     states.push("equipped");
-  if (profile.installable === true) states.push("installed");
+  if (
+    profile.installable === true ||
+    (item.type === "container" && item.system.containerKind === "magazine")
+  )
+    states.push("installed");
   // An explicit return to storage is always possible; container movement remains separate.
   if (!states.includes("stored")) states.unshift("stored");
   return states;
@@ -259,6 +265,19 @@ export function equipmentPlan(
         : state === "equipped" && shield
           ? Number(profile.shieldHands ?? 0)
           : 0;
+  const weaponHands = Number(item.system.weaponProfile?.handsRequired);
+  if (
+    item.type === "weapon" &&
+    state.startsWith("held-") &&
+    item.system.weaponProfile?.handsRequired != null &&
+    ((weaponHands === 2 && hands !== 2) ||
+      (weaponHands === 1 &&
+        hands !== 1 &&
+        item.system.weaponProfile?.handsFlexible !== true))
+  )
+    errors.push(
+      `Prise incompatible : ce profil exige ${weaponHands} main${weaponHands > 1 ? "s" : ""}${item.system.weaponProfile?.handsFlexible ? " au minimum" : ""}.`,
+    );
   const others = items.filter(
     (entry) =>
       entry.id !== item.id &&
@@ -375,6 +394,51 @@ export function equipmentPlan(
         errors.push("Hôte sur un autre corps.");
       if (profile.hostTypes?.length && !profile.hostTypes.includes(host.type))
         errors.push("Type d’hôte incompatible.");
+      const hostProfile = host.system.physical?.equipmentProfile ?? {};
+      for (const [requirements, hostValue, label] of [
+        [
+          profile.compatibleFamilies,
+          host.system.weaponProfile?.family ||
+            host.system.protectionProfile?.kind ||
+            hostProfile.functionalCategory,
+          "famille fonctionnelle",
+        ],
+        [profile.compatibleSizes, hostProfile.technicalSize, "gabarit"],
+        [profile.compatibleTechnologies, hostProfile.technology, "technologie"],
+      ] as const)
+        if (
+          Array.isArray(requirements) &&
+          requirements.length > 0 &&
+          (!hostValue || !requirements.includes(hostValue))
+        )
+          errors.push(
+            `Compatibilité de ${label} absente : ${hostValue || "profil d’hôte non renseigné"}.`,
+          );
+      if (
+        Array.isArray(profile.compatibleInterfaces) &&
+        profile.compatibleInterfaces.length
+      ) {
+        const hostInterfaces = Array.from(
+          hostProfile.interfaceIds ?? [],
+          String,
+        );
+        if (
+          !profile.compatibleInterfaces.some((value: string) =>
+            hostInterfaces.includes(value),
+          )
+        )
+          errors.push("Aucune interface technique compatible avec cet hôte.");
+      }
+      if (item.type === "container" && item.system.containerKind === "magazine")
+        errors.push(...magazineCompatibility(item, host));
+      if (item.system.energyProfile?.kind === "battery") {
+        const sourceFormat = String(item.system.energyProfile?.format ?? "");
+        const targetFormat = String(host.system.energyProfile?.format ?? "");
+        if (!sourceFormat || !targetFormat || sourceFormat !== targetFormat)
+          errors.push(
+            `Format énergétique incompatible : ${sourceFormat || "non renseigné"} / ${targetFormat || "non renseigné"}.`,
+          );
+      }
       errors.push(...installationSlotErrors(items, item, host));
     }
   }
@@ -446,15 +510,17 @@ export function carriedMass(items: InventoryItemLike[], body: EquipmentBody) {
     const p = item.system.physical ?? {};
     const quantity = Number(p.quantity);
     const each = unitMass(item);
+    const ammunitionMass = internalAmmunitionMass(item);
     if (
       each == null ||
+      ammunitionMass == null ||
       !Number.isFinite(Number(each)) ||
       Number(each) < 0 ||
       !Number.isFinite(quantity) ||
       quantity < 0
     )
       missing++;
-    else mass += Number(each) * quantity;
+    else mass += Number(each) * quantity + ammunitionMass;
   }
   mass = Math.round(mass * 1e6) / 1e6;
   const loaded = Number(body.carrying?.loaded);

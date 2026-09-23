@@ -65,8 +65,21 @@ import {
   moveInventoryItem,
   splitInventoryStack,
   transferInventoryItem,
+  loadAmmunition,
+  unloadAmmunition,
+  transferItemEnergy,
+  consumeInventoryItem,
 } from "../services/inventory";
 import { actorTabsForType, normalizeActorTab } from "../ui/actor-tabs";
+import {
+  ammunitionCompatibility,
+  cashSummary,
+  energyCompatibility,
+  hostPortSummary,
+  materialDiagnostics,
+  materialStatus,
+  nestInstalledRows,
+} from "../rules/personal-material";
 
 const ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 const HandlebarsApplicationMixin =
@@ -478,7 +491,33 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
           });
       }
     }
-    const inventoryRows = inventory.rows.map((row) => {
+    for (const item of physicalSnapshots)
+      for (const diagnostic of materialDiagnostics(item))
+        inventory.diagnostics.push({
+          itemId: item.id,
+          level: diagnostic.level,
+          message: `${item.name} : ${diagnostic.message}`,
+        });
+    const visualRows = nestInstalledRows(
+      inventory.rows.map((row) => ({
+        id: row.item.id,
+        name: row.item.name,
+        type: row.item.type,
+        depth: row.depth,
+        parentId: row.parentId,
+        value: row,
+      })),
+      physicalSnapshots,
+    );
+    const visualChildren = new Map<string, number>();
+    for (const visual of visualRows)
+      if (visual.parentId)
+        visualChildren.set(
+          visual.parentId,
+          (visualChildren.get(visual.parentId) ?? 0) + 1,
+        );
+    const inventoryRows = visualRows.map((visual) => {
+      const row = visual.value!;
       const item = physicalItems.find(
         (candidate) => candidate.id === row.item.id,
       );
@@ -518,6 +557,57 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         });
       const massEach = unitMass(row.item);
       const linked = equipmentLinked(physicalSnapshots, row.item.id);
+      const supplyProfile =
+        row.item.type === "weapon"
+          ? row.item.system.weaponProfile
+          : ["armor", "equipment"].includes(row.item.type)
+            ? row.item.system.supplyProfile
+            : null;
+      const compatibleAmmunitionAvailable = physicalSnapshots.some(
+        (candidate) =>
+          candidate.type === "ammunition" &&
+          Number(candidate.system.physical?.quantity ?? 0) > 0 &&
+          candidate.system.physical?.accessibility !== "unavailable" &&
+          !["broken", "destroyed"].includes(
+            candidate.system.physical?.condition,
+          ) &&
+          ammunitionCompatibility(candidate, row.item).length === 0,
+      );
+      const internalLoaded = Array.from(
+        supplyProfile?.loadSequence ?? [],
+      ).reduce(
+        (sum: number, segment: any) =>
+          sum + Math.max(0, Number(segment.quantity ?? 0)),
+        0,
+      );
+      const internalFree = supplyProfile
+        ? Math.max(0, Number(supplyProfile.capacity ?? 0) - internalLoaded)
+        : 0;
+      const chamberFree =
+        supplyProfile?.chamberSeparate &&
+        Array.from(supplyProfile.chamberLoad ?? []).length === 0;
+      const magazineLoaded =
+        row.item.type === "container" &&
+        row.item.system.containerKind === "magazine"
+          ? physicalSnapshots
+              .filter(
+                (candidate) =>
+                  candidate.type === "ammunition" &&
+                  (candidate.system.physical?.containerRef?.uuid ===
+                    row.item.uuid ||
+                    candidate.system.physical?.containerRef?.relisId ===
+                      row.item.system.meta?.relisId),
+              )
+              .reduce(
+                (sum, candidate) =>
+                  sum + Number(candidate.system.physical?.quantity ?? 0),
+                0,
+              )
+          : 0;
+      const magazineFree = Math.max(
+        0,
+        Number(row.item.system.magazineProfile?.capacity ?? 0) - magazineLoaded,
+      );
       const rowClasses = [
         "relis-inventory-row",
         row.item.type === "container" ? "relis-inventory-row--container" : "",
@@ -569,9 +659,9 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         typeLabel: game.i18n.localize(`TYPES.Item.${row.item.type}`),
         rowClasses,
         img: item?.img ?? "icons/svg/item-bag.svg",
-        depth: row.depth,
-        level: row.depth + 1,
-        indent: row.depth * 18,
+        depth: visual.depth,
+        level: visual.depth + 1,
+        indent: visual.depth * 18,
         quantity,
         quantityUnit:
           QUANTITY_UNIT_LABELS[String(physical.unit ?? "count")] ??
@@ -609,7 +699,76 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
                 ? slotSummary(physical.equipmentProfile ?? {})
                 : "Inventaire principal",
         isContainer: row.item.type === "container",
-        childCount: row.childCount,
+        childCount: visualChildren.get(row.item.id) ?? 0,
+        materialStatus: materialStatus(row.item, physicalSnapshots),
+        loadedContentLines: supplyProfile
+          ? [
+              ...Array.from(supplyProfile.chamberLoad ?? []).map(
+                (segment: any) =>
+                  `Chambre · ${segment.ammunitionRef?.labelSnapshot || "munition"}`,
+              ),
+              ...Array.from(supplyProfile.loadSequence ?? []).map(
+                (segment: any) =>
+                  `${segment.quantity} × ${segment.ammunitionRef?.labelSnapshot || "munition"}${segment.lotId ? ` · lot ${segment.lotId}` : ""}`,
+              ),
+            ]
+          : [],
+        modulePorts: hostPortSummary(physicalSnapshots, row.item).map(
+          (port) => ({
+            ...port,
+            hostId: row.item.id,
+            installedNames: port.installed
+              .map((entry) => entry.name)
+              .join(", "),
+          }),
+        ),
+        hasModulePorts: hostPortSummary(physicalSnapshots, row.item).length > 0,
+        isConsumable: row.item.type === "consumable",
+        canConsume:
+          row.item.type === "consumable" &&
+          physical.accessibility !== "unavailable" &&
+          !["broken", "destroyed"].includes(physical.condition) &&
+          (physical.charges?.current !== null &&
+          physical.charges?.current !== undefined
+            ? Number(physical.charges.current) > 0
+            : quantity > 0),
+        canLoadAmmunition:
+          (supplyProfile &&
+            ["internal", "hybrid"].includes(supplyProfile.feedKind) &&
+            (internalFree > 0 || chamberFree) &&
+            compatibleAmmunitionAvailable) ||
+          (row.item.type === "container" &&
+            row.item.system.containerKind === "magazine" &&
+            magazineFree > 0 &&
+            physicalSnapshots.some(
+              (candidate) =>
+                candidate.type === "ammunition" &&
+                !candidate.system.physical?.containerRef?.uuid &&
+                !candidate.system.physical?.containerRef?.relisId &&
+                candidate.system.physical?.quantity > 0 &&
+                ammunitionCompatibility(candidate, row.item).length === 0,
+            )),
+        canUnloadAmmunition:
+          (supplyProfile &&
+            (Array.from(supplyProfile.loadSequence ?? []).length > 0 ||
+              Array.from(supplyProfile.chamberLoad ?? []).length > 0)) ||
+          (row.item.type === "container" &&
+            row.item.system.containerKind === "magazine" &&
+            physicalSnapshots.some(
+              (candidate) =>
+                candidate.type === "ammunition" &&
+                (candidate.system.physical?.containerRef?.uuid ===
+                  row.item.uuid ||
+                  candidate.system.physical?.containerRef?.relisId ===
+                    row.item.system.meta?.relisId),
+            )),
+        canReceiveEnergy:
+          Boolean(row.item.system.energyProfile?.kind) &&
+          physicalSnapshots.some(
+            (candidate) =>
+              candidate.id !== row.item.id &&
+              energyCompatibility(candidate, row.item).length === 0,
+          ),
         pending: pendingState === "pending",
         quarantined: pendingState === "quarantined",
         hasError: row.orphaned || row.cyclic,
@@ -728,6 +887,15 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         volume: displayMeasure(inventory.totalLoad.volume, "L"),
         bulk: displayMeasure(inventory.totalLoad.bulk, "ENC"),
       },
+      physicalCash: cashSummary(
+        physicalSnapshots,
+        String(activeBody?.id ?? ""),
+      ).map((entry) => ({
+        ...entry,
+        amountLabel: new Intl.NumberFormat("fr-FR", {
+          maximumFractionDigits: 6,
+        }).format(entry.amount),
+      })),
       effects,
       effectCount: effects.length,
       itemCount: actorItems.length,
@@ -769,6 +937,32 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
               break;
           }
         }, "Commande d’équipement terminée.");
+      });
+    }
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-material-command]",
+    )) {
+      button.addEventListener("click", () => {
+        void this.inventoryTask(async () => {
+          if (!this.actor.isOwner && !game.user?.isGM) return false;
+          const itemId = button.dataset.itemId ?? "";
+          switch (button.dataset.materialCommand) {
+            case "load":
+              return this.loadMaterialAmmunition(itemId);
+            case "unload":
+              await unloadAmmunition(this.actor, itemId);
+              break;
+            case "energy":
+              return this.transferMaterialEnergy(itemId);
+            case "consume":
+              return this.consumeMaterial(itemId);
+            case "port":
+              return this.manageMaterialPort(
+                itemId,
+                button.dataset.slotKey ?? "",
+              );
+          }
+        }, "Opération matérielle terminée.");
       });
     }
     bindInventoryView(
@@ -1116,6 +1310,258 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       throw new Error(equipmentFailureMessage(preview));
     await applyEquipment(this.actor, requests, preview.fingerprint);
     return true;
+  }
+
+  private physicalSnapshots(): InventoryItemLike[] {
+    return (Array.from(this.actor.items ?? []) as Item[])
+      .filter((item) => isPhysicalItemType(item.type))
+      .map(itemSnapshot);
+  }
+
+  private async loadMaterialAmmunition(targetId: string): Promise<boolean> {
+    const target = this.actor.items.get(targetId) as Item | undefined;
+    if (!target) return false;
+    const targetSnapshot = itemSnapshot(target);
+    const targetIsMagazine =
+      target.type === "container" && target.system.containerKind === "magazine";
+    const candidates = (Array.from(this.actor.items ?? []) as Item[]).filter(
+      (item) =>
+        item.type === "ammunition" &&
+        Number(item.system.physical?.quantity ?? 0) > 0 &&
+        (!targetIsMagazine ||
+          (!item.system.physical?.containerRef?.uuid &&
+            !item.system.physical?.containerRef?.relisId)) &&
+        ammunitionCompatibility(itemSnapshot(item), targetSnapshot).length ===
+          0,
+    );
+    if (!candidates.length)
+      throw new Error(
+        "Aucune munition exactement compatible et disponible dans cet inventaire.",
+      );
+    const content = dialogContent();
+    dialogSelect(
+      content,
+      "Munition",
+      "ammunitionId",
+      candidates.map((item) => ({
+        value: item.id,
+        label: `${item.name} — ${item.system.physical.quantity} disponible(s)`,
+      })),
+    );
+    const supplyProfile =
+      target.type === "weapon"
+        ? target.system.weaponProfile
+        : ["armor", "equipment"].includes(target.type)
+          ? target.system.supplyProfile
+          : null;
+    const internalLoaded = Array.from(supplyProfile?.loadSequence ?? []).reduce(
+      (sum: number, segment: any) =>
+        sum + Math.max(0, Number(segment.quantity ?? 0)),
+      0,
+    );
+    const internalFree = supplyProfile
+      ? Math.max(0, Number(supplyProfile.capacity ?? 0) - internalLoaded)
+      : 0;
+    const chamberFree = Boolean(
+      supplyProfile?.chamberSeparate &&
+      Array.from(supplyProfile.chamberLoad ?? []).length === 0,
+    );
+    const magazineLoaded = targetIsMagazine
+      ? (Array.from(this.actor.items ?? []) as Item[])
+          .filter(
+            (item) =>
+              item.type === "ammunition" &&
+              (item.system.physical?.containerRef?.uuid === target.uuid ||
+                item.system.physical?.containerRef?.relisId ===
+                  target.system.meta?.relisId),
+          )
+          .reduce(
+            (sum, item) => sum + Number(item.system.physical?.quantity ?? 0),
+            0,
+          )
+      : 0;
+    const magazineFree = targetIsMagazine
+      ? Math.max(
+          0,
+          Number(target.system.magazineProfile?.capacity ?? 0) - magazineLoaded,
+        )
+      : 0;
+    const locations = [
+      ...(targetIsMagazine || internalFree > 0
+        ? [
+            {
+              value: "magazine",
+              label: targetIsMagazine ? "Chargeur" : "Magasin interne",
+            },
+          ]
+        : []),
+      ...(chamberFree ? [{ value: "chamber", label: "Chambre séparée" }] : []),
+    ];
+    if (!locations.length)
+      throw new Error("Aucune place de chargement n’est disponible.");
+    if (locations.length > 1)
+      dialogSelect(content, "Destination", "location", [...locations]);
+    const available = Math.min(
+      Math.max(
+        ...candidates.map((item) => Number(item.system.physical.quantity ?? 0)),
+      ),
+      Math.max(internalFree, chamberFree ? 1 : 0, magazineFree),
+    );
+    dialogNumber(content, "Quantité", "quantity", 1, available, true);
+    const result = await askInventoryForm(
+      `Charger « ${target.name} »`,
+      content,
+      "Charger",
+    );
+    if (!result) return false;
+    await loadAmmunition(
+      this.actor,
+      targetId,
+      String(result.ammunitionId ?? ""),
+      Number(result.quantity),
+      String(result.location ?? locations[0]?.value ?? "magazine") === "chamber"
+        ? "chamber"
+        : "magazine",
+    );
+    return true;
+  }
+
+  private async transferMaterialEnergy(targetId: string): Promise<boolean> {
+    const target = this.actor.items.get(targetId) as Item | undefined;
+    if (!target) return false;
+    const targetSnapshot = itemSnapshot(target);
+    const candidates = (Array.from(this.actor.items ?? []) as Item[]).filter(
+      (item) =>
+        item.id !== target.id &&
+        energyCompatibility(itemSnapshot(item), targetSnapshot).length === 0,
+    );
+    if (!candidates.length)
+      throw new Error("Aucune source énergétique compatible et chargée.");
+    const content = dialogContent();
+    dialogSelect(
+      content,
+      "Source",
+      "sourceId",
+      candidates.map((item) => ({
+        value: item.id,
+        label: `${item.name} — ${item.system.energyProfile.current}/${item.system.energyProfile.maximum} CE`,
+      })),
+    );
+    const free =
+      Number(target.system.energyProfile.maximum ?? 0) -
+      Number(target.system.energyProfile.current ?? 0);
+    dialogNumber(content, "CE transférés", "quantity", 1, free, false);
+    const result = await askInventoryForm(
+      `Recharger « ${target.name} »`,
+      content,
+      "Transférer",
+    );
+    if (!result) return false;
+    await transferItemEnergy(
+      this.actor,
+      String(result.sourceId ?? ""),
+      targetId,
+      Number(result.quantity),
+    );
+    return true;
+  }
+
+  private async consumeMaterial(itemId: string): Promise<boolean> {
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return false;
+    const content = dialogContent();
+    dialogNote(
+      content,
+      `${item.name} : une charge est dépensée si elle est suivie ; sinon une unité est consommée. L’effet et la cible restent résolus selon la règle ou le MJ jusqu’à 10-F.`,
+    );
+    const result = await askInventoryForm(
+      `Employer « ${item.name} »`,
+      content,
+      "Consommer",
+    );
+    if (!result) return false;
+    await consumeInventoryItem(this.actor, itemId);
+    return true;
+  }
+
+  private async manageMaterialPort(
+    hostId: string,
+    slotKey: string,
+  ): Promise<boolean> {
+    const items = this.physicalSnapshots();
+    const host = items.find((item) => item.id === hostId);
+    const body = Array.from(this.actor.system.bodies ?? []).find(
+      (entry: any) => entry.id === this.actor.system.activeBodyId,
+    ) as any;
+    if (!host || !body) return false;
+    const installed = items.filter(
+      (item) =>
+        item.system.physical?.equipState === "installed" &&
+        Number(
+          item.system.physical?.equipmentProfile?.requiredSlots?.[slotKey] ?? 0,
+        ) > 0 &&
+        ((item.system.physical?.hostRef?.uuid &&
+          item.system.physical.hostRef.uuid === host.uuid) ||
+          (item.system.physical?.hostRef?.relisId &&
+            item.system.physical.hostRef.relisId ===
+              host.system.meta?.relisId)),
+    );
+    const candidates = items.filter((item) => {
+      if (
+        item.id === host.id ||
+        item.system.physical?.equipState === "installed" ||
+        Number(
+          item.system.physical?.equipmentProfile?.requiredSlots?.[slotKey] ?? 0,
+        ) <= 0
+      )
+        return false;
+      return installationTargets(items, body, item).some(
+        (target) => target.id === host.id && !target.errors.length,
+      );
+    });
+    const content = dialogContent();
+    dialogNote(
+      content,
+      `${TECHNICAL_SLOTS[slotKey] ?? slotKey} sur ${host.name}. Les choix sont recalculés au moment de l’écriture.`,
+    );
+    dialogSelect(content, "Choix", "choice", [
+      { value: "none", label: "Ne rien mettre — retirer ce port" },
+      ...installed.map((item) => ({
+        value: `keep:${item.id}`,
+        label: `Conserver ${item.name}`,
+      })),
+      ...candidates.map((item) => ({
+        value: `install:${item.id}`,
+        label: `Installer ${item.name}`,
+      })),
+    ]);
+    if (!installed.length && !candidates.length)
+      throw new Error(
+        "Aucun module compatible : vérifier les profils, les places et les exigences.",
+      );
+    const result = await askInventoryForm(
+      `Gérer le port « ${TECHNICAL_SLOTS[slotKey] ?? slotKey} »`,
+      content,
+      "Appliquer",
+    );
+    if (!result) return false;
+    const choice = String(result.choice ?? "");
+    if (choice.startsWith("keep:")) return false;
+    if (choice.startsWith("install:"))
+      return this.confirmEquipment([
+        {
+          itemId: choice.slice("install:".length),
+          state: "installed",
+          hostId,
+        },
+      ]);
+    if (choice === "none") {
+      if (!installed.length) return false;
+      return this.confirmEquipment(
+        installed.map((item) => ({ itemId: item.id, state: "stored" })),
+      );
+    }
+    return false;
   }
 
   private async configureCarrying(): Promise<void> {

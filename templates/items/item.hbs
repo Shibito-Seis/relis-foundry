@@ -297,6 +297,17 @@
               data-profile-field="duration"
               value="{{system.physical.equipmentProfile.duration}}"
             /></label>
+          <label>Nature d’installation<select
+              data-profile-field="installationKind"
+            >{{selectOptions
+                installationKindOptions
+                selected=system.physical.equipmentProfile.installationKind
+              }}</select></label>
+          <label>Effet matériel résumé<input
+              type="text"
+              data-profile-field="effectSummary"
+              value="{{system.physical.equipmentProfile.effectSummary}}"
+            /></label>
           <label><input
               type="checkbox"
               data-profile-field="installable"
@@ -362,6 +373,48 @@
             occupée sur l’hôte lorsque cet objet est installé. Zéro signifie
             aucun. Vérifier aussi les compatibilités déclarées par la source de
             l’objet.</p>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Technologie de l’hôte<input
+                type="text"
+                data-profile-field="technology"
+                value="{{system.physical.equipmentProfile.technology}}"
+              /></label>
+            <label>Gabarit technique de l’hôte<input
+                type="text"
+                data-profile-field="technicalSize"
+                value="{{system.physical.equipmentProfile.technicalSize}}"
+              /></label>
+            <label>Interfaces offertes — séparées par virgule<input
+                type="text"
+                data-profile-field="interfaceIds"
+                data-profile-value-type="string-list"
+                value="{{system.physical.equipmentProfile.interfaceIds}}"
+              /></label>
+            <label>Familles d’hôte compatibles<input
+                type="text"
+                data-profile-field="compatibleFamilies"
+                data-profile-value-type="string-list"
+                value="{{system.physical.equipmentProfile.compatibleFamilies}}"
+              /></label>
+            <label>Gabarits d’hôte compatibles<input
+                type="text"
+                data-profile-field="compatibleSizes"
+                data-profile-value-type="string-list"
+                value="{{system.physical.equipmentProfile.compatibleSizes}}"
+              /></label>
+            <label>Technologies d’hôte compatibles<input
+                type="text"
+                data-profile-field="compatibleTechnologies"
+                data-profile-value-type="string-list"
+                value="{{system.physical.equipmentProfile.compatibleTechnologies}}"
+              /></label>
+            <label>Interfaces d’hôte compatibles<input
+                type="text"
+                data-profile-field="compatibleInterfaces"
+                data-profile-value-type="string-list"
+                value="{{system.physical.equipmentProfile.compatibleInterfaces}}"
+              /></label>
+          </div>
           <div class="relis-slot-grid"><b>Type</b><b>Places offertes par cet
               objet</b><b>Places nécessaires pour installer cet objet</b>
             {{#each technicalSlotRows}}
@@ -393,6 +446,1072 @@
             data-profile-status
             role="status"
           >Propriétés enregistrées affichées.</p>{{/if}}
+      </section>
+
+      {{#if isWeapon}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Profil canonique 10-E4-P</p>
+          <h2>Arme</h2>
+          <p class="relis-scope-note">Ces valeurs décrivent l’objet. Les jets
+            d’attaque, dégâts et blessures seront automatisés en 10-F.</p>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Famille<input
+                type="text"
+                value="{{system.weaponProfile.family}}"
+                data-document-field="system.weaponProfile.family"
+              /></label>
+            <label>Support<select
+                data-document-field="system.weaponProfile.support"
+              >{{selectOptions
+                  weaponSupportOptions
+                  selected=system.weaponProfile.support
+                }}</select></label>
+            <label>Accès<select
+                data-document-field="system.weaponProfile.access"
+              >{{selectOptions
+                  accessOptions
+                  selected=system.weaponProfile.access
+                }}</select></label>
+            <label>Mode d’attaque<select
+                data-document-field="system.weaponProfile.attackMode"
+              >{{selectOptions
+                  attackModeOptions
+                  selected=system.weaponProfile.attackMode
+                }}</select></label>
+            <label>Défense visée<select
+                data-document-field="system.weaponProfile.defenseTarget"
+              >{{selectOptions
+                  defenseTargetOptions
+                  selected=system.weaponProfile.defenseTarget
+                }}</select></label>
+            <label>Mains requises<input
+                type="number"
+                min="0"
+                max="2"
+                step="1"
+                value="{{system.weaponProfile.handsRequired}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.handsRequired"
+              /></label>
+            <label><input
+                type="checkbox"
+                {{checked system.weaponProfile.handsFlexible}}
+                data-value-type="boolean"
+                data-document-field="system.weaponProfile.handsFlexible"
+              />Prise variable selon le profil</label>
+            <label>Compétence<input
+                type="text"
+                value="{{system.weaponProfile.skillKey}}"
+                data-document-field="system.weaponProfile.skillKey"
+              /></label>
+            <label>Attribut<input
+                type="text"
+                value="{{system.weaponProfile.attributeKey}}"
+                data-document-field="system.weaponProfile.attributeKey"
+              /></label>
+            <label>Précision<input
+                type="number"
+                step="1"
+                value="{{system.weaponProfile.accuracy}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.accuracy"
+              /></label>
+            <label>Dégâts / PF<input
+                type="text"
+                value="{{system.weaponProfile.damageFormula}}"
+                data-document-field="system.weaponProfile.damageFormula"
+              /></label>
+            <label>Types de dégâts — séparés par virgule<input
+                type="text"
+                value="{{system.weaponProfile.damageTypes}}"
+                data-value-type="string-list"
+                data-document-field="system.weaponProfile.damageTypes"
+              /></label>
+            <label>Sources des dégâts — séparées par virgule<input
+                type="text"
+                value="{{system.weaponProfile.damageSources}}"
+                data-value-type="string-list"
+                data-document-field="system.weaponProfile.damageSources"
+              /></label>
+            <label>Pénétration<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.weaponProfile.penetration}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.penetration"
+              /></label>
+            <label>Critique<input
+                type="text"
+                value="{{system.weaponProfile.critical}}"
+                data-document-field="system.weaponProfile.critical"
+              /></label>
+            <label>Prérequis et contraintes<input
+                type="text"
+                value="{{system.weaponProfile.prerequisiteSummary}}"
+                data-document-field="system.weaponProfile.prerequisiteSummary"
+              /></label>
+            <label>Type de portée<select
+                data-document-field="system.weaponProfile.rangeKind"
+              >{{selectOptions
+                  rangeKindOptions
+                  selected=system.weaponProfile.rangeKind
+                }}</select></label>
+            <label>Portée canonique<input
+                type="text"
+                value="{{system.weaponProfile.range}}"
+                data-document-field="system.weaponProfile.range"
+              /></label>
+            <label>Portée optimale en mètres<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.weaponProfile.rangeOptimal}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.rangeOptimal"
+              /></label>
+            <label>Portée maximale en mètres<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.weaponProfile.rangeMaximum}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.rangeMaximum"
+              /></label>
+            <label>Allonge en cases<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.weaponProfile.reach}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.reach"
+              /></label>
+            <label>Cadence<input
+                type="text"
+                value="{{system.weaponProfile.cadence}}"
+                data-document-field="system.weaponProfile.cadence"
+              /></label>
+            <label>Recul<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.weaponProfile.recoil}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.recoil"
+              /></label>
+            <label>Modes — séparés par virgule<input
+                type="text"
+                value="{{system.weaponProfile.modes}}"
+                data-value-type="string-list"
+                data-document-field="system.weaponProfile.modes"
+              /></label>
+            <label>Signatures — séparées par virgule<input
+                type="text"
+                value="{{system.weaponProfile.signatures}}"
+                data-value-type="string-list"
+                data-document-field="system.weaponProfile.signatures"
+              /></label>
+          </div>
+          <h3>Alimentation et rechargement</h3>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Mode d’alimentation<select
+                data-document-field="system.weaponProfile.feedKind"
+              >{{selectOptions
+                  feedKindOptions
+                  selected=system.weaponProfile.feedKind
+                }}</select></label>
+            <label>Identifiant de chambre<input
+                type="text"
+                value="{{system.weaponProfile.chamberId}}"
+                data-document-field="system.weaponProfile.chamberId"
+              /></label>
+            <label>Classe de pression / énergie<input
+                type="text"
+                value="{{system.weaponProfile.pressureClass}}"
+                data-document-field="system.weaponProfile.pressureClass"
+              /></label>
+            <label>Interface de chargeur<input
+                type="text"
+                value="{{system.weaponProfile.feedInterface}}"
+                data-document-field="system.weaponProfile.feedInterface"
+              /></label>
+            <label>Capacité<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.weaponProfile.capacity}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.capacity"
+              /></label>
+            <label>Consommation ordinaire<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.weaponProfile.consumption}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.consumption"
+              /></label>
+            <label>Actions de recharge ordinaires<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.weaponProfile.reloadActions}}"
+                data-value-type="nullable-number"
+                data-document-field="system.weaponProfile.reloadActions"
+              /></label>
+            <label>Procédure de recharge<input
+                type="text"
+                value="{{system.weaponProfile.reloadProcedure}}"
+                data-document-field="system.weaponProfile.reloadProcedure"
+              /></label>
+            <label><input
+                type="checkbox"
+                {{checked system.weaponProfile.chamberSeparate}}
+                data-value-type="boolean"
+                data-document-field="system.weaponProfile.chamberSeparate"
+              />Chambre suivie séparément si la source le prévoit</label>
+          </div>
+          {{#if system.weaponProfile.loadSequence.length}}
+            <div class="relis-loaded-sequence"><h3>Séquence interne chargée</h3>
+              {{#each system.weaponProfile.loadSequence}}<p>{{quantity}}
+                  ×
+                  {{ammunitionRef.labelSnapshot}}
+                  {{#if lotId}}· lot {{lotId}}{{/if}}</p>{{/each}}
+            </div>
+          {{else}}<p class="relis-muted">Magasin interne vide ou non applicable.</p>{{/if}}
+          {{#if system.weaponProfile.chamberSeparate}}
+            {{#if system.weaponProfile.chamberLoad.length}}<div
+                class="relis-loaded-sequence"
+              ><h3>Chambre séparée</h3>{{#each
+                  system.weaponProfile.chamberLoad
+                }}<p
+                  >{{ammunitionRef.labelSnapshot}}</p>{{/each}}</div>{{else}}<p
+                class="relis-muted"
+              >Chambre séparée vide.</p>{{/if}}
+          {{/if}}
+        </section>
+      {{/if}}
+
+      {{#if hasProtectionProfile}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Protection matérielle</p>
+          <h2>{{#if isArmor}}Armure et couverture{{else}}Bouclier éventuel{{/if}}</h2>
+          <p class="relis-scope-note">Une arme ne renseigne ce bloc que si elle
+            est réellement un bouclier selon sa source.</p>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Catégorie<select
+                data-document-field="system.protectionProfile.kind"
+              >{{selectOptions
+                  protectionKindOptions
+                  selected=system.protectionProfile.kind
+                }}</select></label>
+            <label>Accès<select
+                data-document-field="system.protectionProfile.access"
+              >{{selectOptions
+                  accessOptions
+                  selected=system.protectionProfile.access
+                }}</select></label>
+            <label>Plafond Dextérité<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.protectionProfile.dexterityCap}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.dexterityCap"
+              /></label>
+            <label>Bonus CAP<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.protectionProfile.capBonus}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.capBonus"
+              /></label>
+            <label>Bonus CAE<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.protectionProfile.caeBonus}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.caeBonus"
+              /></label>
+            <label>Solidité P<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.protectionProfile.solidityPhysical}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.solidityPhysical"
+              /></label>
+            <label>Solidité E<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.protectionProfile.solidityEnergy}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.solidityEnergy"
+              /></label>
+            <label>Couverture — T, B, J, C, Tête<input
+                type="text"
+                value="{{system.protectionProfile.coverage}}"
+                data-value-type="string-list"
+                data-document-field="system.protectionProfile.coverage"
+              /></label>
+            <label>Couches compatibles<input
+                type="text"
+                value="{{system.protectionProfile.layers}}"
+                data-value-type="string-list"
+                data-document-field="system.protectionProfile.layers"
+              /></label>
+            <label>Compatibilités défensives<input
+                type="text"
+                value="{{system.protectionProfile.compatibilities}}"
+                data-value-type="string-list"
+                data-document-field="system.protectionProfile.compatibilities"
+              /></label>
+            <label>Zones couvertes contre l’environnement<input
+                type="text"
+                value="{{system.protectionProfile.environmentCoverage}}"
+                data-value-type="string-list"
+                data-document-field="system.protectionProfile.environmentCoverage"
+              /></label>
+            <label>Protections environnementales<input
+                type="text"
+                value="{{system.protectionProfile.environmentProtections}}"
+                data-value-type="string-list"
+                data-document-field="system.protectionProfile.environmentProtections"
+              /></label>
+            <label>Force requise<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.protectionProfile.strengthRequirement}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.strengthRequirement"
+              /></label>
+            <label>Modificateur Vitesse<input
+                type="number"
+                step="1"
+                value="{{system.protectionProfile.speedModifier}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.speedModifier"
+              /></label>
+            <label>Modificateur Discrétion<input
+                type="number"
+                step="1"
+                value="{{system.protectionProfile.stealthModifier}}"
+                data-value-type="nullable-number"
+                data-document-field="system.protectionProfile.stealthModifier"
+              /></label>
+            <label>Scellement<select
+                data-document-field="system.protectionProfile.sealing"
+              >{{selectOptions
+                  sealingOptions
+                  selected=system.protectionProfile.sealing
+                }}</select></label>
+            <label>Temps d’équipement<input
+                type="text"
+                value="{{system.protectionProfile.equipTime}}"
+                data-document-field="system.protectionProfile.equipTime"
+              /></label>
+            <label>Contraintes particulières<input
+                type="text"
+                value="{{system.protectionProfile.constraintSummary}}"
+                data-document-field="system.protectionProfile.constraintSummary"
+              /></label>
+          </div>
+          <details><summary>Champ / barrière si le profil en possède un</summary>
+            <div class="relis-grid relis-grid--form relis-item-form">
+              <label>RB actuelle<input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="{{system.protectionProfile.barrierCurrent}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.protectionProfile.barrierCurrent"
+                /></label>
+              <label>RB maximum<input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="{{system.protectionProfile.barrierMaximum}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.protectionProfile.barrierMaximum"
+                /></label>
+              <label>Absorption<input
+                  type="text"
+                  value="{{system.protectionProfile.absorptionFormula}}"
+                  data-document-field="system.protectionProfile.absorptionFormula"
+                /></label>
+              <label>Forme / volume du champ<input
+                  type="text"
+                  value="{{system.protectionProfile.barrierKind}}"
+                  data-document-field="system.protectionProfile.barrierKind"
+                /></label>
+              <label>Attaques ou phénomènes interceptés<input
+                  type="text"
+                  value="{{system.protectionProfile.barrierCompatibilities}}"
+                  data-value-type="string-list"
+                  data-document-field="system.protectionProfile.barrierCompatibilities"
+                /></label>
+              <label>Coût d’activation en CE<input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="{{system.protectionProfile.activationCost}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.protectionProfile.activationCost"
+                /></label>
+              <label>Entretien<input
+                  type="text"
+                  value="{{system.protectionProfile.upkeep}}"
+                  data-document-field="system.protectionProfile.upkeep"
+                /></label>
+              <label>RB restaurée par CE<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.protectionProfile.rechargeRatePerCe}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.protectionProfile.rechargeRatePerCe"
+                /></label>
+              <label>Durée de recharge<input
+                  type="text"
+                  value="{{system.protectionProfile.rechargeDuration}}"
+                  data-document-field="system.protectionProfile.rechargeDuration"
+                /></label>
+              <label>Interposition / interception<input
+                  type="text"
+                  value="{{system.protectionProfile.interception}}"
+                  data-document-field="system.protectionProfile.interception"
+                /></label>
+              <label>Effondrement / panne<input
+                  type="text"
+                  value="{{system.protectionProfile.collapseEffect}}"
+                  data-document-field="system.protectionProfile.collapseEffect"
+                /></label>
+              <label>Procédure de retour<input
+                  type="text"
+                  value="{{system.protectionProfile.returnProcedure}}"
+                  data-document-field="system.protectionProfile.returnProcedure"
+                /></label>
+            </div>
+          </details>
+        </section>
+      {{/if}}
+
+      {{#if hasEnergyProfile}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Alimentation matérielle</p><h2>Énergie</h2>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Nature<select
+                data-document-field="system.energyProfile.kind"
+              >{{selectOptions
+                  energyKindOptions
+                  selected=system.energyProfile.kind
+                }}</select></label>
+            <label>Format<input
+                type="text"
+                value="{{system.energyProfile.format}}"
+                data-document-field="system.energyProfile.format"
+              /></label>
+            <label>Classe de puissance requise<input
+                type="text"
+                value="{{system.energyProfile.powerClass}}"
+                data-document-field="system.energyProfile.powerClass"
+              /></label>
+            <label>Technologie<input
+                type="text"
+                value="{{system.energyProfile.technology}}"
+                data-document-field="system.energyProfile.technology"
+              /></label>
+            <label>CE actuels<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.energyProfile.current}}"
+                data-value-type="nullable-number"
+                data-document-field="system.energyProfile.current"
+              /></label>
+            <label>CE maximum<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.energyProfile.maximum}}"
+                data-value-type="nullable-number"
+                data-document-field="system.energyProfile.maximum"
+              /></label>
+            <label>Sortie maximale<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.energyProfile.output}}"
+                data-value-type="nullable-number"
+                data-document-field="system.energyProfile.output"
+              /></label>
+            <label>Classe de sortie<input
+                type="text"
+                value="{{system.energyProfile.outputClass}}"
+                data-document-field="system.energyProfile.outputClass"
+              /></label>
+            <label>Cycle<select
+                data-document-field="system.energyProfile.cycle"
+              >{{selectOptions
+                  energyCycleOptions
+                  selected=system.energyProfile.cycle
+                }}</select></label>
+            <label>Méthode de recharge<input
+                type="text"
+                value="{{system.energyProfile.rechargeMethod}}"
+                data-document-field="system.energyProfile.rechargeMethod"
+              /></label>
+            <label>Durée de recharge<input
+                type="text"
+                value="{{system.energyProfile.rechargeDuration}}"
+                data-document-field="system.energyProfile.rechargeDuration"
+              /></label>
+            <label>Signature énergétique<input
+                type="text"
+                value="{{system.energyProfile.signature}}"
+                data-document-field="system.energyProfile.signature"
+              /></label>
+            <label>Chaleur actuelle<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.energyProfile.heatCurrent}}"
+                data-value-type="nullable-number"
+                data-document-field="system.energyProfile.heatCurrent"
+              /></label>
+            <label>Chaleur maximale<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.energyProfile.heatMaximum}}"
+                data-value-type="nullable-number"
+                data-document-field="system.energyProfile.heatMaximum"
+              /></label>
+            <label><input
+                type="checkbox"
+                {{checked system.energyProfile.rechargeable}}
+                data-value-type="boolean"
+                data-document-field="system.energyProfile.rechargeable"
+              />Rechargeable selon sa source</label>
+          </div>
+        </section>
+      {{/if}}
+
+      {{#if hasSupplyProfile}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Cartouche ou munition spécialisée</p>
+          <h2>Alimentation consommable</h2>
+          <p class="relis-scope-note">Utiliser seulement si cette armure ou cet
+            équipement reçoit réellement des munitions ou cartouches selon sa
+            source. La batterie reste dans le bloc Énergie.</p>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Mode d’alimentation<select
+                data-document-field="system.supplyProfile.feedKind"
+              >{{selectOptions
+                  feedKindOptions
+                  selected=system.supplyProfile.feedKind
+                }}</select></label>
+            <label>Identifiant de chambre<input
+                type="text"
+                value="{{system.supplyProfile.chamberId}}"
+                data-document-field="system.supplyProfile.chamberId"
+              /></label>
+            <label>Classe de pression / énergie<input
+                type="text"
+                value="{{system.supplyProfile.pressureClass}}"
+                data-document-field="system.supplyProfile.pressureClass"
+              /></label>
+            <label>Interface de chargeur<input
+                type="text"
+                value="{{system.supplyProfile.feedInterface}}"
+                data-document-field="system.supplyProfile.feedInterface"
+              /></label>
+            <label>Capacité<input
+                type="number"
+                min="0"
+                step="1"
+                value="{{system.supplyProfile.capacity}}"
+                data-value-type="nullable-number"
+                data-document-field="system.supplyProfile.capacity"
+              /></label>
+            <label>Consommation ordinaire<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.supplyProfile.consumption}}"
+                data-value-type="nullable-number"
+                data-document-field="system.supplyProfile.consumption"
+              /></label>
+            <label>Actions de recharge ordinaires<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.supplyProfile.reloadActions}}"
+                data-value-type="nullable-number"
+                data-document-field="system.supplyProfile.reloadActions"
+              /></label>
+            <label>Procédure de recharge<input
+                type="text"
+                value="{{system.supplyProfile.reloadProcedure}}"
+                data-document-field="system.supplyProfile.reloadProcedure"
+              /></label>
+            <label><input
+                type="checkbox"
+                {{checked system.supplyProfile.chamberSeparate}}
+                data-value-type="boolean"
+                data-document-field="system.supplyProfile.chamberSeparate"
+              />Chambre suivie séparément si la source le prévoit</label>
+          </div>
+          {{#if system.supplyProfile.chamberSeparate}}{{#if
+              system.supplyProfile.chamberLoad.length
+            }}<div class="relis-loaded-sequence"><h3>Chambre séparée</h3>{{#each
+                  system.supplyProfile.chamberLoad
+                }}<p
+                  >{{ammunitionRef.labelSnapshot}}</p>{{/each}}</div>{{else}}<p
+                class="relis-muted"
+              >Chambre séparée vide.</p>{{/if}}{{/if}}
+          {{#if system.supplyProfile.loadSequence.length}}<div
+              class="relis-loaded-sequence"
+            ><h3>Séquence interne chargée</h3>{{#each
+                system.supplyProfile.loadSequence
+              }}<p>{{quantity}}
+                  ×
+                  {{ammunitionRef.labelSnapshot}}</p>{{/each}}</div>{{else}}<p
+              class="relis-muted"
+            >Magasin interne vide ou non applicable.</p>{{/if}}
+        </section>
+      {{/if}}
+
+      {{#if isAmmunition}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Compatibilité exacte</p><h2>Munition</h2>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Famille<input
+                type="text"
+                value="{{system.ammunitionProfile.family}}"
+                data-document-field="system.ammunitionProfile.family"
+              /></label>
+            <label>Identifiant de chambre<input
+                type="text"
+                value="{{system.ammunitionProfile.chamberId}}"
+                data-document-field="system.ammunitionProfile.chamberId"
+              /></label>
+            <label>Classe de pression / énergie<input
+                type="text"
+                value="{{system.ammunitionProfile.pressureClass}}"
+                data-document-field="system.ammunitionProfile.pressureClass"
+              /></label>
+            <label>Interfaces compatibles — séparées par virgule<input
+                type="text"
+                value="{{system.ammunitionProfile.feedInterfaces}}"
+                data-value-type="string-list"
+                data-document-field="system.ammunitionProfile.feedInterfaces"
+              /></label>
+            <label>Modification d’impact<input
+                type="text"
+                value="{{system.ammunitionProfile.impactModifier}}"
+                data-document-field="system.ammunitionProfile.impactModifier"
+              /></label>
+            <label>Types de dégâts<input
+                type="text"
+                value="{{system.ammunitionProfile.damageTypes}}"
+                data-value-type="string-list"
+                data-document-field="system.ammunitionProfile.damageTypes"
+              /></label>
+            <label>Sources des dégâts<input
+                type="text"
+                value="{{system.ammunitionProfile.damageSources}}"
+                data-value-type="string-list"
+                data-document-field="system.ammunitionProfile.damageSources"
+              /></label>
+            <label>Modificateur de Pénétration<input
+                type="number"
+                step="1"
+                value="{{system.ammunitionProfile.penetrationModifier}}"
+                data-value-type="nullable-number"
+                data-document-field="system.ammunitionProfile.penetrationModifier"
+              /></label>
+            <label>Modificateur de portée<input
+                type="text"
+                value="{{system.ammunitionProfile.rangeModifier}}"
+                data-document-field="system.ammunitionProfile.rangeModifier"
+              /></label>
+            <label>Modificateurs de signature<input
+                type="text"
+                value="{{system.ammunitionProfile.signatureModifiers}}"
+                data-value-type="string-list"
+                data-document-field="system.ammunitionProfile.signatureModifiers"
+              /></label>
+            <label>Effet secondaire<input
+                type="text"
+                value="{{system.ammunitionProfile.effectSummary}}"
+                data-document-field="system.ammunitionProfile.effectSummary"
+              /></label>
+            <label>Traits spéciaux — séparés par virgule<input
+                type="text"
+                value="{{system.ammunitionProfile.specialTraits}}"
+                data-value-type="string-list"
+                data-document-field="system.ammunitionProfile.specialTraits"
+              /></label>
+            <label><input
+                type="checkbox"
+                {{checked system.ammunitionProfile.recoverable}}
+                data-value-type="boolean"
+                data-document-field="system.ammunitionProfile.recoverable"
+              />Récupérable selon sa source</label>
+          </div>
+        </section>
+      {{/if}}
+
+      {{#if isConsumable}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Usage consommable</p><h2>Dose et limites</h2>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Famille<select
+                data-document-field="system.consumableProfile.kind"
+              >{{selectOptions
+                  consumableKindOptions
+                  selected=system.consumableProfile.kind
+                }}</select></label>
+            <label>Dose<input
+                type="text"
+                value="{{system.consumableProfile.dose}}"
+                data-document-field="system.consumableProfile.dose"
+              /></label>
+            <label>Famille de traitement / antidote<input
+                type="text"
+                value="{{system.consumableProfile.treatmentFamily}}"
+                data-document-field="system.consumableProfile.treatmentFamily"
+              /></label>
+            <label>Voie<select
+                data-document-field="system.consumableProfile.route"
+              >{{selectOptions
+                  routeOptions
+                  selected=system.consumableProfile.route
+                }}</select></label>
+            <label>Durée / intervalle<input
+                type="text"
+                value="{{system.consumableProfile.duration}}"
+                data-document-field="system.consumableProfile.duration"
+              /></label>
+            <label>Toxicité T0–T5<input
+                type="number"
+                min="0"
+                max="5"
+                step="1"
+                value="{{system.consumableProfile.toxicity}}"
+                data-value-type="nullable-number"
+                data-document-field="system.consumableProfile.toxicity"
+              /></label>
+            <label>Dépendance D0–D4<input
+                type="number"
+                min="0"
+                max="4"
+                step="1"
+                value="{{system.consumableProfile.dependency}}"
+                data-value-type="nullable-number"
+                data-document-field="system.consumableProfile.dependency"
+              /></label>
+            <label>Usages par unité<input
+                type="number"
+                min="1"
+                step="1"
+                value="{{system.consumableProfile.usesPerUnit}}"
+                data-value-type="nullable-number"
+                data-document-field="system.consumableProfile.usesPerUnit"
+              /></label>
+            <label>Coût ordinaire en Actions<input
+                type="number"
+                min="0"
+                step="any"
+                value="{{system.consumableProfile.actionCost}}"
+                data-value-type="nullable-number"
+                data-document-field="system.consumableProfile.actionCost"
+              /></label>
+            <label>Amorçage / activation<input
+                type="text"
+                value="{{system.consumableProfile.activation}}"
+                data-document-field="system.consumableProfile.activation"
+              /></label>
+            <label>Portée ou placement<input
+                type="text"
+                value="{{system.consumableProfile.rangeOrPlacement}}"
+                data-document-field="system.consumableProfile.rangeOrPlacement"
+              /></label>
+            <label>Zone<input
+                type="text"
+                value="{{system.consumableProfile.area}}"
+                data-document-field="system.consumableProfile.area"
+              /></label>
+            <label>Dégâts<input
+                type="text"
+                value="{{system.consumableProfile.damageFormula}}"
+                data-document-field="system.consumableProfile.damageFormula"
+              /></label>
+            <label>Types de dégâts<input
+                type="text"
+                value="{{system.consumableProfile.damageTypes}}"
+                data-value-type="string-list"
+                data-document-field="system.consumableProfile.damageTypes"
+              /></label>
+            <label>Déclencheur<input
+                type="text"
+                value="{{system.consumableProfile.trigger}}"
+                data-document-field="system.consumableProfile.trigger"
+              /></label>
+            <label>Guidage éventuel<input
+                type="text"
+                value="{{system.consumableProfile.guidance}}"
+                data-document-field="system.consumableProfile.guidance"
+              /></label>
+            <label>Résidu éventuel<input
+                type="text"
+                value="{{system.consumableProfile.residue}}"
+                data-document-field="system.consumableProfile.residue"
+              /></label>
+            <label>Effet canonique résumé<input
+                type="text"
+                value="{{system.consumableProfile.effectSummary}}"
+                data-document-field="system.consumableProfile.effectSummary"
+              /></label>
+            <label>Limite / contre-indication<input
+                type="text"
+                value="{{system.consumableProfile.limitation}}"
+                data-document-field="system.consumableProfile.limitation"
+              /></label>
+            <label>État de sûreté<select
+                data-document-field="system.consumableProfile.safetyState"
+              >{{selectOptions
+                  consumableSafetyOptions
+                  selected=system.consumableProfile.safetyState
+                }}</select></label>
+            <label>Stérilité / scellé<input
+                type="text"
+                value="{{system.consumableProfile.sterility}}"
+                data-document-field="system.consumableProfile.sterility"
+              /></label>
+            <label>Conditions de conservation<input
+                type="text"
+                value="{{system.consumableProfile.storageConditions}}"
+                data-document-field="system.consumableProfile.storageConditions"
+              /></label>
+            <label>Ouverture / historique d’ouverture<input
+                type="text"
+                value="{{system.consumableProfile.openedAt}}"
+                data-document-field="system.consumableProfile.openedAt"
+              /></label>
+          </div>
+          <details><summary>Formule ou matrice énergétique</summary>
+            <div class="relis-grid relis-grid--form relis-item-form">
+              <label>Source<select
+                  data-document-field="system.consumableProfile.energySource"
+                >{{selectOptions
+                    consumableEnergyOptions
+                    selected=system.consumableProfile.energySource
+                  }}</select></label>
+              <label>Formule encodée<input
+                  type="text"
+                  value="{{system.consumableProfile.encodedFormula}}"
+                  data-document-field="system.consumableProfile.encodedFormula"
+                /></label>
+              <label>Rang de formule<input
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="{{system.consumableProfile.formulaRank}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.consumableProfile.formulaRank"
+                /></label>
+              <label><input
+                  type="checkbox"
+                  {{checked system.consumableProfile.autonomous}}
+                  data-value-type="boolean"
+                  data-document-field="system.consumableProfile.autonomous"
+                />Activation autonome selon la source</label>
+              <label>Nature du tampon<input
+                  type="text"
+                  value="{{system.consumableProfile.bufferKind}}"
+                  data-document-field="system.consumableProfile.bufferKind"
+                /></label>
+              <label>Tampon actuel<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.consumableProfile.bufferCurrent}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.consumableProfile.bufferCurrent"
+                /></label>
+              <label>Tampon maximum<input
+                  type="number"
+                  min="0"
+                  step="any"
+                  value="{{system.consumableProfile.bufferMaximum}}"
+                  data-value-type="nullable-number"
+                  data-document-field="system.consumableProfile.bufferMaximum"
+                /></label>
+            </div>
+          </details>
+        </section>
+      {{/if}}
+
+      {{#if isResource}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Argent physique seulement</p><h2>Monnaie
+            portée</h2>
+          <p class="relis-scope-note">Le compte bancaire et les virements ne
+            sont pas stockés ici : Datapad 10-G7, service financier 10-J1.</p>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label><input
+                type="checkbox"
+                {{checked system.currencyProfile.physicalCash}}
+                data-value-type="boolean"
+                data-document-field="system.currencyProfile.physicalCash"
+              />Cet Item représente du liquide physique</label>
+            <label>Identifiant de devise<input
+                type="text"
+                value="{{system.currencyProfile.currencyId}}"
+                data-document-field="system.currencyProfile.currencyId"
+              /></label>
+            <label>Libellé de devise<input
+                type="text"
+                value="{{system.currencyProfile.currencyLabel}}"
+                data-document-field="system.currencyProfile.currencyLabel"
+              /></label>
+            <label>Valeur faciale par unité<input
+                type="number"
+                min="0.000001"
+                step="any"
+                value="{{system.currencyProfile.denomination}}"
+                data-value-type="number"
+                data-document-field="system.currencyProfile.denomination"
+              /></label>
+          </div>
+        </section>
+      {{/if}}
+
+      {{#if isContainer}}
+        <section class="relis-card relis-material-profile">
+          <p class="relis-kicker">Conteneur spécialisé</p><h2>Chargeur
+            détachable</h2>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>Nature<select
+                data-document-field="system.containerKind"
+              >{{selectOptions
+                  containerKindOptions
+                  selected=system.containerKind
+                }}</select></label>
+            <label>Identifiant de chambre<input
+                type="text"
+                value="{{system.magazineProfile.chamberId}}"
+                data-document-field="system.magazineProfile.chamberId"
+              /></label>
+            <label>Classe de pression / énergie<input
+                type="text"
+                value="{{system.magazineProfile.pressureClass}}"
+                data-document-field="system.magazineProfile.pressureClass"
+              /></label>
+            <label>Interface du chargeur<input
+                type="text"
+                value="{{system.magazineProfile.interfaceId}}"
+                data-document-field="system.magazineProfile.interfaceId"
+              /></label>
+            <label>Capacité<input
+                type="number"
+                min="1"
+                step="1"
+                value="{{system.magazineProfile.capacity}}"
+                data-value-type="nullable-number"
+                data-document-field="system.magazineProfile.capacity"
+              /></label>
+          </div>
+          <p>Les cartouches restent de vrais Items frères contenus. Leur ordre
+            de chargement est géré depuis l’inventaire de l’Actor.</p>
+        </section>
+      {{/if}}
+
+      <section class="relis-card relis-material-profile">
+        <p class="relis-kicker">Durabilité matérielle</p><h2>Structure et
+          entretien</h2>
+        <p class="relis-scope-note">Un champ vide reste inconnu. Il ne vaut ni
+          zéro ni immunité.</p>
+        <div class="relis-grid relis-grid--form relis-item-form">
+          <label>Solidité propre<input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.physical.durability.solidity}}"
+              data-value-type="nullable-number"
+              data-document-field="system.physical.durability.solidity"
+            /></label>
+          <label>PV structurels actuels<input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.physical.durability.structureCurrent}}"
+              data-value-type="nullable-number"
+              data-document-field="system.physical.durability.structureCurrent"
+            /></label>
+          <label>PV structurels maximum<input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.physical.durability.structureMaximum}}"
+              data-value-type="nullable-number"
+              data-document-field="system.physical.durability.structureMaximum"
+            /></label>
+          <label>Seuil de brisure<input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.physical.durability.breakingThreshold}}"
+              data-value-type="nullable-number"
+              data-document-field="system.physical.durability.breakingThreshold"
+            /></label>
+          <label>Fiabilité 0–5<input
+              type="number"
+              min="0"
+              max="5"
+              step="1"
+              value="{{system.physical.durability.reliability}}"
+              data-value-type="nullable-number"
+              data-document-field="system.physical.durability.reliability"
+            /></label>
+          <label>Durée de service<input
+              type="text"
+              value="{{system.physical.durability.serviceLife}}"
+              data-document-field="system.physical.durability.serviceLife"
+            /></label>
+          <label>Intervalle de maintenance<input
+              type="text"
+              value="{{system.physical.durability.maintenanceInterval}}"
+              data-document-field="system.physical.durability.maintenanceInterval"
+            /></label>
+          <label>Signature matérielle<input
+              type="text"
+              value="{{system.physical.durability.signature}}"
+              data-document-field="system.physical.durability.signature"
+            /></label>
+          <label>Chaleur actuelle<input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.physical.durability.heatCurrent}}"
+              data-value-type="nullable-number"
+              data-document-field="system.physical.durability.heatCurrent"
+            /></label>
+          <label>Chaleur maximale<input
+              type="number"
+              min="0"
+              step="any"
+              value="{{system.physical.durability.heatMaximum}}"
+              data-value-type="nullable-number"
+              data-document-field="system.physical.durability.heatMaximum"
+            /></label>
+        </div>
       </section>
 
       <section class="relis-card">
@@ -794,6 +1913,7 @@
   </div>
 
   <footer class="relis-sheet-footer">
-    Étape 10-E1-P · éditeur riche interactif · paquet 0.3.6
+    10-E3-P validé · profils 10-E4-P en recette · paquet
+    {{packageVersion}}
   </footer>
 </section>

@@ -1045,13 +1045,24 @@
                 >{{name}}</button>{{/each}}</details>{{/if}}
         </section>
         {{#if equipmentRecovery}}<aside class="relis-inventory-diagnostics"><p
-            >Une opération d’équipement a été interrompue. Restaurer sa
-              sauvegarde avant de poursuivre.</p>{{#if canConfigureBody}}<button
+            >Une opération matérielle ou d’équipement a été interrompue.
+              Restaurer sa sauvegarde avant de poursuivre.</p>{{#if
+              canConfigureBody
+            }}<button
                 type="button"
                 data-equipment-command="recover"
                 data-owner-control
               >Restaurer l’équipement précédent</button>{{/if}}</aside>{{/if}}
-        {{! Le résumé financier sera raccordé aux lots existants 10-E4-P et 10-J1. }}
+        <section class="relis-finance-band" aria-label="Argent du personnage">
+          <div><p class="relis-kicker">Moyens financiers</p><h2>Liquide porté</h2></div>
+          <div class="relis-finance-values">
+            {{#each physicalCash}}<span><b>{{amountLabel}}</b>
+                {{label}}</span>{{else}}<span>Aucun Item de monnaie physique
+                configuré.</span>{{/each}}
+          </div>
+          <div class="relis-finance-bank"><span>Argent en banque</span><b>Non
+              raccordé</b><small>Datapad 10-G7 · comptes et opérations 10-J1</small></div>
+        </section>
 
         {{#if hasInventoryDiagnostics}}
           <aside
@@ -1185,6 +1196,9 @@
                             · usure
                             {{wear}}</span>{{/if}}
                         {{#if lot}}<small>Lot : {{lot}}</small>{{/if}}
+                        {{#each materialStatus}}<small
+                            class="relis-material-status"
+                          >{{this}}</small>{{/each}}
                         {{#if path}}<small>{{path}}</small>{{/if}}
                       </div>
                       <div class="relis-inventory-quantity">
@@ -1200,7 +1214,16 @@
                       </div>
                     </div>
 
-                    {{#if isContainer}}<button
+                    {{#if loadedContentLines}}<div
+                        class="relis-loaded-inline"
+                        aria-label="Munitions chargées"
+                      >{{#each loadedContentLines}}<span><i
+                              class="fa-solid fa-circle-dot"
+                              aria-hidden="true"
+                            ></i>
+                            {{this}}</span>{{/each}}</div>{{/if}}
+
+                    {{#if childCount}}<button
                         type="button"
                         class="relis-container-toggle"
                         data-inventory-fold="item:{{id}}"
@@ -1209,7 +1232,7 @@
                           class="relis-fold-chevron"
                           aria-hidden="true"
                         >▾</span>
-                        Contenu de
+                        Éléments liés à
                         {{name}}
                         ·
                         {{childCount}}
@@ -1236,6 +1259,31 @@
                           >Modifier les propriétés dans la fiche</button>{{/if}}
                       </div>
                     </details>
+                    {{#if hasModulePorts}}
+                      <details class="relis-material-ports">
+                        <summary>Ports de modules</summary>
+                        <div class="relis-material-port-list">
+                          {{#each modulePorts}}<div class="relis-material-port">
+                              <span><b>{{label}}</b>
+                                ·
+                                {{used}}
+                                /
+                                {{capacity}}
+                                occupé(s) ·
+                                {{free}}
+                                libre(s){{#if installedNames}}<small
+                                  >{{installedNames}}</small>{{/if}}</span>
+                              {{#if @root.editable}}<button
+                                  type="button"
+                                  data-material-command="port"
+                                  data-item-id="{{hostId}}"
+                                  data-slot-key="{{key}}"
+                                  data-owner-control
+                                >Gérer</button>{{/if}}
+                            </div>{{/each}}
+                        </div>
+                      </details>
+                    {{/if}}
                     {{#if isContainer}}
                       <details class="relis-container-capacity">
                         <summary>{{childCount}}
@@ -1264,6 +1312,50 @@
                           >Transfert en quarantaine</span>
                         {{else}}
                           {{#if @root.editable}}
+                            {{#if canLoadAmmunition}}<button
+                                type="button"
+                                data-material-command="load"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Charger des munitions compatibles"
+                              ><i
+                                  class="fa-solid fa-rotate"
+                                  aria-hidden="true"
+                                ></i>
+                                Charger</button>{{/if}}
+                            {{#if canUnloadAmmunition}}<button
+                                type="button"
+                                data-material-command="unload"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Décharger vers l’inventaire"
+                              ><i
+                                  class="fa-solid fa-eject"
+                                  aria-hidden="true"
+                                ></i>
+                                Décharger</button>{{/if}}
+                            {{#if canReceiveEnergy}}<button
+                                type="button"
+                                data-material-command="energy"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Transférer des CE depuis une source compatible"
+                              ><i
+                                  class="fa-solid fa-battery-half"
+                                  aria-hidden="true"
+                                ></i>
+                                Recharger</button>{{/if}}
+                            {{#if canConsume}}<button
+                                type="button"
+                                data-material-command="consume"
+                                data-item-id="{{id}}"
+                                data-owner-control
+                                title="Dépenser une charge ou une unité"
+                              ><i
+                                  class="fa-solid fa-capsules"
+                                  aria-hidden="true"
+                                ></i>
+                                Employer</button>{{/if}}
                             {{#if canSplit}}<button
                                 type="button"
                                 data-action="split-inventory-stack"
@@ -1382,7 +1474,7 @@
     {{/if}}
   </main>
 
-  <footer class="relis-sheet-footer">10-E2-P et revue visuelle validés · 10-E3-P
-    en recette · paquet
+  <footer class="relis-sheet-footer">10-E3-P validé · 10-E4-P en recette ·
+    paquet
     {{packageVersion}}</footer>
 </section>

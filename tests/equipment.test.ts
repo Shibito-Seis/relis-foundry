@@ -56,6 +56,9 @@ describe("10-E3-P — équipement personnel", () => {
     expect(equipmentState(item("old", { equipState: "readied" }))).toBe(
       "readied",
     );
+    const magazine = item("magazine", {}, "container");
+    magazine.system.containerKind = "magazine";
+    expect(equipmentStates(magazine)).toContain("installed");
   });
   it("refuse deux mains occupées et permet une libération avant acquisition", () => {
     const items = [held("a"), held("b"), item("c")];
@@ -213,6 +216,63 @@ describe("10-E3-P — équipement personnel", () => {
         hostId: "host",
       }).errors.join(),
     ).toMatch(/autre corps|hors de portée/);
+  });
+  it("contrôle famille, gabarit, technologie et interface propres au module", () => {
+    const host = item(
+      "host",
+      {
+        equipmentProfile: {
+          functionalCategory: "module",
+          technicalSize: "compact",
+          technology: "PHA",
+          interfaceIds: ["IF-RAIL-A"],
+          providedSlots: { utility: 1 },
+        },
+      },
+      "container",
+    );
+    const module = item(
+      "module",
+      {
+        equipmentProfile: {
+          installable: true,
+          hostTypes: ["container"],
+          requiredSlots: { utility: 1 },
+          compatibleFamilies: ["module"],
+          compatibleSizes: ["compact"],
+          compatibleTechnologies: ["PHA"],
+          compatibleInterfaces: ["IF-RAIL-A"],
+        },
+      },
+      "equipment",
+    );
+    const install = () =>
+      equipmentPlan([host, module], body, {
+        itemId: module.id,
+        state: "installed",
+        hostId: host.id,
+      }).errors.join(" ");
+    expect(install()).toBe("");
+    host.system.physical.equipmentProfile.functionalCategory = "sensor";
+    expect(install()).toMatch(/famille fonctionnelle/);
+    host.system.physical.equipmentProfile.functionalCategory = "module";
+    host.system.physical.equipmentProfile.technicalSize = "lourd";
+    expect(install()).toMatch(/gabarit/);
+    host.system.physical.equipmentProfile.technicalSize = "compact";
+    host.system.physical.equipmentProfile.technology = "MYS";
+    expect(install()).toMatch(/technologie/);
+    host.system.physical.equipmentProfile.technology = "PHA";
+    host.system.physical.equipmentProfile.interfaceIds = ["IF-AUTRE"];
+    expect(install()).toMatch(/interface technique/);
+    host.system.physical.equipmentProfile.interfaceIds = ["IF-RAIL-A"];
+    host.system.physical.equipmentProfile.functionalCategory = "";
+    host.type = "weapon";
+    host.system.weaponProfile = { family: "arme-longue" };
+    module.system.physical.equipmentProfile.hostTypes = ["weapon"];
+    module.system.physical.equipmentProfile.compatibleFamilies = [
+      "arme-longue",
+    ];
+    expect(install()).toBe("");
   });
   it("refuse un ensemble strict incomplet et expose les écarts en mode assisté", () => {
     const requests = [

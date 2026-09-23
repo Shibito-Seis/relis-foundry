@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.6.0 — 10-E4-P, matériel personnel
+
+- Profils spécialisés édités dans chaque fiche Item : armes, protections et environnement, boucliers/champs, batteries et réserves CE, munitions, consommables PHA/MYS, chargeurs, monnaie physique et durabilité.
+- Compatibilité exacte des munitions et chargeurs par chambrage, pression/énergie et interface ; la famille ne vaut jamais compatibilité. Chargeurs réutilisables avec vrais Items ordonnés et magasins internes avec profil, lot et masse conservés.
+- Chargement, déchargement, transfert de CE et consommation soumis aux permissions, à l’état et à l’unicité de l’exemplaire ; compensation multi-Items et récupération MJ testées.
+- Compatibilités de modules par type d’hôte, famille réelle, gabarit, technologie, interface et places ; modules, chargeurs et munitions imbriqués sous leur hôte, ports et chambres vides visibles.
+- Consommables multi-usages, profils pharmaceutiques et énergétiques, diagnostics de structure, Fiabilité, Barrière, chaleur, alimentation et sécurité.
+- Résumé du liquide physique réellement porté par le corps actif ; banque laissée non raccordée pour 10-G7/10-J1.
+- Pieds des fiches Actor et Item alimentés par `PACKAGE_VERSION` ; non-régressions PJ/PNJ, portraits, DialogV2 et inventaire partagés conservées.
+- Schéma 5, dépendances et migrations inchangés. Les sources/compendiums restent 10-K1-P/K2-P et la résolution de combat 10-F. 10-E4-P reste en recette jusqu’à validation explicite.
+
 ## 0.5.6 — Classification, menu d’état et suivi d’équipement
 
 - Forme unique par Item, familles fonctionnelles, sous-couche vestimentaire et formes de port étendues ; aucune conversion automatique.
@@ -10,7 +21,7 @@
 - Installation sur supports compatibles avec places libres et refus expliqués à la demande.
 - Bouclier porté : mains requises déclarées selon sa source ; aucune fixation mains libres supposée.
 - Permissions vérifiées sur la fiche, dans le service et sur les modifications de profil monde/embarqué ; non-régressions portraits, DialogV2, versions dynamiques et isolation.
-- Schéma 5 et dépendances inchangés ; 10-E3-P reste ouvert jusqu’à validation de cette recette.
+- Schéma 5 et dépendances inchangés ; 10-E3-P a ensuite été validé par la recette utilisateur avant l’ouverture de 10-E4-P.
 
 ## 0.5.5 — Isolation des exemplaires et emplacements par type
 

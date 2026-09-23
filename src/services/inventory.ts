@@ -24,6 +24,11 @@ import {
   type EquipmentRequest,
   type EquipmentBody,
 } from "../rules/equipment";
+import {
+  ammunitionCompatibility,
+  energyCompatibility,
+} from "../rules/personal-material";
+import { physicalUnitMass } from "../rules/physical-mass";
 
 type ActorLike = Actor & {
   id?: string;
@@ -44,7 +49,11 @@ interface InventoryJournalEntry {
     | "move"
     | "transfer-in"
     | "transfer-out"
-    | "equip";
+    | "equip"
+    | "load"
+    | "unload"
+    | "energy"
+    | "consume";
   at: number;
   userId: string;
   itemIds: string[];
@@ -122,7 +131,7 @@ function assertActorPermission(actor: ActorLike): void {
     );
   if (actor.flags?.relis?.equipmentRecovery)
     throw new Error(
-      "Une opération d’équipement doit être récupérée par le MJ avant de poursuivre.",
+      "Une opération matérielle ou d’équipement doit être récupérée par le MJ avant de poursuivre.",
     );
 }
 
@@ -309,6 +318,29 @@ function containerReference(item: Item): Record<string, unknown> {
     state: "resolved",
     labelSnapshot: item.name,
   });
+}
+
+function itemReference(item: Item): Record<string, unknown> {
+  return initialReference({
+    relisId: String(item.system.meta?.relisId ?? ""),
+    uuid: item.uuid,
+    documentName: "Item",
+    type: item.type,
+    state: "resolved",
+    labelSnapshot: item.name,
+  });
+}
+
+function referencedOwnedItem(actor: ActorLike, reference: any): Item | null {
+  const relisId = String(reference?.relisId ?? "");
+  const uuid = String(reference?.uuid ?? "");
+  return (
+    ownedItems(actor).find(
+      (item) =>
+        (relisId && String(item.system.meta?.relisId ?? "") === relisId) ||
+        (uuid && item.uuid === uuid),
+    ) ?? null
+  );
 }
 
 function transferFlag(item: Item): PendingTransfer | null {
@@ -749,6 +781,491 @@ export async function transferInventoryItem(
       ),
     ]);
     return created;
+  });
+}
+
+function assertMaterialItem(item: Item): void {
+  assertAvailable(item);
+  const physical = item.system.physical ?? {};
+  if (physical.accessibility === "unavailable")
+    throw new Error(`${item.name} est indisponible.`);
+  if (["broken", "destroyed"].includes(physical.condition))
+    throw new Error(`${item.name} est brisé ou détruit.`);
+}
+
+function assertUniqueMaterialItem(item: Item): void {
+  if (
+    Number(item.system.physical?.quantity) !== 1 ||
+    String(item.system.physical?.unit ?? "count") !== "count"
+  )
+    throw new Error(
+      `${item.name} doit être un exemplaire unique : scinder la pile avant cette opération.`,
+    );
+}
+
+function ammunitionQuantity(item: Item): number {
+  const quantity = Number(item.system.physical?.quantity ?? 0);
+  if (!Number.isSafeInteger(quantity) || quantity < 0)
+    throw new Error(`${item.name} possède une quantité de munitions invalide.`);
+  return quantity;
+}
+
+function loadSequenceQuantity(sequence: any[]): number {
+  return sequence.reduce(
+    (sum, segment) => sum + Math.max(0, Number(segment.quantity ?? 0)),
+    0,
+  );
+}
+
+function itemPathValue(item: Item, path: string): unknown {
+  const parts = path.split(".");
+  let current: any = item;
+  for (const part of parts) current = current?.[part];
+  return current;
+}
+
+async function applyRecoverableMaterialUpdates(
+  actor: ActorLike,
+  updates: Record<string, unknown>[],
+): Promise<void> {
+  const before = updates.map((update) => {
+    const restored: Record<string, unknown> = { _id: update._id };
+    const item = itemById(actor, String(update._id));
+    for (const path of Object.keys(update).filter((key) => key !== "_id"))
+      restored[path] = JSON.parse(
+        JSON.stringify(itemPathValue(item, path) ?? null),
+      );
+    return restored;
+  });
+  await actor.update({
+    "flags.relis.equipmentRecovery": {
+      before,
+      at: Date.now(),
+      kind: "material",
+    },
+  });
+  try {
+    await actor.updateEmbeddedDocuments(
+      "Item",
+      updates,
+      inventoryCreateOptions(),
+    );
+    await actor.update({
+      "flags.relis.equipmentRecovery":
+        new foundry.data.operators.ForcedDeletion(),
+    });
+  } catch (error) {
+    try {
+      await actor.updateEmbeddedDocuments(
+        "Item",
+        before,
+        inventoryCreateOptions(),
+      );
+      await actor.update({
+        "flags.relis.equipmentRecovery":
+          new foundry.data.operators.ForcedDeletion(),
+      });
+    } catch {
+      throw new Error(
+        "Écriture matérielle interrompue : restauration MJ requise, sauvegarde conservée sur l’Actor.",
+      );
+    }
+    throw error;
+  }
+}
+
+export async function loadAmmunition(
+  actor: ActorLike,
+  targetId: string,
+  ammunitionId: string,
+  requested: number,
+  location: "magazine" | "chamber" = "magazine",
+): Promise<void> {
+  assertActorPermission(actor);
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    const target = itemById(actor, targetId);
+    const ammunition = itemById(actor, ammunitionId);
+    assertMaterialItem(target);
+    assertMaterialItem(ammunition);
+    assertUniqueMaterialItem(target);
+    if (ammunition.type !== "ammunition")
+      throw new Error("L’Item choisi n’est pas une munition.");
+    const quantity = ammunitionQuantity(ammunition);
+    if (
+      !Number.isSafeInteger(requested) ||
+      requested <= 0 ||
+      requested > quantity
+    )
+      throw new Error("Quantité de chargement invalide.");
+    const compatibility = ammunitionCompatibility(
+      itemSnapshot(ammunition),
+      itemSnapshot(target),
+    );
+    if (compatibility.length) throw new Error(compatibility.join(" "));
+
+    const operation = operationId();
+    if (["weapon", "armor", "equipment"].includes(target.type)) {
+      const profileKey =
+        target.type === "weapon" ? "weaponProfile" : "supplyProfile";
+      const profile = target.system[profileKey] ?? {};
+      if (!["internal", "hybrid"].includes(profile.feedKind))
+        throw new Error("Cet objet ne possède pas de magasin interne.");
+      const sequenceKey =
+        location === "chamber" ? "chamberLoad" : "loadSequence";
+      const sequence = JSON.parse(
+        JSON.stringify(Array.from(profile[sequenceKey] ?? [])),
+      );
+      if (location === "chamber") {
+        if (!profile.chamberSeparate)
+          throw new Error("Cet objet ne suit pas une chambre séparée.");
+        if (requested !== 1 || sequence.length)
+          throw new Error(
+            "La chambre accepte exactement une munition et doit être vide.",
+          );
+      } else {
+        const capacity = Number(profile.capacity ?? 0);
+        if (!Number.isSafeInteger(capacity) || capacity <= 0)
+          throw new Error("Capacité interne invalide.");
+        if (loadSequenceQuantity(sequence) + requested > capacity)
+          throw new Error(
+            `Chargement refusé : ${loadSequenceQuantity(sequence)} déjà chargé(s), ${capacity} place(s).`,
+          );
+      }
+      const ammoProfile = ammunition.system.ammunitionProfile ?? {};
+      const lotId = String(ammunition.system.provenance?.lotId ?? "");
+      const last = sequence.at(-1);
+      const sameLast =
+        last &&
+        String(last.ammunitionRef?.relisId ?? "") ===
+          String(ammunition.system.meta?.relisId ?? "") &&
+        String(last.lotId ?? "") === lotId;
+      if (sameLast) {
+        last.quantity += requested;
+        if (last.massEach == null)
+          last.massEach = physicalUnitMass(ammunition.system.physical ?? {});
+      } else
+        sequence.push({
+          ammunitionRef: itemReference(ammunition),
+          quantity: requested,
+          massEach: physicalUnitMass(ammunition.system.physical ?? {}),
+          lotId,
+          variantId: String(ammunition.system.meta?.sourceRef?.relisId ?? ""),
+          profile: {
+            family: String(ammoProfile.family ?? ""),
+            chamberId: String(ammoProfile.chamberId ?? ""),
+            pressureClass: String(ammoProfile.pressureClass ?? ""),
+            feedInterfaces: Array.from(ammoProfile.feedInterfaces ?? []),
+            impactModifier: String(ammoProfile.impactModifier ?? ""),
+            damageTypes: Array.from(ammoProfile.damageTypes ?? []),
+            damageSources: Array.from(ammoProfile.damageSources ?? []),
+            penetrationModifier: ammoProfile.penetrationModifier ?? null,
+            rangeModifier: String(ammoProfile.rangeModifier ?? ""),
+            signatureModifiers: Array.from(
+              ammoProfile.signatureModifiers ?? [],
+            ),
+            effectSummary: String(ammoProfile.effectSummary ?? ""),
+            specialTraits: Array.from(ammoProfile.specialTraits ?? []),
+            recoverable: ammoProfile.recoverable === true,
+          },
+        });
+      await applyRecoverableMaterialUpdates(actor, [
+        {
+          _id: ammunition.id,
+          "system.physical.quantity": quantity - requested,
+        },
+        {
+          _id: target.id,
+          [`system.${profileKey}.${sequenceKey}`]: sequence,
+        },
+      ]);
+    } else if (
+      target.type === "container" &&
+      target.system.containerKind === "magazine"
+    ) {
+      if (
+        ammunition.system.physical?.containerRef?.uuid ||
+        ammunition.system.physical?.containerRef?.relisId
+      )
+        throw new Error(
+          "Sortir d’abord la pile de munitions de son conteneur avant de charger ce chargeur.",
+        );
+      const snapshots = actorSnapshots(actor);
+      const children = snapshots.filter(
+        (item) =>
+          item.type === "ammunition" &&
+          ((item.system.physical?.containerRef?.uuid &&
+            item.system.physical.containerRef.uuid === target.uuid) ||
+            (item.system.physical?.containerRef?.relisId &&
+              item.system.physical.containerRef.relisId ===
+                target.system.meta?.relisId)),
+      );
+      const loaded = children.reduce(
+        (sum, item) => sum + Number(item.system.physical?.quantity ?? 0),
+        0,
+      );
+      const capacity = Number(target.system.magazineProfile?.capacity ?? 0);
+      if (!Number.isSafeInteger(capacity) || capacity <= 0)
+        throw new Error("Capacité du chargeur invalide.");
+      if (loaded + requested > capacity)
+        throw new Error(
+          `Chargeur plein : ${loaded} munition(s), ${capacity} place(s).`,
+        );
+      const data = cloneItemData(ammunition);
+      data.system.meta.relisId = createWorldItemId();
+      data.system.meta.revision = 0;
+      data.system.physical.quantity = requested;
+      data.system.physical.containerRef = containerReference(target);
+      data.system.physical.hostRef = initialReference();
+      data.system.physical.equipState = "stored";
+      data.system.physical.locationKey = "container";
+      data.system.ammunitionProfile.loadOrder =
+        Math.max(
+          0,
+          ...children.map((item) =>
+            Number(item.system.ammunitionProfile?.loadOrder ?? 0),
+          ),
+        ) + 1;
+      const [created] = await actor.createEmbeddedDocuments(
+        "Item",
+        [data],
+        inventoryCreateOptions(),
+      );
+      if (!created)
+        throw new Error("La séquence de chargeur n’a pas été créée.");
+      try {
+        await ammunition.update(
+          { "system.physical.quantity": quantity - requested },
+          inventoryCreateOptions(),
+        );
+      } catch (error) {
+        await actor.deleteEmbeddedDocuments(
+          "Item",
+          [created.id],
+          inventoryCreateOptions(),
+        );
+        throw error;
+      }
+    } else throw new Error("La cible ne peut pas recevoir de munitions.");
+
+    await appendJournal(
+      actor,
+      journalEntry("load", operation, [target.id, ammunition.id], requested),
+    );
+  });
+}
+
+export async function unloadAmmunition(
+  actor: ActorLike,
+  targetId: string,
+): Promise<void> {
+  assertActorPermission(actor);
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    const target = itemById(actor, targetId);
+    assertMaterialItem(target);
+    assertUniqueMaterialItem(target);
+    const operation = operationId();
+    let unloaded = 0;
+    if (["weapon", "armor", "equipment"].includes(target.type)) {
+      const profileKey =
+        target.type === "weapon" ? "weaponProfile" : "supplyProfile";
+      const sequence = [
+        ...Array.from(target.system[profileKey]?.chamberLoad ?? []),
+        ...Array.from(target.system[profileKey]?.loadSequence ?? []),
+      ] as any[];
+      if (!sequence.length) throw new Error("Le magasin interne est vide.");
+      const updates = new Map<string, { item: Item; quantity: number }>();
+      const creations: Record<string, any>[] = [];
+      for (const segment of sequence) {
+        const quantity = Number(segment.quantity ?? 0);
+        if (!Number.isSafeInteger(quantity) || quantity <= 0)
+          throw new Error("Séquence interne invalide : quantité non positive.");
+        unloaded += quantity;
+        const source = referencedOwnedItem(actor, segment.ammunitionRef);
+        if (source && source.type === "ammunition") {
+          const current =
+            updates.get(source.id)?.quantity ?? ammunitionQuantity(source);
+          updates.set(source.id, {
+            item: source,
+            quantity: current + quantity,
+          });
+        } else {
+          creations.push({
+            name: String(
+              segment.ammunitionRef?.labelSnapshot || "Munitions déchargées",
+            ),
+            type: "ammunition",
+            system: {
+              physical: {
+                quantity,
+                unit: "count",
+                massEach: segment.massEach ?? null,
+                locationKey: "actor-cargo",
+              },
+              provenance: { lotId: String(segment.lotId ?? "") },
+              ammunitionProfile: {
+                ...(segment.profile ?? {}),
+                loadOrder: 0,
+              },
+            },
+          });
+        }
+      }
+      const created = creations.length
+        ? await actor.createEmbeddedDocuments(
+            "Item",
+            creations,
+            inventoryCreateOptions(),
+          )
+        : [];
+      try {
+        await applyRecoverableMaterialUpdates(actor, [
+          ...Array.from(updates.values()).map(({ item, quantity }) => ({
+            _id: item.id,
+            "system.physical.quantity": quantity,
+          })),
+          {
+            _id: target.id,
+            [`system.${profileKey}.loadSequence`]: [],
+            [`system.${profileKey}.chamberLoad`]: [],
+          },
+        ]);
+      } catch (error) {
+        if (created.length)
+          await actor.deleteEmbeddedDocuments(
+            "Item",
+            created.map((item: Item) => item.id),
+            inventoryCreateOptions(),
+          );
+        throw error;
+      }
+    } else if (
+      target.type === "container" &&
+      target.system.containerKind === "magazine"
+    ) {
+      const children = ownedItems(actor).filter(
+        (item) =>
+          item.type === "ammunition" &&
+          ((item.system.physical?.containerRef?.uuid &&
+            item.system.physical.containerRef.uuid === target.uuid) ||
+            (item.system.physical?.containerRef?.relisId &&
+              item.system.physical.containerRef.relisId ===
+                target.system.meta?.relisId)),
+      );
+      if (!children.length) throw new Error("Le chargeur est vide.");
+      unloaded = children.reduce(
+        (sum, item) => sum + ammunitionQuantity(item),
+        0,
+      );
+      await applyRecoverableMaterialUpdates(
+        actor,
+        children.map((item) => ({
+          _id: item.id,
+          "system.physical.containerRef": initialReference(),
+          "system.physical.locationKey": "actor-cargo",
+          "system.ammunitionProfile.loadOrder": 0,
+        })),
+      );
+    } else throw new Error("La cible ne possède aucune munition à décharger.");
+    await appendJournal(
+      actor,
+      journalEntry("unload", operation, [target.id], unloaded),
+    );
+  });
+}
+
+export async function transferItemEnergy(
+  actor: ActorLike,
+  sourceId: string,
+  targetId: string,
+  requested: number,
+): Promise<void> {
+  assertActorPermission(actor);
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    const source = itemById(actor, sourceId);
+    const target = itemById(actor, targetId);
+    if (source.id === target.id)
+      throw new Error("Une réserve ne peut pas se recharger elle-même.");
+    assertMaterialItem(source);
+    assertMaterialItem(target);
+    assertUniqueMaterialItem(source);
+    assertUniqueMaterialItem(target);
+    const errors = energyCompatibility(
+      itemSnapshot(source),
+      itemSnapshot(target),
+    );
+    if (errors.length) throw new Error(errors.join(" "));
+    const available = Number(source.system.energyProfile.current);
+    const current = Number(target.system.energyProfile.current);
+    const maximum = Number(target.system.energyProfile.maximum);
+    const output = Number(source.system.energyProfile.output ?? requested);
+    if (
+      !Number.isFinite(requested) ||
+      requested <= 0 ||
+      requested > available ||
+      requested > maximum - current ||
+      (Number.isFinite(output) && requested > output)
+    )
+      throw new Error(
+        "Quantité de CE incompatible avec les réserves ou la sortie.",
+      );
+    await applyRecoverableMaterialUpdates(actor, [
+      {
+        _id: source.id,
+        "system.energyProfile.current": available - requested,
+      },
+      { _id: target.id, "system.energyProfile.current": current + requested },
+    ]);
+    await appendJournal(
+      actor,
+      journalEntry("energy", operationId(), [source.id, target.id], requested),
+    );
+  });
+}
+
+export async function consumeInventoryItem(
+  actor: ActorLike,
+  itemId: string,
+): Promise<void> {
+  assertActorPermission(actor);
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    const item = itemById(actor, itemId);
+    assertMaterialItem(item);
+    if (item.type !== "consumable")
+      throw new Error("L’Item choisi n’est pas un consommable.");
+    const charges = item.system.physical?.charges ?? {};
+    const current = Number(charges.current);
+    const updates: Record<string, unknown> = { _id: item.id };
+    if (charges.current !== null && charges.current !== undefined) {
+      assertUniqueMaterialItem(item);
+      if (!Number.isFinite(current) || current <= 0)
+        throw new Error("Ce consommable ne possède plus de charge.");
+      updates["system.physical.charges.current"] = current - 1;
+    } else {
+      const quantity = Number(item.system.physical?.quantity ?? 0);
+      if (!Number.isSafeInteger(quantity) || quantity <= 0)
+        throw new Error("Ce consommable ne possède plus d’unité.");
+      const usesPerUnit = Number(
+        item.system.consumableProfile?.usesPerUnit ?? 1,
+      );
+      if (Number.isSafeInteger(usesPerUnit) && usesPerUnit > 1) {
+        assertUniqueMaterialItem(item);
+        updates["system.physical.charges.current"] = usesPerUnit - 1;
+        updates["system.physical.charges.maximum"] = usesPerUnit;
+      } else updates["system.physical.quantity"] = quantity - 1;
+    }
+    await actor.updateEmbeddedDocuments(
+      "Item",
+      [updates],
+      inventoryCreateOptions(),
+    );
+    await appendJournal(
+      actor,
+      journalEntry("consume", operationId(), [item.id], 1),
+    );
   });
 }
 

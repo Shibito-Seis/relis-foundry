@@ -126,17 +126,35 @@ export function equipmentProfileUpdate(
         "piercingLocation",
         "ornamental",
         "shieldHands",
+        "technology",
+        "technicalSize",
+        "installationKind",
+        "effectSummary",
+        "interfaceIds",
+        "compatibleFamilies",
+        "compatibleSizes",
+        "compatibleTechnologies",
+        "compatibleInterfaces",
       ].includes(key ?? "")
     )
       continue;
     patch[`system.physical.equipmentProfile.${key}`] =
-      control.type === "number"
-        ? control.value.trim() === ""
-          ? null
-          : Number(control.value)
-        : control.type === "checkbox"
-          ? (control as HTMLInputElement).checked
-          : control.value.trim();
+      control.dataset.profileValueType === "string-list"
+        ? Array.from(
+            new Set(
+              control.value
+                .split(/[,;\n]/)
+                .map((value) => value.trim())
+                .filter(Boolean),
+            ),
+          )
+        : control.type === "number"
+          ? control.value.trim() === ""
+            ? null
+            : Number(control.value)
+          : control.type === "checkbox"
+            ? (control as HTMLInputElement).checked
+            : control.value.trim();
   }
   for (const field of ["requiredSlots", "providedSlots"]) {
     const controls = root.querySelectorAll<HTMLInputElement>(

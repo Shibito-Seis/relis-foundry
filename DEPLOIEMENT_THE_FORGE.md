@@ -19,8 +19,8 @@ formatage, les tests unitaires, le build et le manifeste.
 ## 3. Créer ou actualiser une Release
 
 Dans `Actions`, ouvrir `Publier une Release Foundry`, choisir `Run workflow`, saisir
-le tag correspondant exactement au manifeste, puis lancer. Pour la recette 10-E3-P,
-utiliser `v0.5.6`. Le workflow construit `relis-v0.5.6.zip`, crée le tag et la
+le tag correspondant exactement au manifeste, puis lancer. Pour la recette 10-E4-P,
+utiliser `v0.6.0`. Le workflow construit `relis-v0.6.0.zip`, crée le tag et la
 Release, puis y joint l’archive.
 
 Ne pas créer manuellement une archive différente : le ZIP automatisé garantit que
@@ -35,23 +35,23 @@ Utiliser l’URL de manifeste suivante dans le gestionnaire de systèmes :
 
 Le manifeste téléchargera alors :
 
-`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.5.6/relis-v0.5.6.zip`
+`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.6.0/relis-v0.6.0.zip`
 
-## 5. Recette 10-E3-P
+## 5. Recette 10-E4-P
 
 1. Créer un monde avec le système `RE:LIS — RE: Lost in Space`.
 2. Ouvrir la console du navigateur et vérifier l’absence d’erreur rouge `relis`.
 3. Ouvrir l’ancien Personnage de recette 10-C et confirmer sa conservation.
-4. Suivre la recette `RE-LIS_Recette10_E3-P_v0.5.6.md` fournie avec les
+4. Suivre la recette `RE-LIS_Recette10_E4-P_v0.6.0.md` fournie avec les
    livrables de développement.
-5. Vérifier bloc par bloc la charge, les états, les compatibilités, les
-   installations et les ensembles, puis les opérations précédemment validées.
+5. Vérifier bloc par bloc les profils Item, munitions/chargeurs, CE,
+   consommables, modules imbriqués, liquide porté et non-régressions.
 6. Actualiser le navigateur et confirmer la persistance. Aucune nouvelle migration n’est requise. Effectuer la recette seul ; ne solliciter aucun autre participant avant la procédure finale.
 7. Signaler la version Foundry affichée, les erreurs de console et l’étape exacte
    du premier échec éventuel.
 
-## Recette 0.5.6
+## Recette 0.6.0
 
-Arrêter le monde avant de remplacer le système, puis le relancer après installation. Vérifier 0.5.6 dans le manifeste et le pied de fiche. Conserver une sauvegarde du monde. L’archive update conserve la racine relis-foundry/ et contient les fichiers modifiés depuis le commit public 1b8772a ; l’archive installable a system.json à sa racine. Aucune migration, aucune suppression d’Item. Ne pas utiliser un remplacement global de version sur package-lock.json.
+Arrêter le monde avant de remplacer le système, puis le relancer après installation. Vérifier 0.6.0 dans le manifeste et les pieds de fiches Actor et Item. Conserver une sauvegarde du monde. L’archive update conserve la racine relis-foundry/ et contient les fichiers modifiés depuis le commit public d92f1c0 ; l’archive installable a system.json à sa racine. Aucune migration, aucune suppression d’Item. Ne pas utiliser un remplacement global de version sur package-lock.json.
 
-Exécuter RE-LIS_Recette10_E3-P_v0.5.6.md, bloc A d’abord. Recette seul en MJ, aucune invitation d’un autre utilisateur et aucun contrôle visuel automatisé par navigateur. La clôture de 10-E3-P attend la validation explicite.
+Exécuter RE-LIS_Recette10_E4-P_v0.6.0.md, bloc A d’abord. Recette seul en MJ, aucune invitation d’un autre utilisateur et aucun contrôle visuel automatisé par navigateur. La clôture de 10-E4-P attend la validation explicite.

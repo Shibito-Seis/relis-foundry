@@ -30,8 +30,14 @@ import {
   type InventoryItemLike,
   type InventoryLoad,
 } from "../rules/inventory";
-import { ATTRIBUTE_LABELS, MASTERY_LABELS, SKILL_DEFINITIONS } from "../config";
+import {
+  ATTRIBUTE_LABELS,
+  MASTERY_LABELS,
+  PACKAGE_VERSION,
+  SKILL_DEFINITIONS,
+} from "../config";
 import type { RelisActor } from "../documents/actor";
+import { materialDiagnostics } from "../rules/personal-material";
 
 const ItemSheetV2 = foundry.applications.sheets.ItemSheetV2;
 const HandlebarsApplicationMixin =
@@ -290,11 +296,22 @@ function syncSelectedTraitOptions(selector: HTMLElement): void {
   }
 }
 
-function fieldValue(target: FormControl): string | number | boolean | null {
+function fieldValue(
+  target: FormControl,
+): string | string[] | number | boolean | null {
   if (target.dataset.valueType === "boolean")
     return (target as HTMLInputElement).checked;
   if (target.dataset.valueType === "nullable-number")
     return target.value === "" ? null : Number(target.value);
+  if (target.dataset.valueType === "string-list")
+    return Array.from(
+      new Set(
+        target.value
+          .split(/[,;\n]/)
+          .map((value) => value.trim())
+          .filter(Boolean),
+      ),
+    );
   return target.dataset.valueType === "number"
     ? Number(target.value)
     : target.value;
@@ -487,6 +504,25 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
           message: "Une quantité en unités doit être entière.",
         });
     }
+    if (hasPhysical) {
+      const source = this.item.toObject?.(true) ?? {};
+      for (const diagnostic of materialDiagnostics({
+        id: this.item.id,
+        name: this.item.name,
+        type: this.item.type,
+        uuid: this.item.uuid,
+        system: source.system ?? system,
+        flags: source.flags ?? this.item.flags ?? {},
+      }))
+        diagnostics.push({
+          level: diagnostic.level,
+          icon:
+            diagnostic.level === "error"
+              ? "fa-circle-exclamation"
+              : "fa-triangle-exclamation",
+          message: diagnostic.message,
+        });
+    }
     let containerUsage: InventoryLoad | null = null;
     if (isContainer && this.item.parent) {
       const owned = (Array.from(this.item.parent.items ?? []) as Item[]).map(
@@ -512,6 +548,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       item: this.item,
       itemTypeLabel: game.i18n.localize(`TYPES.Item.${this.item.type}`),
       system,
+      packageVersion: PACKAGE_VERSION,
       editable: this.item.isOwner,
       canEditDescription,
       canManageDescriptionPermission,
@@ -524,6 +561,24 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         label: traitLabel(value),
       })),
       isAction: this.item.type === "action",
+      isWeapon: this.item.type === "weapon",
+      isArmor: this.item.type === "armor",
+      isAmmunition: this.item.type === "ammunition",
+      isConsumable: this.item.type === "consumable",
+      isResource: this.item.type === "resource",
+      hasProtectionProfile:
+        this.item.type === "armor" ||
+        (this.item.type === "weapon" &&
+          (system.physical?.equipmentProfile?.wearForm === "shield" ||
+            Boolean(system.protectionProfile?.kind))),
+      hasEnergyProfile: [
+        "weapon",
+        "armor",
+        "equipment",
+        "consumable",
+        "resource",
+      ].includes(this.item.type),
+      hasSupplyProfile: ["armor", "equipment"].includes(this.item.type),
       hasPhysical,
       technicalSlotRows: technicalSlotRows(
         system.physical?.equipmentProfile ?? {},
@@ -621,6 +676,133 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         key,
         label,
       })),
+      weaponSupportOptions: {
+        "": "Non renseigné",
+        personal: "Personnel",
+        vehicle: "Véhicule",
+        mecha: "Mecha",
+        spatial: "Spatial",
+        natural: "Naturel matériel",
+      },
+      accessOptions: {
+        "": "Non renseigné",
+        common: "Courante",
+        martial: "Martiale",
+        specialized: "Spécialisée",
+        heavy: "Lourde",
+      },
+      attackModeOptions: {
+        "": "Non renseigné",
+        melee: "Mêlée",
+        ranged: "Distance",
+        thrown: "Lancée",
+        mounted: "Montée",
+        natural: "Naturelle matérielle",
+      },
+      defenseTargetOptions: {
+        "": "Non renseignée",
+        cap: "CAP",
+        cae: "CAE",
+        maneuver: "DD de manœuvre",
+        profile: "Selon le mode ou le profil",
+      },
+      rangeKindOptions: {
+        "": "Non renseigné",
+        contact: "Contact",
+        thrown: "Lancée",
+        increments: "Portées chiffrées",
+        zone: "Zone",
+        special: "Spéciale",
+      },
+      feedKindOptions: {
+        "": "Non renseigné",
+        none: "Aucune alimentation",
+        internal: "Magasin interne",
+        detachable: "Chargeur détachable",
+        energy: "Énergie",
+        hybrid: "Hybride",
+      },
+      protectionKindOptions: {
+        "": "Non renseigné",
+        underlayer: "Sous-couche",
+        light: "Armure légère",
+        intermediate: "Armure intermédiaire",
+        heavy: "Armure lourde",
+        exo: "Exo-armure",
+        underhelmet: "Sous-casque",
+        helmet: "Casque",
+        arms: "Protections de bras",
+        legs: "Jambières",
+        eva: "Combinaison EVA",
+        shield: "Bouclier",
+        barrier: "Champ ou barrière",
+      },
+      sealingOptions: {
+        "": "Non renseigné",
+        none: "Non scellable",
+        partial: "Scellement partiel",
+        sealed: "Scellable / scellé selon l’état",
+      },
+      energyKindOptions: {
+        "": "Sans profil énergétique",
+        battery: "Batterie",
+        internal: "Réserve interne",
+        generator: "Générateur",
+        singleUse: "Source à usage unique",
+      },
+      energyCycleOptions: {
+        "": "Non renseigné",
+        rechargeable: "Rechargeable",
+        consumable: "Consommable",
+        hybrid: "Hybride",
+      },
+      consumableKindOptions: {
+        "": "Non renseignée",
+        medical: "Médicament ou soin",
+        drug: "Stimulant ou drogue",
+        toxin: "Poison ou toxine",
+        potion: "Potion ou élixir",
+        matrix: "Matrice ou cartouche",
+        grenade: "Grenade ou projectile consommable",
+        mine: "Mine",
+        charge: "Charge de démolition",
+        utility: "Consommable utilitaire",
+      },
+      consumableEnergyOptions: {
+        "": "Aucune ou non renseignée",
+        mana: "Mana",
+        prana: "Prana investi",
+        flux: "Flux",
+        technomagic: "Techno-magique",
+        other: "Autre source encodée",
+      },
+      routeOptions: {
+        "": "Non renseignée",
+        oral: "Orale",
+        inhaled: "Inhalée",
+        cutaneous: "Cutanée",
+        injected: "Injectée",
+        infused: "Perfusée",
+        contact: "Contact",
+        other: "Autre",
+      },
+      containerKindOptions: {
+        general: "Conteneur général",
+        magazine: "Chargeur détachable",
+      },
+      installationKindOptions: {
+        "": "Non renseignée",
+        accessory: "Accessoire amovible",
+        modification: "Modification intégrée",
+        improvement: "Amélioration de grade ou valeur",
+      },
+      consumableSafetyOptions: {
+        "": "Non renseigné",
+        usable: "Utilisable",
+        uncertain: "Incertain",
+        contaminated: "Contaminé",
+        expired: "Périmé",
+      },
     };
   }
 

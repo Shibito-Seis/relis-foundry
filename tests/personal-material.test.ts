@@ -1,0 +1,273 @@
+import { describe, expect, it } from "vitest";
+import { initialPhysicalState } from "../src/data/item-defaults";
+import type { InventoryItemLike } from "../src/rules/inventory";
+import {
+  ammunitionCompatibility,
+  cashSummary,
+  energyCompatibility,
+  hostPortSummary,
+  magazineCompatibility,
+  materialDiagnostics,
+  materialStatus,
+  nestInstalledRows,
+} from "../src/rules/personal-material";
+
+function item(
+  id: string,
+  type: string,
+  system: Record<string, any> = {},
+): InventoryItemLike {
+  return {
+    id,
+    uuid: `Actor.test.Item.${id}`,
+    name: id,
+    type,
+    system: {
+      meta: { relisId: `ITM-${id}` },
+      physical: initialPhysicalState(),
+      ...system,
+    },
+  };
+}
+
+describe("10-E4-P — profils matériels personnels", () => {
+  it("refuse une compatibilité fondée seulement sur la famille", () => {
+    const ammunition = item("ammo", "ammunition", {
+      ammunitionProfile: {
+        family: "cinétique",
+        chamberId: "CH-9X",
+        pressureClass: "P2",
+        feedInterfaces: ["MAG-A"],
+      },
+    });
+    const weapon = item("weapon", "weapon", {
+      weaponProfile: {
+        family: "cinétique",
+        chamberId: "CH-9Y",
+        pressureClass: "P2",
+        feedInterface: "MAG-A",
+      },
+    });
+    expect(ammunitionCompatibility(ammunition, weapon).join(" ")).toMatch(
+      /Chambre incompatible/,
+    );
+    weapon.system.weaponProfile.chamberId = "CH-9X";
+    expect(ammunitionCompatibility(ammunition, weapon)).toEqual([]);
+    weapon.system.weaponProfile.feedInterface = "MAG-B";
+    expect(ammunitionCompatibility(ammunition, weapon).join(" ")).toMatch(
+      /Interface MAG-B/,
+    );
+  });
+
+  it("contrôle chambre, pression et interface d’un chargeur détachable", () => {
+    const magazine = item("mag", "container", {
+      containerKind: "magazine",
+      magazineProfile: {
+        chamberId: "CH-A",
+        pressureClass: "P1",
+        interfaceId: "IF-A",
+        capacity: 10,
+      },
+    });
+    const weapon = item("weapon", "weapon", {
+      weaponProfile: {
+        feedKind: "detachable",
+        chamberId: "CH-A",
+        pressureClass: "P1",
+        feedInterface: "IF-B",
+      },
+    });
+    expect(magazineCompatibility(magazine, weapon).join(" ")).toMatch(
+      /interface incompatible/,
+    );
+    weapon.system.weaponProfile.feedInterface = "IF-A";
+    expect(magazineCompatibility(magazine, weapon)).toEqual([]);
+    const ammunition = item("ammo", "ammunition", {
+      ammunitionProfile: {
+        chamberId: "CH-A",
+        pressureClass: "P1",
+        feedInterfaces: [],
+      },
+    });
+    expect(ammunitionCompatibility(ammunition, magazine).join(" ")).toMatch(
+      /Interface IF-A/,
+    );
+  });
+
+  it("diagnostique les profils incomplets sans inventer de valeur", () => {
+    const weapon = item("weapon", "weapon", {
+      weaponProfile: { feedKind: "internal", loadSequence: [] },
+    });
+    expect(
+      materialDiagnostics(weapon)
+        .map((entry) => entry.message)
+        .join(" "),
+    ).toMatch(/chambre.*pression.*Capacité/i);
+    const armor = item("armor", "armor", {
+      physical: {
+        ...initialPhysicalState(),
+        durability: {
+          structureCurrent: 11,
+          structureMaximum: 10,
+          breakingThreshold: 12,
+        },
+      },
+    });
+    expect(
+      materialDiagnostics(armor)
+        .map((entry) => entry.message)
+        .join(" "),
+    ).toMatch(/dépasse le maximum.*Seuil de brisure/i);
+  });
+
+  it("conserve les devises physiques distinctes et ignore les ressources bancaires", () => {
+    const credits = item("credits", "resource", {
+      physical: { ...initialPhysicalState(), quantity: 12 },
+      currencyProfile: {
+        physicalCash: true,
+        currencyId: "CRD",
+        currencyLabel: "Crédits",
+        denomination: 5,
+      },
+    });
+    const units = item("units", "resource", {
+      physical: { ...initialPhysicalState(), quantity: 3 },
+      currencyProfile: {
+        physicalCash: true,
+        currencyId: "UNIT",
+        currencyLabel: "Unités",
+        denomination: 2,
+      },
+    });
+    const bank = item("bank", "resource", {
+      physical: { ...initialPhysicalState(), quantity: 999 },
+      currencyProfile: {
+        physicalCash: false,
+        currencyId: "CRD",
+        denomination: 1,
+      },
+    });
+    const ground = item("ground", "resource", {
+      physical: {
+        ...initialPhysicalState(),
+        quantity: 100,
+        equipState: "ground",
+      },
+      currencyProfile: {
+        physicalCash: true,
+        currencyId: "CRD",
+        currencyLabel: "Crédits",
+        denomination: 1,
+      },
+    });
+    const otherBody = item("other", "resource", {
+      physical: {
+        ...initialPhysicalState(),
+        quantity: 100,
+        bodyId: "secondary",
+      },
+      currencyProfile: {
+        physicalCash: true,
+        currencyId: "CRD",
+        currencyLabel: "Crédits",
+        denomination: 1,
+      },
+    });
+    expect(
+      cashSummary([credits, units, bank, ground, otherBody], "primary"),
+    ).toEqual([
+      { id: "CRD", label: "Crédits", amount: 60, itemIds: ["credits"] },
+      { id: "UNIT", label: "Unités", amount: 6, itemIds: ["units"] },
+    ]);
+  });
+
+  it("imbrique modules, chargeur et munitions sous leur hôte sans les dupliquer", () => {
+    const host = item("host", "weapon", {
+      physical: {
+        ...initialPhysicalState(),
+        equipmentProfile: { providedSlots: { internal: 1 } },
+      },
+    });
+    const magazine = item("magazine", "container", {
+      containerKind: "magazine",
+      physical: {
+        ...initialPhysicalState(),
+        equipState: "installed",
+        hostRef: { uuid: host.uuid },
+        equipmentProfile: { requiredSlots: { internal: 1 } },
+      },
+    });
+    const ammunition = item("ammunition", "ammunition", {
+      physical: {
+        ...initialPhysicalState(),
+        containerRef: { uuid: magazine.uuid },
+      },
+      ammunitionProfile: { loadOrder: 1 },
+    });
+    const rows = [host, magazine, ammunition].map((entry) => ({
+      id: entry.id,
+      name: entry.name,
+      type: entry.type,
+      depth: 0,
+      parentId: entry.id === ammunition.id ? magazine.id : null,
+    }));
+    expect(nestInstalledRows(rows, [host, magazine, ammunition])).toEqual([
+      expect.objectContaining({ id: "host", depth: 0, parentId: null }),
+      expect.objectContaining({ id: "magazine", depth: 1, parentId: "host" }),
+      expect.objectContaining({
+        id: "ammunition",
+        depth: 2,
+        parentId: "magazine",
+      }),
+    ]);
+    expect(hostPortSummary([host, magazine, ammunition], host)[0]).toEqual(
+      expect.objectContaining({
+        key: "internal",
+        capacity: 1,
+        used: 1,
+        free: 0,
+      }),
+    );
+  });
+
+  it("présente explicitement un chargeur vide et une réserve énergétique", () => {
+    const weapon = item("weapon", "weapon", {
+      weaponProfile: { feedKind: "detachable" },
+      energyProfile: { kind: "internal", current: 3, maximum: 12 },
+    });
+    expect(materialStatus(weapon, [weapon])).toEqual([
+      "Chargeur vide",
+      "Énergie : 3/12 CE",
+    ]);
+  });
+
+  it("transfère seulement entre réserves énergétiques de même format", () => {
+    const source = item("battery", "equipment", {
+      energyProfile: {
+        kind: "battery",
+        format: "BAT-L",
+        outputClass: "P2",
+        current: 12,
+        maximum: 12,
+      },
+    });
+    const target = item("device", "equipment", {
+      energyProfile: {
+        kind: "internal",
+        format: "BAT-S",
+        powerClass: "P2",
+        current: 0,
+        maximum: 6,
+      },
+    });
+    expect(energyCompatibility(source, target).join(" ")).toMatch(
+      /Format incompatible/,
+    );
+    target.system.energyProfile.format = "BAT-L";
+    expect(energyCompatibility(source, target)).toEqual([]);
+    target.system.energyProfile.powerClass = "P3";
+    expect(energyCompatibility(source, target).join(" ")).toMatch(
+      /Classe de puissance incompatible/,
+    );
+  });
+});

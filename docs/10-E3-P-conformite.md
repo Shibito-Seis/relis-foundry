@@ -89,4 +89,8 @@ Les exigences ci-dessous remplacent le formulaire 0.5.5. Base publique : 1b8772a
 - 10-L2 : validation finale multi-utilisateurs. Aucun participant demandé dans la recette actuelle ; autorisations exercées automatiquement.
 - Piercings atypiques : la capacité « autre emplacement anatomique » permet une réservation explicite, sans prétendre modéliser toute morphologie. L’affinement canonique appartient aux règles du corps.
 
-Fabrication et tests ne valent pas validation utilisateur. 10-E3-P reste ouvert ; relire cette matrice avant toute annonce de clôture.
+## Validation utilisateur de la v0.5.6
+
+La recette utilisateur a confirmé les blocs A, B, C et D de la v0.5.6 : classification, limites, menu d’état, suivi visuel, installations et non-régressions fonctionnent. Le contrôle sans propriété n’a pas été simulé avec un second participant, conformément à la règle de recette seul en MJ ; les contrôles automatisés et les gardes du service restent exigés jusqu’à la procédure finale.
+
+**10-E3-P est validé.** Les demandes d’affichage des modules, chargeurs et munitions sous leur hôte sont intégrées au lot 10-E4-P autorisé ensuite ; elles ne rouvrent pas 10-E3-P.

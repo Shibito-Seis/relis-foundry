@@ -141,7 +141,7 @@ export function protectEquipmentUpdate(
     return;
   if ((item.parent as any).flags?.relis?.equipmentRecovery) {
     ui.notifications.warn(
-      "Restaurer d’abord l’opération d’équipement interrompue.",
+      "Restaurer d’abord l’opération matérielle ou d’équipement interrompue.",
     );
     return false;
   }

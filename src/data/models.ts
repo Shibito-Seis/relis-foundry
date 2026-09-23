@@ -18,10 +18,15 @@ import {
 } from "./person-defaults";
 import {
   ActionData,
+  AmmunitionData,
+  ArmorData,
   ContainerData,
+  ConsumableData,
   EquipmentData,
   PhysicalItemData,
   RelisItemData,
+  ResourceData,
+  WeaponData,
 } from "./item-models";
 import { isPhysicalItemType } from "./item-defaults";
 
@@ -1008,13 +1013,23 @@ export function registerDataModels(): void {
     CONFIG.Item.dataModels[type] =
       type === "action"
         ? ActionData
-        : type === "container"
-          ? ContainerData
-          : type === "equipment"
-            ? EquipmentData
-            : isPhysicalItemType(type)
-              ? PhysicalItemData
-              : RelisItemData;
+        : type === "weapon"
+          ? WeaponData
+          : type === "armor"
+            ? ArmorData
+            : type === "consumable"
+              ? ConsumableData
+              : type === "ammunition"
+                ? AmmunitionData
+                : type === "resource"
+                  ? ResourceData
+                  : type === "container"
+                    ? ContainerData
+                    : type === "equipment"
+                      ? EquipmentData
+                      : isPhysicalItemType(type)
+                        ? PhysicalItemData
+                        : RelisItemData;
   }
   for (const type of JOURNAL_PAGE_TYPES)
     CONFIG.JournalEntryPage.dataModels[type] = ReservedData;
