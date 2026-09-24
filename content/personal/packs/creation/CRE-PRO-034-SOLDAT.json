@@ -1,0 +1,29 @@
+{
+  "relisId": "CRE-PRO-034-SOLDAT",
+  "name": "Soldat",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Force, Vigueur, Dextérité</p>\n<p><strong>Profil marqué :</strong> +Force, +Vigueur ; -Intelligence, -Présence ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Tir, Mêlée, Armes lourdes, Endurance, Sang-froid, Commandement</p>\n<p><strong>Avantage typique :</strong> Arme de service, contact militaire</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Force", "Vigueur", "Dextérité"],
+      "markedProfile": "+Force, +Vigueur ; -Intelligence, -Présence ou -Maîtrise Magique",
+      "skillChoices": [
+        "Tir",
+        "Mêlée",
+        "Armes lourdes",
+        "Endurance",
+        "Sang-froid",
+        "Commandement"
+      ],
+      "typicalBenefit": "Arme de service, contact militaire",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

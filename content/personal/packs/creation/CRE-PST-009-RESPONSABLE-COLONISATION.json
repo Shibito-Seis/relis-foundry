@@ -1,0 +1,43 @@
+{
+  "relisId": "CRE-PST-009-RESPONSABLE-COLONISATION",
+  "name": "Responsable Colonisation",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>Le Responsable Colonisation évalue les lieux habitables, prépare les protocoles Eden, organise abris, agriculture, eau, sol, implantation et survie collective.</p>\n<p>• protocoles Eden ;</p>\n<p>• évaluation d’habitabilité ;</p>\n<p>• abris ;</p>\n<p>• agriculture ;</p>\n<p>• eau ;</p>\n<p>• sol ;</p>\n<p>• implantation ;</p>\n<p>• gestion de colons ;</p>\n<p>• zones de survie ;</p>\n<p>• priorités de colonisation.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.13 Responsable Colonisation",
+      "capabilities": [
+        {
+          "name": "Site viable",
+          "phase": "[Exploration]",
+          "effect": "Identifie le meilleur emplacement disponible pour camp, base temporaire, extraction, atterrissage ou future colonie."
+        },
+        {
+          "name": "Protocole Eden",
+          "phase": "[Exploration / Temps long]",
+          "effect": "Lance une évaluation d’habitabilité : air, eau, sol, climat, biosphère, menaces, compatibilité agricole. Donne une réponse claire sur un critère vital."
+        },
+        {
+          "name": "Déploiement d’abri",
+          "phase": "[Exploration / Crise]",
+          "effect": "Organise rapidement un abri, point de repli, zone chauffée, zone respirable ou périmètre de survie temporaire."
+        },
+        {
+          "name": "Priorité aux vivants",
+          "phase": "[Crise de vaisseau / Exploration]",
+          "effect": "Organise évacuation, protection de civils, répartition de survivants ou maintien d’un groupe fragile. Sert quand la survie collective prime sur l’efficacité tactique."
+        },
+        {
+          "name": "Culture test",
+          "phase": "[Temps long / Exploration]",
+          "effect": "Lance un test agricole ou biologique : graines, sol, eau, microfaune, compatibilité alimentaire. Permet de détecter potentiel ou danger avant exploitation à grande échelle."
+        }
+      ]
+    }
+  }
+}

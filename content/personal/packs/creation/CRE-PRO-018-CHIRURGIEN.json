@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-PRO-018-CHIRURGIEN",
+  "name": "Chirurgien",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Dextérité, Intelligence, Volonté</p>\n<p><strong>Profil marqué :</strong> +Dextérité, +Intelligence ; -Force, -Présence ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Médecine, Sang-froid, Sciences, Investigation</p>\n<p><strong>Avantage typique :</strong> Outils chirurgicaux</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Dextérité", "Intelligence", "Volonté"],
+      "markedProfile": "+Dextérité, +Intelligence ; -Force, -Présence ou -Maîtrise Magique",
+      "skillChoices": ["Médecine", "Sang-froid", "Sciences", "Investigation"],
+      "typicalBenefit": "Outils chirurgicaux",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

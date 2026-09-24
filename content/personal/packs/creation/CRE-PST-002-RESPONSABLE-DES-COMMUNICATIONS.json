@@ -1,0 +1,43 @@
+{
+  "relisId": "CRE-PST-002-RESPONSABLE-DES-COMMUNICATIONS",
+  "name": "Responsable des Communications",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>Le Responsable des Communications gère les signaux, transmissions, annonces, premiers contacts et échanges diplomatiques ou tactiques.</p>\n<p>Il est la voix officielle du vaisseau lorsque l’équipage parle à l’extérieur, et souvent la voix qui maintient l’ordre à l’intérieur.</p>\n<p>• transmission et réception de signaux ;</p>\n<p>• premiers contacts ;</p>\n<p>• annonces internes ;</p>\n<p>• négociations à distance ;</p>\n<p>• relais diplomatique ;</p>\n<p>• protocoles sociaux ;</p>\n<p>• brouillage ou faux signaux simples.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.5 Responsable des Communications",
+      "capabilities": [
+        {
+          "name": "Canal prioritaire",
+          "phase": "[Toutes phases]",
+          "effect": "Ouvre, sécurise ou impose un canal de communication dans une situation tendue : combat, exploration, négociation, crise, séparation d’équipe ou chaos opérationnel. Peut permettre à des alliés séparés de se coordonner malgré un brouillage léger ou une situation confuse."
+        },
+        {
+          "name": "Parlez-moi, pas à eux",
+          "phase": "[Social / diplomatie / Combat tout type]",
+          "effect": "Le Responsable détourne l’attention d’un interlocuteur, ennemi ou faction. Sur réussite sociale, il force la cible à répondre, négocier, menacer, hésiter ou se concentrer sur lui plutôt que sur un autre allié."
+        },
+        {
+          "name": "Traduction d’urgence",
+          "phase": "[Exploration / Social]",
+          "effect": "Déclenche un protocole de traduction ou d’interprétation culturelle rapide. Permet d’éviter une erreur de premier contact, un contresens dangereux, une provocation involontaire ou une mauvaise lecture rituelle."
+        },
+        {
+          "name": "Signal fantôme",
+          "phase": "[Combat spatial / Exploration]",
+          "effect": "Émet un faux signal, une balise trompeuse, un bruit de communication ou une signature parasite. Peut gêner un ciblage, détourner une patrouille, masquer une navette ou créer une fausse piste."
+        },
+        {
+          "name": "Annonce de bord",
+          "phase": "[Crise de vaisseau / Toutes phases]",
+          "effect": "Diffuse une annonce claire à l’équipage, aux PNJ, aux survivants réveillés ou aux civils. Peut calmer une panique, organiser une évacuation, renforcer une consigne ou empêcher une rumeur dangereuse."
+        }
+      ]
+    }
+  }
+}

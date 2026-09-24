@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-PRO-044-LINGUISTE",
+  "name": "Linguiste",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Intelligence, Présence, Volonté</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Présence ; -Force, -Vigueur ou -Technologie</p>\n<p><strong>Compétences possibles :</strong> Culture, Diplomatie, Investigation, Tromperie</p>\n<p><strong>Avantage typique :</strong> Traducteur avancé</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Présence", "Volonté"],
+      "markedProfile": "+Intelligence, +Présence ; -Force, -Vigueur ou -Technologie",
+      "skillChoices": ["Culture", "Diplomatie", "Investigation", "Tromperie"],
+      "typicalBenefit": "Traducteur avancé",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-007-PROFESSEUR-ENSEIGNANT",
+  "name": "Professeur / enseignant",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Intelligence, Présence, Volonté</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Présence ; -Force, -Dextérité ou -Vigueur</p>\n<p><strong>Compétences possibles :</strong> Culture, Commandement, Diplomatie, Sciences, Sang-froid</p>\n<p><strong>Avantage typique :</strong> Réseau d’élèves ou de collègues</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Présence", "Volonté"],
+      "markedProfile": "+Intelligence, +Présence ; -Force, -Dextérité ou -Vigueur",
+      "skillChoices": [
+        "Culture",
+        "Commandement",
+        "Diplomatie",
+        "Sciences",
+        "Sang-froid"
+      ],
+      "typicalBenefit": "Réseau d’élèves ou de collègues",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

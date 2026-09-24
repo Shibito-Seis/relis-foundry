@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-009-ORPHELIN-D-EVACUATION",
+  "name": "Orphelin d’évacuation",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Volonté, Dextérité, Présence</p>\n<p><strong>Profil marqué :</strong> +Volonté, +Dextérité ; -Force, -Technologie ou -Intelligence</p>\n<p><strong>Compétences possibles :</strong> Discrétion, Survie, Sang-froid, Tromperie, Culture</p>\n<p><strong>Avantage typique :</strong> Sympathie de l’équipage, objet familial</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Volonté", "Dextérité", "Présence"],
+      "markedProfile": "+Volonté, +Dextérité ; -Force, -Technologie ou -Intelligence",
+      "skillChoices": [
+        "Discrétion",
+        "Survie",
+        "Sang-froid",
+        "Tromperie",
+        "Culture"
+      ],
+      "typicalBenefit": "Sympathie de l’équipage, objet familial",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

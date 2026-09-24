@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-EMB-009",
+  "name": "Réserve d’équipage",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p>Le personnage faisait partie d’un vivier prévu pour remplacer un poste critique ou combler un manque. — Statut officiel, Formation secrète, Éducation d’élite — Serment contraignant, Dette, Embarqué de force</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Le personnage faisait partie d’un vivier prévu pour remplacer un poste critique ou combler un manque.",
+        "Atouts suggérés": "Statut officiel, Formation secrète, Éducation d’élite",
+        "Handicaps suggérés": "Serment contraignant, Dette, Embarqué de force"
+      }
+    }
+  }
+}

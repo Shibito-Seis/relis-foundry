@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-PRO-048-ARTISTE-CELEBRITE",
+  "name": "Artiste / célébrité",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Présence, Dextérité, Volonté</p>\n<p><strong>Profil marqué :</strong> +Présence, +Dextérité ; -Force, -Technologie ou -Intelligence</p>\n<p><strong>Compétences possibles :</strong> Diplomatie, Tromperie, Culture, Commandement</p>\n<p><strong>Avantage typique :</strong> Réputation, fan survivant</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Présence", "Dextérité", "Volonté"],
+      "markedProfile": "+Présence, +Dextérité ; -Force, -Technologie ou -Intelligence",
+      "skillChoices": ["Diplomatie", "Tromperie", "Culture", "Commandement"],
+      "typicalBenefit": "Réputation, fan survivant",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

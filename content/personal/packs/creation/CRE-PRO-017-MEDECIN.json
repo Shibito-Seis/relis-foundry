@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-PRO-017-MEDECIN",
+  "name": "Médecin",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Intelligence, Volonté, Dextérité</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Volonté ; -Force, -Présence ou -Technologie</p>\n<p><strong>Compétences possibles :</strong> Médecine, Sciences, Sang-froid, Investigation</p>\n<p><strong>Avantage typique :</strong> Trousse avancée, accès dossiers médicaux</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Volonté", "Dextérité"],
+      "markedProfile": "+Intelligence, +Volonté ; -Force, -Présence ou -Technologie",
+      "skillChoices": ["Médecine", "Sciences", "Sang-froid", "Investigation"],
+      "typicalBenefit": "Trousse avancée, accès dossiers médicaux",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

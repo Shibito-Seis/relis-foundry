@@ -1,0 +1,27 @@
+{
+  "relisId": "CRE-PRO-030-ROBOTICIEN",
+  "name": "Roboticien",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Technologie, Intelligence, Dextérité</p>\n<p><strong>Profil marqué :</strong> +Technologie, +Dextérité ; -Présence, -Force ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Ingénierie, Informatique, Systèmes de vaisseau, Sciences</p>\n<p><strong>Avantage typique :</strong> Drone incomplet</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Technologie", "Intelligence", "Dextérité"],
+      "markedProfile": "+Technologie, +Dextérité ; -Présence, -Force ou -Maîtrise Magique",
+      "skillChoices": [
+        "Ingénierie",
+        "Informatique",
+        "Systèmes de vaisseau",
+        "Sciences"
+      ],
+      "typicalBenefit": "Drone incomplet",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

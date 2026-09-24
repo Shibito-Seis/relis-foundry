@@ -1,0 +1,27 @@
+{
+  "relisId": "CRE-PRO-027-MECANICIEN",
+  "name": "Mécanicien",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Technologie, Dextérité, Vigueur</p>\n<p><strong>Profil marqué :</strong> +Technologie, +Dextérité ; -Présence, -Intelligence ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Ingénierie, Endurance, Systèmes de vaisseau, Investigation</p>\n<p><strong>Avantage typique :</strong> Caisse à outils, pièces</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Technologie", "Dextérité", "Vigueur"],
+      "markedProfile": "+Technologie, +Dextérité ; -Présence, -Intelligence ou -Maîtrise Magique",
+      "skillChoices": [
+        "Ingénierie",
+        "Endurance",
+        "Systèmes de vaisseau",
+        "Investigation"
+      ],
+      "typicalBenefit": "Caisse à outils, pièces",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

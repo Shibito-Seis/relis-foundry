@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-MIL-003",
+  "name": "Classe moyenne",
+  "type": "origin",
+  "tags": ["creation", "origine", "milieu-social"],
+  "system": {
+    "description": "<p>Le personnage a connu une vie relativement normale avant l’effondrement : études, travail, famille, accès limité aux institutions. — Éducation d’élite, Polyglotte, Statut officiel — Famille à nourrir, Embarqué de force, Trauma de cryostase</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-milieu-social",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Le personnage a connu une vie relativement normale avant l’effondrement : études, travail, famille, accès limité aux institutions.",
+        "Atouts suggérés": "Éducation d’élite, Polyglotte, Statut officiel",
+        "Handicaps suggérés": "Famille à nourrir, Embarqué de force, Trauma de cryostase"
+      }
+    }
+  }
+}

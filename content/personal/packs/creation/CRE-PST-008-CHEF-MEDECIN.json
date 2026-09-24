@@ -1,0 +1,43 @@
+{
+  "relisId": "CRE-PST-008-CHEF-MEDECIN",
+  "name": "Chef Médecin",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>Le Chef Médecin supervise l’infirmerie, la pharmacie, les dossiers médicaux, la quarantaine et les protocoles sanitaires du vaisseau.</p>\n<p>Un personnage ayant la Voie Médecin sait soigner. Le Chef Médecin possède en plus l’autorité officielle pour ouvrir les ressources médicales de bord, prendre des fournitures nécessaires et imposer des protocoles sanitaires.</p>\n<p>• accès infirmerie ;</p>\n<p>• accès pharmacie ;</p>\n<p>• dossiers médicaux ;</p>\n<p>• quarantaine ;</p>\n<p>• triage ;</p>\n<p>• autopsies ;</p>\n<p>• cryostase médicale ;</p>\n<p>• protocoles sanitaires ;</p>\n<p>• distribution médicale d’urgence.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.12 Chef Médecin",
+      "capabilities": [
+        {
+          "name": "Triage immédiat",
+          "phase": "[Combat tout type / Crise]",
+          "effect": "Classe rapidement les blessés ou victimes par priorité. Permet de stabiliser la situation médicale et d’éviter qu’un cas secondaire devienne critique pendant la scène."
+        },
+        {
+          "name": "Injection d’urgence",
+          "phase": "[Combat tout type / Crise]",
+          "effect": "Administre stimulant, antidote, sédatif, anti-douleur ou traitement de crise. Permet à une cible d’agir malgré douleur, poison, choc ou panique, avec contrecoup possible ensuite."
+        },
+        {
+          "name": "Quarantaine !",
+          "phase": "[Exploration / Crise de vaisseau]",
+          "effect": "Déclare une quarantaine médicale. Isole une zone, un patient, un échantillon ou une équipe exposée. Peut court-circuiter les débats si le risque sanitaire est crédible."
+        },
+        {
+          "name": "Tu restes avec moi",
+          "phase": "[Réaction / Combat tout type]",
+          "effect": "Stabilise immédiatement une cible qui vient de tomber ou de subir une blessure critique, si le Chef Médecin peut intervenir. N’annule pas le danger, mais empêche l’aggravation immédiate."
+        },
+        {
+          "name": "Diagnostic complet",
+          "phase": "[Exploration / Temps long]",
+          "effect": "Identifie une maladie, blessure, mutation, contamination, trouble cryostatique ou anomalie corporelle, puis indique le traitement ou protocole nécessaire."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-PRO-046-MARCHAND-ENTREPRENEUR",
+  "name": "Marchand / entrepreneur",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Présence, Intelligence, Technologie</p>\n<p><strong>Profil marqué :</strong> +Présence, +Technologie ; -Force, -Vigueur ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Commerce, Diplomatie, Tromperie, Culture</p>\n<p><strong>Avantage typique :</strong> Contrat, stock privé, crédits modestes</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Présence", "Intelligence", "Technologie"],
+      "markedProfile": "+Présence, +Technologie ; -Force, -Vigueur ou -Maîtrise Magique",
+      "skillChoices": ["Commerce", "Diplomatie", "Tromperie", "Culture"],
+      "typicalBenefit": "Contrat, stock privé, crédits modestes",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

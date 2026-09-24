@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-021-XENOBIOLOGISTE",
+  "name": "Xénobiologiste",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Intelligence, Volonté, Maîtrise Magique</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Volonté ; -Force, -Présence ou -Technologie</p>\n<p><strong>Compétences possibles :</strong> Sciences, Survie, Médecine, Investigation, Canalisation</p>\n<p><strong>Avantage typique :</strong> Base de données alien</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Volonté", "Maîtrise Magique"],
+      "markedProfile": "+Intelligence, +Volonté ; -Force, -Présence ou -Technologie",
+      "skillChoices": [
+        "Sciences",
+        "Survie",
+        "Médecine",
+        "Investigation",
+        "Canalisation"
+      ],
+      "typicalBenefit": "Base de données alien",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

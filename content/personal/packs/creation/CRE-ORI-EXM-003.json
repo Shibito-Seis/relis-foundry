@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-EXM-003",
+  "name": "Clandestin de soute",
+  "type": "origin",
+  "tags": ["creation", "origine", "exemple-complet"],
+  "system": {
+    "description": "<p>Marginal — Réseau criminel ou enclave — Clandestin — Présence illégale, débrouille, dette ou faux papiers.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-exemple-complet",
+      "sourceSection": "7",
+      "fields": {
+        "Milieu social": "Marginal",
+        "Affiliation / communauté": "Réseau criminel ou enclave",
+        "Condition d’embarquement": "Clandestin",
+        "Lecture rapide": "Présence illégale, débrouille, dette ou faux papiers."
+      }
+    }
+  }
+}

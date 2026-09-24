@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-EMB-010",
+  "name": "Extraction médicale",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p>Le personnage a été placé en cryostase pour raisons médicales, expérimentales ou sanitaires. — Implant fiable, Immunité rare, Prodige énergétique — Dépendance médicale, Modification génétique instable, Dossier Xirea verrouillé</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Le personnage a été placé en cryostase pour raisons médicales, expérimentales ou sanitaires.",
+        "Atouts suggérés": "Implant fiable, Immunité rare, Prodige énergétique",
+        "Handicaps suggérés": "Dépendance médicale, Modification génétique instable, Dossier Xirea verrouillé"
+      }
+    }
+  }
+}

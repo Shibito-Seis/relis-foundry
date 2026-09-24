@@ -1,0 +1,43 @@
+{
+  "relisId": "CRE-PST-005-RESPONSABLE-INGENIERIE",
+  "name": "Responsable Ingénierie",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>Le Responsable Ingénierie supervise les réparations, modules, systèmes physiques et urgences techniques du vaisseau.</p>\n<p>• accès aux zones techniques ;</p>\n<p>• maintenance ;</p>\n<p>• réparations ;</p>\n<p>• modules ;</p>\n<p>• énergie ;</p>\n<p>• coque ;</p>\n<p>• drones techniques ;</p>\n<p>• outillage ;</p>\n<p>• diagnostics mécaniques.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.9 Responsable Ingénierie",
+      "capabilities": [
+        {
+          "name": "Colmatage d’urgence",
+          "phase": "[Crise de vaisseau / Combat spatial]",
+          "effect": "Stabilise temporairement une brèche, fuite, panne ou avarie. Le problème n’est pas réparé, mais il cesse d’empirer pendant une courte durée."
+        },
+        {
+          "name": "Redémarrage sauvage",
+          "phase": "[Crise de vaisseau]",
+          "effect": "Relance temporairement un module désactivé : porte, ascenseur, générateur, tourelle, capteur, sas ou système auxiliaire. Peut créer une complication technique après usage."
+        },
+        {
+          "name": "Dérivation d’énergie",
+          "phase": "[Combat spatial / Crise]",
+          "effect": "Déplace de l’énergie d’un système vers un autre : bouclier, moteurs, armes, survie, scanners ou laboratoire. Permet une action critique au prix d’un affaiblissement ailleurs."
+        },
+        {
+          "name": "J’ai une solution moche",
+          "phase": "[Toutes phases]",
+          "effect": "Improvise un dispositif ou une réparation de fortune avec les moyens disponibles. Fonctionne assez longtemps pour résoudre la scène, pas forcément plus."
+        },
+        {
+          "name": "Inspection préventive",
+          "phase": "[Exploration / Temps long]",
+          "effect": "Avant une mission, identifie une faiblesse technique, une pièce à surveiller ou une ressource nécessaire. Peut éviter une panne surprise si l’équipe agit dessus."
+        }
+      ]
+    }
+  }
+}

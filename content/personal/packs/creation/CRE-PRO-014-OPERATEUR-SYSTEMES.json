@@ -1,0 +1,27 @@
+{
+  "relisId": "CRE-PRO-014-OPERATEUR-SYSTEMES",
+  "name": "Opérateur systèmes",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Technologie, Intelligence, Dextérité</p>\n<p><strong>Profil marqué :</strong> +Technologie, +Intelligence ; -Force, -Présence ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Systèmes de vaisseau, Informatique, Investigation, Ingénierie</p>\n<p><strong>Avantage typique :</strong> Terminal personnel, codes mineurs</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Technologie", "Intelligence", "Dextérité"],
+      "markedProfile": "+Technologie, +Intelligence ; -Force, -Présence ou -Maîtrise Magique",
+      "skillChoices": [
+        "Systèmes de vaisseau",
+        "Informatique",
+        "Investigation",
+        "Ingénierie"
+      ],
+      "typicalBenefit": "Terminal personnel, codes mineurs",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

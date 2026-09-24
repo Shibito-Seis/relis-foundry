@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-PRO-036-MERCENAIRE",
+  "name": "Mercenaire",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Force, Dextérité, Volonté</p>\n<p><strong>Profil marqué :</strong> +Dextérité, +Volonté ; -Présence, -Intelligence ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Tir, Mêlée, Survie, Intimidation, Sang-froid</p>\n<p><strong>Avantage typique :</strong> Ancien contrat, arme personnelle</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Force", "Dextérité", "Volonté"],
+      "markedProfile": "+Dextérité, +Volonté ; -Présence, -Intelligence ou -Maîtrise Magique",
+      "skillChoices": ["Tir", "Mêlée", "Survie", "Intimidation", "Sang-froid"],
+      "typicalBenefit": "Ancien contrat, arme personnelle",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-010-PILOTE",
+  "name": "Pilote",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Dextérité, Technologie, Volonté</p>\n<p><strong>Profil marqué :</strong> +Dextérité, +Technologie ; -Présence, -Maîtrise Magique ou -Force</p>\n<p><strong>Compétences possibles :</strong> Pilotage, Navigation, Systèmes de vaisseau, Sang-froid, Tir</p>\n<p><strong>Avantage typique :</strong> Licence, combinaison de vol</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Dextérité", "Technologie", "Volonté"],
+      "markedProfile": "+Dextérité, +Technologie ; -Présence, -Maîtrise Magique ou -Force",
+      "skillChoices": [
+        "Pilotage",
+        "Navigation",
+        "Systèmes de vaisseau",
+        "Sang-froid",
+        "Tir"
+      ],
+      "typicalBenefit": "Licence, combinaison de vol",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "relisId": "CRE-PRO-032-OUVRIER-INDUSTRIEL",
+  "name": "Ouvrier industriel",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Vigueur, Force, Technologie</p>\n<p><strong>Profil marqué :</strong> +Vigueur, +Technologie ; -Présence, -Maîtrise Magique ou -Intelligence</p>\n<p><strong>Compétences possibles :</strong> Endurance, Ingénierie, Athlétisme, Systèmes de vaisseau</p>\n<p><strong>Avantage typique :</strong> Outils lourds, accès atelier</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Vigueur", "Force", "Technologie"],
+      "markedProfile": "+Vigueur, +Technologie ; -Présence, -Maîtrise Magique ou -Intelligence",
+      "skillChoices": [
+        "Endurance",
+        "Ingénierie",
+        "Athlétisme",
+        "Systèmes de vaisseau"
+      ],
+      "typicalBenefit": "Outils lourds, accès atelier",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

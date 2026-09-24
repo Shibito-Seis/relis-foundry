@@ -1,0 +1,43 @@
+{
+  "relisId": "CRE-PST-007-RESPONSABLE-SCIENCE",
+  "name": "Responsable Science",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>Le Responsable Science supervise les analyses, scans, laboratoires, échantillons, anomalies, ruines et protocoles de recherche.</p>\n<p>• accès laboratoire ;</p>\n<p>• échantillons ;</p>\n<p>• scanners ;</p>\n<p>• analyses ;</p>\n<p>• protocoles de recherche ;</p>\n<p>• ruines ;</p>\n<p>• xénobiologie ;</p>\n<p>• anomalies ;</p>\n<p>• données scientifiques.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.11 Responsable Science",
+      "capabilities": [
+        {
+          "name": "Analyse express",
+          "phase": "[Exploration / Crise]",
+          "effect": "Identifie rapidement la nature d’un phénomène : substance, anomalie, créature, ruine, signal, radiation, contamination ou trace énergétique. Donne une information exploitable immédiatement."
+        },
+        {
+          "name": "Hypothèse exploitable",
+          "phase": "[Toutes phases]",
+          "effect": "Formule une théorie utile sur une faiblesse, un comportement, une cause ou une solution. L’équipe peut agir dessus même avant confirmation complète."
+        },
+        {
+          "name": "Protocole d’échantillonnage",
+          "phase": "[Exploration]",
+          "effect": "Prélève un échantillon sans le contaminer, le détruire ou contaminer l’équipe, sauf danger majeur."
+        },
+        {
+          "name": "Scan ciblé",
+          "phase": "[Exploration / Combat spatial]",
+          "effect": "Oriente les capteurs vers un point précis : faiblesse structurelle, signature énergétique, vie cachée, ressource, anomalie ou piège."
+        },
+        {
+          "name": "Ce n’est pas naturel",
+          "phase": "[Combat normal / Exploration]",
+          "effect": "Détecte un comportement biologique, physique, magique ou technologique anormal avant qu’il ne surprenne totalement le groupe. Sert surtout contre créatures, anomalies et environnements hostiles."
+        }
+      ]
+    }
+  }
+}

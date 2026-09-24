@@ -1,0 +1,27 @@
+{
+  "relisId": "CRE-PRO-015-RESPONSABLE-LOGISTIQUE",
+  "name": "Responsable logistique",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Intelligence, Technologie, Présence</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Présence ; -Dextérité, -Maîtrise Magique ou -Force</p>\n<p><strong>Compétences possibles :</strong> Commerce, Systèmes de vaisseau, Commandement, Investigation</p>\n<p><strong>Avantage typique :</strong> Accès soute, inventaire caché</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Technologie", "Présence"],
+      "markedProfile": "+Intelligence, +Présence ; -Dextérité, -Maîtrise Magique ou -Force",
+      "skillChoices": [
+        "Commerce",
+        "Systèmes de vaisseau",
+        "Commandement",
+        "Investigation"
+      ],
+      "typicalBenefit": "Accès soute, inventaire caché",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

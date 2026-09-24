@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-PRO-047-JOURNALISTE-ENQUETEUR",
+  "name": "Journaliste / enquêteur",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Intelligence, Présence, Dextérité</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Présence ; -Force, -Vigueur ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Investigation, Diplomatie, Tromperie, Culture</p>\n<p><strong>Avantage typique :</strong> Source confidentielle</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Présence", "Dextérité"],
+      "markedProfile": "+Intelligence, +Présence ; -Force, -Vigueur ou -Maîtrise Magique",
+      "skillChoices": ["Investigation", "Diplomatie", "Tromperie", "Culture"],
+      "typicalBenefit": "Source confidentielle",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}

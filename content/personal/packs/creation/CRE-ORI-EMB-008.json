@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-EMB-008",
+  "name": "Prioritaire",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p>Une autorité, Xirea, l’UJC ou une faction considérait le personnage comme stratégique. — Statut officiel, Lien favorable avec Xirea, Riche — Dossier Xirea verrouillé, Secret compromettant, Mauvais pressentiment de Xirea</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Une autorité, Xirea, l’UJC ou une faction considérait le personnage comme stratégique.",
+        "Atouts suggérés": "Statut officiel, Lien favorable avec Xirea, Riche",
+        "Handicaps suggérés": "Dossier Xirea verrouillé, Secret compromettant, Mauvais pressentiment de Xirea"
+      }
+    }
+  }
+}

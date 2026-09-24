@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-EMB-005",
+  "name": "Substitué",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p>Il a pris la place de quelqu’un, ou quelqu’un l’a fait embarquer à la place d’un autre. — Chance insolente, Patrimoine caché, Contact influent — Identité falsifiée, Secret compromettant, Culpabilité du survivant</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Il a pris la place de quelqu’un, ou quelqu’un l’a fait embarquer à la place d’un autre.",
+        "Atouts suggérés": "Chance insolente, Patrimoine caché, Contact influent",
+        "Handicaps suggérés": "Identité falsifiée, Secret compromettant, Culpabilité du survivant"
+      }
+    }
+  }
+}

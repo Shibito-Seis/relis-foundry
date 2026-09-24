@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-016-TRANSPORTEUR-CONVOYEUR",
+  "name": "Transporteur / convoyeur",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Attribut standard :</strong> Technologie, Vigueur, Présence</p>\n<p><strong>Profil marqué :</strong> +Technologie, +Vigueur ; -Intelligence, -Maîtrise Magique ou -Dextérité</p>\n<p><strong>Compétences possibles :</strong> Pilotage, Commerce, Endurance, Navigation, Systèmes de vaisseau</p>\n<p><strong>Avantage typique :</strong> Ancienne cargaison, contacts de fret</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Technologie", "Vigueur", "Présence"],
+      "markedProfile": "+Technologie, +Vigueur ; -Intelligence, -Maîtrise Magique ou -Dextérité",
+      "skillChoices": [
+        "Pilotage",
+        "Commerce",
+        "Endurance",
+        "Navigation",
+        "Systèmes de vaisseau"
+      ],
+      "typicalBenefit": "Ancienne cargaison, contacts de fret",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  }
+}
