@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-456",
+  "name": "Mon territoire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage étudie une zone d&#39;au plus 12 mètres de rayon accessible à ses sens et en fait son territoire actuel. Il gagne +2 circonstanciel aux tests de Perception, Investigation ou Survie pour y remarquer une intrusion, une altération ou une piste nouvelle.</p>\n<p>Il ne peut entretenir qu&#39;un territoire à la fois ; en définir un nouveau efface le précédent. Ce talent ne crée aucun droit de propriété et ne permet pas de détecter l&#39;imperceptible.</p>",
+    "traits": ["Beastkin", "Félin", "Exploration", "Vigilance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.130 Talents Beastkins Félins de niveau 1",
+      "family": "Territoire, clan et protection",
+      "ancestry": "### 5.129 Catalogue Beastkin Félin",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Territoire, clan et protection",
+        "Traits": "Beastkin, Félin, Exploration, Vigilance",
+        "Type": "Activité de 10 minutes"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-435",
+  "name": "Grâce partagée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage montre un passage sûr. Un allié à 6 mètres peut immédiatement se déplacer de 2 mètres ou gagner +2 circonstanciel à son prochain test d&#39;Acrobaties avant son prochain tour. Ce déplacement utilise sa Réaction s&#39;il en possède une et ne traverse aucun obstacle.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-418",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ronronnement apaisant",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-429",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Guide gracieux",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.121 Talents Beastkins Chats de niveau 9",
+      "family": "Présence féline et liens",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Ronronnement apaisant ou Guide gracieux",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence féline et liens",
+        "Prérequis": "Ronronnement apaisant ou Guide gracieux",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 9
+  }
+}

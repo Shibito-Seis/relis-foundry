@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-512",
+  "name": "Service reconnu",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +3 circonstanciel aux tests de Culture ou de Diplomatie concernant son institution ou sa communauté de métier.</p>\n<p>Une fois par session, il peut rappeler l&#39;existence plausible d&#39;un relais professionnel, d&#39;un refuge modeste, d&#39;une procédure d&#39;urgence, d&#39;un signe de reconnaissance ou d&#39;un contact local. Le MJ détermine ce qui existe réellement. Le talent ne crée ni autorité légale, ni équipement rare, ni dette automatique, ni accès secret absent du cadre.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Chien", "Culture", "Institution", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-494",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Métiers de confiance",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.144 Talents Beastkins Chiens de niveau 13",
+      "family": "Culture canine et métiers",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Métiers de confiance",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture canine et métiers",
+        "Traits": "Beastkin, Chien, Culture, Institution, Social",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation",
+        "Prérequis": "Métiers de confiance"
+      }
+    },
+    "level": 13
+  }
+}

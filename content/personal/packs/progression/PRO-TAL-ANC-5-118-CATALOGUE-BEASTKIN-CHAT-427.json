@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-427",
+  "name": "Regard du chat",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Par un regard, une posture ou un silence parfaitement placé, le personnage gagne +2 circonstanciel à un test immédiat de Diplomatie, Intimidation ou Tromperie envers une créature attentive. Le talent ne transmet pas un message complexe et n&#39;agit pas sur une cible incapable de le percevoir.</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.120 Talents Beastkins Chats de niveau 5",
+      "family": "Présence féline et liens",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par cible et par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence féline et liens",
+        "Type": "1 Action",
+        "Fréquence": "une fois par cible et par scène"
+      }
+    },
+    "level": 5
+  }
+}

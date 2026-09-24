@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-514",
+  "name": "Devoir accompli",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un échec ou un échec critique à un test directement nécessaire à sa consigne choisie, le personnage relance avec +3 circonstanciel et conserve le meilleur résultat. Si la relance réussit, il doit continuer à poursuivre cette consigne jusqu&#39;à la fin de la scène ou l&#39;abandonner explicitement avant d&#39;en choisir une autre.</p>\n<p>Le talent ne rend pas possible une tâche impossible, ne transforme pas automatiquement un échec critique provoqué par une catastrophe et ne peut affecter un jet déjà soumis à Fortune ou Infortune.</p>",
+    "traits": ["Beastkin", "Chien", "Fortune", "Volonté"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-505",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Rien ne me détourne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.145 Talents Beastkins Chiens de niveau 17",
+      "family": "Discipline et maîtrise de soi",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Rien ne me détourne",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Discipline et maîtrise de soi",
+        "Traits": "Beastkin, Chien, Fortune, Volonté",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Rien ne me détourne"
+      }
+    },
+    "level": 17
+  }
+}

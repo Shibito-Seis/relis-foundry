@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-428",
+  "name": "Chat des escales",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage connaît les habitudes des communautés mobiles, ports, stations et quartiers d&#39;accueil. Il gagne +2 circonstanciel en Culture, Commerce ou Diplomatie pour trouver un service modeste, un travail temporaire ou un lieu sûr dans une implantation habitée. Il ne crée ni contact haut placé ni accès interdit.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.120 Talents Beastkins Chats de niveau 5",
+      "family": "Culture chat et itinérance",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture chat et itinérance",
+        "Type": "Passif"
+      }
+    },
+    "level": 5
+  }
+}

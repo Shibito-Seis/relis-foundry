@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-431",
+  "name": "Sens du pépin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir lancé l&#39;Initiative ou un test destiné à éviter un piège ou une embuscade, le personnage peut relancer et conserver le meilleur résultat. Il doit décider avant que les conséquences soient entièrement révélées.</p>",
+    "traits": ["Fortune"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-413",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chance du chat",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.121 Talents Beastkins Chats de niveau 9",
+      "family": "Chute, chance et neuf vies",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Chance du chat",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chute, chance et neuf vies",
+        "Prérequis": "Chance du chat",
+        "Traits": "Fortune",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 9
+  }
+}

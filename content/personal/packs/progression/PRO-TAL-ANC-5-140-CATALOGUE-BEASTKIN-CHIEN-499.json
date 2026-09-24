@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-499",
+  "name": "Tenir la distance",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque l&#39;accomplissement de son devoir devrait lui infliger 1 Fatigue à cause d&#39;une marche, d&#39;une veille, d&#39;un transport ou d&#39;un effort prolongé, le personnage en diffère l&#39;application jusqu&#39;à la fin de la scène ou jusqu&#39;à ce qu&#39;il abandonne ce devoir.</p>\n<p>La Fatigue est ensuite reçue normalement. Le talent ne diffère pas une Fatigue issue d&#39;un pouvoir, d&#39;une surcharge, d&#39;une privation vitale ou d&#39;un effort sans rapport avec le devoir choisi.</p>",
+    "traits": ["Beastkin", "Chien", "Endurance", "Exploration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-490",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sens du devoir",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.142 Talents Beastkins Chiens de niveau 5",
+      "family": "Endurance et sens du devoir",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Sens du devoir",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Endurance et sens du devoir",
+        "Traits": "Beastkin, Chien, Endurance, Exploration",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Sens du devoir"
+      }
+    },
+    "level": 5
+  }
+}

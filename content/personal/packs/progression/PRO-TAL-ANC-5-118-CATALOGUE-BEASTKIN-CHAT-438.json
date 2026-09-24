@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-438",
+  "name": "Neuf vies",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;il déclenche Instinct de survie, le personnage reste conscient jusqu&#39;à la fin de son prochain tour. Il peut agir normalement mais ne peut prolonger cet état par un autre talent ; s&#39;il n&#39;a pas récupéré de PV, il tombe ensuite inconscient et subit les conséquences ordinaires. Les Blessures restent appliquées.</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-413",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chance du chat",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-362",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Instinct de survie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.122 Talents Beastkins Chats de niveau 13",
+      "family": "Chute, chance et neuf vies",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Chance du chat et Instinct de survie",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chute, chance et neuf vies",
+        "Prérequis": "Chance du chat et Instinct de survie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 13
+  }
+}

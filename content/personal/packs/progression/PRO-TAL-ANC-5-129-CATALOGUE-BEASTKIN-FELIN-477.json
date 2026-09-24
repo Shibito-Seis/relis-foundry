@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-477",
+  "name": "Souverain du domaine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Dans la zone définie par Mon territoire, le personnage et les membres de son clan actif gagnent +2 circonstanciel à l&#39;Initiative et aux tests de Perception contre intrusion, embuscade ou déplacement dissimulé.</p>\n<p>Lorsqu&#39;une scène dangereuse commence dans cette zone, le Félin peut immédiatement indiquer à ses alliés une issue, un couvert ou un point de défense qu&#39;il avait réellement étudié. Le talent ne crée aucun élément absent et cesse si le territoire a profondément changé.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Félin", "Territoire", "Vigilance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-456",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mon territoire",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-472",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Protéger le clan",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.133 Talents Beastkins Félins de niveau 13",
+      "family": "Territoire, clan et protection",
+      "ancestry": "### 5.129 Catalogue Beastkin Félin",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Mon territoire et Protéger le clan",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Territoire, clan et protection",
+        "Traits": "Beastkin, Félin, Territoire, Vigilance",
+        "Type": "Passif",
+        "Prérequis": "Mon territoire et Protéger le clan"
+      }
+    },
+    "level": 13
+  }
+}

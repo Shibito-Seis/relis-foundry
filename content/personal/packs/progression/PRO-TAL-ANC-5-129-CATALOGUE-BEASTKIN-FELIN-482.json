@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-482",
+  "name": "Roi sans couronne",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage déploie une présence souveraine dans un rayon de 12 mètres. À l&#39;activation, il choisit jusqu&#39;à sa Présence en alliés capables de le percevoir : ils gagnent +2 circonstanciel aux défenses contre peur, déplacement forcé et effets les séparant du groupe. Les adversaires qui ratent une résistance de Volonté contre son Intimidation subissent −2 circonstanciel à leurs attaques contre toute autre cible que le Félin.</p>\n<p>L&#39;effet ne force personne à attaquer le Félin, ne contrôle pas l&#39;esprit et cesse pour une créature qui ne peut plus le percevoir.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Félin", "Mythique", "Présence", "Protection"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-477",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Souverain du domaine",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-479",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Silence devant le roi",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.135 Talents Beastkins Félins de niveau 21",
+      "family": "Transcendance féline",
+      "ancestry": "### 5.129 Catalogue Beastkin Félin",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Silence devant le roi ou Souverain du domaine",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance féline",
+        "Traits": "Beastkin, Félin, Mythique, Présence, Protection",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Silence devant le roi ou Souverain du domaine"
+      }
+    },
+    "level": 21
+  }
+}

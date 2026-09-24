@@ -1,0 +1,49 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-501",
+  "name": "Saisir sans déchirer",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage déclare une morsure de saisie contre une cible ou un objet à portée. Il effectue une attaque de morsure avec −2 circonstanciel. Sur une réussite, il n&#39;inflige aucun dégât et saisit la cible avec sa gueule ; celle-ci peut se libérer selon les règles ordinaires.</p>\n<p>Le Chien doit relâcher la prise pour attaquer avec sa morsure, parler clairement ou saisir autre chose. Le talent ne fonctionne pas sur une cible trop grande, intangible ou dépourvue de prise plausible.</p>\n<p>---</p>",
+    "traits": [
+      "Beastkin",
+      "Chien",
+      "Arme naturelle",
+      "Attaque",
+      "Contrôle",
+      "Manœuvre"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-492",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Morsure retenue",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.142 Talents Beastkins Chiens de niveau 5",
+      "family": "Morsure de contrôle",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Morsure retenue",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morsure de contrôle",
+        "Traits": "Beastkin, Chien, Arme naturelle, Attaque, Contrôle, Manœuvre",
+        "Type": "1 Action",
+        "Prérequis": "Morsure retenue"
+      }
+    },
+    "level": 5
+  }
+}

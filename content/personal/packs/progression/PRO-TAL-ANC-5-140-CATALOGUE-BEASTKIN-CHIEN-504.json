@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-504",
+  "name": "Chemin du retour",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir parcouru un itinéraire avec une créature ou étudié ses traces, le personnage en mémorise les odeurs, embranchements et points de danger. Il gagne +3 circonstanciel pour revenir par ce chemin ou conduire un groupe vers le dernier lieu où cette créature était encore présente.</p>\n<p>Les alliés qui suivent ses indications gagnent +2 circonstanciel à leur premier test de navigation sur l&#39;itinéraire. Le talent ne révèle pas la destination actuelle d&#39;une cible qui a quitté la route et devient inexact si l&#39;environnement est profondément transformé.</p>",
+    "traits": ["Beastkin", "Chien", "Exploration", "Mémoire", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-497",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Retrouver la piste",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-365",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire des pistes",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.143 Talents Beastkins Chiens de niveau 9",
+      "family": "Recherche, secours et flair appliqué",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Passif et Activité de 10 minutes",
+      "prerequisites": "Retrouver la piste ou Mémoire des pistes",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Recherche, secours et flair appliqué",
+        "Traits": "Beastkin, Chien, Exploration, Mémoire, Survie",
+        "Type": "Passif et Activité de 10 minutes",
+        "Prérequis": "Retrouver la piste ou Mémoire des pistes"
+      }
+    },
+    "level": 9
+  }
+}

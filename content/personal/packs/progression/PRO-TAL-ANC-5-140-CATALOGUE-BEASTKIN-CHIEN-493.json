@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-493",
+  "name": "Héritage canin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit une expression dominante de son héritage :</p>\n<p>• Gardien : +2 circonstanciel contre renversement ou déplacement forcé à son poste de garde ;</p>\n<p>• Limier : +2 circonstanciel pour comparer deux odeurs réellement accessibles ;</p>\n<p>• Berger : +2 circonstanciel aux tests d&#39;aide destinés à guider ou repositionner un allié ;</p>\n<p>• Secouriste : +2 circonstanciel pour repérer une créature blessée, inconsciente ou appelant à l&#39;aide ;</p>\n<p>• Coureur : +2 circonstanciel aux tests d&#39;Endurance sur un itinéraire préparé ;</p>\n<p>• Compagnon : +2 circonstanciel aux tests de Diplomatie ou de Sang-froid menés en tête-à-tête avec une créature volontaire.</p>\n<p>Ce choix décrit une aptitude individuelle et n&#39;impose ni race réelle, ni taille, ni tempérament, ni profession. Il ne se cumule pas avec un bonus récompensant exactement la même fonction.</p>",
+    "traits": ["Beastkin", "Chien", "Héritage", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.141 Talents Beastkins Chiens de niveau 1",
+      "family": "Culture canine et métiers",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture canine et métiers",
+        "Traits": "Beastkin, Chien, Héritage, Physiologie",
+        "Type": "Passif",
+        "Choix permanent": "Gardien, Limier, Berger, Secouriste, Coureur ou Compagnon",
+        "Gardien": "+2 circonstanciel contre renversement ou déplacement forcé à son poste de garde ;",
+        "Limier": "+2 circonstanciel pour comparer deux odeurs réellement accessibles ;",
+        "Berger": "+2 circonstanciel aux tests d'aide destinés à guider ou repositionner un allié ;",
+        "Secouriste": "+2 circonstanciel pour repérer une créature blessée, inconsciente ou appelant à l'aide ;",
+        "Coureur": "+2 circonstanciel aux tests d'Endurance sur un itinéraire préparé ;",
+        "Compagnon": "+2 circonstanciel aux tests de Diplomatie ou de Sang-froid menés en tête-à-tête avec une créature volontaire."
+      }
+    },
+    "level": 1
+  }
+}

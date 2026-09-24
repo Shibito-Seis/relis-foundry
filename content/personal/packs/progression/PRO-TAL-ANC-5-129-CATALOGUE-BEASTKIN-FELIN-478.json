@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-478",
+  "name": "Déluge de griffes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage effectue deux attaques de griffes contre une ou deux cibles à portée. Les attaques subissent normalement les pénalités cumulatives. Si elles touchent toutes deux la même cible, la seconde inflige +2d6 dégâts physiques circonstanciels.</p>\n<p>Le talent ne fournit pas de troisième attaque, ne contourne aucune Réaction et ne permet qu&#39;une seule application de Lacération pendant l&#39;activité.</p>",
+    "traits": ["Beastkin", "Félin", "Arme naturelle", "Attaque", "Combat"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-461",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lacération",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-349",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arme naturelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.134 Talents Beastkins Félins de niveau 17",
+      "family": "Griffes, crocs et lacération",
+      "ancestry": "### 5.129 Catalogue Beastkin Félin",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Lacération et Arme naturelle choisie comme griffes",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Griffes, crocs et lacération",
+        "Traits": "Beastkin, Félin, Arme naturelle, Attaque, Combat",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Lacération et Arme naturelle choisie comme griffes"
+      }
+    },
+    "level": 17
+  }
+}

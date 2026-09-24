@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-430",
+  "name": "Évasion féline",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage commence son tour Saisi, Entravé ou Immobilisé, il peut tenter immédiatement de Se dégager avec +3 circonstanciel. Cette tentative utilise les règles ordinaires et ne fonctionne pas contre une prison hermétique ou un effet sans échappatoire physique.</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-412",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps liquide",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.121 Talents Beastkins Chats de niveau 9",
+      "family": "Souplesse et interstices",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Corps liquide",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Souplesse et interstices",
+        "Prérequis": "Corps liquide",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 9
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-443",
+  "name": "Chat aux neuf destins",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un repos long, le personnage choisit deux destins : Appui (+3 à un test d&#39;Acrobaties), Évasion (+3 pour se libérer), Curiosité (+3 à une Investigation ciblée), Libre arbitre (+3 contre coercition) ou Présence (+3 pour aider mentalement un allié). Une fois par scène, il active un destin avant le test correspondant. Un seul destin affecte un jet.</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-440",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Destin récalcitrant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.124 Talents Beastkins Chats de niveau 21",
+      "family": "Transcendance féline",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "préparation quotidienne et Activation libre",
+      "prerequisites": "Destin récalcitrant",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance féline",
+        "Prérequis": "Destin récalcitrant",
+        "Type": "préparation quotidienne et Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 21
+  }
+}

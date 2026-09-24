@@ -1,0 +1,50 @@
+{
+  "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-470",
+  "name": "Fondre depuis l'ombre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Depuis une position où il est dissimulé ou non repéré par sa cible, le personnage se déplace jusqu&#39;à la moitié de sa Vitesse puis effectue une attaque avec une arme naturelle. Il conserve les bénéfices de sa dissimulation pendant le déplacement jusqu&#39;à l&#39;instant de l&#39;attaque, tant que le trajet offre un couvert ou une ombre plausible.</p>\n<p>L&#39;attaque révèle normalement sa position. L&#39;activité consomme deux Actions et ne rend pas invisible dans un trajet découvert.</p>",
+    "traits": [
+      "Beastkin",
+      "Félin",
+      "Attaque",
+      "Discrétion",
+      "Mobilité",
+      "Combat"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-462",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Approche basse",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.132 Talents Beastkins Félins de niveau 9",
+      "family": "Traque, camouflage et embuscade",
+      "ancestry": "### 5.129 Catalogue Beastkin Félin",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Approche basse",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Traque, camouflage et embuscade",
+        "Traits": "Beastkin, Félin, Attaque, Discrétion, Mobilité, Combat",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Approche basse"
+      }
+    },
+    "level": 9
+  }
+}

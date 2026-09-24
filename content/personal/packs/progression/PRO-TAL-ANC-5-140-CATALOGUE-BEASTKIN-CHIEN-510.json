@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-510",
+  "name": "Poste imprenable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut désormais garder une zone de 12 mètres de rayon, deux accès proches ou deux créatures volontaires situées dans cette zone. Il gagne +3 circonstanciel à l&#39;Initiative et aux tests de Perception contre les menaces visant directement ses objectifs gardés.</p>\n<p>La portée de déplacement d&#39;Interception canine et Personne ne passe devient 4 mètres. Ces talents utilisent toujours la même économie de Réaction et ne peuvent être déclenchés plusieurs fois pendant un même tour.</p>",
+    "traits": ["Beastkin", "Chien", "Garde", "Vigilance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-503",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Personne ne passe",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.144 Talents Beastkins Chiens de niveau 13",
+      "family": "Garde et interception",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Personne ne passe",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Garde et interception",
+        "Traits": "Beastkin, Chien, Garde, Vigilance",
+        "Type": "Passif",
+        "Prérequis": "Personne ne passe"
+      }
+    },
+    "level": 13
+  }
+}

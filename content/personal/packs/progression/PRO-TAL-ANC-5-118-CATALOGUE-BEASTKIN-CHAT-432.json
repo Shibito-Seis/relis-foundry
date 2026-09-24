@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-432",
+  "name": "Riposte feutrée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;une attaque de mêlée échoue contre lui, le personnage effectue une attaque de griffes contre l&#39;assaillant avec -2 circonstanciel. Cette attaque compte pour les limitations d&#39;attaques multiples de son prochain tour et ne déclenche aucun autre talent de riposte.</p>",
+    "traits": ["Beastkin", "Chat", "Arme naturelle", "Attaque", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-424",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Coup de patte",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.121 Talents Beastkins Chats de niveau 9",
+      "family": "Griffes rétractiles et précision",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Coup de patte",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Griffes rétractiles et précision",
+        "Prérequis": "Coup de patte",
+        "Traits": "Beastkin, Chat, Arme naturelle, Attaque, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 9
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-503",
+  "name": "Personne ne passe",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;une créature que le personnage perçoit franchit l&#39;accès ou entre dans la zone qu&#39;il garde, il se déplace jusqu&#39;à 1 case (2 mètres) vers un espace légal puis effectue un test d&#39;Athlétisme contre le DD de manœuvre approprié de la créature. Sur une réussite, le déplacement de l&#39;intrus s&#39;achève dans le dernier espace légal atteint.</p>\n<p>Le talent n&#39;inflige aucun dégât, ne fonctionne pas sur une cible physiquement impossible à arrêter et ne permet pas au Chien de traverser un obstacle.</p>",
+    "traits": ["Beastkin", "Chien", "Contrôle", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-496",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Interception canine",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.143 Talents Beastkins Chiens de niveau 9",
+      "family": "Garde et interception",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Interception canine",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Garde et interception",
+        "Traits": "Beastkin, Chien, Contrôle, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Interception canine"
+      }
+    },
+    "level": 9
+  }
+}

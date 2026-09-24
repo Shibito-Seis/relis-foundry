@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-424",
+  "name": "Coup de patte",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;une créature adjacente manipule un objet, recharge, ouvre un dispositif ou se relève, le personnage effectue un test de Mêlée avec ses griffes contre sa CAP. En cas de réussite, l&#39;action est accomplie mais la cible subit -2 à sa prochaine manipulation avant la fin de son tour. Une réussite critique peut interrompre une manipulation non essentielle, jamais une fonction vitale.</p>",
+    "traits": ["Beastkin", "Chat", "Arme naturelle", "Attaque", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-414",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Griffes rétractiles",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.120 Talents Beastkins Chats de niveau 5",
+      "family": "Griffes rétractiles et précision",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Griffes rétractiles",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Griffes rétractiles et précision",
+        "Prérequis": "Griffes rétractiles",
+        "Traits": "Beastkin, Chat, Arme naturelle, Attaque, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 5
+  }
+}

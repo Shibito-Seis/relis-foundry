@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-508",
+  "name": "Prise du gardien",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel pour maintenir une cible saisie avec sa morsure. Lorsqu&#39;elle tente de s&#39;éloigner, de manipuler une arme ou d&#39;attaquer une autre créature, le Chien peut effectuer un test d&#39;Athlétisme contre son DD de manœuvre approprié.</p>\n<p>Sur une réussite, un déplacement est interrompu ou la cible subit −2 circonstanciel à la manipulation ou à l&#39;attaque concernée. L&#39;action reste autrement résolue normalement ; le talent ne cause aucun dégât et ne désarme pas automatiquement.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Chien", "Arme naturelle", "Contrôle", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-501",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Saisir sans déchirer",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.143 Talents Beastkins Chiens de niveau 9",
+      "family": "Morsure de contrôle",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Saisir sans déchirer",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morsure de contrôle",
+        "Traits": "Beastkin, Chien, Arme naturelle, Contrôle, Réaction",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Saisir sans déchirer"
+      }
+    },
+    "level": 9
+  }
+}

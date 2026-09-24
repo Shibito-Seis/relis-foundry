@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-492",
+  "name": "Morsure retenue",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut infliger des dégâts non létaux avec sa morsure sans pénalité. Il gagne également +2 circonstanciel aux tests effectués avec sa gueule pour retenir un objet exposé, empêcher qu&#39;on le lui arrache ou contrôler un membre qu&#39;il a déjà saisi.</p>\n<p>Sa gueule ne compte jamais comme une main libre, ne peut simultanément parler clairement, attaquer et tenir un objet, et n&#39;accorde aucune saisie gratuite après une attaque.</p>",
+    "traits": ["Beastkin", "Chien", "Arme naturelle", "Contrôle"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-349",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arme naturelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.141 Talents Beastkins Chiens de niveau 1",
+      "family": "Morsure de contrôle",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Arme naturelle choisie comme morsure",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morsure de contrôle",
+        "Traits": "Beastkin, Chien, Arme naturelle, Contrôle",
+        "Type": "Passif",
+        "Prérequis": "Arme naturelle choisie comme morsure"
+      }
+    },
+    "level": 1
+  }
+}

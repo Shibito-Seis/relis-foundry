@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-420",
+  "name": "Famille étendue",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage appartient à une famille, maisonnée, portée ou communauté choisie. Il définit un contact crédible et gagne +2 circonstanciel pour obtenir une introduction, un hébergement modeste ou une information communautaire. Le contact conserve ses intérêts et ne fournit aucun service dangereux ou coûteux gratuitement.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Culture chat et itinérance",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture chat et itinérance",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

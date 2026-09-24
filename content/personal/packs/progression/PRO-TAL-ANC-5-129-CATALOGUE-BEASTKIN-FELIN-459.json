@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-459",
+  "name": "Poussée de chasse",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant un tour, le personnage gagne +3 circonstanciel à un unique test de Force ou d&#39;Athlétisme pour bousculer, briser, soulever ou maintenir. S&#39;il touche avec une arme naturelle pendant ce tour, il peut à la place pousser de 1 mètre une cible de taille égale ou inférieure qui échoue à sa résistance.</p>\n<p>Le personnage choisit l&#39;un des deux usages. Le talent ne donne aucune attaque et ne déplace pas une cible inamovible.</p>",
+    "traits": ["Beastkin", "Félin", "Athlétisme", "Combat"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-447",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Muscles de grand félin",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.131 Talents Beastkins Félins de niveau 5",
+      "family": "Puissance prédatrice",
+      "ancestry": "### 5.129 Catalogue Beastkin Félin",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Muscles de grand félin",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance prédatrice",
+        "Traits": "Beastkin, Félin, Athlétisme, Combat",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Muscles de grand félin"
+      }
+    },
+    "level": 5
+  }
+}

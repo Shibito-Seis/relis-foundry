@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-444",
+  "name": "Grâce au-delà du vide",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage se déplace normalement en gravité faible ou nulle lorsqu&#39;un appui est accessible et ne devient pas désorienté par un changement brutal d&#39;orientation. Lorsqu&#39;il est projeté, il peut utiliser sa Réaction pour rejoindre un appui visible à la moitié de sa vitesse. Ce talent ne donne ni vol, ni propulsion dans le vide sans support.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-436",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Grâce sans faux pas",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.124 Talents Beastkins Chats de niveau 21",
+      "family": "Transcendance féline",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Grâce sans faux pas",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance féline",
+        "Prérequis": "Grâce sans faux pas",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction"
+      }
+    },
+    "level": 21
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-445",
+  "name": "Neuvième vie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage devrait mourir sans destruction complète du corps, il demeure à 1 PV, gagne 2 Stress et 1 Fatigue, puis reçoit toute Blessure critique que l&#39;événement devait raisonnablement infliger. Il ne peut agir avant le début de son prochain tour. Le talent ne fonctionne ni après mort confirmée, ni contre vieillesse, annihilation ou sacrifice volontaire.</p>\n<p>Après cet emploi, le personnage ne peut pas employer Âme indomptable contre la mort pendant la même session, et réciproquement. Les deux talents ne fournissent donc jamais deux survivances mortelles au cours d&#39;une même session.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-443",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chat aux neuf destins",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.125 Talent Beastkin Chat de niveau 25",
+      "family": "Transcendance féline",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Chat aux neuf destins",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance féline",
+        "Prérequis": "Chat aux neuf destins",
+        "Type": "Réaction",
+        "Fréquence": "une fois par session"
+      }
+    },
+    "level": 25
+  }
+}

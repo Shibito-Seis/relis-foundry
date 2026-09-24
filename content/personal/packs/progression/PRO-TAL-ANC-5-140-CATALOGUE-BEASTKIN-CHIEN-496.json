@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-496",
+  "name": "Interception canine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;une attaque ou un danger physique cible la créature, l&#39;objet ou l&#39;accès que le personnage garde à 2 mètres, il se place sur la trajectoire si un espace légal le permet. Il choisit de devenir la cible de l&#39;effet, ou d&#39;accorder +2 circonstanciel à la défense ou au test de résistance de la cible protégée.</p>\n<p>Le talent ne réduit pas automatiquement les dégâts, ne déplace pas une cible et utilise l&#39;unique Réaction normale du personnage.</p>",
+    "traits": ["Beastkin", "Chien", "Protection", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-487",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Monter la garde",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.142 Talents Beastkins Chiens de niveau 5",
+      "family": "Garde et interception",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Monter la garde",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Garde et interception",
+        "Traits": "Beastkin, Chien, Protection, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Monter la garde"
+      }
+    },
+    "level": 5
+  }
+}

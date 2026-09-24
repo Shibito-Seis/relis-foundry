@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-129-CATALOGUE-BEASTKIN-FELIN-466",
+  "name": "Fureur blessée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage est à la moitié de ses PV ou moins, il peut gagner +2 circonstanciel à sa prochaine attaque avec une arme naturelle ou à son prochain test d&#39;Athlétisme avant la fin de son tour. Après la résolution, il gagne 1 Stress.</p>\n<p>Le talent ne peut être activé volontairement avant que le seuil de PV soit atteint et ne réduit aucun dégât.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Félin", "Combat", "Endurance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.131 Talents Beastkins Félins de niveau 5",
+      "family": "Férocité et refus de tomber",
+      "ancestry": "### 5.129 Catalogue Beastkin Félin",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Férocité et refus de tomber",
+        "Traits": "Beastkin, Félin, Combat, Endurance",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 5
+  }
+}

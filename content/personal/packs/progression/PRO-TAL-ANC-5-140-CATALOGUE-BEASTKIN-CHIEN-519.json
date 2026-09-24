@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-519",
+  "name": "Celui qui revient toujours",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Tant que le personnage et son partenaire se trouvent sur le même monde et qu&#39;un trajet physique continu les relie, le Chien connaît toujours sa direction générale. Il bénéficie du même effet envers son poste de garde durable le plus récent. Cette perception ne donne ni distance exacte, ni chemin sûr, ni connaissance de ce qui les sépare.</p>\n<p>Une fois par session, lorsque le personnage devrait mourir sans annihilation, être emporté hors d&#39;une scène, emprisonné ou durablement séparé contre sa volonté, il refuse de disparaître. Après l&#39;effet déclencheur :</p>\n<p>• contre la mort, il demeure à 1 PV, tombe à terre et gagne 2 Fatigue et 2 Stress ;</p>\n<p>• contre une contrainte physique ou mentale, il obtient immédiatement un nouveau test avec +4 circonstanciel ;</p>\n<p>• pendant 3 tours, sa Vitesse terrestre augmente de 3 mètres, il ignore les 4 premiers mètres de terrain difficile de chaque tour et gagne +4 aux tests pour s&#39;échapper, naviguer ou rejoindre son partenaire ou son poste.</p>\n<p>Le talent ne téléporte pas, ne traverse ni vide, ni paroi, ni obstacle infranchissable et ne ramène pas un personnage déjà mort. S&#39;il est employé contre la mort, Âme indomptable ne peut l&#39;empêcher une seconde fois pendant la même session, et réciproquement.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Chien", "Fortune", "Mythique", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-518",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fidélité au-delà de la mort",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-371",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Instinct absolu",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.148 Talent Beastkin Chien de niveau 29",
+      "family": "Transcendance canine",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Fidélité au-delà de la mort et Instinct absolu",
+      "choice": "",
+      "frequency": "une fois par session pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance canine",
+        "Traits": "Beastkin, Chien, Fortune, Mythique, Survie",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par session pour la réaction",
+        "Prérequis": "Fidélité au-delà de la mort et Instinct absolu"
+      }
+    },
+    "level": 29
+  }
+}

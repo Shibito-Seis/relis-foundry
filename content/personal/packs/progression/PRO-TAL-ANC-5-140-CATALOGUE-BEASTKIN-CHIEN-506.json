@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-506",
+  "name": "Encore un effort",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage reçoit de la Fatigue pendant son devoir choisi, il peut ignorer jusqu&#39;à la fin de la scène les pénalités provenant de 1 point de cette Fatigue. Le point demeure présent et toutes ses conséquences différées s&#39;appliquent ensuite normalement.</p>\n<p>Le talent ne permet pas de rester conscient au-delà d&#39;un seuil qui devrait l&#39;en empêcher et n&#39;annule ni besoin vital, ni Blessure, ni Fatigue supplémentaire.</p>",
+    "traits": ["Beastkin", "Chien", "Endurance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-499",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Tenir la distance",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.143 Talents Beastkins Chiens de niveau 9",
+      "family": "Endurance et sens du devoir",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Tenir la distance",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Endurance et sens du devoir",
+        "Traits": "Beastkin, Chien, Endurance",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Tenir la distance"
+      }
+    },
+    "level": 9
+  }
+}

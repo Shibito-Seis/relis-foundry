@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-140-CATALOGUE-BEASTKIN-CHIEN-487",
+  "name": "Monter la garde",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit un accès, un objet, une créature volontaire ou une zone de 6 mètres de rayon qu&#39;il peut étudier. Tant qu&#39;il demeure à 6 mètres de ce poste, il gagne +2 circonstanciel à l&#39;Initiative et aux tests de Perception contre intrusion, approche dissimulée, manipulation ou menace visant ce qu&#39;il garde.</p>\n<p>Il ne peut entretenir qu&#39;un poste de garde à la fois. Le talent ne révèle pas l&#39;imperceptible et cesse si le lieu ou la mission change au point que sa préparation n&#39;est plus pertinente.</p>",
+    "traits": ["Beastkin", "Chien", "Exploration", "Vigilance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.141 Talents Beastkins Chiens de niveau 1",
+      "family": "Garde et interception",
+      "ancestry": "### 5.140 Catalogue Beastkin Chien",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Garde et interception",
+        "Traits": "Beastkin, Chien, Exploration, Vigilance",
+        "Type": "Activité de 10 minutes"
+      }
+    },
+    "level": 1
+  }
+}
