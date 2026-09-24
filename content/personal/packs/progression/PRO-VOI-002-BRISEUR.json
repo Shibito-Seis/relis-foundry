@@ -1,0 +1,104 @@
+{
+  "relisId": "PRO-VOI-002-BRISEUR",
+  "name": "Briseur",
+  "type": "path",
+  "tags": ["progression", "voie"],
+  "system": {
+    "description": "<p><strong>Attribut clef :</strong> Force ou Vigueur</p>\n<p><strong>Compétences :</strong> Focalisée — 4 — Mêlée, Athlétisme — Endurance, Intimidation, Sang-froid, Armes lourdes, Survie, Commandement</p>\n<p><strong>Dotation :</strong> Arme de mêlée lourde simple ou outil de bris, protection renforcée légère, gants ou harnais de manutention.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "path",
+      "sourceSection": "9",
+      "keyAttributes": ["Force", "Vigueur"],
+      "skillFamily": "Focalisée",
+      "qualifiedSkillTotal": 4,
+      "requiredSkills": ["Mêlée", "Athlétisme"],
+      "skillChoices": [
+        "Endurance",
+        "Intimidation",
+        "Sang-froid",
+        "Armes lourdes",
+        "Survie",
+        "Commandement"
+      ],
+      "branchNames": [
+        "Armes lourdes de mêlée",
+        "Rempart vivant",
+        "Lutteur",
+        "Berserker contrôlé",
+        "Briseur d'armure",
+        "Colosse",
+        "Anti-monstre"
+      ],
+      "initialLoadout": "Arme de mêlée lourde simple ou outil de bris, protection renforcée légère, gants ou harnais de manutention.",
+      "loadoutRefs": [],
+      "specializationRefs": [
+        {
+          "relisId": "PRO-SPE-02-01-ARMES-LOURDES-DE-MELEE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Briseur — Armes lourdes de mêlée",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-02-02-REMPART-VIVANT",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Briseur — Rempart vivant",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-02-03-LUTTEUR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Briseur — Lutteur",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-02-04-BERSERKER-CONTROLE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Briseur — Berserker contrôlé",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-02-05-BRISEUR-D-ARMURE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Briseur — Briseur d'armure",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-02-06-COLOSSE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Briseur — Colosse",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-02-07-ANTI-MONSTRE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Briseur — Anti-monstre",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  }
+}

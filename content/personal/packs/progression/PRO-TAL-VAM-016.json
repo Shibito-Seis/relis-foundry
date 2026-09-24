@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-VAM-016",
+  "name": "Faim enchaînée",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Après un test de Crise, le personnage peut :</p>\n<p>• transformer un échec ordinaire en réussite en gagnant 1 Stress ;</p>\n<p>• ou transformer un échec critique en échec ordinaire en gagnant 2 Stress.</p>\n<p>Le coût est appliqué après le changement de résultat et peut provoquer une Surcharge mentale.</p>\n<p>Un seul effet peut modifier le degré de réussite du test. Le talent ne peut donc pas être combiné sur ce test avec la réaction de Sang-froid face au sang ou Faim couronnée.</p>",
+    "traits": ["Général", "Mental", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-004",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sang-froid face au sang",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.16 Talents vampiriques de niveau 15",
+      "family": "Contrôle de la Faim",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Sang-froid face au sang",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Contrôle de la Faim",
+        "Traits": "Général, Mental, Vampirique",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Sang-froid face au sang"
+      }
+    },
+    "level": 15
+  }
+}

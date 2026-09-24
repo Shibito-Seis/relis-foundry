@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-041",
+  "name": "Refus de la fatalité",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>La mort est retardée jusqu&#39;à la fin du prochain tour du personnage. Il tombe à 0 PV, devient Hors de combat et conserve toutes ses Blessures, aggravations et dangers actifs.</p>\n<p>S&#39;il est stabilisé et si la cause mortelle immédiate est contenue avant l&#39;échéance, il survit à 0 PV. Sinon, il meurt à la fin de son prochain tour.</p>\n<p>Le talent ne fonctionne pas contre vieillesse, annihilation, décapitation, destruction complète d&#39;un noyau vital, disparition du corps ou environnement ne laissant matériellement aucune possibilité de sauvetage.</p>",
+    "traits": ["Général", "Mythique", "Réaction", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.10 Talents généraux de niveau 27",
+      "family": "Vitalité et récupération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "le personnage devrait mourir d'une cause laissant matériellement une possibilité d'intervention immédiate",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vitalité et récupération",
+        "Traits": "Général, Mythique, Réaction, Survie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par repos long",
+        "Déclencheur": "le personnage devrait mourir d'une cause laissant matériellement une possibilité d'intervention immédiate"
+      }
+    },
+    "level": 27
+  }
+}

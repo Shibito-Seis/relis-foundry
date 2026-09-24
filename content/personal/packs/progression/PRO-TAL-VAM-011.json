@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-VAM-011",
+  "name": "Odeur des blessures cachées",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Médecine ou Investigation destinés à repérer une hémorragie interne, une circulation affaiblie ou une blessure dissimulée chez une créature qu&#39;il peut sentir.</p>\n<p>Sur une réussite, il détermine si son état est superficiel, sérieux ou critique et localise grossièrement la zone concernée.</p>\n<p>Le talent ne révèle ni diagnostic complet, ni maladie, ni quantité exacte de PV et peut être trompé par un corps artificiel, un traitement circulatoire ou une altération biologique inconnue.</p>",
+    "traits": ["Général", "Investigation", "Médecine", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-007",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Trace pulsatile",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.15 Talents vampiriques de niveau 11",
+      "family": "Sens du sang",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Trace pulsatile ; Stade vampirique 3",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens du sang",
+        "Traits": "Général, Investigation, Médecine, Vampirique",
+        "Type": "Passif",
+        "Prérequis": "Trace pulsatile ; Stade vampirique 3"
+      }
+    },
+    "level": 11
+  }
+}

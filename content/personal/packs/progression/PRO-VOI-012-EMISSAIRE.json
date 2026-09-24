@@ -1,0 +1,104 @@
+{
+  "relisId": "PRO-VOI-012-EMISSAIRE",
+  "name": "Émissaire",
+  "type": "path",
+  "tags": ["progression", "voie"],
+  "system": {
+    "description": "<p><strong>Attribut clef :</strong> Présence, Intelligence ou Volonté</p>\n<p><strong>Compétences :</strong> Large / savante — 6 — Diplomatie, Culture, Sang-froid — Commandement, Commerce, Tromperie, Intimidation, Investigation, Informatique</p>\n<p><strong>Dotation :</strong> Module de communication ou traducteur, tenue/accréditation protocolaire, dossier diplomatique basique.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "path",
+      "sourceSection": "9",
+      "keyAttributes": ["Présence", "Intelligence", "Volonté"],
+      "skillFamily": "Large / savante",
+      "qualifiedSkillTotal": 6,
+      "requiredSkills": ["Diplomatie", "Culture", "Sang-froid"],
+      "skillChoices": [
+        "Commandement",
+        "Commerce",
+        "Tromperie",
+        "Intimidation",
+        "Investigation",
+        "Informatique"
+      ],
+      "branchNames": [
+        "Commandant",
+        "Négociateur",
+        "Marchand",
+        "Manipulateur",
+        "Meneur inspirant",
+        "Premier contact",
+        "Agent politique"
+      ],
+      "initialLoadout": "Module de communication ou traducteur, tenue/accréditation protocolaire, dossier diplomatique basique.",
+      "loadoutRefs": [],
+      "specializationRefs": [
+        {
+          "relisId": "PRO-SPE-12-01-COMMANDANT",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Émissaire — Commandant",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-12-02-NEGOCIATEUR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Émissaire — Négociateur",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-12-03-MARCHAND",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Émissaire — Marchand",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-12-04-MANIPULATEUR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Émissaire — Manipulateur",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-12-05-MENEUR-INSPIRANT",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Émissaire — Meneur inspirant",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-12-06-PREMIER-CONTACT",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Émissaire — Premier contact",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-12-07-AGENT-POLITIQUE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Émissaire — Agent politique",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-VAM-007",
+  "name": "Trace pulsatile",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>En se concentrant sur les mouvements d&#39;air, odeurs et vibrations internes, le personnage détecte pendant un tour la présence et la position grossière des circulations sanguines à 6 mètres, y compris derrière une cloison fine non hermétique.</p>\n<p>Il distingue une silhouette biologique en mouvement d&#39;une flaque ou d&#39;une poche de sang, sans connaître son identité, ses PV ou ses intentions.</p>\n<p>Le talent est bloqué par une paroi hermétique, un blindage épais, le vide, un brouillage sensoriel adapté ou une créature dont le métabolisme ne repose pas sur une circulation sanguine perceptible.</p>",
+    "traits": ["Concentration", "Général", "Perception", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-001",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Nez du prédateur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.14 Talents vampiriques de niveau 7",
+      "family": "Sens du sang",
+      "ancestry": "",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Nez du prédateur ; Stade vampirique 2",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens du sang",
+        "Traits": "Concentration, Général, Perception, Vampirique",
+        "Type": "1 Action",
+        "Prérequis": "Nez du prédateur ; Stade vampirique 2"
+      }
+    },
+    "level": 7
+  }
+}

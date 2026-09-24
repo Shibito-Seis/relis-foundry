@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-042",
+  "name": "Être d'exception",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage améliore le résultat du test d&#39;un degré.</p>\n<p>Le test doit concerner résistance, mobilité, vigilance, récupération, Surmenage, Aide, protection ou autonomie. Le talent ne s&#39;applique pas à un jet d&#39;attaque, de dégâts, de création de ressource, de progression, de longévité ou à un test destiné à recharger la fréquence d&#39;une capacité. Il ne permet jamais de contourner un prérequis ou d&#39;accomplir une action matériellement impossible.</p>\n<p>---</p>",
+    "traits": ["Général", "Mythique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.10 Talents généraux de niveau 27",
+      "family": "Dépassement général",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "le personnage vient d'obtenir le résultat d'un test non offensif",
+      "duration": "",
+      "metadata": {
+        "Famille": "Dépassement général",
+        "Traits": "Général, Mythique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par repos long",
+        "Déclencheur": "le personnage vient d'obtenir le résultat d'un test non offensif"
+      }
+    },
+    "level": 27
+  }
+}

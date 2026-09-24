@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-VAM-017",
+  "name": "Régénération de crise",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Après avoir subi des dégâts sans être réduit à 0 PV, le personnage dépense sa Réserve interne. Il applique immédiatement la Récupération sanguine complète correspondant à la source enregistrée et gagne 1 Stress.</p>\n<p>Cette utilisation compte dans le nombre maximal de Récupérations sanguines du repos en cours. Si ce maximum est déjà atteint, le talent ne peut pas être utilisé.</p>\n<p>La régénération ne retire aucune Blessure critique, ne réduit pas les dégâts de l&#39;attaque déclenchante et ne fonctionne pas si le personnage est mort ou inconscient avant de pouvoir réagir.</p>\n<p>---</p>",
+    "traits": ["Général", "Guérison", "Réaction", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-009",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réserve interne",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-VAM-013",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sang réparateur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.16 Talents vampiriques de niveau 15",
+      "family": "Sang et régénération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Réserve interne et Sang réparateur ; Stade vampirique 4",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang et régénération",
+        "Traits": "Général, Guérison, Réaction, Vampirique",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Réserve interne et Sang réparateur ; Stade vampirique 4"
+      }
+    },
+    "level": 15
+  }
+}

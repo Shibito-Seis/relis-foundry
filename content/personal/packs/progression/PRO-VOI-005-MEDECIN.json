@@ -1,0 +1,115 @@
+{
+  "relisId": "PRO-VOI-005-MEDECIN",
+  "name": "Médecin",
+  "type": "path",
+  "tags": ["progression", "voie"],
+  "system": {
+    "description": "<p><strong>Attribut clef :</strong> Intelligence, Dextérité ou Volonté</p>\n<p><strong>Compétences :</strong> Large / savante — 6 — Médecine, Sciences, Sang-froid — Investigation, Techno-magie, Canalisation, Endurance, Culture, Diplomatie, Systèmes de vaisseau</p>\n<p><strong>Dotation :</strong> Trousse médicale de terrain, scanner médical léger, consommables de soin de base.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "path",
+      "sourceSection": "9",
+      "keyAttributes": ["Intelligence", "Dextérité", "Volonté"],
+      "skillFamily": "Large / savante",
+      "qualifiedSkillTotal": 6,
+      "requiredSkills": ["Médecine", "Sciences", "Sang-froid"],
+      "skillChoices": [
+        "Investigation",
+        "Techno-magie",
+        "Canalisation",
+        "Endurance",
+        "Culture",
+        "Diplomatie",
+        "Systèmes de vaisseau"
+      ],
+      "branchNames": [
+        "Médecine de terrain",
+        "Chirurgien",
+        "Xénobiologiste",
+        "Cryotechnicien médical",
+        "Anti-contamination",
+        "Cybermédecin",
+        "Vitaliste"
+      ],
+      "initialLoadout": "Trousse médicale de terrain, scanner médical léger, consommables de soin de base.",
+      "loadoutRefs": [
+        {
+          "relisId": "UTL-011",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "equipment",
+          "state": "resolved",
+          "labelSnapshot": "Trousse médicale de terrain",
+          "missingPolicy": "diagnose"
+        }
+      ],
+      "specializationRefs": [
+        {
+          "relisId": "PRO-SPE-05-01-MEDECINE-DE-TERRAIN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Médecin — Médecine de terrain",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-05-02-CHIRURGIEN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Médecin — Chirurgien",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-05-03-XENOBIOLOGISTE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Médecin — Xénobiologiste",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-05-04-CRYOTECHNICIEN-MEDICAL",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Médecin — Cryotechnicien médical",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-05-05-ANTI-CONTAMINATION",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Médecin — Anti-contamination",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-05-06-CYBERMEDECIN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Médecin — Cybermédecin",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-05-07-VITALISTE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Médecin — Vitaliste",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  }
+}

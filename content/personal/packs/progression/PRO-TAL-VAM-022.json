@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-VAM-022",
+  "name": "Cœur sous l'aube",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Le personnage force son métabolisme à absorber et expulser les dégâts UV. Pendant la durée, il n&#39;effectue aucun test UV et ne subit aucun dégât provenant exclusivement de cette exposition.</p>\n<p>À la fin, il gagne 2 Fatigue et 1 Stress. Ces coûts ne peuvent être réduits par une capacité vampirique.</p>\n<p>Le talent ne protège ni du feu, ni du plasma, ni des radiations ionisantes, ni d&#39;un effet qui inflige des dégâts supplémentaires indépendants de sa composante UV.</p>\n<p>---</p>",
+    "traits": ["Général", "Transcendance", "UV", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-019",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Marche sous filtre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.18 Talents vampiriques de niveau 23",
+      "family": "Résistance aux UV",
+      "ancestry": "",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Marche sous filtre ; Stade vampirique 7",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Résistance aux UV",
+        "Traits": "Général, Transcendance, UV, Vampirique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par repos long",
+        "Durée": "3 tours",
+        "Prérequis": "Marche sous filtre ; Stade vampirique 7"
+      }
+    },
+    "level": 23
+  }
+}

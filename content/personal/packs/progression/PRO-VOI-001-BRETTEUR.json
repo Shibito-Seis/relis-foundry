@@ -1,0 +1,114 @@
+{
+  "relisId": "PRO-VOI-001-BRETTEUR",
+  "name": "Bretteur",
+  "type": "path",
+  "tags": ["progression", "voie"],
+  "system": {
+    "description": "<p><strong>Attribut clef :</strong> Dextérité ou Force</p>\n<p><strong>Compétences :</strong> Focalisée — 4 — Mêlée, Sang-froid — Acrobaties, Athlétisme, Endurance, Canalisation, Techno-magie, Intimidation</p>\n<p><strong>Dotation :</strong> Arme de mêlée standard au choix, protection légère, kit d&#39;entretien d&#39;arme.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "path",
+      "sourceSection": "9",
+      "keyAttributes": ["Dextérité", "Force"],
+      "skillFamily": "Focalisée",
+      "qualifiedSkillTotal": 4,
+      "requiredSkills": ["Mêlée", "Sang-froid"],
+      "skillChoices": [
+        "Acrobaties",
+        "Athlétisme",
+        "Endurance",
+        "Canalisation",
+        "Techno-magie",
+        "Intimidation"
+      ],
+      "branchNames": [
+        "Forme équilibrée",
+        "Forme défensive",
+        "Forme agressive",
+        "Forme mobile",
+        "Forme anti-tir",
+        "Forme techno-lame",
+        "Forme Prana"
+      ],
+      "initialLoadout": "Arme de mêlée standard au choix, protection légère, kit d'entretien d'arme.",
+      "loadoutRefs": [
+        {
+          "relisId": "MAT-AMM-SPC-001-STANDARD",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ammunition",
+          "state": "resolved",
+          "labelSnapshot": "Standard",
+          "missingPolicy": "diagnose"
+        }
+      ],
+      "specializationRefs": [
+        {
+          "relisId": "PRO-SPE-01-01-FORME-EQUILIBREE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Bretteur — Forme équilibrée",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-01-02-FORME-DEFENSIVE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Bretteur — Forme défensive",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-01-03-FORME-AGRESSIVE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Bretteur — Forme agressive",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-01-04-FORME-MOBILE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Bretteur — Forme mobile",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-01-05-FORME-ANTI-TIR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Bretteur — Forme anti-tir",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-01-06-FORME-TECHNO-LAME",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Bretteur — Forme techno-lame",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-01-07-FORME-PRANA",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Bretteur — Forme Prana",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  }
+}

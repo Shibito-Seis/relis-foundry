@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-VAM-012",
+  "name": "Crocs de combat",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Les crocs du personnage infligent 1d8 dégâts perforants. Il choisit une spécialisation :</p>\n<p>• Précision : +1 circonstanciel aux attaques avec les crocs ;</p>\n<p>• Impact : +2 circonstanciel aux dégâts des crocs ;</p>\n<p>• Contrôle : +2 circonstanciel aux tests de saisie ou de maintien directement associés à la morsure.</p>\n<p>Cette spécialisation ne se cumule pas avec une autre spécialisation d&#39;Arme naturelle accordant le même avantage ; seul le meilleur effet s&#39;applique.</p>\n<p>Le talent ne donne ni attaque supplémentaire, ni prélèvement automatique, ni Saignement gratuit.</p>",
+    "traits": ["Arme naturelle", "Combat", "Général", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-002",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Morsure maîtrisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.15 Talents vampiriques de niveau 11",
+      "family": "Crocs et prélèvement",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Morsure maîtrisée ; Stade vampirique 3",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Crocs et prélèvement",
+        "Traits": "Arme naturelle, Combat, Général, Vampirique",
+        "Type": "Passif",
+        "Prérequis": "Morsure maîtrisée ; Stade vampirique 3",
+        "Précision": "+1 circonstanciel aux attaques avec les crocs ;",
+        "Impact": "+2 circonstanciel aux dégâts des crocs ;",
+        "Contrôle": "+2 circonstanciel aux tests de saisie ou de maintien directement associés à la morsure."
+      }
+    },
+    "level": 11
+  }
+}

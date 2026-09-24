@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-VAM-023",
+  "name": "Faim couronnée",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Après un test de Crise, quel que soit son résultat, le personnage peut le transformer en réussite ordinaire. Il gagne immédiatement 2 Stress et 1 Fatigue.</p>\n<p>Le talent peut provoquer Surcharge mentale ou Effondrement après la résolution, mais ne peut être utilisé si le personnage est déjà inconscient, à Fatigue 5 ou incapable de prendre une décision.</p>\n<p>Le contrôle obtenu évite la Pulsion et la Marque qui aurait découlé de cette Crise. Il n&#39;efface aucune autre Marque provenant d&#39;une surconsommation ou d&#39;un acte volontaire.</p>",
+    "traits": ["Général", "Mental", "Transcendance", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-020",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maîtrise de la bête",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.19 Talents vampiriques de niveau 27",
+      "family": "Contrôle de la Faim",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Maîtrise de la bête ; Stade vampirique 8",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Contrôle de la Faim",
+        "Traits": "Général, Mental, Transcendance, Vampirique",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Maîtrise de la bête ; Stade vampirique 8"
+      }
+    },
+    "level": 27
+  }
+}

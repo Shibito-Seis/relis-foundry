@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-VAM-019",
+  "name": "Marche sous filtre",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Lorsqu&#39;il porte une protection UV complète et adaptée, le personnage ignore les dégradations ordinaires provenant de ses propres mouvements, de la chaleur ou d&#39;une activité physique normale.</p>\n<p>Sans protection complète, son bonus de Voile diurne passe à +3 circonstanciel.</p>\n<p>La première fois de chaque scène qu&#39;une attaque ou un accident crée une brèche, il peut maintenir la protection complète jusqu&#39;à la fin de son prochain tour. Il doit ensuite réparer la brèche ou atteindre un abri.</p>\n<p>Le talent ne protège pas un équipement détruit, une peau déjà entièrement exposée ou une source UV pénétrant spécifiquement les matériaux employés.</p>",
+    "traits": ["Équipement", "Général", "UV", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-014",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cape contre l'étoile",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.17 Talents vampiriques de niveau 19",
+      "family": "Résistance aux UV",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Cape contre l'étoile ; Stade vampirique 5",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résistance aux UV",
+        "Traits": "Équipement, Général, UV, Vampirique",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Cape contre l'étoile ; Stade vampirique 5"
+      }
+    },
+    "level": 19
+  }
+}

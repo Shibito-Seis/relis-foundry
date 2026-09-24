@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-VAM-005",
+  "name": "Récupération hématique",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>La Récupération sanguine du personnage rend des PV supplémentaires égaux à la moitié de son Niveau général, arrondie au supérieur.</p>\n<p>Ce bonus est ajouté avant le doublement du sang frais et avant une éventuelle division provenant de la Faim.</p>\n<p>Le talent n&#39;ajoute aucune utilisation, ne traite aucune Blessure critique et ne permet pas de dépasser les PV maximaux.</p>",
+    "traits": ["Général", "Guérison", "Vampirique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.13 Talents vampiriques de niveau 3",
+      "family": "Sang et régénération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Physiologie vampirique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang et régénération",
+        "Traits": "Général, Guérison, Vampirique",
+        "Type": "Passif",
+        "Prérequis": "Physiologie vampirique"
+      }
+    },
+    "level": 3
+  }
+}

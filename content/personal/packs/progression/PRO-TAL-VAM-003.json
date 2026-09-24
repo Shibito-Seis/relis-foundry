@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-VAM-003",
+  "name": "Métabolisme économe",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Le délai alimentaire normal du personnage passe de sept à dix jours.</p>\n<p>Après cette échéance, sa Faim augmente ensuite tous les trois jours au lieu de tous les deux jours.</p>\n<p>Le talent ne réduit ni le volume d&#39;une ration, ni les coûts en sang d&#39;un autre effet. Une ration prise alors qu&#39;elle n&#39;est pas nécessaire reste une surconsommation et peut produire une Marque d&#39;Abandon.</p>",
+    "traits": ["Général", "Métabolisme", "Survie", "Vampirique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.13 Talents vampiriques de niveau 3",
+      "family": "Faim et métabolisme",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Physiologie vampirique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Faim et métabolisme",
+        "Traits": "Général, Métabolisme, Survie, Vampirique",
+        "Type": "Passif",
+        "Prérequis": "Physiologie vampirique"
+      }
+    },
+    "level": 3
+  }
+}

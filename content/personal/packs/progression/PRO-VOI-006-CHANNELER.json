@@ -1,0 +1,105 @@
+{
+  "relisId": "PRO-VOI-006-CHANNELER",
+  "name": "Channeler",
+  "type": "path",
+  "tags": ["progression", "voie"],
+  "system": {
+    "description": "<p><strong>Attribut clef :</strong> Maîtrise Magique ou Volonté</p>\n<p><strong>Compétences :</strong> Hybride — 5 — Canalisation, Sang-froid — Sciences, Culture, Survie, Techno-magie, Endurance, Investigation, Médecine</p>\n<p><strong>Dotation :</strong> Focus ou catalyseur organique, bracelet ou stabilisateur de flux, objet rituel personnel.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "path",
+      "sourceSection": "9",
+      "keyAttributes": ["Maîtrise Magique", "Volonté"],
+      "skillFamily": "Hybride",
+      "qualifiedSkillTotal": 5,
+      "requiredSkills": ["Canalisation", "Sang-froid"],
+      "skillChoices": [
+        "Sciences",
+        "Culture",
+        "Survie",
+        "Techno-magie",
+        "Endurance",
+        "Investigation",
+        "Médecine"
+      ],
+      "branchNames": [
+        "Évocateur",
+        "Praniste",
+        "Gardien de flux",
+        "Vitaliste",
+        "Dissipateur",
+        "Surchargé",
+        "Invocateur"
+      ],
+      "initialLoadout": "Focus ou catalyseur organique, bracelet ou stabilisateur de flux, objet rituel personnel.",
+      "loadoutRefs": [],
+      "specializationRefs": [
+        {
+          "relisId": "PRO-SPE-06-01-EVOCATEUR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Channeler — Évocateur",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-06-02-PRANISTE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Channeler — Praniste",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-06-03-GARDIEN-DE-FLUX",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Channeler — Gardien de flux",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-06-04-VITALISTE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Channeler — Vitaliste",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-06-05-DISSIPATEUR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Channeler — Dissipateur",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-06-06-SURCHARGE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Channeler — Surchargé",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-06-07-INVOCATEUR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Channeler — Invocateur",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  }
+}

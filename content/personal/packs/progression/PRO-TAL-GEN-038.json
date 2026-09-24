@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-GEN-038",
+  "name": "Mobilité souveraine",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage se déplace jusqu&#39;à son déplacement. Pendant ce mouvement, il ignore le terrain difficile ordinaire et les Réactions déclenchées uniquement par son déplacement.</p>\n<p>Après le mouvement, il gagne 1 Surmenage. Le talent ne permet pas de traverser les obstacles, de se libérer d&#39;une immobilisation, de voler, de respirer dans un environnement hostile ou d&#39;ignorer un test de franchissement réellement nécessaire.</p>\n<p>---</p>",
+    "traits": ["Général", "Mobilité", "Surmenage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-GEN-029",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Allure impossible",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.8 Talents généraux de niveau 19",
+      "family": "Mobilité et placement",
+      "ancestry": "",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Allure impossible",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité et placement",
+        "Traits": "Général, Mobilité, Surmenage",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Allure impossible"
+      }
+    },
+    "level": 19
+  }
+}
