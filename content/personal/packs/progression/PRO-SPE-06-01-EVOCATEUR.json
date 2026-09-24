@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-06-01-EVOCATEUR",
+  "name": "Channeler — Évocateur",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "channeler"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Focus offensif, cristal de canalisation, catalyseur élémentaire ou matrice d’arsenal.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-006-CHANNELER",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Channeler",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Channeler",
+      "branchName": "Évocateur",
+      "primaryLoadout": "Focus offensif, cristal de canalisation, catalyseur élémentaire ou matrice d’arsenal.",
+      "loadoutRefs": []
+    }
+  }
+}

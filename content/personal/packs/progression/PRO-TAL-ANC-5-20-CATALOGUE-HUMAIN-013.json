@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-013",
+  "name": "Ténacité humaine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Volonté ou de Sang-froid contre :</p>\n<p>• la peur causée par une catastrophe ;</p>\n<p>• la panique collective ;</p>\n<p>• l&#39;isolement extrême ;</p>\n<p>• l&#39;annonce d&#39;une perte majeure ;</p>\n<p>• une situation où la survie du groupe semble compromise.</p>\n<p>Ce bonus ne s&#39;applique pas automatiquement contre :</p>\n<p>• la domination mentale ;</p>\n<p>• les illusions ;</p>\n<p>• les attaques psychiques ciblées ;</p>\n<p>• la corruption énergétique ;</p>\n<p>• les pouvoirs surnaturels sans lien avec la peur ou le désespoir.</p>",
+    "traits": ["Humain", "Mental"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Résilience terrienne",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résilience terrienne",
+        "Traits": "Humain, Mental",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

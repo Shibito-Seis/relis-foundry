@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-03-04-AKIMBO",
+  "name": "Tireur — Akimbo",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "tireur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Tireur</p>\n<p><strong>Dotation principale :</strong> Deux armes de poing synchronisées, harnais de rechargement rapide.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-003-TIREUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Tireur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Tireur",
+      "branchName": "Akimbo",
+      "primaryLoadout": "Deux armes de poing synchronisées, harnais de rechargement rapide.",
+      "loadoutRefs": []
+    }
+  }
+}

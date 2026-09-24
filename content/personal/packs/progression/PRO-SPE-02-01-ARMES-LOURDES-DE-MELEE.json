@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-02-01-ARMES-LOURDES-DE-MELEE",
+  "name": "Briseur — Armes lourdes de mêlée",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "briseur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Briseur</p>\n<p><strong>Dotation principale :</strong> Marteau, hache lourde, masse, grande lame ou arme de bris.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-002-BRISEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Briseur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Briseur",
+      "branchName": "Armes lourdes de mêlée",
+      "primaryLoadout": "Marteau, hache lourde, masse, grande lame ou arme de bris.",
+      "loadoutRefs": []
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-02-07-ANTI-MONSTRE",
+  "name": "Briseur — Anti-monstre",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "briseur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Briseur</p>\n<p><strong>Dotation principale :</strong> Arme lourde à allonge, grappin, charges d&#39;arrêt ou kit de chasse lourde.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-002-BRISEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Briseur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Briseur",
+      "branchName": "Anti-monstre",
+      "primaryLoadout": "Arme lourde à allonge, grappin, charges d'arrêt ou kit de chasse lourde.",
+      "loadoutRefs": []
+    }
+  }
+}

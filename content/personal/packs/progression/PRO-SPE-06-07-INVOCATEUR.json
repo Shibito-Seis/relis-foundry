@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-06-07-INVOCATEUR",
+  "name": "Channeler — Invocateur",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "channeler"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Relique d&#39;ancrage, pacte scellé, matrice d&#39;invocation mineure.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-006-CHANNELER",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Channeler",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Channeler",
+      "branchName": "Invocateur",
+      "primaryLoadout": "Relique d'ancrage, pacte scellé, matrice d'invocation mineure.",
+      "loadoutRefs": []
+    }
+  }
+}

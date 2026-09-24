@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-07-06-RITUELS-TECHNIQUES",
+  "name": "Techno-mage — Rituels techniques",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "techno-mage"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Techno-mage</p>\n<p><strong>Dotation principale :</strong> Craies conductrices, balises de cercle, stabilisateurs de procédure.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-007-TECHNO-MAGE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Techno-mage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Techno-mage",
+      "branchName": "Rituels techniques",
+      "primaryLoadout": "Craies conductrices, balises de cercle, stabilisateurs de procédure.",
+      "loadoutRefs": []
+    }
+  }
+}

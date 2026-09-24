@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-01-05-FORME-ANTI-TIR",
+  "name": "Bretteur — Forme anti-tir",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "bretteur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Lame renforcée, bouclier réactif léger ou module de déviation basique.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-001-BRETTEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Bretteur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Bretteur",
+      "branchName": "Forme anti-tir",
+      "primaryLoadout": "Lame renforcée, bouclier réactif léger ou module de déviation basique.",
+      "loadoutRefs": []
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-10-04-XIREA-PROFOND",
+  "name": "Interfaceur — Xirea profond",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "interfaceur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Interfaceur</p>\n<p><strong>Dotation principale :</strong> Clé d&#39;accès limitée, terminal sécurisé, protocole de dialogue Xirea.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-010-INTERFACEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Interfaceur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Interfaceur",
+      "branchName": "Xirea profond",
+      "primaryLoadout": "Clé d'accès limitée, terminal sécurisé, protocole de dialogue Xirea.",
+      "loadoutRefs": []
+    }
+  }
+}

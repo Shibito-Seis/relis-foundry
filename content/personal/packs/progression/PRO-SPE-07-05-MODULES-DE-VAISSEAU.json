@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-07-05-MODULES-DE-VAISSEAU",
+  "name": "Techno-mage — Modules de vaisseau",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "techno-mage"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Techno-mage</p>\n<p><strong>Dotation principale :</strong> Interface module, outils d&#39;énergie hybride, schémas de câblage.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-007-TECHNO-MAGE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Techno-mage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Techno-mage",
+      "branchName": "Modules de vaisseau",
+      "primaryLoadout": "Interface module, outils d'énergie hybride, schémas de câblage.",
+      "loadoutRefs": []
+    }
+  }
+}

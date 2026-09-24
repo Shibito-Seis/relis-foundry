@@ -1,0 +1,40 @@
+{
+  "relisId": "PRO-SPE-03-02-PISTOLERO",
+  "name": "Tireur — Pistolero",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "tireur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Tireur</p>\n<p><strong>Dotation principale :</strong> Paire de pistolets légers ou pistolet lourd avec holster tactique.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-003-TIREUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Tireur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Tireur",
+      "branchName": "Pistolero",
+      "primaryLoadout": "Paire de pistolets légers ou pistolet lourd avec holster tactique.",
+      "loadoutRefs": [
+        {
+          "relisId": "MAT-WPN-033-PISTOLET-LOURD",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "weapon",
+          "state": "resolved",
+          "labelSnapshot": "Pistolet lourd",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  }
+}

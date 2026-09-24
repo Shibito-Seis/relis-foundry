@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-08-01-REPARATEUR-DE-CRISE",
+  "name": "Ingénieur — Réparateur de crise",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "ingenieur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Outils rapides, mousse de colmatage, soudeur portable.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-008-INGENIEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Ingénieur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Ingénieur",
+      "branchName": "Réparateur de crise",
+      "primaryLoadout": "Outils rapides, mousse de colmatage, soudeur portable.",
+      "loadoutRefs": []
+    }
+  }
+}

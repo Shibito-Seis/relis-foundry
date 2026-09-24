@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-06-06-SURCHARGE",
+  "name": "Channeler — Surchargé",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "channeler"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Régulateur instable, limiteur d&#39;urgence, catalyseur renforcé.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-006-CHANNELER",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Channeler",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Channeler",
+      "branchName": "Surchargé",
+      "primaryLoadout": "Régulateur instable, limiteur d'urgence, catalyseur renforcé.",
+      "loadoutRefs": []
+    }
+  }
+}

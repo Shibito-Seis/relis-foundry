@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-008",
+  "name": "Talent transversal",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne immédiatement un Talent de compétence de niveau 1 dont il remplit les prérequis.</p>\n<p>Il doit être au minimum Qualifié dans la compétence concernée.</p>\n<p>Ce talent supplémentaire est indépendant du Talent de compétence obtenu par le Profil.</p>",
+    "traits": ["Humain", "Compétence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Ambition et apprentissage",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ambition et apprentissage",
+        "Traits": "Humain, Compétence",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-11-07-COLONISATION-AVANCEE",
+  "name": "Explorateur — Colonisation avancée",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "explorateur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;analyse sol/eau, graines tests, module d&#39;habitabilité.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-011-EXPLORATEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Explorateur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Explorateur",
+      "branchName": "Colonisation avancée",
+      "primaryLoadout": "Kit d'analyse sol/eau, graines tests, module d'habitabilité.",
+      "loadoutRefs": []
+    }
+  }
+}

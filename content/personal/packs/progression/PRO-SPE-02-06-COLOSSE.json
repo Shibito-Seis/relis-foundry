@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-02-06-COLOSSE",
+  "name": "Briseur — Colosse",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "briseur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Briseur</p>\n<p><strong>Dotation principale :</strong> Harnais de portage, gants de force ou armure de manutention légère.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-002-BRISEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Briseur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Briseur",
+      "branchName": "Colosse",
+      "primaryLoadout": "Harnais de portage, gants de force ou armure de manutention légère.",
+      "loadoutRefs": []
+    }
+  }
+}

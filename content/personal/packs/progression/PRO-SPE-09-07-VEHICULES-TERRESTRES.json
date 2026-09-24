@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-09-07-VEHICULES-TERRESTRES",
+  "name": "Pilote — Véhicules terrestres",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "pilote"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Pilote</p>\n<p><strong>Dotation principale :</strong> Interface rover/moto, outils de terrain, harnais de conduite hostile.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-009-PILOTE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Pilote",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Pilote",
+      "branchName": "Véhicules terrestres",
+      "primaryLoadout": "Interface rover/moto, outils de terrain, harnais de conduite hostile.",
+      "loadoutRefs": []
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-12-06-PREMIER-CONTACT",
+  "name": "Émissaire — Premier contact",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "emissaire"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Émissaire</p>\n<p><strong>Dotation principale :</strong> Traducteur culturel, protocole non-humain, kit d&#39;offrandes ou d&#39;échantillons.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-012-EMISSAIRE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Émissaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Émissaire",
+      "branchName": "Premier contact",
+      "primaryLoadout": "Traducteur culturel, protocole non-humain, kit d'offrandes ou d'échantillons.",
+      "loadoutRefs": []
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-04-01-FANTASSIN-TACTIQUE",
+  "name": "Soldat — Fantassin tactique",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "soldat"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Soldat</p>\n<p><strong>Dotation principale :</strong> Fusil polyvalent, grenades utilitaires, kit de couverture.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-004-SOLDAT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Soldat",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Soldat",
+      "branchName": "Fantassin tactique",
+      "primaryLoadout": "Fusil polyvalent, grenades utilitaires, kit de couverture.",
+      "loadoutRefs": []
+    }
+  }
+}

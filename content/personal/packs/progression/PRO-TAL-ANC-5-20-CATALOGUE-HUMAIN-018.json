@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-018",
+  "name": "Appropriation technologique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir examiné un équipement technologique, un outil ou une interface étrangère qu&#39;il peut physiquement manipuler, le personnage peut tenter de l&#39;utiliser comme s&#39;il connaissait ses commandes élémentaires.</p>\n<p>Il gagne +2 circonstanciel au premier test effectué pour :</p>\n<p>• identifier sa fonction principale ;</p>\n<p>• l&#39;activer ;</p>\n<p>• l&#39;utiliser de manière simple ;</p>\n<p>• en comprendre l&#39;ergonomie ;</p>\n<p>• adapter une commande de base.</p>\n<p>Après une réussite, l&#39;objet est considéré comme familier pour le personnage pendant 24 heures.</p>\n<p>Ce talent ne permet pas de contourner :</p>\n<p>• un verrouillage de sécurité ;</p>\n<p>• une authentification ;</p>\n<p>• un cryptage ;</p>\n<p>• une interface biologique incompatible ;</p>\n<p>• un danger énergétique évident ;</p>\n<p>• une compétence minimale supérieure à Qualifié ;</p>\n<p>• les conséquences d&#39;une technologie volontairement instable.</p>\n<p>Il fonctionne également sur une technologie humaine très rare, expérimentale ou oubliée.</p>",
+    "traits": ["Humain", "Technologie", "Exploration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Ingéniosité prométhéenne",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ingéniosité prométhéenne",
+        "Traits": "Humain, Technologie, Exploration",
+        "Type": "Activité d'exploration",
+        "Durée d'étude": "environ 10 minutes"
+      }
+    },
+    "level": 1
+  }
+}

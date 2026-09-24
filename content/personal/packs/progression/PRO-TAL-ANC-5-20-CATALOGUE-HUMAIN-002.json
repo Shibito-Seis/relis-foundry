@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-002",
+  "name": "Esprit polyvalent",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage devient Qualifié dans une compétence supplémentaire de son choix.</p>\n<p>Il apprend également au choix :</p>\n<p>• une langue supplémentaire ;</p>\n<p>• un système courant de signes ;</p>\n<p>• un ensemble de codes professionnels ;</p>\n<p>• ou l&#39;usage culturel élémentaire d&#39;un type d&#39;équipement.</p>\n<p>Si toutes les compétences sont déjà Qualifiées, la qualification peut être remplacée par un Talent de compétence humain ou universel de niveau 1 dont les prérequis sont remplis.</p>",
+    "traits": ["Humain", "Compétence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Polyvalence adaptative",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Polyvalence adaptative",
+        "Traits": "Humain, Compétence",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

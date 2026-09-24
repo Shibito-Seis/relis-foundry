@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-03-07-TIR-TECHNO-MAGIQUE",
+  "name": "Tireur — Tir techno-magique",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "tireur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Tireur</p>\n<p><strong>Dotation principale :</strong> Arme à munitions chargées, catalyseur de tir ou modulateur énergétique.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-003-TIREUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Tireur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Tireur",
+      "branchName": "Tir techno-magique",
+      "primaryLoadout": "Arme à munitions chargées, catalyseur de tir ou modulateur énergétique.",
+      "loadoutRefs": []
+    }
+  }
+}

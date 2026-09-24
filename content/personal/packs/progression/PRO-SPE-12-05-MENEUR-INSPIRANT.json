@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-12-05-MENEUR-INSPIRANT",
+  "name": "Émissaire — Meneur inspirant",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "emissaire"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Émissaire</p>\n<p><strong>Dotation principale :</strong> Commlink de groupe, symbole fédérateur, module de moral.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-012-EMISSAIRE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Émissaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Émissaire",
+      "branchName": "Meneur inspirant",
+      "primaryLoadout": "Commlink de groupe, symbole fédérateur, module de moral.",
+      "loadoutRefs": []
+    }
+  }
+}

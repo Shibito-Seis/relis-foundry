@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-004",
+  "name": "Héritage multiple",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage a grandi au contact étroit d&#39;une communauté non humaine ou a été durablement adopté par elle.</p>\n<p>Il obtient :</p>\n<p>• une langue ou forme de communication liée à cette Ascendance ;</p>\n<p>• la familiarité avec ses usages sociaux courants ;</p>\n<p>• l&#39;accès à ses Talents d&#39;Ascendance explicitement marqués Culturel.</p>\n<p>Il ne peut pas sélectionner par ce biais un talent reposant sur :</p>\n<p>• une anatomie particulière ;</p>\n<p>• des organes ou appendices absents ;</p>\n<p>• une physiologie non humaine ;</p>\n<p>• une Architecture IAA ;</p>\n<p>• une corne Esman ;</p>\n<p>• une capacité énergétique innée ;</p>\n<p>• une longévité ou un métabolisme racial.</p>\n<p>Ce talent ne transforme pas le personnage en Demi-Ascendance.</p>",
+    "traits": ["Humain", "Culture", "Héritage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Polyvalence adaptative",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une autre Ascendance terrienne",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Polyvalence adaptative",
+        "Traits": "Humain, Culture, Héritage",
+        "Type": "Passif",
+        "Choix": "une autre Ascendance terrienne"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-SPE-01-07-FORME-PRANA",
+  "name": "Bretteur — Forme Prana",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "bretteur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Focus corporel, bandelettes conductrices, catalyseur interne ou arme compatible Prana.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-001-BRETTEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Bretteur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Bretteur",
+      "branchName": "Forme Prana",
+      "primaryLoadout": "Focus corporel, bandelettes conductrices, catalyseur interne ou arme compatible Prana.",
+      "loadoutRefs": []
+    }
+  }
+}
