@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-534",
+  "name": "Souffle long",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage devrait gagner 1 Fatigue à cause d&#39;une marche, d&#39;une veille ou d&#39;une poursuite prolongée, il en diffère l&#39;application jusqu&#39;à la prochaine halte ou la fin de la scène.</p>\n<p>La Fatigue est ensuite reçue normalement. Le talent ne diffère pas une Fatigue provenant d&#39;un pouvoir, d&#39;une surcharge ou d&#39;une privation vitale.</p>",
+    "traits": ["Beastkin", "Loup", "Endurance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-525",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pas du loup",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.153 Talents Beastkins Loups de niveau 5",
+      "family": "Endurance sauvage et voyage",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Pas du loup",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Endurance sauvage et voyage",
+        "Traits": "Beastkin, Loup, Endurance",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Pas du loup"
+      }
+    },
+    "level": 5
+  }
+}

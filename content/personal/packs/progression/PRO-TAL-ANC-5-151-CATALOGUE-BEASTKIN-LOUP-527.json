@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-527",
+  "name": "Sentier sauvage",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Survie pour trouver un itinéraire, un abri temporaire, de l&#39;eau ou un passage sûr dans l&#39;environnement choisi : forêt, toundra, montagne, steppe, ruines urbaines ou milieu comparable.</p>\n<p>Le talent ne crée aucune ressource, ne protège pas du vide ou des radiations et ne remplace pas Adaptation naturelle.</p>",
+    "traits": ["Beastkin", "Loup", "Exploration", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Territoire et autonomie en milieu hostile",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "un environnement plausible",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Territoire et autonomie en milieu hostile",
+        "Traits": "Beastkin, Loup, Exploration, Survie",
+        "Type": "Passif",
+        "Choix": "un environnement plausible"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-541",
+  "name": "Dormir d'un œil",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant un repos, le personnage reste sensible aux mouvements, odeurs et sons menaçant directement son cercle. Il gagne +2 circonstanciel aux tests de Perception pour se réveiller face à une intrusion et ne peut être considéré comme totalement inconscient d&#39;un danger qu&#39;un sens fonctionnel pouvait détecter.</p>\n<p>Il bénéficie normalement du repos, mais ne peut agir avant de s&#39;être réveillé et ne détecte pas l&#39;imperceptible.</p>",
+    "traits": ["Beastkin", "Loup", "Repos", "Vigilance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-534",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Souffle long",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.154 Talents Beastkins Loups de niveau 9",
+      "family": "Endurance sauvage et voyage",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Souffle long",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Endurance sauvage et voyage",
+        "Traits": "Beastkin, Loup, Repos, Vigilance",
+        "Type": "Passif",
+        "Prérequis": "Souffle long"
+      }
+    },
+    "level": 9
+  }
+}

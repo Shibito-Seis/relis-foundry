@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-579",
+  "name": "Pivot caudal",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant un déplacement, une esquive ou une manœuvre fondée sur les appuis, le personnage emploie sa queue comme contrepoids. Il gagne +3 circonstanciel au test et ignore les 2 premiers mètres de terrain difficile de ce déplacement.</p>\n<p>Le talent exige une surface sur laquelle prendre appui, ne permet pas de traverser un obstacle et ne crée aucune Vitesse d&#39;escalade ou de nage.</p>",
+    "traits": ["Beastkin", "Lézard", "Appendice", "Mobilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-571",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fouet d'équilibre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.165 Talents Beastkins Lézards de niveau 9",
+      "family": "Queue, stabilité et mobilité",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Fouet d'équilibre",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Queue, stabilité et mobilité",
+        "Traits": "Beastkin, Lézard, Appendice, Mobilité",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Fouet d'équilibre"
+      }
+    },
+    "level": 9
+  }
+}

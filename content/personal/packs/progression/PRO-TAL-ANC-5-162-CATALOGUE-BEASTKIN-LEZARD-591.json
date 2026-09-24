@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-591",
+  "name": "Sang des premiers reptiles",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage mobilise les adaptations de ses lignées anciennes. Pendant l&#39;effet :</p>\n<p>• il traite les dangers ordinaires de chaleur et de froid comme inférieurs de deux degrés sans préparation ;</p>\n<p>• il gagne +3 circonstanciel contre poison, maladie, contamination et aggravation physique ;</p>\n<p>• la première aggravation de saignement compatible est suspendue pendant 3 tours ;</p>\n<p>• il peut employer Lire la chaleur et Goûter l&#39;air avec un bonus de +3 au lieu de +2.</p>\n<p>L&#39;effet ne rend aucun PV, ne traite aucune Blessure, n&#39;accorde aucune immunité et ne permet pas de survivre à un environnement mortel. À la fin, le personnage gagne 1 Fatigue et 1 Stress.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Lézard", "Mythique", "Récupération", "Thermique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-580",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Reconstitution limitée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-584",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps des extrêmes",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.168 Talents Beastkins Lézards de niveau 21",
+      "family": "Transcendance reptilienne",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Corps des extrêmes et Reconstitution limitée",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "une scène",
+      "metadata": {
+        "Famille": "Transcendance reptilienne",
+        "Traits": "Beastkin, Lézard, Mythique, Récupération, Thermique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session",
+        "Durée": "une scène",
+        "Prérequis": "Corps des extrêmes et Reconstitution limitée"
+      }
+    },
+    "level": 21
+  }
+}

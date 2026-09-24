@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-616",
+  "name": "Torpeur préparée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir mangé, bu et préparé un abri viable, le personnage entre en torpeur. Pendant celle-ci, sa consommation de nourriture et d&#39;eau est réduite de moitié, il gagne +3 circonstanciel contre froid ambiant et perte de repos, et le temps compte comme repos si les conditions le permettent.</p>\n<p>Il subit −3 circonstanciel aux tests de Perception pour se réveiller et nécessite une Action complète après son réveil avant d&#39;agir normalement. Il respire toujours, reste vulnérable et ne suspend ni poison, ni maladie, ni Blessure active.</p>",
+    "traits": ["Beastkin", "Ours", "Récupération", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-609",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sommeil profond",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.176 Talents Beastkins Ours de niveau 9",
+      "family": "Hibernation et réserve métabolique",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Sommeil profond",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Hibernation et réserve métabolique",
+        "Traits": "Beastkin, Ours, Récupération, Survie",
+        "Type": "Activité de 1 heure",
+        "Durée maximale": "24 heures",
+        "Prérequis": "Sommeil profond"
+      }
+    },
+    "level": 9
+  }
+}

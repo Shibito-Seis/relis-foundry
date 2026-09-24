@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-529",
+  "name": "Lignée de lisière",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage connaît les histoires, migrations et usages d&#39;une communauté lupine choisie. Il gagne +2 circonstanciel aux tests de Culture ou de Diplomatie portant sur ses coutumes, ses alliances, ses territoires historiques et ses relations avec les autres peuples.</p>\n<p>Le talent ne donne aucun accès automatique, n&#39;impose aucune coutume au personnage et ne transforme pas cette communauté en meute active.</p>",
+    "traits": ["Beastkin", "Loup", "Culture", "Héritage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Culture lupine et individualité",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une communauté ou tradition lupine",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture lupine et individualité",
+        "Traits": "Beastkin, Loup, Culture, Héritage",
+        "Type": "Passif",
+        "Choix": "une communauté ou tradition lupine"
+      }
+    },
+    "level": 1
+  }
+}

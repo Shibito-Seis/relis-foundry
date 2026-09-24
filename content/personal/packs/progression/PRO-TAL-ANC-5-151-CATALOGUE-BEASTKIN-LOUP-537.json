@@ -1,0 +1,50 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-537",
+  "name": "Tirer vers le sol",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage effectue une attaque de morsure avec −2 circonstanciel. Sur une réussite, il inflige ses dégâts normaux réduits de 2 et la cible doit résister à un test d&#39;Athlétisme du Loup ou tomber à terre.</p>\n<p>Le talent ne fonctionne pas sur une cible trop grande ou impossible à déséquilibrer et ne fournit aucune seconde attaque.</p>\n<p>---</p>",
+    "traits": [
+      "Beastkin",
+      "Loup",
+      "Arme naturelle",
+      "Attaque",
+      "Contrôle",
+      "Manœuvre"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-528",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Morsure de harcèlement",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.153 Talents Beastkins Loups de niveau 5",
+      "family": "Morsure de chasse et harcèlement",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Morsure de harcèlement",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morsure de chasse et harcèlement",
+        "Traits": "Beastkin, Loup, Arme naturelle, Attaque, Contrôle, Manœuvre",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Morsure de harcèlement"
+      }
+    },
+    "level": 5
+  }
+}

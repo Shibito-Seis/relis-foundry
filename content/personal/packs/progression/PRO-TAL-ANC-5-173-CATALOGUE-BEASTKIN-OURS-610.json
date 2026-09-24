@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-610",
+  "name": "Voix de la tanière",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage pousse un grondement profond. Jusqu&#39;à trois créatures hostiles situées à 6 mètres et capables de l&#39;entendre résistent avec leur Volonté contre son Intimidation. Sur une réussite du personnage, chacune subit −2 circonstanciel à sa première action destinée à s&#39;approcher ou déplacer l&#39;Ours avant la fin de son prochain tour.</p>\n<p>Le talent ne cumule pas ses effets avec Avertissement ursin et ne crée aucune aura persistante.</p>",
+    "traits": ["Beastkin", "Ours", "Audition", "Intimidation", "Zone"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-602",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Avertissement ursin",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.175 Talents Beastkins Ours de niveau 5",
+      "family": "Intimidation et présence territoriale",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Avertissement ursin",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Intimidation et présence territoriale",
+        "Traits": "Beastkin, Ours, Audition, Intimidation, Zone",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Avertissement ursin"
+      }
+    },
+    "level": 5
+  }
+}

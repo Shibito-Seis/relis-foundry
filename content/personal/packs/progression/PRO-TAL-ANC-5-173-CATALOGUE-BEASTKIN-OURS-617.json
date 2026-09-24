@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-617",
+  "name": "Territoire tenu",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage prépare une zone de 6 mètres de rayon en y définissant passages, couverts et lignes d&#39;avertissement. Tant qu&#39;il demeure dans la zone, il gagne +2 circonstanciel à l&#39;Initiative, aux tests pour détecter une intrusion et aux défenses contre déplacement forcé.</p>\n<p>Une fois par scène, Avertissement ursin peut y viser deux créatures au lieu d&#39;une. La préparation ne crée ni propriété, ni piège, ni obstacle et cesse si le lieu change matériellement.</p>",
+    "traits": ["Beastkin", "Ours", "Intimidation", "Zone"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-610",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Voix de la tanière",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.176 Talents Beastkins Ours de niveau 9",
+      "family": "Intimidation et présence territoriale",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Voix de la tanière",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Intimidation et présence territoriale",
+        "Traits": "Beastkin, Ours, Intimidation, Zone",
+        "Type": "Activité de 10 minutes",
+        "Prérequis": "Voix de la tanière"
+      }
+    },
+    "level": 9
+  }
+}

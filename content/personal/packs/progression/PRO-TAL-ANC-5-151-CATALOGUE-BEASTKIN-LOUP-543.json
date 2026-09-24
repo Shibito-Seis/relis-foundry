@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-543",
+  "name": "Maître du terrain",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Dans une zone préparée par Territoire lu, le personnage et les membres de son cercle ignorent les 2 premiers mètres de terrain difficile naturel de chaque tour et gagnent +2 circonstanciel aux tests pour éviter ou contourner un danger environnemental qu&#39;il a réellement identifié.</p>\n<p>Le talent ne protège pas d&#39;un piège inconnu, d&#39;une zone surnaturelle ou d&#39;un terrain infranchissable.</p>",
+    "traits": ["Beastkin", "Loup", "Mobilité", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-536",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Territoire lu",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.154 Talents Beastkins Loups de niveau 9",
+      "family": "Territoire et autonomie en milieu hostile",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Territoire lu",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Territoire et autonomie en milieu hostile",
+        "Traits": "Beastkin, Loup, Mobilité, Survie",
+        "Type": "Passif",
+        "Prérequis": "Territoire lu"
+      }
+    },
+    "level": 9
+  }
+}

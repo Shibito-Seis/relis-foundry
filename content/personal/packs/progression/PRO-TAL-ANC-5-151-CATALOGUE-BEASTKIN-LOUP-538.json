@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-538",
+  "name": "Aucun laissé derrière",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;un membre du cercle à 6 mètres tombe à terre, est déplacé contre sa volonté ou se retrouve isolé d&#39;au moins 4 mètres des autres, le personnage se déplace jusqu&#39;à la moitié de sa Vitesse vers lui. Le membre gagne +2 circonstanciel à sa prochaine défense avant le début du prochain tour du Loup.</p>\n<p>Le déplacement suit un trajet légal, n&#39;autorise aucune attaque et ne fonctionne pas si le personnage est immobilisé.</p>",
+    "traits": ["Beastkin", "Loup", "Mobilité", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-531",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Relais de meute",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.154 Talents Beastkins Loups de niveau 9",
+      "family": "Meute choisie et rôles mouvants",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Relais de meute",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Meute choisie et rôles mouvants",
+        "Traits": "Beastkin, Loup, Mobilité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Relais de meute"
+      }
+    },
+    "level": 9
+  }
+}

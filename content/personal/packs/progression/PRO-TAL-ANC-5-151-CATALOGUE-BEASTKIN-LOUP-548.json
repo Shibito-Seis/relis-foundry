@@ -1,0 +1,50 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-548",
+  "name": "Mise à terre concertée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir touché avec sa morsure une cible adjacente à un membre du cercle, le personnage peut tenter immédiatement un test d&#39;Athlétisme pour la renverser. Ce test subit les pénalités cumulatives d&#39;une seconde action offensive.</p>\n<p>Sur une réussite, la cible tombe à terre et le membre adjacent peut se déplacer de 1 mètre avec sa propre Réaction. Le talent ne donne aucune seconde attaque et ne fonctionne pas sur une cible impossible à déséquilibrer.</p>\n<p>---</p>",
+    "traits": [
+      "Beastkin",
+      "Loup",
+      "Arme naturelle",
+      "Attaque",
+      "Contrôle",
+      "Manœuvre"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-537",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Tirer vers le sol",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.155 Talents Beastkins Loups de niveau 13",
+      "family": "Morsure de chasse et harcèlement",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Tirer vers le sol",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morsure de chasse et harcèlement",
+        "Traits": "Beastkin, Loup, Arme naturelle, Attaque, Contrôle, Manœuvre",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Tirer vers le sol"
+      }
+    },
+    "level": 13
+  }
+}

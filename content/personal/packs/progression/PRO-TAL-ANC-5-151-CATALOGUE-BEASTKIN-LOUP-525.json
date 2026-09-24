@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-525",
+  "name": "Pas du loup",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests d&#39;Endurance ou de Survie pendant une marche, une veille mobile ou une poursuite durant au moins une heure. Sur un itinéraire naturel praticable, les deux premiers mètres de terrain difficile par heure ne réduisent pas son allure de voyage.</p>\n<p>Le talent ne supprime ni Fatigue, ni besoin vital, ni équipement adapté et ne transforme pas un terrain infranchissable en passage.</p>",
+    "traits": ["Beastkin", "Loup", "Endurance", "Exploration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Endurance sauvage et voyage",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Endurance sauvage et voyage",
+        "Traits": "Beastkin, Loup, Endurance, Exploration",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

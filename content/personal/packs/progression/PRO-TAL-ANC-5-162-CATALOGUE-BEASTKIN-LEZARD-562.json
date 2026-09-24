@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-562",
+  "name": "Cicatrisation reptilienne",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage comprime une plaie et mobilise sa cicatrisation. Il peut stopper un saignement ordinaire compatible ou accorder +2 circonstanciel au prochain test de Médecine effectué avant une heure pour contenir une Blessure physique qui l&#39;affecte.</p>\n<p>Le talent ne rend aucun PV, ne traite pas automatiquement la Blessure et exige toujours le matériel nécessaire lorsque la lésion l&#39;impose.</p>",
+    "traits": ["Beastkin", "Lézard", "Physiologie", "Soins"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.163 Talents Beastkins Lézards de niveau 1",
+      "family": "Cicatrisation et régénération limitée",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cicatrisation et régénération limitée",
+        "Traits": "Beastkin, Lézard, Physiologie, Soins",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 1
+  }
+}

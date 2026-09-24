@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-602",
+  "name": "Avertissement ursin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage adresse un grondement, un claquement de mâchoire ou un avertissement à une créature située à 6 mètres. Il effectue un test d&#39;Intimidation contre sa Volonté. Sur une réussite, la cible subit −2 circonstanciel à sa première action destinée à s&#39;approcher du personnage ou de l&#39;espace qu&#39;il occupe avant la fin de son prochain tour.</p>\n<p>Le talent n&#39;impose ni fuite, ni obéissance et ne fonctionne pas sur une créature incapable de percevoir l&#39;avertissement.</p>",
+    "traits": ["Beastkin", "Ours", "Audition", "Intimidation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Intimidation et présence territoriale",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Intimidation et présence territoriale",
+        "Traits": "Beastkin, Ours, Audition, Intimidation",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

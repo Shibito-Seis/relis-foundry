@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-539",
+  "name": "Fermer l'étau",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque la proie marquée est adjacente à au moins deux membres du cercle placés sur des angles distincts, le personnage désigne une ouverture. Le prochain membre du cercle qui tente avant le prochain tour du Loup une attaque, un renversement ou un déplacement forcé contre cette proie gagne +2 circonstanciel.</p>\n<p>Le talent ne donne aucune action et cesse si l&#39;encerclement est rompu avant le test.</p>",
+    "traits": ["Beastkin", "Loup", "Combat", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-532",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Rabattre ensemble",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.154 Talents Beastkins Loups de niveau 9",
+      "family": "Chasse concertée et encerclement",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Rabattre ensemble",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chasse concertée et encerclement",
+        "Traits": "Beastkin, Loup, Combat, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Rabattre ensemble"
+      }
+    },
+    "level": 9
+  }
+}

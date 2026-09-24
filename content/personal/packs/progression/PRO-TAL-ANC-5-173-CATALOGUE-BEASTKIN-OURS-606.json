@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-606",
+  "name": "Corps endurant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage devrait gagner 1 Fatigue à cause d&#39;un effort physique, d&#39;une marche, d&#39;un portage ou d&#39;une exposition climatique, il en diffère les effets jusqu&#39;à la fin de la scène ou jusqu&#39;à sa prochaine halte.</p>\n<p>La Fatigue est ensuite reçue normalement. Le talent ne diffère pas une Fatigue provenant d&#39;un pouvoir, d&#39;une surcharge ou d&#39;une privation d&#39;oxygène.</p>",
+    "traits": ["Beastkin", "Ours", "Endurance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-596",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fourrure dense",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-597",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Encaisser le choc",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.175 Talents Beastkins Ours de niveau 5",
+      "family": "Résistance et absorption",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Fourrure dense ou Encaisser le choc",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résistance et absorption",
+        "Traits": "Beastkin, Ours, Endurance",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Fourrure dense ou Encaisser le choc"
+      }
+    },
+    "level": 5
+  }
+}

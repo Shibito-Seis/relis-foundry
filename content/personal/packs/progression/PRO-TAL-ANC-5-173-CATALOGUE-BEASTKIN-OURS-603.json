@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-603",
+  "name": "Patte lourde",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>La première fois de chaque scène que le personnage touche avec ses griffes, il peut réduire ses dégâts de 2 pour imposer à la cible −2 circonstanciel à sa prochaine défense contre renversement ou déplacement forcé avant le début de son prochain tour.</p>\n<p>Le talent ne produit aucun saignement et ne fonctionne pas sur une cible que la patte ne peut physiquement déstabiliser.</p>",
+    "traits": ["Beastkin", "Ours", "Arme naturelle", "Impact"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-349",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arme naturelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Griffes et impact ursin",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Arme naturelle choisie comme griffes",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Griffes et impact ursin",
+        "Traits": "Beastkin, Ours, Arme naturelle, Impact",
+        "Type": "Passif",
+        "Prérequis": "Arme naturelle choisie comme griffes"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-593",
+  "name": "Reptile primordial",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage manifeste l&#39;archétype primordial de sa lignée sans quitter sa forme humanoïde. Pendant l&#39;effet :</p>\n<p>• il gagne une Résistance aux dégâts physiques et thermiques égale au tiers de son Niveau général ;</p>\n<p>• il gagne +3 circonstanciel aux tests fondés sur sa mâchoire, sa queue, ses sens chimiques ou sa thermorégulation ;</p>\n<p>• ses armes naturelles infligent +3 dégâts circonstanciels ;</p>\n<p>• il ignore les 4 premiers mètres de terrain difficile de chaque tour lorsqu&#39;une adaptation reptilienne plausible l&#39;aide ;</p>\n<p>• la première Blessure physique légère ou modérée reçue pendant la durée devient Contenue à la fin de l&#39;effet ;</p>\n<p>• une fois pendant la durée, il peut employer sa Réaction pour rester à 1 PV au lieu de tomber à 0, sans annuler la Blessure reçue.</p>\n<p>Le talent ne donne ni taille supérieure, ni Action, ni attaque, ni Vitesse spéciale, ni respiration aquatique ou pouvoir draconique. À la fin, le personnage gagne 2 Fatigue et 1 Stress.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Lézard", "Mythique", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-592",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mue impossible",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-370",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Éveil primordial",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.170 Talent Beastkin Lézard de niveau 29",
+      "family": "Transcendance reptilienne",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Mue impossible et Éveil primordial",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance reptilienne",
+        "Traits": "Beastkin, Lézard, Mythique, Physiologie",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Mue impossible et Éveil primordial"
+      }
+    },
+    "level": 29
+  }
+}

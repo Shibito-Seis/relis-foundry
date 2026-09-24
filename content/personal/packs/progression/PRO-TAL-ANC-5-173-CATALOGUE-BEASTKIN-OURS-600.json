@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-600",
+  "name": "Réserve métabolique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un repas et un repos adaptés, le personnage constitue une réserve métabolique conservée jusqu&#39;au prochain repos long. Il peut la dépenser pour gagner +2 circonstanciel à un test contre faim, froid, marche prolongée ou privation de repos, ou pour différer d&#39;une heure 1 Fatigue provenant exclusivement de l&#39;un de ces facteurs.</p>\n<p>La Fatigue différée revient ensuite normalement. Le talent ne crée aucune nourriture et ne protège ni du manque d&#39;oxygène, ni d&#39;une maladie.</p>",
+    "traits": ["Beastkin", "Ours", "Endurance", "Réserve"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Hibernation et réserve métabolique",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Activité de repos",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Hibernation et réserve métabolique",
+        "Traits": "Beastkin, Ours, Endurance, Réserve",
+        "Type": "Activité de repos",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 1
+  }
+}

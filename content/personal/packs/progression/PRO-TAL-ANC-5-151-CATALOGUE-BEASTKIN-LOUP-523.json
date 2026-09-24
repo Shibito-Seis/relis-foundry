@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-523",
+  "name": "Angle de chasse",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage attaque une cible adjacente à un autre membre de son cercle placé sur un angle différent, il gagne +1 circonstanciel à cette attaque. Après sa résolution, il peut se déplacer de 1 mètre vers un espace libre maintenant l&#39;encerclement.</p>\n<p>Le déplacement ne traverse aucun obstacle et ne déclenche aucune autre attaque. Le talent ne fonctionne pas si les deux chasseurs occupent essentiellement le même angle.</p>",
+    "traits": ["Beastkin", "Loup", "Mobilité", "Combat"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Chasse concertée et encerclement",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chasse concertée et encerclement",
+        "Traits": "Beastkin, Loup, Mobilité, Combat",
+        "Type": "Passif",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

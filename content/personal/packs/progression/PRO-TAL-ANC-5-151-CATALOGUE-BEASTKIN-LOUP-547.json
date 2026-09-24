@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-547",
+  "name": "Jusqu'au bout du monde",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir étudié une piste récente, le personnage connaît la direction générale suivie par la proie tant qu&#39;ils restent dans la même région et qu&#39;une continuité physique de traces subsiste. Il gagne +3 circonstanciel aux tests de Survie et d&#39;Endurance pour poursuivre cette cible.</p>\n<p>Une traversée d&#39;eau, un véhicule ou un brouillage ordinaire n&#39;interrompt pas automatiquement la chasse si des indices existent après la rupture. Le talent ne suit ni téléportation, ni voyage spatial, ni cible sans aucune trace.</p>",
+    "traits": ["Beastkin", "Loup", "Exploration", "Poursuite"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-540",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ne jamais perdre la trace",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.155 Talents Beastkins Loups de niveau 13",
+      "family": "Pistage et poursuite prolongée",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Ne jamais perdre la trace",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Pistage et poursuite prolongée",
+        "Traits": "Beastkin, Loup, Exploration, Poursuite",
+        "Type": "Activité de 1 heure",
+        "Prérequis": "Ne jamais perdre la trace"
+      }
+    },
+    "level": 13
+  }
+}

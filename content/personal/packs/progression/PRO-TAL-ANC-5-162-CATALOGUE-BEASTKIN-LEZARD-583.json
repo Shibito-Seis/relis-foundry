@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-583",
+  "name": "Armure vivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Les zones écailleuses du personnage gagnent une Résistance 2 contre les dégâts physiques superficiels de coupure, perforation ou impact. Lorsqu&#39;il emploie Peau écailleuse, il peut en plus augmenter cette Résistance à 5 pour l&#39;attaque déclenchante.</p>\n<p>La Résistance ne s&#39;applique pas à une Blessure interne, une articulation exposée, une attaque énergétique ou un effet ignorant les protections corporelles. Elle ne se cumule pas avec une armure contre le même dommage.</p>",
+    "traits": ["Beastkin", "Lézard", "Défense", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-576",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Déviation écailleuse",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.166 Talents Beastkins Lézards de niveau 13",
+      "family": "Écailles et défense physiologique",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Déviation écailleuse",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Écailles et défense physiologique",
+        "Traits": "Beastkin, Lézard, Défense, Physiologie",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Déviation écailleuse"
+      }
+    },
+    "level": 13
+  }
+}

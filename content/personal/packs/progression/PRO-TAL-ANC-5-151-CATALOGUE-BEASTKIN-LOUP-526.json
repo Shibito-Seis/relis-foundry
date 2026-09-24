@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-526",
+  "name": "Appel de la meute",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage pousse un appel reconnaissable. Les membres de son cercle à 12 mètres capables de l&#39;entendre connaissent sa direction générale et comprennent une intention simple choisie parmi : rassemblement, danger, poursuite, repli ou position tenue.</p>\n<p>Ils gagnent +2 circonstanciel à leur prochain test de Perception ou de Survie pour agir selon cet appel. Le talent ne transmet aucun plan complexe et ne porte pas dans le vide.</p>",
+    "traits": ["Beastkin", "Loup", "Audition", "Communication"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Hurlement, rassemblement et intimidation",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Hurlement, rassemblement et intimidation",
+        "Traits": "Beastkin, Loup, Audition, Communication",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

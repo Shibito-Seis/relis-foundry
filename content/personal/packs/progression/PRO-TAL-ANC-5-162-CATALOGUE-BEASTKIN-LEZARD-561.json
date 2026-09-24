@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-561",
+  "name": "Queue stabilisatrice",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Tant que sa queue et au moins deux appuis touchent une surface stable, le personnage gagne +2 circonstanciel aux tests pour résister à un renversement, un glissement ou un déplacement forcé.</p>\n<p>La queue ne manipule aucun objet complexe, ne porte pas d&#39;arme et ne fournit aucune Action supplémentaire.</p>",
+    "traits": ["Beastkin", "Lézard", "Appendice", "Équilibre"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-350",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Appendice fonctionnel",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.163 Talents Beastkins Lézards de niveau 1",
+      "family": "Queue, stabilité et mobilité",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Appendice fonctionnel choisi comme queue",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Queue, stabilité et mobilité",
+        "Traits": "Beastkin, Lézard, Appendice, Équilibre",
+        "Type": "Passif",
+        "Prérequis": "Appendice fonctionnel choisi comme queue"
+      }
+    },
+    "level": 1
+  }
+}

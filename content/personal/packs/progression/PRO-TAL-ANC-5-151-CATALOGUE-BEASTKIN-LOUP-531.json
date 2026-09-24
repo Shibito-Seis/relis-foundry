@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-531",
+  "name": "Relais de meute",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;un membre du cercle à 6 mètres entreprend un test correspondant au rôle actuel du Loup, celui-ci lui accorde +2 circonstanciel par un signal ou un appui bref. Après le test, le personnage peut échanger son rôle avec celui de ce membre jusqu&#39;à la prochaine préparation, si tous deux sont volontaires.</p>\n<p>La réaction ne permet ni déplacement, ni attaque, ni seconde aide sur le même test.</p>",
+    "traits": ["Beastkin", "Loup", "Coopération", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-521",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Rôles mouvants",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.153 Talents Beastkins Loups de niveau 5",
+      "family": "Meute choisie et rôles mouvants",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Rôles mouvants",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Meute choisie et rôles mouvants",
+        "Traits": "Beastkin, Loup, Coopération, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Rôles mouvants"
+      }
+    },
+    "level": 5
+  }
+}

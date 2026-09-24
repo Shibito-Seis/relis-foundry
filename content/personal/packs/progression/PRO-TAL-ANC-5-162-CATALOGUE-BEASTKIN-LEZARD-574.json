@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-574",
+  "name": "Piste chimique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir étudié un échantillon réel, le personnage peut suivre sa signature chimique. Il gagne +2 circonstanciel aux tests de Survie ou d&#39;Investigation tant que des particules continues subsistent.</p>\n<p>L&#39;eau, le vide, une filtration, une forte contamination ou un nettoyage peuvent rompre la piste. Le talent n&#39;identifie pas automatiquement son propriétaire et ne remplace pas le pistage prolongé du Loup.</p>",
+    "traits": ["Beastkin", "Lézard", "Chimique", "Pistage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-565",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Goûter l'air",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.164 Talents Beastkins Lézards de niveau 5",
+      "family": "Sens chimiques et thermiques",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Goûter l'air",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens chimiques et thermiques",
+        "Traits": "Beastkin, Lézard, Chimique, Pistage",
+        "Type": "Activité de 1 minute",
+        "Prérequis": "Goûter l'air"
+      }
+    },
+    "level": 5
+  }
+}

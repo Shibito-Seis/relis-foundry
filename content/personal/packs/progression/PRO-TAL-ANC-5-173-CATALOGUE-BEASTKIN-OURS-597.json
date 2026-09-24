@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-597",
+  "name": "Encaisser le choc",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage subit des dégâts physiques d&#39;un impact qu&#39;il pouvait percevoir, il les réduit de 2 et gagne +2 circonstanciel à sa défense contre le renversement ou le déplacement provoqué par le même choc.</p>\n<p>Si une armure ou un autre effet réduit exactement ces dégâts, seul le meilleur effet s&#39;applique. Le talent ne protège ni des dégâts internes, ni d&#39;une attaque énergétique.</p>",
+    "traits": ["Beastkin", "Ours", "Réaction", "Résistance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Résistance et absorption",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résistance et absorption",
+        "Traits": "Beastkin, Ours, Réaction, Résistance",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-595",
+  "name": "Corps de rempart",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit une ouverture d&#39;une case ou une créature volontaire adjacente de taille égale ou inférieure. Jusqu&#39;au début de son prochain tour, il gagne +2 circonstanciel aux tests pour empêcher un passage physique par cette ouverture ; la créature choisie bénéficie d&#39;un couvert léger contre les attaques traversant l&#39;espace de l&#39;Ours.</p>\n<p>Le personnage doit rester à sa place. Le talent ne bloque pas une créature intangible ou beaucoup plus grande et ne fournit aucune interception automatique.</p>",
+    "traits": ["Beastkin", "Ours", "Défense", "Posture"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Masse et ancrage",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masse et ancrage",
+        "Traits": "Beastkin, Ours, Défense, Posture",
+        "Type": "1 Action"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-588",
+  "name": "Refaire chair",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant un repos long accompagné de matériel et d&#39;un test de Médecine réussi, le personnage peut faire progresser d&#39;un état une Blessure physique légère, modérée ou sévère compatible avec ses tissus : Active vers Contenue, Contenue vers Traitée, ou Traitée vers Résolue si sa durée normale est achevée.</p>\n<p>Le talent ne traite aucune Blessure grave ou mortelle sans l&#39;intervention normalement requise, ne reconstruit ni membre complet ni organe vital détruit et ne fonctionne qu&#39;une fois sur la même Blessure au cours d&#39;une semaine.</p>",
+    "traits": ["Beastkin", "Lézard", "Récupération", "Soins"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-580",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Reconstitution limitée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.167 Talents Beastkins Lézards de niveau 17",
+      "family": "Cicatrisation et régénération limitée",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Activité de repos",
+      "prerequisites": "Reconstitution limitée",
+      "choice": "",
+      "frequency": "une fois par semaine",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cicatrisation et régénération limitée",
+        "Traits": "Beastkin, Lézard, Récupération, Soins",
+        "Type": "Activité de repos",
+        "Fréquence": "une fois par semaine",
+        "Prérequis": "Reconstitution limitée"
+      }
+    },
+    "level": 17
+  }
+}

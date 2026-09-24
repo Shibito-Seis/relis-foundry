@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-573",
+  "name": "Instinct de lignée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage effectue un test directement couvert par son Adaptation de lignée, il gagne +3 circonstanciel au lieu de +2. Après le test, il peut ajuster sa posture ou se déplacer de 1 mètre si ce mouvement exploite réellement son expression.</p>\n<p>Le déplacement suit un trajet légal, ne fournit aucune attaque et ne crée aucune Vitesse absente.</p>",
+    "traits": ["Beastkin", "Lézard", "Adaptation", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-564",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Adaptation de lignée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.164 Talents Beastkins Lézards de niveau 5",
+      "family": "Expressions reptiliennes",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Adaptation de lignée",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Expressions reptiliennes",
+        "Traits": "Beastkin, Lézard, Adaptation, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Adaptation de lignée"
+      }
+    },
+    "level": 5
+  }
+}

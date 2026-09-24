@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-533",
+  "name": "Poursuite opiniâtre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant la poursuite d&#39;une proie dont il possède une piste réelle, le personnage gagne +2 circonstanciel aux tests de Survie et d&#39;Endurance. Son premier échec ordinaire ne lui fait pas perdre définitivement la piste : il progresse moins vite et doit trouver un nouvel indice avant de continuer.</p>\n<p>Le talent ne transforme pas un échec critique, ne recrée pas une trace effacée et n&#39;annule pas le temps perdu.</p>",
+    "traits": ["Beastkin", "Loup", "Exploration", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-524",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lire le passage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.153 Talents Beastkins Loups de niveau 5",
+      "family": "Pistage et poursuite prolongée",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Lire le passage",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Pistage et poursuite prolongée",
+        "Traits": "Beastkin, Loup, Exploration, Survie",
+        "Type": "Passif",
+        "Prérequis": "Lire le passage"
+      }
+    },
+    "level": 5
+  }
+}

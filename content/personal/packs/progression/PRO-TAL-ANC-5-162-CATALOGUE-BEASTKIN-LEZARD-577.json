@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-577",
+  "name": "Réserve thermique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Auprès d&#39;une source sûre de chaleur ou de fraîcheur, le personnage constitue une réserve thermique conservée jusqu&#39;au prochain repos long. Il peut la dépenser librement pour choisir un effet :</p>\n<p>• gagner +3 circonstanciel à un test contre un changement brutal de température ;</p>\n<p>• réduire de 4 des dégâts thermiques environnementaux ;</p>\n<p>• différer pendant une heure 1 Fatigue provenant exclusivement d&#39;une exposition thermique.</p>\n<p>La Fatigue différée revient ensuite normalement. La réserve ne peut alimenter une attaque, chauffer un objet ou protéger une autre créature.</p>",
+    "traits": ["Beastkin", "Lézard", "Réserve", "Thermique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-569",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sang réglé",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.165 Talents Beastkins Lézards de niveau 9",
+      "family": "Thermorégulation et climats",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Sang réglé",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Thermorégulation et climats",
+        "Traits": "Beastkin, Lézard, Réserve, Thermique",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Sang réglé"
+      }
+    },
+    "level": 9
+  }
+}

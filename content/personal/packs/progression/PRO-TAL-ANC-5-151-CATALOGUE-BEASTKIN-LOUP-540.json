@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-540",
+  "name": "Ne jamais perdre la trace",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un échec non critique à un test pour suivre une proie possédant encore une trace physique, le personnage relance et conserve le second résultat. Sur une réussite, il apprend aussi la direction générale et l&#39;ancienneté relative du dernier passage.</p>\n<p>Le talent ne peut affecter un jet déjà soumis à Fortune ou Infortune et ne recrée aucune piste absente.</p>",
+    "traits": ["Beastkin", "Loup", "Fortune", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-533",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Poursuite opiniâtre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.154 Talents Beastkins Loups de niveau 9",
+      "family": "Pistage et poursuite prolongée",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Poursuite opiniâtre",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Pistage et poursuite prolongée",
+        "Traits": "Beastkin, Loup, Fortune, Survie",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Poursuite opiniâtre"
+      }
+    },
+    "level": 9
+  }
+}

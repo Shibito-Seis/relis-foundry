@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-613",
+  "name": "Refuser de tomber",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;un impact ou une douleur physique devrait faire tomber le personnage à terre, lui imposer une incapacité temporaire ou aggraver de 2 points une pénalité de douleur, il reste debout et limite cette pénalité à −1 jusqu&#39;à la fin de son prochain tour.</p>\n<p>Les dégâts et la Blessure éventuelle sont reçus normalement. Le talent ne fonctionne pas à 0 PV, contre paralysie, destruction d&#39;un membre porteur ou perte totale du support.</p>",
+    "traits": ["Beastkin", "Ours", "Réaction", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-606",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps endurant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.176 Talents Beastkins Ours de niveau 9",
+      "family": "Résistance et absorption",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Corps endurant",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résistance et absorption",
+        "Traits": "Beastkin, Ours, Réaction, Survie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Corps endurant"
+      }
+    },
+    "level": 9
+  }
+}

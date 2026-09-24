@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-151-CATALOGUE-BEASTKIN-LOUP-524",
+  "name": "Lire le passage",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Survie ou d&#39;Investigation pour déterminer l&#39;allure, les pauses, les changements de direction et la cohésion d&#39;un groupe à partir de ses traces.</p>\n<p>Sur une réussite, il peut estimer une information simple : fuite ou progression normale, cible blessée, charge importante, séparation récente ou tentative manifeste de brouillage. Le talent ne révèle pas l&#39;identité exacte des voyageurs.</p>",
+    "traits": ["Beastkin", "Loup", "Exploration", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-347",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lire les traces",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Pistage et poursuite prolongée",
+      "ancestry": "### 5.151 Catalogue Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Lire les traces",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Pistage et poursuite prolongée",
+        "Traits": "Beastkin, Loup, Exploration, Survie",
+        "Type": "Passif",
+        "Prérequis": "Lire les traces"
+      }
+    },
+    "level": 1
+  }
+}

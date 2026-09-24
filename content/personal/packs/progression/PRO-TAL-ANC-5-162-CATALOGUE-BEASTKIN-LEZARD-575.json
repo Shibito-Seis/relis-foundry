@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-575",
+  "name": "Attendre le moment",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après être resté immobile depuis le début de son dernier tour, le personnage déclenche ce talent lorsqu&#39;une créature ou un danger entre dans la zone qu&#39;il observe. Il gagne +2 circonstanciel à son prochain test de Perception, de défense, de contrôle ou d&#39;Initiative contre cet élément avant la fin de son prochain tour.</p>\n<p>La réaction ne fournit ni attaque, ni Action supplémentaire et ne fonctionne pas contre une menace qu&#39;il ne pouvait percevoir.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Lézard", "Concentration", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-162-CATALOGUE-BEASTKIN-LEZARD-566",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Immobilité reptilienne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.164 Talents Beastkins Lézards de niveau 5",
+      "family": "Patience, immobilité et affût",
+      "ancestry": "### 5.162 Catalogue Beastkin Lézard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Immobilité reptilienne",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Patience, immobilité et affût",
+        "Traits": "Beastkin, Lézard, Concentration, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Immobilité reptilienne"
+      }
+    },
+    "level": 5
+  }
+}
