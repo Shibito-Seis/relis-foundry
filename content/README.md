@@ -1,6 +1,6 @@
 # Pipeline de contenu RE:LIS
 
-`content/personal` est la source de vérité versionnée des futurs compendiums personnels. Les bases LevelDB Foundry sont des sorties de construction et ne doivent jamais être corrigées à la main.
+`content/personal` est la source de vérité versionnée des compendiums personnels. Les bases LevelDB Foundry sont des sorties de construction et ne doivent jamais être corrigées à la main.
 
 ## Contrat d’une entrée
 
@@ -13,7 +13,7 @@ Chaque Item canonique occupe un fichier JSON nommé exactement `<relisId>.json` 
 
 Le pipeline refuse `_id`, `_stats`, `ownership` et `system.meta` dans les sources. Il génère lui-même ces champs, dérive un `_id` Foundry stable depuis `relisId`, injecte les versions et trie les sorties par identifiant. Une correction de libellé ou de données conserve `relisId` et augmente `contentVersion`; un concept différent reçoit un autre identifiant.
 
-Les références persistantes sont des objets `RelisRef` complets dans `system`. Les références personnelles non résolues sont des avertissements pendant 10-K1-P ; le manifeste passera à `strictReferences: true` avant la clôture de 10-K2-P et l’Audit P.
+Les références persistantes sont des objets `RelisRef` complets dans `system`. Depuis 10-K2-P, `strictReferences: true` bloque la construction dès qu’une cible canonique déclarée est absente. Une relation ambiguë reste descriptive au lieu d’être liée arbitrairement.
 
 ## Commandes
 
@@ -24,8 +24,8 @@ npm run content:build
 npm run content:check
 ```
 
-`content:generate` produit les JSON Foundry déterministes dans `build/content-source`. `content:build` utilise l’outil officiel Foundry pour compiler les familles non vides dans `build/content-packs`. En 10-K1-P, les trois familles restent volontairement vides : aucun faux contenu n’est livré.
+`content:generate` produit les JSON Foundry déterministes dans `build/content-source`. `content:build` utilise l’outil officiel Foundry pour compiler les trois familles dans `build/content-packs`. En 10-K2-P, elles contiennent 2 398 Items canoniques : 199 de Création, 1 444 de Progression et 755 de Matériel.
 
 ## Aliases et questionnaire
 
-`aliases.json` conserve les anciens identifiants sans jamais les réémettre. `crystal-attunement.json` fixe la nomenclature et le contrat du futur questionnaire d’accord des Cœurs d’Écarlithe. Les vrais Items, l’interface et les compendiums appartiennent à 10-K2-P ; l’activation et la surcharge au Prana appartiennent à 10-F.
+`aliases.json` conserve les anciens identifiants sans jamais les réémettre. `crystal-attunement.json` fixe la nomenclature et le contrat du questionnaire d’accord des Cœurs d’Écarlithe. 10-K2-P fournit les vrais Items, l’interface et les compendiums ; l’activation et la surcharge au Prana appartiennent toujours à 10-F.

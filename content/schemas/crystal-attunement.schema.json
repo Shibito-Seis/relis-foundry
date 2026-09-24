@@ -12,6 +12,7 @@
     "taxonomy",
     "axes",
     "palette",
+    "resolution",
     "questions",
     "tieBreaker",
     "permissions",
@@ -26,8 +27,33 @@
     "nomenclature": { "type": "object" },
     "taxonomy": { "type": "array", "minItems": 3 },
     "axes": { "type": "array", "minItems": 2 },
-    "palette": { "type": "array", "minItems": 2 },
-    "questions": { "type": "array", "minItems": 1 },
+    "palette": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "hex", "kind", "axes", "meaning"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "hex": { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+          "kind": {
+            "enum": ["dominant", "conjunction", "equilibrium"]
+          },
+          "axes": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": { "type": "string" }
+          },
+          "meaning": { "type": "string" }
+        }
+      }
+    },
+    "resolution": { "type": "object" },
+    "questions": { "type": "array", "minItems": 8, "maxItems": 8 },
     "tieBreaker": { "type": "object" },
     "permissions": { "type": "object" },
     "persistence": { "type": "object" },
