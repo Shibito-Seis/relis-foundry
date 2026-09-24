@@ -1,0 +1,93 @@
+{
+  "relisId": "PHA-007",
+  "name": "Hydrogel pour brûlure",
+  "type": "consumable",
+  "tags": ["materiel", "pharmacie"],
+  "system": {
+    "description": "<p>1 — cutanée — T0/D0 — interrompt une brûlure thermique ordinaire et +2 au soin associé — inutile contre radiation interne — 037</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "pharmacie",
+      "sourceSection": "55.4.2 Urgence et traumatologie — PHA-001 à PHA-016",
+      "canonicalRow": [
+        "PHA-007",
+        "Hydrogel pour brûlure",
+        "1",
+        "cutanée",
+        "T0/D0",
+        "interrompt une brûlure thermique ordinaire et +2 au soin associé",
+        "inutile contre radiation interne",
+        "037"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "inutile contre radiation interne"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

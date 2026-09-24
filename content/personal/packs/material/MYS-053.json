@@ -1,0 +1,90 @@
+{
+  "relisId": "MYS-053",
+  "name": "Projecteur d’illusions",
+  "type": "equipment",
+  "tags": ["materiel", "techno-magie"],
+  "system": {
+    "description": "<p>3 — Mana — images, invisibilité et mirages encodés — 12 Mana — 24 — aucun contrôle mental sans module</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "techno-magie",
+      "sourceSection": "55.5.4 Baguettes et focalisateurs rechargeables — MYS-049 à MYS-064",
+      "canonicalRow": [
+        "MYS-053",
+        "Projecteur d’illusions",
+        "3",
+        "Mana",
+        "images, invisibilité et mirages encodés",
+        "12 Mana",
+        "24",
+        "aucun contrôle mental sans module"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  }
+}
