@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-157",
+  "name": "Souverain de la gravité",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant 3 rounds, le personnage impose une orientation gravitationnelle stable dans un rayon de 6 mètres centré sur lui. À l&#39;activation, il choisit un mode et désigne les alliés qui y sont accordés.</p>",
+    "traits": ["Nain", "Aura", "Gravité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-148",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Seigneur de la pesanteur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.47 Talents Nains de niveau 21",
+      "family": "Transcendance naine",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Seigneur de la pesanteur",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance naine",
+        "Traits": "Nain, Aura, Gravité",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Seigneur de la pesanteur"
+      }
+    },
+    "level": 21
+  }
+}

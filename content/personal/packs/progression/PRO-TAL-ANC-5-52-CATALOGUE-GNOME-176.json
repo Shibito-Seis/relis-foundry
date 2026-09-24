@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-176",
+  "name": "Heureux hasard",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le joueur peut déclarer une circonstance mineure, plausible et jusque-là indéterminée : un câble a juste assez de longueur, une vis correspond, une grille est mal fixée, un chariot vide se trouve à proximité ou un outil commun a été oublié sur place.</p>\n<p>La circonstance peut rendre une tentative possible ou fournir +2 circonstanciel à un test, mais elle ne garantit jamais sa réussite.</p>\n<p>Heureux hasard ne crée ni objet rare, ni accès sécurisé, ni preuve, ni renfort, ni faiblesse majeure, ni ressource ayant une valeur significative. Le MJ peut reformuler la coïncidence pour préserver la cohérence de la scène.</p>",
+    "traits": ["Gnome", "Chance", "Fortune"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Chance capricieuse",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chance capricieuse",
+        "Traits": "Gnome, Chance, Fortune",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-202",
+  "name": "Merveille vivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage ne peut plus gagner de rang d&#39;Affadissement tant qu&#39;il est conscient et capable de former de nouvelles Ancres. Les rangs déjà présents doivent encore être récupérés normalement.</p>\n<p>Sa présence rappelle aux autres que l&#39;inconnu reste possible. Après dix minutes de création, de récit ou d&#39;exploration partagée, les alliés consentants réduisent leur Stress de 2. Un Gnome dont une Ancre est réellement touchée considère aussi ce partage comme un Épisode d&#39;Éclat.</p>\n<p>Une fois par session, lorsqu&#39;un allié visible échoue à un test entrepris par curiosité, création, sauvetage ou découverte, le personnage peut transformer cet échec en réussite ordinaire. L&#39;action produit une conséquence imprévue qui ouvre une nouvelle possibilité au lieu de fermer la scène.</p>\n<p>Merveille vivante ne protège ni de la Fatigue, ni des Blessures, ni du vieillissement, et ne force aucune créature à ressentir l&#39;émerveillement.</p>\n<p>---</p>",
+    "traits": ["Gnome", "Affadissement", "Aura", "Mythique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.60 Talents Gnomes de niveau 29",
+      "family": "Transcendance gnome",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance gnome",
+        "Traits": "Gnome, Affadissement, Aura, Mythique",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par session pour l'activation"
+      }
+    },
+    "level": 29
+  }
+}

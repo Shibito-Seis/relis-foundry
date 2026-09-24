@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-177",
+  "name": "Instabilité calculée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant un test d&#39;Ingénierie, Sciences, Systèmes de vaisseau ou Techno-magie, le personnage peut accepter une instabilité et gagner +2 circonstanciel.</p>\n<p>Sur un échec, une complication mineure apparaît : bruit, chaleur, trace détectable, outil endommagé, délai, consommation supplémentaire raisonnable ou résultat difficile à reproduire. Sur un échec critique, la complication devient sérieuse sans dépasser les conséquences normalement possibles du test.</p>\n<p>La complication n&#39;est pas déclenchée en cas de réussite et ne peut jamais être choisie pour infliger volontairement de l&#39;Affadissement.</p>",
+    "traits": ["Gnome", "Chance", "Risque", "Techno-magie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Chance capricieuse",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chance capricieuse",
+        "Traits": "Gnome, Chance, Risque, Techno-magie",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

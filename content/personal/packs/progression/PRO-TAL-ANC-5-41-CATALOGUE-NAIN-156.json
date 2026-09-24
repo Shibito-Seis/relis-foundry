@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-156",
+  "name": "Maître des citadelles stellaires",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après dix minutes d&#39;étude d&#39;un vaisseau, d&#39;une station, d&#39;une fortification ou d&#39;un chantier important, le personnage peut identifier :</p>\n<p>• ses principaux chemins de charge et de contrainte ;</p>\n<p>• la fonction structurelle dont la perte provoquerait la cascade la plus dangereuse ;</p>\n<p>• un emplacement raisonnable pour un étaiement, une isolation ou une réparation d&#39;urgence ;</p>\n<p>• la meilleure répartition des équipes techniques disponibles.</p>\n<p>Pour les tests portant véritablement sur la stabilité matérielle de cet ouvrage, il peut associer le meilleur de Technologie ou Intelligence à la meilleure compétence pertinente parmi Ingénierie, Systèmes de vaisseau et Sciences, si sa méthode le justifie.</p>\n<p>Lorsqu&#39;une partie étudiée devrait s&#39;effondrer ou cesser immédiatement de remplir sa fonction structurelle, il peut utiliser sa Réaction pour la maintenir pendant 1 round ou quelques secondes narratives. Cette fenêtre permet une évacuation, une réparation ou une action décisive ; elle n&#39;annule aucun dégât et la défaillance reprend ensuite si sa cause n&#39;a pas été traitée.</p>\n<p>Le talent ne stabilise qu&#39;une partie cohérente, jamais un vaisseau ou une cité entière en une seule réaction.</p>",
+    "traits": ["Nain", "Construction", "Structure", "Technologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-139",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maître d'atelier",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-149",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Architecture indéfectible",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.47 Talents Nains de niveau 21",
+      "family": "Transcendance naine",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif, Activité d'exploration et Réaction",
+      "prerequisites": "Architecture indéfectible ou Maître d'atelier",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance naine",
+        "Traits": "Nain, Construction, Structure, Technologie",
+        "Type": "Passif, Activité d'exploration et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Architecture indéfectible ou Maître d'atelier"
+      }
+    },
+    "level": 21
+  }
+}

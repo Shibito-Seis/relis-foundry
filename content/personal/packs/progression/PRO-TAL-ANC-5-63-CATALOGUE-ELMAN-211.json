@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-211",
+  "name": "Impulsion pranique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage mobilise brièvement son énergie interne. Il choisit l&#39;un des bénéfices suivants :</p>\n<p>• gagner +2 circonstanciel à un test d&#39;Acrobaties, d&#39;Athlétisme, d&#39;Endurance ou de résistance physique ;</p>\n<p>• augmenter de 2 mètres un déplacement commencé immédiatement après l&#39;activation.</p>\n<p>L&#39;Impulsion ne se cumule pas avec un autre bonus circonstanciel provenant d&#39;une accélération énergétique et ne modifie pas les dégâts d&#39;une attaque.</p>",
+    "traits": ["Elman", "Prana", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Circuit intérieur",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Circuit intérieur",
+        "Traits": "Elman, Prana, Physiologie",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

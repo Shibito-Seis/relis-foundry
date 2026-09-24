@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-196",
+  "name": "Esprit aux mille idées",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit une compétence dans laquelle il est Inexpérimenté ou Qualifié et décrit l&#39;idée, le souvenir ou l&#39;analogie qui lui permet d&#39;aborder le problème.</p>\n<p>Pour un seul test, il est considéré comme Expert dans cette compétence. S&#39;il est déjà Expert ou meilleur, il gagne à la place +2 circonstanciel.</p>\n<p>Cette maîtrise temporaire ne satisfait aucun prérequis, ne donne aucun protocole réservé et ne permet pas une action exigeant un apprentissage corporel ou une autorisation que l&#39;idée ne peut remplacer.</p>",
+    "traits": ["Gnome", "Compétence", "Mythique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.58 Talents Gnomes de niveau 21",
+      "family": "Transcendance gnome",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance gnome",
+        "Traits": "Gnome, Compétence, Mythique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 21
+  }
+}

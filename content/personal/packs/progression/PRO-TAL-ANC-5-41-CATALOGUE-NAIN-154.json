@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-154",
+  "name": "Parole gravée dans l'acier",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage réunit jusqu&#39;à 2 + sa Présence participants, avec un minimum de 2, et leur fait formuler un engagement commun clairement défini.</p>\n<p>La Parole dure jusqu&#39;au prochain repos long ou jusqu&#39;à l&#39;accomplissement ou l&#39;abandon de l&#39;engagement. Elle possède une réserve d&#39;interventions égale au nombre de participants préparés.</p>\n<p>Lorsqu&#39;un participant à 12 mètres ou relié par communication échoue à un test contribuant directement à l&#39;engagement, le personnage peut utiliser sa Réaction et dépenser une intervention. Le participant relance le test et conserve le second résultat.</p>\n<p>Restrictions :</p>\n<p>• chaque participant ne peut bénéficier que d&#39;une intervention par session ;</p>\n<p>• un échec critique ne peut pas être relancé ;</p>\n<p>• le jet ne peut pas être déjà affecté par un autre effet de Fortune ;</p>\n<p>• le personnage doit pouvoir rappeler la Parole ou transmettre une consigne intelligible ;</p>\n<p>• l&#39;engagement ne peut pas être formulé de manière assez vague pour couvrir toute la mission ou toute action future.</p>\n<p>---</p>",
+    "traits": ["Nain", "Coopération", "Fortune", "Serment"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-125",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Serment gravé",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-146",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Dette d'acier",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.46 Talents Nains de niveau 17",
+      "family": "Clans et serments",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "préparation de 10 minutes et Réaction",
+      "prerequisites": "Dette d'acier et Serment gravé",
+      "choice": "",
+      "frequency": "une fois par repos long pour la préparation ; réserves limitées pour les réactions",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Clans et serments",
+        "Traits": "Nain, Coopération, Fortune, Serment",
+        "Type": "préparation de 10 minutes et Réaction",
+        "Fréquence": "une fois par repos long pour la préparation ; réserves limitées pour les réactions",
+        "Prérequis": "Dette d'acier et Serment gravé"
+      }
+    },
+    "level": 17
+  }
+}

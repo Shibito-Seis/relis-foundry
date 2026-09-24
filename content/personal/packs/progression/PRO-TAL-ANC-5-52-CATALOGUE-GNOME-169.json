@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-169",
+  "name": "Outil à tout faire gnome",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage possède ou fabrique un outil personnel configuré pour deux fonctions compatibles, par exemple diagnostic électronique et micro-soudure, prélèvement et analyse, gravure et calibrage magique.</p>\n<p>Tant qu&#39;il porte cet outil, il est considéré comme possédant les outils de base pour les deux fonctions choisies et gagne +1 circonstanciel aux tests correspondants.</p>\n<p>L&#39;outil ne remplace pas un atelier, une machine lourde, un environnement stérile, une pièce de rechange ou un appareil de mesure spécialisé. S&#39;il est perdu ou détruit, sa reconstruction demande les ressources et le temps d&#39;un équipement ordinaire.</p>",
+    "traits": ["Gnome", "Équipement", "Technologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Bidouillage improbable",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "deux fonctions artisanales ou techniques",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Équipement, Technologie",
+        "Type": "Passif",
+        "Choix": "deux fonctions artisanales ou techniques"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-143",
+  "name": "Briseur de veines",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage attaque, découpe, fore ou démolit un objet non porté constitué principalement de pierre, de métal, de cristal, de béton ou de matériau minéral composite, il ignore 2 points de Solidité.</p>\n<p>Avec un équipement d&#39;excavation approprié, il accomplit en la moitié du temps normal les tâches ordinaires consistant à ouvrir un passage dans un matériau exploitable.</p>\n<p>Le bénéfice ne s&#39;applique pas :</p>\n<p>• à une créature minérale ou artificielle ;</p>\n<p>• à une armure ou un bouclier portés ;</p>\n<p>• à un véhicule manœuvré en combat ;</p>\n<p>• à un champ énergétique ;</p>\n<p>• à un matériau que l&#39;outil employé ne peut normalement pas entamer.</p>\n<p>Briseur de veines améliore une démolition possible ; il ne transforme pas un outil manuel en canon anti-vaisseau.</p>",
+    "traits": ["Nain", "Démolition", "Minage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-120",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mineur spatial",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-131",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lecture des fractures",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Mineurs des mondes",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Mineur spatial et Lecture des fractures",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mineurs des mondes",
+        "Traits": "Nain, Démolition, Minage",
+        "Type": "Passif",
+        "Prérequis": "Mineur spatial et Lecture des fractures"
+      }
+    },
+    "level": 9
+  }
+}

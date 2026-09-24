@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-205",
+  "name": "Réflexe électromusculaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;un piège, une zone dangereuse ou un phénomène soudain que le personnage peut percevoir exige un test de défense, d&#39;Acrobaties, de Dextérité ou de Vigueur, il gagne +2 circonstanciel à ce test.</p>\n<p>Le bonus doit être déclaré avant le jet. Il ne s&#39;applique pas à une attaque ordinaire dirigée contre le personnage ni à un danger qu&#39;il ne pouvait pas détecter.</p>",
+    "traits": ["Elman", "Réaction", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Physiologie évoluée",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie évoluée",
+        "Traits": "Elman, Réaction, Physiologie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

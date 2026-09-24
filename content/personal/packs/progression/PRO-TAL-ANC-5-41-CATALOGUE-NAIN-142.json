@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-142",
+  "name": "Géomètre instinctif",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage mémorise avec une grande précision les volumes, pentes, embranchements et différences de niveau qu&#39;il parcourt dans :</p>\n<p>• une mine ;</p>\n<p>• un habitat souterrain ;</p>\n<p>• un réseau technique ;</p>\n<p>• une station ;</p>\n<p>• un vaisseau ;</p>\n<p>• une ruine bâtie ou excavée.</p>\n<p>Il gagne +2 circonstanciel aux tests de Navigation ou d&#39;Investigation destinés à :</p>\n<p>• revenir sur ses pas ;</p>\n<p>• estimer la position relative de deux salles ;</p>\n<p>• repérer un espace manquant sur un plan ;</p>\n<p>• prévoir où devrait se trouver un conduit, un escalier ou une issue ;</p>\n<p>• produire une carte de mémoire.</p>\n<p>Tant que la géométrie n&#39;a pas été modifiée et que ses perceptions n&#39;ont pas été trompées, il ne se perd pas à cause d&#39;un simple oubli de parcours. Le talent ne détecte pas automatiquement une porte secrète ou un passage qu&#39;il n&#39;a jamais perçu.</p>",
+    "traits": ["Nain", "Exploration", "Mémoire", "Navigation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Sens de la pierre",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la pierre",
+        "Traits": "Nain, Exploration, Mémoire, Navigation",
+        "Type": "Passif"
+      }
+    },
+    "level": 9
+  }
+}

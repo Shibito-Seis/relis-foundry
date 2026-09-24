@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-181",
+  "name": "Prototype de crise",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec des pièces et des outils adaptés, le personnage assemble un prototype à usage unique reproduisant une fonction simple : capteur directionnel, relais, coupe-circuit, grappin motorisé, filtre rudimentaire, balise ou outil équivalent.</p>\n<p>Le prototype fournit +2 circonstanciel à un test précis ou rend possible une unique utilisation de sa fonction. Il cesse de fonctionner après cette utilisation ou au prochain repos long.</p>\n<p>Il ne reproduit ni arme militaire, ni soin, ni sort, ni module de vaisseau, ni objet rare. Sa fabrication ne crée pas les matériaux ou l&#39;énergie nécessaires.</p>",
+    "traits": ["Gnome", "Fabrication", "Prototype"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.54 Talents Gnomes de niveau 5",
+      "family": "Bidouillage improbable",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Fabrication, Prototype",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 5
+  }
+}

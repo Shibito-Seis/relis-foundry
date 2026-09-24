@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-185",
+  "name": "Raviver les couleurs",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage accompagne un autre Gnome dans une entreprise significative liée à l&#39;une des Ancres de la cible : création, exploration, enquête, rencontre ou projet partagé.</p>\n<p>Si cette entreprise constitue un Épisode d&#39;Éclat, la cible peut réduire immédiatement son Affadissement de 1 rang, sans attendre le repos long normalement requis. Cette réduction compte dans sa limite de récupération de 30 jours.</p>\n<p>Le talent ne peut pas cibler son utilisateur. L&#39;heure représente l&#39;accompagnement final ; elle ne remplace pas le temps, le risque ou l&#39;engagement nécessaires à l&#39;Épisode lui-même.</p>\n<p>---</p>",
+    "traits": ["Gnome", "Affadissement", "Soutien"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.54 Talents Gnomes de niveau 5",
+      "family": "Éclat gnome",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par cible et par période de 30 jours",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Éclat gnome",
+        "Traits": "Gnome, Affadissement, Soutien",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par cible et par période de 30 jours"
+      }
+    },
+    "level": 5
+  }
+}

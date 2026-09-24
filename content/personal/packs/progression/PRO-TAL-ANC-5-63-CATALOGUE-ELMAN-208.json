@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-208",
+  "name": "Lecture des signatures",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Canalisation ou d&#39;Investigation destinés à identifier, comparer ou suivre une signature énergétique qu&#39;il peut percevoir.</p>\n<p>Une fois par session, après une minute d&#39;étude, il peut mémoriser précisément une signature accessible. Jusqu&#39;à la fin de la session, il la reconnaît automatiquement si elle n&#39;a pas été fortement altérée.</p>\n<p>Une signature identique ne prouve pas à elle seule l&#39;identité, l&#39;intention ou la responsabilité de sa source.</p>",
+    "traits": ["Elman", "Énergie", "Investigation", "Mémoire"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Sensibilité énergétique",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Passif et Activité de 1 minute",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par session pour la mémorisation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sensibilité énergétique",
+        "Traits": "Elman, Énergie, Investigation, Mémoire",
+        "Type": "Passif et Activité de 1 minute",
+        "Fréquence": "une fois par session pour la mémorisation"
+      }
+    },
+    "level": 1
+  }
+}

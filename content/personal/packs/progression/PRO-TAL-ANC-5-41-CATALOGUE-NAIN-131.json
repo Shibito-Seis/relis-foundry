@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-131",
+  "name": "Lecture des fractures",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage étudie un objet minéral, métallique ou structurel visible et identifie une fracture, un joint, une tension ou un point de reprise.</p>\n<p>Il apprend si le point observé est surtout utile pour :</p>\n<p>• réparer ou étayer l&#39;ouvrage ;</p>\n<p>• l&#39;ouvrir ou le démonter ;</p>\n<p>• provoquer une rupture contrôlée ;</p>\n<p>• éviter un effondrement ;</p>\n<p>• comprendre la direction d&#39;une contrainte.</p>\n<p>Il gagne +2 circonstanciel au premier test d&#39;Ingénierie, Investigation, Sciences ou Athlétisme exploitant cette lecture.</p>\n<p>Pour une seule attaque ou action de démolition contre le point identifié, il peut ignorer 1 point de Solidité. Cette réduction ne s&#39;applique pas à une créature, à une armure portée ou à un système dont le point faible reste inaccessible.</p>",
+    "traits": ["Nain", "Analyse", "Structure"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-117",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Regard du prospecteur",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-119",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Oreille des structures",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Sens de la pierre",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Activité d'exploration d'une minute",
+      "prerequisites": "Oreille des structures ou Regard du prospecteur",
+      "choice": "",
+      "frequency": "une fois par scène pour l'exploitation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la pierre",
+        "Traits": "Nain, Analyse, Structure",
+        "Type": "Activité d'exploration d'une minute",
+        "Fréquence": "une fois par scène pour l'exploitation",
+        "Prérequis": "Oreille des structures ou Regard du prospecteur"
+      }
+    },
+    "level": 5
+  }
+}

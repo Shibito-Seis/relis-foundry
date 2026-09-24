@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-151",
+  "name": "Rempart mobile",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage adopte la Posture du rempart :</p>\n<p>• il peut se déplacer jusqu&#39;à la moitié de sa vitesse sans mettre fin à la Posture ;</p>\n<p>• les alliés adjacents protégés par son corps gagnent +1 circonstanciel à leur CAP contre les attaques physiques traversant son espace ;</p>\n<p>• il peut conserver la Posture jusqu&#39;au début de son tour suivant après ce déplacement.</p>\n<p>Le personnage peut se déplacer d&#39;une case vers un espace permettant l&#39;interposition et devenir la cible de l&#39;attaque à la place de l&#39;allié. L&#39;attaque est alors résolue contre sa CAP et ses protections.</p>\n<p>Il ne peut pas intercepter une attaque de zone, un effet sans trajectoire, une attaque qu&#39;il ne perçoit pas ou une attaque dont il ne peut matériellement occuper la ligne.</p>\n<p>---</p>",
+    "traits": ["Nain", "Défense", "Posture", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-133",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Posture du rempart",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-144",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Armure comme seconde peau",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.45 Talents Nains de niveau 13",
+      "family": "Arsenal du bastion",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "amélioration de posture et Réaction",
+      "prerequisites": "Posture du rempart et Armure comme seconde peau",
+      "choice": "",
+      "frequency": "une fois par round pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Arsenal du bastion",
+        "Traits": "Nain, Défense, Posture, Réaction",
+        "Type": "amélioration de posture et Réaction",
+        "Fréquence": "une fois par round pour la réaction",
+        "Prérequis": "Posture du rempart et Armure comme seconde peau",
+        "Déclencheur de la réaction": "un allié adjacent est ciblé par une attaque physique que le personnage peut percevoir."
+      }
+    },
+    "level": 13
+  }
+}

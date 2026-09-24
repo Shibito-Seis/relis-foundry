@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-201",
+  "name": "Gnome de l'Horizon nouveau",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lors de la première confrontation du groupe à un monde, une civilisation, une technologie ou une anomalie véritablement inconnue, le personnage peut déclarer qu&#39;il en fera son Horizon nouveau.</p>\n<p>Après dix minutes d&#39;observation, il pose au MJ trois questions auxquelles les indices accessibles permettent de répondre. Jusqu&#39;à la fin de la mission, lui-même et les alliés auxquels il transmet ses conclusions gagnent +3 circonstanciel au premier test de chaque scène destiné à comprendre, approcher ou résoudre cet Horizon.</p>\n<p>La découverte compte comme un Épisode d&#39;Éclat exceptionnel pour le personnage. Une fois pendant la mission, il peut transformer l&#39;échec d&#39;un allié sur un test lié à l&#39;Horizon en réussite ordinaire ; une complication majeure mais surmontable apparaît alors.</p>\n<p>Le talent ne révèle pas un secret sans indice et ne peut pas être redéfini vers un autre sujet avant la mission suivante.</p>",
+    "traits": ["Gnome", "Découverte", "Mythique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.60 Talents Gnomes de niveau 29",
+      "family": "Transcendance gnome",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activité d'exploration et Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par mission",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance gnome",
+        "Traits": "Gnome, Découverte, Mythique",
+        "Type": "Activité d'exploration et Activation libre",
+        "Fréquence": "une fois par mission"
+      }
+    },
+    "level": 29
+  }
+}

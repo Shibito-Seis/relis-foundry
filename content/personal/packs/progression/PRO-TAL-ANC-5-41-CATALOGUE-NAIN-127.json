@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-127",
+  "name": "Réserve d'endurance",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après dix minutes consacrées à respirer, s&#39;hydrater, manger une ration légère et relâcher ses muscles, le personnage réduit sa Fatigue de 1.</p>\n<p>Il gagne ensuite +2 circonstanciel à son prochain test d&#39;Endurance effectué avant la fin de la journée.</p>\n<p>Cette récupération exige :</p>\n<p>• un environnement non immédiatement létal ;</p>\n<p>• une possibilité réelle de s&#39;arrêter ;</p>\n<p>• un minimum d&#39;eau ou de ration si l&#39;effort en a créé le besoin ;</p>\n<p>• l&#39;absence d&#39;une condition interdisant le repos.</p>\n<p>Réserve d&#39;endurance ne retire pas une Fatigue imposée comme coût permanent d&#39;une Blessure, d&#39;une maladie ou d&#39;une privation prolongée tant que sa cause n&#39;est pas traitée.</p>",
+    "traits": ["Nain", "Endurance", "Récupération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-108",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Souffle des profondeurs",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-110",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Endurance au labeur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Robustesse des profondeurs",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "repos de 10 minutes",
+      "prerequisites": "Endurance au labeur ou Souffle des profondeurs",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse des profondeurs",
+        "Traits": "Nain, Endurance, Récupération",
+        "Type": "repos de 10 minutes",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Endurance au labeur ou Souffle des profondeurs"
+      }
+    },
+    "level": 5
+  }
+}

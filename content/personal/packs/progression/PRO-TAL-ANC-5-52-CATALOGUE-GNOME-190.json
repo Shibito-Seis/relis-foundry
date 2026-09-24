@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-190",
+  "name": "Deuxième possibilité",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir obtenu le résultat d&#39;un de ses tests, mais avant que toutes ses conséquences soient résolues, le personnage peut le relancer. Il doit conserver le second résultat.</p>\n<p>Si le second jet transforme un échec en réussite, le MJ introduit une complication mineure qui n&#39;annule pas la réussite : délai, bruit, trace, perte d&#39;un objet commun, position désavantageuse ou attention indésirable.</p>\n<p>Le talent ne peut pas être utilisé sur un jet déjà affecté par un autre effet de Fortune ou d&#39;Infortune.</p>",
+    "traits": ["Gnome", "Fortune"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.55 Talents Gnomes de niveau 9",
+      "family": "Chance capricieuse",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chance capricieuse",
+        "Traits": "Gnome, Fortune",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 9
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-167",
+  "name": "Détournement minuscule",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut employer un objet ordinaire pour une fonction proche mais non prévue : utiliser un jouet optique comme viseur, un ustensile comme levier, un haut-parleur comme capteur rudimentaire ou une coque comme réflecteur.</p>\n<p>Il ignore le malus provenant uniquement du caractère improvisé de l&#39;outil et gagne +2 circonstanciel au test concerné.</p>\n<p>Après le test, l&#39;objet doit être réparé pendant dix minutes avant de pouvoir fournir de nouveau un bonus. Sur un échec critique, il est définitivement inutilisable. Le détournement ne donne pas à l&#39;objet la puissance, la précision ou les propriétés d&#39;un équipement spécialisé.</p>",
+    "traits": ["Gnome", "Improvisation", "Outil"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Bidouillage improbable",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Improvisation, Outil",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

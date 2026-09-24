@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-159",
+  "name": "Montagne parmi les étoiles",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage devient l&#39;ancrage autour duquel les autres trouvent un abri.</p>\n<p>Il choisit jusqu&#39;à 2 + sa Vigueur créatures, avec un minimum de 2, situées dans un rayon de 6 mètres et capables de profiter de sa position, d&#39;un couvert ou d&#39;un appui commun.</p>\n<p>Pour le danger déclencheur :</p>\n<p>• les dégâts physiques subis par les cibles sont divisés par deux après les protections ;</p>\n<p>• elles ne sont pas renversées ou déplacées contre leur volonté ;</p>\n<p>• une cible qui devrait tomber ou être éjectée peut s&#39;arrêter sur un appui accessible dans la zone ;</p>\n<p>• les objets tenus ou fixés ne sont pas automatiquement arrachés par le seul souffle de l&#39;événement.</p>\n<p>Montagne parmi les étoiles n&#39;annule aucune Blessure, ne protège pas contre les dégâts énergétiques ou l&#39;asphyxie et ne fonctionne pas si aucune relation physique crédible ne permet au personnage d&#39;abriter ou d&#39;ancrer les cibles.</p>\n<p>---</p>",
+    "traits": ["Nain", "Protection", "Réaction", "Résistance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-155",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps de métal vivant",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-157",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Souverain de la gravité",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.48 Talents Nains de niveau 25",
+      "family": "Transcendance naine",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Corps de métal vivant ou Souverain de la gravité",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "le personnage et des alliés proches subissent une collision, un effondrement, une explosion physique ou une variation de gravité catastrophique",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance naine",
+        "Traits": "Nain, Protection, Réaction, Résistance",
+        "Type": "Réaction",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Corps de métal vivant ou Souverain de la gravité",
+        "Déclencheur": "le personnage et des alliés proches subissent une collision, un effondrement, une explosion physique ou une variation de gravité catastrophique"
+      }
+    },
+    "level": 25
+  }
+}

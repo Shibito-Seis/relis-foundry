@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-120",
+  "name": "Mineur spatial",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests d&#39;Athlétisme, Endurance ou Ingénierie destinés à :</p>\n<p>• creuser ou forer ;</p>\n<p>• installer une charge d&#39;excavation ;</p>\n<p>• extraire un échantillon ;</p>\n<p>• déplacer des déblais ;</p>\n<p>• sécuriser une zone de minage ;</p>\n<p>• utiliser une foreuse ou un outil d&#39;extraction.</p>\n<p>Avec l&#39;équipement approprié et dans un matériau normalement exploitable, il réduit d&#39;environ un quart le temps nécessaire à une excavation ordinaire accomplie seul ou sous sa direction.</p>\n<p>Mineur spatial ne permet pas de traverser à mains nues une coque, une roche dure ou un blindage. Les explosifs, machines et ressources consommables restent nécessaires.</p>",
+    "traits": ["Nain", "Exploration", "Minage", "Technologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Mineurs des mondes",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mineurs des mondes",
+        "Traits": "Nain, Exploration, Minage, Technologie",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

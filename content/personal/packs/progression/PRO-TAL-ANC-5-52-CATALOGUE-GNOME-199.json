@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-199",
+  "name": "Éclat impérissable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Tant qu&#39;au moins une de ses Ancres reste sincèrement accessible, l&#39;Affadissement du personnage ne peut pas dépasser le rang 1.</p>\n<p>Lorsqu&#39;il vit un Épisode d&#39;Éclat, il peut aussi faire bénéficier un autre Gnome présent de sa réduction de rang après un repos long, même si ce Gnome a déjà récupéré une fois pendant les 30 derniers jours. Une même cible ne peut recevoir ce bénéfice supplémentaire qu&#39;une fois par intervalle.</p>\n<p>Si toutes ses Ancres sont détruites ou délibérément abandonnées, la protection est suspendue jusqu&#39;à ce qu&#39;il fonde une nouvelle Ancre par un événement significatif. Le talent ne supprime pas un Affadissement déjà supérieur à 1 au moment de son acquisition ; il doit encore être récupéré normalement.</p>",
+    "traits": ["Gnome", "Affadissement", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-194",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Refus de pâlir",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.59 Talents Gnomes de niveau 25",
+      "family": "Transcendance gnome",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Refus de pâlir",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance gnome",
+        "Traits": "Gnome, Affadissement, Mythique",
+        "Type": "Passif",
+        "Prérequis": "Refus de pâlir"
+      }
+    },
+    "level": 25
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-150",
+  "name": "Foreur des mondes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec une foreuse, des charges ou un équipement d&#39;excavation adapté, le personnage accomplit en un quart du temps normal les tâches ordinaires destinées à ouvrir un passage dans un matériau exploitable.</p>\n<p>Après dix minutes d&#39;étude d&#39;une zone, il peut effectuer un test de Sciences, Investigation ou Ingénierie afin de déterminer :</p>\n<p>• le trajet d&#39;excavation le plus court raisonnable ;</p>\n<p>• l&#39;emplacement d&#39;une cavité ou d&#39;un point de sortie probable ;</p>\n<p>• la principale menace d&#39;effondrement, de gaz ou de pression ;</p>\n<p>• l&#39;étaiement ou l&#39;évacuation indispensable avant de commencer.</p>\n<p>Sur une réussite, les participants suivant ce plan gagnent +2 circonstanciel à leurs tests de minage et de sécurisation du passage.</p>\n<p>Foreur des mondes n&#39;autorise pas une excavation silencieuse, ne crée pas de matériel et ne permet pas de traverser une coque, un champ ou un matériau que les outils présents ne peuvent normalement pas entamer.</p>",
+    "traits": ["Nain", "Exploration", "Minage", "Préparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-132",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Progression souterraine",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-143",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Briseur de veines",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.45 Talents Nains de niveau 13",
+      "family": "Mineurs des mondes",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif et étude de 10 minutes",
+      "prerequisites": "Briseur de veines et Progression souterraine",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mineurs des mondes",
+        "Traits": "Nain, Exploration, Minage, Préparation",
+        "Type": "Passif et étude de 10 minutes",
+        "Prérequis": "Briseur de veines et Progression souterraine"
+      }
+    },
+    "level": 13
+  }
+}

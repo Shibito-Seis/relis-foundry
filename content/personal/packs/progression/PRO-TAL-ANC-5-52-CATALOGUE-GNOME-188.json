@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-188",
+  "name": "Convergence improbable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage construit une interface provisoire entre un système technologique et un effet magique, ou entre un appareil techno-magique et un protocole normalement incompatible.</p>\n<p>Pendant un seul test ou un seul tour, l&#39;un peut transmettre à l&#39;autre une information, une commande ou une impulsion simple. Le personnage gagne +2 circonstanciel au test nécessaire.</p>\n<p>La convergence ne transfère ni puissance, ni Mana, ni charge au-delà de ce que les deux systèmes peuvent supporter. Elle ne copie aucun sort ou logiciel et disparaît immédiatement après l&#39;utilisation.</p>",
+    "traits": ["Gnome", "Interface", "Techno-magie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-171",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Interface fantasque",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-172",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Catalyseur de poche",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.55 Talents Gnomes de niveau 9",
+      "family": "Techno-magie expérimentale",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Interface fantasque et Catalyseur de poche",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Techno-magie expérimentale",
+        "Traits": "Gnome, Interface, Techno-magie",
+        "Type": "Activité de 1 minute",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Interface fantasque et Catalyseur de poche"
+      }
+    },
+    "level": 9
+  }
+}

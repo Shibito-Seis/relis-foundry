@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-198",
+  "name": "Machine qui ne devrait pas fonctionner",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage construit une machine provisoire accomplissant une fonction normalement impossible avec les pièces présentes, mais concevable dans la scène : rendre compatibles deux systèmes, stabiliser une réaction, traduire un signal inconnu ou substituer temporairement une fonction manquante.</p>\n<p>La machine permet jusqu&#39;à trois utilisations ou fonctionne pendant une scène. Elle donne +3 circonstanciel aux tests directement liés à sa fonction.</p>\n<p>Elle ne crée pas de matière ou d&#39;énergie, ne ressuscite pas, ne copie pas un artefact, ne remplace pas un module de vaisseau entier et ne produit pas une arme plus puissante que l&#39;équipement du niveau. À sa fin, elle devient irréparable et ses composants essentiels sont consommés.</p>\n<p>---</p>",
+    "traits": ["Gnome", "Invention", "Prototype", "Techno-magie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-188",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Convergence improbable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-193",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Atelier impossible",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.58 Talents Gnomes de niveau 21",
+      "family": "Transcendance gnome",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Atelier impossible et Convergence improbable",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance gnome",
+        "Traits": "Gnome, Invention, Prototype, Techno-magie",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Atelier impossible et Convergence improbable"
+      }
+    },
+    "level": 21
+  }
+}

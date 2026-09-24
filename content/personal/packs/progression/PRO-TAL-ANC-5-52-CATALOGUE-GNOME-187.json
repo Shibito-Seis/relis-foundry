@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-187",
+  "name": "Invention réversible",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le Prototype de crise du personnage peut posséder deux fonctions simples liées, mais une seule peut être utilisée à la fois. Après chaque utilisation, le personnage peut consacrer une minute à le reconfigurer pour l&#39;autre fonction.</p>\n<p>S&#39;il démonte volontairement le prototype avant sa défaillance, il récupère ses composants non consommables. Cela réduit de moitié le coût matériel de son prochain Prototype de crise comparable, sans jamais produire un gain commercial.</p>\n<p>Le prototype cesse toujours de fonctionner au prochain repos long et ne peut pas cumuler deux bonus sur un même test.</p>",
+    "traits": ["Gnome", "Fabrication", "Prototype"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-181",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Prototype de crise",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.55 Talents Gnomes de niveau 9",
+      "family": "Bidouillage improbable",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "amélioration",
+      "prerequisites": "Prototype de crise",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Fabrication, Prototype",
+        "Type": "amélioration",
+        "Prérequis": "Prototype de crise"
+      }
+    },
+    "level": 9
+  }
+}

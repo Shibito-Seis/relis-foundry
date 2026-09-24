@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-168",
+  "name": "Réparation créative",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec des outils et des pièces plausibles, le personnage effectue un test d&#39;Ingénierie, de Systèmes de vaisseau ou de Techno-magie pour stabiliser un objet ou un sous-système endommagé.</p>\n<p>Sur une réussite, la fonction principale choisie redevient utilisable jusqu&#39;à la fin de la scène. L&#39;objet reste endommagé et doit ensuite recevoir une réparation réelle. Sur une réussite critique, la stabilisation dure jusqu&#39;au prochain repos long ou jusqu&#39;à une nouvelle défaillance.</p>\n<p>Le talent ne restaure pas de PV structurels, de charge, de munitions, de Mana ou de matière. Il ne peut pas rendre étanche une coque béante ni fonctionner sans les outils et composants minimaux.</p>",
+    "traits": ["Gnome", "Exploration", "Réparation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Bidouillage improbable",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par objet et par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Exploration, Réparation",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par objet et par scène"
+      }
+    },
+    "level": 1
+  }
+}

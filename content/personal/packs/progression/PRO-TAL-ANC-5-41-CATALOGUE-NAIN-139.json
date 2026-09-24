@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-139",
+  "name": "Maître d'atelier",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage augmente immédiatement d&#39;un rang sa maîtrise en Ingénierie, Systèmes de vaisseau ou Techno-magie, jusqu&#39;à un maximum de Maître.</p>\n<p>Après dix minutes consacrées à répartir les tâches, préparer les outils et expliquer une procédure, il peut diriger jusqu&#39;à 2 + sa Technologie participants, avec un minimum de 2.</p>\n<p>Pendant le chantier ou la réparation préparée :</p>\n<p>• les participants comprennent leur rôle et les principaux risques ;</p>\n<p>• le premier test d&#39;Aide de chaque participant pertinent gagne +2 circonstanciel ;</p>\n<p>• un participant Qualifié peut suivre une étape ordinaire sans ralentir le groupe uniquement à cause d&#39;une interface naine ou d&#39;un vocabulaire d&#39;atelier inhabituel.</p>\n<p>Maître d&#39;atelier ne donne aucune maîtrise aux participants et ne remplace pas un spécialiste pour une étape qui exige son expertise propre.</p>",
+    "traits": ["Nain", "Compétence", "Coopération", "Technologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-114",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Formation de la forge",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-129",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forge de campagne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Forge et ouvrage",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif et préparation",
+      "prerequisites": "Formation de la forge et Forge de campagne",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Forge et ouvrage",
+        "Traits": "Nain, Compétence, Coopération, Technologie",
+        "Type": "Passif et préparation",
+        "Prérequis": "Formation de la forge et Forge de campagne"
+      }
+    },
+    "level": 9
+  }
+}

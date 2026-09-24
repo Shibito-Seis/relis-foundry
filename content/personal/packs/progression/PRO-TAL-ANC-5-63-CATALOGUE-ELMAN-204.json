@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-204",
+  "name": "Souplesse mutée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests d&#39;Acrobaties pour se contorsionner, se dégager d&#39;une prise, franchir une ouverture étroite ou amortir une chute.</p>\n<p>Il peut se déplacer à la moitié de sa Vitesse dans un passage étroit tant que son corps peut physiquement y entrer, sans subir de malus supplémentaire dû à sa morphologie.</p>\n<p>Le talent ne permet pas de franchir une ouverture plus petite que le corps, de traverser une protection ou d&#39;échapper automatiquement à une immobilisation.</p>",
+    "traits": ["Elman", "Acrobaties", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Physiologie évoluée",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie évoluée",
+        "Traits": "Elman, Acrobaties, Physiologie",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

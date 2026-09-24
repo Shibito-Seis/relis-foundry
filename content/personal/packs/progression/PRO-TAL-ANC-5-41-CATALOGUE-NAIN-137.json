@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-137",
+  "name": "Maître des hautes gravités",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après dix minutes d&#39;exposition ou d&#39;exercice, le personnage s&#39;adapte à une gravité supérieure à la normale mais encore survivable.</p>\n<p>Tant qu&#39;il reste soumis à cette gravité ou à une intensité comparable :</p>\n<p>• il gagne +2 circonstanciel aux tests d&#39;Athlétisme, Endurance et Pilotage destinés à agir malgré elle ;</p>\n<p>• les réductions de vitesse qu&#39;elle lui impose sont diminuées de 2 mètres, sans dépasser sa vitesse normale ;</p>\n<p>• pour déterminer la Fatigue ou le Stress qu&#39;elle provoque, son intensité est considérée comme inférieure d&#39;un degré ;</p>\n<p>• il conserve un appui stable dans des conditions où une créature non préparée devrait immédiatement effectuer un test.</p>\n<p>Le talent ne protège ni les organes contre une gravité létale, ni l&#39;équipement contre sa propre masse. Il ne permet pas de supporter une accélération écrasante, un impact ou une panne catastrophique sans les protections nécessaires.</p>",
+    "traits": ["Nain", "Adaptation", "Gravité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-113",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sens gravitationnel",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-128",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Centre de gravité immuable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Maîtrise gravitationnelle",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "adaptation après 10 minutes",
+      "prerequisites": "Sens gravitationnel ou Centre de gravité immuable",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Maîtrise gravitationnelle",
+        "Traits": "Nain, Adaptation, Gravité",
+        "Type": "adaptation après 10 minutes",
+        "Prérequis": "Sens gravitationnel ou Centre de gravité immuable"
+      }
+    },
+    "level": 9
+  }
+}

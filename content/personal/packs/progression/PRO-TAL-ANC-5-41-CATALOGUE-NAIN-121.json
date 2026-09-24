@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-121",
+  "name": "Habitué des espaces clos",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Sang-froid ou de Volonté contre :</p>\n<p>• claustrophobie ;</p>\n<p>• obscurité prolongée ;</p>\n<p>• isolement dans un conduit, une mine ou une capsule ;</p>\n<p>• panique provoquée par un éboulement ou un passage étroit ;</p>\n<p>• perte de repères dans un réseau de galeries.</p>\n<p>Lorsqu&#39;un passage est assez large pour son corps et son équipement, il peut s&#39;y déplacer à la moitié de sa vitesse au lieu d&#39;être automatiquement immobilisé, sous réserve d&#39;un test si le passage est dangereux.</p>\n<p>Le talent ne fournit ni air, ni lumière, ni protection contre l&#39;écrasement. Il ne supprime pas le Stress causé par une menace réelle indépendante de l&#39;espace clos.</p>",
+    "traits": ["Nain", "Mental", "Exploration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Mineurs des mondes",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mineurs des mondes",
+        "Traits": "Nain, Mental, Exploration",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

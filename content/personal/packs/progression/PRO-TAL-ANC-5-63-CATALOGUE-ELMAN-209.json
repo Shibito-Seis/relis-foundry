@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-209",
+  "name": "Pulsation du vivant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>En observant une créature visible à portée proche ou en la touchant, le personnage apprend si son énergie interne paraît stable, diminuée, agitée, interrompue ou artificiellement modifiée.</p>\n<p>Il gagne +2 circonstanciel au premier test de Médecine ou de Canalisation effectué pendant la scène pour diagnostiquer l&#39;état observé.</p>\n<p>Le talent n&#39;indique ni maladie exacte, ni Blessure cachée, ni émotion précise et ne remplace pas un examen médical.</p>",
+    "traits": ["Elman", "Diagnostic", "Énergie", "Vivant"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Sensibilité énergétique",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "1 Action (Concentration)",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sensibilité énergétique",
+        "Traits": "Elman, Diagnostic, Énergie, Vivant",
+        "Type": "1 Action (Concentration)"
+      }
+    },
+    "level": 1
+  }
+}

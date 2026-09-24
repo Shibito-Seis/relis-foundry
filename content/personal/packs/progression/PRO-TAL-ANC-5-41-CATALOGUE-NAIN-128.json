@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-128",
+  "name": "Centre de gravité immuable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Si le personnage possède un appui solide, il transforme un échec simple en réussite simple. Sur un échec critique, il transforme à la place l&#39;échec critique en échec simple.</p>\n<p>Si l&#39;effet ne prévoyait aucun test mais imposait directement un déplacement, le personnage peut réduire ce déplacement de 4 mètres, jusqu&#39;à un minimum de 0, à la place.</p>\n<p>Centre de gravité immuable ne fonctionne pas en chute libre, sans appui, lors d&#39;une téléportation ou si la surface d&#39;appui est elle-même emportée. Il ne peut pas modifier un jet déjà affecté par un autre effet de Fortune.</p>",
+    "traits": ["Nain", "Fortune", "Gravité", "Réaction", "Stabilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-111",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pieds ancrés",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Maîtrise gravitationnelle",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Pieds ancrés",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage échoue à un test ou une défense contre un renversement ou un déplacement forcé",
+      "duration": "",
+      "metadata": {
+        "Famille": "Maîtrise gravitationnelle",
+        "Traits": "Nain, Fortune, Gravité, Réaction, Stabilité",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Pieds ancrés",
+        "Déclencheur": "le personnage échoue à un test ou une défense contre un renversement ou un déplacement forcé"
+      }
+    },
+    "level": 5
+  }
+}

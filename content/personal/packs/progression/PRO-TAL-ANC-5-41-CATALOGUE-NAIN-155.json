@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-155",
+  "name": "Corps de métal vivant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant 3 rounds, la densité du personnage augmente et sa peau prend l&#39;éclat du métal ou de la pierre polie.</p>\n<p>Sous cette forme :</p>\n<p>• il gagne une Résistance aux dégâts physiques égale à la moitié de son Niveau général, arrondie à l&#39;inférieur ;</p>\n<p>• il gagne +2 circonstanciel aux tests de Force, Vigueur, Athlétisme et Endurance ;</p>\n<p>• il compte comme une catégorie de taille plus grande pour déterminer ce qui peut le pousser, le saisir, le porter ou lui servir d&#39;appui ;</p>\n<p>• il ne subit aucun dégât mineur provenant de débris ordinaires, de vibrations ou d&#39;une pression mécanique non offensive ;</p>\n<p>• ses attaques à mains nues peuvent infliger des dégâts contondants sans qu&#39;il se blesse en frappant un matériau ordinaire.</p>\n<p>Le personnage reste biologique : il peut être empoisonné, asphyxié, brûlé, électrocuté ou affecté mentalement. La forme ne le transforme ni en IAA, ni en objet, et ne protège pas son équipement au-delà de ses règles normales.</p>",
+    "traits": ["Nain", "Métamorphose", "Résistance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-147",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cœur de montagne",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-153",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forteresse vivante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.47 Talents Nains de niveau 21",
+      "family": "Transcendance naine",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Cœur de montagne ou Forteresse vivante",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance naine",
+        "Traits": "Nain, Métamorphose, Résistance",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Cœur de montagne ou Forteresse vivante"
+      }
+    },
+    "level": 21
+  }
+}

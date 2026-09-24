@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-165",
+  "name": "Passion déclarée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage définit une passion précise : exobiologie fongique, opéras stellaires, moteurs antiques, illusions culinaires, faune synthétique ou tout autre domaine comparable. Cette passion devient automatiquement l&#39;une de ses Ancres d&#39;Éclat, sans augmenter leur nombre.</p>\n<p>Une fois par scène, après s&#39;être réellement engagé dans sa passion, il gagne +2 circonstanciel à un test de la compétence choisie directement lié à celle-ci.</p>\n<p>La passion et la compétence associée peuvent être changées lors du remplacement narratif de l&#39;Ancre. Le talent ne transforme pas un thème trop large, comme « la technologie » ou « l&#39;aventure », en spécialité universelle.</p>",
+    "traits": ["Gnome", "Passion", "Spécialité"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Curiosité insatiable",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une passion précise et une compétence pertinente",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Curiosité insatiable",
+        "Traits": "Gnome, Passion, Spécialité",
+        "Type": "Passif",
+        "Choix": "une passion précise et une compétence pertinente"
+      }
+    },
+    "level": 1
+  }
+}

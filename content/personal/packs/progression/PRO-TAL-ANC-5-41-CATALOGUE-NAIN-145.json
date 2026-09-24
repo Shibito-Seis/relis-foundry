@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-145",
+  "name": "Maîtrise de l'arsenal nain",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage augmente immédiatement d&#39;un rang sa maîtrise en Mêlée ou Armes lourdes, jusqu&#39;à un maximum de Maître.</p>\n<p>La compétence choisie doit correspondre à au moins une des familles sélectionnées grâce à Arsenal nain.</p>\n<p>Lorsqu&#39;il utilise une arme de ces familles, il ignore jusqu&#39;à 1 point de malus circonstanciel provenant exclusivement :</p>\n<p>• de son recul ;</p>\n<p>• de son équilibre particulier ;</p>\n<p>• d&#39;une posture de tir ou de frappe contrainte ;</p>\n<p>• de l&#39;usage dans un couloir ou un espace de travail étroit ;</p>\n<p>• d&#39;une interface culturelle inhabituelle.</p>\n<p>Ce talent ne donne aucune arme, ne retire pas les prérequis physiques ou technologiques et ne permet pas d&#39;utiliser une arme Brisée sans conséquence.</p>",
+    "traits": ["Nain", "Arme", "Compétence"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-122",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arsenal nain",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Arsenal du bastion",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Arsenal nain",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Arsenal du bastion",
+        "Traits": "Nain, Arme, Compétence",
+        "Type": "Passif",
+        "Prérequis": "Arsenal nain"
+      }
+    },
+    "level": 9
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-152",
+  "name": "Inébranlable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage diffère la conséquence déclenchante jusqu&#39;à la fin de son prochain tour.</p>\n<p>Pendant cet ultime intervalle :</p>\n<p>• il peut agir normalement sous réserve de ses autres Blessures et états ;</p>\n<p>• il ne peut pas utiliser de nouvelle réaction ;</p>\n<p>• il gagne +2 circonstanciel aux tests directement consacrés à se mettre en sécurité, protéger un allié ou achever une action déjà engagée ;</p>\n<p>• les dégâts, coûts et autres conséquences de l&#39;effet restent pleinement appliqués.</p>\n<p>À la fin de son prochain tour, la conséquence différée s&#39;applique pour sa durée restante si elle n&#39;a pas été retirée par un soin, une libération ou une action appropriée.</p>\n<p>Inébranlable ne diffère pas la mort, la désintégration, 0 PV, la destruction d&#39;un organe vital ou l&#39;effondrement d&#39;un support dont le personnage dépend physiquement.</p>",
+    "traits": ["Nain", "Réaction", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-147",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cœur de montagne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.46 Talents Nains de niveau 17",
+      "family": "Robustesse des profondeurs",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Cœur de montagne",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "un effet devrait rendre immédiatement le personnage inconscient, paralysé, immobilisé, en Panique ou incapable d'agir",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse des profondeurs",
+        "Traits": "Nain, Réaction, Survie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Cœur de montagne",
+        "Déclencheur": "un effet devrait rendre immédiatement le personnage inconscient, paralysé, immobilisé, en Panique ou incapable d'agir"
+      }
+    },
+    "level": 17
+  }
+}

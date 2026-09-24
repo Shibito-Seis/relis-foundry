@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-183",
+  "name": "Surcharge inspirée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant un test portant sur un système techno-magique, le personnage peut pousser son catalyseur ou l&#39;appareil au-delà de son régime stable et gagner +3 circonstanciel.</p>\n<p>Après le test, il choisit une conséquence : gagner 1 Stress, rendre son catalyseur inutilisable jusqu&#39;à dix minutes de recalibrage, ou faire subir au système une instabilité mineure qui demande une intervention avant sa prochaine utilisation.</p>\n<p>En cas d&#39;échec critique, la conséquence choisie s&#39;ajoute aux conséquences normales. Cette surcharge ne remplace pas les futures règles de Mana, Flux, batterie ou surcharge énergétique.</p>",
+    "traits": ["Gnome", "Risque", "Techno-magie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-172",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Catalyseur de poche",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-177",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Instabilité calculée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.54 Talents Gnomes de niveau 5",
+      "family": "Techno-magie expérimentale",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Instabilité calculée ou Catalyseur de poche",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Techno-magie expérimentale",
+        "Traits": "Gnome, Risque, Techno-magie",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Instabilité calculée ou Catalyseur de poche"
+      }
+    },
+    "level": 5
+  }
+}

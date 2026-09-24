@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-52-CATALOGUE-GNOME-162",
+  "name": "Question suivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir réussi un test destiné à examiner un indice, un objet, une créature, un lieu ou un phénomène, le personnage peut poser au MJ une question complémentaire parmi les suivantes :</p>\n<p>• à quoi ceci est-il relié ?</p>\n<p>• quel danger accessible à mon observation ai-je presque manqué ?</p>\n<p>• quelle fonction, transformation ou utilisation antérieure laisse une trace ?</p>\n<p>• quelle prochaine méthode d&#39;étude paraît la plus prometteuse ?</p>\n<p>Le MJ répond honnêtement selon les indices réellement accessibles. Le personnage gagne +2 circonstanciel au premier test effectué pendant la scène pour poursuivre cette réponse.</p>\n<p>Le talent ne révèle pas un secret sans trace, une intention intérieure ou un élément qu&#39;aucun moyen présent ne permettrait de déduire.</p>",
+    "traits": ["Gnome", "Exploration", "Investigation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Curiosité insatiable",
+      "ancestry": "### 5.52 Catalogue Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Curiosité insatiable",
+        "Traits": "Gnome, Exploration, Investigation",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}
