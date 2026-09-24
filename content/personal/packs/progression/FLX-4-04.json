@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-4-04",
+  "name": "Réécriture brève",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-4"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 5 / R / 12 m</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>Après un test ou jusqu&#39;à 4d8 + MM dégâts, annule ce résultat et le résout une seconde fois ; le second résultat est obligatoire.</p>\n<p><strong>Intensification :</strong> Cible supplémentaire touchée par le même événement.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "4",
+      "activation": "5 / R / 12 m",
+      "discipline": "Préscience",
+      "effect": "Après un test ou jusqu'à 4d8 + MM dégâts, annule ce résultat et le résout une seconde fois ; le second résultat est obligatoire.",
+      "scaling": "Cible supplémentaire touchée par le même événement."
+    },
+    "level": 13
+  }
+}

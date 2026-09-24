@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-6-03",
+  "name": "Singularité captive",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-6"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / Explosion 4 à 36 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAP ; 12d6 dégâts, attire 9 m et Immobilise 1 tour sur critique.</p>\n<p><strong>Intensification :</strong> +1d6, attraction +3 m ou rayon +1.</p>",
+    "traits": ["Flux", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "6",
+      "activation": "7 / 3 A / Explosion 4 à 36 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAP ; 12d6 dégâts, attire 9 m et Immobilise 1 tour sur critique.",
+      "scaling": "+1d6, attraction +3 m ou rayon +1."
+    },
+    "level": 19
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-2-02",
+  "name": "Prison vectorielle",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-2"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / 18 m</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Test contre CAE ; échec de la cible : Immobilisée jusqu&#39;à son prochain tour ; critique : 3 tours avec test de sortie.</p>\n<p><strong>Intensification :</strong> Durée +1 tour ou cible supplémentaire proche.</p>",
+    "traits": ["Flux", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "2",
+      "activation": "2 / 2 A / 18 m",
+      "discipline": "Transformation",
+      "effect": "Test contre CAE ; échec de la cible : Immobilisée jusqu'à son prochain tour ; critique : 3 tours avec test de sortie.",
+      "scaling": "Durée +1 tour ou cible supplémentaire proche."
+    },
+    "level": 7
+  }
+}

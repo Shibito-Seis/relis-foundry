@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-6-06",
+  "name": "Cartographie stellaire",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-6"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 1 h / système</p>\n<p><strong>Discipline :</strong> Divination</p>\n<p>Cartographie courants, nœuds, anomalies, routes et zones nulles d’un système stellaire à partir d’un observatoire ou vaisseau ; +3 Navigation.</p>\n<p><strong>Intensification :</strong> Système adjacent ou précision des dangers cachés.</p>",
+    "traits": ["Flux", "Divination"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "6",
+      "activation": "6 / 1 h / système",
+      "discipline": "Divination",
+      "effect": "Cartographie courants, nœuds, anomalies, routes et zones nulles d’un système stellaire à partir d’un observatoire ou vaisseau ; +3 Navigation.",
+      "scaling": "Système adjacent ou précision des dangers cachés."
+    },
+    "level": 19
+  }
+}

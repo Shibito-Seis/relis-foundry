@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-1-02",
+  "name": "Baume d'accord",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / 12 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Un vivant consentant récupère 1d6 + MM PV ; ne soigne ni IAA ni Blessure critique.</p>\n<p><strong>Intensification :</strong> +1d6 soin.</p>",
+    "traits": ["Mana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "1 / 2 A / 12 m",
+      "discipline": "Vitalisme",
+      "effect": "Un vivant consentant récupère 1d6 + MM PV ; ne soigne ni IAA ni Blessure critique.",
+      "scaling": "+1d6 soin."
+    },
+    "level": 4
+  }
+}

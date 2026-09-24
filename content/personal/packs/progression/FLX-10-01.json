@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-10-01",
+  "name": "Porte des étoiles",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-10"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 10.</strong></p>\n<p><strong>Activation :</strong> 12 / projet de 7 jours / deux sites</p>\n<p><strong>Discipline :</strong> Translocation</p>\n<p>Établit pendant 30 jours une porte interstellaire bidirectionnelle de 20 m entre deux installations accordées ; débit de masse fixé par les sites.</p>\n<p><strong>Intensification :</strong> Chaque semaine et coût supplémentaires doublent durée, ouverture ou débit.</p>",
+    "traits": ["Flux", "Translocation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "10",
+      "activation": "12 / projet de 7 jours / deux sites",
+      "discipline": "Translocation",
+      "effect": "Établit pendant 30 jours une porte interstellaire bidirectionnelle de 20 m entre deux installations accordées ; débit de masse fixé par les sites.",
+      "scaling": "Chaque semaine et coût supplémentaires doublent durée, ouverture ou débit."
+    },
+    "level": 30
+  }
+}

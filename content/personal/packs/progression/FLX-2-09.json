@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-2-09",
+  "name": "Passage intangible",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-2"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / personnel</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Traverse jusqu&#39;à 1 m de matière non isolante et réapparaît dans un espace libre visible ou sondé.</p>\n<p><strong>Intensification :</strong> Épaisseur +1 m ou allié touché pour 1 Flux additionnel.</p>",
+    "traits": ["Flux", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "2",
+      "activation": "2 / 2 A / personnel",
+      "discipline": "Transformation",
+      "effect": "Traverse jusqu'à 1 m de matière non isolante et réapparaît dans un espace libre visible ou sondé.",
+      "scaling": "Épaisseur +1 m ou allié touché pour 1 Flux additionnel."
+    },
+    "level": 7
+  }
+}

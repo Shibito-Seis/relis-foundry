@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-M-01",
+  "name": "Chemin entre les galaxies",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-m"],
+  "system": {
+    "description": "<p><strong>Flux — Rang Mythique.</strong></p>\n<p><strong>Activation :</strong> 15 Flux + 1 PM / projet de 7 jours</p>\n<p><strong>Discipline :</strong> Translocation</p>\n<p>Ouvre 1 h un passage vers une balise extragalactique ou un courant cosmique découvert, assez large pour un vaisseau capital.</p>\n<p><strong>Intensification :</strong> Deux sites, carte, installations et risque causal obligatoires ; aucune destination inconnue gratuite.</p>",
+    "traits": ["Flux", "Translocation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "M",
+      "activation": "15 Flux + 1 PM / projet de 7 jours",
+      "discipline": "Translocation",
+      "effect": "Ouvre 1 h un passage vers une balise extragalactique ou un courant cosmique découvert, assez large pour un vaisseau capital.",
+      "scaling": "Deux sites, carte, installations et risque causal obligatoires ; aucune destination inconnue gratuite."
+    },
+    "level": 30
+  }
+}

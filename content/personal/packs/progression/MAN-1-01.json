@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-1-01",
+  "name": "Lance hexarcane",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / 24 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAE ; 2d8 dégâts d&#39;une expression apprise.</p>\n<p><strong>Intensification :</strong> +1d8 ; tous les 2 paliers, portée +6 m à la place du dé.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "2 / 2 A / 24 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAE ; 2d8 dégâts d'une expression apprise.",
+      "scaling": "+1d8 ; tous les 2 paliers, portée +6 m à la place du dé."
+    },
+    "level": 4
+  }
+}

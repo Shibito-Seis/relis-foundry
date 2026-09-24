@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-7-02",
+  "name": "Prison hors-temps",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-7"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / 30 m</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Test contre CAE ; échec : cible en stase isolée 5 tours ; critique : 1 min. Elle est intouchable et inconsciente du temps.</p>\n<p><strong>Intensification :</strong> Durée +2 tours ou seconde cible.</p>",
+    "traits": ["Flux", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "7",
+      "activation": "7 / 3 A / 30 m",
+      "discipline": "Transformation",
+      "effect": "Test contre CAE ; échec : cible en stase isolée 5 tours ; critique : 1 min. Elle est intouchable et inconsciente du temps.",
+      "scaling": "Durée +2 tours ou seconde cible."
+    },
+    "level": 22
+  }
+}

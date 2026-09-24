@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-4-05",
+  "name": "Passage interposé",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-4"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 4 / R / 18 m</p>\n<p><strong>Discipline :</strong> Translocation</p>\n<p>Quand un allié est ciblé, échange instantanément sa position avec celle du lanceur ou d&#39;un volontaire ; l&#39;attaque vise le nouvel occupant.</p>\n<p><strong>Intensification :</strong> Portée +12 m ou téléporte l&#39;allié vers un espace adjacent libre sans échange.</p>",
+    "traits": ["Flux", "Translocation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "4",
+      "activation": "4 / R / 18 m",
+      "discipline": "Translocation",
+      "effect": "Quand un allié est ciblé, échange instantanément sa position avec celle du lanceur ou d'un volontaire ; l'attaque vise le nouvel occupant.",
+      "scaling": "Portée +12 m ou téléporte l'allié vers un espace adjacent libre sans échange."
+    },
+    "level": 13
+  }
+}

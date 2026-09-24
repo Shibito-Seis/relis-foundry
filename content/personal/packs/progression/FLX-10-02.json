@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-10-02",
+  "name": "Réécriture du moment",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-10"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 10.</strong></p>\n<p><strong>Activation :</strong> 12 / R / scène</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>Ramène jusqu’à 1 minute de scène, restaure états et ressources et conserve les souvenirs des êtres liés au lanceur ; le nouveau déroulement est définitif. Une fois par arc narratif et dette causale majeure.</p>\n<p><strong>Intensification :</strong> Aucune intensification ordinaire ou Mythique automatique.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "10",
+      "activation": "12 / R / scène",
+      "discipline": "Préscience",
+      "effect": "Ramène jusqu’à 1 minute de scène, restaure états et ressources et conserve les souvenirs des êtres liés au lanceur ; le nouveau déroulement est définitif. Une fois par arc narratif et dette causale majeure.",
+      "scaling": "Aucune intensification ordinaire ou Mythique automatique."
+    },
+    "level": 30
+  }
+}

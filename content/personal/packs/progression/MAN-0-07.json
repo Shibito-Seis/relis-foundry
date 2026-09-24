@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-0-07",
+  "name": "Étincelle conductrice",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 2 A / 9 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAE ; 1d4 électrique ; +1 circonstanciel contre appareil exposé ou cible mouillée.</p>\n<p><strong>Intensification :</strong> +1d4 et ignore 1 point de protection électrique.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "0",
+      "activation": "2 A / 9 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAE ; 1d4 électrique ; +1 circonstanciel contre appareil exposé ou cible mouillée.",
+      "scaling": "+1d4 et ignore 1 point de protection électrique."
+    },
+    "level": 1
+  }
+}

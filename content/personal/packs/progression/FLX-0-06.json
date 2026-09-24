@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-0-06",
+  "name": "Faille visuelle",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-0"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 1 A / personnel</p>\n<p><strong>Discipline :</strong> Illusion</p>\n<p>Déforme le contour ; +1 circonstanciel à la prochaine Discrétion avant la fin du tour.</p>\n<p><strong>Intensification :</strong> Bonus +2 et persiste jusqu&#39;au prochain tour.</p>",
+    "traits": ["Flux", "Illusion"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "0",
+      "activation": "1 A / personnel",
+      "discipline": "Illusion",
+      "effect": "Déforme le contour ; +1 circonstanciel à la prochaine Discrétion avant la fin du tour.",
+      "scaling": "Bonus +2 et persiste jusqu'au prochain tour."
+    },
+    "level": 1
+  }
+}

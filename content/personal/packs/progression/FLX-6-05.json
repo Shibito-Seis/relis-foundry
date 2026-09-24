@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-6-05",
+  "name": "Réseau causal",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-6"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / émanation 12 m</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>Six alliés relancent chacun un échec simple pendant la scène ; le second résultat est obligatoire et chaque cible ne l’utilise qu’une fois.</p>\n<p><strong>Intensification :</strong> Deux alliés ou une seconde relance collective coûtant 1 Flux par cible.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "6",
+      "activation": "6 / 3 A / émanation 12 m",
+      "discipline": "Préscience",
+      "effect": "Six alliés relancent chacun un échec simple pendant la scène ; le second résultat est obligatoire et chaque cible ne l’utilise qu’une fois.",
+      "scaling": "Deux alliés ou une seconde relance collective coûtant 1 Flux par cible."
+    },
+    "level": 19
+  }
+}

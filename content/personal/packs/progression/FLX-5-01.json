@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-5-01",
+  "name": "Portail de résonance",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-5"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 6 / 10 min / 100 km</p>\n<p><strong>Discipline :</strong> Translocation</p>\n<p>Relie 10 min deux balises accordées ; ouverture de 3 m, traversée bidirectionnelle, isolation de Flux opposable.</p>\n<p><strong>Intensification :</strong> Portée ×10, taille +2 m ou durée 1 h.</p>",
+    "traits": ["Flux", "Translocation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "5",
+      "activation": "6 / 10 min / 100 km",
+      "discipline": "Translocation",
+      "effect": "Relie 10 min deux balises accordées ; ouverture de 3 m, traversée bidirectionnelle, isolation de Flux opposable.",
+      "scaling": "Portée ×10, taille +2 m ou durée 1 h."
+    },
+    "level": 16
+  }
+}

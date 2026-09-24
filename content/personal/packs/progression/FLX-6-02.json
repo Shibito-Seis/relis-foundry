@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-6-02",
+  "name": "Boucle de secondes",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-6"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / émanation 9 m</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>Jusqu’à trois alliés gagnent immédiatement 1 A utilisable seulement pour mouvement, défense, posture ou objet ; une fois par cible et par scène.</p>\n<p><strong>Intensification :</strong> Une cible supplémentaire.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "6",
+      "activation": "7 / 3 A / émanation 9 m",
+      "discipline": "Préscience",
+      "effect": "Jusqu’à trois alliés gagnent immédiatement 1 A utilisable seulement pour mouvement, défense, posture ou objet ; une fois par cible et par scène.",
+      "scaling": "Une cible supplémentaire."
+    },
+    "level": 19
+  }
+}

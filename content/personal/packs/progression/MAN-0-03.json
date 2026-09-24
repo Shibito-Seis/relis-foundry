@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-0-03",
+  "name": "Lueur spectrale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 1 A / contact</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Un objet éclaire à 6 m pendant une scène ; couleur et intensité grossière choisies.</p>\n<p><strong>Intensification :</strong> Portée lumineuse 12 m ou lumière visible seulement par les alliés accordés.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "0",
+      "activation": "1 A / contact",
+      "discipline": "Projection",
+      "effect": "Un objet éclaire à 6 m pendant une scène ; couleur et intensité grossière choisies.",
+      "scaling": "Portée lumineuse 12 m ou lumière visible seulement par les alliés accordés."
+    },
+    "level": 1
+  }
+}

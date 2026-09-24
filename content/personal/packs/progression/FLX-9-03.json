@@ -1,0 +1,23 @@
+{
+  "relisId": "FLX-9-03",
+  "name": "Singularité libre",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-9"],
+  "system": {
+    "description": "<p><strong>Flux — Rang 9.</strong></p>\n<p><strong>Activation :</strong> 10 / 3 A / Explosion 7 à 72 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAP ; 18d6 dégâts, attire 18 m, Immobilise 2 tours et endommage les structures avec Pénétration 5.</p>\n<p><strong>Intensification :</strong> +2d6, rayon +1 ou Pénétration +1.</p>",
+    "traits": ["Flux", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "9",
+      "activation": "10 / 3 A / Explosion 7 à 72 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAP ; 18d6 dégâts, attire 18 m, Immobilise 2 tours et endommage les structures avec Pénétration 5.",
+      "scaling": "+2d6, rayon +1 ou Pénétration +1."
+    },
+    "level": 28
+  }
+}
