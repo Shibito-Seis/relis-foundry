@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-0-07",
+  "name": "Peau dense",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 1 A / personnel</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Jusqu&#39;au prochain tour, réduit de 1 la première instance de dégâts physiques.</p>\n<p><strong>Intensification :</strong> Réduction 1d4 + 1.</p>",
+    "traits": ["Prana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "0",
+      "activation": "1 A / personnel",
+      "discipline": "Protection",
+      "effect": "Jusqu'au prochain tour, réduit de 1 la première instance de dégâts physiques.",
+      "scaling": "Réduction 1d4 + 1."
+    },
+    "level": 1
+  }
+}

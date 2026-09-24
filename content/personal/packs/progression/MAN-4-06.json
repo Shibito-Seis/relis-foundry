@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-4-06",
+  "name": "Porte de conjuration",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / 30 m</p>\n<p><strong>Discipline :</strong> Translocation</p>\n<p>Deux ouvertures liées de 2 m persistent 3 tours dans des espaces visibles ; traversée bidirectionnelle.</p>\n<p><strong>Intensification :</strong> Portée +30 m, taille +1 m ou durée +2 tours.</p>",
+    "traits": ["Mana", "Translocation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "4",
+      "activation": "4 / 3 A / 30 m",
+      "discipline": "Translocation",
+      "effect": "Deux ouvertures liées de 2 m persistent 3 tours dans des espaces visibles ; traversée bidirectionnelle.",
+      "scaling": "Portée +30 m, taille +1 m ou durée +2 tours."
+    },
+    "level": 13
+  }
+}

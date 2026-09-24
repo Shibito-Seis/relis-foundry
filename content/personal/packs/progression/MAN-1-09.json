@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-1-09",
+  "name": "Invocation d'outil",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Manifestation</p>\n<p>Crée pour 10 min un outil simple Q-1 sans consommable ni valeur marchande.</p>\n<p><strong>Intensification :</strong> Outil Q-2 ou durée 1 h.</p>",
+    "traits": ["Mana", "Manifestation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "1 / 2 A / contact",
+      "discipline": "Manifestation",
+      "effect": "Crée pour 10 min un outil simple Q-1 sans consommable ni valeur marchande.",
+      "scaling": "Outil Q-2 ou durée 1 h."
+    },
+    "level": 4
+  }
+}

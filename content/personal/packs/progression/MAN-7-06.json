@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-7-06",
+  "name": "Contrechamp royal",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 8 / 3 A / émanation 12 m</p>\n<p><strong>Discipline :</strong> Dissipation</p>\n<p>Pendant 5 tours, toute formule hostile de Rang 7 ou moins entrant dans la zone exige un test ; échec : annulée, réussite : Rang effectif −1.</p>\n<p><strong>Intensification :</strong> Rayon +3 m ou Rang maximal +1.</p>",
+    "traits": ["Mana", "Dissipation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "7",
+      "activation": "8 / 3 A / émanation 12 m",
+      "discipline": "Dissipation",
+      "effect": "Pendant 5 tours, toute formule hostile de Rang 7 ou moins entrant dans la zone exige un test ; échec : annulée, réussite : Rang effectif −1.",
+      "scaling": "Rayon +3 m ou Rang maximal +1."
+    },
+    "level": 22
+  }
+}

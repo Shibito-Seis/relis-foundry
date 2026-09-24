@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-8-03",
+  "name": "Métamorphose de légion",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-8"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 8.</strong></p>\n<p><strong>Activation :</strong> 8 / 3 A / émanation 18 m</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Jusqu’à vingt cibles consentantes reçoivent 1 h une locomotion, adaptation environnementale et forme physique commune, sans pouvoirs uniques.</p>\n<p><strong>Intensification :</strong> Une adaptation supplémentaire ou durée 8 h.</p>",
+    "traits": ["Mana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "8",
+      "activation": "8 / 3 A / émanation 18 m",
+      "discipline": "Transformation",
+      "effect": "Jusqu’à vingt cibles consentantes reçoivent 1 h une locomotion, adaptation environnementale et forme physique commune, sans pouvoirs uniques.",
+      "scaling": "Une adaptation supplémentaire ou durée 8 h."
+    },
+    "level": 25
+  }
+}

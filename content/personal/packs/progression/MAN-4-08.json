@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-4-08",
+  "name": "Sceau d'annulation",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 5 / 10 min / contact</p>\n<p><strong>Discipline :</strong> Dissipation</p>\n<p>Sceau de 3 m pendant 8 h ; une formule de Rang 4 ou moins le traversant exige un test, sinon elle est annulée et le sceau cesse.</p>\n<p><strong>Intensification :</strong> Rang maximal +1 ou deux annulations avant rupture.</p>",
+    "traits": ["Mana", "Dissipation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "4",
+      "activation": "5 / 10 min / contact",
+      "discipline": "Dissipation",
+      "effect": "Sceau de 3 m pendant 8 h ; une formule de Rang 4 ou moins le traversant exige un test, sinon elle est annulée et le sceau cesse.",
+      "scaling": "Rang maximal +1 ou deux annulations avant rupture."
+    },
+    "level": 13
+  }
+}

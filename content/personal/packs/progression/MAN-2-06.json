@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-2-06",
+  "name": "Entrave cristalline",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-2"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / 18 m</p>\n<p><strong>Discipline :</strong> Manifestation</p>\n<p>Test contre CAP ; échec de la cible : Immobilisée par une entrave d&#39;Intégrité 2d8 + MM ; critique : Entravée.</p>\n<p><strong>Intensification :</strong> +1d8 Intégrité ou seconde cible proche.</p>",
+    "traits": ["Mana", "Manifestation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "2",
+      "activation": "2 / 2 A / 18 m",
+      "discipline": "Manifestation",
+      "effect": "Test contre CAP ; échec de la cible : Immobilisée par une entrave d'Intégrité 2d8 + MM ; critique : Entravée.",
+      "scaling": "+1d8 Intégrité ou seconde cible proche."
+    },
+    "level": 7
+  }
+}

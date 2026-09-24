@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-1-09",
+  "name": "Regain somatique",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 1 A / personnel</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Gagne 1d8 + MM PV temporaires jusqu&#39;à la fin de la scène.</p>\n<p><strong>Intensification :</strong> +1d8 PV temporaires.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / 1 A / personnel",
+      "discipline": "Vitalisme",
+      "effect": "Gagne 1d8 + MM PV temporaires jusqu'à la fin de la scène.",
+      "scaling": "+1d8 PV temporaires."
+    },
+    "level": 4
+  }
+}

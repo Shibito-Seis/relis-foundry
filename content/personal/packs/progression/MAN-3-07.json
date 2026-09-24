@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-3-07",
+  "name": "Invocation élémentaire",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / 12 m</p>\n<p><strong>Discipline :</strong> Manifestation</p>\n<p>Invoque 3 tours une entité non sapiente de Rang 2, 2 Actions/tour, obéissant à une consigne simple ; demande 1 A pour changer d&#39;ordre.</p>\n<p><strong>Intensification :</strong> Rang de l&#39;entité +1 ou durée +2 tours.</p>",
+    "traits": ["Mana", "Manifestation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "3",
+      "activation": "4 / 3 A / 12 m",
+      "discipline": "Manifestation",
+      "effect": "Invoque 3 tours une entité non sapiente de Rang 2, 2 Actions/tour, obéissant à une consigne simple ; demande 1 A pour changer d'ordre.",
+      "scaling": "Rang de l'entité +1 ou durée +2 tours."
+    },
+    "level": 10
+  }
+}

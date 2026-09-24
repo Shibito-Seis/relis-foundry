@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-8-04",
+  "name": "Annulation suprême",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-8"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 8.</strong></p>\n<p><strong>Activation :</strong> 9 / R / 60 m</p>\n<p><strong>Discipline :</strong> Dissipation</p>\n<p>Test opposé ; annule une formule de Rang 8 ou moins pendant son activation et empêche sa même architecture d’être relancée par la source pendant 3 tours.</p>\n<p><strong>Intensification :</strong> Rang maximal +1 ou interdiction +2 tours.</p>",
+    "traits": ["Mana", "Dissipation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "8",
+      "activation": "9 / R / 60 m",
+      "discipline": "Dissipation",
+      "effect": "Test opposé ; annule une formule de Rang 8 ou moins pendant son activation et empêche sa même architecture d’être relancée par la source pendant 3 tours.",
+      "scaling": "Rang maximal +1 ou interdiction +2 tours."
+    },
+    "level": 25
+  }
+}

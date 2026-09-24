@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-8-01",
+  "name": "Cataclysme urbain",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-8"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 8.</strong></p>\n<p><strong>Activation :</strong> 9 / 1 min / Explosion 6 à 100 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Après une télégraphie visible, attaque contre CAE ; 16d6 dégâts, Pénétration 4 aux structures et terrain dangereux 5d6 pendant 1 min.</p>\n<p><strong>Intensification :</strong> +2d6, rayon +1 ou Pénétration +1.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "8",
+      "activation": "9 / 1 min / Explosion 6 à 100 m",
+      "discipline": "Projection",
+      "effect": "Après une télégraphie visible, attaque contre CAE ; 16d6 dégâts, Pénétration 4 aux structures et terrain dangereux 5d6 pendant 1 min.",
+      "scaling": "+2d6, rayon +1 ou Pénétration +1."
+    },
+    "level": 25
+  }
+}

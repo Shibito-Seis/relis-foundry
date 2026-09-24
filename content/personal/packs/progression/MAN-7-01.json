@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-7-01",
+  "name": "Tempête de siège",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 8 / 3 A / Explosion 5 à 60 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAE ; 14d6 d’une expression apprise ; structures subissent Pénétration 3 et terrain 4d6 pendant 3 tours.</p>\n<p><strong>Intensification :</strong> +1d6, rayon +1 ou Pénétration +1.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "7",
+      "activation": "8 / 3 A / Explosion 5 à 60 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAE ; 14d6 d’une expression apprise ; structures subissent Pénétration 3 et terrain 4d6 pendant 3 tours.",
+      "scaling": "+1d6, rayon +1 ou Pénétration +1."
+    },
+    "level": 22
+  }
+}

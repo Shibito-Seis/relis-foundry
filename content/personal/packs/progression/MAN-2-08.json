@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-2-08",
+  "name": "Arme accordée",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-2"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Une arme gagne +1d6 dégâts d&#39;une expression choisie pendant une scène ; une seule arme accordée par lanceur.</p>\n<p><strong>Intensification :</strong> +1d6 ou Pénétration 1.</p>",
+    "traits": ["Mana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "2",
+      "activation": "2 / 2 A / contact",
+      "discipline": "Transformation",
+      "effect": "Une arme gagne +1d6 dégâts d'une expression choisie pendant une scène ; une seule arme accordée par lanceur.",
+      "scaling": "+1d6 ou Pénétration 1."
+    },
+    "level": 7
+  }
+}

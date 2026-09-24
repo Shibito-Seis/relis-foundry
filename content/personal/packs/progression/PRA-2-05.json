@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-2-05",
+  "name": "Partage vital",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-2"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / 6 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Le lanceur perd jusqu&#39;à 2d8 PV et un allié en récupère autant ; ne peut descendre sous 1 PV.</p>\n<p><strong>Intensification :</strong> Plafond +1d8 et portée +6 m.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "2",
+      "activation": "2 / 2 A / 6 m",
+      "discipline": "Vitalisme",
+      "effect": "Le lanceur perd jusqu'à 2d8 PV et un allié en récupère autant ; ne peut descendre sous 1 PV.",
+      "scaling": "Plafond +1d8 et portée +6 m."
+    },
+    "level": 7
+  }
+}

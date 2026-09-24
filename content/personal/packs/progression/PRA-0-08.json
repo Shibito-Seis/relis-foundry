@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-0-08",
+  "name": "Centre calme",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 1 A / personnel</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>+1 circonstanciel au prochain test de Volonté, Sang-froid ou Canalisation avant le prochain tour.</p>\n<p><strong>Intensification :</strong> Bonus +2 et réduit le Stress reçu de 1.</p>",
+    "traits": ["Prana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "0",
+      "activation": "1 A / personnel",
+      "discipline": "Protection",
+      "effect": "+1 circonstanciel au prochain test de Volonté, Sang-froid ou Canalisation avant le prochain tour.",
+      "scaling": "Bonus +2 et réduit le Stress reçu de 1."
+    },
+    "level": 1
+  }
+}

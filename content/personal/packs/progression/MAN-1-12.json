@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-1-12",
+  "name": "Langue d'accord",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Divination</p>\n<p>Pendant 10 min, comprend le sens littéral d&#39;une langue entendue et produit des phrases simples.</p>\n<p><strong>Intensification :</strong> Durée 1 h ou langage codé/ancien avec test.</p>",
+    "traits": ["Mana", "Divination"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "1 / 2 A / contact",
+      "discipline": "Divination",
+      "effect": "Pendant 10 min, comprend le sens littéral d'une langue entendue et produit des phrases simples.",
+      "scaling": "Durée 1 h ou langage codé/ancien avec test."
+    },
+    "level": 4
+  }
+}

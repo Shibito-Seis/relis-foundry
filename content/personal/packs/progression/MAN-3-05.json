@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-3-05",
+  "name": "Dissipation large",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 3 / 3 A / Explosion 2 à 18 m</p>\n<p><strong>Discipline :</strong> Dissipation</p>\n<p>Test par effet ; met fin aux formules Rang 2 ou moins et suspend les Rang 3 jusqu&#39;au prochain tour.</p>\n<p><strong>Intensification :</strong> Rang maximal +1 ou Explosion +1.</p>",
+    "traits": ["Mana", "Dissipation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "3",
+      "activation": "3 / 3 A / Explosion 2 à 18 m",
+      "discipline": "Dissipation",
+      "effect": "Test par effet ; met fin aux formules Rang 2 ou moins et suspend les Rang 3 jusqu'au prochain tour.",
+      "scaling": "Rang maximal +1 ou Explosion +1."
+    },
+    "level": 10
+  }
+}

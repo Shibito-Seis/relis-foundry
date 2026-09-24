@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-6-04",
+  "name": "Légion élémentaire",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / 24 m</p>\n<p><strong>Discipline :</strong> Manifestation</p>\n<p>Invoque pendant 5 tours trois entités non sapientes de Rang 4, 2 Actions chacune ; un ordre commun coûte 1 A.</p>\n<p><strong>Intensification :</strong> Une entité supplémentaire ou durée +2 tours.</p>",
+    "traits": ["Mana", "Manifestation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "6",
+      "activation": "7 / 3 A / 24 m",
+      "discipline": "Manifestation",
+      "effect": "Invoque pendant 5 tours trois entités non sapientes de Rang 4, 2 Actions chacune ; un ordre commun coûte 1 A.",
+      "scaling": "Une entité supplémentaire ou durée +2 tours."
+    },
+    "level": 19
+  }
+}

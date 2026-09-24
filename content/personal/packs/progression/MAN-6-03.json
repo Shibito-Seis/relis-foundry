@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-6-03",
+  "name": "Reconstruction arcanique",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme / Transformation</p>\n<p>Rend 10d8 + MM PV à un vivant ou autant d’Intégrité à un objet/IAA ; retire deux complications modérées ou répare un système majeur.</p>\n<p><strong>Intensification :</strong> +2d8 ou complication supplémentaire.</p>",
+    "traits": ["Mana", "Vitalisme / Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "6",
+      "activation": "6 / 3 A / contact",
+      "discipline": "Vitalisme / Transformation",
+      "effect": "Rend 10d8 + MM PV à un vivant ou autant d’Intégrité à un objet/IAA ; retire deux complications modérées ou répare un système majeur.",
+      "scaling": "+2d8 ou complication supplémentaire."
+    },
+    "level": 19
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-1-05",
+  "name": "Paume purgative",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>La cible retente immédiatement un test contre poison, maladie, nausée ou douleur mineure avec +2.</p>\n<p><strong>Intensification :</strong> Affecte un état modéré ou deux effets mineurs.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / 2 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "La cible retente immédiatement un test contre poison, maladie, nausée ou douleur mineure avec +2.",
+      "scaling": "Affecte un état modéré ou deux effets mineurs."
+    },
+    "level": 4
+  }
+}

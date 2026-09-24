@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-1-02",
+  "name": "Transfert vital",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Un vivant consentant récupère 1d8 + MM PV ; le lanceur ne peut se rendre le Prana dépensé.</p>\n<p><strong>Intensification :</strong> +1d8 soin.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / 2 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Un vivant consentant récupère 1d8 + MM PV ; le lanceur ne peut se rendre le Prana dépensé.",
+      "scaling": "+1d8 soin."
+    },
+    "level": 4
+  }
+}

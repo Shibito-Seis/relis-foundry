@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-1-12",
+  "name": "Onde de quiétude",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / émanation 3 m</p>\n<p><strong>Discipline :</strong> Influence</p>\n<p>Les alliés réduisent de 1 leur prochaine acquisition de Stress et retentent un effet mineur de peur.</p>\n<p><strong>Intensification :</strong> Émanation 6 m ou retire 1 Stress à une cible une fois par scène.</p>",
+    "traits": ["Prana", "Influence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / 2 A / émanation 3 m",
+      "discipline": "Influence",
+      "effect": "Les alliés réduisent de 1 leur prochaine acquisition de Stress et retentent un effet mineur de peur.",
+      "scaling": "Émanation 6 m ou retire 1 Stress à une cible une fois par scène."
+    },
+    "level": 4
+  }
+}

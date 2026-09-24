@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-3-04",
+  "name": "Illusion majeure",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 3 / 3 A / 24 m</p>\n<p><strong>Discipline :</strong> Illusion</p>\n<p>Illusion mobile, sonore et thermique dans une Explosion 2, soutenue jusqu&#39;à 10 min ; examen actif contre DD de formule.</p>\n<p><strong>Intensification :</strong> Rayon +1 ou ajoute odeur et contact superficiel.</p>",
+    "traits": ["Mana", "Illusion"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "3",
+      "activation": "3 / 3 A / 24 m",
+      "discipline": "Illusion",
+      "effect": "Illusion mobile, sonore et thermique dans une Explosion 2, soutenue jusqu'à 10 min ; examen actif contre DD de formule.",
+      "scaling": "Rayon +1 ou ajoute odeur et contact superficiel."
+    },
+    "level": 10
+  }
+}

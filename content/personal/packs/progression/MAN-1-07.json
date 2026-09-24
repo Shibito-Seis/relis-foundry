@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-1-07",
+  "name": "Image dédoublée",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 1 A / personnel</p>\n<p><strong>Discipline :</strong> Illusion</p>\n<p>Jusqu&#39;au prochain tour, la première attaque qui vous cible subit −2 circonstanciel.</p>\n<p><strong>Intensification :</strong> Durée 3 tours ou protège un allié à 6 m.</p>",
+    "traits": ["Mana", "Illusion"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "1 / 1 A / personnel",
+      "discipline": "Illusion",
+      "effect": "Jusqu'au prochain tour, la première attaque qui vous cible subit −2 circonstanciel.",
+      "scaling": "Durée 3 tours ou protège un allié à 6 m."
+    },
+    "level": 4
+  }
+}

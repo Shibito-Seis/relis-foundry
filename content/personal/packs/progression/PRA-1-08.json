@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-1-08",
+  "name": "Lien vital",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Pendant 3 tours, le lanceur peut prendre jusqu&#39;à 3 dégâts d&#39;une cible consentante à 6 m, une fois par tour.</p>\n<p><strong>Intensification :</strong> Seuil +3 ou seconde cible.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / 2 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Pendant 3 tours, le lanceur peut prendre jusqu'à 3 dégâts d'une cible consentante à 6 m, une fois par tour.",
+      "scaling": "Seuil +3 ou seconde cible."
+    },
+    "level": 4
+  }
+}

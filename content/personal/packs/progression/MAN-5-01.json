@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-5-01",
+  "name": "Cataclysme élémentaire",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-5"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / Explosion 4 à 36 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAE ; 9d6 d&#39;une expression apprise ; terrain dangereux 2d6 pendant 2 tours.</p>\n<p><strong>Intensification :</strong> +1d6, rayon +1 ou durée résiduelle +1 tour.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "5",
+      "activation": "6 / 3 A / Explosion 4 à 36 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAE ; 9d6 d'une expression apprise ; terrain dangereux 2d6 pendant 2 tours.",
+      "scaling": "+1d6, rayon +1 ou durée résiduelle +1 tour."
+    },
+    "level": 16
+  }
+}

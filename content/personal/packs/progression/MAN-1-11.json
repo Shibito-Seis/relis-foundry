@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-1-11",
+  "name": "Pas lumineux",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 1 A / personnel</p>\n<p><strong>Discipline :</strong> Translocation</p>\n<p>Déplacement instantané de 3 m vers un espace visible ; ne traverse pas une paroi.</p>\n<p><strong>Intensification :</strong> Portée +3 m.</p>",
+    "traits": ["Mana", "Translocation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "1 / 1 A / personnel",
+      "discipline": "Translocation",
+      "effect": "Déplacement instantané de 3 m vers un espace visible ; ne traverse pas une paroi.",
+      "scaling": "Portée +3 m."
+    },
+    "level": 4
+  }
+}

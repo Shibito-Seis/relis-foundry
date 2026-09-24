@@ -1,0 +1,23 @@
+{
+  "relisId": "MAN-4-04",
+  "name": "Transmutation structurelle",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Mana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 4 / 10 min / contact</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Remodelage permanent de 50 kg de matière commune sans créer de mécanisme complexe ni modifier la masse de plus de 20 %.</p>\n<p><strong>Intensification :</strong> Masse ×5 ou matériau Q supérieur avec test.</p>",
+    "traits": ["Mana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "4",
+      "activation": "4 / 10 min / contact",
+      "discipline": "Transformation",
+      "effect": "Remodelage permanent de 50 kg de matière commune sans créer de mécanisme complexe ni modifier la masse de plus de 20 %.",
+      "scaling": "Masse ×5 ou matériau Q supérieur avec test."
+    },
+    "level": 13
+  }
+}
