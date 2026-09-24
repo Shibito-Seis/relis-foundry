@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-ACROBATIES-006",
+  "name": "Assurer la manœuvre",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage prépare une ligne de sécurité, indique les appuis, règle un harnais ou se place pour rattraper un allié volontaire.</p>\n<p>Lorsque le déclencheur survient, l&#39;allié ne subit pas immédiatement la chute, la glissade ou la perte d&#39;appui liée à son échec. Il s&#39;arrête au dernier point sûr ou demeure suspendu à la sécurité préparée.</p>\n<p>L&#39;allié doit pouvoir suivre les indications ou être réellement relié au dispositif. Le talent ne protège pas contre un échec critique, la rupture du support, une force dépassant le matériel ou un danger qui affecte également le personnage.</p>",
+    "traits": ["Acrobaties", "Aide", "Compétence", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Acrobaties — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Acrobaties",
+      "activation": "1 Action de préparation, puis Réaction",
+      "prerequisites": "Acrobaties Expert",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "un allié préparé à 6 mètres obtient un échec simple à un test d'Acrobaties",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Acrobaties",
+        "Niveau": "3",
+        "Traits": "Acrobaties, Aide, Compétence, Réaction",
+        "Type": "1 Action de préparation, puis Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "un allié préparé à 6 mètres obtient un échec simple à un test d'Acrobaties",
+        "Prérequis": "Acrobaties Expert"
+      }
+    },
+    "level": 3
+  }
+}

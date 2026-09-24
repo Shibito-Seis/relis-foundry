@@ -1,0 +1,68 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-738",
+  "name": "Incarnation des mondes réunis",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage devient le point de convergence vivant des peuples ayant quitté la Terre. Pendant l&#39;effet, les alliés volontaires à 8 mètres qui peuvent le percevoir gagnent +3 circonstanciel aux tests d&#39;Aide, de Volonté, de Sang-froid et aux tests directement consacrés à une action collective entre plusieurs Ascendances.</p>\n<p>Une fois par tour, après l&#39;échec non critique d&#39;un de ces tests, le personnage peut permettre à son auteur de le relancer et de conserver le second résultat.</p>\n<p>L&#39;aura ne force aucune alliance, ne copie aucun talent d&#39;Ascendance, ne fournit ni Action, ni ressource et n&#39;affecte pas un personnage hostile. À la fin, le personnage gagne 2 Fatigue et 1 Stress.</p>\n<p>---</p>",
+    "traits": [
+      "Ascendance universelle",
+      "Aura",
+      "Exode",
+      "Mental",
+      "Transcendance"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-735",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire des derniers Terriens",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-736",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ambassadeur de l'Exode",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-737",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Peuple au-delà des lignées",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.243 Talent universel d'Ascendance de niveau 29",
+      "family": "Héritage de la Fusion",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Mémoire des derniers Terriens ou Ambassadeur de l'Exode ; Peuple au-delà des lignées",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Héritage de la Fusion",
+        "Traits": "Ascendance universelle, Aura, Exode, Mental, Transcendance",
+        "Type": "1 Action",
+        "Fréquence": "une fois par repos long",
+        "Durée": "3 tours",
+        "Prérequis": "Mémoire des derniers Terriens ou Ambassadeur de l'Exode ; Peuple au-delà des lignées"
+      }
+    },
+    "level": 29
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-ATHLETISME-012",
+  "name": "Nageur de traversée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Lorsque le personnage réussit un test d&#39;Athlétisme pour nager, la distance parcourue augmente de 2 mètres, sans pouvoir dépasser son déplacement terrestre.</p>\n<p>Sur une réussite critique, il choisit en outre l&#39;un des bénéfices suivants :</p>\n<p>• conserver une main libre pour manipuler un objet simple ;</p>\n<p>• remorquer un objet flottant ou une créature volontaire de masse comparable sans réduire davantage son déplacement ;</p>\n<p>• ignorer le premier mètre de courant contraire ordinaire.</p>\n<p>Le talent ne permet pas de respirer sous l&#39;eau et ne protège ni du froid, ni de la pression, ni d&#39;un liquide dangereux.</p>",
+    "traits": ["Athlétisme", "Compétence", "Mouvement", "Nage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Athlétisme — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Athlétisme",
+      "activation": "Passif",
+      "prerequisites": "Athlétisme Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Athlétisme",
+        "Niveau": "1",
+        "Traits": "Athlétisme, Compétence, Mouvement, Nage",
+        "Type": "Passif",
+        "Prérequis": "Athlétisme Qualifié"
+      }
+    },
+    "level": 1
+  }
+}

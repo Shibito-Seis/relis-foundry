@@ -1,0 +1,56 @@
+{
+  "relisId": "PRO-TAL-CMP-CANALISATION-246",
+  "name": "Cercle de soutien",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage organise jusqu&#39;à quatre participants autour d&#39;une opération ou d&#39;un rituel réel. Au moins l&#39;un d&#39;eux doit posséder le pouvoir, la source ou la capacité nécessaire à l&#39;effet recherché.</p>\n<p>Il effectue un test de Canalisation contre le DD de l&#39;opération.</p>\n<p>• Réussite critique : chaque participant gagne +2 circonstanciel à son premier test d&#39;Aide ou de Canalisation suivant le cercle ; la première Aide réussie devient une réussite critique.</p>\n<p>• Réussite : chaque participant gagne +2 circonstanciel à son premier test d&#39;Aide ou de Canalisation suivant le cercle.</p>\n<p>• Échec : le cercle ne procure aucun bénéfice.</p>\n<p>• Échec critique : une incompatibilité de rythme, focaliseur ou tradition est découverte avant l&#39;activation ; le MJ l&#39;indique.</p>\n<p>Le cercle ne fusionne aucune réserve, ne permet pas à un participant de lancer un pouvoir qu&#39;il ne possède pas et ne fournit aucune composante absente.</p>",
+    "traits": [
+      "Aide",
+      "Canalisation",
+      "Compétence",
+      "Magie",
+      "Préparation",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-CANALISATION-243",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Tradition de canalisation",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Canalisation — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Canalisation",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Canalisation Expert ; Tradition de canalisation",
+      "choice": "",
+      "frequency": "une fois par opération énergétique ou rituel",
+      "trigger": "",
+      "duration": "jusqu'à la fin de l'opération préparée",
+      "metadata": {
+        "Compétence": "Canalisation",
+        "Niveau": "3",
+        "Traits": "Aide, Canalisation, Compétence, Magie, Préparation, Travail d'équipe",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par opération énergétique ou rituel",
+        "Durée": "jusqu'à la fin de l'opération préparée",
+        "Prérequis": "Canalisation Expert ; Tradition de canalisation",
+        "Réussite critique": "chaque participant gagne +2 circonstanciel à son premier test d'Aide ou de Canalisation suivant le cercle ; la première Aide réussie devient une réussite critique.",
+        "Réussite": "chaque participant gagne +2 circonstanciel à son premier test d'Aide ou de Canalisation suivant le cercle.",
+        "Échec": "le cercle ne procure aucun bénéfice.",
+        "Échec critique": "une incompatibilité de rythme, focaliseur ou tradition est découverte avant l'activation ; le MJ l'indique."
+      }
+    },
+    "level": 3
+  }
+}

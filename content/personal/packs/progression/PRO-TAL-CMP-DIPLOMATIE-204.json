@@ -1,0 +1,48 @@
+{
+  "relisId": "PRO-TAL-CMP-DIPLOMATIE-204",
+  "name": "Porte entrouverte",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage cherche une audience, un délai ou un canal de discussion auprès d&#39;une cible qui possède au moins une raison réelle d&#39;examiner sa demande.</p>\n<p>Il effectue un test de Diplomatie contre le DD de l&#39;accès social.</p>\n<p>• Réussite critique : il obtient l&#39;audience ou le canal le plus approprié disponible et apprend le protocole, la limite ou la preuve qui comptera le plus.</p>\n<p>• Réussite : il obtient une audience, un délai ou un intermédiaire raisonnable.</p>\n<p>• Échec : aucun accès n&#39;est obtenu.</p>\n<p>• Échec critique : la demande atteint un interlocuteur inadapté ; le MJ l&#39;indique avant que le personnage ne révèle une information sensible.</p>\n<p>Le talent ne contourne aucune sécurité matérielle, ne crée pas de disponibilité et ne force pas un responsable à recevoir personnellement le personnage.</p>",
+    "traits": ["Compétence", "Diplomatie", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-201",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Demande recevable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Diplomatie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Diplomatie",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Diplomatie Expert ; Demande recevable",
+      "choice": "",
+      "frequency": "une fois par institution ou interlocuteur et par objectif",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Diplomatie",
+        "Niveau": "3",
+        "Traits": "Compétence, Diplomatie, Social",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par institution ou interlocuteur et par objectif",
+        "Prérequis": "Diplomatie Expert ; Demande recevable",
+        "Réussite critique": "il obtient l'audience ou le canal le plus approprié disponible et apprend le protocole, la limite ou la preuve qui comptera le plus.",
+        "Réussite": "il obtient une audience, un délai ou un intermédiaire raisonnable.",
+        "Échec": "aucun accès n'est obtenu.",
+        "Échec critique": "la demande atteint un interlocuteur inadapté ; le MJ l'indique avant que le personnage ne révèle une information sensible."
+      }
+    },
+    "level": 3
+  }
+}

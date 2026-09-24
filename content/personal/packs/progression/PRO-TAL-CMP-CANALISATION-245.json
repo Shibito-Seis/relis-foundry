@@ -1,0 +1,55 @@
+{
+  "relisId": "PRO-TAL-CMP-CANALISATION-245",
+  "name": "Contention prudente",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Avec un focaliseur, un cercle, une mise à la terre, un récipient ou un moyen de contention adapté, le personnage limite temporairement la dérive d&#39;une manifestation active accessible.</p>\n<p>Il effectue un test de Canalisation contre le DD de la manifestation.</p>\n<p>• Réussite critique : la manifestation n&#39;aggrave pas spontanément son intensité ou son extension pendant la durée ; la première intervention visant à la stabiliser ou l&#39;isoler gagne +2 circonstanciel et ignore une complication mineure de dérive.</p>\n<p>• Réussite : la manifestation n&#39;aggrave pas spontanément son intensité ou son extension pendant la durée ; la première intervention appropriée gagne +2 circonstanciel.</p>\n<p>• Échec : la contention ne produit aucun effet.</p>\n<p>• Échec critique : le moyen choisi entre en résonance avec la manifestation ; le MJ le signale avant qu&#39;une nouvelle ressource y soit engagée.</p>\n<p>Le talent ne dissipe pas l&#39;effet, ne réduit pas ses dégâts déjà infligés, ne protège pas automatiquement les créatures présentes et cesse si le moyen de contention devient indisponible.</p>",
+    "traits": [
+      "Canalisation",
+      "Compétence",
+      "Concentration",
+      "Magie",
+      "Stabilisation"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-CANALISATION-242",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lecture de signature",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Canalisation — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Canalisation",
+      "activation": "Activité de 2 Actions ou Activité d'exploration",
+      "prerequisites": "Canalisation Expert ; Lecture de signature",
+      "choice": "",
+      "frequency": "une fois par manifestation et par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin du prochain round ou de l'intervention narrative immédiate",
+      "metadata": {
+        "Compétence": "Canalisation",
+        "Niveau": "3",
+        "Traits": "Canalisation, Compétence, Concentration, Magie, Stabilisation",
+        "Type": "Activité de 2 Actions ou Activité d'exploration",
+        "Fréquence": "une fois par manifestation et par scène",
+        "Durée": "jusqu'à la fin du prochain round ou de l'intervention narrative immédiate",
+        "Prérequis": "Canalisation Expert ; Lecture de signature",
+        "Réussite critique": "la manifestation n'aggrave pas spontanément son intensité ou son extension pendant la durée ; la première intervention visant à la stabiliser ou l'isoler gagne +2 circonstanciel et ignore une complication mineure de dérive.",
+        "Réussite": "la manifestation n'aggrave pas spontanément son intensité ou son extension pendant la durée ; la première intervention appropriée gagne +2 circonstanciel.",
+        "Échec": "la contention ne produit aucun effet.",
+        "Échec critique": "le moyen choisi entre en résonance avec la manifestation ; le MJ le signale avant qu'une nouvelle ressource y soit engagée."
+      }
+    },
+    "level": 3
+  }
+}

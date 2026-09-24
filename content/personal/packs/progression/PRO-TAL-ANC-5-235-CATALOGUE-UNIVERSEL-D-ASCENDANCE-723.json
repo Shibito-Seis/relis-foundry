@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-723",
+  "name": "Double appartenance",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage assume simultanément son héritage d&#39;origine et sa culture d&#39;adoption. Il gagne +2 circonstanciel aux tests de Volonté ou Sang-froid contre une coercition, une humiliation ou une altération cherchant précisément à lui faire renier l&#39;une de ces appartenances.</p>\n<p>Lorsqu&#39;un interlocuteur rejette son témoignage uniquement parce qu&#39;il le considère comme extérieur à l&#39;une des deux communautés, le personnage peut reformuler depuis l&#39;autre perspective et relancer le test social concerné. Il conserve le second résultat.</p>\n<p>Le talent ne force aucune communauté à reconnaître le personnage et ne transforme pas une opposition politique réelle en simple malentendu.</p>",
+    "traits": ["Ascendance universelle", "Culture", "Identité", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-716",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritage d'adoption",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.237 Talents universels d'Ascendance de niveau 5",
+      "family": "Cultures adoptées",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Héritage d'adoption",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cultures adoptées",
+        "Traits": "Ascendance universelle, Culture, Identité, Social",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Héritage d'adoption"
+      }
+    },
+    "level": 5
+  }
+}

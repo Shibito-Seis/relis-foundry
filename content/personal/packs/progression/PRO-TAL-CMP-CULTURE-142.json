@@ -1,0 +1,37 @@
+{
+  "relisId": "PRO-TAL-CMP-CULTURE-142",
+  "name": "Contexte retrouvé",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage examine un texte, objet, image, geste ou témoignage accessible afin de le replacer dans son contexte culturel.</p>\n<p>Il effectue un test de Culture contre le DD du contexte.</p>\n<p>• Réussite critique : il identifie la culture ou tradition probable, la fonction de l&#39;élément, la période ou situation sociale vraisemblable et un détail discordant.</p>\n<p>• Réussite : il identifie l&#39;origine ou fonction probable et un contexte d&#39;usage plausible.</p>\n<p>• Échec : le contexte reste trop ambigu.</p>\n<p>• Échec critique : l&#39;élément ressemble à deux contextes différents ; le personnage sait qu&#39;il ne peut pas trancher.</p>\n<p>Sur une réussite, il gagne +2 circonstanciel au premier test de Culture ou d&#39;Investigation exploitant directement ce contexte avant la fin de la scène. Le talent n&#39;authentifie pas l&#39;objet et ne détecte pas une falsification sans indice accessible.</p>",
+    "traits": ["Analyse", "Compétence", "Culture", "Observation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Culture — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Culture",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Culture Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Culture",
+        "Niveau": "1",
+        "Traits": "Analyse, Compétence, Culture, Observation",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Culture Qualifié",
+        "Réussite critique": "il identifie la culture ou tradition probable, la fonction de l'élément, la période ou situation sociale vraisemblable et un détail discordant.",
+        "Réussite": "il identifie l'origine ou fonction probable et un contexte d'usage plausible.",
+        "Échec": "le contexte reste trop ambigu.",
+        "Échec critique": "l'élément ressemble à deux contextes différents ; le personnage sait qu'il ne peut pas trancher."
+      }
+    },
+    "level": 1
+  }
+}

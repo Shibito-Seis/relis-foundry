@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-DISCRETION-021",
+  "name": "Pas choisis",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Lorsque le personnage se déplace à la moitié de son déplacement ou moins en bénéficiant d&#39;un couvert, d&#39;une dissimulation ou d&#39;une obstruction sensorielle crédible, un échec simple à son test de Discrétion ne révèle pas immédiatement sa position exacte.</p>\n<p>Les observateurs savent qu&#39;une présence ou un mouvement existe dans la zone pertinente, mais doivent encore le localiser. Un échec critique révèle normalement le personnage.</p>\n<p>Le talent ne fonctionne pas en pleine lumière sous observation directe, sur une surface ne permettant aucune approche silencieuse ou contre un sens auquel aucun obstacle ne s&#39;oppose.</p>",
+    "traits": ["Compétence", "Discrétion", "Mouvement"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Discrétion — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Discrétion",
+      "activation": "Passif",
+      "prerequisites": "Discrétion Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Discrétion",
+        "Niveau": "1",
+        "Traits": "Compétence, Discrétion, Mouvement",
+        "Type": "Passif",
+        "Prérequis": "Discrétion Qualifié"
+      }
+    },
+    "level": 1
+  }
+}

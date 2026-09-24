@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-725",
+  "name": "Gestes sans traduction",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut transmettre par gestes, regard, posture ou signal lumineux une intention simple : attendre, couvrir, fuir, contourner, soulever, couper, suivre ou se taire.</p>\n<p>Une fois par scène, un allié qui perçoit ce signal gagne +2 circonstanciel à son prochain test effectué avant la fin de son prochain tour pour suivre cette intention. Le personnage doit connaître la situation et le signal ne peut contenir qu&#39;une consigne brève.</p>\n<p>Le talent ne remplace pas une langue pour négocier, expliquer un plan complexe ou transmettre une information inconnue du personnage.</p>",
+    "traits": [
+      "Ascendance universelle",
+      "Communication",
+      "Coopération",
+      "Visuel"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-717",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Langue du foyer",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-721",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Codes de voisinage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.237 Talents universels d'Ascendance de niveau 5",
+      "family": "Coopération interraciale",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Codes de voisinage ou Langue du foyer",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Coopération interraciale",
+        "Traits": "Ascendance universelle, Communication, Coopération, Visuel",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Codes de voisinage ou Langue du foyer"
+      }
+    },
+    "level": 5
+  }
+}

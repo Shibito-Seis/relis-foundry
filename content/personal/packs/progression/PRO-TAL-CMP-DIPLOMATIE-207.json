@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-CMP-DIPLOMATIE-207",
+  "name": "Confiance réparée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Après une faute ou rupture identifiable, le personnage présente une reconnaissance crédible, une réparation réelle ou une garantie vérifiable à la personne ou au groupe lésé.</p>\n<p>Il effectue un test de Diplomatie contre le DD de l&#39;incident.</p>\n<p>• Réussite critique : la cible accepte de rouvrir une coopération limitée ; le premier test de chaque partie visant à accomplir la réparation gagne +2 circonstanciel.</p>\n<p>• Réussite : la cible accepte une conversation, une vérification ou une coopération limitée clairement définie.</p>\n<p>• Échec : la tentative n&#39;améliore pas la relation.</p>\n<p>• Échec critique : la réparation proposée ne répond pas au tort principal ; le MJ indique ce décalage sans révéler un secret.</p>\n<p>Le talent n&#39;efface pas la faute, ne rend pas la cible amicale et ne fonctionne pas sans acte, preuve, concession ou changement réel.</p>",
+    "traits": ["Compétence", "Diplomatie", "Émotion", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-201",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Demande recevable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-205",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Terrain commun",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Diplomatie — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Diplomatie",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Diplomatie Maître ; Demande recevable et Terrain commun",
+      "choice": "",
+      "frequency": "une fois par relation et par incident",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Diplomatie",
+        "Niveau": "7",
+        "Traits": "Compétence, Diplomatie, Émotion, Social",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par relation et par incident",
+        "Prérequis": "Diplomatie Maître ; Demande recevable et Terrain commun",
+        "Réussite critique": "la cible accepte de rouvrir une coopération limitée ; le premier test de chaque partie visant à accomplir la réparation gagne +2 circonstanciel.",
+        "Réussite": "la cible accepte une conversation, une vérification ou une coopération limitée clairement définie.",
+        "Échec": "la tentative n'améliore pas la relation.",
+        "Échec critique": "la réparation proposée ne répond pas au tort principal ; le MJ indique ce décalage sans révéler un secret."
+      }
+    },
+    "level": 7
+  }
+}

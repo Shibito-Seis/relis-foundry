@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-CMP-DIPLOMATIE-206",
+  "name": "Table de négociation",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage prépare objectifs, preuves, concessions réelles, limites et ordre de discussion pour un maximum de quatre participants alliés.</p>\n<p>Il effectue un test de Diplomatie contre le DD de la négociation.</p>\n<p>• Réussite critique : chaque participant gagne +2 circonstanciel à son premier test suivant la préparation ; la première contradiction mineure entre alliés est reconnue avant d&#39;être exploitée.</p>\n<p>• Réussite : chaque participant gagne +2 circonstanciel à son premier test directement consacré à la négociation.</p>\n<p>• Échec : la préparation ne procure aucun bénéfice.</p>\n<p>• Échec critique : une concession promise dépasse le mandat réel du groupe ; le MJ la révèle avant les pourparlers.</p>\n<p>Le talent ne prête aucune compétence, ne force aucun accord et exige de fournir réellement toute concession acceptée.</p>",
+    "traits": ["Compétence", "Diplomatie", "Préparation", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-201",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Demande recevable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-205",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Terrain commun",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Diplomatie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Diplomatie",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Diplomatie Expert ; Demande recevable ou Terrain commun",
+      "choice": "",
+      "frequency": "une fois par négociation",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la négociation préparée",
+      "metadata": {
+        "Compétence": "Diplomatie",
+        "Niveau": "3",
+        "Traits": "Compétence, Diplomatie, Préparation, Social",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par négociation",
+        "Durée": "jusqu'à la fin de la négociation préparée",
+        "Prérequis": "Diplomatie Expert ; Demande recevable ou Terrain commun",
+        "Réussite critique": "chaque participant gagne +2 circonstanciel à son premier test suivant la préparation ; la première contradiction mineure entre alliés est reconnue avant d'être exploitée.",
+        "Réussite": "chaque participant gagne +2 circonstanciel à son premier test directement consacré à la négociation.",
+        "Échec": "la préparation ne procure aucun bénéfice.",
+        "Échec critique": "une concession promise dépasse le mandat réel du groupe ; le MJ la révèle avant les pourparlers."
+      }
+    },
+    "level": 3
+  }
+}

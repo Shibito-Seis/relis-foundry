@@ -1,0 +1,49 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMERCE-196",
+  "name": "Marge de négociation",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage prépare l&#39;objectif, la limite de rupture, jusqu&#39;à deux concessions réelles et les garanties qu&#39;il peut proposer.</p>\n<p>Il effectue un test de Commerce contre le DD de la transaction.</p>\n<p>• Réussite critique : il identifie la concession ayant la meilleure valeur probable pour l&#39;autre partie et gagne +2 circonstanciel à ses deux premiers tests de Commerce de la négociation.</p>\n<p>• Réussite : il gagne +2 circonstanciel à son premier test de Commerce de la négociation.</p>\n<p>• Échec : la préparation ne procure aucun bénéfice.</p>\n<p>• Échec critique : une concession dépasse une limite déclarée ; le MJ la signale avant l&#39;ouverture des discussions.</p>\n<p>Le talent ne contraint pas l&#39;autre partie et chaque concession accordée doit être réellement fournie.</p>",
+    "traits": ["Commerce", "Compétence", "Préparation", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-COMMERCE-192",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lecture contractuelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commerce — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commerce",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Commerce Expert ; Lecture contractuelle",
+      "choice": "",
+      "frequency": "une fois par négociation économique",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la négociation préparée",
+      "metadata": {
+        "Compétence": "Commerce",
+        "Niveau": "3",
+        "Traits": "Commerce, Compétence, Préparation, Social",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par négociation économique",
+        "Durée": "jusqu'à la fin de la négociation préparée",
+        "Prérequis": "Commerce Expert ; Lecture contractuelle",
+        "Réussite critique": "il identifie la concession ayant la meilleure valeur probable pour l'autre partie et gagne +2 circonstanciel à ses deux premiers tests de Commerce de la négociation.",
+        "Réussite": "il gagne +2 circonstanciel à son premier test de Commerce de la négociation.",
+        "Échec": "la préparation ne procure aucun bénéfice.",
+        "Échec critique": "une concession dépasse une limite déclarée ; le MJ la signale avant l'ouverture des discussions."
+      }
+    },
+    "level": 3
+  }
+}

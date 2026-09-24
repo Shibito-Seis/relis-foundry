@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-ACROBATIES-007",
+  "name": "Course sur l'obstacle",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage transforme un mur, une coque inclinée, une série de débris ou tout autre relief continu en appuis fugitifs.</p>\n<p>Il effectue un test d&#39;Acrobaties et se déplace jusqu&#39;à deux fois son déplacement. Pendant ce mouvement, il peut courir sur une surface fortement inclinée ou verticale et franchir un vide maximal de 3 mètres entre deux appuis.</p>\n<p>• Réussite critique : il accomplit le déplacement et ne déclenche pas les Réactions fondées uniquement sur ce mouvement.</p>\n<p>• Réussite : il accomplit le déplacement.</p>\n<p>• Échec : il s&#39;arrête au dernier espace stable accessible.</p>\n<p>• Échec critique : il chute depuis le point où la manœuvre échoue.</p>\n<p>Le personnage doit terminer sur un espace capable de le soutenir. Le talent ne permet ni de rester sur un mur sans prise, ni de courir sur l&#39;air, l&#39;énergie ou une surface liquide.</p>",
+    "traits": ["Acrobaties", "Compétence", "Mouvement"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Acrobaties — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Acrobaties",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Acrobaties Maître",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Acrobaties",
+        "Niveau": "7",
+        "Traits": "Acrobaties, Compétence, Mouvement",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Acrobaties Maître",
+        "Réussite critique": "il accomplit le déplacement et ne déclenche pas les Réactions fondées uniquement sur ce mouvement.",
+        "Réussite": "il accomplit le déplacement.",
+        "Échec": "il s'arrête au dernier espace stable accessible.",
+        "Échec critique": "il chute depuis le point où la manœuvre échoue."
+      }
+    },
+    "level": 7
+  }
+}

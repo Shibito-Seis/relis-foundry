@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-730",
+  "name": "Habitant de tous les ponts",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Navigation, Investigation ou Systèmes de vaisseau pour trouver un trajet praticable dans un vaisseau, une station ou un habitat endommagé.</p>\n<p>Lorsqu&#39;une porte, une panne, une foule ou un danger mobile condamne soudain son itinéraire, il peut se déplacer de 2 mètres vers un couvert, un embranchement ou un accès légal qu&#39;il perçoit.</p>\n<p>Le talent ne révèle aucun passage secret, ne traverse aucune porte fermée et ne donne pas une carte d&#39;une structure inconnue.</p>",
+    "traits": ["Ascendance universelle", "Mobilité", "Navigation", "Vaisseau"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-715",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Enfant de l'Exode",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-727",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Acclimatation de bord",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.238 Talents universels d'Ascendance de niveau 9",
+      "family": "Enfants de l'Exode",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Enfant de l'Exode ou Acclimatation de bord",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Enfants de l'Exode",
+        "Traits": "Ascendance universelle, Mobilité, Navigation, Vaisseau",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Enfant de l'Exode ou Acclimatation de bord"
+      }
+    },
+    "level": 9
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-CMP-CULTURE-147",
+  "name": "Lexique de contact",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>À partir d&#39;un corpus réel comprenant répétitions, contexte et réponses observables, le personnage construit un lexique limité destiné à une interaction précise.</p>\n<p>Il effectue un test de Culture contre le DD de la langue ou du code culturel.</p>\n<p>• Réussite critique : le lexique couvre les identités, intentions simples, nombres, lieux et un registre de politesse pertinent ; les échanges correspondants ne subissent pas de malus provenant uniquement de la langue.</p>\n<p>• Réussite : le lexique couvre des intentions et notions simples ; les tests concernés ignorent jusqu&#39;à 2 points de malus linguistique.</p>\n<p>• Échec : aucun lexique fiable n&#39;est produit.</p>\n<p>• Échec critique : un terme reste dangereusement ambigu ; le MJ le signale avant son premier emploi irréversible.</p>\n<p>Le lexique n&#39;est pas une langue complète, ne traduit pas l&#39;abstraction, l&#39;humour ou le secret et cesse d&#39;être fiable hors du corpus étudié.</p>",
+    "traits": ["Compétence", "Culture", "Langage", "Recherche"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-CULTURE-142",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Contexte retrouvé",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-CULTURE-144",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Recherche archivistique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Culture — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Culture",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Culture Maître ; Contexte retrouvé et Recherche archivistique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la scène ou de l'étude",
+      "metadata": {
+        "Compétence": "Culture",
+        "Niveau": "7",
+        "Traits": "Compétence, Culture, Langage, Recherche",
+        "Type": "Activité d'exploration",
+        "Durée": "jusqu'à la fin de la scène ou de l'étude",
+        "Prérequis": "Culture Maître ; Contexte retrouvé et Recherche archivistique",
+        "Réussite critique": "le lexique couvre les identités, intentions simples, nombres, lieux et un registre de politesse pertinent ; les échanges correspondants ne subissent pas de malus provenant uniquement de la langue.",
+        "Réussite": "le lexique couvre des intentions et notions simples ; les tests concernés ignorent jusqu'à 2 points de malus linguistique.",
+        "Échec": "aucun lexique fiable n'est produit.",
+        "Échec critique": "un terme reste dangereusement ambigu ; le MJ le signale avant son premier emploi irréversible."
+      }
+    },
+    "level": 7
+  }
+}

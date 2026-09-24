@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-ACROBATIES-008",
+  "name": "Chute calculée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage exploite chaque paroi, câble, aspérité ou changement de densité pour fractionner sa chute. Il effectue un test d&#39;Acrobaties contre le DD de la chute.</p>\n<p>• Réussite critique : la distance effective de chute devient 0 ; il atterrit debout ou saisit une prise accessible de son choix.</p>\n<p>• Réussite : la distance effective de chute est réduite de 18 mètres et il atterrit debout.</p>\n<p>• Échec : la distance effective de chute est réduite de 6 mètres.</p>\n<p>• Échec critique : la chute est résolue normalement.</p>\n<p>Chute calculée remplace Réception contrôlée pour le même événement : les deux talents ne peuvent pas être utilisés ensemble. Une chute dépourvue de tout support ou milieu exploitable peut rendre ce talent impossible.</p>",
+    "traits": ["Acrobaties", "Compétence", "Mouvement", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Acrobaties — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Acrobaties",
+      "activation": "Réaction",
+      "prerequisites": "Acrobaties Maître",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage chute",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Acrobaties",
+        "Niveau": "7",
+        "Traits": "Acrobaties, Compétence, Mouvement, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "le personnage chute",
+        "Prérequis": "Acrobaties Maître",
+        "Réussite critique": "la distance effective de chute devient 0 ; il atterrit debout ou saisit une prise accessible de son choix.",
+        "Réussite": "la distance effective de chute est réduite de 18 mètres et il atterrit debout.",
+        "Échec": "la distance effective de chute est réduite de 6 mètres.",
+        "Échec critique": "la chute est résolue normalement."
+      }
+    },
+    "level": 7
+  }
+}

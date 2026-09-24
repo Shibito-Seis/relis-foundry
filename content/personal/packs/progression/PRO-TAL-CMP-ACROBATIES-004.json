@@ -1,0 +1,37 @@
+{
+  "relisId": "PRO-TAL-CMP-ACROBATIES-004",
+  "name": "Contorsion technique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage comprime sa posture, protège son équipement et choisit l&#39;angle exact permettant de franchir un passage extrêmement étroit mais matériellement compatible avec son anatomie ou son châssis.</p>\n<p>Il effectue un test d&#39;Acrobaties contre le DD du passage.</p>\n<p>• Réussite critique : il franchit le passage en la moitié du temps normal et peut emporter son équipement porté si celui-ci peut physiquement suivre.</p>\n<p>• Réussite : il franchit le passage.</p>\n<p>• Échec : il ne progresse pas, mais peut se retirer sans rester coincé.</p>\n<p>• Échec critique : il reste coincé ou déplace un objet bruyamment ; une action ou une aide adaptée est nécessaire pour se dégager.</p>\n<p>Contorsion technique peut aussi servir à se libérer de liens ordinaires laissant un jeu réel. Elle ne traverse pas un espace plus petit que les parties incompressibles du corps, un blindage fermé ou une entrave verrouillée sans solution physique.</p>",
+    "traits": ["Acrobaties", "Compétence", "Manipulation", "Mouvement"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Acrobaties — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Acrobaties",
+      "activation": "Activité de 2 Actions en rencontre, ou Activité d'exploration",
+      "prerequisites": "Acrobaties Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Acrobaties",
+        "Niveau": "3",
+        "Traits": "Acrobaties, Compétence, Manipulation, Mouvement",
+        "Type": "Activité de 2 Actions en rencontre, ou Activité d'exploration",
+        "Prérequis": "Acrobaties Expert",
+        "Réussite critique": "il franchit le passage en la moitié du temps normal et peut emporter son équipement porté si celui-ci peut physiquement suivre.",
+        "Réussite": "il franchit le passage.",
+        "Échec": "il ne progresse pas, mais peut se retirer sans rester coincé.",
+        "Échec critique": "il reste coincé ou déplace un objet bruyamment ; une action ou une aide adaptée est nécessaire pour se dégager."
+      }
+    },
+    "level": 3
+  }
+}

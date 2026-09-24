@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-CMP-ARMES-LOURDES-056",
+  "name": "Relève sous pression",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage se déplace d&#39;au plus 3 mètres vers le poste libéré, s&#39;il dispose d&#39;un trajet praticable, puis le reprend immédiatement.</p>\n<p>La visée, l&#39;orientation, le déploiement et la préparation matérielle déjà accomplis sont conservés lorsqu&#39;ils restent physiquement valides. Le personnage ne reçoit aucune action d&#39;attaque et doit être formé à l&#39;emploi de l&#39;arme pour l&#39;utiliser lui-même.</p>\n<p>Si le poste est inaccessible, détruit ou rendu dangereux par l&#39;événement déclencheur, le déplacement n&#39;a pas lieu et la Réaction n&#39;est pas dépensée.</p>",
+    "traits": ["Armes lourdes", "Compétence", "Équipage", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-ARMES-LOURDES-053",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Servant désigné",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Armes lourdes — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Armes lourdes",
+      "activation": "Réaction",
+      "prerequisites": "Armes lourdes Expert ; Servant désigné",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "à 3 mètres, le servant ou l'opérateur d'une arme lourde cesse volontairement ou involontairement d'occuper son poste",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Armes lourdes",
+        "Niveau": "3",
+        "Traits": "Armes lourdes, Compétence, Équipage, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Déclencheur": "à 3 mètres, le servant ou l'opérateur d'une arme lourde cesse volontairement ou involontairement d'occuper son poste",
+        "Prérequis": "Armes lourdes Expert ; Servant désigné"
+      }
+    },
+    "level": 3
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMANDEMENT-186",
+  "name": "Briefing de mission",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage présente à un maximum de quatre alliés volontaires un objectif, ses contraintes connues, les responsabilités principales et un signal de repli.</p>\n<p>Il effectue un test de Commandement contre le DD le plus élevé des contraintes connues.</p>\n<p>• Réussite critique : chaque participant gagne +2 circonstanciel à son premier test suivant le briefing ; la première complication mineure provenant d&#39;une responsabilité oubliée est reconnue avant de produire son effet.</p>\n<p>• Réussite : chaque participant gagne +2 circonstanciel à son premier test directement consacré à l&#39;objectif ou au repli prévu.</p>\n<p>• Échec : le briefing ne procure aucun bénéfice.</p>\n<p>• Échec critique : une dépendance du plan reste non attribuée ; le MJ la révèle avant le départ.</p>\n<p>Le briefing ne prévoit pas un danger inconnu, ne donne aucune action supplémentaire et ne garantit pas l&#39;adhésion à l&#39;objectif.</p>",
+    "traits": ["Commandement", "Compétence", "Préparation", "Travail d'équipe"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commandement — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commandement",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Commandement Expert",
+      "choice": "",
+      "frequency": "une fois par mission ou après modification majeure de l'objectif",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la mission préparée",
+      "metadata": {
+        "Compétence": "Commandement",
+        "Niveau": "3",
+        "Traits": "Commandement, Compétence, Préparation, Travail d'équipe",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par mission ou après modification majeure de l'objectif",
+        "Durée": "jusqu'à la fin de la mission préparée",
+        "Prérequis": "Commandement Expert",
+        "Réussite critique": "chaque participant gagne +2 circonstanciel à son premier test suivant le briefing ; la première complication mineure provenant d'une responsabilité oubliée est reconnue avant de produire son effet.",
+        "Réussite": "chaque participant gagne +2 circonstanciel à son premier test directement consacré à l'objectif ou au repli prévu.",
+        "Échec": "le briefing ne procure aucun bénéfice.",
+        "Échec critique": "une dépendance du plan reste non attribuée ; le MJ la révèle avant le départ."
+      }
+    },
+    "level": 3
+  }
+}

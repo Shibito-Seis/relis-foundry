@@ -1,0 +1,56 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-733",
+  "name": "Adaptation de l'exilé",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir vécu au moins sept jours dans un environnement viable mais inhabituel, le personnage peut l&#39;adopter comme environnement actuel : gravité, climat artificiel, station, biome colonisé ou habitat fermé.</p>\n<p>Il gagne +2 circonstanciel aux tests d&#39;Endurance et Survie contre ses difficultés ordinaires. La première Fatigue causée par cet environnement entre deux repos longs est différée jusqu&#39;à la fin de la scène ou de l&#39;étape de voyage.</p>\n<p>Un seul environnement peut être préparé. Le talent ne protège ni du vide, ni d&#39;une atmosphère létale, ni d&#39;une radiation ou température extrême sans équipement.</p>\n<p>---</p>",
+    "traits": [
+      "Ascendance universelle",
+      "Endurance",
+      "Environnement",
+      "Survie"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-720",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Gravité d'habitude",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-727",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Acclimatation de bord",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.239 Talents universels d'Ascendance de niveau 13",
+      "family": "Habitats partagés",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "préparation",
+      "prerequisites": "Acclimatation de bord ou Gravité d'habitude",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Habitats partagés",
+        "Traits": "Ascendance universelle, Endurance, Environnement, Survie",
+        "Type": "préparation",
+        "Prérequis": "Acclimatation de bord ou Gravité d'habitude"
+      }
+    },
+    "level": 13
+  }
+}

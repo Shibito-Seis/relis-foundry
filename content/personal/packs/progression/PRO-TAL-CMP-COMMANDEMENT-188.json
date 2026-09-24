@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMANDEMENT-188",
+  "name": "Plan conditionnel",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage prépare avec un maximum de quatre alliés jusqu&#39;à trois événements observables et, pour chacun, une priorité, un responsable et une réponse réalisable.</p>\n<p>Il effectue un test de Commandement contre le DD le plus élevé des événements préparés.</p>\n<p>• Réussite critique : lorsque chaque événement survient, le premier participant exécutant la réponse gagne +2 circonstanciel à son test ; le premier échec simple de coordination concernant l&#39;un de ces événements devient une réussite.</p>\n<p>• Réussite : pour les deux premiers événements qui surviennent, le premier participant exécutant la réponse gagne +2 circonstanciel à son test.</p>\n<p>• Échec : le plan ne procure aucun bénéfice.</p>\n<p>• Échec critique : une réponse dépend d&#39;une condition absente ; le MJ la révèle avant la mission.</p>\n<p>Le plan ne révèle pas l&#39;avenir et n&#39;accorde aucune action, Réaction, ressource ou information qui n&#39;a pas été préparée.</p>",
+    "traits": ["Commandement", "Compétence", "Préparation", "Travail d'équipe"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-COMMANDEMENT-184",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Délégation préparée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-COMMANDEMENT-186",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Briefing de mission",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commandement — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commandement",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Commandement Maître ; Délégation préparée et Briefing de mission",
+      "choice": "",
+      "frequency": "une fois par mission",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la mission ou la modification majeure du plan",
+      "metadata": {
+        "Compétence": "Commandement",
+        "Niveau": "7",
+        "Traits": "Commandement, Compétence, Préparation, Travail d'équipe",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par mission",
+        "Durée": "jusqu'à la fin de la mission ou la modification majeure du plan",
+        "Prérequis": "Commandement Maître ; Délégation préparée et Briefing de mission",
+        "Réussite critique": "lorsque chaque événement survient, le premier participant exécutant la réponse gagne +2 circonstanciel à son test ; le premier échec simple de coordination concernant l'un de ces événements devient une réussite.",
+        "Réussite": "pour les deux premiers événements qui surviennent, le premier participant exécutant la réponse gagne +2 circonstanciel à son test.",
+        "Échec": "le plan ne procure aucun bénéfice.",
+        "Échec critique": "une réponse dépend d'une condition absente ; le MJ la révèle avant la mission."
+      }
+    },
+    "level": 7
+  }
+}

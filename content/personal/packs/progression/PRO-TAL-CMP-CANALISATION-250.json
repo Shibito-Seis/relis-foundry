@@ -1,0 +1,74 @@
+{
+  "relisId": "PRO-TAL-CMP-CANALISATION-250",
+  "name": "Concordance des courants",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage coordonne jusqu&#39;à six participants, traditions ou sources capables d&#39;agir réellement sur une même stabilisation majeure, tout en maintenant leurs circuits et fonctions distincts.</p>\n<p>Il effectue un test de Canalisation contre le DD le plus élevé des sources ou du phénomène.</p>\n<p>• Réussite critique : il établit l&#39;ordre, le rythme, les limites et les incompatibilités ; chaque participant gagne +2 circonstanciel à ses tests suivant le plan, la première résonance mineure entre deux sources est évitée et le premier échec simple de Canalisation de l&#39;opération devient une réussite.</p>\n<p>• Réussite : il établit l&#39;ordre et les limites principales ; chaque participant gagne +2 circonstanciel à son premier test suivant le plan.</p>\n<p>• Échec : la concordance ne procure aucun bénéfice.</p>\n<p>• Échec critique : deux sources restent fondamentalement incompatibles avec les moyens présents ; le MJ les identifie avant toute activation irréversible.</p>\n<p>Le talent ne fusionne, ne convertit, ne partage et ne restaure aucune réserve. Chaque participant doit posséder sa source, son pouvoir, son focaliseur, ses composantes et ses protections.</p>\n<p>---</p>",
+    "traits": [
+      "Canalisation",
+      "Compétence",
+      "Magie",
+      "Mythique",
+      "Préparation",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-CANALISATION-246",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cercle de soutien",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-CANALISATION-248",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ancrage rituel",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-CANALISATION-249",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cœur de la tempête",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Canalisation — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Canalisation",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Canalisation Mythique ; Cercle de soutien, Ancrage rituel et Cœur de la tempête",
+      "choice": "",
+      "frequency": "une fois par phénomène ou opération majeure",
+      "trigger": "",
+      "duration": "jusqu'à la fin de l'opération ou la modification majeure des sources",
+      "metadata": {
+        "Compétence": "Canalisation",
+        "Niveau": "23",
+        "Traits": "Canalisation, Compétence, Magie, Mythique, Préparation, Travail d'équipe",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par phénomène ou opération majeure",
+        "Durée": "jusqu'à la fin de l'opération ou la modification majeure des sources",
+        "Prérequis": "Canalisation Mythique ; Cercle de soutien, Ancrage rituel et Cœur de la tempête",
+        "Réussite critique": "il établit l'ordre, le rythme, les limites et les incompatibilités ; chaque participant gagne +2 circonstanciel à ses tests suivant le plan, la première résonance mineure entre deux sources est évitée et le premier échec simple de Canalisation de l'opération devient une réussite.",
+        "Réussite": "il établit l'ordre et les limites principales ; chaque participant gagne +2 circonstanciel à son premier test suivant le plan.",
+        "Échec": "la concordance ne procure aucun bénéfice.",
+        "Échec critique": "deux sources restent fondamentalement incompatibles avec les moyens présents ; le MJ les identifie avant toute activation irréversible."
+      }
+    },
+    "level": 23
+  }
+}
