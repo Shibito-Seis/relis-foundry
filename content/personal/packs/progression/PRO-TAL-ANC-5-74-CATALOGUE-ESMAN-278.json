@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-278",
+  "name": "Lire la fracture",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage étudie une instabilité énergétique accessible. Il identifie son principal point de rupture, distingue si son origine paraît interne, ambiante, technologique ou imposée, et apprend si une intervention immédiate risque de l&#39;aggraver.</p>\n<p>Il gagne +2 circonstanciel au premier test effectué pendant la scène pour stabiliser, interrompre ou contourner cette fracture.</p>\n<p>Le talent ne révèle pas une cause historique sans trace et ne rend pas l&#39;intervention sûre.</p>",
+    "traits": ["Esman", "Diagnostic", "Énergie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-269",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sentir l'instable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.76 Talents Esmans de niveau 5",
+      "family": "Perception des fractures",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Sentir l'instable",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Perception des fractures",
+        "Traits": "Esman, Diagnostic, Énergie",
+        "Type": "Activité de 10 minutes",
+        "Prérequis": "Sentir l'instable"
+      }
+    },
+    "level": 5
+  }
+}

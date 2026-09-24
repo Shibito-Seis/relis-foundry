@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-262",
+  "name": "Éclat défensif",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;il subit des dégâts d&#39;énergie provenant d&#39;une source qu&#39;il peut percevoir, le personnage fait circuler l&#39;impact dans ses cornes et réduit ces dégâts de 2, après l&#39;application des autres protections.</p>\n<p>Ses cornes s&#39;illuminent ou résonnent jusqu&#39;au début de son prochain tour, rendant sa signature énergétique évidente.</p>\n<p>Le talent ne réduit ni dégâts physiques secondaires, ni poison, ni radiation ordinaire.</p>",
+    "traits": ["Esman", "Corne", "Défense", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Cornes cristallines",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cornes cristallines",
+        "Traits": "Esman, Corne, Défense, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

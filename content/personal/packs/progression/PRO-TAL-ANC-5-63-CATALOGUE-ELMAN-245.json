@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-245",
+  "name": "Prescience énergétique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;une source énergétique que le personnage peut percevoir est sur le point de produire une attaque, une zone ou une défaillance, il avertit les alliés dans un rayon de 6 mètres.</p>\n<p>Le personnage et ces alliés gagnent +2 circonstanciel à leur premier test de défense ou de résistance contre cette manifestation. Ceux qui ne sont pas immobilisés peuvent également se décaler de 1 mètre avant sa résolution, si un espace sûr est immédiatement accessible.</p>\n<p>Le talent ne fonctionne pas contre une source totalement dissimulée, ne révèle pas les effets exacts et ne prédit pas une décision future indépendante de la signature observée.</p>",
+    "traits": ["Elman", "Avertissement", "Énergie", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-236",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cartographe des résonances",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-237",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Regard sans spectre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.67 Talents Elmans de niveau 13",
+      "family": "Sensibilité énergétique",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Cartographe des résonances ou Regard sans spectre",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sensibilité énergétique",
+        "Traits": "Elman, Avertissement, Énergie, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Cartographe des résonances ou Regard sans spectre"
+      }
+    },
+    "level": 13
+  }
+}

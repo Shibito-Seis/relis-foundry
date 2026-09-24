@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-275",
+  "name": "Réserve somatique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un échec non critique à un test de Force, Vigueur, Endurance ou Canalisation directement soutenu par son énergie interne, le personnage peut transformer cet échec en réussite ordinaire. Il gagne alors 1 Fatigue.</p>\n<p>Un échec critique devient seulement un échec ordinaire et inflige également 1 Fatigue.</p>\n<p>La Réserve ne permet pas une action impossible et la Fatigue reçue ne peut être supprimée par le résultat obtenu.</p>",
+    "traits": ["Esman", "Effort", "Prana"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-264",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps sous pression",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.76 Talents Esmans de niveau 5",
+      "family": "Puissance interne",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Corps sous pression",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance interne",
+        "Traits": "Esman, Effort, Prana",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Corps sous pression"
+      }
+    },
+    "level": 5
+  }
+}

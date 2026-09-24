@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-314",
+  "name": "Protocole de coupure",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage définit pour chaque châssis un protocole de coupure : arrêt sécurisé, retour, routine locale, protection ou attente de reconnexion.</p>\n<p>Lorsqu&#39;un châssis perd le lien avec le collectif, il peut accomplir cette routine simple sans recevoir d&#39;Actions du personnage. Il ne peut ni improviser, ni attaquer sauf pour se défendre explicitement, ni employer un talent.</p>\n<p>Le personnage gagne +2 circonstanciel aux tests destinés à rétablir la synchronisation. Une routine prolongée peut produire une divergence selon la fiction.</p>\n<p>---</p>",
+    "traits": ["IAA", "Architecture", "Collective"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Collective / Essaim",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Architecture Collective / Essaim maîtrisée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Collective / Essaim",
+        "Traits": "IAA, Architecture, Collective",
+        "Type": "Passif",
+        "Prérequis": "Architecture Collective / Essaim maîtrisée"
+      }
+    },
+    "level": 1
+  }
+}

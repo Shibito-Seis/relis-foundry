@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-243",
+  "name": "Interface organique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>En touchant un système énergétique ou techno-magique accessible, le personnage peut lui transmettre une commande simple par sa propre signature : ouvrir ou fermer un circuit déjà autorisé, demander un état, sélectionner un mode accessible ou synchroniser un signal.</p>\n<p>Il peut effectuer le test nécessaire avec Maîtrise Magique + Techno-magie et gagne +2 circonstanciel. Il ignore l&#39;absence d&#39;une interface utilisateur de base, mais pas celle d&#39;un outil, d&#39;un protocole ou d&#39;un accès de sécurité indispensable.</p>\n<p>Le talent ne pirate pas, ne recharge pas, ne copie pas de données et ne permet pas de contrôler un système à distance.</p>\n<p>---</p>",
+    "traits": ["Elman", "Interface", "Techno-magie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-224",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Toucher d'accord",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.66 Talents Elmans de niveau 9",
+      "family": "Interfaces bioénergétiques",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Toucher d'accord",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Interfaces bioénergétiques",
+        "Traits": "Elman, Interface, Techno-magie",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Toucher d'accord"
+      }
+    },
+    "level": 9
+  }
+}

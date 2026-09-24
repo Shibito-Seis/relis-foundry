@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-265",
+  "name": "Oser la surcharge",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant un test de Maîtrise Magique, Canalisation ou Techno-magie impliquant directement l&#39;énergie du personnage, celui-ci peut gagner +2 circonstanciel au test.</p>\n<p>Après sa résolution, il gagne 1 Stress, sauf en cas de réussite critique. En cas d&#39;échec critique, il gagne aussi 1 Fatigue.</p>\n<p>Cette Fatigue ne peut pas être évitée par l&#39;effet que la surcharge tentait d&#39;activer. Le talent ne peut affecter un jet déjà soumis à Fortune ou Infortune.</p>",
+    "traits": ["Esman", "Fortune", "Surcharge"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Surcharge maîtrisée",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Surcharge maîtrisée",
+        "Traits": "Esman, Fortune, Surcharge",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

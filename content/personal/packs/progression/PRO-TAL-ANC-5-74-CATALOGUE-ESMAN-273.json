@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-273",
+  "name": "Parade cristalline",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;une attaque énergétique ou magique cible directement le personnage, ses cornes forment un contrechamp. Il gagne +2 circonstanciel à sa défense contre cette attaque.</p>\n<p>Si elle réussit malgré ce bonus, il réduit ses dégâts énergétiques de 2.</p>\n<p>La Parade ne protège pas d&#39;une zone qui ne cible pas directement le personnage et ne se cumule pas avec Éclat défensif sur le même effet.</p>",
+    "traits": ["Esman", "Corne", "Défense", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-262",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Éclat défensif",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.76 Talents Esmans de niveau 5",
+      "family": "Cornes cristallines",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Éclat défensif",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cornes cristallines",
+        "Traits": "Esman, Corne, Défense, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Éclat défensif"
+      }
+    },
+    "level": 5
+  }
+}

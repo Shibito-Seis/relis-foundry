@@ -1,0 +1,61 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-299",
+  "name": "Corps-cataclysme",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant une scène, le personnage libère toute la puissance que son organisme maintient ordinairement contenue :</p>\n<p>• il gagne +3 circonstanciel aux tests de Force, Vigueur, Athlétisme, Endurance et Canalisation ;</p>\n<p>• sa Vitesse augmente de 4 mètres ;</p>\n<p>• il possède une Résistance aux dégâts d&#39;énergie égale à la moitié de son Niveau général ;</p>\n<p>• une fois par tour, il peut utiliser Poussée interne ou Frappe d&#39;overflow sans consommer sa fréquence normale ;</p>\n<p>• ses cornes et sa silhouette émettent une signature impossible à dissimuler par des moyens ordinaires.</p>\n<p>Lorsque la forme prend fin, le personnage gagne 2 Fatigue et 2 Stress. Ces coûts ne peuvent être réduits. Corps-cataclysme ne se cumule avec aucune autre Transformation.</p>",
+    "traits": ["Esman", "Mythique", "Surcharge", "Transformation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-288",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forme d'overflow",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-293",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réacteur vivant",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-294",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Surcharge absolue",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.81 Talents Esmans de niveau 25",
+      "family": "Transcendance esman",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Forme d'overflow, Réacteur vivant et Surcharge absolue",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance esman",
+        "Traits": "Esman, Mythique, Surcharge, Transformation",
+        "Type": "1 Action",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Forme d'overflow, Réacteur vivant et Surcharge absolue"
+      }
+    },
+    "level": 25
+  }
+}

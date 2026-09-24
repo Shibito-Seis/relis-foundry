@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-300",
+  "name": "Maître du cristal intérieur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Les trois fonctions d&#39;Architecture cristalline sont désormais actives à pleine puissance en permanence. Après dix minutes de concentration, le personnage peut changer son architecture dominante pour les prérequis et effets qui la mentionnent.</p>\n<p>Lorsqu&#39;un effet énergétique visible ou perceptible traverse une zone à 12 mètres, il peut effectuer un test de Maîtrise Magique + Canalisation contre le DD de l&#39;effet :</p>\n<p>• sur une réussite critique, il détourne la partie énergétique vers un espace sûr ou un réservoir capable de la recevoir ;</p>\n<p>• sur une réussite, les créatures choisies dans la zone gagnent +3 circonstanciel à leur défense et une Résistance égale à la moitié de son Niveau général ;</p>\n<p>• sur un échec, lui seul reçoit cette Résistance ;</p>\n<p>• sur un échec critique, il gagne 1 Stress sans bénéfice.</p>\n<p>Le talent ne redirige pas un effet déjà résolu, une conséquence purement physique ou une puissance d&#39;échelle supérieure à la scène personnelle.</p>\n<p>---</p>",
+    "traits": ["Esman", "Canalisation", "Corne", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-292",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Couronne noire",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-297",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cœur cristallin",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.81 Talents Esmans de niveau 25",
+      "family": "Transcendance esman",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Couronne noire et Cœur cristallin",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance esman",
+        "Traits": "Esman, Canalisation, Corne, Mythique",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Couronne noire et Cœur cristallin"
+      }
+    },
+    "level": 25
+  }
+}

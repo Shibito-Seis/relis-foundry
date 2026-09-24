@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-258",
+  "name": "Elman de l'Ère suivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage n&#39;est pas l&#39;aboutissement supérieur de son espèce : il est devenu capable de diriger consciemment sa propre adaptation. Après dix minutes d&#39;exposition prudente à une condition nouvelle, il peut remplacer les choix d&#39;Évolution circonstancielle par d&#39;autres adaptations de puissance comparable, validées avant leur usage.</p>\n<p>Une fois par mission, après avoir défini son Horizon de l&#39;évolution, il peut consacrer une heure à transmettre ce qu&#39;il a appris. Chaque allié participant choisit un bénéfice jusqu&#39;à la fin de la mission :</p>\n<p>• +3 circonstanciel à ses tests contre le phénomène ;</p>\n<p>• réduction de moitié d&#39;une pénalité environnementale précise ;</p>\n<p>• capacité à percevoir le signe annonciateur identifié par le personnage ;</p>\n<p>• résistance égale à la moitié du Niveau général du personnage contre une énergie précise du phénomène.</p>\n<p>Chaque allié ne reçoit qu&#39;un bénéfice et doit disposer de l&#39;équipement vital nécessaire. Le talent ne modifie pas durablement son espèce, ne force aucune transformation et ne crée aucune immunité.</p>",
+    "traits": ["Elman", "Adaptation", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-253",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Horizon de l'évolution",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.71 Talents Elmans de niveau 29",
+      "family": "Transcendance elman",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Passif et Activité d'exploration",
+      "prerequisites": "Horizon de l'évolution",
+      "choice": "",
+      "frequency": "une fois par mission pour l'adaptation collective",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elman",
+        "Traits": "Elman, Adaptation, Mythique",
+        "Type": "Passif et Activité d'exploration",
+        "Fréquence": "une fois par mission pour l'adaptation collective",
+        "Prérequis": "Horizon de l'évolution"
+      }
+    },
+    "level": 29
+  }
+}

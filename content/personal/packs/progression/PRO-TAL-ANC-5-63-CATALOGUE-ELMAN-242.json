@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-242",
+  "name": "Adaptation générationnelle",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir étudié un environnement ou obtenu des informations fiables à son sujet, le personnage choisit une adaptation parmi : chaleur, froid, faible gravité, forte gravité, atmosphère pauvre, lumière extrême ou forte saturation énergétique.</p>\n<p>Jusqu&#39;au prochain repos long, il gagne +2 circonstanciel aux tests d&#39;Endurance, Survie ou Vigueur contre cette condition et traite sa sévérité comme inférieure d&#39;un degré pour déterminer ses effets environnementaux ordinaires.</p>\n<p>Le talent ne permet pas de respirer sans oxygène, de survivre dans le vide, d&#39;ignorer une température mortelle ou de remplacer un équipement vital.</p>",
+    "traits": ["Elman", "Adaptation", "Environnement"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-222",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Enfant de l'évolution",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-234",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Médiateur des mutations",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.66 Talents Elmans de niveau 9",
+      "family": "Héritage humain transformé",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "préparation lors d'un repos long",
+      "prerequisites": "Enfant de l'évolution ou Médiateur des mutations",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritage humain transformé",
+        "Traits": "Elman, Adaptation, Environnement",
+        "Type": "préparation lors d'un repos long",
+        "Prérequis": "Enfant de l'évolution ou Médiateur des mutations"
+      }
+    },
+    "level": 9
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-222",
+  "name": "Enfant de l'évolution",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage devient Qualifié dans la compétence choisie.</p>\n<p>Il gagne également +2 circonstanciel aux tests de Culture, Médecine ou Sciences destinés à connaître l&#39;histoire, les communautés, la physiologie ou les variations naturelles des Elmans.</p>\n<p>Cette formation ne fournit aucun protocole réservé et ne permet pas de diagnostiquer une personne sans examen.</p>",
+    "traits": ["Elman", "Compétence", "Héritage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Héritage humain transformé",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "Canalisation, Médecine, Sciences ou Techno-magie",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritage humain transformé",
+        "Traits": "Elman, Compétence, Héritage",
+        "Type": "Passif",
+        "Choix": "Canalisation, Médecine, Sciences ou Techno-magie"
+      }
+    },
+    "level": 1
+  }
+}

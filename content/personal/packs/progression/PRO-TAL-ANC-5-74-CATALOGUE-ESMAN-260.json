@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-260",
+  "name": "Cornes focales",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Les cornes du personnage comptent comme un focaliseur naturel de base pour canaliser sa propre énergie ou une énergie qui les traverse. Il gagne +1 circonstanciel aux tests de Canalisation destinés à amorcer, maintenir ou interrompre un talent Esman utilisant ses cornes.</p>\n<p>Il peut également produire à portée de main une lueur noire, une vibration, une étincelle ou une variation de température inoffensive.</p>\n<p>Le talent ne remplace pas un catalyseur spécialisé, ne fournit aucun sort et ne permet pas de canaliser une source inaccessible.</p>",
+    "traits": ["Esman", "Canalisation", "Corne"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Cornes cristallines",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cornes cristallines",
+        "Traits": "Esman, Canalisation, Corne",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

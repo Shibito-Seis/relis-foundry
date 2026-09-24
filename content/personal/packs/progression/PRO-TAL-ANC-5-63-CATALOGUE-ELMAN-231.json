@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-231",
+  "name": "Respiration du Flux",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Dans un environnement contenant une énergie ambiante accessible et non immédiatement hostile, le personnage accorde sa respiration au Flux. Il réduit son Stress de 1 et gagne +2 circonstanciel au prochain test de Canalisation effectué avant la fin de la scène suivante.</p>\n<p>Ce talent ne fonctionne pas dans une zone totalement privée de Flux accessible et ne neutralise pas un environnement dangereux. À l&#39;étape 6, il pourra récupérer une quantité limitée d&#39;une ressource énergétique au lieu d&#39;ajouter un nouveau bénéfice.</p>",
+    "traits": ["Elman", "Flux", "Repos"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.65 Talents Elmans de niveau 5",
+      "family": "Résonance ambiante",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résonance ambiante",
+        "Traits": "Elman, Flux, Repos",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 5
+  }
+}

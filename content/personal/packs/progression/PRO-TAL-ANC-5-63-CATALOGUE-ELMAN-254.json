@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-254",
+  "name": "Source intérieure souveraine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut désormais activer Forme de Prana une fois par scène au lieu d&#39;une fois par jour. La première activation de la journée ne lui inflige aucun Stress lorsqu&#39;elle prend fin ; chaque activation suivante lui inflige normalement 1 Stress.</p>\n<p>Pendant Forme de Prana, il gagne également +2 circonstanciel aux tests de Volonté contre le drainage, la possession et l&#39;altération de son énergie interne. Une fois par scène, il peut ignorer la perte involontaire d&#39;une unité de ressource interne ; la définition exacte de cette unité sera fixée à l&#39;étape 6.</p>\n<p>Le talent ne dispense jamais du coût volontaire d&#39;un pouvoir et ne rend pas le Prana illimité.</p>",
+    "traits": ["Elman", "Mythique", "Prana"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-251",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cœur inépuisable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.69 Talents Elmans de niveau 21",
+      "family": "Transcendance elman",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "amélioration",
+      "prerequisites": "Cœur inépuisable",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elman",
+        "Traits": "Elman, Mythique, Prana",
+        "Type": "amélioration",
+        "Prérequis": "Cœur inépuisable"
+      }
+    },
+    "level": 21
+  }
+}

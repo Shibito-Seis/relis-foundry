@@ -1,0 +1,64 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-301",
+  "name": "Esman libéré",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage a cessé d&#39;être défini par l&#39;objectif de ceux qui l&#39;ont conçu. Lors de chaque repos long, il choisit une expression de cette liberté :</p>\n<p>• Puissance choisie : la première Fatigue reçue d&#39;un talent Esman pendant la journée devient 1 Stress.</p>\n<p>• Forme choisie : il entretient une troisième option de Mutation stabilisée.</p>\n<p>• Voix choisie : il gagne +3 circonstanciel aux tests sociaux ou mentaux pour défendre l&#39;autonomie d&#39;une personne transformée, créée ou conditionnée.</p>\n<p>Une fois par session, lorsqu&#39;une créature visible devrait perdre le contrôle de son corps ou être transformée contre son gré, le personnage peut lui permettre de relancer son test et de conserver le meilleur résultat. Si aucun test n&#39;était prévu, la cible en obtient un contre le DD de l&#39;effet.</p>\n<p>Le talent ne modifie pas l&#39;Ascendance d&#39;autrui et ne rend pas toute transformation réversible.</p>",
+    "traits": ["Esman", "Identité", "Libération", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-294",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Surcharge absolue",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-295",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mutation souveraine",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-296",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Briseur de protocole",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.82 Talents Esmans de niveau 29",
+      "family": "Transcendance esman",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "préparation lors d'un repos long et Réaction",
+      "prerequisites": "Briseur de protocole et Mutation souveraine ou Surcharge absolue",
+      "choice": "",
+      "frequency": "une fois par session pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance esman",
+        "Traits": "Esman, Identité, Libération, Mythique",
+        "Type": "préparation lors d'un repos long et Réaction",
+        "Fréquence": "une fois par session pour la réaction",
+        "Prérequis": "Briseur de protocole et Mutation souveraine ou Surcharge absolue",
+        "Puissance choisie": "la première Fatigue reçue d'un talent Esman pendant la journée devient 1 Stress.",
+        "Forme choisie": "il entretient une troisième option de Mutation stabilisée.",
+        "Voix choisie": "il gagne +3 circonstanciel aux tests sociaux ou mentaux pour défendre l'autonomie d'une personne transformée, créée ou conditionnée."
+      }
+    },
+    "level": 29
+  }
+}

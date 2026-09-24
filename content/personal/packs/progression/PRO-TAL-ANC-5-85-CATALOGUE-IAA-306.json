@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-306",
+  "name": "Mémoire indexée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests destinés à retrouver une information qu&#39;il a réellement observée, enregistrée ou apprise.</p>\n<p>Une fois par session, il peut restituer exactement un détail accessible d&#39;une scène antérieure : phrase entendue, disposition, heure, signal, visage, symbole ou valeur affichée.</p>\n<p>Le talent ne crée pas un enregistrement absent, ne récupère pas une mémoire supprimée et ne garantit pas que les données observées étaient vraies.</p>",
+    "traits": ["IAA", "Mémoire", "Perception"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Capteurs et interfaces",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Capteurs et interfaces",
+        "Traits": "IAA, Mémoire, Perception",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation"
+      }
+    },
+    "level": 1
+  }
+}

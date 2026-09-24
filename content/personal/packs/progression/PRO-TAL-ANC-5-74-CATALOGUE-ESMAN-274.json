@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-274",
+  "name": "Frappe d'overflow",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant une attaque de mêlée ou à mains nues, le personnage concentre la pression interne dans son mouvement.</p>\n<p>En cas de réussite, l&#39;attaque inflige 1d6 dégâts d&#39;énergie supplémentaires. La cible ne subit aucun effet supplémentaire en cas d&#39;échec.</p>\n<p>La Frappe ne change ni la compétence d&#39;attaque, ni la portée de l&#39;arme et ne cumule pas ses dégâts avec une autre Frappe d&#39;overflow.</p>",
+    "traits": ["Esman", "Attaque", "Prana"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-263",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Poussée interne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.76 Talents Esmans de niveau 5",
+      "family": "Puissance interne",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Poussée interne",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance interne",
+        "Traits": "Esman, Attaque, Prana",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Poussée interne"
+      }
+    },
+    "level": 5
+  }
+}

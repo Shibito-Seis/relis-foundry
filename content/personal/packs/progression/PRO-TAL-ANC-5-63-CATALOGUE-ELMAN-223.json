@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-223",
+  "name": "Entre deux héritages",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage parle la langue principale ou connaît les codes sociaux de l&#39;héritage choisi. Il gagne +2 circonstanciel aux tests de Culture ou de Diplomatie pour naviguer entre institutions humaines, communautés elmanes et groupes elfes lorsque son expérience de ces identités est directement pertinente.</p>\n<p>Le talent ne garantit ni confiance, ni statut, ni droit d&#39;accès et ne suppose pas que ces groupes forment des cultures homogènes.</p>",
+    "traits": ["Elman", "Culture", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Héritage humain transformé",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "un héritage culturel humain ou une communauté elman précise",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritage humain transformé",
+        "Traits": "Elman, Culture, Social",
+        "Type": "Passif",
+        "Choix": "un héritage culturel humain ou une communauté elman précise"
+      }
+    },
+    "level": 1
+  }
+}

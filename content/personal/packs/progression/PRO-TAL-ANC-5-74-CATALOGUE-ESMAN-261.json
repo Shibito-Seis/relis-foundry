@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-261",
+  "name": "Résonance cristalline",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage ressent par ses cornes les sources d&#39;énergie actives ou instables dans un rayon de 6 mètres. Il apprend leur direction générale, leur intensité approximative et si elles semblent internes, ambiantes, technologiques ou techno-magiques.</p>\n<p>Il gagne +2 circonstanciel au premier test effectué pendant la scène pour examiner l&#39;une de ces sources.</p>\n<p>La résonance ne traverse pas une isolation appropriée, ne révèle aucune fonction exacte et peut être saturée par un environnement très chargé.</p>",
+    "traits": ["Esman", "Corne", "Détection", "Énergie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Cornes cristallines",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Activité de 1 minute (Concentration)",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cornes cristallines",
+        "Traits": "Esman, Corne, Détection, Énergie",
+        "Type": "Activité de 1 minute (Concentration)"
+      }
+    },
+    "level": 1
+  }
+}

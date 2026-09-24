@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-233",
+  "name": "Canal stable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests destinés à stabiliser, contenir ou interrompre une énergie qui traverse directement son propre corps.</p>\n<p>Une fois par session, il peut transformer un échec critique à l&#39;un de ces tests en échec ordinaire.</p>\n<p>Le talent ne stabilise pas automatiquement une source extérieure et ne remplace pas les protections ou instruments nécessaires.</p>",
+    "traits": ["Elman", "Canalisation", "Contrôle"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-220",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Calme du circuit",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-63-CATALOGUE-ELMAN-221",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Dissipation instinctive",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.65 Talents Elmans de niveau 5",
+      "family": "Discipline de convergence",
+      "ancestry": "### 5.63 Catalogue Elman",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Calme du circuit ou Dissipation instinctive",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Discipline de convergence",
+        "Traits": "Elman, Canalisation, Contrôle",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation",
+        "Prérequis": "Calme du circuit ou Dissipation instinctive"
+      }
+    },
+    "level": 5
+  }
+}

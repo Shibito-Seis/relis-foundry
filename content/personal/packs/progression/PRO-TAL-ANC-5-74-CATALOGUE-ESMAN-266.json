@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-74-CATALOGUE-ESMAN-266",
+  "name": "Soupape volontaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;une énergie que le personnage canalise devrait lui infliger du Stress, de la Fatigue ou des dégâts en raison d&#39;un contrecoup, il ouvre volontairement une voie de décharge.</p>\n<p>Il réduit de 1 le Stress reçu ou de 2 les dégâts énergétiques. À la place, il peut empêcher 1 Fatigue, mais la décharge devient alors bruyante, lumineuse et détectable jusqu&#39;à portée moyenne.</p>\n<p>La Soupape ne réduit qu&#39;une conséquence provenant directement d&#39;une énergie traversant le personnage et ne peut rendre discrète une manifestation déjà visible.</p>",
+    "traits": ["Esman", "Contrôle", "Réaction", "Surcharge"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Surcharge maîtrisée",
+      "ancestry": "### 5.74 Catalogue Esman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Surcharge maîtrisée",
+        "Traits": "Esman, Contrôle, Réaction, Surcharge",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}
