@@ -3,7 +3,7 @@
   "format": "relis.crystal-attunement",
   "formatVersion": 1,
   "relisId": "QST-ECARLITHE-001",
-  "contentVersion": "1.0.0",
+  "contentVersion": "1.1.0",
   "name": "Accord d’un Cœur d’Écarlithe",
   "nomenclature": {
     "canonicalTerm": "Écarlithe",
@@ -69,18 +69,137 @@
     }
   ],
   "palette": [
-    { "id": "azure", "label": "Azur", "hex": "#3A8DFF", "axis": "guard" },
-    { "id": "scarlet", "label": "Écarlate", "hex": "#F04455", "axis": "drive" },
-    { "id": "cyan", "label": "Cyan", "hex": "#59DDE8", "axis": "insight" },
+    {
+      "id": "azure",
+      "label": "Azur",
+      "hex": "#3A8DFF",
+      "kind": "dominant",
+      "axes": ["guard"],
+      "meaning": "Garde dominante."
+    },
+    {
+      "id": "scarlet",
+      "label": "Écarlate",
+      "hex": "#F04455",
+      "kind": "dominant",
+      "axes": ["drive"],
+      "meaning": "Élan dominant."
+    },
+    {
+      "id": "cyan",
+      "label": "Cyan",
+      "hex": "#59DDE8",
+      "kind": "dominant",
+      "axes": ["insight"],
+      "meaning": "Clairvoyance dominante."
+    },
     {
       "id": "emerald",
       "label": "Émeraude",
       "hex": "#3DCE7A",
-      "axis": "harmony"
+      "kind": "dominant",
+      "axes": ["harmony"],
+      "meaning": "Harmonie dominante."
     },
-    { "id": "amber", "label": "Ambre", "hex": "#F2AD3F", "axis": "creation" },
-    { "id": "violet", "label": "Violet", "hex": "#9A68E8", "axis": "freedom" }
+    {
+      "id": "amber",
+      "label": "Ambre",
+      "hex": "#F2AD3F",
+      "kind": "dominant",
+      "axes": ["creation"],
+      "meaning": "Création dominante."
+    },
+    {
+      "id": "violet",
+      "label": "Violet",
+      "hex": "#9A68E8",
+      "kind": "dominant",
+      "axes": ["freedom"],
+      "meaning": "Liberté dominante."
+    },
+    {
+      "id": "sapphire",
+      "label": "Saphir",
+      "hex": "#3156D9",
+      "kind": "conjunction",
+      "axes": ["guard", "insight"],
+      "meaning": "Vigilance lucide."
+    },
+    {
+      "id": "viridian",
+      "label": "Viridien",
+      "hex": "#28A88A",
+      "kind": "conjunction",
+      "axes": ["insight", "harmony"],
+      "meaning": "Compréhension empathique."
+    },
+    {
+      "id": "gold",
+      "label": "Or",
+      "hex": "#F4D35E",
+      "kind": "conjunction",
+      "axes": ["harmony", "creation"],
+      "meaning": "Créer, réparer et relier."
+    },
+    {
+      "id": "orange",
+      "label": "Orange",
+      "hex": "#F57C3D",
+      "kind": "conjunction",
+      "axes": ["creation", "drive"],
+      "meaning": "Inventer en agissant."
+    },
+    {
+      "id": "magenta",
+      "label": "Magenta",
+      "hex": "#E94DCE",
+      "kind": "conjunction",
+      "axes": ["drive", "freedom"],
+      "meaning": "Volonté d’émancipation."
+    },
+    {
+      "id": "indigo",
+      "label": "Indigo",
+      "hex": "#5D56D8",
+      "kind": "conjunction",
+      "axes": ["freedom", "guard"],
+      "meaning": "Protéger l’autonomie."
+    },
+    {
+      "id": "opal-white",
+      "label": "Blanc opalin",
+      "hex": "#F3F0FF",
+      "kind": "equilibrium",
+      "axes": ["guard", "creation"],
+      "meaning": "Préserver tout en acceptant la transformation."
+    },
+    {
+      "id": "silver",
+      "label": "Argent",
+      "hex": "#C3CDD8",
+      "kind": "equilibrium",
+      "axes": ["insight", "drive"],
+      "meaning": "Comprendre avant d’agir, puis agir sans hésiter."
+    },
+    {
+      "id": "bronze",
+      "label": "Bronze",
+      "hex": "#C47A4A",
+      "kind": "equilibrium",
+      "axes": ["harmony", "freedom"],
+      "meaning": "Conserver les liens sans renoncer à soi-même."
+    }
   ],
+  "resolution": {
+    "singleHighestAxisUsesDominantColor": true,
+    "pairOutcomeRequiresExactlyTwoTopAxes": true,
+    "recognizedPairUsesMappedColor": true,
+    "unrecognizedTieUsesTieBreaker": true,
+    "moreThanTwoTopAxesUsesTieBreaker": true,
+    "directColorChoice": false,
+    "blackAttunedOutcome": false,
+    "blackIsReservedForRawEcarlethe": true
+  },
   "questions": [
     {
       "id": "failing-system",
@@ -292,7 +411,7 @@
     }
   ],
   "tieBreaker": {
-    "prompt": "Lorsque deux résonances demeurent égales, quelle phrase veux-tu conserver au moment de l’accord ?",
+    "prompt": "Lorsque plusieurs résonances demeurent égales sans couleur conjointe reconnue, quelle phrase veux-tu conserver au moment de l’accord ?",
     "showOnlyTiedAxes": true,
     "options": [
       {

@@ -3,8 +3,8 @@
   "format": "relis.personal-content",
   "formatVersion": 1,
   "system": "relis",
-  "contentVersion": "1.0.0",
-  "strictReferences": false,
+  "contentVersion": "1.1.0",
+  "strictReferences": true,
   "packs": [
     {
       "id": "creation",
