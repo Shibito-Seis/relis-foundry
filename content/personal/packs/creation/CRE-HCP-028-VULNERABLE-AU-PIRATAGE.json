@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-028-VULNERABLE-AU-PIRATAGE",
+  "name": "Vulnérable au piratage",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -2</p>\n<p>Le personnage subit -2 pour résister aux intrusions numériques, IAA, cybernétiques ou interfaces neurales. Les ennemis connectés peuvent le cibler plus facilement.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-2",
+      "effect": "Le personnage subit -2 pour résister aux intrusions numériques, IAA, cybernétiques ou interfaces neurales. Les ennemis connectés peuvent le cibler plus facilement."
+    }
+  }
+}

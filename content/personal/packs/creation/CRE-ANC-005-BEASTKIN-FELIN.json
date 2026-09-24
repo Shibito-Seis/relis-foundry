@@ -1,0 +1,20 @@
+{
+  "relisId": "CRE-ANC-005-BEASTKIN-FELIN",
+  "name": "Beastkin Félin",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Dextérité, +1 Vigueur</p>\n<p><strong>Malus d’Attribut :</strong> -1 Volonté</p>\n<p>Prédateur complet : puissant, rapide, endurant, mais plus instinctif ou impulsif.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Force, +1 Dextérité, +1 Vigueur",
+      "attributePenalty": "-1 Volonté",
+      "rationale": "Prédateur complet : puissant, rapide, endurant, mais plus instinctif ou impulsif.",
+      "selectable": true
+    }
+  }
+}

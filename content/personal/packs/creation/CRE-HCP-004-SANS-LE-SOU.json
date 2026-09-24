@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-004-SANS-LE-SOU",
+  "name": "Sans le sou",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -3</p>\n<p>Le personnage commence avec 0 crédit personnel. Il peut avoir équipement de survie minimal si le scénario l’exige. Incompatible avec Riche et Très riche.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-3",
+      "effect": "Le personnage commence avec 0 crédit personnel. Il peut avoir équipement de survie minimal si le scénario l’exige. Incompatible avec Riche et Très riche."
+    }
+  }
+}

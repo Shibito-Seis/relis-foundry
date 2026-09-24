@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-AFF-009",
+  "name": "Groupe non-humain",
+  "type": "origin",
+  "tags": ["creation", "origine", "affiliation"],
+  "system": {
+    "description": "<p>Communauté elfe, naine, gnome, beastkin, elman, esman ou IAA défendant ses intérêts propres. — Réputation positive, Contact influent, Ancre morale — Faction hostile, Réputation noire, Secret compromettant</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-affiliation",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Communauté elfe, naine, gnome, beastkin, elman, esman ou IAA défendant ses intérêts propres.",
+        "Atouts suggérés": "Réputation positive, Contact influent, Ancre morale",
+        "Handicaps suggérés": "Faction hostile, Réputation noire, Secret compromettant"
+      }
+    }
+  }
+}

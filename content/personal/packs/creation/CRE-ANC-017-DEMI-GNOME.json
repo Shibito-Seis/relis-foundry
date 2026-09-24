@@ -1,0 +1,20 @@
+{
+  "relisId": "CRE-ANC-017-DEMI-GNOME",
+  "name": "Demi-Gnome",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Intelligence, Technologie, Maîtrise Magique, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p>Base humaine et inventivité gnome. Le bonus libre peut compenser la Force.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 dans 2 parmi Intelligence, Technologie, Maîtrise Magique, +1 libre",
+      "attributePenalty": "-1 Force",
+      "rationale": "Base humaine et inventivité gnome. Le bonus libre peut compenser la Force.",
+      "selectable": true
+    }
+  }
+}

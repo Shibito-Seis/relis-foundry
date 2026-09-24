@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-021-BLESSURE-ANCIENNE",
+  "name": "Blessure ancienne",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -1/-2</p>\n<p>Choisir une faiblesse : dos, jambe, poumon, main, œil, douleur chronique. -1 : malus léger dans situations ciblées. -2 : peut se réveiller lors d’efforts, blessures ou échecs critiques.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2",
+      "effect": "Choisir une faiblesse : dos, jambe, poumon, main, œil, douleur chronique. -1 : malus léger dans situations ciblées. -2 : peut se réveiller lors d’efforts, blessures ou échecs critiques."
+    }
+  }
+}

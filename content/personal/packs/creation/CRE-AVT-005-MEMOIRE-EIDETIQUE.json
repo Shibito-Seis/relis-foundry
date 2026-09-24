@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-005-MEMOIRE-EIDETIQUE",
+  "name": "Mémoire eidétique",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +2</p>\n<p>Le personnage retient parfaitement plans, visages, codes, schémas ou textes observés. Il gagne +2 aux jets pour se rappeler une information vue ou lue, et peut obtenir un détail exact une fois par session.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "Le personnage retient parfaitement plans, visages, codes, schémas ou textes observés. Il gagne +2 aux jets pour se rappeler une information vue ou lue, et peut obtenir un détail exact une fois par session."
+    }
+  }
+}

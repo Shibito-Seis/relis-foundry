@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-001-GENIE",
+  "name": "Génie",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +3</p>\n<p>Le personnage gagne +1 Attribut libre et +2 compétences Qualifiées initiales. L’Attribut choisi ne peut pas être le même qu’un autre Attribut augmenté par un Atout d’Attribut à la création.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+3",
+      "effect": "Le personnage gagne +1 Attribut libre et +2 compétences Qualifiées initiales. L’Attribut choisi ne peut pas être le même qu’un autre Attribut augmenté par un Atout d’Attribut à la création."
+    }
+  }
+}

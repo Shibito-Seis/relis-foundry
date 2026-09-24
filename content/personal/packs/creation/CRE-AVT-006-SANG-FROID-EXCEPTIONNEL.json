@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-006-SANG-FROID-EXCEPTIONNEL",
+  "name": "Sang-froid exceptionnel",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +2</p>\n<p>+2 aux jets de Sang-froid ou Volonté contre peur, panique, horreur, urgence ou crise. Une fois par scène, il peut ignorer une complication mineure liée à la panique.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "+2 aux jets de Sang-froid ou Volonté contre peur, panique, horreur, urgence ou crise. Une fois par scène, il peut ignorer une complication mineure liée à la panique."
+    }
+  }
+}

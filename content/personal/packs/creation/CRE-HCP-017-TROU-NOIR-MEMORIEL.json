@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-017-TROU-NOIR-MEMORIEL",
+  "name": "Trou noir mémoriel",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -3</p>\n<p>Une partie majeure du passé est absente ou manipulée. Le MJ prépare une révélation importante. Certains lieux, noms ou signaux peuvent déclencher des flashs ou pertes de repères.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-3",
+      "effect": "Une partie majeure du passé est absente ou manipulée. Le MJ prépare une révélation importante. Certains lieux, noms ou signaux peuvent déclencher des flashs ou pertes de repères."
+    }
+  }
+}

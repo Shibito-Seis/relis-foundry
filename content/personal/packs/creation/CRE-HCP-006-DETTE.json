@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-006-DETTE",
+  "name": "Dette",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -1/-2/-3</p>\n<p>-1 : dette mineure, service, 5 000 crédits ou faveur. -2 : dette sérieuse, 25 000 crédits ou obligation dangereuse. -3 : dette majeure, 100 000 crédits, dette de vie ou dette envers une faction dangereuse.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2/-3",
+      "effect": "-1 : dette mineure, service, 5 000 crédits ou faveur. -2 : dette sérieuse, 25 000 crédits ou obligation dangereuse. -3 : dette majeure, 100 000 crédits, dette de vie ou dette envers une faction dangereuse."
+    }
+  }
+}

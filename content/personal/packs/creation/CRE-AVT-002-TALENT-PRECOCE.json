@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-002-TALENT-PRECOCE",
+  "name": "Talent précoce",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +2</p>\n<p>Le personnage gagne +2 compétences Qualifiées initiales. Elles peuvent être hors listes de Voie ou de Profil si le MJ valide l’explication narrative.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "Le personnage gagne +2 compétences Qualifiées initiales. Elles peuvent être hors listes de Voie ou de Profil si le MJ valide l’explication narrative."
+    }
+  }
+}

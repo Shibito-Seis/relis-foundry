@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-AFF-011",
+  "name": "Programme IAA / robotique",
+  "type": "origin",
+  "tags": ["creation", "origine", "affiliation"],
+  "system": {
+    "description": "<p>Réseau de création, entretien, défense ou émancipation des IAAs et corps robotiques. — Interface naturelle, Implant fiable, Contact influent — Vulnérable au piratage, Dossier Xirea verrouillé, Faction hostile</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-affiliation",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Réseau de création, entretien, défense ou émancipation des IAAs et corps robotiques.",
+        "Atouts suggérés": "Interface naturelle, Implant fiable, Contact influent",
+        "Handicaps suggérés": "Vulnérable au piratage, Dossier Xirea verrouillé, Faction hostile"
+      }
+    }
+  }
+}

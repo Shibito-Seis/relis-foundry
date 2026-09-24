@@ -1,0 +1,20 @@
+{
+  "relisId": "CRE-ANC-015-DEMI-NAIN",
+  "name": "Demi-Nain",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Force, Vigueur, Technologie, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Dextérité</p>\n<p>Base humaine et héritage nain atténué. Le bonus libre peut compenser l’agilité.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 dans 2 parmi Force, Vigueur, Technologie, +1 libre",
+      "attributePenalty": "-1 Dextérité",
+      "rationale": "Base humaine et héritage nain atténué. Le bonus libre peut compenser l’agilité.",
+      "selectable": true
+    }
+  }
+}

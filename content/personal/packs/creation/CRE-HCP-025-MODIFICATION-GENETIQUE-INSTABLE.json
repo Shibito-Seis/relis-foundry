@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-025-MODIFICATION-GENETIQUE-INSTABLE",
+  "name": "Modification génétique instable",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -2/-3</p>\n<p>Le corps réagit mal à une modification. -2 : crises rares, marqueurs biologiques, tests médicaux. -3 : mutation dangereuse, instabilité énergétique ou aggravation possible.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-2/-3",
+      "effect": "Le corps réagit mal à une modification. -2 : crises rares, marqueurs biologiques, tests médicaux. -3 : mutation dangereuse, instabilité énergétique ou aggravation possible."
+    }
+  }
+}

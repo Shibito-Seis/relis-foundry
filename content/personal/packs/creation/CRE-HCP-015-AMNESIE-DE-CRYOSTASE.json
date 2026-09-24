@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-015-AMNESIE-DE-CRYOSTASE",
+  "name": "Amnésie de cryostase",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -1/-2</p>\n<p>-1 : souvenirs flous, détails perdus. -2 : trous importants, souvenirs contradictoires, difficulté à identifier des proches ou événements clés.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2",
+      "effect": "-1 : souvenirs flous, détails perdus. -2 : trous importants, souvenirs contradictoires, difficulté à identifier des proches ou événements clés."
+    }
+  }
+}

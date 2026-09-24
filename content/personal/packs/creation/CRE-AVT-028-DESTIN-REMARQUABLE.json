@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-028-DESTIN-REMARQUABLE",
+  "name": "Destin remarquable",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +3</p>\n<p>Une fois par campagne ou grand arc, le personnage peut éviter une issue fatale ou provoquer une coïncidence narrative majeure. Le MJ garde le droit d’en fixer le prix narratif.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+3",
+      "effect": "Une fois par campagne ou grand arc, le personnage peut éviter une issue fatale ou provoquer une coïncidence narrative majeure. Le MJ garde le droit d’en fixer le prix narratif."
+    }
+  }
+}

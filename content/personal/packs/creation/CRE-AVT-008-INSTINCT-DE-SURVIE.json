@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-008-INSTINCT-DE-SURVIE",
+  "name": "Instinct de survie",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +1</p>\n<p>Une fois par scène dangereuse, le personnage peut demander au MJ une alerte instinctive : danger immédiat, mauvaise odeur, silence suspect, sol instable, prédateur proche ou menace équivalente.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+1",
+      "effect": "Une fois par scène dangereuse, le personnage peut demander au MJ une alerte instinctive : danger immédiat, mauvaise odeur, silence suspect, sol instable, prédateur proche ou menace équivalente."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "relisId": "CRE-ANC-009-BEASTKIN-OURS",
+  "name": "Beastkin Ours",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Dextérité</p>\n<p>Massif, robuste, tenace, mais moins agile.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Force, +1 Vigueur, +1 Volonté",
+      "attributePenalty": "-1 Dextérité",
+      "rationale": "Massif, robuste, tenace, mais moins agile.",
+      "selectable": true
+    }
+  }
+}

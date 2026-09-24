@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ORI-AFF-005",
+  "name": "Enclave de réfugiés",
+  "type": "origin",
+  "tags": ["creation", "origine", "affiliation"],
+  "system": {
+    "description": "<p>Communauté de survivants regroupés avant le départ, souvent marquée par le manque et les pertes. — Ancre morale, Ma famille est en vie !, Survivant-né — Famille à nourrir, Otage affectif, Très pauvre</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-affiliation",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Communauté de survivants regroupés avant le départ, souvent marquée par le manque et les pertes.",
+        "Atouts suggérés": "Ancre morale, Ma famille est en vie !, Survivant-né",
+        "Handicaps suggérés": "Famille à nourrir, Otage affectif, Très pauvre"
+      }
+    }
+  }
+}

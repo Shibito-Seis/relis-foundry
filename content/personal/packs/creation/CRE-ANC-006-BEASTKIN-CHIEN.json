@@ -1,0 +1,20 @@
+{
+  "relisId": "CRE-ANC-006-BEASTKIN-CHIEN",
+  "name": "Beastkin Chien",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bonus d’Attribut :</strong> +1 Vigueur, +1 Présence, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Maîtrise Magique</p>\n<p>Loyal, robuste, sociable, discipliné, mais moins naturellement lié aux flux.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Vigueur, +1 Présence, +1 Volonté",
+      "attributePenalty": "-1 Maîtrise Magique",
+      "rationale": "Loyal, robuste, sociable, discipliné, mais moins naturellement lié aux flux.",
+      "selectable": true
+    }
+  }
+}

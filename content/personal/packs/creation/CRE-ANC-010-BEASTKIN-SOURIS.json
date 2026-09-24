@@ -1,0 +1,20 @@
+{
+  "relisId": "CRE-ANC-010-BEASTKIN-SOURIS",
+  "name": "Beastkin Souris",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Technologie, +1 Intelligence</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p>Petit gabarit, précision, instinct technique et observation rapide, mais faible puissance physique brute.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Dextérité, +1 Technologie, +1 Intelligence",
+      "attributePenalty": "-1 Force",
+      "rationale": "Petit gabarit, précision, instinct technique et observation rapide, mais faible puissance physique brute.",
+      "selectable": true
+    }
+  }
+}

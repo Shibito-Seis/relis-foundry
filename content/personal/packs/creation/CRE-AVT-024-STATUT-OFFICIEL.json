@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-024-STATUT-OFFICIEL",
+  "name": "Statut officiel",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +2</p>\n<p>Le personnage possède une ancienne accréditation, licence, grade, autorisation ou statut reconnu. Il peut demander accès, audience ou matériel dans les contextes où ce statut reste valable.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "Le personnage possède une ancienne accréditation, licence, grade, autorisation ou statut reconnu. Il peut demander accès, audience ou matériel dans les contextes où ce statut reste valable."
+    }
+  }
+}

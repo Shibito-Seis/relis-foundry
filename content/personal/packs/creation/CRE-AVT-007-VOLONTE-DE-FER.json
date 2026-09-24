@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-007-VOLONTE-DE-FER",
+  "name": "Volonté de fer",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +2</p>\n<p>+2 aux jets contre domination mentale, corruption, pression psychique, lavage de cerveau ou influence anormale. Une fois par session, un échec critique mental devient un échec simple.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "+2 aux jets contre domination mentale, corruption, pression psychique, lavage de cerveau ou influence anormale. Une fois par session, un échec critique mental devient un échec simple."
+    }
+  }
+}

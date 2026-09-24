@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-014-CONTACT-INFLUENT",
+  "name": "Contact influent",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +1/+2/+3</p>\n<p>+1 : contact local ou mineur. +2 : contact institutionnel, militaire, scientifique ou criminel solide. +3 : contact majeur capable d’influencer une faction, un vaisseau, une station ou une organisation.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+1/+2/+3",
+      "effect": "+1 : contact local ou mineur. +2 : contact institutionnel, militaire, scientifique ou criminel solide. +3 : contact majeur capable d’influencer une faction, un vaisseau, une station ou une organisation."
+    }
+  }
+}

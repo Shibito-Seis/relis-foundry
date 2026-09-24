@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-035-MAUVAIS-PRESSENTIMENT-DE-XIREA",
+  "name": "Mauvais pressentiment de Xirea",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -1</p>\n<p>Xirea surveille davantage le personnage. Elle peut demander des justifications, limiter certains accès mineurs ou signaler des comportements « statistiquement préoccupants ».</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1",
+      "effect": "Xirea surveille davantage le personnage. Elle peut demander des justifications, limiter certains accès mineurs ou signaler des comportements « statistiquement préoccupants »."
+    }
+  }
+}

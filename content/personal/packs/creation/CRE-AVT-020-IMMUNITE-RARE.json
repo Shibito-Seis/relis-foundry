@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-020-IMMUNITE-RARE",
+  "name": "Immunité rare",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +2</p>\n<p>Choisir une catégorie précise : toxine, maladie, parasite, radiation légère, contaminant alimentaire, sédatif. Immunité aux formes mineures ; +2 contre les formes graves.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "Choisir une catégorie précise : toxine, maladie, parasite, radiation légère, contaminant alimentaire, sédatif. Immunité aux formes mineures ; +2 contre les formes graves."
+    }
+  }
+}

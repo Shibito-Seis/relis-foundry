@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-HCP-020-CULPABILITE-DU-SURVIVANT",
+  "name": "Culpabilité du survivant",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> -1/-2</p>\n<p>Après mort, abandon, sacrifice ou échec de sauvetage, test de Sang-froid ou Volonté. Échec : culpabilité active, malus social ou mental, ou besoin de réparation narrative.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2",
+      "effect": "Après mort, abandon, sacrifice ou échec de sauvetage, test de Sang-froid ou Volonté. Échec : culpabilité active, malus social ou mental, ou besoin de réparation narrative."
+    }
+  }
+}

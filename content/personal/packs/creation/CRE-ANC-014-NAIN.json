@@ -1,0 +1,20 @@
+{
+  "relisId": "CRE-ANC-014-NAIN",
+  "name": "Nain",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Technologie</p>\n<p><strong>Malus d’Attribut :</strong> -1 Dextérité</p>\n<p>Robuste, puissant, constructeur ou technicien, mais moins agile.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Force, +1 Vigueur, +1 Technologie",
+      "attributePenalty": "-1 Dextérité",
+      "rationale": "Robuste, puissant, constructeur ou technicien, mais moins agile.",
+      "selectable": true
+    }
+  }
+}

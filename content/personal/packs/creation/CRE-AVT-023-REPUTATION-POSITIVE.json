@@ -1,0 +1,18 @@
+{
+  "relisId": "CRE-AVT-023-REPUTATION-POSITIVE",
+  "name": "Réputation positive",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Valeur :</strong> +1/+2</p>\n<p>+1 : connu favorablement dans un milieu restreint. +2 : réputation solide dans une institution ou communauté. Donne +2 aux jets sociaux quand cette réputation compte.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+1/+2",
+      "effect": "+1 : connu favorablement dans un milieu restreint. +2 : réputation solide dans une institution ou communauté. Donne +2 aux jets sociaux quand cette réputation compte."
+    }
+  }
+}
