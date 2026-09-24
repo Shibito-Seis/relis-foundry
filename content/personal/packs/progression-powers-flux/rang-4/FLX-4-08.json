@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-4-08",
+  "name": "Dissociation",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-4"],
+  "system": {
+    "description": "<p><strong>Dissociation</strong>.</p><p><strong>Flux — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / 24 m</p>\n<p><strong>Discipline :</strong> Dissipation</p>\n<p>Test contre DD ; met fin à une translocation, illusion de Flux, lien ou champ spatial de Rang 4 ou moins ; sur critique, verrouille sa réactivation 1 min.</p>\n<p><strong>Intensification :</strong> Rang maximal +1 ou deux effets liés.</p>",
+    "traits": ["Flux", "Dissipation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "4",
+      "activation": "4 / 3 A / 24 m",
+      "discipline": "Dissipation",
+      "effect": "Test contre DD ; met fin à une translocation, illusion de Flux, lien ou champ spatial de Rang 4 ou moins ; sur critique, verrouille sa réactivation 1 min.",
+      "scaling": "Rang maximal +1 ou deux effets liés."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

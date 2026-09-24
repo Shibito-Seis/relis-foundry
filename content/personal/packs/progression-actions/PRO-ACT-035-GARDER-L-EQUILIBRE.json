@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-035-GARDER-L-EQUILIBRE",
+  "name": "Garder l'équilibre",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Garder l&#39;équilibre</strong>.</p><p><strong>Coût :</strong> Selon la procédure</p>\n<p>Lorsqu&amp;#39;une créature traverse une surface étroite, instable ou mobile, le MJ peut demander un test d&amp;#39;Acrobaties contre le DD du passage : • Réussite critique : progression normale ; • Réussite : progression possible, mais la surface reste difficile ; • Échec : arrêt au dernier espace stable ; • Échec critique : chute, glissade ou perte d&amp;#39;appui appropriée. Le test ne permet jamais de traverser une interruption dépourvue d&amp;#39;appui. Les Talents Appuis maîtrisés, Traversée vive, Course sur l&amp;#39;obstacle, Équilibre impossible et Souverain des vecteurs conservent leurs exceptions propres.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Selon la procédure",
+      "summary": "Lorsqu&#39;une créature traverse une surface étroite, instable ou mobile, le MJ peut demander un test d&#39;Acrobaties contre le DD du passage : • Réussite critique : progression normale ; • Réussite : progression possible, mais la surface reste difficile ; • Échec : arrêt au dernier espace stable ; • Échec critique : chute, glissade ou perte d&#39;appui appropriée. Le test ne permet jamais de traverser une interruption dépourvue d&#39;appui. Les Talents Appuis maîtrisés, Traversée vive, Course sur l&#39;obstacle, Équilibre impossible et Souverain des vecteurs conservent leurs exceptions propres."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 0
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

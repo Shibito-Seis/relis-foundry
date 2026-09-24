@@ -1,0 +1,48 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-465",
+  "name": "Instinct de lignée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Instinct de lignée</strong>.</p><p>L&#39;expression choisie s&#39;approfondit :</p>\n<p>• Rugissant : la portée utile de Voix du grand félin et Rugissement d&#39;arrêt augmente de 3 mètres ;</p>\n<p>• Massif : le personnage compte comme d&#39;une taille supérieure pour déterminer ce qu&#39;il peut porter, saisir ou empêcher de le déplacer, sans gagner d&#39;espace ni d&#39;allonge ;</p>\n<p>• Ombre : après être resté immobile derrière une dissimulation pendant un tour, il réduit de 2 la première pénalité due à une lumière ou un couvert imparfait ;</p>\n<p>• Sprinteur : pendant le déplacement amélioré par son héritage, il ignore les 2 premiers mètres de terrain difficile ;</p>\n<p>• Grimpeur : il réduit les dégâts de chute d&#39;un montant égal à son Niveau général lorsqu&#39;il tombe à portée d&#39;un appui qu&#39;il peut agripper.</p>\n<p>Le perfectionnement ne confère toujours ni transformation, ni Vitesse spéciale, ni Action supplémentaire.</p>",
+    "traits": ["Beastkin", "Félin", "Héritage", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-457",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritage du grand félin",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.131 Talents Beastkins Félins de niveau 5",
+      "family": "Expressions de grands félins",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Héritage du grand félin",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Expressions de grands félins",
+        "Traits": "Beastkin, Félin, Héritage, Physiologie",
+        "Type": "Passif",
+        "Prérequis": "Héritage du grand félin",
+        "Rugissant": "la portée utile de Voix du grand félin et Rugissement d'arrêt augmente de 3 mètres ;",
+        "Massif": "le personnage compte comme d'une taille supérieure pour déterminer ce qu'il peut porter, saisir ou empêcher de le déplacer, sans gagner d'espace ni d'allonge ;",
+        "Ombre": "après être resté immobile derrière une dissimulation pendant un tour, il réduit de 2 la première pénalité due à une lumière ou un couvert imparfait ;",
+        "Sprinteur": "pendant le déplacement amélioré par son héritage, il ignore les 2 premiers mètres de terrain difficile ;",
+        "Grimpeur": "il réduit les dégâts de chute d'un montant égal à son Niveau général lorsqu'il tombe à portée d'un appui qu'il peut agripper."
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Félin"
+}

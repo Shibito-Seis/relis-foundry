@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-586",
+  "name": "Mue des cycles",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mue des cycles</strong>.</p><p>Pendant un repos long, le personnage accomplit une mue complète avec eau, nutrition et soins adaptés. Il obtient immédiatement un nouveau test avec +3 circonstanciel contre un poison, une maladie, une contamination cutanée ou une altération corporelle temporaire qui l&#39;affecte depuis au moins un jour.</p>\n<p>Sur une réussite, il peut également effacer une marque superficielle ou une séquelle esthétique non permanente. Le talent ne retire aucun implant, aucune mutation stable, aucune Blessure non traitée et ne réécrit pas son Héritage reptilien.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Lézard", "Culture", "Récupération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-567",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mue mémorielle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.166 Talents Beastkins Lézards de niveau 13",
+      "family": "Culture reptilienne et mues",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Activité de repos",
+      "prerequisites": "Mue mémorielle",
+      "choice": "",
+      "frequency": "une fois par mois",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture reptilienne et mues",
+        "Traits": "Beastkin, Lézard, Culture, Récupération",
+        "Type": "Activité de repos",
+        "Fréquence": "une fois par mois",
+        "Prérequis": "Mue mémorielle"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Lézard"
+}

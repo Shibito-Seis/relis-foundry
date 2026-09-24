@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-267",
+  "name": "Ossature renforcée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Ossature renforcée</strong>.</p><p>Le personnage gagne 2 PV maximum et +2 circonstanciel aux tests destinés à résister à une fracture, un écrasement, une chute ou une tentative de briser ses cornes.</p>\n<p>Lorsqu&#39;une chute est réduite par une protection ou un test réussi, il traite la distance restante comme inférieure de 2 mètres.</p>\n<p>Le talent ne confère aucune armure et n&#39;empêche pas une Blessure ciblant effectivement un organe.</p>",
+    "traits": ["Esman", "Physiologie", "Résistance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Physiologie modifiée",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie modifiée",
+        "Traits": "Esman, Physiologie, Résistance",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Esman"
+}

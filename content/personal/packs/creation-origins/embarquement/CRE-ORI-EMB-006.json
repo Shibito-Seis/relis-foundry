@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-EMB-006",
+  "name": "Sauvé à la dernière minute",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p><strong>Sauvé à la dernière minute</strong>.</p><p>Son embarquement tient du miracle, d’un sacrifice, d’une faveur ou d’une décision prise dans l’urgence. — Destin remarquable, Ancre morale, Ma famille est en vie ! — Dette, Otage affectif, Trauma de cryostase</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Son embarquement tient du miracle, d’un sacrifice, d’une faveur ou d’une décision prise dans l’urgence.",
+        "Atouts suggérés": "Destin remarquable, Ancre morale, Ma famille est en vie !",
+        "Handicaps suggérés": "Dette, Otage affectif, Trauma de cryostase"
+      }
+    }
+  },
+  "folder": "embarquement"
+}

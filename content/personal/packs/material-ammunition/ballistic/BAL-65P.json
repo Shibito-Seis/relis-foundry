@@ -1,0 +1,111 @@
+{
+  "relisId": "BAL-65P",
+  "name": "6,5 × 48 mm précision",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "standard", "bal"],
+  "system": {
+    "description": "<p><strong>Chambrage :</strong> 6,5 × 48 mm précision. <strong>Classe :</strong> Fusil de précision intermédiaire. <strong>Usage courant :</strong> semi-automatique de précision. <strong>Prix standard :</strong> 4. <strong>Conditionnement :</strong> boîte de 20.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.173 Carabines, fusils et armes automatiques",
+      "columns": {
+        "Code": "BAL-65P",
+        "Chambrage": "6,5 × 48 mm précision",
+        "Classe": "Fusil de précision intermédiaire",
+        "Usage courant": "semi-automatique de précision",
+        "Prix standard": "4",
+        "Conditionnement": "boîte de 20"
+      }
+    },
+    "physical": {
+      "quantity": 20,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "referencePrice": {
+      "amount": 4,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 20,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "ballistic",
+      "variantId": "standard",
+      "chamberingId": "BAL-65P",
+      "chamberId": "BAL-65P",
+      "pressureClassId": "riflePrecisionIntermediate",
+      "pressureClass": "riflePrecisionIntermediate",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  },
+  "folder": "ballistic"
+}

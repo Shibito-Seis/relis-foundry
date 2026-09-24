@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-726",
+  "name": "Tradition vivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Tradition vivante</strong>.</p><p>Après dix minutes de récit, musique, cuisine, prière, entretien d&#39;objet ou autre pratique transmise, le personnage et jusqu&#39;à quatre participants gagnent +2 circonstanciel à leur prochain test de Volonté ou Sang-froid contre désespoir, perte de sens, déracinement ou altération identitaire avant le prochain repos long.</p>\n<p>Un participant directement issu de la tradition peut aussi réduire son Stress de 1, une seule fois par repos long.</p>\n<p>Le talent ne retire aucun Traumatisme, ne crée aucune ressource et exige du temps, un souvenir ou un support culturel sincère.</p>",
+    "traits": ["Ascendance universelle", "Culture", "Mental", "Tradition"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-718",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire transmise",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.237 Talents universels d'Ascendance de niveau 5",
+      "family": "Mémoire transmise",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Mémoire transmise",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire transmise",
+        "Traits": "Ascendance universelle, Culture, Mental, Tradition",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par repos long",
+        "Prérequis": "Mémoire transmise"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Universel"
+}

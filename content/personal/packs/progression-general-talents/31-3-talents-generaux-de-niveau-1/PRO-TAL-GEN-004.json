@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-GEN-004",
+  "name": "Vigilance entraînée",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Vigilance entraînée</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Investigation ou de perception sensorielle destinés à détecter une embuscade, une présence dissimulée ou un danger immédiat avant qu&#39;il ne se déclenche.</p>\n<p>S&#39;il reste conscient lorsqu&#39;une scène dangereuse commence à cause d&#39;une menace qu&#39;il n&#39;a pas détectée, il conserve néanmoins sa Réaction du premier round. Le talent ne révèle pas automatiquement la menace, n&#39;empêche pas les autres conséquences de la surprise et ne traverse aucun camouflage surnaturel ou technologique.</p>",
+    "traits": ["Exploration", "Général", "Investigation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Vigilance et réactions",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vigilance et réactions",
+        "Traits": "Exploration, Général, Investigation",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "### 31.3 Talents généraux de niveau 1"
+}

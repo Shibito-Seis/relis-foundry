@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-VAM-001",
+  "name": "Nez du prédateur",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p><strong>Nez du prédateur</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Perception ou Investigation fondés sur son odorat du sang.</p>\n<p>Sur une réussite, il peut déterminer deux informations parmi : direction, quantité grossière, présence d&#39;une ou plusieurs sources, sang versé depuis moins d&#39;une heure, moins d&#39;un jour ou davantage.</p>\n<p>Le talent ne révèle ni identité, ni Ascendance exacte, ni état médical précis. Un contenant hermétique, un filtre spécialisé, le vide ou une odeur conçue pour saturer les sens peut bloquer ou tromper l&#39;analyse.</p>",
+    "traits": ["Général", "Investigation", "Perception", "Vampirique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.13 Talents vampiriques de niveau 3",
+      "family": "Sens du sang",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Physiologie vampirique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens du sang",
+        "Traits": "Général, Investigation, Perception, Vampirique",
+        "Type": "Passif",
+        "Prérequis": "Physiologie vampirique"
+      }
+    },
+    "level": 3
+  },
+  "folder": "### 30.13 Talents vampiriques de niveau 3"
+}

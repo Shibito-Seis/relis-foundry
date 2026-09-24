@@ -1,0 +1,44 @@
+{
+  "relisId": "CRE-PST-006-RESPONSABLE-SECURITE",
+  "name": "Responsable Sécurité",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>Le Responsable Sécurité supervise l’arsenal, les protocoles de défense, les zones interdites, la gestion des prisonniers et les situations d’abordage.</p>\n<p>• accès armurerie ;</p>\n<p>• distribution contrôlée d’armes ;</p>\n<p>• sas sécurisés ;</p>\n<p>• défense interne ;</p>\n<p>• anti-abordage ;</p>\n<p>• gestion des prisonniers ;</p>\n<p>• zones interdites ;</p>\n<p>• fouilles et protocoles de menace.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.10 Responsable Sécurité",
+      "capabilities": [
+        {
+          "name": "Verrouillage de zone",
+          "phase": "[Combat normal / Crise de vaisseau]",
+          "effect": "Ferme ou sécurise une zone : portes, sas, cloisons, tourelles internes, alarmes ou verrous. Sert à ralentir, contenir ou isoler une menace."
+        },
+        {
+          "name": "Protocole d’abordage",
+          "phase": "[Combat tout type / Combat spatial]",
+          "effect": "Prépare l’équipage à un abordage ou une défense interne. Permet aux alliés concernés de se positionner, s’équiper ou éviter d’être pris au dépourvu."
+        },
+        {
+          "name": "Arsenal contrôlé",
+          "phase": "[Exploration / Combat normal]",
+          "effect": "Donne accès à une arme, protection, munition ou équipement de sécurité disponible dans l’arsenal. L’objet reste propriété du vaisseau sauf décision contraire."
+        },
+        {
+          "name": "Tir de couverture coordonné",
+          "phase": "[Combat tout type]",
+          "effect": "Coordonne tirs, angles ou systèmes défensifs pour couvrir un déplacement, forcer une mise à couvert ou gêner une approche ennemie."
+        },
+        {
+          "name": "Prisonnier sous contrôle",
+          "phase": "[Social / diplomatie / Crise]",
+          "effect": "Met en place une procédure de fouille, garde, interrogatoire ou détention sécurisée. Réduit les risques d’évasion, mutinerie ou incident."
+        }
+      ]
+    }
+  },
+  "folder": ""
+}

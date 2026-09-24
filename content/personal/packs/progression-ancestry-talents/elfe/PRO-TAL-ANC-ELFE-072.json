@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-072",
+  "name": "Pas sans trace",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Pas sans trace</strong>.</p><p>Le personnage sait répartir son poids et choisir ses appuis avec une précision presque irréelle.</p>\n<p>Il gagne +2 circonstanciel aux tests de Discrétion lorsqu&#39;il se déplace sur :</p>\n<p>• végétation ;</p>\n<p>• sol naturel ;</p>\n<p>• ruines encombrées ;</p>\n<p>• structures organiques ;</p>\n<p>• surfaces couvertes de débris légers.</p>\n<p>Il peut se déplacer à sa vitesse normale pendant une approche discrète sans subir le malus circonstanciel normalement causé uniquement par cette vitesse.</p>\n<p>Il laisse moins de traces ordinaires, mais ne devient ni invisible ni impossible à pister par des capteurs, un odorat ou une analyse spécialisée.</p>",
+    "traits": ["Elfe", "Mouvement", "Discrétion"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-050",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pas allongé",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-051",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Équilibre elfique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.32 Talents Elfes de niveau 5",
+      "family": "Grâce sylvestre",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Équilibre elfique ou Pas allongé",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Mouvement, Discrétion",
+        "Type": "Passif",
+        "Prérequis": "Équilibre elfique ou Pas allongé"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Elfe"
+}

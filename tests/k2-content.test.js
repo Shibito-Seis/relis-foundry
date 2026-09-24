@@ -114,6 +114,94 @@ describe("compendiums canoniques 10-K2-P", () => {
       });
   });
 
+  it("recalcule les 111 armes et couvre arcs, carreaux et rechargement unitaire", () => {
+    const entries = entriesById();
+    const weapons = [...entries.values()].filter(
+      ({ type }) => type === "weapon",
+    );
+    expect(weapons).toHaveLength(111);
+    for (const weapon of weapons) {
+      expect(weapon.system.weaponProfile.familyId, weapon.relisId).not.toBe("");
+      expect(weapon.system.weaponProfile.skillId, weapon.relisId).not.toBe("");
+      expect(weapon.system.weaponProfile.attributeId, weapon.relisId).not.toBe(
+        "",
+      );
+    }
+    expect(
+      entries.get("MAT-WPN-077-ARC-COURT").system.weaponProfile,
+    ).toMatchObject({
+      skillId: "shooting",
+      attributeId: "dexterity",
+      feedKind: "none",
+      chamberingId: "ARW-SHORT",
+      ammunitionFamilyIds: ["arrow"],
+      ammunitionConsumption: { single: 1 },
+    });
+    expect(
+      entries.get("MAT-WPN-082-ARBALETE-A-REPETITION").system.weaponProfile,
+    ).toMatchObject({
+      feedKind: "internal",
+      internalCapacity: 6,
+      chamberingId: "BOLT-REPEATING",
+    });
+    expect(
+      entries.get("MAT-WPN-083-JAVELOT").system.weaponProfile,
+    ).toMatchObject({
+      attackMode: "thrown",
+      feedKind: "none",
+      damageAttribute: "force",
+      ammunitionFamilyIds: [],
+    });
+    expect(
+      [...entries.values()].filter(({ relisId }) =>
+        /^(?:ARW|BOLT)-/.test(relisId),
+      ),
+    ).toHaveLength(6);
+  });
+
+  it("stocke les boîtes comme quantités réelles et réserve l’interface aux chargeurs", () => {
+    const entries = entriesById();
+    expect(entries.get("BAL-357M").system).toMatchObject({
+      physical: { quantity: 30 },
+      referencePrice: { quantityBasis: 30 },
+      ammunitionProfile: { feedInterfaceIds: [], feedInterfaces: [] },
+    });
+    for (const ammunition of [...entries.values()].filter(
+      ({ type }) => type === "ammunition",
+    ))
+      expect(
+        ammunition.system.ammunitionProfile.feedInterfaceIds ?? [],
+        ammunition.relisId,
+      ).toEqual([]);
+  });
+
+  it("structure les 16 focaliseurs sans confondre tampon magique et CE", () => {
+    const focalizers = [...entriesById().values()].filter(
+      ({ system }) => system.catalog?.focusProfile,
+    );
+    expect(focalizers).toHaveLength(16);
+    for (const focalizer of focalizers) {
+      expect(focalizer.system.catalog.focusProfile).toMatchObject({
+        ceDoesNotRefillBuffer: true,
+        automationLot: "10-F",
+      });
+      expect(focalizer.system.energyProfile.kind).toBe("internal");
+      expect(focalizer.system.energyProfile.maximum).toBeGreaterThan(0);
+    }
+  });
+
+  it("publie 2 404 descriptions lisibles sans tableau technique brut", () => {
+    const entries = [...entriesById().values()];
+    expect(entries).toHaveLength(2404);
+    for (const entry of entries) {
+      expect(
+        String(entry.system.description ?? "").trim(),
+        entry.relisId,
+      ).not.toBe("");
+      expect(entry.system.description, entry.relisId).not.toContain("<dl>");
+    }
+  });
+
   it("n’émet que des identifiants matériels acceptés par les registres fermés", () => {
     const material = [...entriesById().values()].filter((entry) =>
       [
@@ -301,24 +389,24 @@ describe("compendiums canoniques 10-K2-P", () => {
     }
   });
 
-  it("déclare les trois packs Item compilés dans le manifeste Foundry", () => {
+  it("déclare les packs classés et leurs dossiers PF2e-like dans le manifeste Foundry", () => {
     const manifest = JSON.parse(fs.readFileSync("system.json", "utf8"));
-    expect(manifest.packs).toEqual([
-      expect.objectContaining({
-        name: "personal-creation",
-        type: "Item",
-        path: "packs/personal-creation",
-      }),
-      expect.objectContaining({
-        name: "personal-progression",
-        type: "Item",
-        path: "packs/personal-progression",
-      }),
-      expect.objectContaining({
-        name: "personal-material",
-        type: "Item",
-        path: "packs/personal-material",
-      }),
-    ]);
+    expect(manifest.packs).toHaveLength(23);
+    expect(manifest.packs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: "creation-ancestries", type: "Item" }),
+        expect.objectContaining({
+          name: "progression-ancestry-talents",
+          type: "Item",
+        }),
+        expect.objectContaining({ name: "material-weapons", type: "Item" }),
+        expect.objectContaining({ name: "material-ammunition", type: "Item" }),
+      ]),
+    );
+    expect(manifest.packFolders).toHaveLength(3);
+    expect(JSON.stringify(manifest.packFolders)).toContain("Talents");
+    expect(JSON.stringify(manifest.packFolders)).toContain(
+      "Combat et protection",
+    );
   });
 });

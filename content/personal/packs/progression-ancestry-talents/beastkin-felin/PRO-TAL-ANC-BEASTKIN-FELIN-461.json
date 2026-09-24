@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-461",
+  "name": "Lacération",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir infligé des dégâts avec ses griffes, le personnage peut ouvrir une plaie causant 1d4 dégâts physiques persistants à la fin de chacun des tours de la cible. La cible ou un allié peut consacrer une Action et réussir un test approprié pour arrêter le saignement.</p>\n<p>Une créature sans anatomie vulnérable au saignement est immunisée. Plusieurs Lacérations ne se cumulent pas ; seule la plus forte s&#39;applique.</p>",
+    "traits": ["Beastkin", "Félin", "Arme naturelle", "Saignement"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-349",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arme naturelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.131 Talents Beastkins Félins de niveau 5",
+      "family": "Griffes, crocs et lacération",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Arme naturelle choisie comme griffes",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Griffes, crocs et lacération",
+        "Traits": "Beastkin, Félin, Arme naturelle, Saignement",
+        "Type": "Passif",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Arme naturelle choisie comme griffes"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Félin"
+}

@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-PILOTAGE-111",
+  "name": "Tour pré-départ",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Tour pré-départ</strong>.</p><p>Le personnage inspecte les commandes, le milieu immédiat et les indications accessibles d&#39;un véhicule qu&#39;il peut piloter.</p>\n<p>Il effectue un test de Pilotage contre le DD du véhicule.</p>\n<p>• Réussite critique : il identifie son état opérationnel apparent, la commande ou fonction de mouvement principalement dégradée, le danger immédiat du départ et la meilleure procédure de mise en mouvement.</p>\n<p>• Réussite : il identifie l&#39;état opérationnel apparent et le principal danger du départ.</p>\n<p>• Échec : aucun problème non évident n&#39;est identifié.</p>\n<p>• Échec critique : un réglage inadapté est retenu ; le personnage subit -1 circonstanciel à son premier test de Pilotage, sauf s&#39;il consacre 1 action à le reprendre.</p>\n<p>Sur une réussite, le personnage gagne +2 circonstanciel au premier test de Pilotage effectué avec ce véhicule avant la fin de la scène pour décoller, démarrer ou quitter son emplacement. Le talent ne remplace pas Ingénierie pour diagnostiquer une panne interne.</p>",
+    "traits": ["Analyse", "Compétence", "Observation", "Pilotage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Pilotage — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Pilotage",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Pilotage Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Pilotage",
+        "Niveau": "1",
+        "Traits": "Analyse, Compétence, Observation, Pilotage",
+        "Type": "Activité de 1 minute",
+        "Prérequis": "Pilotage Qualifié",
+        "Réussite critique": "il identifie son état opérationnel apparent, la commande ou fonction de mouvement principalement dégradée, le danger immédiat du départ et la meilleure procédure de mise en mouvement.",
+        "Réussite": "il identifie l'état opérationnel apparent et le principal danger du départ.",
+        "Échec": "aucun problème non évident n'est identifié.",
+        "Échec critique": "un réglage inadapté est retenu ; le personnage subit -1 circonstanciel à son premier test de Pilotage, sauf s'il consacre 1 action à le reprendre."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Pilotage"
+}

@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-CMP-MEDECINE-109",
+  "name": "Geste au bord de l'impossible",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Geste au bord de l&#39;impossible</strong>.</p><p>Le personnage tente une intervention vitale alors que le délai, l&#39;environnement ou la gravité de la Blessure la rendrait normalement presque impossible. Il doit disposer d&#39;un moyen matériel cohérent d&#39;agir.</p>\n<p>Il effectue un test de Médecine contre le DD de l&#39;atteinte la plus urgente, sans ignorer les conséquences déjà subies.</p>\n<p>• Réussite critique : la cible est Stabilisée et une Blessure mortelle ou potentiellement mortelle devient Contenue jusqu&#39;à la fin de la scène.</p>\n<p>• Réussite : la cible est Stabilisée ; elle gagne +2 circonstanciel au premier test contre l&#39;aggravation de sa Blessure principale.</p>\n<p>• Échec : la cible n&#39;est pas Stabilisée, mais l&#39;intervention ne provoque aucune complication supplémentaire.</p>\n<p>• Échec critique : l&#39;intervention échoue et ses conséquences normales s&#39;appliquent.</p>\n<p>Le talent n&#39;agit pas sur une cible déjà morte, ne rend aucun PV et ne remplace ni chirurgie, ni régénération, ni traitement ultérieur.</p>",
+    "traits": ["Compétence", "Légendaire", "Médecine", "Stabilisation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-MEDECINE-104",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Intervention rapide",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-MEDECINE-106",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chaîne de soins",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Médecine — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Médecine",
+      "activation": "Activité de 3 Actions",
+      "prerequisites": "Médecine Légendaire ; Intervention rapide et Chaîne de soins",
+      "choice": "",
+      "frequency": "une fois par cible et par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Médecine",
+        "Niveau": "15",
+        "Traits": "Compétence, Légendaire, Médecine, Stabilisation",
+        "Type": "Activité de 3 Actions",
+        "Fréquence": "une fois par cible et par scène",
+        "Prérequis": "Médecine Légendaire ; Intervention rapide et Chaîne de soins",
+        "Réussite critique": "la cible est Stabilisée et une Blessure mortelle ou potentiellement mortelle devient Contenue jusqu'à la fin de la scène.",
+        "Réussite": "la cible est Stabilisée ; elle gagne +2 circonstanciel au premier test contre l'aggravation de sa Blessure principale.",
+        "Échec": "la cible n'est pas Stabilisée, mais l'intervention ne provoque aucune complication supplémentaire.",
+        "Échec critique": "l'intervention échoue et ses conséquences normales s'appliquent."
+      }
+    },
+    "level": 15
+  },
+  "folder": "Médecine"
+}

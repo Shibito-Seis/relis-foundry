@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-010-PRODIGE-ENERGETIQUE",
+  "name": "Prodige énergétique",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Prodige énergétique</strong>.</p><p><strong>Valeur :</strong> +2</p>\n<p>Choisir Mana, Prana ou Flux. Le personnage gagne +2 aux jets de Canalisation liés à cette énergie pour la détecter, la stabiliser ou éviter une surcharge mineure.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "Choisir Mana, Prana ou Flux. Le personnage gagne +2 aux jets de Canalisation liés à cette énergie pour la détecter, la stabiliser ou éviter une surcharge mineure."
+    }
+  },
+  "folder": ""
+}

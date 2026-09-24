@@ -1,0 +1,68 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-180",
+  "name": "Théorie unifiée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Théorie unifiée</strong>.</p><p>Le personnage relie plusieurs jeux de données réels et plusieurs disciplines en une théorie de travail cohérente répondant à une question scientifique majeure.</p>\n<p>Il effectue un test de Sciences contre le DD le plus élevé des phénomènes étudiés.</p>\n<p>• Réussite critique : la théorie expose les relations, prédictions, limites et tests de réfutation ; jusqu&#39;à six participants gagnent +2 circonstanciel à leurs tests directement consacrés à sa vérification, et leur premier échec simple de Sciences devient une réussite.</p>\n<p>• Réussite : la théorie expose les relations, prédictions et limites principales ; jusqu&#39;à six participants gagnent +2 circonstanciel à leur premier test directement consacré à sa vérification.</p>\n<p>• Échec : aucune théorie commune suffisamment robuste n&#39;est obtenue.</p>\n<p>• Échec critique : les jeux de données contiennent une contradiction fondamentale ; le MJ indique laquelle doit être résolue avant une nouvelle tentative.</p>\n<p>Le talent ne crée aucune donnée, invention ou technologie, ne remplace aucune compétence appliquée et ne transforme jamais une théorie en vérité absolue.</p>\n<p>---</p>",
+    "traits": ["Compétence", "Mythique", "Sciences", "Travail d'équipe"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-176",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Relecture croisée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-177",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Modèle à données partielles",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-179",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Aux frontières du connaissable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Sciences Mythique ; Relecture croisée, Modèle à données partielles et Aux frontières du connaissable",
+      "choice": "",
+      "frequency": "une fois par question scientifique majeure",
+      "trigger": "",
+      "duration": "jusqu'à l'apparition d'une contradiction majeure ou la fin de l'expédition",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "23",
+        "Traits": "Compétence, Mythique, Sciences, Travail d'équipe",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par question scientifique majeure",
+        "Durée": "jusqu'à l'apparition d'une contradiction majeure ou la fin de l'expédition",
+        "Prérequis": "Sciences Mythique ; Relecture croisée, Modèle à données partielles et Aux frontières du connaissable",
+        "Réussite critique": "la théorie expose les relations, prédictions, limites et tests de réfutation ; jusqu'à six participants gagnent +2 circonstanciel à leurs tests directement consacrés à sa vérification, et leur premier échec simple de Sciences devient une réussite.",
+        "Réussite": "la théorie expose les relations, prédictions et limites principales ; jusqu'à six participants gagnent +2 circonstanciel à leur premier test directement consacré à sa vérification.",
+        "Échec": "aucune théorie commune suffisamment robuste n'est obtenue.",
+        "Échec critique": "les jeux de données contiennent une contradiction fondamentale ; le MJ indique laquelle doit être résolue avant une nouvelle tentative."
+      }
+    },
+    "level": 23
+  },
+  "folder": "Sciences"
+}

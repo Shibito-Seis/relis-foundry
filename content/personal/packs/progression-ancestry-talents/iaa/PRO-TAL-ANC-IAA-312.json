@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-312",
+  "name": "Présence distante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Présence distante</strong>.</p><p>Depuis son ancrage réseau, le personnage peut percevoir et interagir par un terminal, capteur ou communicateur auquel il possède un accès légitime. Toute action entreprise ainsi consomme ses Actions normales.</p>\n<p>Il peut déplacer sa présence d&#39;un terminal autorisé à un autre sur le même réseau pendant son tour.</p>\n<p>Le talent ne donne aucun droit d&#39;accès, ne contourne pas le brouillage et ne permet pas d&#39;effectuer plusieurs actions simultanées.</p>",
+    "traits": ["IAA", "Architecture", "Réseau"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Réseau",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Architecture Réseau maîtrisée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Réseau",
+        "Traits": "IAA, Architecture, Réseau",
+        "Type": "1 Action",
+        "Prérequis": "Architecture Réseau maîtrisée"
+      }
+    },
+    "level": 1
+  },
+  "folder": "IAA"
+}

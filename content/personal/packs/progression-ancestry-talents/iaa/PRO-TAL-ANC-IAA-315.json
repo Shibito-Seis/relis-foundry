@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-315",
+  "name": "Blindage interne calibré",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Blindage interne calibré</strong>.</p><p>Le personnage gagne 3 PV maximum et +2 circonstanciel aux tests pour résister à une fracture de châssis, une perte de pression, une fuite énergétique ou la destruction ciblée d&#39;un composant interne.</p>\n<p>Ce blindage protège les éléments vitaux sans compter comme une armure portée.</p>\n<p>Il ne fournit ni CA supplémentaire, ni Résistance générale et ne se cumule pas avec une seconde occurrence du même talent.</p>",
+    "traits": ["IAA", "Châssis", "Résistance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.87 Talents IAA de niveau 5",
+      "family": "Châssis et modules",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Châssis et modules",
+        "Traits": "IAA, Châssis, Résistance",
+        "Type": "Passif"
+      }
+    },
+    "level": 5
+  },
+  "folder": "IAA"
+}

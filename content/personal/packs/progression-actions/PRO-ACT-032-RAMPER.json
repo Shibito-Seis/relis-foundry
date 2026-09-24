@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-032-RAMPER",
+  "name": "Ramper",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> 1 Action</p>\n<p>Le personnage doit être À terre et se déplace de 1 case. Un terrain extrêmement difficile peut interdire Ramper sans test, équipement ou capacité adapté. Ramper ne crée pas de réserve persistante.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Le personnage doit être À terre et se déplace de 1 case. Un terrain extrêmement difficile peut interdire Ramper sans test, équipement ou capacité adapté. Ramper ne crée pas de réserve persistante."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-ELFE-679",
+  "name": "Sang des deux peuples",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Sang des deux peuples</strong>.</p><p>Le personnage apprend une langue humaine et une langue elfique, ou deux codes culturels équivalents s&#39;il les connaît déjà. Il gagne +2 circonstanciel aux tests de Culture ou de Diplomatie portant sur les relations entre institutions humaines et communautés elfes.</p>\n<p>Le talent ne donne ni statut, ni contact, ni reconnaissance automatique et n&#39;impose aucune fidélité culturelle.</p>",
+    "traits": ["Demi-Elfe", "Culture", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.206 Talents Demi-Elfes de niveau 1",
+      "family": "Double culture",
+      "ancestry": "Demi-Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Double culture",
+        "Traits": "Demi-Elfe, Culture, Social",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Demi-Elfe"
+}

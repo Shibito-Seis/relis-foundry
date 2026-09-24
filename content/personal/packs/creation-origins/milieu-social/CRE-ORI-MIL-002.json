@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-MIL-002",
+  "name": "Modeste",
+  "type": "origin",
+  "tags": ["creation", "origine", "milieu-social"],
+  "system": {
+    "description": "<p><strong>Modeste</strong>.</p><p>Le personnage vient d’un environnement stable mais sans privilège réel. Il connaît la valeur du travail, des ressources et de la solidarité. — Ancre morale, Contact influent, Mémoire intacte — Famille à nourrir, Dette, Culpabilité du survivant</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-milieu-social",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Le personnage vient d’un environnement stable mais sans privilège réel. Il connaît la valeur du travail, des ressources et de la solidarité.",
+        "Atouts suggérés": "Ancre morale, Contact influent, Mémoire intacte",
+        "Handicaps suggérés": "Famille à nourrir, Dette, Culpabilité du survivant"
+      }
+    }
+  },
+  "folder": "milieu-social"
+}

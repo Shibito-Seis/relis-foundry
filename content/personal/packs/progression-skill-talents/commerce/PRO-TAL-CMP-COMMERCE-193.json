@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMERCE-193",
+  "name": "Secteur de négoce",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Secteur de négoce</strong>.</p><p>Le personnage choisit un secteur défini avec le MJ : ressources vitales, technologie, transport, services, données, armement légal, artéfacts, biens culturels ou domaine comparable.</p>\n<p>Il gagne +2 circonstanciel aux tests de Commerce visant directement à estimer, négocier ou organiser l&#39;échange d&#39;un élément de ce secteur.</p>\n<p>Le talent peut être acquis plusieurs fois pour un secteur différent. Il ne donne aucun permis, fournisseur, stock, connaissance technique ou droit de commercer.</p>",
+    "traits": ["Commerce", "Compétence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commerce — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commerce",
+      "activation": "Passif",
+      "prerequisites": "Commerce Qualifié",
+      "choice": "",
+      "frequency": "permanent ; talent répétable",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Commerce",
+        "Niveau": "1",
+        "Traits": "Commerce, Compétence",
+        "Type": "Passif",
+        "Fréquence": "permanent ; talent répétable",
+        "Prérequis": "Commerce Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Commerce"
+}

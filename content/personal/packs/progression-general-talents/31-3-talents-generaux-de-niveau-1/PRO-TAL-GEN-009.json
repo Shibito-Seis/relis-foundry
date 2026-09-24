@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-GEN-009",
+  "name": "Autonomie de terrain",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Autonomie de terrain</strong>.</p><p>Le personnage prépare son équipement personnel, ses rations, son hydratation, ses attaches et ses procédures pour l&#39;environnement immédiat. Il gagne +2 circonstanciel au premier test de Survie ou d&#39;Endurance effectué avant son prochain repos afin de résister à cet environnement ou d&#39;y gérer ses besoins personnels.</p>\n<p>En cas d&#39;échec simple à ce test, il ne perd pas de ressource supplémentaire à cause d&#39;une mauvaise préparation. Le talent ne crée aucune ration, eau, munition, pièce ou protection absente.</p>",
+    "traits": ["Exploration", "Général", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Cohésion et autonomie",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activité",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "10 minutes",
+      "metadata": {
+        "Famille": "Cohésion et autonomie",
+        "Traits": "Exploration, Général, Survie",
+        "Type": "Activité",
+        "Durée": "10 minutes",
+        "Fréquence": "une fois par repos long"
+      }
+    },
+    "level": 1
+  },
+  "folder": "### 31.3 Talents généraux de niveau 1"
+}

@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-033-FACTION-HOSTILE",
+  "name": "Faction hostile",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Faction hostile</strong>.</p><p><strong>Valeur :</strong> -2/-3</p>\n<p>-2 : faction importante vous refuse, surveille ou menace. -3 : faction vous traque, vous réclame ou vous considère comme ennemi officiel.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-2/-3",
+      "effect": "-2 : faction importante vous refuse, surveille ou menace. -3 : faction vous traque, vous réclame ou vous considère comme ennemi officiel."
+    }
+  },
+  "folder": ""
+}

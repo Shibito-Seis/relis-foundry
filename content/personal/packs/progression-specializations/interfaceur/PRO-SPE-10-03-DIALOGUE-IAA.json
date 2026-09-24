@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-10-03-DIALOGUE-IAA",
+  "name": "Interfaceur — Dialogue IAA",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "interfaceur"],
+  "system": {
+    "description": "<p><strong>Interfaceur — Dialogue IAA</strong>.</p><p><strong>Voie :</strong> Interfaceur</p>\n<p><strong>Dotation principale :</strong> Interface sociale IAA, protocole de traduction émotionnelle, logs relationnels.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-010-INTERFACEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Interfaceur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Interfaceur",
+      "branchName": "Dialogue IAA",
+      "primaryLoadout": "Interface sociale IAA, protocole de traduction émotionnelle, logs relationnels.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Interfaceur"
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-11-02-RECONNAISSANCE",
+  "name": "Explorateur — Reconnaissance",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "explorateur"],
+  "system": {
+    "description": "<p><strong>Explorateur — Reconnaissance</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Camouflage léger, jumelles/scanner discret, balises silencieuses.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-011-EXPLORATEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Explorateur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Explorateur",
+      "branchName": "Reconnaissance",
+      "primaryLoadout": "Camouflage léger, jumelles/scanner discret, balises silencieuses.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Explorateur"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-110",
+  "name": "Endurance au labeur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Endurance au labeur</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Endurance destinés à poursuivre un travail physique long : porter, creuser, forger, maintenir une position, actionner une machine ou progresser pendant une marche forcée.</p>\n<p>Une fois par jour, lorsqu&#39;un tel effort devrait lui infliger 1 niveau de Fatigue, il peut différer cette Fatigue jusqu&#39;à la fin de la scène ou de la séquence de travail en cours.</p>\n<p>S&#39;il bénéficie ensuite d&#39;au moins dix minutes de repos, d&#39;hydratation et d&#39;un environnement respirable, la Fatigue différée n&#39;est pas appliquée. Sinon, elle apparaît dès que l&#39;effort cesse.</p>\n<p>Le talent ne diffère pas une Fatigue provenant d&#39;une Blessure, d&#39;une maladie, d&#39;un pouvoir, d&#39;une privation de sommeil ou d&#39;un environnement létal.</p>",
+    "traits": ["Nain", "Endurance", "Effort"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Robustesse des profondeurs",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse des profondeurs",
+        "Traits": "Nain, Endurance, Effort",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par jour pour l'activation"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}

@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-INVESTIGATION-152",
+  "name": "Chaîne de conservation",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Chaîne de conservation</strong>.</p><p>Le personnage photographie, balise, emballe, copie ou isole un indice accessible avec les moyens disponibles. Il effectue un test d&#39;Investigation contre le DD de la scène ou de l&#39;indice.</p>\n<p>En cas de réussite :</p>\n<p>• les manipulations ordinaires du groupe ne contaminent pas l&#39;indice ;</p>\n<p>• son état, sa position et son contexte sont documentés ;</p>\n<p>• un spécialiste recevant le dossier gagne +2 circonstanciel au premier test destiné à analyser cet indice.</p>\n<p>Sur une réussite critique, le personnage remarque aussi si l&#39;indice a vraisemblablement été déplacé, nettoyé ou manipulé avant son arrivée, lorsque des traces accessibles le permettent.</p>\n<p>Le talent ne protège pas contre une destruction, une altération active ou un conditionnement absent et ne crée aucun outil de prélèvement.</p>",
+    "traits": ["Compétence", "Investigation", "Manipulation", "Préparation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Investigation — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Investigation",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Investigation Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'à l'analyse ou la rupture de la procédure",
+      "metadata": {
+        "Compétence": "Investigation",
+        "Niveau": "1",
+        "Traits": "Compétence, Investigation, Manipulation, Préparation",
+        "Type": "Activité de 1 minute",
+        "Durée": "jusqu'à l'analyse ou la rupture de la procédure",
+        "Prérequis": "Investigation Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Investigation"
+}

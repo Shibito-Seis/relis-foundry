@@ -1,0 +1,138 @@
+{
+  "relisId": "MAT-RES-BAT-002-CELLULE-LEGERE-STANDARD",
+  "name": "Cellule légère standard",
+  "type": "resource",
+  "tags": ["materiel", "ressource", "batterie"],
+  "system": {
+    "description": "<p><strong>Batterie :</strong> Cellule légère standard. <strong>Niv. :</strong> 1. <strong>Format :</strong> Légère. <strong>Capacité :</strong> 12 CE. <strong>Sortie :</strong> Légère. <strong>Technologie :</strong> Électrique. <strong>Cycle :</strong> Rechargeable. <strong>Recharge complète :</strong> 4 h. <strong>Sol./PV/SB :</strong> 2/6/3. <strong>Signature :</strong> Faible. <strong>Enc. :</strong> 0. <strong>Prix :</strong> 120.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "battery",
+      "sourceSection": "41.155 Lot 5-L12 — Batteries et alimentations — 11 profils",
+      "columns": {
+        "#": "2",
+        "Batterie": "Cellule légère standard",
+        "Niv.": "1",
+        "Format": "Légère",
+        "Capacité": "12 CE",
+        "Sortie": "Légère",
+        "Technologie": "Électrique",
+        "Cycle": "Rechargeable",
+        "Recharge complète": "4 h",
+        "Sol./PV/SB": "2/6/3",
+        "Signature": "Faible",
+        "Enc.": "0",
+        "Prix": "120"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 0,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "resource",
+        "functionalCategory": "power",
+        "installable": true,
+        "installationKind": "accessory",
+        "requiredSlots": {
+          "power": 1
+        },
+        "compatibleInterfaces": ["cell"],
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 120,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "battery",
+      "format": "light",
+      "formatId": "light",
+      "powerClass": "light",
+      "powerClassId": "light",
+      "technology": "electric",
+      "technologyId": "electric",
+      "interfaceId": "cell",
+      "current": 12,
+      "maximum": 12,
+      "output": null,
+      "outputClass": "light",
+      "cycle": "rechargeable",
+      "rechargeDuration": "4 h",
+      "rechargeable": true
+    },
+    "currencyProfile": {
+      "physicalCash": false,
+      "currencyId": "",
+      "currencyLabel": "",
+      "denomination": 1
+    }
+  },
+  "folder": "battery"
+}

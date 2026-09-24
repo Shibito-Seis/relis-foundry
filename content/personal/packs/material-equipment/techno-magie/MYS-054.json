@@ -1,0 +1,119 @@
+{
+  "relisId": "MYS-054",
+  "name": "Dissipateur d’accord",
+  "type": "equipment",
+  "tags": ["materiel", "techno-magie"],
+  "system": {
+    "description": "<p><strong>Dissipateur d’accord</strong> appartient au catalogue techno magie.</p><p>4. Mana. dissipation Mana jusqu’au Rang autorisé. 12 Mana. 30. test obligatoire.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "techno-magie",
+      "sourceSection": "55.5.4 Baguettes et focalisateurs rechargeables — MYS-049 à MYS-064",
+      "canonicalRow": [
+        "MYS-054",
+        "Dissipateur d’accord",
+        "4",
+        "Mana",
+        "dissipation Mana jusqu’au Rang autorisé",
+        "12 Mana",
+        "30",
+        "test obligatoire"
+      ],
+      "focusProfile": {
+        "maxRank": 4,
+        "source": "Mana",
+        "formulasOrFamily": "dissipation Mana jusqu’au Rang autorisé",
+        "buffer": "12 Mana",
+        "ceMaximum": 30,
+        "identity": "test obligatoire",
+        "cePerEffectiveRank": "au moins 1 CE par rang effectif",
+        "bufferRecharge": "source compatible de Mana",
+        "ceDoesNotRefillBuffer": true,
+        "automationLot": "10-F"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "energyProfile": {
+      "kind": "internal",
+      "format": "focalizer",
+      "powerClass": "special",
+      "technology": "technomagical",
+      "formatId": "special",
+      "powerClassId": "special",
+      "technologyId": "technomagical",
+      "interfaceId": "",
+      "current": 30,
+      "maximum": 30,
+      "output": null,
+      "outputClass": "special",
+      "cycle": "rechargeable",
+      "rechargeMethod": "Source compatible de Mana",
+      "rechargeMethodId": "technomagical",
+      "rechargeable": true
+    },
+    "supplyProfile": {}
+  },
+  "folder": "techno-magie"
+}

@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-INFORMATIQUE-093",
+  "name": "Session durcie",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Session durcie</strong>.</p><p>Le personnage configure une session, un appareil ou un compte qu&#39;il est autorisé à administrer : authentification, chiffrement courant, sauvegarde des paramètres et réduction des services inutiles.</p>\n<p>Il effectue un test d&#39;Informatique contre le DD du système. En cas de réussite, le système gagne +2 circonstanciel au premier test ou DD destiné à résister à un accès non autorisé, une altération de données ou une usurpation de session.</p>\n<p>Sur une réussite critique, le personnage sait également si cette première tentative a réussi ou échoué et quelle catégorie d&#39;accès elle a visée.</p>\n<p>Le talent n&#39;améliore pas une architecture que le personnage ne peut pas configurer et ne protège pas contre un accès physique, une autorisation légitime compromise ou un pouvoir qui ne passe pas par le système numérique.</p>",
+    "traits": ["Compétence", "Défense", "Informatique", "Préparation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Informatique — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Informatique",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Informatique Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'à la fermeture de la session ou au prochain repos",
+      "metadata": {
+        "Compétence": "Informatique",
+        "Niveau": "1",
+        "Traits": "Compétence, Défense, Informatique, Préparation",
+        "Type": "Activité de 10 minutes",
+        "Durée": "jusqu'à la fermeture de la session ou au prochain repos",
+        "Prérequis": "Informatique Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Informatique"
+}

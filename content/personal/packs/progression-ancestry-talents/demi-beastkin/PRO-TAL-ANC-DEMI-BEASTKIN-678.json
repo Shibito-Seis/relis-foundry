@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-BEASTKIN-678",
+  "name": "Synthèse vivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Synthèse vivante</strong>.</p><p>Le personnage manifeste l&#39;accord parfait de son humanité et de son héritage animal sans changer d&#39;espèce. Pendant l&#39;effet :</p>\n<p>• il gagne +3 aux tests liés à son Expression héritée, à une compétence humaine dans laquelle il est au moins Qualifié et à ses défenses d&#39;identité ;</p>\n<p>• il peut employer Instinct parental une fois par tour sans consommer sa fréquence normale ;</p>\n<p>• Corps concilié s&#39;applique à deux talents parentaux connus au lieu d&#39;un ;</p>\n<p>• une fois pendant la durée, il relance un test échoué relevant de l&#39;un de ses deux héritages et conserve le meilleur résultat.</p>\n<p>Le talent ne donne ni forme Beastkin complète, ni second parent, ni Action ou attaque supplémentaire. À la fin, le personnage gagne 2 Fatigue et 1 Stress.</p>\n<p>---</p>",
+    "traits": ["Demi-Beastkin", "Identité", "Mythique", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-BEASTKIN-677",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritage sans contradiction",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.204 Talent Demi-Beastkin de niveau 29",
+      "family": "Transcendance hybride",
+      "ancestry": "Demi-Beastkin",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Héritage sans contradiction",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance hybride",
+        "Traits": "Demi-Beastkin, Identité, Mythique, Physiologie",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Héritage sans contradiction"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Demi-Beastkin"
+}

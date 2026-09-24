@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-ORI-EXM-006",
+  "name": "Étudiant sauvé in extremis",
+  "type": "origin",
+  "tags": ["creation", "origine", "exemple-complet"],
+  "system": {
+    "description": "<p><strong>Étudiant sauvé in extremis</strong>.</p><p>Classe moyenne — Université / académie — Sauvé à la dernière minute — Potentiel intellectuel, mentor perdu, dette morale.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-exemple-complet",
+      "sourceSection": "7",
+      "fields": {
+        "Milieu social": "Classe moyenne",
+        "Affiliation / communauté": "Université / académie",
+        "Condition d’embarquement": "Sauvé à la dernière minute",
+        "Lecture rapide": "Potentiel intellectuel, mentor perdu, dette morale."
+      }
+    }
+  },
+  "folder": "exemple-complet"
+}

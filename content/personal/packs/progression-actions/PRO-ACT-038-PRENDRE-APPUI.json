@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-038-PRENDRE-APPUI",
+  "name": "Prendre appui",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Prendre appui</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Depuis une surface capable de supporter l&amp;#39;impulsion, le personnage se propulse et obtient un déplacement intégré en ligne droite pouvant atteindre sa Vitesse terrestre. Il peut orienter son corps, mais ne peut pas changer gratuitement son vecteur sans nouvel appui ou moyen de propulsion. Un test d&amp;#39;Acrobaties peut être demandé pour atteindre une cible précise, contrôler une rotation ou se réceptionner. Corps en apesanteur améliore ce contrôle sans fournir de propulsion, conformément à sa fonction validée.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Depuis une surface capable de supporter l&#39;impulsion, le personnage se propulse et obtient un déplacement intégré en ligne droite pouvant atteindre sa Vitesse terrestre. Il peut orienter son corps, mais ne peut pas changer gratuitement son vecteur sans nouvel appui ou moyen de propulsion. Un test d&#39;Acrobaties peut être demandé pour atteindre une cible précise, contrôler une rotation ou se réceptionner. Corps en apesanteur améliore ce contrôle sans fournir de propulsion, conformément à sa fonction validée."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

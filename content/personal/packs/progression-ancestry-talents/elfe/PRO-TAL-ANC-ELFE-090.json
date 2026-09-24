@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-090",
+  "name": "Autorité des Anciens",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage augmente immédiatement d&#39;un rang sa maîtrise en Commandement, Culture ou Diplomatie, jusqu&#39;à un maximum de Maître.</p>\n<p>Une fois par communauté, institution, arche ou expédition susceptible de reconnaître un héritage elfique, il peut invoquer une continuité historique afin de demander :</p>\n<p>• une audience officielle ;</p>\n<p>• l&#39;accès à une archive non classifiée ;</p>\n<p>• la reconnaissance d&#39;un serment, d&#39;un rang ou d&#39;une responsabilité ;</p>\n<p>• un arbitrage formel ;</p>\n<p>• un refuge ou une aide logistique modeste ;</p>\n<p>• l&#39;identité d&#39;un interlocuteur compétent.</p>\n<p>Il gagne +2 circonstanciel au premier test destiné à établir la légitimité de sa demande.</p>\n<p>Autorité des Anciens ne force pas l&#39;obéissance. L&#39;interlocuteur peut demander des preuves, contester la filiation, rappeler une dette ou estimer que l&#39;autorité invoquée n&#39;est plus valable.</p>\n<p>---</p>",
+    "traits": ["Elfe", "Culture", "Institution", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-069",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Port altier",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-071",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Communauté elfique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.33 Talents Elfes de niveau 9",
+      "family": "Présence intemporelle",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif et Activité d'exploration",
+      "prerequisites": "Port altier ou Communauté elfique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence intemporelle",
+        "Traits": "Elfe, Culture, Institution, Social",
+        "Type": "Passif et Activité d'exploration",
+        "Prérequis": "Port altier ou Communauté elfique"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Elfe"
+}

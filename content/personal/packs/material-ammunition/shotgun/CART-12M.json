@@ -1,0 +1,111 @@
+{
+  "relisId": "CART-12M",
+  "name": "Calibre 12, chambre 76 mm",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "standard", "cart"],
+  "system": {
+    "description": "<p><strong>Chambrage :</strong> Calibre 12, chambre 76 mm. <strong>Classe :</strong> Magnum. <strong>Usage courant :</strong> plateforme renforcée uniquement. <strong>Prix standard :</strong> 6. <strong>Conditionnement :</strong> boîte de 10.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.174 Fusils à cartouches",
+      "columns": {
+        "Code": "CART-12M",
+        "Chambrage": "Calibre 12, chambre 76 mm",
+        "Classe": "Magnum",
+        "Usage courant": "plateforme renforcée uniquement",
+        "Prix standard": "6",
+        "Conditionnement": "boîte de 10"
+      }
+    },
+    "physical": {
+      "quantity": 10,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "referencePrice": {
+      "amount": 6,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 10,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "shotgun",
+      "variantId": "standard",
+      "chamberingId": "CART-12M",
+      "chamberId": "CART-12M",
+      "pressureClassId": "magnum",
+      "pressureClass": "magnum",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  },
+  "folder": "shotgun"
+}

@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-378",
+  "name": "Pas de côté du renard",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Pas de côté du renard</strong>.</p><p>Le personnage gagne +2 circonstanciel à la défense contre cette attaque. Après sa résolution, il peut se déplacer de 2 mètres vers un espace libre qu&#39;il perçoit.</p>\n<p>Ce déplacement n&#39;annule pas rétroactivement l&#39;attaque, ne franchit aucun obstacle et peut déclencher les effets normalement provoqués par un déplacement, sauf règle contraire.</p>",
+    "traits": ["Beastkin", "Renard", "Mobilité", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.108 Talents Beastkins Renards de niveau 1",
+      "family": "Mobilité vulpine",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage est pris pour cible par une attaque qu'il peut percevoir",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité vulpine",
+        "Traits": "Beastkin, Renard, Mobilité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "le personnage est pris pour cible par une attaque qu'il peut percevoir"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Renard"
+}

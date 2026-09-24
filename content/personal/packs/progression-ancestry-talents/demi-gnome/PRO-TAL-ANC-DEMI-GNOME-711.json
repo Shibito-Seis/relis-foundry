@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-GNOME-711",
+  "name": "Deux rythmes d'émerveillement",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Deux rythmes d&#39;émerveillement</strong>.</p><p>Le talent possède deux expressions selon le choix du personnage :</p>\n<p>• Non sujet à l&#39;Affadissement : lorsqu&#39;il gagne du Stress à cause de monotonie, désespoir ou perte de sens, il peut employer sa Réaction pour réduire ce gain de 1 et rappeler son Ancrage humain ;</p>\n<p>• Sujet à l&#39;Affadissement : après un repos long consacré à sa passion ou à son ancrage, il gagne +3 au prochain test pour suspendre une progression de l&#39;Affadissement. Une fois par cycle de progression, il peut relancer ce test et conserver le meilleur résultat.</p>\n<p>Le talent ne retire aucun stade déjà acquis, ne rend pas immunisé et ne fournit jamais simultanément les deux expressions.</p>",
+    "traits": ["Demi-Gnome", "Identité", "Mental", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.228 Talent Demi-Gnome de niveau 17",
+      "family": "Conciliation identitaire",
+      "ancestry": "Demi-Gnome",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Conciliation identitaire",
+        "Traits": "Demi-Gnome, Identité, Mental, Réaction",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par jour pour la réaction",
+        "Non sujet à l'Affadissement": "lorsqu'il gagne du Stress à cause de monotonie, désespoir ou perte de sens, il peut employer sa Réaction pour réduire ce gain de 1 et rappeler son Ancrage humain ;",
+        "Sujet à l'Affadissement": "après un repos long consacré à sa passion ou à son ancrage, il gagne +3 au prochain test pour suspendre une progression de l'Affadissement. Une fois par cycle de progression, il peut relancer ce test et conserver le meilleur résultat."
+      }
+    },
+    "level": 17
+  },
+  "folder": "Demi-Gnome"
+}

@@ -1,0 +1,115 @@
+{
+  "relisId": "MAT-EQP-MOD-005-POINTEUR-LASER",
+  "name": "Pointeur laser",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "module-personnel"],
+  "system": {
+    "description": "<p><strong>Module :</strong> Pointeur laser. <strong>Niv. :</strong> 1. <strong>Emplacement :</strong> Utilitaire. <strong>Effet principal :</strong> +1 circonstanciel à une Aide de désignation visible ; révèle la direction. <strong>Installation :</strong> 1 Action. <strong>Enc. :</strong> 0. <strong>Prix :</strong> 150.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "module",
+      "sourceSection": "41.158 Modules d'armes — 16 profils",
+      "columns": {
+        "#": "5",
+        "Module": "Pointeur laser",
+        "Niv.": "1",
+        "Emplacement": "Utilitaire",
+        "Effet principal": "+1 circonstanciel à une Aide de désignation visible ; révèle la direction",
+        "Installation": "1 Action",
+        "Enc.": "0",
+        "Prix": "150"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "functionalCategory": "module",
+        "family": "resource",
+        "installable": true,
+        "installationKind": "accessory",
+        "slot": "Utilitaire",
+        "effectSummary": "+1 circonstanciel à une Aide de désignation visible ; révèle la direction",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 150,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "module"
+}

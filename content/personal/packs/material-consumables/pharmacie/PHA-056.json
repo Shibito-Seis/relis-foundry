@@ -1,0 +1,94 @@
+{
+  "relisId": "PHA-056",
+  "name": "Dissociatif médical détourné",
+  "type": "consumable",
+  "tags": ["materiel", "pharmacie"],
+  "system": {
+    "description": "<p><strong>Dissociatif médical détourné</strong> appartient au catalogue pharmacie.</p><p>3. inhalée. T3/D3. ignore douleur −2, mais 2 Actions maximum. 10 min. Contrôlée ; risque de chute.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "pharmacie",
+      "sourceSection": "55.4.5 Drogues contrôlées et usages détournés — PHA-049 à PHA-064",
+      "canonicalRow": [
+        "PHA-056",
+        "Dissociatif médical détourné",
+        "3",
+        "inhalée",
+        "T3/D3",
+        "ignore douleur −2, mais 2 Actions maximum",
+        "10 min",
+        "Contrôlée ; risque de chute"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "10 min"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "pharmacie"
+}

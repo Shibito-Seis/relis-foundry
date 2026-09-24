@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-442",
+  "name": "Personne ne me tient",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Personne ne me tient</strong>.</p><p>Lorsqu&#39;un effet non mythique devrait contrôler ses Actions ou lui interdire tout déplacement, le personnage tente immédiatement un nouveau test de Volonté avec +3 circonstanciel. En cas de réussite, l&#39;effet prend fin sur lui. Les conséquences déjà produites demeurent.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-434",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Indomptable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.123 Talents Beastkins Chats de niveau 17",
+      "family": "Indépendance et sang-froid",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Indomptable",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Indépendance et sang-froid",
+        "Prérequis": "Indomptable",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Chat"
+}

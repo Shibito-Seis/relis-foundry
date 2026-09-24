@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-406",
+  "name": "Soleil du renard",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Soleil du renard</strong>.</p><p>Le personnage déploie pendant trois tours un soleil de feu-follet dans un rayon de 12 mètres. La zone est vivement éclairée et ses alliés choisis gagnent +3 circonstanciel aux tests destinés à reconnaître une illusion, une possession ou une fausse apparence.</p>\n<p>Une fois par tour, après une Étincelle vulpine réussie, il peut appliquer Brasier des neuf sentiers sans consommer sa fréquence de scène. Une même créature ne peut cependant subir qu&#39;une attaque d&#39;Étincelle ou de Brasier par tour du personnage.</p>\n<p>À l&#39;activation, le personnage choisit si le Soleil révèle sa position à tous les capteurs capables de percevoir l&#39;énergie. S&#39;il tente de le dissimuler, sa portée tombe à 6 mètres et un test de Canalisation peut être exigé.</p>\n<p>Le Soleil ne dissipe pas automatiquement les illusions et ne remplace aucun pouvoir de zone d&#39;une Voie.</p>",
+    "traits": ["Beastkin", "Renard", "Canalisation", "Feu-follet", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-395",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Brasier des neuf sentiers",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.113 Talents Beastkins Renards de niveau 21",
+      "family": "Feux-follets et arts spirituels",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Brasier des neuf sentiers",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Feux-follets et arts spirituels",
+        "Traits": "Beastkin, Renard, Canalisation, Feu-follet, Mythique",
+        "Prérequis": "Brasier des neuf sentiers",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Beastkin Renard"
+}

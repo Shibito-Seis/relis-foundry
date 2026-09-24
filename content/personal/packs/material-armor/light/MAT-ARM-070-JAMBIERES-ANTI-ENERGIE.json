@@ -1,0 +1,119 @@
+{
+  "relisId": "MAT-ARM-070-JAMBIERES-ANTI-ENERGIE",
+  "name": "Jambières anti-énergie",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<p><strong>Protection :</strong> Jambières anti-énergie. <strong>Niv. :</strong> 2. <strong>Accès :</strong> Spécialisée. <strong>Zone :</strong> J. <strong>Sol. P/E :</strong> 1/4. <strong>PV/SB :</strong> 12/6. <strong>Fonction :</strong> Énergie et isolation locale. <strong>Empl. module :</strong> 2. <strong>Enc. :</strong> 2. <strong>Équip. :</strong> 3 Actions. <strong>Prix :</strong> 1 200.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.144 Lot 5-L8 — Protections modulaires de membres",
+      "columns": {
+        "#": "6",
+        "Protection": "Jambières anti-énergie",
+        "Niv.": "2",
+        "Accès": "Spécialisée",
+        "Zone": "J",
+        "Sol. P/E": "1/4",
+        "PV/SB": "12/6",
+        "Fonction": "Énergie et isolation locale",
+        "Empl. module": "2",
+        "Enc.": "2",
+        "Équip.": "3 Actions",
+        "Prix": "1 200"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 2,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 1200,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "specialized",
+      "capBonus": null,
+      "caeBonus": null,
+      "solidityPhysical": 1,
+      "solidityEnergy": 4,
+      "coverage": ["J"],
+      "constraintSummary": "# : 6 ; Protection : Jambières anti-énergie ; Niv. : 2 ; Accès : Spécialisée ; Zone : J ; Sol. P/E : 1/4 ; PV/SB : 12/6 ; Fonction : Énergie et isolation locale ; Empl. module : 2 ; Enc. : 2 ; Équip. : 3 Actions ; Prix : 1 200"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "light"
+}

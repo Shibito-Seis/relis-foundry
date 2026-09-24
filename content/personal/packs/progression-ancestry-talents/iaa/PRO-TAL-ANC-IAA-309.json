@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-309",
+  "name": "Pare-feu identitaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Pare-feu identitaire</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Volonté + Sang-froid, Intelligence + Informatique ou Technologie + Systèmes de vaisseau contre intrusion, copie forcée, altération de mémoire, commande extérieure ou usurpation d&#39;identité numérique.</p>\n<p>Une fois par session, un échec critique à l&#39;un de ces tests devient un échec ordinaire.</p>\n<p>Le talent n&#39;empêche pas un accès volontaire, ne protège pas un système extérieur et ne rend aucun code inviolable.</p>",
+    "traits": ["IAA", "Défense numérique", "Identité"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Intégrité et identité",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Intégrité et identité",
+        "Traits": "IAA, Défense numérique, Identité",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation"
+      }
+    },
+    "level": 1
+  },
+  "folder": "IAA"
+}

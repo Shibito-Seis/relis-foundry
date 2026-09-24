@@ -1,0 +1,111 @@
+{
+  "relisId": "MAT-CON-EXP-010-MINE-EMP",
+  "name": "Mine EMP",
+  "type": "consumable",
+  "tags": ["materiel", "consommable", "explosif-personnel"],
+  "system": {
+    "description": "<p><strong>Consommable :</strong> Mine EMP. <strong>Niv. :</strong> 3. <strong>Coût :</strong> 2 Actions poser. <strong>Zone :</strong> Explosion 2. <strong>Déf. :</strong> CAE. <strong>Effet principal :</strong> 2d8 Électrique Non létal, EMP. <strong>Prix :</strong> 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "explosive-consumable",
+      "sourceSection": "41.184 Catalogue corrigé — 12 profils",
+      "columns": {
+        "#": "10",
+        "Consommable": "Mine EMP",
+        "Niv.": "3",
+        "Coût": "2 Actions poser",
+        "Zone": "Explosion 2",
+        "Déf.": "CAE",
+        "Effet principal": "2d8 Électrique Non létal, EMP",
+        "Prix": "500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "consumableProfile": {
+      "kind": "mine",
+      "actionCost": 2,
+      "area": "Explosion 2",
+      "effectSummary": "2d8 Électrique Non létal, EMP"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "explosive-consumable"
+}

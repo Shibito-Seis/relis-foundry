@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-3-05",
+  "name": "Lien de groupe",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Lien de groupe</strong>.</p><p><strong>Prana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 3 / 3 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Influence</p>\n<p>Jusqu&#39;à quatre alliés partagent direction, état conscient et appel mental bref pendant une scène ; +1 aux Aides entre eux.</p>\n<p><strong>Intensification :</strong> Deux alliés supplémentaires ou portée 12 m.</p>",
+    "traits": ["Prana", "Influence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "3",
+      "activation": "3 / 3 A / émanation 6 m",
+      "discipline": "Influence",
+      "effect": "Jusqu'à quatre alliés partagent direction, état conscient et appel mental bref pendant une scène ; +1 aux Aides entre eux.",
+      "scaling": "Deux alliés supplémentaires ou portée 12 m."
+    },
+    "level": 10
+  },
+  "folder": "Rang 3"
+}

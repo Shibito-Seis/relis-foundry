@@ -1,0 +1,48 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-284",
+  "name": "Mutation stabilisée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mutation stabilisée</strong>.</p><p>Le personnage choisit une modification stabilisée :</p>\n<p>• Vision adaptée : il voit normalement dans la pénombre et gagne +2 contre l&#39;éblouissement.</p>\n<p>• Adhérence : il se déplace à la moitié de sa Vitesse sur une surface rugueuse fortement inclinée sans test ordinaire.</p>\n<p>• Filtration : il gagne +2 contre fumées, poussières et toxines respirées, et double le temps pendant lequel il peut retenir son souffle.</p>\n<p>• Thermorégulation : il gagne +2 contre chaleur et froid environnementaux.</p>\n<p>• Souplesse tissulaire : il gagne +2 pour se dégager, se contorsionner ou franchir un passage étroit.</p>\n<p>Le choix est permanent sauf réentraînement ou intervention médicale majeure. Aucune modification ne fournit une immunité ou un organe entièrement nouveau.</p>",
+    "traits": ["Esman", "Mutation", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-277",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Métabolisme expérimental",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.77 Talents Esmans de niveau 9",
+      "family": "Physiologie modifiée",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Métabolisme expérimental",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie modifiée",
+        "Traits": "Esman, Mutation, Physiologie",
+        "Type": "Passif",
+        "Prérequis": "Métabolisme expérimental",
+        "Vision adaptée": "il voit normalement dans la pénombre et gagne +2 contre l'éblouissement.",
+        "Adhérence": "il se déplace à la moitié de sa Vitesse sur une surface rugueuse fortement inclinée sans test ordinaire.",
+        "Filtration": "il gagne +2 contre fumées, poussières et toxines respirées, et double le temps pendant lequel il peut retenir son souffle.",
+        "Thermorégulation": "il gagne +2 contre chaleur et froid environnementaux.",
+        "Souplesse tissulaire": "il gagne +2 pour se dégager, se contorsionner ou franchir un passage étroit."
+      }
+    },
+    "level": 9
+  },
+  "folder": "Esman"
+}

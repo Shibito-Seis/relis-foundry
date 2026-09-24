@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-9-01",
+  "name": "Renaissance sans dépouille",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-9"],
+  "system": {
+    "description": "<p><strong>Renaissance sans dépouille</strong>.</p><p><strong>Prana — Rang 9.</strong></p>\n<p><strong>Activation :</strong> 10 / 8 h / Ancre</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Reconstruit un vivant mort depuis moins de 7 jours à partir d’une Ancre authentique ; moitié PV, Prana 0, Fatigue 4, trois Blessures. Engage 2 Prana max du lanceur pendant 7 jours. Aucune Mort majeure.</p>\n<p><strong>Intensification :</strong> Fenêtre 30 jours avec focaliseur unique ou retire une Blessure.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "9",
+      "activation": "10 / 8 h / Ancre",
+      "discipline": "Vitalisme",
+      "effect": "Reconstruit un vivant mort depuis moins de 7 jours à partir d’une Ancre authentique ; moitié PV, Prana 0, Fatigue 4, trois Blessures. Engage 2 Prana max du lanceur pendant 7 jours. Aucune Mort majeure.",
+      "scaling": "Fenêtre 30 jours avec focaliseur unique ou retire une Blessure."
+    },
+    "level": 28
+  },
+  "folder": "Rang 9"
+}

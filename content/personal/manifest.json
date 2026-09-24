@@ -3,47 +3,192 @@
   "format": "relis.personal-content",
   "formatVersion": 1,
   "system": "relis",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "strictReferences": true,
   "packs": [
     {
-      "id": "creation",
-      "name": "personal-creation",
-      "label": "RE:LIS — Création de personnage",
+      "id": "creation-ancestries",
+      "name": "creation-ancestries",
+      "label": "RE:LIS — Ascendances",
       "documentType": "Item",
-      "source": "packs/creation",
-      "itemTypes": [
-        "ancestry",
-        "profile",
-        "origin",
-        "advantage",
-        "drawback",
-        "post"
-      ]
+      "source": "packs/creation-ancestries",
+      "itemTypes": ["ancestry"]
     },
     {
-      "id": "progression",
-      "name": "personal-progression",
-      "label": "RE:LIS — Progression personnelle",
+      "id": "creation-profiles",
+      "name": "creation-profiles",
+      "label": "RE:LIS — Profils",
       "documentType": "Item",
-      "source": "packs/progression",
-      "itemTypes": ["path", "specialization", "talent", "action", "power"]
+      "source": "packs/creation-profiles",
+      "itemTypes": ["profile"]
     },
     {
-      "id": "material",
-      "name": "personal-material",
-      "label": "RE:LIS — Matériel personnel",
+      "id": "creation-origins",
+      "name": "creation-origins",
+      "label": "RE:LIS — Origines",
       "documentType": "Item",
-      "source": "packs/material",
-      "itemTypes": [
-        "weapon",
-        "armor",
-        "equipment",
-        "consumable",
-        "ammunition",
-        "resource",
-        "container"
-      ]
+      "source": "packs/creation-origins",
+      "itemTypes": ["origin"]
+    },
+    {
+      "id": "creation-advantages",
+      "name": "creation-advantages",
+      "label": "RE:LIS — Atouts",
+      "documentType": "Item",
+      "source": "packs/creation-advantages",
+      "itemTypes": ["advantage"]
+    },
+    {
+      "id": "creation-drawbacks",
+      "name": "creation-drawbacks",
+      "label": "RE:LIS — Handicaps",
+      "documentType": "Item",
+      "source": "packs/creation-drawbacks",
+      "itemTypes": ["drawback"]
+    },
+    {
+      "id": "creation-posts",
+      "name": "creation-posts",
+      "label": "RE:LIS — Postes",
+      "documentType": "Item",
+      "source": "packs/creation-posts",
+      "itemTypes": ["post"]
+    },
+    {
+      "id": "progression-paths",
+      "name": "progression-paths",
+      "label": "RE:LIS — Voies",
+      "documentType": "Item",
+      "source": "packs/progression-paths",
+      "itemTypes": ["path"]
+    },
+    {
+      "id": "progression-specializations",
+      "name": "progression-specializations",
+      "label": "RE:LIS — Spécialisations",
+      "documentType": "Item",
+      "source": "packs/progression-specializations",
+      "itemTypes": ["specialization"]
+    },
+    {
+      "id": "progression-ancestry-talents",
+      "name": "progression-ancestry-talents",
+      "label": "RE:LIS — Talents d’Ascendance",
+      "documentType": "Item",
+      "source": "packs/progression-ancestry-talents",
+      "itemTypes": ["talent"]
+    },
+    {
+      "id": "progression-skill-talents",
+      "name": "progression-skill-talents",
+      "label": "RE:LIS — Talents de compétence",
+      "documentType": "Item",
+      "source": "packs/progression-skill-talents",
+      "itemTypes": ["talent"]
+    },
+    {
+      "id": "progression-general-talents",
+      "name": "progression-general-talents",
+      "label": "RE:LIS — Talents généraux",
+      "documentType": "Item",
+      "source": "packs/progression-general-talents",
+      "itemTypes": ["talent"]
+    },
+    {
+      "id": "progression-vampire-talents",
+      "name": "progression-vampire-talents",
+      "label": "RE:LIS — Talents vampiriques",
+      "documentType": "Item",
+      "source": "packs/progression-vampire-talents",
+      "itemTypes": ["talent"]
+    },
+    {
+      "id": "progression-actions",
+      "name": "progression-actions",
+      "label": "RE:LIS — Actions",
+      "documentType": "Item",
+      "source": "packs/progression-actions",
+      "itemTypes": ["action"]
+    },
+    {
+      "id": "progression-powers-mana",
+      "name": "progression-powers-mana",
+      "label": "RE:LIS — Pouvoirs de Mana",
+      "documentType": "Item",
+      "source": "packs/progression-powers-mana",
+      "itemTypes": ["power"]
+    },
+    {
+      "id": "progression-powers-prana",
+      "name": "progression-powers-prana",
+      "label": "RE:LIS — Pouvoirs de Prana",
+      "documentType": "Item",
+      "source": "packs/progression-powers-prana",
+      "itemTypes": ["power"]
+    },
+    {
+      "id": "progression-powers-flux",
+      "name": "progression-powers-flux",
+      "label": "RE:LIS — Pouvoirs de Flux",
+      "documentType": "Item",
+      "source": "packs/progression-powers-flux",
+      "itemTypes": ["power"]
+    },
+    {
+      "id": "material-weapons",
+      "name": "material-weapons",
+      "label": "RE:LIS — Armes",
+      "documentType": "Item",
+      "source": "packs/material-weapons",
+      "itemTypes": ["weapon"]
+    },
+    {
+      "id": "material-armor",
+      "name": "material-armor",
+      "label": "RE:LIS — Armures et protections",
+      "documentType": "Item",
+      "source": "packs/material-armor",
+      "itemTypes": ["armor"]
+    },
+    {
+      "id": "material-equipment",
+      "name": "material-equipment",
+      "label": "RE:LIS — Équipements et modules",
+      "documentType": "Item",
+      "source": "packs/material-equipment",
+      "itemTypes": ["equipment"]
+    },
+    {
+      "id": "material-consumables",
+      "name": "material-consumables",
+      "label": "RE:LIS — Consommables",
+      "documentType": "Item",
+      "source": "packs/material-consumables",
+      "itemTypes": ["consumable"]
+    },
+    {
+      "id": "material-ammunition",
+      "name": "material-ammunition",
+      "label": "RE:LIS — Munitions",
+      "documentType": "Item",
+      "source": "packs/material-ammunition",
+      "itemTypes": ["ammunition"]
+    },
+    {
+      "id": "material-resources",
+      "name": "material-resources",
+      "label": "RE:LIS — Ressources et batteries",
+      "documentType": "Item",
+      "source": "packs/material-resources",
+      "itemTypes": ["resource"]
+    },
+    {
+      "id": "material-containers",
+      "name": "material-containers",
+      "label": "RE:LIS — Conteneurs et chargeurs",
+      "documentType": "Item",
+      "source": "packs/material-containers",
+      "itemTypes": ["container"]
     }
   ]
 }

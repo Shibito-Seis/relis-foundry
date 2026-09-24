@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-DISCRETION-024",
+  "name": "Effacer le passage",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Effacer le passage</strong>.</p><p>En progressant à la moitié de la vitesse de voyage normale, le personnage dissimule empreintes, marques, déchets, odeurs simples et signes de passage d&#39;un groupe comprenant jusqu&#39;à six créatures.</p>\n<p>Il effectue un test de Discrétion.</p>\n<p>• Réussite critique : le DD pour suivre le groupe augmente de 2 et une direction secondaire crédible peut être laissée pendant une courte distance.</p>\n<p>• Réussite : le DD pour suivre le groupe augmente de 2.</p>\n<p>• Échec : les traces restent normales.</p>\n<p>• Échec critique : la tentative laisse un signe reconnaissable de dissimulation.</p>\n<p>Le talent ne masque pas automatiquement une signature thermique, énergétique, magique, numérique ou olfactive spécialisée et ne fait pas disparaître une trace enregistrée avant son passage.</p>",
+    "traits": ["Compétence", "Discrétion", "Exploration", "Traces"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Discrétion — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Discrétion",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Discrétion Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Discrétion",
+        "Niveau": "3",
+        "Traits": "Compétence, Discrétion, Exploration, Traces",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Discrétion Expert",
+        "Réussite critique": "le DD pour suivre le groupe augmente de 2 et une direction secondaire crédible peut être laissée pendant une courte distance.",
+        "Réussite": "le DD pour suivre le groupe augmente de 2.",
+        "Échec": "les traces restent normales.",
+        "Échec critique": "la tentative laisse un signe reconnaissable de dissimulation."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Discrétion"
+}

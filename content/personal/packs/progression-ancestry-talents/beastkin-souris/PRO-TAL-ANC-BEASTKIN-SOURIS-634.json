@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-634",
+  "name": "Geste minutieux",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Geste minutieux</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Ingénierie, d&#39;Informatique, de Médecine ou de Techno-magie lorsque la difficulté principale vient d&#39;une pièce minuscule, d&#39;un accès étroit, d&#39;une connexion délicate ou d&#39;un réglage très fin.</p>\n<p>Il doit être Qualifié dans la compétence utilisée et disposer de l&#39;outil approprié. Le bonus ne s&#39;applique pas au diagnostic général, à la conception ou à la puissance du système.</p>",
+    "traits": ["Beastkin", "Souris", "Manipulation", "Technique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.185 Talents Beastkins Souris de niveau 1",
+      "family": "Précision technique",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précision technique",
+        "Traits": "Beastkin, Souris, Manipulation, Technique",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Souris"
+}

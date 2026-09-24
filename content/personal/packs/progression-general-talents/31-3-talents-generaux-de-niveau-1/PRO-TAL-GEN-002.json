@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-GEN-002",
+  "name": "Endurance de fond",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Endurance de fond</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Vigueur + Endurance contre les efforts prolongés ordinaires : marche forcée, veille, privation légère, port de charge durable, température difficile ou activité physique tenue dans le temps.</p>\n<p>Ce bonus ne s&#39;applique pas aux tests de Surmenage, aux jets d&#39;agonie, aux dégâts directs ni aux effets instantanés. Il ne se cumule pas avec un autre bonus circonstanciel récompensant la même préparation physique.</p>",
+    "traits": ["Endurance", "Général", "Physique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Vitalité et récupération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vitalité et récupération",
+        "Traits": "Endurance, Général, Physique",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "### 31.3 Talents généraux de niveau 1"
+}

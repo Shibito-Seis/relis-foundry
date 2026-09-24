@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-05-01-MEDECINE-DE-TERRAIN",
+  "name": "Médecin — Médecine de terrain",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "medecin"],
+  "system": {
+    "description": "<p><strong>Médecin — Médecine de terrain</strong>.</p><p><strong>Voie :</strong> Médecin</p>\n<p><strong>Dotation principale :</strong> Kit de stabilisation rapide, injecteurs, pansements intelligents.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-005-MEDECIN",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Médecin",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Médecin",
+      "branchName": "Médecine de terrain",
+      "primaryLoadout": "Kit de stabilisation rapide, injecteurs, pansements intelligents.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Médecin"
+}

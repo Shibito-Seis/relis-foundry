@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-567",
+  "name": "Mue mémorielle",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mue mémorielle</strong>.</p><p>Le personnage conserve, grave ou raconte les étapes importantes de sa vie à travers ses mues, ornements ou rituels corporels. Il gagne +2 circonstanciel aux tests de Culture portant sur les traditions reptiliennes et aux tests de Volonté pour défendre ses souvenirs ou son identité contre une altération extérieure.</p>\n<p>Le talent ne restaure pas un souvenir détruit, ne révèle pas une vie antérieure et n&#39;impose aucune pratique culturelle aux autres Lézards.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Lézard", "Culture", "Identité"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.163 Talents Beastkins Lézards de niveau 1",
+      "family": "Culture reptilienne et mues",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture reptilienne et mues",
+        "Traits": "Beastkin, Lézard, Culture, Identité",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Lézard"
+}

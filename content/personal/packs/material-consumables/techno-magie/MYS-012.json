@@ -1,0 +1,104 @@
+{
+  "relisId": "MYS-012",
+  "name": "Souffle prolongé distillé",
+  "type": "consumable",
+  "tags": ["materiel", "techno-magie"],
+  "system": {
+    "description": "<p><strong>Souffle prolongé distillé</strong> appartient au catalogue techno magie.</p><p>1. Prana investi. PRA-1-10. Autonome, 1 A. ne fournit ni pression ni oxygène.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [
+      {
+        "relisId": "PRA-1-10",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "power",
+        "state": "resolved",
+        "labelSnapshot": "PRA-1-10",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "catalog": {
+      "kind": "techno-magie",
+      "sourceSection": "55.5.2 Potions et élixirs — MYS-001 à MYS-024",
+      "canonicalRow": [
+        "MYS-012",
+        "Souffle prolongé distillé",
+        "1",
+        "Prana investi",
+        "PRA-1-10",
+        "Autonome, 1 A",
+        "ne fournit ni pression ni oxygène"
+      ],
+      "formulaRef": "PRA-1-10"
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "matrix",
+      "effectSummary": "Autonome, 1 A"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "techno-magie"
+}

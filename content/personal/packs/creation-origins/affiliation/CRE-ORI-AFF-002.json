@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-AFF-002",
+  "name": "Armée ou sécurité terrienne",
+  "type": "origin",
+  "tags": ["creation", "origine", "affiliation"],
+  "system": {
+    "description": "<p><strong>Armée ou sécurité terrienne</strong>.</p><p>Forces militaires, sécurité civile, unités de protection, défense de sites ou escorte de l’exode. — Statut officiel, Formation secrète, Sang-froid exceptionnel — Serment contraignant, Ennemi personnel, Culpabilité du survivant</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-affiliation",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Forces militaires, sécurité civile, unités de protection, défense de sites ou escorte de l’exode.",
+        "Atouts suggérés": "Statut officiel, Formation secrète, Sang-froid exceptionnel",
+        "Handicaps suggérés": "Serment contraignant, Ennemi personnel, Culpabilité du survivant"
+      }
+    }
+  },
+  "folder": "affiliation"
+}

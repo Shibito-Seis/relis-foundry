@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-166",
+  "name": "Poche pleine de solutions",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Poche pleine de solutions</strong>.</p><p>Le personnage sort de ses poches ou de son nécessaire un petit composant commun et plausible : fil, fusible, visserie, pince, lentille, ruban, connecteur, craie, ressort ou objet équivalent.</p>\n<p>L&#39;élément fournit +2 circonstanciel à un test immédiat pour lequel il constitue réellement une solution improvisée. Il est consommé, rendu inutilisable ou replacé dans le nécessaire à la fin de la scène.</p>\n<p>Le talent ne fournit jamais : munition, explosif, médicament, batterie chargée, composant rare, clé d&#39;accès, objet de valeur ou pièce capable à elle seule de réparer un système complexe.</p>",
+    "traits": ["Gnome", "Équipement", "Préparation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Bidouillage improbable",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Équipement, Préparation",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Gnome"
+}

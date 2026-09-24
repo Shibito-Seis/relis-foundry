@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-033-ESCALADER",
+  "name": "Escalader",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Escalader</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Sans Vitesse d&amp;#39;escalade, le personnage effectue un test d&amp;#39;Athlétisme contre le DD de la surface : • Réussite critique : déplacement intégré de 3 cases ; • Réussite : déplacement intégré de 2 cases ; • Échec : aucun déplacement, mais le personnage conserve normalement sa prise ; • Échec critique : il perd sa prise et chute. Une créature possédant une Vitesse d&amp;#39;escalade peut utiliser Se déplacer avec ce mode et ne teste pas sur une surface ordinaire. Une surface parfaitement lisse, mouvante ou dépourvue de prises peut exiger un équipement même avec une Vitesse d&amp;#39;escalade, selon son origine.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Sans Vitesse d&#39;escalade, le personnage effectue un test d&#39;Athlétisme contre le DD de la surface : • Réussite critique : déplacement intégré de 3 cases ; • Réussite : déplacement intégré de 2 cases ; • Échec : aucun déplacement, mais le personnage conserve normalement sa prise ; • Échec critique : il perd sa prise et chute. Une créature possédant une Vitesse d&#39;escalade peut utiliser Se déplacer avec ce mode et ne teste pas sur une surface ordinaire. Une surface parfaitement lisse, mouvante ou dépourvue de prises peut exiger un équipement même avec une Vitesse d&#39;escalade, selon son origine."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

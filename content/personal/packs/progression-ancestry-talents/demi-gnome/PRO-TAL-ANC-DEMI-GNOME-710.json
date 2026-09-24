@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-GNOME-710",
+  "name": "Deux méthodes, une invention",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Deux méthodes, une invention</strong>.</p><p>Avant un test technique, le personnage décrit une méthode gnome créative et une méthode humaine stable contribuant à la même solution. Il gagne +3 circonstanciel au test ou accorde ce bonus à un allié qu&#39;il Aide.</p>\n<p>En cas d&#39;échec simple, la tâche échoue sans déclencher automatiquement l&#39;instabilité propre à la méthode expérimentale ; les ressources normales sont tout de même consommées. Le talent ne transforme pas un échec critique.</p>",
+    "traits": ["Demi-Gnome", "Coopération", "Technique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-GNOME-709",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Solution improbable mais stable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.227 Talent Demi-Gnome de niveau 13",
+      "family": "Ingéniosité tempérée",
+      "ancestry": "Demi-Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Solution improbable mais stable",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ingéniosité tempérée",
+        "Traits": "Demi-Gnome, Coopération, Technique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Solution improbable mais stable"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Demi-Gnome"
+}

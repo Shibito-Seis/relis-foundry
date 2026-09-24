@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-291",
+  "name": "Pressentir la Pluie écarlate",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Pressentir la Pluie écarlate</strong>.</p><p>Le personnage ressent dans un rayon de 30 mètres les signatures accessibles rappelant la Pluie écarlate, l&#39;anneau noir, une corruption écarlate documentée ou les cristaux de ses cornes. Il apprend leur direction générale, leur intensité et si elles semblent stables ou actives.</p>\n<p>Il gagne +2 circonstanciel aux tests de Vigueur, Volonté ou Canalisation pour résister à leur corruption ou éviter une exposition qu&#39;il a détectée.</p>\n<p>La ressemblance perçue ne démontre aucune origine commune. Une protection adaptée peut bloquer ou fausser le pressentiment.</p>\n<p>---</p>",
+    "traits": ["Esman", "Corruption", "Détection", "Exploration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-285",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Piste de cristal",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.78 Talents Esmans de niveau 13",
+      "family": "Perception des fractures",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Piste de cristal",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Perception des fractures",
+        "Traits": "Esman, Corruption, Détection, Exploration",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Piste de cristal"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Esman"
+}

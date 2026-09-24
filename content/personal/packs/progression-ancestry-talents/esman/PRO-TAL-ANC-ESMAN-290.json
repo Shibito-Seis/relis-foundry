@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-290",
+  "name": "Corps de seconde génération",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Corps de seconde génération</strong>.</p><p>Le personnage gagne un nombre de PV maximum égal à la moitié de son Niveau général, arrondi à l&#39;inférieur. Il gagne également +2 circonstanciel aux tests de Vigueur contre maladie, poison, corruption corporelle et mutation forcée.</p>\n<p>Une fois par jour, après un échec non critique à l&#39;un de ces tests, il peut le transformer en réussite ordinaire et gagne 1 Stress. Un échec critique devient seulement un échec ordinaire.</p>\n<p>Le talent ne modifie ni longévité, ni besoins vitaux et ne rend aucune mutation volontaire sans risque.</p>",
+    "traits": ["Esman", "Mutation", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-284",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mutation stabilisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.78 Talents Esmans de niveau 13",
+      "family": "Physiologie modifiée",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Mutation stabilisée",
+      "choice": "",
+      "frequency": "une fois par jour pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie modifiée",
+        "Traits": "Esman, Mutation, Physiologie",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par jour pour l'activation",
+        "Prérequis": "Mutation stabilisée"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Esman"
+}

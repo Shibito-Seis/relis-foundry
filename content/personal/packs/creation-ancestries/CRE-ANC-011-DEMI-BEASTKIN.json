@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ANC-011-DEMI-BEASTKIN",
+  "name": "Demi-Beastkin",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Demi-Beastkin</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 dans 2 des 3 bonus du sous-type, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> Malus du sous-type</p>\n<p>Héritage animal atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 dans 2 des 3 bonus du sous-type, +1 libre",
+      "attributePenalty": "Malus du sous-type",
+      "rationale": "Héritage animal atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.",
+      "selectable": true
+    }
+  },
+  "folder": ""
+}

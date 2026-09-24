@@ -1,0 +1,74 @@
+{
+  "relisId": "PRO-TAL-CMP-CULTURE-150",
+  "name": "Pont entre les peuples",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Pont entre les peuples</strong>.</p><p>À partir de toutes les données culturelles réellement disponibles, le personnage construit un cadre commun pour un premier contact, une cérémonie, une négociation multilatérale ou une médiation entre traditions incompatibles.</p>\n<p>Il effectue un test de Culture contre le DD le plus élevé des cultures concernées.</p>\n<p>• Réussite critique : il identifie les valeurs communes, les incompatibilités, les symboles sûrs et les termes encore ambigus ; jusqu&#39;à six participants gagnent +2 circonstanciel à leurs tests suivant ce cadre, et la première faute culturelle involontaire simple est reconnue avant d&#39;aggraver l&#39;attitude d&#39;un interlocuteur raisonnable.</p>\n<p>• Réussite : il identifie les valeurs communes et les principaux tabous ; jusqu&#39;à six participants gagnent +2 circonstanciel à leur premier test suivant ce cadre.</p>\n<p>• Échec : le cadre ne procure aucun bénéfice.</p>\n<p>• Échec critique : une incompatibilité demeure insoluble ; le MJ la révèle avant le début de l&#39;échange formel.</p>\n<p>Le talent ne force ni audience, ni compréhension, ni paix, ni bonne foi. Chaque participant doit conduire ses propres interactions avec les compétences sociales appropriées.</p>\n<p>---</p>",
+    "traits": [
+      "Compétence",
+      "Culture",
+      "Mythique",
+      "Préparation",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-CULTURE-145",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Protocole préparé",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-CULTURE-146",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Briefing culturel",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-CULTURE-149",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Interprète des vestiges",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Culture — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Culture",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Culture Mythique ; Protocole préparé, Briefing culturel et Interprète des vestiges",
+      "choice": "",
+      "frequency": "une fois par scène ou rencontre majeure",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la rencontre préparée",
+      "metadata": {
+        "Compétence": "Culture",
+        "Niveau": "23",
+        "Traits": "Compétence, Culture, Mythique, Préparation, Travail d'équipe",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par scène ou rencontre majeure",
+        "Durée": "jusqu'à la fin de la rencontre préparée",
+        "Prérequis": "Culture Mythique ; Protocole préparé, Briefing culturel et Interprète des vestiges",
+        "Réussite critique": "il identifie les valeurs communes, les incompatibilités, les symboles sûrs et les termes encore ambigus ; jusqu'à six participants gagnent +2 circonstanciel à leurs tests suivant ce cadre, et la première faute culturelle involontaire simple est reconnue avant d'aggraver l'attitude d'un interlocuteur raisonnable.",
+        "Réussite": "il identifie les valeurs communes et les principaux tabous ; jusqu'à six participants gagnent +2 circonstanciel à leur premier test suivant ce cadre.",
+        "Échec": "le cadre ne procure aucun bénéfice.",
+        "Échec critique": "une incompatibilité demeure insoluble ; le MJ la révèle avant le début de l'échange formel."
+      }
+    },
+    "level": 23
+  },
+  "folder": "Culture"
+}

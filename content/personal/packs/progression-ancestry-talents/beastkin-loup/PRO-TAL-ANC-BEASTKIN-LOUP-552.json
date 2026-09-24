@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-552",
+  "name": "Meute des horizons",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Meute des horizons</strong>.</p><p>Pendant l&#39;effet, les membres du cercle à 12 mètres connaissent instinctivement la direction générale des autres membres qu&#39;ils peuvent percevoir et gagnent +3 circonstanciel aux tests liés à leur rôle de meute.</p>\n<p>Une fois pendant la durée, chaque membre peut employer sa propre Réaction pour se déplacer de 2 mètres vers un autre membre ou vers la proie marquée. Un même déplacement ne permet aucune attaque et les bonus ne se transmettent pas hors de la portée.</p>",
+    "traits": ["Beastkin", "Loup", "Coopération", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-545",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Meute sans faille",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.157 Talents Beastkins Loups de niveau 21",
+      "family": "Transcendance lupine",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Meute sans faille",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance lupine",
+        "Traits": "Beastkin, Loup, Coopération, Mythique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Meute sans faille"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Beastkin Loup"
+}

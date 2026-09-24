@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-6-06",
+  "name": "Extraction de corruption",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Extraction de corruption</strong>.</p><p><strong>Prana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 10 min / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Arrache une corruption, possession, symbiote hostile ou malédiction vitale de Rang 6 ou moins ; la manifestation extraite doit être contenue ou détruite.</p>\n<p><strong>Intensification :</strong> Rang +1 ou seconde cible.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "6",
+      "activation": "6 / 10 min / contact",
+      "discipline": "Vitalisme",
+      "effect": "Arrache une corruption, possession, symbiote hostile ou malédiction vitale de Rang 6 ou moins ; la manifestation extraite doit être contenue ou détruite.",
+      "scaling": "Rang +1 ou seconde cible."
+    },
+    "level": 19
+  },
+  "folder": "Rang 6"
+}

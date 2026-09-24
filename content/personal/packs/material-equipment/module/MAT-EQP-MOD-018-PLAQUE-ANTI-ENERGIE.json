@@ -1,0 +1,115 @@
+{
+  "relisId": "MAT-EQP-MOD-018-PLAQUE-ANTI-ENERGIE",
+  "name": "Plaque anti-énergie",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "module-personnel"],
+  "system": {
+    "description": "<p><strong>Module :</strong> Plaque anti-énergie. <strong>Niv. :</strong> 2. <strong>Emplacement :</strong> Plaques. <strong>Effet principal :</strong> Solidité E +1 au torse ; signature énergétique Détectable. <strong>Consommation :</strong> —. <strong>Enc. :</strong> 1. <strong>Prix :</strong> 700.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "module",
+      "sourceSection": "41.159 Modules de protections — 16 profils",
+      "columns": {
+        "#": "2",
+        "Module": "Plaque anti-énergie",
+        "Niv.": "2",
+        "Emplacement": "Plaques",
+        "Effet principal": "Solidité E +1 au torse ; signature énergétique Détectable",
+        "Consommation": "—",
+        "Enc.": "1",
+        "Prix": "700"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "functionalCategory": "module",
+        "family": "resource",
+        "installable": true,
+        "installationKind": "accessory",
+        "slot": "Plaques",
+        "effectSummary": "Solidité E +1 au torse ; signature énergétique Détectable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 700,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "module"
+}

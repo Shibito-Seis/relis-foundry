@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ANC-001-HUMAIN",
+  "name": "Humain",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Humain</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 libre, +1 libre, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> Aucun</p>\n<p>Polyvalence totale, adaptation humaine, pas de spécialisation biologique forte. Les trois bonus doivent aller dans trois Attributs différents.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 libre, +1 libre, +1 libre",
+      "attributePenalty": "Aucun",
+      "rationale": "Polyvalence totale, adaptation humaine, pas de spécialisation biologique forte. Les trois bonus doivent aller dans trois Attributs différents.",
+      "selectable": true
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-08-06-CONSTRUCTEUR-DE-TERRAIN",
+  "name": "Ingénieur — Constructeur de terrain",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "ingenieur"],
+  "system": {
+    "description": "<p><strong>Ingénieur — Constructeur de terrain</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;abri, ancrages, imprimante de terrain limitée ou plaques légères.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-008-INGENIEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Ingénieur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Ingénieur",
+      "branchName": "Constructeur de terrain",
+      "primaryLoadout": "Kit d'abri, ancrages, imprimante de terrain limitée ou plaques légères.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Ingénieur"
+}

@@ -1,0 +1,94 @@
+{
+  "relisId": "PHA-049",
+  "name": "Nicotine pharmaceutique",
+  "type": "consumable",
+  "tags": ["materiel", "pharmacie"],
+  "system": {
+    "description": "<p><strong>Nicotine pharmaceutique</strong> appartient au catalogue pharmacie.</p><p>0. cutanée/orale. T1/D2. +1 au prochain test de Concentration, puis aucun cumul. 1 h. Réglementée ; manque irritabilité.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "pharmacie",
+      "sourceSection": "55.4.5 Drogues contrôlées et usages détournés — PHA-049 à PHA-064",
+      "canonicalRow": [
+        "PHA-049",
+        "Nicotine pharmaceutique",
+        "0",
+        "cutanée/orale",
+        "T1/D2",
+        "+1 au prochain test de Concentration, puis aucun cumul",
+        "1 h",
+        "Réglementée ; manque irritabilité"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 0,
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "1 h"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "pharmacie"
+}

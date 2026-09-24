@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-277",
+  "name": "Métabolisme expérimental",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Métabolisme expérimental</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Vigueur contre poison, maladie, rejet biologique et mutation involontaire.</p>\n<p>Après un repos long sûr, il peut réduire d&#39;un degré une condition corporelle mineure provenant de l&#39;une de ces sources, si elle autorise normalement une récupération naturelle.</p>\n<p>Le talent n&#39;immunise contre aucun agent et ne permet pas de récupérer d&#39;une transformation permanente sans traitement approprié.</p>",
+    "traits": ["Esman", "Physiologie", "Résistance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-267",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ossature renforcée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-268",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cicatrisation altérée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.76 Talents Esmans de niveau 5",
+      "family": "Physiologie modifiée",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Cicatrisation altérée ou Ossature renforcée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie modifiée",
+        "Traits": "Esman, Physiologie, Résistance",
+        "Type": "Passif",
+        "Prérequis": "Cicatrisation altérée ou Ossature renforcée"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Esman"
+}

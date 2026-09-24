@@ -1,0 +1,121 @@
+{
+  "relisId": "MAT-ARM-024-CARAPACE-ANTI-ENERGIE",
+  "name": "Carapace anti-énergie",
+  "type": "armor",
+  "tags": ["materiel", "armure", "intermediate"],
+  "system": {
+    "description": "<p><strong>Armure intermédiaire :</strong> Carapace anti-énergie. <strong>Niv. :</strong> 3. <strong>Accès :</strong> Spécialisée. <strong>CAP/CAE :</strong> +1/+3. <strong>Sol. P/E :</strong> 2/6. <strong>PV/SB :</strong> 34/17. <strong>Couverture :</strong> C. <strong>Force :</strong> 1. <strong>Vit. :</strong> 0. <strong>Signature :</strong> Énergétique détectable. <strong>Empl. :</strong> 4. <strong>Enc. :</strong> 4. <strong>Prix :</strong> 4 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.130 Lot 5-L3 — Armures intermédiaires",
+      "columns": {
+        "#": "4",
+        "Armure intermédiaire": "Carapace anti-énergie",
+        "Niv.": "3",
+        "Accès": "Spécialisée",
+        "CAP/CAE": "+1/+3",
+        "Sol. P/E": "2/6",
+        "PV/SB": "34/17",
+        "Couverture": "C",
+        "Force": "1",
+        "Vit.": "0",
+        "Signature": "Énergétique détectable",
+        "Empl.": "4",
+        "Enc.": "4",
+        "Prix": "4 500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 4,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 4500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "intermediate",
+      "access": "specialized",
+      "capBonus": 1,
+      "caeBonus": 3,
+      "solidityPhysical": 2,
+      "solidityEnergy": 6,
+      "coverage": ["C"],
+      "constraintSummary": "# : 4 ; Armure intermédiaire : Carapace anti-énergie ; Niv. : 3 ; Accès : Spécialisée ; CAP/CAE : +1/+3 ; Sol. P/E : 2/6 ; PV/SB : 34/17 ; Couverture : C ; Force : 1 ; Vit. : 0 ; Signature : Énergétique détectable ; Empl. : 4 ; Enc. : 4 ; Prix : 4 500"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "intermediate"
+}

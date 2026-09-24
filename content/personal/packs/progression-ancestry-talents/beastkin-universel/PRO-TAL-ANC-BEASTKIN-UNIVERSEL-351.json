@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-351",
+  "name": "Équilibre animal",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Équilibre animal</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Acrobaties pour conserver son équilibre sur une surface étroite, instable, inclinée ou glissante.</p>\n<p>La première fois de chaque scène qu&#39;un échec ordinaire à un tel test devrait le faire tomber à terre, il reste debout mais n&#39;accomplit pas le déplacement prévu.</p>\n<p>Le talent ne protège pas d&#39;une chute depuis une hauteur, d&#39;un déplacement forcé réussi ou de l&#39;effondrement complet du support.</p>",
+    "traits": ["Beastkin", "Acrobaties", "Mobilité"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.97 Talents Beastkins universels de niveau 1",
+      "family": "Mobilité et adaptation",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité et adaptation",
+        "Traits": "Beastkin, Acrobaties, Mobilité",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin universel"
+}

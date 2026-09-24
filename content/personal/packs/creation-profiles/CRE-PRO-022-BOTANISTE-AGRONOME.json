@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-PRO-022-BOTANISTE-AGRONOME",
+  "name": "Botaniste / agronome",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Botaniste / agronome</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Volonté, Technologie</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Volonté ; -Force, -Dextérité ou -Présence</p>\n<p><strong>Compétences possibles :</strong> Sciences, Survie, Médecine, Ingénierie</p>\n<p><strong>Avantage typique :</strong> Graines, protocole agricole</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Volonté", "Technologie"],
+      "markedProfile": "+Intelligence, +Volonté ; -Force, -Dextérité ou -Présence",
+      "skillChoices": ["Sciences", "Survie", "Médecine", "Ingénierie"],
+      "typicalBenefit": "Graines, protocole agricole",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

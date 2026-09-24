@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-580",
+  "name": "Reconstitution limitée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Reconstitution limitée</strong>.</p><p>Lorsqu&#39;une Blessure physique légère ou modérée du personnage est Contenue ou Traitée, les tests de Médecine destinés à la faire progresser gagnent +3 circonstanciel. Après un repos long suivant une intervention réussie, le temps de récupération restant est réduit d&#39;un quart.</p>\n<p>La réduction ne s&#39;applique qu&#39;aux tissus capables de se reconstruire, jamais à un implant, un organe détruit, une amputation complète ou une Blessure grave ou mortelle. Le talent ne change aucun état sans soin réussi.</p>",
+    "traits": ["Beastkin", "Lézard", "Récupération", "Soins"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-572",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Clôture rapide",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.165 Talents Beastkins Lézards de niveau 9",
+      "family": "Cicatrisation et régénération limitée",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Clôture rapide",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cicatrisation et régénération limitée",
+        "Traits": "Beastkin, Lézard, Récupération, Soins",
+        "Type": "Passif",
+        "Prérequis": "Clôture rapide"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Lézard"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-160",
+  "name": "Nain de l'Âge stellaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Nain de l&#39;Âge stellaire</strong>.</p><p>Le personnage incarne une forme naine capable de bâtir non plus seulement dans un monde, mais entre les mondes.</p>\n<p>Il gagne deux augmentations d&#39;Attribut, placées dans deux Attributs différents parmi :</p>\n<p>• Force ;</p>\n<p>• Vigueur ;</p>\n<p>• Technologie.</p>\n<p>Ces augmentations suivent les règles ordinaires des Attributs partiels au-dessus de 4 et ne peuvent pas faire dépasser la valeur maximale de 8.</p>\n<p>Il gagne également un Talent d&#39;Ascendance Nain supplémentaire de niveau 21 ou moins dont il remplit les prérequis.</p>\n<p>Enfin, il choisit l&#39;une des adaptations suivantes :</p>\n<p>• ses équipements personnels sont considérés comme conçus pour sa morphologie et sa gravité actuelle après dix minutes d&#39;ajustement ;</p>\n<p>• il peut traiter toute surface solide supportant sa masse comme un appui normal, même en gravité faible ou orientée ;</p>\n<p>• il ignore le premier point de Fatigue environnementale reçu chaque jour.</p>\n<p>Cette évolution ne donne aucune immunité, ne transforme pas le personnage en métal et ne modifie pas toute l&#39;Ascendance naine.</p>",
+    "traits": ["Nain", "Ascendance", "Évolution", "Mythique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.49 Talents Nains de niveau 29",
+      "family": "Transcendance naine",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "au moins un Talent Nain de niveau 21",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance naine",
+        "Traits": "Nain, Ascendance, Évolution, Mythique",
+        "Type": "Passif",
+        "Prérequis": "au moins un Talent Nain de niveau 21"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Nain"
+}

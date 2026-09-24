@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-627",
+  "name": "Cœur qui ne cède pas",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Cœur qui ne cède pas</strong>.</p><p>Pendant l&#39;effet, le personnage ignore les pénalités provenant de ses 3 premiers points cumulés de Fatigue, Stress ou douleur, gagne +3 circonstanciel à ses défenses contre peur et incapacité physique, et ne peut être renversé par un échec simple.</p>\n<p>La première fois pendant la durée qu&#39;il devrait tomber à 0 PV sans destruction complète du corps, il reste à 1 PV, tombe à terre et reçoit normalement toute Blessure provoquée. À la fin, il gagne 2 Fatigue et 1 Stress.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Ours", "Mythique", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-623",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Encore un effort",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.179 Talents Beastkins Ours de niveau 21",
+      "family": "Transcendance ursine",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Encore un effort",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance ursine",
+        "Traits": "Beastkin, Ours, Mythique, Survie",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Encore un effort"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Beastkin Ours"
+}

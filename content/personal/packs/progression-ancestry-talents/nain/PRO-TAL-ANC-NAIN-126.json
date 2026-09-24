@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-126",
+  "name": "Chair contre le choc",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage contracte son corps et absorbe l&#39;impact.</p>\n<p>Les dégâts physiques subis sont réduits de :</p>\n<p>text 2 + la moitié du Niveau général du personnage, arrondie à l&#39;inférieur.</p>\n<p>La réduction s&#39;applique après les champs, boucliers, armures et autres protections matérielles, mais avant la perte finale de PV.</p>\n<p>Chair contre le choc ne réduit pas :</p>\n<p>• les dégâts énergétiques purs ;</p>\n<p>• l&#39;asphyxie, le vide ou une toxine ;</p>\n<p>• le Stress ou la Fatigue ;</p>\n<p>• une conséquence déjà appliquée ;</p>\n<p>• les dégâts infligés directement à l&#39;équipement du personnage.</p>",
+    "traits": ["Nain", "Réaction", "Résistance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-107",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ossature compacte",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-110",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Endurance au labeur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Robustesse des profondeurs",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Ossature compacte ou Endurance au labeur",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage subit des dégâts physiques qu'il peut percevoir",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse des profondeurs",
+        "Traits": "Nain, Réaction, Résistance",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Ossature compacte ou Endurance au labeur",
+        "Déclencheur": "le personnage subit des dégâts physiques qu'il peut percevoir"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Nain"
+}

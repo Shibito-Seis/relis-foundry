@@ -4,6 +4,7 @@ import {
   canAnswerAttunement,
   canManageAttunement,
   resolveAttunement,
+  selectAttunementQuestions,
   type AttunementContract,
 } from "../src/rules/crystal-attunement";
 
@@ -123,5 +124,41 @@ describe("accord d’un Cœur d’Écarlithe", () => {
     previous.axisIds.push("drive");
     expect(snapshot.answers).toEqual({ situation: "answer" });
     expect(snapshot.axisIds).toEqual(["guard"]);
+  });
+
+  it("tire un questionnaire stable de 20 situations équilibrées", () => {
+    const source = contract({ guard: 2 });
+    source.questionSelection = {
+      count: 20,
+      difficultyCounts: { simple: 8, intermediate: 8, complex: 4 },
+      stableForItem: true,
+    };
+    source.questions = [
+      ...Array.from({ length: 16 }, (_, index) => ({
+        ...source.questions[0]!,
+        id: `simple-${index}`,
+        difficulty: "simple" as const,
+      })),
+      ...Array.from({ length: 16 }, (_, index) => ({
+        ...source.questions[0]!,
+        id: `intermediate-${index}`,
+        difficulty: "intermediate" as const,
+      })),
+      ...Array.from({ length: 16 }, (_, index) => ({
+        ...source.questions[0]!,
+        id: `complex-${index}`,
+        difficulty: "complex" as const,
+      })),
+    ];
+    const first = selectAttunementQuestions(source, "Item.stable");
+    const second = selectAttunementQuestions(source, "Item.stable");
+    expect(first.map(({ id }) => id)).toEqual(second.map(({ id }) => id));
+    expect(first).toHaveLength(20);
+    expect(
+      first.reduce<Record<string, number>>((counts, question) => {
+        counts[question.difficulty!] = (counts[question.difficulty!] ?? 0) + 1;
+        return counts;
+      }, {}),
+    ).toEqual({ simple: 8, intermediate: 8, complex: 4 });
   });
 });

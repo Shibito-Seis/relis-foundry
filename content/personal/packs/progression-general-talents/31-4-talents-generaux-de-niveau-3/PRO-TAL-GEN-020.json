@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-GEN-020",
+  "name": "Repos méthodique",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Repos méthodique</strong>.</p><p>Dans un lieu permettant la récupération normale d&#39;une heure, le personnage organise respiration, hydratation, posture, refroidissement ou maintenance personnelle.</p>\n<p>À la fin du repos, il choisit l&#39;un des bénéfices suivants :</p>\n<p>• retirer 1 Fatigue supplémentaire ;</p>\n<p>• retirer 2 Stress supplémentaires.</p>\n<p>Le talent ne fonctionne pas si la cause de la Fatigue exige un traitement, ni si la menace, la faim, le manque d&#39;air ou une Blessure active empêche tout repos réel.</p>\n<p>---</p>",
+    "traits": ["Général", "Repos"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.4 Talents généraux de niveau 3",
+      "family": "Vitalité et récupération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activité",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois entre deux repos longs",
+      "trigger": "",
+      "duration": "1 heure",
+      "metadata": {
+        "Famille": "Vitalité et récupération",
+        "Traits": "Général, Repos",
+        "Type": "Activité",
+        "Durée": "1 heure",
+        "Fréquence": "une fois entre deux repos longs"
+      }
+    },
+    "level": 3
+  },
+  "folder": "### 31.4 Talents généraux de niveau 3"
+}

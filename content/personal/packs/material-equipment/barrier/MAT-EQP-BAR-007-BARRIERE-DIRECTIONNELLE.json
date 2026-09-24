@@ -1,0 +1,132 @@
+{
+  "relisId": "MAT-EQP-BAR-007-BARRIERE-DIRECTIONNELLE",
+  "name": "Barrière directionnelle",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "barriere"],
+  "system": {
+    "description": "<p><strong>Champ ou barrière :</strong> Barrière directionnelle. <strong>Niv. :</strong> 5. <strong>Type :</strong> Cône défensif 4. <strong>Compatibilité :</strong> Attaques traversant l&#39;arc. <strong>Absorption :</strong> 2d8. <strong>RB :</strong> 18. <strong>Batterie :</strong> 48 CE. <strong>Activation :</strong> 1 Action, 2 CE. <strong>Entretien :</strong> 1 CE/min. <strong>Gén. Sol./PV :</strong> 4/18. <strong>Empl. :</strong> 5. <strong>Prix :</strong> 7 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "barrier",
+      "sourceSection": "41.153 Réserve de Barrière",
+      "columns": {
+        "#": "7",
+        "Champ ou barrière": "Barrière directionnelle",
+        "Niv.": "5",
+        "Type": "Cône défensif 4",
+        "Compatibilité": "Attaques traversant l'arc",
+        "Absorption": "2d8",
+        "RB": "18",
+        "Batterie": "48 CE",
+        "Activation": "1 Action, 2 CE",
+        "Entretien": "1 CE/min",
+        "Gén. Sol./PV": "4/18",
+        "Empl.": "5",
+        "Prix": "7 500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "functionalCategory": "generator",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 5,
+    "referencePrice": {
+      "amount": 7500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {},
+    "protectionProfile": {
+      "kind": "barrier",
+      "access": "",
+      "barrierCurrent": 18,
+      "barrierMaximum": 18,
+      "barrierKind": "directional",
+      "barrierCompatibilities": ["Attaques traversant l'arc"],
+      "absorptionFormula": "2d8",
+      "activationCost": 1,
+      "upkeep": "1 CE/min",
+      "rechargeRatePerCe": 4,
+      "rechargeDuration": "1 minute",
+      "interception": "Cône défensif 4",
+      "collapseEffect": "Effondrement à 0 RB ; réactivation après restauration d’au moins 1 RB.",
+      "constraintSummary": "# : 7 ; Champ ou barrière : Barrière directionnelle ; Niv. : 5 ; Type : Cône défensif 4 ; Compatibilité : Attaques traversant l'arc ; Absorption : 2d8 ; RB : 18 ; Batterie : 48 CE ; Activation : 1 Action, 2 CE ; Entretien : 1 CE/min ; Gén. Sol./PV : 4/18 ; Empl. : 5 ; Prix : 7 500"
+    }
+  },
+  "folder": "barrier"
+}

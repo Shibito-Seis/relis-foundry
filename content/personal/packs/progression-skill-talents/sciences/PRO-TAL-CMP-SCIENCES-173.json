@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-173",
+  "name": "Discipline scientifique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Discipline scientifique</strong>.</p><p>Le personnage choisit un domaine scientifique défini avec le MJ : biologie, chimie, physique, astronomie, géologie, xénosciences, phénomènes anormaux ou un domaine comparable.</p>\n<p>Il gagne +2 circonstanciel aux tests de Sciences visant directement à classifier un objet d&#39;étude de ce domaine, construire un modèle scientifique ou concevoir un protocole d&#39;observation.</p>\n<p>Ce talent peut être choisi plusieurs fois, pour un domaine différent à chaque fois. Il n&#39;accorde aucune compétence technique, médicale ou de fabrication et ne s&#39;applique pas par simple proximité thématique.</p>",
+    "traits": ["Compétence", "Sciences"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Passif",
+      "prerequisites": "Sciences Qualifié",
+      "choice": "",
+      "frequency": "permanent ; talent répétable",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "1",
+        "Traits": "Compétence, Sciences",
+        "Type": "Passif",
+        "Fréquence": "permanent ; talent répétable",
+        "Prérequis": "Sciences Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Sciences"
+}

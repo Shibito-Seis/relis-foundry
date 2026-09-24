@@ -1,0 +1,74 @@
+{
+  "relisId": "PRO-TAL-CMP-TROMPERIE-238",
+  "name": "Couvertures emboîtées",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Couvertures emboîtées</strong>.</p><p>Le personnage prépare jusqu&#39;à trois couches compatibles : identité affichée, justification de repli et explication limitée en cas de découverte partielle.</p>\n<p>Il effectue un test de Tromperie contre le DD de la couche la plus difficile.</p>\n<p>• Réussite critique : chaque couche gagne +2 circonstanciel à son premier test de maintien ; lorsqu&#39;une couche est percée, le personnage sait immédiatement si la suivante reste plausible.</p>\n<p>• Réussite : les deux premières couches gagnent +2 circonstanciel à leur premier test de maintien.</p>\n<p>• Échec : la préparation ne procure aucun bénéfice.</p>\n<p>• Échec critique : deux couches se contredisent ; le MJ les indique avant la mission.</p>\n<p>Abandonner une couverture ne fait oublier aucune observation et chaque couche exige ses accessoires, connaissances et preuves réelles.</p>",
+    "traits": [
+      "Compétence",
+      "Concentration",
+      "Préparation",
+      "Social",
+      "Tromperie"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-TROMPERIE-234",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Couverture préparée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TROMPERIE-235",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Déguisement méthodique",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TROMPERIE-236",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Version sous pression",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Tromperie — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Tromperie",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Tromperie Maître ; Couverture préparée, Déguisement méthodique et Version sous pression",
+      "choice": "",
+      "frequency": "une fois par mission",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la mission ou la compromission des couvertures",
+      "metadata": {
+        "Compétence": "Tromperie",
+        "Niveau": "7",
+        "Traits": "Compétence, Concentration, Préparation, Social, Tromperie",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par mission",
+        "Durée": "jusqu'à la fin de la mission ou la compromission des couvertures",
+        "Prérequis": "Tromperie Maître ; Couverture préparée, Déguisement méthodique et Version sous pression",
+        "Réussite critique": "chaque couche gagne +2 circonstanciel à son premier test de maintien ; lorsqu'une couche est percée, le personnage sait immédiatement si la suivante reste plausible.",
+        "Réussite": "les deux premières couches gagnent +2 circonstanciel à leur premier test de maintien.",
+        "Échec": "la préparation ne procure aucun bénéfice.",
+        "Échec critique": "deux couches se contredisent ; le MJ les indique avant la mission."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Tromperie"
+}

@@ -1,0 +1,29 @@
+{
+  "relisId": "CRE-PRO-041-ARTIFICIER-DEMOLISSEUR",
+  "name": "Artificier / démolisseur",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Artificier / démolisseur</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Technologie, Volonté</p>\n<p><strong>Profil marqué :</strong> +Technologie, +Volonté ; -Présence, -Dextérité ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Ingénierie, Sciences, Sang-froid, Investigation, Armes lourdes</p>\n<p><strong>Avantage typique :</strong> Charges contrôlées, kit de neutralisation</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Technologie", "Volonté"],
+      "markedProfile": "+Technologie, +Volonté ; -Présence, -Dextérité ou -Maîtrise Magique",
+      "skillChoices": [
+        "Ingénierie",
+        "Sciences",
+        "Sang-froid",
+        "Investigation",
+        "Armes lourdes"
+      ],
+      "typicalBenefit": "Charges contrôlées, kit de neutralisation",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

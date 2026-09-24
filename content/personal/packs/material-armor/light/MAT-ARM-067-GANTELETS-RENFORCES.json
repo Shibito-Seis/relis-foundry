@@ -1,0 +1,119 @@
+{
+  "relisId": "MAT-ARM-067-GANTELETS-RENFORCES",
+  "name": "Gantelets renforcés",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<p><strong>Protection :</strong> Gantelets renforcés. <strong>Niv. :</strong> 2. <strong>Accès :</strong> Martiale. <strong>Zone :</strong> B. <strong>Sol. P/E :</strong> 4/2. <strong>PV/SB :</strong> 14/7. <strong>Fonction :</strong> Mains, saisie et frappe renforcée. <strong>Empl. module :</strong> 1. <strong>Enc. :</strong> 2. <strong>Équip. :</strong> 2 Actions. <strong>Prix :</strong> 800.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.144 Lot 5-L8 — Protections modulaires de membres",
+      "columns": {
+        "#": "3",
+        "Protection": "Gantelets renforcés",
+        "Niv.": "2",
+        "Accès": "Martiale",
+        "Zone": "B",
+        "Sol. P/E": "4/2",
+        "PV/SB": "14/7",
+        "Fonction": "Mains, saisie et frappe renforcée",
+        "Empl. module": "1",
+        "Enc.": "2",
+        "Équip.": "2 Actions",
+        "Prix": "800"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 2,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 800,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "martial",
+      "capBonus": null,
+      "caeBonus": null,
+      "solidityPhysical": 4,
+      "solidityEnergy": 2,
+      "coverage": ["B"],
+      "constraintSummary": "# : 3 ; Protection : Gantelets renforcés ; Niv. : 2 ; Accès : Martiale ; Zone : B ; Sol. P/E : 4/2 ; PV/SB : 14/7 ; Fonction : Mains, saisie et frappe renforcée ; Empl. module : 1 ; Enc. : 2 ; Équip. : 2 Actions ; Prix : 800"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "light"
+}

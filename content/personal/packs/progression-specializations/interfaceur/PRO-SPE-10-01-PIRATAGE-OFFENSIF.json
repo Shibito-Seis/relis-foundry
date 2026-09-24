@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-10-01-PIRATAGE-OFFENSIF",
+  "name": "Interfaceur — Piratage offensif",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "interfaceur"],
+  "system": {
+    "description": "<p><strong>Interfaceur — Piratage offensif</strong>.</p><p><strong>Voie :</strong> Interfaceur</p>\n<p><strong>Dotation principale :</strong> Deck d&#39;intrusion, scripts d&#39;attaque, clés de forçage.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-010-INTERFACEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Interfaceur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Interfaceur",
+      "branchName": "Piratage offensif",
+      "primaryLoadout": "Deck d'intrusion, scripts d'attaque, clés de forçage.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Interfaceur"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-271",
+  "name": "Marque assumée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Marque assumée</strong>.</p><p>Lorsque ses cornes et son identité Esman sont directement pertinentes, le personnage gagne +2 circonstanciel aux tests de Diplomatie ou d&#39;Intimidation pour défendre sa dignité, rassurer une personne informée ou retourner un stigmate contre celui qui l&#39;emploie.</p>\n<p>Une fois par session, un échec critique à un tel test devient un échec ordinaire.</p>\n<p>Le talent ne force aucune confiance et ne transforme pas tous les Esmans en communauté politique unifiée.</p>\n<p>---</p>",
+    "traits": ["Esman", "Corne", "Identité", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Survivants du programme",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Survivants du programme",
+        "Traits": "Esman, Corne, Identité, Social",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Esman"
+}

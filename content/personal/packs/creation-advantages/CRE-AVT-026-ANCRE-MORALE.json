@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-026-ANCRE-MORALE",
+  "name": "Ancre morale",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Ancre morale</strong>.</p><p><strong>Valeur :</strong> +1</p>\n<p>Le personnage possède un serment, souvenir, proche, croyance ou symbole qui l’aide à tenir. Une fois par session, +2 à un jet de Volonté ou Sang-froid lié à cette ancre.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+1",
+      "effect": "Le personnage possède un serment, souvenir, proche, croyance ou symbole qui l’aide à tenir. Une fois par session, +2 à un jet de Volonté ou Sang-froid lié à cette ancre."
+    }
+  },
+  "folder": ""
+}

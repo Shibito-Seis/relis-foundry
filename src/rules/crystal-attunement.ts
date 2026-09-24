@@ -22,6 +22,7 @@ export interface AttunementOption {
 export interface AttunementQuestion {
   id: string;
   prompt: string;
+  difficulty?: "simple" | "intermediate" | "complex";
   options: AttunementOption[];
 }
 
@@ -31,6 +32,11 @@ export interface AttunementContract {
   axes: AttunementAxis[];
   palette: AttunementColor[];
   questions: AttunementQuestion[];
+  questionSelection?: {
+    count: number;
+    difficultyCounts: Record<"simple" | "intermediate" | "complex", number>;
+    stableForItem: boolean;
+  };
   tieBreaker: {
     prompt: string;
     showOnlyTiedAxes: boolean;
@@ -50,6 +56,64 @@ export const ATTUNEMENT_CONTRACT_URL =
   "systems/relis/content/personal/crystal-attunement.json";
 
 let cachedContract: AttunementContract | null = null;
+
+function stringSeed(value: string): number {
+  let result = 2166136261;
+  for (const character of value) {
+    result ^= character.charCodeAt(0);
+    result = Math.imul(result, 16777619);
+  }
+  return result >>> 0;
+}
+
+function shuffled<T>(values: T[], seedText: string): T[] {
+  let seed = stringSeed(seedText) || 1;
+  const random = () => {
+    seed ^= seed << 13;
+    seed ^= seed >>> 17;
+    seed ^= seed << 5;
+    return (seed >>> 0) / 4_294_967_296;
+  };
+  const output = [...values];
+  for (let index = output.length - 1; index > 0; index -= 1) {
+    const selected = Math.floor(random() * (index + 1));
+    const current = output[index]!;
+    output[index] = output[selected]!;
+    output[selected] = current;
+  }
+  return output;
+}
+
+export function selectAttunementQuestions(
+  contract: AttunementContract,
+  itemSeed: string,
+): AttunementQuestion[] {
+  const policy = contract.questionSelection;
+  if (!policy) return [...contract.questions];
+  const selected = Object.entries(policy.difficultyCounts).flatMap(
+    ([difficulty, count]) =>
+      shuffled(
+        contract.questions.filter(
+          (question) => question.difficulty === difficulty,
+        ),
+        `${contract.contentVersion}:${itemSeed}:${difficulty}`,
+      ).slice(0, count),
+  );
+  return shuffled(
+    selected,
+    `${contract.contentVersion}:${itemSeed}:presentation`,
+  ).slice(0, policy.count);
+}
+
+export function attunementSessionContract(
+  contract: AttunementContract,
+  itemSeed: string,
+): AttunementContract {
+  return {
+    ...contract,
+    questions: selectAttunementQuestions(contract, itemSeed),
+  };
+}
 
 export async function loadAttunementContract(): Promise<AttunementContract> {
   if (cachedContract) return cachedContract;

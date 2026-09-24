@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-4-06",
+  "name": "Aura vitale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Aura vitale</strong>.</p><p><strong>Prana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 5 / 3 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Jusqu&#39;à six alliés gagnent 3d8 + MM PV temporaires, +2 contre peur et poison pendant une scène.</p>\n<p><strong>Intensification :</strong> +1d8 PV temporaires ou émanation +3 m.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "4",
+      "activation": "5 / 3 A / émanation 6 m",
+      "discipline": "Vitalisme",
+      "effect": "Jusqu'à six alliés gagnent 3d8 + MM PV temporaires, +2 contre peur et poison pendant une scène.",
+      "scaling": "+1d8 PV temporaires ou émanation +3 m."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

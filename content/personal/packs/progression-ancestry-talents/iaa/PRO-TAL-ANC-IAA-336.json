@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-336",
+  "name": "Ubiquité réseau",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Ubiquité réseau</strong>.</p><p>Le personnage peut maintenir sa présence simultanément dans un nombre de terminaux autorisés égal à 2 + son modificateur d&#39;Intelligence, au minimum 2, sur un même réseau.</p>\n<p>Il peut percevoir depuis chacun et choisir l&#39;origine de ses actions numériques, mais toutes partagent son économie d&#39;Actions. Une fois par scène, lorsqu&#39;un terminal est ciblé par une intrusion ou détruit, il peut retirer instantanément sa présence de ce terminal avant la résolution, si une liaison sûre subsiste.</p>\n<p>Le talent ne duplique pas l&#39;instance, ne donne aucun accès et reste vulnérable au brouillage global du réseau.</p>",
+    "traits": ["IAA", "Architecture", "Réseau"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-332",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Migration d'urgence",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.90 Talents IAA de niveau 17",
+      "family": "Réseau",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Migration d'urgence",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Réseau",
+        "Traits": "IAA, Architecture, Réseau",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Migration d'urgence"
+      }
+    },
+    "level": 17
+  },
+  "folder": "IAA"
+}

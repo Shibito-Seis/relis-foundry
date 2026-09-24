@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-034-NAGER",
+  "name": "Nager",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Nager</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Sans Vitesse de nage, le personnage effectue un test d&amp;#39;Athlétisme contre le DD du milieu : • Réussite critique : déplacement intégré de 3 cases ; • Réussite : déplacement intégré de 2 cases ; • Échec : aucun progrès ; • Échec critique : dérive, immersion ou complication appropriée au milieu. Une créature possédant une Vitesse de nage peut utiliser Se déplacer avec ce mode dans un liquide ordinaire. Respirer, résister à la pression, au froid ou à un liquide dangereux demeure une question distincte.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Sans Vitesse de nage, le personnage effectue un test d&#39;Athlétisme contre le DD du milieu : • Réussite critique : déplacement intégré de 3 cases ; • Réussite : déplacement intégré de 2 cases ; • Échec : aucun progrès ; • Échec critique : dérive, immersion ou complication appropriée au milieu. Une créature possédant une Vitesse de nage peut utiliser Se déplacer avec ce mode dans un liquide ordinaire. Respirer, résister à la pression, au froid ou à un liquide dangereux demeure une question distincte."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

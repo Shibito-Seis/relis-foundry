@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-1-04",
+  "name": "Armure scintillante",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Armure scintillante</strong>.</p><p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>+1 circonstanciel à CAE pendant une scène ; prend fin après deux réussites critiques reçues.</p>\n<p><strong>Intensification :</strong> Résistance 2 à une énergie choisie ou cible à 6 m.</p>",
+    "traits": ["Mana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "1 / 2 A / contact",
+      "discipline": "Protection",
+      "effect": "+1 circonstanciel à CAE pendant une scène ; prend fin après deux réussites critiques reçues.",
+      "scaling": "Résistance 2 à une énergie choisie ou cible à 6 m."
+    },
+    "level": 4
+  },
+  "folder": "Rang 1"
+}

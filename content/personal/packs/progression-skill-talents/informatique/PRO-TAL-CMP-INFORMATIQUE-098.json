@@ -1,0 +1,47 @@
+{
+  "relisId": "PRO-TAL-CMP-INFORMATIQUE-098",
+  "name": "Accès sous contre-mesure",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Accès sous contre-mesure</strong>.</p><p>Le personnage maintient un chemin minimal suffisamment longtemps pour accomplir une opération autorisée par l&#39;accès actuel.</p>\n<p>Pendant la durée :</p>\n<p>• il ignore jusqu&#39;à 4 points de malus circonstanciel provenant de la contre-mesure choisie ;</p>\n<p>• il peut accomplir une seule opération numérique avant la fermeture éventuelle de l&#39;accès ;</p>\n<p>• un échec simple à cette opération ne lui fait pas perdre davantage de permissions que ce que la contre-mesure imposait déjà.</p>\n<p>Le talent ne confère aucune permission, ne neutralise pas la contre-mesure et ne maintient pas un réseau physiquement coupé ou un terminal détruit.</p>",
+    "traits": ["Compétence", "Concentration", "Informatique", "Réseau"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INFORMATIQUE-092",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cartographie des accès",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Informatique — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Informatique",
+      "activation": "Activation libre",
+      "prerequisites": "Informatique Maître ; Cartographie des accès",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "une contre-mesure tente de fermer, limiter ou tracer un accès numérique que le personnage possède déjà",
+      "duration": "jusqu'à la fin du prochain tour du personnage",
+      "metadata": {
+        "Compétence": "Informatique",
+        "Niveau": "7",
+        "Traits": "Compétence, Concentration, Informatique, Réseau",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Durée": "jusqu'à la fin du prochain tour du personnage",
+        "Déclencheur": "une contre-mesure tente de fermer, limiter ou tracer un accès numérique que le personnage possède déjà",
+        "Prérequis": "Informatique Maître ; Cartographie des accès"
+      }
+    },
+    "level": 7
+  },
+  "folder": "Informatique"
+}

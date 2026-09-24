@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-02-02-REMPART-VIVANT",
+  "name": "Briseur — Rempart vivant",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "briseur"],
+  "system": {
+    "description": "<p><strong>Briseur — Rempart vivant</strong>.</p><p><strong>Voie :</strong> Briseur</p>\n<p><strong>Dotation principale :</strong> Armure renforcée légère, grand bouclier ou module d&#39;ancrage.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-002-BRISEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Briseur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Briseur",
+      "branchName": "Rempart vivant",
+      "primaryLoadout": "Armure renforcée légère, grand bouclier ou module d'ancrage.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Briseur"
+}

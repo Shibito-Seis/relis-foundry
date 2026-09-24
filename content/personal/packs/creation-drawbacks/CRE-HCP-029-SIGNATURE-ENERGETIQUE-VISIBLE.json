@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-029-SIGNATURE-ENERGETIQUE-VISIBLE",
+  "name": "Signature énergétique visible",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Signature énergétique visible</strong>.</p><p><strong>Valeur :</strong> -1/-2</p>\n<p>-1 : détectable par capteurs ou perception magique spécialisée. -2 : difficile à masquer, attire anomalies, chasseurs énergétiques ou systèmes de sécurité sensibles.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2",
+      "effect": "-1 : détectable par capteurs ou perception magique spécialisée. -2 : difficile à masquer, attire anomalies, chasseurs énergétiques ou systèmes de sécurité sensibles."
+    }
+  },
+  "folder": ""
+}

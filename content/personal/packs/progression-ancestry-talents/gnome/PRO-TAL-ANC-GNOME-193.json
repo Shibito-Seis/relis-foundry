@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-193",
+  "name": "Atelier impossible",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Atelier impossible</strong>.</p><p>Avec une surface de travail, son équipement personnel et des matériaux plausibles, le personnage installe un atelier provisoire. Jusqu&#39;à la fin de la scène, cet atelier compte comme l&#39;équipement spécialisé manquant pour une opération précise d&#39;Ingénierie, Sciences ou Techno-magie.</p>\n<p>Les utilisateurs préparés par le personnage gagnent +2 circonstanciel au premier test correspondant. Un Prototype de crise fabriqué dans l&#39;atelier peut durer jusqu&#39;à la fin de la mission au lieu du prochain repos long.</p>\n<p>L&#39;atelier ne remplace ni une infrastructure lourde, ni un milieu stérile absolu, ni une source d&#39;énergie, ni une pièce rare. Il ne peut soutenir qu&#39;une opération précise à la fois.</p>",
+    "traits": ["Gnome", "Atelier", "Fabrication", "Préparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-GNOME-169",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Outil à tout faire gnome",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-GNOME-181",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Prototype de crise",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.56 Talents Gnomes de niveau 13",
+      "family": "Bidouillage improbable",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Prototype de crise et Outil à tout faire gnome",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Atelier, Fabrication, Préparation",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Prototype de crise et Outil à tout faire gnome"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Gnome"
+}

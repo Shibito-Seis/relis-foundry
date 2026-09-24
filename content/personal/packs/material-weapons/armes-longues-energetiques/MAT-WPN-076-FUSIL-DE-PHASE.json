@@ -1,0 +1,173 @@
+{
+  "relisId": "MAT-WPN-076-FUSIL-DE-PHASE",
+  "name": "Fusil de phase",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "energyLongGun"],
+  "system": {
+    "description": "<p><strong>Fusil de phase</strong>.</p><p><strong>Niv. :</strong> 8. <strong>Accès :</strong> Spécialisée. <strong>Dégâts / Déf. :</strong> 1d10 Photonique / CAE. <strong>Préc. :</strong> +1. <strong>Portée :</strong> 30/90. <strong>Batterie / Consommation :</strong> 48 CE ; 5 CE/tir. <strong>Recul :</strong> 0. <strong>Traits :</strong> Pénétration 3, Résonante, Techno-magique, Traversant. <strong>Signature :</strong> Silencieuse, énergétique. <strong>Fiab. :</strong> 1. <strong>Struct. :</strong> H. <strong>Empl. :</strong> 4. <strong>Prix :</strong> 11 000.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.108 Lot 5-K5 — Armes longues énergétiques",
+      "columns": {
+        "#": "14",
+        "Arme": "Fusil de phase",
+        "Niv.": "8",
+        "Accès": "Spécialisée",
+        "Dégâts / Déf.": "1d10 Photonique / CAE",
+        "Préc.": "+1",
+        "Portée": "30/90",
+        "Batterie / Consommation": "48 CE ; 5 CE/tir",
+        "Recul": "0",
+        "Traits": "Pénétration 3, Résonante, Techno-magique, Traversant",
+        "Signature": "Silencieuse, énergétique",
+        "Fiab.": "1",
+        "Struct.": "H",
+        "Empl.": "4",
+        "Prix": "11 000"
+      },
+      "reloadProfile": null
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": [],
+        "providedSlots": {
+          "power": 1
+        },
+        "interfaceIds": ["cell"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 8,
+    "referencePrice": {
+      "amount": 11000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "energyLongGun",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "ranged",
+      "defenseTarget": "cae",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": 1,
+      "damageDice": 1,
+      "damageDie": "d10",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d10 Photonique / CAE",
+      "damageTypes": ["photonic"],
+      "damageSources": ["energy"],
+      "penetration": 3,
+      "rangeKind": "increments",
+      "range": "30/90",
+      "rangeOptimal": 30,
+      "rangeMaximum": 90,
+      "recoil": 0,
+      "feedKind": "energy",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": 1,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "silent",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "reloadActions": null,
+      "reloadProcedure": "",
+      "energyConsumption": {
+        "single": 5
+      }
+    },
+    "energyProfile": {
+      "kind": "",
+      "format": "heavy",
+      "formatId": "heavy",
+      "powerClass": "heavy",
+      "powerClassId": "heavy",
+      "technology": "",
+      "technologyId": "",
+      "interfaceId": "cell",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "Armes longues énergétiques"
+}

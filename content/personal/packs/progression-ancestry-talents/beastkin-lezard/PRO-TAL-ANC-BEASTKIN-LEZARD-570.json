@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-570",
+  "name": "Fermeture réflexe",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Fermeture réflexe</strong>.</p><p>Lorsqu&#39;une cible touchée par la morsure du personnage tente de s&#39;éloigner avant le début de son prochain tour, le Lézard effectue un test d&#39;Athlétisme contre son DD de manœuvre approprié. Sur une réussite, le déplacement est réduit de 1 case (2 mètres).</p>\n<p>La réaction n&#39;inflige aucun dégât, n&#39;immobilise pas la cible et échoue contre une créature trop grande ou impossible à retenir avec la mâchoire.</p>",
+    "traits": ["Beastkin", "Lézard", "Arme naturelle", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-560",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mâchoire puissante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.164 Talents Beastkins Lézards de niveau 5",
+      "family": "Mâchoire, verrouillage et traction",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Mâchoire puissante",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mâchoire, verrouillage et traction",
+        "Traits": "Beastkin, Lézard, Arme naturelle, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Mâchoire puissante"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Lézard"
+}

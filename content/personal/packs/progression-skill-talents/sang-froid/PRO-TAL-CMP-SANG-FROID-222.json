@@ -1,0 +1,36 @@
+{
+  "relisId": "PRO-TAL-CMP-SANG-FROID-222",
+  "name": "Main stable",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Main stable</strong>.</p><p>Le personnage se concentre sur une tâche délicate malgré douleur, pression, peur ou état Saturé.</p>\n<p>Il ignore jusqu&#39;à 2 points de malus circonstanciel provenant d&#39;une seule de ces sources pour le prochain test exigeant calme, concentration ou précision mentale.</p>\n<p>Le talent n&#39;ignore ni Blessure, ni Fatigue, ni Contrecoup, ni effet matériel et ne permet pas d&#39;agir pendant une incapacité complète.</p>",
+    "traits": ["Compétence", "Concentration", "Mental", "Sang-froid"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sang-froid — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sang-froid",
+      "activation": "Activation libre",
+      "prerequisites": "Sang-froid Qualifié",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "pour une action ou activité précise",
+      "metadata": {
+        "Compétence": "Sang-froid",
+        "Niveau": "1",
+        "Traits": "Compétence, Concentration, Mental, Sang-froid",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Durée": "pour une action ou activité précise",
+        "Prérequis": "Sang-froid Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Sang-froid"
+}

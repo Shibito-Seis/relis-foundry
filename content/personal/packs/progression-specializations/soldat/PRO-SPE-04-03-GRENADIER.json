@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-04-03-GRENADIER",
+  "name": "Soldat — Grenadier",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "soldat"],
+  "system": {
+    "description": "<p><strong>Soldat — Grenadier</strong>.</p><p><strong>Voie :</strong> Soldat</p>\n<p><strong>Dotation principale :</strong> Lance-grenades léger, grenades d&#39;entraînement ou charges contrôlées.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-004-SOLDAT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Soldat",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Soldat",
+      "branchName": "Grenadier",
+      "primaryLoadout": "Lance-grenades léger, grenades d'entraînement ou charges contrôlées.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Soldat"
+}

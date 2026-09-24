@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-0-05",
+  "name": "Paume stabilisante",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Paume stabilisante</strong>.</p><p><strong>Prana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 2 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Stabilise immédiatement un vivant Mourant sans lui rendre de PV.</p>\n<p><strong>Intensification :</strong> La cible gagne aussi +2 à son prochain test contre Mort ou aggravation.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "0",
+      "activation": "2 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Stabilise immédiatement un vivant Mourant sans lui rendre de PV.",
+      "scaling": "La cible gagne aussi +2 à son prochain test contre Mort ou aggravation."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

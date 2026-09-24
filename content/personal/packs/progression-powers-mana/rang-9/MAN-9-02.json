@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-9-02",
+  "name": "Création véritable",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-9"],
+  "system": {
+    "description": "<p><strong>Création véritable</strong>.</p><p><strong>Mana — Rang 9.</strong></p>\n<p><strong>Activation :</strong> 9 / 8 h / contact</p>\n<p><strong>Discipline :</strong> Manifestation</p>\n<p>Crée définitivement jusqu’à 100 kg d’une matière rare non vivante à partir d’un focaliseur de valeur égale ; aucun matériau unique, mythique ou stratégique sans projet.</p>\n<p><strong>Intensification :</strong> Masse ×5 ou composant Q-5 après recherche.</p>",
+    "traits": ["Mana", "Manifestation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "9",
+      "activation": "9 / 8 h / contact",
+      "discipline": "Manifestation",
+      "effect": "Crée définitivement jusqu’à 100 kg d’une matière rare non vivante à partir d’un focaliseur de valeur égale ; aucun matériau unique, mythique ou stratégique sans projet.",
+      "scaling": "Masse ×5 ou composant Q-5 après recherche."
+    },
+    "level": 28
+  },
+  "folder": "Rang 9"
+}

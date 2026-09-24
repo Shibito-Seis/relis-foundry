@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-721",
+  "name": "Codes de voisinage",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Codes de voisinage</strong>.</p><p>Le personnage sait demander, proposer ou adapter une aide en tenant compte des différences de morphologie et de culture. Il gagne +2 circonstanciel aux tests destinés à Aider un membre d&#39;une autre Ascendance lorsque ces différences compliquent réellement la tâche.</p>\n<p>Après une Aide réussie, chacun comprend aussi une contrainte pratique de l&#39;autre : portée, sens dominant, posture, équipement, besoin de communication ou limite corporelle. Cette information peut empêcher de répéter la même maladresse pendant la scène.</p>\n<p>Le bonus ne s&#39;applique pas si l&#39;Ascendance des participants n&#39;a aucune incidence et ne se cumule pas avec un autre bonus circonstanciel récompensant exactement la même coordination.</p>",
+    "traits": ["Aide", "Ascendance universelle", "Coopération", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.236 Talents universels d'Ascendance de niveau 1",
+      "family": "Coopération interraciale",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Coopération interraciale",
+        "Traits": "Aide, Ascendance universelle, Coopération, Social",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Universel"
+}

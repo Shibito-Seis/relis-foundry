@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-062",
+  "name": "Formation patiente",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Formation patiente</strong>.</p><p>Le personnage devient Qualifié dans une compétence supplémentaire de son choix.</p>\n<p>Lorsqu&#39;il dispose d&#39;au moins dix fois le temps normalement nécessaire pour une tâche non urgente utilisant cette compétence, il ignore jusqu&#39;à 1 point de malus circonstanciel provenant de sa difficulté documentaire, de la complexité de la procédure ou d&#39;un manque de pratique récente.</p>\n<p>Ce bénéfice ne compense pas l&#39;absence d&#39;un équipement indispensable et ne s&#39;applique pas en combat ou sous une pression immédiate.</p>",
+    "traits": ["Elfe", "Compétence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Mémoire séculaire",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire séculaire",
+        "Traits": "Elfe, Compétence",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

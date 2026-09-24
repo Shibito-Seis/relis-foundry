@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-CMP-MELEE-068",
+  "name": "Ouverture maîtrisée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Ouverture maîtrisée</strong>.</p><p>Lorsque le personnage obtient une réussite à une manœuvre de Mêlée qui n&#39;inflige aucun dégât, il choisit un bénéfice ; il en choisit deux sur une réussite critique :</p>\n<p>• se déplacer de 1,5 mètre vers un espace praticable sans déclencher de Réaction fondée uniquement sur ce déplacement ;</p>\n<p>• apprendre si la cible paraît avantagée par son allonge, son appui ou son arme actuelle ;</p>\n<p>• accorder +2 circonstanciel au prochain test d&#39;un allié avant le début du prochain tour du personnage pour se retirer de la cible ou récupérer une arme qu&#39;elle menace ;</p>\n<p>• empêcher qu&#39;un objet libre impliqué dans la manœuvre ne tombe ou ne soit projeté hors de portée immédiate.</p>\n<p>Le talent ne donne jamais d&#39;attaque gratuite, de dégâts, de désarmement automatique ou de déplacement forcé de la cible.</p>",
+    "traits": ["Analyse", "Compétence", "Manœuvre", "Mêlée"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-065",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Rompre la mesure",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-066",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Garde partagée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Mêlée — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Mêlée",
+      "activation": "Passif",
+      "prerequisites": "Mêlée Maître ; Rompre la mesure ou Garde partagée",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Mêlée",
+        "Niveau": "7",
+        "Traits": "Analyse, Compétence, Manœuvre, Mêlée",
+        "Type": "Passif",
+        "Fréquence": "une fois par round",
+        "Prérequis": "Mêlée Maître ; Rompre la mesure ou Garde partagée"
+      }
+    },
+    "level": 7
+  },
+  "folder": "Mêlée"
+}

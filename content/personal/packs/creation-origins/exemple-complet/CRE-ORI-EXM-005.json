@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-ORI-EXM-005",
+  "name": "Cadet militaire évacué",
+  "type": "origin",
+  "tags": ["creation", "origine", "exemple-complet"],
+  "system": {
+    "description": "<p><strong>Cadet militaire évacué</strong>.</p><p>Institutionnel — Armée ou sécurité terrienne — Sélectionné ou réserve d’équipage — Formation utile, sens du devoir, ordres anciens.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-exemple-complet",
+      "sourceSection": "7",
+      "fields": {
+        "Milieu social": "Institutionnel",
+        "Affiliation / communauté": "Armée ou sécurité terrienne",
+        "Condition d’embarquement": "Sélectionné ou réserve d’équipage",
+        "Lecture rapide": "Formation utile, sens du devoir, ordres anciens."
+      }
+    }
+  },
+  "folder": "exemple-complet"
+}

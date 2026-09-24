@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-08-05-SABOTEUR",
+  "name": "Ingénieur — Saboteur",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "ingenieur"],
+  "system": {
+    "description": "<p><strong>Ingénieur — Saboteur</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Charges contrôlées, outils de neutralisation, pièges mécaniques simples.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-008-INGENIEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Ingénieur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Ingénieur",
+      "branchName": "Saboteur",
+      "primaryLoadout": "Charges contrôlées, outils de neutralisation, pièges mécaniques simples.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Ingénieur"
+}

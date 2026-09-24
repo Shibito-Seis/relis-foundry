@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ANC-018-IAA",
+  "name": "IAA",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>IAA</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Technologie, +1 Intelligence, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Maîtrise Magique</p>\n<p>Esprit artificiel, logique système, stabilité mentale, mais faible connexion naturelle aux énergies organiques.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Technologie, +1 Intelligence, +1 Volonté",
+      "attributePenalty": "-1 Maîtrise Magique",
+      "rationale": "Esprit artificiel, logique système, stabilité mentale, mais faible connexion naturelle aux énergies organiques.",
+      "selectable": true
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-511",
+  "name": "Je te retrouverai",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Je te retrouverai</strong>.</p><p>À partir d&#39;une odeur mémorisée et d&#39;au moins un indice récent, le personnage détermine la direction générale dans laquelle la cible a quitté la zone et gagne +3 circonstanciel à tous ses tests de recherche jusqu&#39;à la fin de la scène d&#39;exploration.</p>\n<p>Il peut renouer une piste interrompue si des traces intermittentes subsistent dans la même région. Le talent ne localise pas une cible à distance exacte, ne traverse ni vide, ni téléportation, ni confinement hermétique et échoue si aucune continuité physique ne subsiste.</p>",
+    "traits": ["Beastkin", "Chien", "Exploration", "Odorat", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-488",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Odeur mémorisée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-504",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chemin du retour",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.144 Talents Beastkins Chiens de niveau 13",
+      "family": "Recherche, secours et flair appliqué",
+      "ancestry": "Beastkin Chien",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Chemin du retour et Odeur mémorisée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Recherche, secours et flair appliqué",
+        "Traits": "Beastkin, Chien, Exploration, Odorat, Survie",
+        "Type": "Activité de 10 minutes",
+        "Prérequis": "Chemin du retour et Odeur mémorisée"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Chien"
+}

@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-002-PAUVRE",
+  "name": "Pauvre",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Pauvre</strong>.</p><p><strong>Valeur :</strong> -1</p>\n<p>Le personnage commence avec 50 % des crédits de départ normaux. Incompatible avec Riche et Très riche.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1",
+      "effect": "Le personnage commence avec 50 % des crédits de départ normaux. Incompatible avec Riche et Très riche."
+    }
+  },
+  "folder": ""
+}

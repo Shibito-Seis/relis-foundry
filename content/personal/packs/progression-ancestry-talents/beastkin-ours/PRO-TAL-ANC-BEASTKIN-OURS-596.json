@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-596",
+  "name": "Fourrure dense",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Fourrure dense</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests contre froid ambiant, abrasion, végétation épineuse et inconfort provenant d&#39;un climat venteux ou humide.</p>\n<p>Le talent ne réduit pas les dégâts d&#39;une attaque de froid, ne remplace aucun vêtement protecteur et ne donne aucune immunité climatique.</p>",
+    "traits": ["Beastkin", "Ours", "Endurance", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Résistance et absorption",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résistance et absorption",
+        "Traits": "Beastkin, Ours, Endurance, Physiologie",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Ours"
+}

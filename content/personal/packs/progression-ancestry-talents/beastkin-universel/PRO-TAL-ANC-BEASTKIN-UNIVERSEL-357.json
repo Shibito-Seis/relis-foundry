@@ -1,0 +1,46 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-357",
+  "name": "Arme naturelle spécialisée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Arme naturelle spécialisée</strong>.</p><p>Le personnage choisit une spécialisation pour l&#39;arme naturelle obtenue par le prérequis :</p>\n<p>• Précision : +1 circonstanciel aux tests d&#39;attaque avec cette arme ;</p>\n<p>• Impact : +2 circonstanciel aux dégâts de cette arme ;</p>\n<p>• Contrôle : +2 circonstanciel aux tests de saisie, renversement ou déplacement forcé directement permis par cet organe.</p>\n<p>La spécialisation doit correspondre à l&#39;anatomie décrite. Elle ne se cumule pas avec une spécialisation propre au sous-type accordant le même avantage ; seul le meilleur effet s&#39;applique.</p>",
+    "traits": ["Beastkin", "Arme naturelle", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-349",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arme naturelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.98 Talents Beastkins universels de niveau 5",
+      "family": "Morphologie et armes naturelles",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Arme naturelle",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morphologie et armes naturelles",
+        "Traits": "Beastkin, Arme naturelle, Physiologie",
+        "Type": "Passif",
+        "Prérequis": "Arme naturelle",
+        "Précision": "+1 circonstanciel aux tests d'attaque avec cette arme ;",
+        "Impact": "+2 circonstanciel aux dégâts de cette arme ;",
+        "Contrôle": "+2 circonstanciel aux tests de saisie, renversement ou déplacement forcé directement permis par cet organe."
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin universel"
+}

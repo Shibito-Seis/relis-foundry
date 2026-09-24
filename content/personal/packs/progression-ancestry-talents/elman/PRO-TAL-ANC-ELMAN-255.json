@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-255",
+  "name": "Marcheur des courants stellaires",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Marcheur des courants stellaires</strong>.</p><p>Le personnage se téléporte jusqu&#39;à 30 mètres le long d&#39;un courant, d&#39;un rayonnement ou d&#39;une liaison énergétique qu&#39;il peut percevoir. Il peut emporter une créature consentante de sa taille ou plus petite avec son équipement porté.</p>\n<p>La destination doit être libre et sûre. Une isolation qui interrompt réellement le phénomène bloque le déplacement. Dans un environnement spatial ou anormal fortement parcouru de courants, le personnage gagne également +3 circonstanciel aux tests de Navigation destinés à en lire les routes accessibles.</p>\n<p>Le talent ne permet pas de franchir une distance orbitale, une barrière sans continuité énergétique ou le vide sans protection appropriée.</p>\n<p>---</p>",
+    "traits": ["Elman", "Déplacement", "Mythique", "Téléportation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-248",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Translation conductrice",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.69 Talents Elmans de niveau 21",
+      "family": "Transcendance elman",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Translation conductrice",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elman",
+        "Traits": "Elman, Déplacement, Mythique, Téléportation",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Translation conductrice"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Elman"
+}

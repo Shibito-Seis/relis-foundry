@@ -1,0 +1,175 @@
+{
+  "relisId": "MAT-WPN-040-PISTOLET-PLASMA",
+  "name": "Pistolet plasma",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "handgun"],
+  "system": {
+    "description": "<p><strong>Pistolet plasma</strong>.</p><p><strong>Niv. :</strong> 5. <strong>Accès :</strong> Spécialisée. <strong>Attaque :</strong> Dextérité + Tir. <strong>Déf. :</strong> CAE. <strong>Dégâts :</strong> 1d10 Plasma. <strong>Préc. :</strong> -1. <strong>Portée :</strong> 8/24. <strong>Capacité et Recharge :</strong> Cellule légère 12 CE ; 3 CE/tir ; Recharge 1. <strong>Recul :</strong> 0. <strong>Traits :</strong> Brutale 2, Énergétique, Pénétration 2. <strong>Signature :</strong> Bruyante, thermique, visible. <strong>Fiab. :</strong> 2. <strong>Struct. :</strong> L. <strong>Empl. :</strong> 2. <strong>Prix :</strong> 4 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.101 Lot 5-K3 — Armes de poing",
+      "columns": {
+        "#": "10",
+        "Arme": "Pistolet plasma",
+        "Niv.": "5",
+        "Accès": "Spécialisée",
+        "Attaque": "Dextérité + Tir",
+        "Déf.": "CAE",
+        "Dégâts": "1d10 Plasma",
+        "Préc.": "-1",
+        "Portée": "8/24",
+        "Capacité et Recharge": "Cellule légère 12 CE ; 3 CE/tir ; Recharge 1",
+        "Recul": "0",
+        "Traits": "Brutale 2, Énergétique, Pénétration 2",
+        "Signature": "Bruyante, thermique, visible",
+        "Fiab.": "2",
+        "Struct.": "L",
+        "Empl.": "2",
+        "Prix": "4 500"
+      },
+      "reloadProfile": null
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": [],
+        "providedSlots": {
+          "power": 1
+        },
+        "interfaceIds": ["cell"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 5,
+    "referencePrice": {
+      "amount": 4500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "handgun",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "ranged",
+      "defenseTarget": "cae",
+      "handsMode": "one",
+      "skillId": "shooting",
+      "attributeId": "dexterity",
+      "accuracy": -1,
+      "damageDice": 1,
+      "damageDie": "d10",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d10 Plasma",
+      "damageTypes": ["plasma"],
+      "damageSources": ["ballistic"],
+      "penetration": 2,
+      "rangeKind": "increments",
+      "range": "8/24",
+      "rangeOptimal": 8,
+      "rangeMaximum": 24,
+      "recoil": 0,
+      "feedKind": "energy",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": 1,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "loud",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "reloadActions": null,
+      "reloadProcedure": "",
+      "energyConsumption": {
+        "single": 3
+      }
+    },
+    "energyProfile": {
+      "kind": "",
+      "format": "light",
+      "formatId": "light",
+      "powerClass": "light",
+      "powerClassId": "light",
+      "technology": "",
+      "technologyId": "",
+      "interfaceId": "cell",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "Armes de poing"
+}

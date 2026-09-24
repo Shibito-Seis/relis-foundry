@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-05-07-VITALISTE",
+  "name": "Médecin — Vitaliste",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "medecin"],
+  "system": {
+    "description": "<p><strong>Médecin — Vitaliste</strong>.</p><p><strong>Voie :</strong> Médecin</p>\n<p><strong>Dotation principale :</strong> Focus de soin énergétique, catalyseur vital, bandages conducteurs.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-005-MEDECIN",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Médecin",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Médecin",
+      "branchName": "Vitaliste",
+      "primaryLoadout": "Focus de soin énergétique, catalyseur vital, bandages conducteurs.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Médecin"
+}

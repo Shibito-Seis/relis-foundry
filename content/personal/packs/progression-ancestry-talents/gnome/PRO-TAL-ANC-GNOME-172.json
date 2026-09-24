@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-172",
+  "name": "Catalyseur de poche",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Catalyseur de poche</strong>.</p><p>Le personnage porte un petit catalyseur expérimental accordé à sa signature. Il compte comme un focaliseur ou un instrument de base pour les manipulations techno-magiques qui n&#39;exigent pas un appareil spécialisé.</p>\n<p>Une fois par scène, avant un test portant réellement sur un système hybride, il peut utiliser le meilleur de Technologie et Maîtrise Magique comme Attribut associé à son approche.</p>\n<p>Cette substitution ne change pas la compétence utilisée, ne satisfait aucun prérequis et ne s&#39;applique pas à une tâche exclusivement technologique ou exclusivement magique.</p>",
+    "traits": ["Gnome", "Catalyseur", "Techno-magie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Techno-magie expérimentale",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Techno-magie expérimentale",
+        "Traits": "Gnome, Catalyseur, Techno-magie",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par scène pour l'activation"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Gnome"
+}

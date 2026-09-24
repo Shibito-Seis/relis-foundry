@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-GEN-040",
+  "name": "Réflexes mythiques",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Réflexes mythiques</strong>.</p><p>Le personnage choisit l&#39;effet applicable :</p>\n<p>• gagner +4 circonstanciel en CAP ou CAE contre l&#39;attaque ;</p>\n<p>• améliorer d&#39;un degré le résultat du test de Dextérité.</p>\n<p>Le talent ne peut pas être combiné à une autre Réaction défensive contre le même événement et ne fonctionne pas contre une menace entièrement imperceptible.</p>\n<p>---</p>",
+    "traits": ["Défense", "Général", "Mythique", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-GEN-003",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réflexe de sauvegarde",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.9 Talents généraux de niveau 23",
+      "family": "Vigilance et réactions",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Réflexe de sauvegarde",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "une attaque perceptible cible le personnage ou il vient d'effectuer un test de Dextérité contre un danger perceptible",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vigilance et réactions",
+        "Traits": "Défense, Général, Mythique, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Réflexe de sauvegarde",
+        "Déclencheur": "une attaque perceptible cible le personnage ou il vient d'effectuer un test de Dextérité contre un danger perceptible"
+      }
+    },
+    "level": 23
+  },
+  "folder": "### 31.9 Talents généraux de niveau 23"
+}

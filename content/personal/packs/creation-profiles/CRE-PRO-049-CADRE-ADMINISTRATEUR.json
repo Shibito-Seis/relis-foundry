@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-PRO-049-CADRE-ADMINISTRATEUR",
+  "name": "Cadre / administrateur",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Cadre / administrateur</strong>.</p><p><strong>Attribut standard :</strong> Présence, Intelligence, Volonté</p>\n<p><strong>Profil marqué :</strong> +Présence, +Intelligence ; -Force, -Dextérité ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Commandement, Commerce, Diplomatie, Culture</p>\n<p><strong>Avantage typique :</strong> Autorité civile, accès administratif</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Présence", "Intelligence", "Volonté"],
+      "markedProfile": "+Présence, +Intelligence ; -Force, -Dextérité ou -Maîtrise Magique",
+      "skillChoices": ["Commandement", "Commerce", "Diplomatie", "Culture"],
+      "typicalBenefit": "Autorité civile, accès administratif",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

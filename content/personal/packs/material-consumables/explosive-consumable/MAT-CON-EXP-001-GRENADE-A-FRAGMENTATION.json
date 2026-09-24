@@ -1,0 +1,111 @@
+{
+  "relisId": "MAT-CON-EXP-001-GRENADE-A-FRAGMENTATION",
+  "name": "Grenade à fragmentation",
+  "type": "consumable",
+  "tags": ["materiel", "consommable", "explosif-personnel"],
+  "system": {
+    "description": "<p><strong>Consommable :</strong> Grenade à fragmentation. <strong>Niv. :</strong> 1. <strong>Coût :</strong> 1 Action amorcer + 1 lancer. <strong>Zone :</strong> Explosion 2. <strong>Déf. :</strong> CAP. <strong>Effet principal :</strong> 2d6 Perforant, Explosif. <strong>Prix :</strong> 150.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "explosive-consumable",
+      "sourceSection": "41.184 Catalogue corrigé — 12 profils",
+      "columns": {
+        "#": "1",
+        "Consommable": "Grenade à fragmentation",
+        "Niv.": "1",
+        "Coût": "1 Action amorcer + 1 lancer",
+        "Zone": "Explosion 2",
+        "Déf.": "CAP",
+        "Effet principal": "2d6 Perforant, Explosif",
+        "Prix": "150"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 150,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "consumableProfile": {
+      "kind": "grenade",
+      "actionCost": 1,
+      "area": "Explosion 2",
+      "effectSummary": "2d6 Perforant, Explosif"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "explosive-consumable"
+}

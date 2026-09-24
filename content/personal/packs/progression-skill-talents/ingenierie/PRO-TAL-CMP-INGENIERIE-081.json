@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-INGENIERIE-081",
+  "name": "Diagnostic structurel",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Diagnostic structurel</strong>.</p><p>Le personnage examine un objet, un mécanisme ou une structure accessible. Il effectue un test d&#39;Ingénierie contre le DD du système.</p>\n<p>• Réussite critique : il apprend son état structurel apparent, la fonction principalement défaillante, le danger immédiat, le type d&#39;intervention nécessaire et si une réparation d&#39;urgence plausible pourrait le remettre temporairement en service.</p>\n<p>• Réussite : il apprend son état structurel apparent, la fonction principalement défaillante et le type général d&#39;intervention nécessaire.</p>\n<p>• Échec : il ne parvient pas à isoler la panne.</p>\n<p>• Échec critique : il tire une conclusion incomplète ou déclenche une alerte matérielle évidente ; le MJ annonce laquelle.</p>\n<p>Un diagnostic réussi donne +2 circonstanciel au premier test effectué avant la fin de la scène pour intervenir directement sur la panne identifiée. Il ne révèle pas un composant inaccessible ni une propriété magique ou logicielle étrangère au fonctionnement matériel.</p>",
+    "traits": ["Analyse", "Compétence", "Ingénierie", "Observation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Ingénierie — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Ingénierie",
+      "activation": "1 Action, ou Activité d'exploration",
+      "prerequisites": "Ingénierie Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Ingénierie",
+        "Niveau": "1",
+        "Traits": "Analyse, Compétence, Ingénierie, Observation",
+        "Type": "1 Action, ou Activité d'exploration",
+        "Prérequis": "Ingénierie Qualifié",
+        "Réussite critique": "il apprend son état structurel apparent, la fonction principalement défaillante, le danger immédiat, le type d'intervention nécessaire et si une réparation d'urgence plausible pourrait le remettre temporairement en service.",
+        "Réussite": "il apprend son état structurel apparent, la fonction principalement défaillante et le type général d'intervention nécessaire.",
+        "Échec": "il ne parvient pas à isoler la panne.",
+        "Échec critique": "il tire une conclusion incomplète ou déclenche une alerte matérielle évidente ; le MJ annonce laquelle."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Ingénierie"
+}

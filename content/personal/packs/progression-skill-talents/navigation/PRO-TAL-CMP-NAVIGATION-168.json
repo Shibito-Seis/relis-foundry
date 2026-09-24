@@ -1,0 +1,49 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-168",
+  "name": "Fenêtre naturelle",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Fenêtre naturelle</strong>.</p><p>Le personnage étudie un courant, une orbite, une marée, une rotation, une anomalie stable, un cycle météorologique ou une ouverture périodique réellement observable afin de l&#39;intégrer à une route.</p>\n<p>Il effectue un test de Navigation contre le DD du phénomène.</p>\n<p>• Réussite critique : il identifie la fenêtre, sa durée, sa marge et une sortie de repli ; la route préparée ignore jusqu&#39;à 2 points de malus provenant du phénomène.</p>\n<p>• Réussite : il identifie la fenêtre et sa marge générale.</p>\n<p>• Échec : le phénomène reste trop irrégulier pour être exploité sûrement.</p>\n<p>• Échec critique : la périodicité apparente contient une variation ; le MJ la signale avant l&#39;entrée dans la fenêtre.</p>\n<p>Le talent n&#39;annule pas le phénomène, ne crée pas sa périodicité et ne permet pas à un véhicule de dépasser ses capacités.</p>",
+    "traits": ["Analyse", "Compétence", "Exploration", "Navigation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-162",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Route balisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Navigation Maître ; Route balisée",
+      "choice": "",
+      "frequency": "une fois par scène ou étape",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "7",
+        "Traits": "Analyse, Compétence, Exploration, Navigation",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par scène ou étape",
+        "Prérequis": "Navigation Maître ; Route balisée",
+        "Réussite critique": "il identifie la fenêtre, sa durée, sa marge et une sortie de repli ; la route préparée ignore jusqu'à 2 points de malus provenant du phénomène.",
+        "Réussite": "il identifie la fenêtre et sa marge générale.",
+        "Échec": "le phénomène reste trop irrégulier pour être exploité sûrement.",
+        "Échec critique": "la périodicité apparente contient une variation ; le MJ la signale avant l'entrée dans la fenêtre."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Navigation"
+}

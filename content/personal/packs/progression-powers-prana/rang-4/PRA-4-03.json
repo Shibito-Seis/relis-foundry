@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-4-03",
+  "name": "Déferlement interne",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Déferlement interne</strong>.</p><p><strong>Prana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 5 / 3 A / cône 12 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAP ; 7d8 dégâts ; les cibles blessées ne peuvent employer de Réaction jusqu&#39;au prochain tour.</p>\n<p><strong>Intensification :</strong> +1d8 ou cône +3 m.</p>",
+    "traits": ["Prana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "4",
+      "activation": "5 / 3 A / cône 12 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAP ; 7d8 dégâts ; les cibles blessées ne peuvent employer de Réaction jusqu'au prochain tour.",
+      "scaling": "+1d8 ou cône +3 m."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-9-04",
+  "name": "Néant arcanique",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-9"],
+  "system": {
+    "description": "<p><strong>Néant arcanique</strong>.</p><p><strong>Mana — Rang 9.</strong></p>\n<p><strong>Activation :</strong> 9 / 3 A / émanation 18 m</p>\n<p><strong>Discipline :</strong> Dissipation</p>\n<p>Pendant 1 min soutenue, interdit Mana et outils Mana de Rang 9 ou moins ; le lanceur ne peut employer de Mana dans la zone.</p>\n<p><strong>Intensification :</strong> Rayon +6 m ou affecte un effet Mythique sur test et 1 Point mythique.</p>",
+    "traits": ["Mana", "Dissipation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "9",
+      "activation": "9 / 3 A / émanation 18 m",
+      "discipline": "Dissipation",
+      "effect": "Pendant 1 min soutenue, interdit Mana et outils Mana de Rang 9 ou moins ; le lanceur ne peut employer de Mana dans la zone.",
+      "scaling": "Rayon +6 m ou affecte un effet Mythique sur test et 1 Point mythique."
+    },
+    "level": 28
+  },
+  "folder": "Rang 9"
+}

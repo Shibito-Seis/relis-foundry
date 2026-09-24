@@ -1,0 +1,122 @@
+{
+  "relisId": "MAT-ARM-074-COMBINAISON-EVA-DE-MAINTENANCE",
+  "name": "Combinaison EVA de maintenance",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<p><strong>Combinaison EVA :</strong> Combinaison EVA de maintenance. <strong>Niv. :</strong> 2. <strong>Accès :</strong> Spécialisée. <strong>Slots :</strong> S+A. <strong>CAP/CAE :</strong> +1/+1. <strong>Sol. P/E :</strong> 2/2. <strong>PV/SB :</strong> 24/12. <strong>Dex :</strong> 4. <strong>Force :</strong> 0. <strong>Vit. :</strong> 0. <strong>Autonomie :</strong> 4 heures. <strong>Empl. :</strong> 5. <strong>Enc. :</strong> 4. <strong>Prix :</strong> 3 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.147 Lot 5-L9 — Combinaisons spatiales et EVA",
+      "columns": {
+        "#": "2",
+        "Combinaison EVA": "Combinaison EVA de maintenance",
+        "Niv.": "2",
+        "Accès": "Spécialisée",
+        "Slots": "S+A",
+        "CAP/CAE": "+1/+1",
+        "Sol. P/E": "2/2",
+        "PV/SB": "24/12",
+        "Dex": "4",
+        "Force": "0",
+        "Vit.": "0",
+        "Autonomie": "4 heures",
+        "Empl.": "5",
+        "Enc.": "4",
+        "Prix": "3 500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 4,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 3500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "specialized",
+      "capBonus": 1,
+      "caeBonus": 1,
+      "solidityPhysical": 2,
+      "solidityEnergy": 2,
+      "coverage": [],
+      "constraintSummary": "# : 2 ; Combinaison EVA : Combinaison EVA de maintenance ; Niv. : 2 ; Accès : Spécialisée ; Slots : S+A ; CAP/CAE : +1/+1 ; Sol. P/E : 2/2 ; PV/SB : 24/12 ; Dex : 4 ; Force : 0 ; Vit. : 0 ; Autonomie : 4 heures ; Empl. : 5 ; Enc. : 4 ; Prix : 3 500"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "light"
+}

@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-073",
+  "name": "Danse entre les tirs",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Danse entre les tirs</strong>.</p><p>Le personnage gagne +2 circonstanciel à sa CAP ou à sa CAE contre cette attaque, selon la défense ciblée.</p>\n<p>Après la résolution de l&#39;attaque, si elle échoue, il peut se déplacer d&#39;un mètre vers un espace libre adjacent sans provoquer de réaction fondée uniquement sur ce déplacement.</p>\n<p>Il ne peut pas effectuer ce déplacement s&#39;il est immobilisé, inconscient ou dépourvu d&#39;appui dans l&#39;environnement actuel.</p>",
+    "traits": ["Elfe", "Réaction", "Défense"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-053",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réflexes de la canopée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.32 Talents Elfes de niveau 5",
+      "family": "Grâce sylvestre",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Réflexes de la canopée",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "le personnage est ciblé par une attaque à distance qu'il peut percevoir.",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Réaction, Défense",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Prérequis": "Réflexes de la canopée",
+        "Déclencheur": "le personnage est ciblé par une attaque à distance qu'il peut percevoir."
+      }
+    },
+    "level": 5
+  },
+  "folder": "Elfe"
+}

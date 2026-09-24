@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-404",
+  "name": "Possession du renard",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Possession du renard</strong>.</p><p>Le personnage projette sa conscience vers une créature vivante à 6 mètres. Une cible volontaire accepte automatiquement. Une cible hostile oppose sa Volonté à un test de Maîtrise Magique + Canalisation.</p>\n<p>• Cible volontaire : pendant trois tours, le personnage peut partager ses sens, lui parler intérieurement et faire provenir sa voix de son corps. La cible conserve toutes ses Actions et son contrôle.</p>\n<p>• Cible hostile : en cas de réussite, l&#39;intrusion dure jusqu&#39;à la fin du prochain tour du personnage. À son tour, il choisit un seul effet : empêcher une Réaction, imposer un déplacement de 2 mètres vers un espace sûr, ou faire prononcer une brève phrase ne révélant aucun secret.</p>\n<p>Le corps du personnage reste immobile pendant la projection et partage son économie d&#39;Actions normale. Le talent ne peut imposer une attaque, une automutilation, une dépense de ressource, une révélation de souvenir ou un acte manifestement dangereux. Une cible hostile devient immunisée pendant 24 heures après la tentative.</p>",
+    "traits": [
+      "Beastkin",
+      "Renard",
+      "Canalisation",
+      "Mental",
+      "Possession",
+      "Spiritualité"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-388",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Orbe-étoile",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.112 Talents Beastkins Renards de niveau 17",
+      "family": "Feux-follets et arts spirituels",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Activité de 2 Actions (Concentration)",
+      "prerequisites": "Orbe-étoile",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Feux-follets et arts spirituels",
+        "Traits": "Beastkin, Renard, Canalisation, Mental, Possession, Spiritualité",
+        "Prérequis": "Orbe-étoile",
+        "Type": "Activité de 2 Actions (Concentration)",
+        "Fréquence": "une fois par jour",
+        "Cible volontaire": "pendant trois tours, le personnage peut partager ses sens, lui parler intérieurement et faire provenir sa voix de son corps. La cible conserve toutes ses Actions et son contrôle.",
+        "Cible hostile": "en cas de réussite, l'intrusion dure jusqu'à la fin du prochain tour du personnage. À son tour, il choisit un seul effet : empêcher une Réaction, imposer un déplacement de 2 mètres vers un espace sûr, ou faire prononcer une brève phrase ne révélant aucun secret."
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Renard"
+}

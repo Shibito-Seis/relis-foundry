@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-191",
+  "name": "Inaltérable curiosité",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Inaltérable curiosité</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Affadissement.</p>\n<p>Une fois par intervalle, un échec critique à un tel test devient un échec ordinaire. Aux rangs 2 et 3, il ignore le malus d&#39;Affadissement à ses tests de Présence et de Maîtrise Magique lorsqu&#39;il agit directement pour une Ancre, une découverte ou une création nouvelle.</p>\n<p>Ce talent ne supprime pas les planchers de Stress, ne crée pas d&#39;Épisode d&#39;Éclat et ne protège pas contre les conséquences ordinaires de la Fatigue ou d&#39;une maladie.</p>\n<p>---</p>",
+    "traits": ["Gnome", "Affadissement", "Mental"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.55 Talents Gnomes de niveau 9",
+      "family": "Éclat gnome",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Sujet à l'Affadissement",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Éclat gnome",
+        "Traits": "Gnome, Affadissement, Mental",
+        "Type": "Passif",
+        "Prérequis": "Sujet à l'Affadissement"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Gnome"
+}

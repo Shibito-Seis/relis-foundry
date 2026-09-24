@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-1-05",
+  "name": "Flamme rampante",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Flamme rampante</strong>.</p><p><strong>Mana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / 12 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAE ; 2d6 feu ; sur critique, 1d4 feu persistant.</p>\n<p><strong>Intensification :</strong> +1d6, persistant +1.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "1",
+      "activation": "1 / 2 A / 12 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAE ; 2d6 feu ; sur critique, 1d4 feu persistant.",
+      "scaling": "+1d6, persistant +1."
+    },
+    "level": 4
+  },
+  "folder": "Rang 1"
+}

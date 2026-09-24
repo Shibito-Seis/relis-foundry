@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-391",
+  "name": "Théâtre des sept changements",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Théâtre des sept changements</strong>.</p><p>Le personnage connaît un ensemble de récits, postures, jeux de masque et codes scéniques partagés entre communautés renardes. Il gagne +2 circonstanciel aux tests de Culture, Diplomatie ou Tromperie lorsqu&#39;il emploie une histoire, une représentation ou un rôle social pour communiquer avec un public.</p>\n<p>Après dix minutes de représentation réussie, il peut transmettre au public une émotion ou une idée générale clairement déclarée. Le talent ne change pas les convictions profondes, ne remplace pas une négociation et ne dissimule pas une menace évidente.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Renard", "Culture", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.109 Talents Beastkins Renards de niveau 5",
+      "family": "Culture renarde",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture renarde",
+        "Traits": "Beastkin, Renard, Culture, Social",
+        "Type": "Passif"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Renard"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-105",
+  "name": "Elfe de la Nouvelle Fusion",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Elfe de la Nouvelle Fusion</strong>.</p><p>Le personnage devient l&#39;un des premiers représentants d&#39;une forme elfique accordée au nouvel univers.</p>\n<p>Il gagne deux augmentations d&#39;Attribut, placées dans deux Attributs différents parmi :</p>\n<p>• Dextérité ;</p>\n<p>• Présence ;</p>\n<p>• Maîtrise Magique.</p>\n<p>Ces augmentations suivent les règles ordinaires des Attributs partiels au-dessus de 4 et ne peuvent pas faire dépasser la valeur maximale de 8.</p>\n<p>Il gagne également un Talent d&#39;Ascendance Elfe supplémentaire de niveau 21 ou moins dont il remplit les prérequis.</p>\n<p>Pour les interactions bénéfiques, il peut être considéré à la fois comme une créature biologique et comme un être de magie vivante. Il choisit l&#39;interprétation la plus favorable lorsqu&#39;un soin, une protection, un sanctuaire ou une interface est explicitement limité à l&#39;une de ces deux natures.</p>\n<p>Cette double nature :</p>\n<p>• ne donne aucune immunité ;</p>\n<p>• ne permet pas d&#39;être ciblé par deux fois par le même effet ;</p>\n<p>• ne transforme pas le personnage en machine ou en Architecture IAA ;</p>\n<p>• ne contourne pas les prérequis d&#39;une autre Ascendance ;</p>\n<p>• peut également rendre perceptible sa signature à un détecteur de magie ou de Flux.</p>",
+    "traits": ["Elfe", "Ascendance", "Fusion", "Mythique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.38 Talents Elfes de niveau 29",
+      "family": "Transcendance elfique",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "au moins un Talent Elfe de niveau 21",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elfique",
+        "Traits": "Elfe, Ascendance, Fusion, Mythique",
+        "Type": "Passif",
+        "Prérequis": "au moins un Talent Elfe de niveau 21"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Elfe"
+}

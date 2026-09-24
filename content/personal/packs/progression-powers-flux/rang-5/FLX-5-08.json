@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-5-08",
+  "name": "Oracle du courant",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-5"],
+  "system": {
+    "description": "<p><strong>Oracle du courant</strong>.</p><p><strong>Flux — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 5 / 10 min / personnel</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>Pose une question sur un plan réalisable dans les 24 h ; reçoit trois issues probables, leur risque dominant et un signe observable ; jamais une certitude absolue.</p>\n<p><strong>Intensification :</strong> Horizon 7 jours ou une question de suivi.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "5",
+      "activation": "5 / 10 min / personnel",
+      "discipline": "Préscience",
+      "effect": "Pose une question sur un plan réalisable dans les 24 h ; reçoit trois issues probables, leur risque dominant et un signe observable ; jamais une certitude absolue.",
+      "scaling": "Horizon 7 jours ou une question de suivi."
+    },
+    "level": 16
+  },
+  "folder": "Rang 5"
+}

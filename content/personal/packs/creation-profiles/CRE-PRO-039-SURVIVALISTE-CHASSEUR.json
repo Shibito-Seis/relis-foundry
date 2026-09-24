@@ -1,0 +1,29 @@
+{
+  "relisId": "CRE-PRO-039-SURVIVALISTE-CHASSEUR",
+  "name": "Survivaliste / chasseur",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Survivaliste / chasseur</strong>.</p><p><strong>Attribut standard :</strong> Vigueur, Dextérité, Intelligence</p>\n<p><strong>Profil marqué :</strong> +Vigueur, +Dextérité ; -Présence, -Technologie ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Survie, Tir, Discrétion, Investigation, Endurance</p>\n<p><strong>Avantage typique :</strong> Matériel de survie</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Vigueur", "Dextérité", "Intelligence"],
+      "markedProfile": "+Vigueur, +Dextérité ; -Présence, -Technologie ou -Maîtrise Magique",
+      "skillChoices": [
+        "Survie",
+        "Tir",
+        "Discrétion",
+        "Investigation",
+        "Endurance"
+      ],
+      "typicalBenefit": "Matériel de survie",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

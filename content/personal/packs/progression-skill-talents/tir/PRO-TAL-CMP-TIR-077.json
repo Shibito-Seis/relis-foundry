@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-CMP-TIR-077",
+  "name": "Tir en milieu dégradé",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Tir en milieu dégradé</strong>.</p><p>Avant une attaque à distance, le personnage choisit une condition qu&#39;il perçoit : visibilité fortement réduite, support violemment instable, gravité changeante, vent extrême ou mouvement rapide et irrégulier de la plateforme.</p>\n<p>Pour cette attaque, il ignore jusqu&#39;à 4 points de malus circonstanciel provenant uniquement de la condition choisie. Il doit disposer d&#39;une ligne d&#39;effet réelle et d&#39;un moyen de percevoir la cible. La réduction ne s&#39;applique ni à la couverture, ni au malus de localisation, ni à la portée au-delà des capacités de l&#39;arme.</p>\n<p>Le talent ne procure aucun bonus si la condition n&#39;impose pas de malus et ne modifie ni les dégâts ni le seuil de critique.</p>",
+    "traits": ["Compétence", "Concentration", "Tir"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-TIR-072",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Estimation de trajectoire",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TIR-073",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Posture spécialisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Tir — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Tir",
+      "activation": "Activation libre",
+      "prerequisites": "Tir Maître ; Estimation de trajectoire ou Posture spécialisée",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Tir",
+        "Niveau": "7",
+        "Traits": "Compétence, Concentration, Tir",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Tir Maître ; Estimation de trajectoire ou Posture spécialisée"
+      }
+    },
+    "level": 7
+  },
+  "folder": "Tir"
+}

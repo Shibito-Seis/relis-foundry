@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-241",
+  "name": "Volonté isostatique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Volonté isostatique</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Volonté ou de Canalisation contre la surcharge, la perte de contrôle énergétique ou la contrainte exercée sur son circuit intérieur.</p>\n<p>Une fois par jour, après un échec non critique à l&#39;un de ces tests, il peut le transformer en réussite ordinaire. Un échec critique devient seulement un échec ordinaire.</p>\n<p>Ce talent ne transforme pas une réussite en réussite critique et ne protège pas des conséquences d&#39;un coût volontairement accepté.</p>",
+    "traits": ["Elman", "Contrôle", "Volonté"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-233",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Canal stable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.66 Talents Elmans de niveau 9",
+      "family": "Discipline de convergence",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Canal stable",
+      "choice": "",
+      "frequency": "une fois par jour pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Discipline de convergence",
+        "Traits": "Elman, Contrôle, Volonté",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par jour pour l'activation",
+        "Prérequis": "Canal stable"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Elman"
+}

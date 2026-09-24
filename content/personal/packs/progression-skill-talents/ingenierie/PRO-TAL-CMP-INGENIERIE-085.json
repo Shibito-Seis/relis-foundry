@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-INGENIERIE-085",
+  "name": "Étaiement temporaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Étaiement temporaire</strong>.</p><p>Avec des fixations, câbles, plaques ou matériaux plausibles, le personnage renforce un point faible accessible d&#39;un objet ou d&#39;une structure Endommagée.</p>\n<p>Il effectue un test d&#39;Ingénierie contre le DD du système.</p>\n<p>• Réussite critique : le point étayé gagne +2 circonstanciel aux tests ou DD destinés à résister à une aggravation matérielle et ignore la première complication mineure provenant de sa faiblesse.</p>\n<p>• Réussite : il gagne +2 circonstanciel contre cette aggravation.</p>\n<p>• Échec : l&#39;étaiement n&#39;apporte aucun bénéfice.</p>\n<p>• Échec critique : le matériel est mal réparti ; il doit être retiré avant une nouvelle tentative.</p>\n<p>L&#39;étaiement ne rend pas de PV structurels, ne restaure aucune fonction perdue et cesse si le support ou les matériaux sont retirés ou détruits.</p>",
+    "traits": ["Compétence", "Ingénierie", "Préparation", "Structure"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Ingénierie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Ingénierie",
+      "activation": "Activité de 2 Actions, ou Activité d'exploration",
+      "prerequisites": "Ingénierie Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la scène",
+      "metadata": {
+        "Compétence": "Ingénierie",
+        "Niveau": "3",
+        "Traits": "Compétence, Ingénierie, Préparation, Structure",
+        "Type": "Activité de 2 Actions, ou Activité d'exploration",
+        "Durée": "jusqu'à la fin de la scène",
+        "Prérequis": "Ingénierie Expert",
+        "Réussite critique": "le point étayé gagne +2 circonstanciel aux tests ou DD destinés à résister à une aggravation matérielle et ignore la première complication mineure provenant de sa faiblesse.",
+        "Réussite": "il gagne +2 circonstanciel contre cette aggravation.",
+        "Échec": "l'étaiement n'apporte aucun bénéfice.",
+        "Échec critique": "le matériel est mal réparti ; il doit être retiré avant une nouvelle tentative."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Ingénierie"
+}

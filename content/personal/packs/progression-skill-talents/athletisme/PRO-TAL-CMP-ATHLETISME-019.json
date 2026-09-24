@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-CMP-ATHLETISME-019",
+  "name": "Franchissement légendaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Franchissement légendaire</strong>.</p><p>Le personnage combine course, saut, nage, escalade et traction en une seule séquence continue.</p>\n<p>Il décrit un itinéraire matériellement possible et effectue un test d&#39;Athlétisme contre le DD le plus élevé du franchissement. Il peut se déplacer jusqu&#39;à trois fois son déplacement approprié et ignore le terrain difficile ordinaire pendant cette activité.</p>\n<p>• Réussite critique : il accomplit le franchissement et peut emporter une charge ou une créature volontaire que sa capacité normale lui permet de porter.</p>\n<p>• Réussite : il accomplit le franchissement.</p>\n<p>• Échec : il atteint un point sûr situé au plus à mi-parcours.</p>\n<p>• Échec critique : il s&#39;arrête dans la position dangereuse déterminée par l&#39;obstacle.</p>\n<p>Une atmosphère, une pression, un courant, une gravité ou un vide létal exige toujours l&#39;équipement adapté.</p>",
+    "traits": ["Athlétisme", "Compétence", "Légendaire", "Mouvement"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-ATHLETISME-014",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Élan mesuré",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-ATHLETISME-017",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ascension explosive",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Athlétisme — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Athlétisme",
+      "activation": "Activité de 3 Actions",
+      "prerequisites": "Athlétisme Légendaire ; Élan mesuré ou Ascension explosive",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Athlétisme",
+        "Niveau": "15",
+        "Traits": "Athlétisme, Compétence, Légendaire, Mouvement",
+        "Type": "Activité de 3 Actions",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Athlétisme Légendaire ; Élan mesuré ou Ascension explosive",
+        "Réussite critique": "il accomplit le franchissement et peut emporter une charge ou une créature volontaire que sa capacité normale lui permet de porter.",
+        "Réussite": "il accomplit le franchissement.",
+        "Échec": "il atteint un point sûr situé au plus à mi-parcours.",
+        "Échec critique": "il s'arrête dans la position dangereuse déterminée par l'obstacle."
+      }
+    },
+    "level": 15
+  },
+  "folder": "Athlétisme"
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-VAM-018",
+  "name": "Sang ancien",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p><strong>Sang ancien</strong>.</p><p>Une fois par repos long, le personnage peut traiter une ration de sang médical conservé ou synthétique comme du sang frais pour calculer les PV rendus par sa Récupération sanguine.</p>\n<p>La ration reste conservée ou synthétique pour tout talent, rituel ou effet exigeant explicitement du sang réellement frais.</p>\n<p>Le talent ne change ni sa valeur alimentaire, ni sa compatibilité et ne permet pas d&#39;utiliser deux fois la même ration.</p>",
+    "traits": ["Général", "Guérison", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-013",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sang réparateur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.17 Talents vampiriques de niveau 19",
+      "family": "Sang et régénération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Sang réparateur ; Stade vampirique 5",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang et régénération",
+        "Traits": "Général, Guérison, Vampirique",
+        "Type": "Passif",
+        "Fréquence": "une fois par repos long",
+        "Prérequis": "Sang réparateur ; Stade vampirique 5"
+      }
+    },
+    "level": 19
+  },
+  "folder": "### 30.17 Talents vampiriques de niveau 19"
+}

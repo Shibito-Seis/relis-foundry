@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-12-04-MANIPULATEUR",
+  "name": "Émissaire — Manipulateur",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "emissaire"],
+  "system": {
+    "description": "<p><strong>Émissaire — Manipulateur</strong>.</p><p><strong>Voie :</strong> Émissaire</p>\n<p><strong>Dotation principale :</strong> Faux dossiers, module de voix, outils de discrétion sociale.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-012-EMISSAIRE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Émissaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Émissaire",
+      "branchName": "Manipulateur",
+      "primaryLoadout": "Faux dossiers, module de voix, outils de discrétion sociale.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Émissaire"
+}

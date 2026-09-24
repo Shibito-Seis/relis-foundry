@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-06-03-GARDIEN-DE-FLUX",
+  "name": "Channeler — Gardien de flux",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "channeler"],
+  "system": {
+    "description": "<p><strong>Channeler — Gardien de flux</strong>.</p><p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Focus défensif, talisman de barrière, stabilisateur de CAE.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-006-CHANNELER",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Channeler",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Channeler",
+      "branchName": "Gardien de flux",
+      "primaryLoadout": "Focus défensif, talisman de barrière, stabilisateur de CAE.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Channeler"
+}

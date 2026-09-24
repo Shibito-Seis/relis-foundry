@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-10-01",
+  "name": "Genèse hexarcane",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-10"],
+  "system": {
+    "description": "<p><strong>Genèse hexarcane</strong>.</p><p><strong>Mana — Rang 10.</strong></p>\n<p><strong>Activation :</strong> 12 / projet de 7 jours / rayon 5 km</p>\n<p><strong>Discipline :</strong> Manifestation / Transformation</p>\n<p>Avec atelier, focaliseur et composants, crée ou remodèle durablement relief, climat, eaux, végétation simple et structures ordinaires ; aucune conscience, ressource mythique ou industrie autonome.</p>\n<p><strong>Intensification :</strong> Chaque semaine, coût et projet supplémentaires doublent le rayon ou ajoutent une couche complexe.</p>",
+    "traits": ["Mana", "Manifestation / Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "10",
+      "activation": "12 / projet de 7 jours / rayon 5 km",
+      "discipline": "Manifestation / Transformation",
+      "effect": "Avec atelier, focaliseur et composants, crée ou remodèle durablement relief, climat, eaux, végétation simple et structures ordinaires ; aucune conscience, ressource mythique ou industrie autonome.",
+      "scaling": "Chaque semaine, coût et projet supplémentaires doublent le rayon ou ajoutent une couche complexe."
+    },
+    "level": 30
+  },
+  "folder": "Rang 10"
+}

@@ -1,0 +1,102 @@
+{
+  "relisId": "CRE-ANC-000-BEASTKIN",
+  "name": "Beastkin",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance", "beastkin", "groupe"],
+  "system": {
+    "description": "<p>Ascendance parente. Le personnage choisit une lignée Beastkin canonique ; la fiche parente ne fournit pas de profil d’Attribut autonome.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry-group",
+      "sourceSection": "5.3 et 5.16",
+      "selectable": false,
+      "memberNames": [
+        "Beastkin Renard",
+        "Beastkin Chat",
+        "Beastkin Félin",
+        "Beastkin Chien",
+        "Beastkin Loup",
+        "Beastkin Lézard",
+        "Beastkin Ours",
+        "Beastkin Souris"
+      ],
+      "memberRefs": [
+        {
+          "relisId": "CRE-ANC-003-BEASTKIN-RENARD",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Renard",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-004-BEASTKIN-CHAT",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Chat",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-005-BEASTKIN-FELIN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Félin",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-006-BEASTKIN-CHIEN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Chien",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-007-BEASTKIN-LOUP",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Loup",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-008-BEASTKIN-LEZARD",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Lézard",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-009-BEASTKIN-OURS",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Ours",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-010-BEASTKIN-SOURIS",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Beastkin Souris",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,132 @@
+{
+  "relisId": "MAT-EQP-BAR-014-CHAMP-MILITAIRE-LOURD",
+  "name": "Champ militaire lourd",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "barriere"],
+  "system": {
+    "description": "<p><strong>Champ ou barrière :</strong> Champ militaire lourd. <strong>Niv. :</strong> 9. <strong>Type :</strong> Bulle rayon 2 ou mur 6. <strong>Compatibilité :</strong> Trajectoires traversantes. <strong>Absorption :</strong> 3d10. <strong>RB :</strong> 40. <strong>Batterie :</strong> 96 CE. <strong>Activation :</strong> 3 Actions, 8 CE. <strong>Entretien :</strong> 4 CE/min. <strong>Gén. Sol./PV :</strong> 6/30. <strong>Empl. :</strong> 10. <strong>Prix :</strong> 22 000.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "barrier",
+      "sourceSection": "41.153 Réserve de Barrière",
+      "columns": {
+        "#": "14",
+        "Champ ou barrière": "Champ militaire lourd",
+        "Niv.": "9",
+        "Type": "Bulle rayon 2 ou mur 6",
+        "Compatibilité": "Trajectoires traversantes",
+        "Absorption": "3d10",
+        "RB": "40",
+        "Batterie": "96 CE",
+        "Activation": "3 Actions, 8 CE",
+        "Entretien": "4 CE/min",
+        "Gén. Sol./PV": "6/30",
+        "Empl.": "10",
+        "Prix": "22 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "functionalCategory": "generator",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 9,
+    "referencePrice": {
+      "amount": 22000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {},
+    "protectionProfile": {
+      "kind": "barrier",
+      "access": "",
+      "barrierCurrent": 40,
+      "barrierMaximum": 40,
+      "barrierKind": "zone",
+      "barrierCompatibilities": ["Trajectoires traversantes"],
+      "absorptionFormula": "3d10",
+      "activationCost": 3,
+      "upkeep": "4 CE/min",
+      "rechargeRatePerCe": 4,
+      "rechargeDuration": "1 minute",
+      "interception": "Bulle rayon 2 ou mur 6",
+      "collapseEffect": "Effondrement à 0 RB ; réactivation après restauration d’au moins 1 RB.",
+      "constraintSummary": "# : 14 ; Champ ou barrière : Champ militaire lourd ; Niv. : 9 ; Type : Bulle rayon 2 ou mur 6 ; Compatibilité : Trajectoires traversantes ; Absorption : 3d10 ; RB : 40 ; Batterie : 96 CE ; Activation : 3 Actions, 8 CE ; Entretien : 4 CE/min ; Gén. Sol./PV : 6/30 ; Empl. : 10 ; Prix : 22 000"
+    }
+  },
+  "folder": "barrier"
+}

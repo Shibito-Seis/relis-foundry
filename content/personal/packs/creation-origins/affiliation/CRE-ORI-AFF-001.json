@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-AFF-001",
+  "name": "UJC",
+  "type": "origin",
+  "tags": ["creation", "origine", "affiliation"],
+  "system": {
+    "description": "<p><strong>UJC</strong>.</p><p>Union of Japanese Cryospace, liée au vaisseau, à la cryostase, à Xirea et au programme d’exode. — Statut officiel, Lien favorable avec Xirea, Éducation d’élite — Dossier Xirea verrouillé, Secret compromettant, Mauvais pressentiment de Xirea</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-affiliation",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Union of Japanese Cryospace, liée au vaisseau, à la cryostase, à Xirea et au programme d’exode.",
+        "Atouts suggérés": "Statut officiel, Lien favorable avec Xirea, Éducation d’élite",
+        "Handicaps suggérés": "Dossier Xirea verrouillé, Secret compromettant, Mauvais pressentiment de Xirea"
+      }
+    }
+  },
+  "folder": "affiliation"
+}

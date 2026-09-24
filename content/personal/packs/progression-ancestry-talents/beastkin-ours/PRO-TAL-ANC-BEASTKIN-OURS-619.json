@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-619",
+  "name": "Montagne vivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Montagne vivante</strong>.</p><p>Sur une surface stable, le personnage ne subit jamais d&#39;échec critique à un test ordinaire contre renversement ou déplacement forcé ; il obtient un échec simple à la place.</p>\n<p>Une fois par scène, après avoir résisté à un tel effet, il peut employer sa Réaction pour avancer de 2 mètres vers sa source ou reprendre une position légale dans le passage tenu. Ce mouvement ne fournit aucune attaque.</p>",
+    "traits": ["Beastkin", "Ours", "Masse", "Stabilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-612",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Tenir le passage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.177 Talents Beastkins Ours de niveau 13",
+      "family": "Masse et ancrage",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Tenir le passage",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masse et ancrage",
+        "Traits": "Beastkin, Ours, Masse, Stabilité",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Tenir le passage"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Ours"
+}

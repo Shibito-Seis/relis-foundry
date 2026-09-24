@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-005-FAMILLE-A-NOURRIR",
+  "name": "Famille à nourrir",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Famille à nourrir</strong>.</p><p><strong>Valeur :</strong> -1/-2/-3</p>\n<p>Le personnage doit envoyer régulièrement des ressources à sa famille, située sur Terre, dans une station, une enclave, un refuge, un autre vaisseau ou tout autre lieu validé par le MJ. -1 : 10 % des gains mensuels. -2 : 20 %. -3 : 30 % et appels de détresse possibles. Option progressive : 1 % de la fortune liquide par tranche de 1 000 crédits, plafond conseillé 50 %.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2/-3",
+      "effect": "Le personnage doit envoyer régulièrement des ressources à sa famille, située sur Terre, dans une station, une enclave, un refuge, un autre vaisseau ou tout autre lieu validé par le MJ. -1 : 10 % des gains mensuels. -2 : 20 %. -3 : 30 % et appels de détresse possibles. Option progressive : 1 % de la fortune liquide par tranche de 1 000 crédits, plafond conseillé 50 %."
+    }
+  },
+  "folder": ""
+}

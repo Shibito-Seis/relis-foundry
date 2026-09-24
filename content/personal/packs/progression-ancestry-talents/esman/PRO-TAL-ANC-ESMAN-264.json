@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-264",
+  "name": "Corps sous pression",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Corps sous pression</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Vigueur ou d&#39;Endurance pour résister à la Fatigue, au déplacement forcé, à une variation brutale de pression interne ou à un effet tentant de drainer son énergie.</p>\n<p>Lorsqu&#39;il devrait être déplacé de 2 mètres ou moins contre son gré, il peut réduire ce déplacement de 1 mètre.</p>\n<p>Le talent ne permet pas de résister à une force d&#39;échelle supérieure et ne supprime aucun besoin vital.</p>",
+    "traits": ["Esman", "Endurance", "Prana"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Puissance interne",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance interne",
+        "Traits": "Esman, Endurance, Prana",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Esman"
+}

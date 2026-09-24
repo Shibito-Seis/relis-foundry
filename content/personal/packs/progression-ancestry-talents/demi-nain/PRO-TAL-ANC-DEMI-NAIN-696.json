@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-NAIN-696",
+  "name": "Mémoire d'atelier",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mémoire d&#39;atelier</strong>.</p><p>Le personnage gagne +3 circonstanciel aux tests de Culture ou d&#39;Ingénierie portant sur une construction, un procédé ou une lignée artisanale humaine ou naine.</p>\n<p>Une fois par session, il peut rappeler un plan, une méthode, un défaut historique ou une signature plausible et établie. Le talent ne crée ni schéma secret, ni brevet, ni ressource absente.</p>",
+    "traits": ["Demi-Nain", "Artisanat", "Mémoire"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-NAIN-694",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Outil de famille",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.217 Talents Demi-Nains de niveau 9",
+      "family": "Double tradition artisanale",
+      "ancestry": "Demi-Nain",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Outil de famille",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Double tradition artisanale",
+        "Traits": "Demi-Nain, Artisanat, Mémoire",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Outil de famille"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Demi-Nain"
+}

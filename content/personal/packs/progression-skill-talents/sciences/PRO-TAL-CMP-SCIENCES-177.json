@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-177",
+  "name": "Modèle à données partielles",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Modèle à données partielles</strong>.</p><p>Le personnage construit un modèle à partir d&#39;un jeu de données réel mais incomplet, fragmenté ou bruité.</p>\n<p>Il ignore jusqu&#39;à 4 points de malus circonstanciel provenant d&#39;une seule source de fragmentation et effectue un test de Sciences contre le DD du phénomène.</p>\n<p>• Réussite critique : le modèle fournit les prédictions les plus probables, leur marge d&#39;incertitude et la mesure qui réduirait le mieux cette incertitude.</p>\n<p>• Réussite : le modèle fournit des prédictions limitées et leur incertitude générale.</p>\n<p>• Échec : les données restent insuffisantes pour produire un modèle utile.</p>\n<p>• Échec critique : une hypothèse implicite invalide le modèle ; le MJ la révèle avant qu&#39;il soit utilisé.</p>\n<p>Les prédictions ne sont pas des faits établis. Le talent ne fonctionne pas sans données et ne permet pas de connaître une variable qui ne laisse aucune trace mesurable.</p>",
+    "traits": ["Analyse", "Compétence", "Concentration", "Sciences"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-171",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Observation instrumentée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-175",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Expérience discriminante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Sciences Maître ; Observation instrumentée et Expérience discriminante",
+      "choice": "",
+      "frequency": "une fois par jeu de données ou après apport de données nouvelles",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "7",
+        "Traits": "Analyse, Compétence, Concentration, Sciences",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par jeu de données ou après apport de données nouvelles",
+        "Prérequis": "Sciences Maître ; Observation instrumentée et Expérience discriminante",
+        "Réussite critique": "le modèle fournit les prédictions les plus probables, leur marge d'incertitude et la mesure qui réduirait le mieux cette incertitude.",
+        "Réussite": "le modèle fournit des prédictions limitées et leur incertitude générale.",
+        "Échec": "les données restent insuffisantes pour produire un modèle utile.",
+        "Échec critique": "une hypothèse implicite invalide le modèle ; le MJ la révèle avant qu'il soit utilisé."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Sciences"
+}

@@ -1,0 +1,67 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-169",
+  "name": "Route de l'impossible",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Route de l&#39;impossible</strong>.</p><p>Le personnage calcule une route normalement presque impossible à travers une fenêtre étroite, un réseau de dangers, une anomalie stable ou des données très fragmentaires mais encore suffisantes.</p>\n<p>Il ignore jusqu&#39;à 4 points de malus circonstanciel provenant d&#39;une difficulté choisie et effectue un test de Navigation contre le DD du trajet.</p>\n<p>• Réussite critique : il établit la route, ses points de décision, ses marges et une solution de repli.</p>\n<p>• Réussite : il établit la route et ses principales marges.</p>\n<p>• Échec : aucune route suffisamment fiable n&#39;est trouvée.</p>\n<p>• Échec critique : la route ne peut pas être tentée sans une nouvelle donnée ou capacité ; le MJ indique laquelle.</p>\n<p>Le talent ne crée ni destination, ni carte, ni carburant, ni capacité de mouvement et ne garantit pas la réussite des manœuvres nécessaires.</p>",
+    "traits": ["Compétence", "Légendaire", "Navigation", "Préparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-164",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Recalcul d'urgence",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-167",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Repères dégradés",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-168",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fenêtre naturelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Navigation Légendaire ; Recalcul d'urgence, Repères dégradés et Fenêtre naturelle",
+      "choice": "",
+      "frequency": "une fois par scène ou voyage",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "15",
+        "Traits": "Compétence, Légendaire, Navigation, Préparation",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par scène ou voyage",
+        "Prérequis": "Navigation Légendaire ; Recalcul d'urgence, Repères dégradés et Fenêtre naturelle",
+        "Réussite critique": "il établit la route, ses points de décision, ses marges et une solution de repli.",
+        "Réussite": "il établit la route et ses principales marges.",
+        "Échec": "aucune route suffisamment fiable n'est trouvée.",
+        "Échec critique": "la route ne peut pas être tentée sans une nouvelle donnée ou capacité ; le MJ indique laquelle."
+      }
+    },
+    "level": 15
+  },
+  "folder": "Navigation"
+}

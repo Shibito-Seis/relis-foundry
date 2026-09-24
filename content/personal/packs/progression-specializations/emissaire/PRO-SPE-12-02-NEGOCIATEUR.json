@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-12-02-NEGOCIATEUR",
+  "name": "Émissaire — Négociateur",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "emissaire"],
+  "system": {
+    "description": "<p><strong>Émissaire — Négociateur</strong>.</p><p><strong>Voie :</strong> Émissaire</p>\n<p><strong>Dotation principale :</strong> Traducteur avancé, dossier diplomatique, tenue protocolaire.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-012-EMISSAIRE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Émissaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Émissaire",
+      "branchName": "Négociateur",
+      "primaryLoadout": "Traducteur avancé, dossier diplomatique, tenue protocolaire.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Émissaire"
+}

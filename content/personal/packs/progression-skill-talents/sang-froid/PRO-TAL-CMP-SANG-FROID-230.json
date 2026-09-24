@@ -1,0 +1,75 @@
+{
+  "relisId": "PRO-TAL-CMP-SANG-FROID-230",
+  "name": "Point fixe",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Point fixe</strong>.</p><p>Au cœur d&#39;une catastrophe, le personnage devient un repère conscient pour jusqu&#39;à six alliés capables de le percevoir et acceptant son soutien.</p>\n<p>Il effectue un test de Sang-froid contre le DD le plus élevé des sources mentales présentes.</p>\n<p>• Réussite critique : les alliés gagnent +2 circonstanciel à leurs tests de Volonté + Sang-froid contre les sources présentes ; chacun peut choisir sa prochaine réaction de Panique compatible, et la première Panique ordinaire de l&#39;un d&#39;eux voit sa durée réduite jusqu&#39;à la fin de son tour actuel.</p>\n<p>• Réussite : les alliés gagnent +2 circonstanciel à leur prochain test de Volonté + Sang-froid contre une source présente.</p>\n<p>• Échec : aucun bénéfice.</p>\n<p>• Échec critique : le personnage reste un repère narratif, mais aucun bonus mécanique n&#39;est accordé.</p>\n<p>Le talent ne réduit aucun Stress, ne retire aucune Surcharge mentale ou Panique déjà en cours et ne traite aucun Traumatisme.</p>\n<p>---</p>",
+    "traits": [
+      "Audition",
+      "Compétence",
+      "Mental",
+      "Mythique",
+      "Sang-froid",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-226",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Reprendre ses esprits",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-227",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fonctionnel sous saturation",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-229",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maître de sa réaction",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sang-froid — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sang-froid",
+      "activation": "Activité de 3 Actions ou d'une minute",
+      "prerequisites": "Sang-froid Mythique ; Reprendre ses esprits, Fonctionnel sous saturation et Maître de sa réaction",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la scène",
+      "metadata": {
+        "Compétence": "Sang-froid",
+        "Niveau": "23",
+        "Traits": "Audition, Compétence, Mental, Mythique, Sang-froid, Travail d'équipe",
+        "Type": "Activité de 3 Actions ou d'une minute",
+        "Fréquence": "une fois par jour",
+        "Durée": "jusqu'à la fin de la scène",
+        "Prérequis": "Sang-froid Mythique ; Reprendre ses esprits, Fonctionnel sous saturation et Maître de sa réaction",
+        "Réussite critique": "les alliés gagnent +2 circonstanciel à leurs tests de Volonté + Sang-froid contre les sources présentes ; chacun peut choisir sa prochaine réaction de Panique compatible, et la première Panique ordinaire de l'un d'eux voit sa durée réduite jusqu'à la fin de son tour actuel.",
+        "Réussite": "les alliés gagnent +2 circonstanciel à leur prochain test de Volonté + Sang-froid contre une source présente.",
+        "Échec": "aucun bénéfice.",
+        "Échec critique": "le personnage reste un repère narratif, mais aucun bonus mécanique n'est accordé."
+      }
+    },
+    "level": 23
+  },
+  "folder": "Sang-froid"
+}

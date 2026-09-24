@@ -1,0 +1,59 @@
+{
+  "relisId": "PRO-TAL-CMP-INGENIERIE-087",
+  "name": "Fonction de secours",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Avec un outil et un composant ou matériau adapté, le personnage effectue une réparation d&#39;urgence sur un objet Brisé mais non Détruit.</p>\n<p>Il effectue un test d&#39;Ingénierie contre le DD de réparation.</p>\n<p>• Réussite critique : une fonction essentielle choisie redevient utilisable pendant la durée et l&#39;objet ignore les malus généraux de l&#39;état Brisé pour cette seule fonction.</p>\n<p>• Réussite : la fonction choisie redevient utilisable, mais conserve les malus de l&#39;état Brisé.</p>\n<p>• Échec : aucun effet ; les ressources non engagées peuvent être récupérées.</p>\n<p>• Échec critique : aucun effet et cette fonction ne peut plus bénéficier de Fonction de secours pendant la scène.</p>\n<p>Après la durée ou la première utilisation de la fonction, l&#39;objet redevient Brisé. Le talent ne rend aucun PV structurel et ne fonctionne pas si l&#39;emploi risque manifestement de détruire l&#39;objet ou son utilisateur.</p>",
+    "traits": ["Compétence", "Ingénierie", "Manipulation", "Réparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INGENIERIE-081",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Diagnostic structurel",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-INGENIERIE-084",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réparation méthodique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Ingénierie — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Ingénierie",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Ingénierie Maître ; Diagnostic structurel et Réparation méthodique",
+      "choice": "",
+      "frequency": "une fois par objet et par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin du prochain tour du personnage",
+      "metadata": {
+        "Compétence": "Ingénierie",
+        "Niveau": "7",
+        "Traits": "Compétence, Ingénierie, Manipulation, Réparation",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par objet et par scène",
+        "Durée": "jusqu'à la fin du prochain tour du personnage",
+        "Prérequis": "Ingénierie Maître ; Diagnostic structurel et Réparation méthodique",
+        "Réussite critique": "une fonction essentielle choisie redevient utilisable pendant la durée et l'objet ignore les malus généraux de l'état Brisé pour cette seule fonction.",
+        "Réussite": "la fonction choisie redevient utilisable, mais conserve les malus de l'état Brisé.",
+        "Échec": "aucun effet ; les ressources non engagées peuvent être récupérées.",
+        "Échec critique": "aucun effet et cette fonction ne peut plus bénéficier de Fonction de secours pendant la scène."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Ingénierie"
+}

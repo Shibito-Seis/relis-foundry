@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-013-TECHNICIEN-DE-CRYOSTASE",
+  "name": "Technicien de cryostase",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Technicien de cryostase</strong>.</p><p><strong>Attribut standard :</strong> Technologie, Intelligence, Volonté</p>\n<p><strong>Profil marqué :</strong> +Technologie, +Intelligence ; -Force, -Présence ou -Dextérité</p>\n<p><strong>Compétences possibles :</strong> Médecine, Ingénierie, Systèmes de vaisseau, Sciences</p>\n<p><strong>Avantage typique :</strong> Accès capsules, outils cryo</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Technologie", "Intelligence", "Volonté"],
+      "markedProfile": "+Technologie, +Intelligence ; -Force, -Présence ou -Dextérité",
+      "skillChoices": [
+        "Médecine",
+        "Ingénierie",
+        "Systèmes de vaisseau",
+        "Sciences"
+      ],
+      "typicalBenefit": "Accès capsules, outils cryo",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

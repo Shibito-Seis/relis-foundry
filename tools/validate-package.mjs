@@ -353,10 +353,10 @@ assert.equal(
   "relis.personal-content",
   "Format source personnel 10-K1-P absent",
 );
-assert.deepEqual(
-  personalContentManifest.packs.map((pack) => pack.id),
-  ["creation", "progression", "material"],
-  "Les trois familles de compendiums personnels doivent être préparées ensemble",
+assert.equal(
+  personalContentManifest.packs.length,
+  23,
+  "Les 23 compendiums personnels classés doivent être préparés ensemble",
 );
 assert.equal(
   personalContentManifest.strictReferences,
@@ -378,6 +378,16 @@ assert.equal(
   false,
   "Le questionnaire ne doit pas inventer de bonus mécanique",
 );
+assert.equal(
+  crystalAttunement.questions.length,
+  48,
+  "La banque d’accord doit contenir 48 situations",
+);
+assert.deepEqual(
+  crystalAttunement.questionSelection?.difficultyCounts,
+  { simple: 8, intermediate: 8, complex: 4 },
+  "Le tirage doit conserver 8 questions simples, 8 intermédiaires et 4 complexes",
+);
 assert.match(
   personalContentTool,
   /compilePack/,
@@ -395,7 +405,7 @@ assert.deepEqual(
     type: pack.documentType,
     system: "relis",
   })),
-  "Les trois compendiums K2-P doivent être déclarés comme packs Item du système",
+  "Tous les compendiums K2-P doivent être déclarés comme packs Item du système",
 );
 assert.equal(
   manifest.packs?.every((pack) => pack.path === `packs/${pack.name}`),
@@ -404,20 +414,13 @@ assert.equal(
 );
 assert.equal(
   personalContent.entries.length,
-  2398,
-  "10-K2-P doit publier exactement les 2 398 Items personnels canoniques recensés",
+  2404,
+  "10-K2-P doit publier les 2 404 Items, dont les six projectiles manquants",
 );
-assert.deepEqual(
-  Object.fromEntries(
-    personalContent.manifest.packs.map((pack) => [
-      pack.id,
-      personalContent.entries.filter(
-        ({ pack: sourcePack }) => sourcePack.id === pack.id,
-      ).length,
-    ]),
-  ),
-  { creation: 199, progression: 1444, material: 755 },
-  "Les trois compendiums K2-P doivent rester exhaustifs",
+assert.equal(
+  manifest.packFolders?.length,
+  3,
+  "Création, Progression et Matériel doivent rester regroupés dans Foundry",
 );
 assert.equal(
   personalContent.warnings.length,
@@ -426,5 +429,5 @@ assert.equal(
 );
 
 console.log(
-  "Manifest RE:LIS valide : 64 types, 2 398 Items, chemins, références et URLs contrôlés.",
+  "Manifest RE:LIS valide : 64 types, 2 404 Items, 23 packs, chemins, références et URLs contrôlés.",
 );

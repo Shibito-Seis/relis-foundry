@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-076",
+  "name": "Tissage protecteur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Tissage protecteur</strong>.</p><p>Le personnage tisse une couche de Flux entre la source et la cible.</p>\n<p>Les dégâts sont réduits de :</p>\n<p>text 2 + la moitié du Niveau général du personnage, arrondie à l&#39;inférieur.</p>\n<p>Le tissage agit après les champs et boucliers qui ont intercepté l&#39;attaque, mais avant la perte finale de PV.</p>\n<p>Il ne protège pas contre des dégâts physiques purs, une absence d&#39;oxygène ou une conséquence déjà appliquée.</p>",
+    "traits": ["Elfe", "Magie", "Réaction", "Protection"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-057",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Magie innée mineure",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-060",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Affinité élémentaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.32 Talents Elfes de niveau 5",
+      "family": "Sang des Premiers Arbres",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Magie innée mineure ou Affinité élémentaire",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage ou un allié situé à 6 mètres subit des dégâts énergétiques qu'il peut percevoir",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang des Premiers Arbres",
+        "Traits": "Elfe, Magie, Réaction, Protection",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Magie innée mineure ou Affinité élémentaire",
+        "Déclencheur": "le personnage ou un allié situé à 6 mètres subit des dégâts énergétiques qu'il peut percevoir"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Elfe"
+}

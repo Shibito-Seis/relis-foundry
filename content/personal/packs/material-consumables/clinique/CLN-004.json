@@ -1,0 +1,93 @@
+{
+  "relisId": "CLN-004",
+  "name": "Trousse de compatibilité croisée",
+  "type": "consumable",
+  "tags": ["materiel", "clinique"],
+  "system": {
+    "description": "<p><strong>Trousse de compatibilité croisée</strong> appartient au catalogue clinique.</p><p>2. Médical. L. 2 tests. effectue un crossmatch donneur-produit-receveur ; obligatoire si la compatibilité d’Ascendance est inconnue. 037/038.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "clinique",
+      "sourceSection": "54.3 Diagnostic et suivi — CLN-001 à CLN-008",
+      "canonicalRow": [
+        "CLN-004",
+        "Trousse de compatibilité croisée",
+        "2",
+        "Médical",
+        "L",
+        "2 tests",
+        "effectue un crossmatch donneur-produit-receveur ; obligatoire si la compatibilité d’Ascendance est inconnue",
+        "037/038"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "effectue un crossmatch donneur-produit-receveur ; obligatoire si la compatibilité d’Ascendance est inconnue"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "clinique"
+}

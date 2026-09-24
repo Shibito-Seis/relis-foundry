@@ -1,0 +1,29 @@
+{
+  "relisId": "CRE-PRO-024-PSYCHOLOGUE-PSYCHIATRE",
+  "name": "Psychologue / psychiatre",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Psychologue / psychiatre</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Présence, Volonté</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Présence ; -Force, -Dextérité ou -Technologie</p>\n<p><strong>Compétences possibles :</strong> Médecine, Diplomatie, Investigation, Sang-froid, Culture</p>\n<p><strong>Avantage typique :</strong> Dossiers comportementaux, protocole de crise</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Présence", "Volonté"],
+      "markedProfile": "+Intelligence, +Présence ; -Force, -Dextérité ou -Technologie",
+      "skillChoices": [
+        "Médecine",
+        "Diplomatie",
+        "Investigation",
+        "Sang-froid",
+        "Culture"
+      ],
+      "typicalBenefit": "Dossiers comportementaux, protocole de crise",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

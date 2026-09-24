@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-633",
+  "name": "Premier pas de côté",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Premier pas de côté</strong>.</p><p>Lorsqu&#39;une créature plus grande entre au contact du personnage ou qu&#39;un danger visible atteint son espace, celui-ci se déplace de 1 mètre vers un espace libre qu&#39;il pouvait percevoir.</p>\n<p>Le déplacement suit un trajet légal, ne traverse aucune créature et n&#39;annule pas l&#39;action déclenchante.</p>",
+    "traits": ["Beastkin", "Souris", "Mobilité", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.185 Talents Beastkins Souris de niveau 1",
+      "family": "Fuite et voies de repli",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Fuite et voies de repli",
+        "Traits": "Beastkin, Souris, Mobilité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Souris"
+}

@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-026-INSTABILITE-ENERGETIQUE",
+  "name": "Instabilité énergétique",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Instabilité énergétique</strong>.</p><p><strong>Valeur :</strong> -2</p>\n<p>Lors d’un échec important en Canalisation, Techno-magie ou Maîtrise Magique, le MJ peut ajouter une complication de surcharge, perte de contrôle ou signature énergétique.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-2",
+      "effect": "Lors d’un échec important en Canalisation, Techno-magie ou Maîtrise Magique, le MJ peut ajouter une complication de surcharge, perte de contrôle ou signature énergétique."
+    }
+  },
+  "folder": ""
+}

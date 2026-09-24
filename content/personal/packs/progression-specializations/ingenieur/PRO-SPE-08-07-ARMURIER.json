@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-08-07-ARMURIER",
+  "name": "Ingénieur — Armurier",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "ingenieur"],
+  "system": {
+    "description": "<p><strong>Ingénieur — Armurier</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Outils d&#39;armurier, pièces d&#39;armes, kit de modification simple.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-008-INGENIEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Ingénieur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Ingénieur",
+      "branchName": "Armurier",
+      "primaryLoadout": "Outils d'armurier, pièces d'armes, kit de modification simple.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Ingénieur"
+}

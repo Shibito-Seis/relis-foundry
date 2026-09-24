@@ -1,0 +1,119 @@
+{
+  "relisId": "MAT-ARM-005-COMBINAISON-THERMO-ISOLANTE",
+  "name": "Combinaison thermo-isolante",
+  "type": "armor",
+  "tags": ["materiel", "armure", "underlayer"],
+  "system": {
+    "description": "<p><strong>Sous-couche :</strong> Combinaison thermo-isolante. <strong>Niv. :</strong> 1. <strong>Accès :</strong> Courante. <strong>CAP/CAE :</strong> +0/+0. <strong>Sol. P/E :</strong> 0/2. <strong>PV/SB :</strong> 10/5. <strong>Couverture :</strong> C. <strong>Fonction principale :</strong> Thermique et Cryogénique, climat. <strong>Empl. :</strong> 1. <strong>Équip. :</strong> 1 minute. <strong>Prix :</strong> 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.125 Lot 5-L1 — Sous-couches",
+      "columns": {
+        "#": "5",
+        "Sous-couche": "Combinaison thermo-isolante",
+        "Niv.": "1",
+        "Accès": "Courante",
+        "CAP/CAE": "+0/+0",
+        "Sol. P/E": "0/2",
+        "PV/SB": "10/5",
+        "Couverture": "C",
+        "Fonction principale": "Thermique et Cryogénique, climat",
+        "Empl.": "1",
+        "Équip.": "1 minute",
+        "Prix": "500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "underlayer",
+        "slotsConfigured": true,
+        "bodySlots": ["underlayer"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "underlayer",
+      "access": "common",
+      "capBonus": 0,
+      "caeBonus": 0,
+      "solidityPhysical": 0,
+      "solidityEnergy": 2,
+      "coverage": ["C"],
+      "constraintSummary": "# : 5 ; Sous-couche : Combinaison thermo-isolante ; Niv. : 1 ; Accès : Courante ; CAP/CAE : +0/+0 ; Sol. P/E : 0/2 ; PV/SB : 10/5 ; Couverture : C ; Fonction principale : Thermique et Cryogénique, climat ; Empl. : 1 ; Équip. : 1 minute ; Prix : 500"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "underlayer"
+}

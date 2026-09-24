@@ -1,0 +1,37 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-350",
+  "name": "Appendice fonctionnel",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Appendice fonctionnel</strong>.</p><p>Le personnage améliore un appendice existant et choisit une fonction :</p>\n<p>• Préhension légère : déplacer, récupérer ou tenir un objet léger qui n&#39;exige pas de manipulation fine ;</p>\n<p>• Stabilisation : +2 circonstanciel contre les tentatives de renversement ou de déplacement forcé ;</p>\n<p>• Soutien sensoriel : +2 aux tests de Perception à courte portée lorsque l&#39;appendice est directement utile ;</p>\n<p>• Expression corporelle : +2 aux tests sociaux lorsque l&#39;interlocuteur comprend réellement ce langage anatomique.</p>\n<p>L&#39;appendice ne compte pas comme une main libre, ne manie ni arme, ni bouclier, ni outil complexe et ne fournit aucune Action supplémentaire.</p>",
+    "traits": ["Beastkin", "Appendice", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.97 Talents Beastkins universels de niveau 1",
+      "family": "Morphologie et armes naturelles",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une fonction compatible avec l'anatomie",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morphologie et armes naturelles",
+        "Traits": "Beastkin, Appendice, Physiologie",
+        "Type": "Passif",
+        "Choix": "une fonction compatible avec l'anatomie",
+        "Préhension légère": "déplacer, récupérer ou tenir un objet léger qui n'exige pas de manipulation fine ;",
+        "Stabilisation": "+2 circonstanciel contre les tentatives de renversement ou de déplacement forcé ;",
+        "Soutien sensoriel": "+2 aux tests de Perception à courte portée lorsque l'appendice est directement utile ;",
+        "Expression corporelle": "+2 aux tests sociaux lorsque l'interlocuteur comprend réellement ce langage anatomique."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin universel"
+}

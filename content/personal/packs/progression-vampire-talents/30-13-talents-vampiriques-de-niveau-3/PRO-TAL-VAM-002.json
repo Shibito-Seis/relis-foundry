@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-VAM-002",
+  "name": "Morsure maîtrisée",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p><strong>Morsure maîtrisée</strong>.</p><p>Les crocs du personnage infligent au minimum 1d6 dégâts perforants, même si son Stade devrait leur donner un dé inférieur.</p>\n<p>Lorsqu&#39;il touche avec ses crocs une cible volontaire, immobilisée ou qu&#39;il maintient légalement, il peut choisir de n&#39;infliger aucun dégât. Il laisse seulement une marque superficielle et prélève assez de sang pour en goûter la compatibilité.</p>\n<p>Ce prélèvement ne constitue ni une ration, ni une Récupération sanguine et ne transmet pas le Vampirisme. Le talent ne donne aucune saisie, aucune attaque et aucune Action supplémentaire.</p>",
+    "traits": ["Arme naturelle", "Général", "Mêlée", "Vampirique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.13 Talents vampiriques de niveau 3",
+      "family": "Crocs et prélèvement",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Physiologie vampirique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Crocs et prélèvement",
+        "Traits": "Arme naturelle, Général, Mêlée, Vampirique",
+        "Type": "Passif",
+        "Prérequis": "Physiologie vampirique"
+      }
+    },
+    "level": 3
+  },
+  "folder": "### 30.13 Talents vampiriques de niveau 3"
+}

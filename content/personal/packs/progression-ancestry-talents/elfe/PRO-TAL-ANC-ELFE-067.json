@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-067",
+  "name": "Symbiose chloromagique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Symbiose chloromagique</strong>.</p><p>Après dix minutes passées sous une lumière adaptée, au contact d&#39;une végétation vivante ou dans une biosphère fonctionnelle, le personnage réduit son Stress de 1.</p>\n<p>Il choisit ensuite l&#39;un des bénéfices suivants :</p>\n<p>• +2 circonstanciel à son prochain test de Survie dans cet environnement ;</p>\n<p>• +2 circonstanciel à son prochain test de Canalisation visant une énergie naturelle ;</p>\n<p>• reconnaître si la végétation souffre principalement de manque d&#39;eau, de lumière, de nutriments ou d&#39;une contamination commune.</p>\n<p>Ce talent ne remplace ni nourriture, ni oxygène, ni sommeil et ne fonctionne pas avec une plante artificielle dépourvue de toute composante vivante ou magique.</p>",
+    "traits": ["Elfe", "Nature", "Magie", "Récupération"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Héritage des Grands Arbres",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "repos ou Activité d'exploration",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritage des Grands Arbres",
+        "Traits": "Elfe, Nature, Magie, Récupération",
+        "Type": "repos ou Activité d'exploration",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

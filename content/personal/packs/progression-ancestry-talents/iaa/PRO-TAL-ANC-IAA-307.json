@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-307",
+  "name": "Auto-diagnostic",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Auto-diagnostic</strong>.</p><p>Le personnage identifie ses systèmes endommagés, sa charge générale et l&#39;origine probable d&#39;une panne accessible : structure, capteur, alimentation, refroidissement, logiciel ou interface.</p>\n<p>Le premier test effectué pendant la scène pour le stabiliser ou le réparer gagne +2 circonstanciel, même s&#39;il est réalisé par un allié auquel les données sont transmises.</p>\n<p>Le diagnostic ne fournit ni pièce, ni outil et peut rester incomplet face à une technologie inconnue ou une intrusion dissimulée.</p>",
+    "traits": ["IAA", "Diagnostic", "Maintenance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Maintenance et énergie",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Maintenance et énergie",
+        "Traits": "IAA, Diagnostic, Maintenance",
+        "Type": "Activité de 1 minute"
+      }
+    },
+    "level": 1
+  },
+  "folder": "IAA"
+}

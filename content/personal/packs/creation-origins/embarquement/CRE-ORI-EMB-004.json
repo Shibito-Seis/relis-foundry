@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-EMB-004",
+  "name": "Clandestin",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p>Il n’était pas sur la liste officielle et s’est glissé à bord par ses propres moyens ou grâce à un réseau. — Chance insolente, Formation secrète, Contact influent — Clandestin, Identité falsifiée, Poursuivi</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Il n’était pas sur la liste officielle et s’est glissé à bord par ses propres moyens ou grâce à un réseau.",
+        "Atouts suggérés": "Chance insolente, Formation secrète, Contact influent",
+        "Handicaps suggérés": "Clandestin, Identité falsifiée, Poursuivi"
+      }
+    }
+  },
+  "folder": "embarquement"
+}

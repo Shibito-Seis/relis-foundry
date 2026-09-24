@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-019",
+  "name": "Porter le Précepte",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Porter le Précepte</strong>.</p><p>Ce talent ne supprime pas le Handicap Précepte de l&#39;Humanité. Il définit la manière dont le personnage choisit de vivre avec lui.</p>\n<p>Le personnage sélectionne une Orientation du Précepte permanente.</p>\n<p>Le personnage accepte de porter les responsabilités historiques de l&#39;humanité.</p>\n<p>Une fois par session, il gagne +2 circonstanciel à un test de Volonté, Sang-froid, Commandement ou Diplomatie lorsqu&#39;il :</p>\n<p>• répond des actes humains ;</p>\n<p>• assume une faute collective ;</p>\n<p>• protège des innocents affectés par l&#39;héritage humain ;</p>\n<p>• refuse de fuir une responsabilité liée à l&#39;UJC ou à la Terre.</p>\n<p>Le personnage cherche activement à corriger les fautes du passé.</p>\n<p>Une fois par session, il gagne +2 circonstanciel à un test visant directement à :</p>\n<p>• réparer un dommage causé par les Humains ;</p>\n<p>• aider une communauté victime d&#39;une institution humaine ;</p>\n<p>• désamorcer une tension historique ;</p>\n<p>• restaurer un système ou un lieu abandonné par l&#39;humanité ;</p>\n<p>• établir une coopération avec une Ascendance lésée.</p>\n<p>Le personnage refuse d&#39;être jugé uniquement pour les fautes de ses prédécesseurs.</p>\n<p>Une fois par session, il peut ignorer un malus circonstanciel social allant jusqu&#39;à -2 provenant exclusivement :</p>\n<p>• de sa nature humaine ;</p>\n<p>• de la réputation historique des Humains ;</p>\n<p>• d&#39;une accusation collective ;</p>\n<p>• d&#39;un préjugé dirigé contre l&#39;humanité.</p>\n<p>Cela ne protège pas contre les conséquences de ses propres actes.</p>\n<p>L&#39;Orientation pourra être changée ultérieurement par réentraînement, crise personnelle ou évolution narrative importante.</p>",
+    "traits": ["Humain", "Précepte", "Mental"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Précepte de l'Humanité",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Précepte de l'Humanité",
+      "choice": "Assumer, Réparer ou Rompre",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précepte de l'Humanité",
+        "Traits": "Humain, Précepte, Mental",
+        "Type": "Passif et Activation libre",
+        "Prérequis": "Précepte de l'Humanité",
+        "Choix": "Assumer, Réparer ou Rompre"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Humain"
+}

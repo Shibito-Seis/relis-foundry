@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-095",
+  "name": "Architecture des deux mondes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Architecture des deux mondes</strong>.</p><p>Avec un atelier, des composants adaptés et l&#39;autorisation d&#39;intervenir, le personnage peut créer une interface hybride durable sur un équipement ou un système existant.</p>\n<p>Il choisit une fonction précise : commande, diagnostic, régulation, alimentation auxiliaire, liaison de capteurs ou maintenance. Pour cette fonction :</p>\n<p>• le système peut être diagnostiqué et entretenu avec Techno-magie ou avec sa compétence technique normale ;</p>\n<p>• un utilisateur compatible ignore 1 point de malus circonstanciel provenant d&#39;une interface étrangère ou d&#39;une incompatibilité magique et technologique ordinaire ;</p>\n<p>• une réussite critique lors de la création permet d&#39;intégrer proprement l&#39;interface sans imposer de maintenance supplémentaire immédiate.</p>\n<p>Une réussite normale peut demander un coût défini par le MJ : composant rare, batterie, entretien périodique, place occupée ou limitation de portée.</p>\n<p>Le personnage ne peut mener qu&#39;un seul projet de ce type à la fois. L&#39;architecture :</p>\n<p>• n&#39;ajoute ni puissance, ni emplacement de module, ni fonction absente du matériel de base ;</p>\n<p>• ne contourne ni authentification, ni verrouillage majeur ;</p>\n<p>• ne transforme pas le système en Architecture IAA ;</p>\n<p>• ne remplace pas les règles futures de fabrication, de coût ou de modification d&#39;équipement.</p>",
+    "traits": ["Elfe", "Artisanat", "Technologie", "Techno-magie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-078",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Circuit arcanique",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-088",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Convergence techno-magique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.34 Talents Elfes de niveau 13",
+      "family": "Art techno-magique elfe",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "projet de 8 heures ou davantage",
+      "prerequisites": "Circuit arcanique et Convergence techno-magique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Art techno-magique elfe",
+        "Traits": "Elfe, Artisanat, Technologie, Techno-magie",
+        "Type": "projet de 8 heures ou davantage",
+        "Prérequis": "Circuit arcanique et Convergence techno-magique"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Elfe"
+}

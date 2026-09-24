@@ -1,0 +1,62 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-153",
+  "name": "Forteresse vivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Forteresse vivante</strong>.</p><p>Le personnage devient pendant 3 rounds le point fixe autour duquel la ligne se reforme.</p>\n<p>Tant qu&#39;il porte une armure, un bouclier ou une arme lourde adaptée :</p>\n<p>• il gagne +2 circonstanciel à sa CAP ;</p>\n<p>• il gagne une Résistance aux dégâts physiques égale à la moitié de son Niveau général, arrondie à l&#39;inférieur ;</p>\n<p>• il ne peut pas être renversé ou déplacé contre sa volonté tant qu&#39;il possède un appui capable de résister ;</p>\n<p>• les alliés adjacents gagnent +1 circonstanciel à leur CAP et +2 circonstanciel contre les déplacements forcés ;</p>\n<p>• il peut utiliser la réaction de Rempart mobile sans mettre fin à cette activité.</p>\n<p>La Forteresse prend fin si le personnage devient inconscient, abandonne tout équipement justifiant la posture ou perd entièrement son appui.</p>\n<p>La Résistance ne se cumule pas avec Cœur de montagne ; seule la meilleure s&#39;applique. Le talent ne protège ni contre les dégâts énergétiques purs, ni contre l&#39;asphyxie, ni contre l&#39;effondrement total du terrain.</p>",
+    "traits": ["Nain", "Défense", "Posture", "Résistance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-122",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arsenal nain",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-145",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maîtrise de l'arsenal nain",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-151",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Rempart mobile",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.46 Talents Nains de niveau 17",
+      "family": "Arsenal du bastion",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Rempart mobile et Maîtrise de l'arsenal nain",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Arsenal du bastion",
+        "Traits": "Nain, Défense, Posture, Résistance",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Rempart mobile et Maîtrise de l'arsenal nain"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Nain"
+}

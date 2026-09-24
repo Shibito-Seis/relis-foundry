@@ -1,0 +1,155 @@
+{
+  "relisId": "MAT-WPN-025-GRANDE-HACHE",
+  "name": "Grande hache",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "martialTechnoBlade"],
+  "system": {
+    "description": "<p><strong>Grande hache</strong>.</p><p><strong>Niv. :</strong> 3. <strong>Accès :</strong> Martiale. <strong>Mains :</strong> 2. <strong>Attaque :</strong> Force + Mêlée. <strong>Déf. :</strong> CAP. <strong>Dégâts :</strong> 1d12 Tranchant. <strong>Préc. :</strong> -1. <strong>Traits :</strong> Brutale 2, Lourde 2. <strong>Fiab. :</strong> 3. <strong>Struct. :</strong> H. <strong>Empl. :</strong> 2. <strong>Prix :</strong> 1 200.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.99 Lot 5-K2 — Armes de mêlée martiales et techno-lames",
+      "columns": {
+        "#": "13",
+        "Arme": "Grande hache",
+        "Niv.": "3",
+        "Accès": "Martiale",
+        "Mains": "2",
+        "Attaque": "Force + Mêlée",
+        "Déf.": "CAP",
+        "Dégâts": "1d12 Tranchant",
+        "Préc.": "-1",
+        "Traits": "Brutale 2, Lourde 2",
+        "Fiab.": "3",
+        "Struct.": "H",
+        "Empl.": "2",
+        "Prix": "1 200"
+      },
+      "reloadProfile": null
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 1200,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "martialTechnoBlade",
+      "support": "personal",
+      "access": "martial",
+      "attackMode": "melee",
+      "defenseTarget": "cap",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "force",
+      "accuracy": -1,
+      "damageDice": 1,
+      "damageDie": "d12",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d12 Tranchant",
+      "damageTypes": ["slashing"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "special",
+      "range": "",
+      "rangeOptimal": null,
+      "rangeMaximum": null,
+      "recoil": null,
+      "feedKind": "none",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "loud",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "reloadActions": null,
+      "reloadProcedure": "",
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  },
+  "folder": "Mêlée martiale et techno-lames"
+}

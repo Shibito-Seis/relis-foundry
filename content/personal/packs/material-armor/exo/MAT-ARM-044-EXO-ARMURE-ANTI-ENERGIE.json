@@ -1,0 +1,128 @@
+{
+  "relisId": "MAT-ARM-044-EXO-ARMURE-ANTI-ENERGIE",
+  "name": "Exo-armure anti-énergie",
+  "type": "armor",
+  "tags": ["materiel", "armure", "exo"],
+  "system": {
+    "description": "<p><strong>Exo-armure :</strong> Exo-armure anti-énergie. <strong>Niv. :</strong> 8. <strong>Accès :</strong> Lourde. <strong>CAP/CAE :</strong> +3/+5. <strong>Sol. P/E :</strong> 7/10. <strong>PV/SB :</strong> 78/39. <strong>Couverture :</strong> C. <strong>Force :</strong> 3. <strong>Vit. :</strong> 0. <strong>Batterie :</strong> 48 CE. <strong>Signature :</strong> Énergétique majeure. <strong>Empl. :</strong> 11. <strong>Enc. :</strong> 14. <strong>Prix :</strong> 36 000.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.135 Lot 5-L5 — Exo-armures",
+      "columns": {
+        "#": "4",
+        "Exo-armure": "Exo-armure anti-énergie",
+        "Niv.": "8",
+        "Accès": "Lourde",
+        "CAP/CAE": "+3/+5",
+        "Sol. P/E": "7/10",
+        "PV/SB": "78/39",
+        "Couverture": "C",
+        "Force": "3",
+        "Vit.": "0",
+        "Batterie": "48 CE",
+        "Signature": "Énergétique majeure",
+        "Empl.": "11",
+        "Enc.": "14",
+        "Prix": "36 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 14,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 8,
+    "referencePrice": {
+      "amount": 36000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "exo",
+      "access": "heavy",
+      "capBonus": 3,
+      "caeBonus": 5,
+      "solidityPhysical": 7,
+      "solidityEnergy": 10,
+      "coverage": ["C"],
+      "constraintSummary": "# : 4 ; Exo-armure : Exo-armure anti-énergie ; Niv. : 8 ; Accès : Lourde ; CAP/CAE : +3/+5 ; Sol. P/E : 7/10 ; PV/SB : 78/39 ; Couverture : C ; Force : 3 ; Vit. : 0 ; Batterie : 48 CE ; Signature : Énergétique majeure ; Empl. : 11 ; Enc. : 14 ; Prix : 36 000"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "exo"
+}

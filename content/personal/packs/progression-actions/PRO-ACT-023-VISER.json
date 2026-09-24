@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-023-VISER",
+  "name": "Viser",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Viser</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Obtenir +2 à la prochaine attaque contre la cible visée.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Obtenir +2 à la prochaine attaque contre la cible visée."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

@@ -17,11 +17,22 @@ function makeProject() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "relis-k1-test-"));
   temporaryRoots.push(root);
   fs.cpSync("content", path.join(root, "content"), { recursive: true });
-  for (const pack of ["creation", "progression", "material"]) {
-    const directory = path.join(root, "content", "personal", "packs", pack);
-    fs.rmSync(directory, { recursive: true, force: true });
-    fs.mkdirSync(directory, { recursive: true });
-  }
+  const packsRoot = path.join(root, "content", "personal", "packs");
+  fs.rmSync(packsRoot, { recursive: true, force: true });
+  fs.mkdirSync(path.join(packsRoot, "material"), { recursive: true });
+  const manifestPath = path.join(root, "content", "personal", "manifest.json");
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  manifest.packs = [
+    {
+      id: "material",
+      name: "personal-material",
+      label: "RE:LIS — Matériel de recette",
+      documentType: "Item",
+      source: "packs/material",
+      itemTypes: ["equipment"],
+    },
+  ];
+  fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   fs.copyFileSync("package.json", path.join(root, "package.json"));
   return root;
 }
@@ -56,14 +67,10 @@ afterEach(() => {
 });
 
 describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
-  it("valide l’inventaire canonique exhaustif de 2 398 Items", () => {
+  it("valide l’inventaire canonique exhaustif et classé de 2 404 Items", () => {
     const result = validatePersonalContent();
-    expect(result.entries).toHaveLength(2398);
-    expect(result.manifest.packs.map((pack) => pack.id)).toEqual([
-      "creation",
-      "progression",
-      "material",
-    ]);
+    expect(result.entries).toHaveLength(2404);
+    expect(result.manifest.packs).toHaveLength(23);
     expect(
       Object.fromEntries(
         result.manifest.packs.map((pack) => [
@@ -73,7 +80,31 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
           ).length,
         ]),
       ),
-    ).toEqual({ creation: 199, progression: 1444, material: 755 });
+    ).toEqual({
+      "creation-advantages": 31,
+      "creation-ancestries": 20,
+      "creation-drawbacks": 37,
+      "creation-origins": 48,
+      "creation-posts": 11,
+      "creation-profiles": 52,
+      "material-ammunition": 66,
+      "material-armor": 80,
+      "material-consumables": 267,
+      "material-containers": 28,
+      "material-equipment": 147,
+      "material-resources": 62,
+      "material-weapons": 111,
+      "progression-actions": 42,
+      "progression-ancestry-talents": 738,
+      "progression-general-talents": 42,
+      "progression-paths": 12,
+      "progression-powers-flux": 84,
+      "progression-powers-mana": 84,
+      "progression-powers-prana": 84,
+      "progression-skill-talents": 250,
+      "progression-specializations": 84,
+      "progression-vampire-talents": 24,
+    });
     expect(
       Object.fromEntries(
         Object.entries(
@@ -86,7 +117,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
     ).toEqual({
       action: 42,
       advantage: 31,
-      ammunition: 60,
+      ammunition: 66,
       ancestry: 20,
       armor: 80,
       consumable: 267,
@@ -133,7 +164,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
     expect(generated.system.meta).toMatchObject({
       relisId: "TST-ITEM-001",
       schemaVersion: "7",
-      contentVersion: "1.1.0",
+      contentVersion: "1.2.0",
       status: "active",
     });
     expect(generated.system.meta.sourceRef.relisId).toBe("");
@@ -214,6 +245,12 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
   it("protège le questionnaire : résultat non moral, sans bonus et modifications directes réservées au MJ", () => {
     const { questionnaire } = validatePersonalContent();
     expect(questionnaire.palette).toHaveLength(15);
+    expect(questionnaire.questions).toHaveLength(48);
+    expect(questionnaire.questionSelection).toEqual({
+      count: 20,
+      difficultyCounts: { simple: 8, intermediate: 8, complex: 4 },
+      stableForItem: true,
+    });
     expect(
       questionnaire.palette.reduce((counts, color) => {
         counts[color.kind] = (counts[color.kind] ?? 0) + 1;

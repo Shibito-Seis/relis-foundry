@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-CMP-PILOTAGE-114",
+  "name": "Mise en mouvement rapide",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Mise en mouvement rapide</strong>.</p><p>Si le véhicule est prêt, alimenté et ne demande aucune procédure de sécurité incompressible, le personnage réduit de 1 action, minimum 1, le coût nécessaire pour le démarrer, quitter son stationnement ou engager son mouvement.</p>\n<p>Pour une procédure mesurée en minutes, il réduit sa durée de moitié. Sur un Tour pré-départ réussi, il peut inclure dans cette durée la fermeture d&#39;un accès, le réglage de son siège ou l&#39;annonce de départ aux passagers.</p>\n<p>Le talent ne raccourcit pas une chauffe, une pressurisation, un désarrimage extérieur ou une autorisation que le véhicule ne peut pas ignorer.</p>",
+    "traits": ["Compétence", "Manipulation", "Pilotage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-PILOTAGE-111",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Tour pré-départ",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Pilotage — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Pilotage",
+      "activation": "Passif",
+      "prerequisites": "Pilotage Expert ; Tour pré-départ",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Pilotage",
+        "Niveau": "3",
+        "Traits": "Compétence, Manipulation, Pilotage",
+        "Type": "Passif",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Pilotage Expert ; Tour pré-départ"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Pilotage"
+}

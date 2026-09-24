@@ -1,0 +1,50 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-578",
+  "name": "Prise reptilienne",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Prise reptilienne</strong>.</p><p>Le personnage effectue une attaque de morsure. Sur une réussite, il peut réduire ses dégâts de 2 et tenter immédiatement un test d&#39;Athlétisme contre le DD de manœuvre approprié de la cible. Sur une réussite, la mâchoire la maintient : elle subit −2 circonstanciel à ses tests pour s&#39;éloigner et ne peut quitter l&#39;allonge du Lézard sans se libérer ou l&#39;entraîner.</p>\n<p>Le personnage doit consacrer une Action et réussir un nouveau test à chacun de ses tours pour maintenir la prise. Sa mâchoire est occupée : il ne peut ni mordre une autre cible, ni parler clairement. La prise ne fonctionne pas sur une créature trop grande ou sans zone saisissable.</p>",
+    "traits": [
+      "Beastkin",
+      "Lézard",
+      "Arme naturelle",
+      "Attaque",
+      "Contrôle",
+      "Manœuvre"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-570",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fermeture réflexe",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.165 Talents Beastkins Lézards de niveau 9",
+      "family": "Mâchoire, verrouillage et traction",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Fermeture réflexe",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mâchoire, verrouillage et traction",
+        "Traits": "Beastkin, Lézard, Arme naturelle, Attaque, Contrôle, Manœuvre",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Fermeture réflexe"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Lézard"
+}

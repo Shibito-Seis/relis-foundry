@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-070",
+  "name": "Sang-froid séculaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Sang-froid séculaire</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Volonté ou de Sang-froid contre :</p>\n<p>• la provocation ;</p>\n<p>• l&#39;impatience imposée ;</p>\n<p>• la pression d&#39;une attente prolongée ;</p>\n<p>• la panique collective ;</p>\n<p>• une tentative de le pousser à agir trop tôt ;</p>\n<p>• le désespoir lié au passage du temps ou à l&#39;isolement.</p>\n<p>Ce bonus ne s&#39;applique pas automatiquement contre la domination mentale, l&#39;effacement de mémoire ou une attaque psychique sans lien avec ces pressions.</p>",
+    "traits": ["Elfe", "Mental"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Présence intemporelle",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence intemporelle",
+        "Traits": "Elfe, Mental",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-001-PRECEPTE-DE-L-HUMANITE",
+  "name": "Précepte de l’Humanité",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Précepte de l’Humanité</strong>.</p><p><strong>Valeur :</strong> -1</p>\n<p>Handicap automatique humain. Le personnage porte le poids moral, historique ou politique de l’humanité. Le MJ peut créer des complications liées aux fautes humaines, à l’UJC, aux Esmans, aux IAAs ou aux peuples non-humains.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1",
+      "effect": "Handicap automatique humain. Le personnage porte le poids moral, historique ou politique de l’humanité. Le MJ peut créer des complications liées aux fautes humaines, à l’UJC, aux Esmans, aux IAAs ou aux peuples non-humains."
+    }
+  },
+  "folder": ""
+}

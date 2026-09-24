@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-ARMES-LOURDES-052",
+  "name": "Mise en batterie",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Mise en batterie</strong>.</p><p>Le personnage installe une arme lourde sur un support réel : trépied, affût, parapet, coque, épaule renforcée ou autre appui compatible.</p>\n<p>Il effectue un test d&#39;Armes lourdes contre le DD du terrain ou de l&#39;installation.</p>\n<p>• Réussite critique : l&#39;arme est déployée ; son utilisateur ignore jusqu&#39;à 2 points de malus circonstanciel provenant du recul ou de l&#39;instabilité du support lors de sa prochaine attaque avant la fin de son prochain tour.</p>\n<p>• Réussite : l&#39;arme est correctement déployée et peut employer les bénéfices prévus par son profil.</p>\n<p>• Échec : l&#39;installation n&#39;est pas sûre ; l&#39;arme reste utilisable selon ses règles normales, mais n&#39;est pas déployée.</p>\n<p>• Échec critique : l&#39;installation cède ou place l&#39;arme dans une mauvaise orientation ; 1 action est nécessaire pour la libérer ou reprendre une posture normale.</p>\n<p>Le support doit pouvoir encaisser la masse et les contraintes de l&#39;arme. Le talent ne rend pas portable une arme montée et ne crée ni affût ni point d&#39;ancrage.</p>",
+    "traits": ["Armes lourdes", "Compétence", "Manipulation", "Posture"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Armes lourdes — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Armes lourdes",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Armes lourdes Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Armes lourdes",
+        "Niveau": "1",
+        "Traits": "Armes lourdes, Compétence, Manipulation, Posture",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Armes lourdes Qualifié",
+        "Réussite critique": "l'arme est déployée ; son utilisateur ignore jusqu'à 2 points de malus circonstanciel provenant du recul ou de l'instabilité du support lors de sa prochaine attaque avant la fin de son prochain tour.",
+        "Réussite": "l'arme est correctement déployée et peut employer les bénéfices prévus par son profil.",
+        "Échec": "l'installation n'est pas sûre ; l'arme reste utilisable selon ses règles normales, mais n'est pas déployée.",
+        "Échec critique": "l'installation cède ou place l'arme dans une mauvaise orientation ; 1 action est nécessaire pour la libérer ou reprendre une posture normale."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Armes lourdes"
+}

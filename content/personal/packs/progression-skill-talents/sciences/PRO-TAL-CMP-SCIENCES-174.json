@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-174",
+  "name": "Analyse accélérée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Analyse accélérée</strong>.</p><p>Lorsqu&#39;il dispose d&#39;un protocole connu, des données nécessaires et des instruments appropriés, le personnage divise par deux le temps requis pour une analyse scientifique, jusqu&#39;à un minimum de 1 action pour une lecture simple.</p>\n<p>En rencontre, il ne peut obtenir cette réduction qu&#39;une fois par round. Le talent n&#39;accélère ni une expérience devant réellement durer, ni une réaction naturelle, ni un traitement informatique ou technique extérieur à la compétence Sciences.</p>",
+    "traits": ["Compétence", "Sciences"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-171",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Observation instrumentée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Passif",
+      "prerequisites": "Sciences Expert ; Observation instrumentée",
+      "choice": "",
+      "frequency": "permanent",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "3",
+        "Traits": "Compétence, Sciences",
+        "Type": "Passif",
+        "Fréquence": "permanent",
+        "Prérequis": "Sciences Expert ; Observation instrumentée"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Sciences"
+}

@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-0-11",
+  "name": "Réparation d'accord",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Réparation d&#39;accord</strong>.</p><p><strong>Mana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 2 A / contact</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Rend 1d4 Intégrité à un objet de moins de 10 kg ; une fois par objet et par scène.</p>\n<p><strong>Intensification :</strong> +1d4, masse maximale 25 kg.</p>",
+    "traits": ["Mana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "0",
+      "activation": "2 A / contact",
+      "discipline": "Transformation",
+      "effect": "Rend 1d4 Intégrité à un objet de moins de 10 kg ; une fois par objet et par scène.",
+      "scaling": "+1d4, masse maximale 25 kg."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

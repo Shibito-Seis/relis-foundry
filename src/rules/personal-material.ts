@@ -494,17 +494,9 @@ export function ammunitionCompatibility(
     errors.push(
       `Classe de pression ou d’énergie incompatible : ${ammo.pressureClass || "non renseignée"} / ${targetProfile.pressureClass || "non renseignée"}.`,
     );
-  const targetInterface = String(
-    targetProfile.interfaceId ?? targetProfile.feedInterface ?? "",
-  );
-  const interfaces = Array.from(ammo.feedInterfaces ?? [], String);
-  if (
-    targetInterface &&
-    (!interfaces.length || !interfaces.includes(targetInterface))
-  )
-    errors.push(
-      `Interface ${targetInterface} absente des compatibilités de la munition.`,
-    );
+  // L’interface mécanique relie le chargeur à l’arme. Une munition libre est
+  // compatible par famille, chambrage exact et classe; elle ne porte jamais
+  // l’interface du chargeur qui la contient.
   return errors;
 }
 

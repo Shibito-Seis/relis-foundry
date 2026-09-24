@@ -1,0 +1,161 @@
+{
+  "relisId": "MAT-WPN-077-ARC-COURT",
+  "name": "Arc court",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "bowCrossbowThrown"],
+  "system": {
+    "description": "<p><strong>Arc court</strong>.</p><p><strong>Niv. :</strong> 1. <strong>Accès :</strong> Courante. <strong>Mains :</strong> 2. <strong>Dégâts / Déf. :</strong> 1d6 Perforant / CAP. <strong>Préc. :</strong> 0. <strong>Portée :</strong> 16/48. <strong>Capacité / Recharge :</strong> Flèche ; encochage inclus. <strong>Traits :</strong> Localisable. <strong>Signature :</strong> Discrète. <strong>Fiab. :</strong> 4. <strong>Struct. :</strong> S. <strong>Empl. :</strong> 2. <strong>Prix :</strong> 300.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.110 Lot 5-K6 — Arcs, arbalètes et armes lancées",
+      "columns": {
+        "#": "1",
+        "Arme": "Arc court",
+        "Niv.": "1",
+        "Accès": "Courante",
+        "Mains": "2",
+        "Dégâts / Déf.": "1d6 Perforant / CAP",
+        "Préc.": "0",
+        "Portée": "16/48",
+        "Capacité / Recharge": "Flèche ; encochage inclus",
+        "Traits": "Localisable",
+        "Signature": "Discrète",
+        "Fiab.": "4",
+        "Struct.": "S",
+        "Empl.": "2",
+        "Prix": "300"
+      },
+      "reloadProfile": {
+        "unitaryFormula": "1 + Dextérité",
+        "unitaryFormulaId": "one-plus-dexterity",
+        "automationLot": "10-F",
+        "mayLoadOneByOne": true
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 300,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "bowCrossbowThrown",
+      "support": "personal",
+      "access": "common",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "two",
+      "skillId": "shooting",
+      "attributeId": "dexterity",
+      "accuracy": 0,
+      "damageDice": 1,
+      "damageDie": "d6",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d6 Perforant / CAP",
+      "damageTypes": ["piercing"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "16/48",
+      "rangeOptimal": 16,
+      "rangeMaximum": 48,
+      "recoil": null,
+      "feedKind": "none",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "ARW-SHORT",
+      "chamberId": "ARW-SHORT",
+      "pressureClassId": "specializedProjectile",
+      "pressureClass": "specializedProjectile",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": ["arrow"],
+      "acousticSignature": "discreet",
+      "ammunitionConsumption": {
+        "single": 1
+      },
+      "reloadActions": 0,
+      "reloadProcedure": "Encochage d’une flèche inclus dans le tir.",
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  },
+  "folder": "Arcs, arbalètes et armes lancées"
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-347",
+  "name": "Lire les traces",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Lire les traces</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Survie ou d&#39;Investigation pour reconnaître les traces laissées par une créature vivante : empreintes, odeurs, poils, écailles, sang, restes alimentaires ou perturbations du terrain.</p>\n<p>Sur une réussite, il peut estimer une information simple parmi la direction, l&#39;allure, la taille générale, le nombre approximatif ou l&#39;ancienneté relative du passage.</p>\n<p>Le talent ne reconstitue pas une piste effacée, ne révèle pas l&#39;identité exacte d&#39;un inconnu et ne remplace pas une spécialisation avancée de pistage.</p>",
+    "traits": ["Beastkin", "Exploration", "Perception", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.97 Talents Beastkins universels de niveau 1",
+      "family": "Sens animaux",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens animaux",
+        "Traits": "Beastkin, Exploration, Perception, Survie",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin universel"
+}

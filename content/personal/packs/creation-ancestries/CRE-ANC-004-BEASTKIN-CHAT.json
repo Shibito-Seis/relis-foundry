@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ANC-004-BEASTKIN-CHAT",
+  "name": "Beastkin Chat",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Beastkin Chat</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Volonté, +1 Présence</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p>Agile, indépendant, gracieux ou charismatique, mais peu puissant physiquement.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Dextérité, +1 Volonté, +1 Présence",
+      "attributePenalty": "-1 Force",
+      "rationale": "Agile, indépendant, gracieux ou charismatique, mais peu puissant physiquement.",
+      "selectable": true
+    }
+  },
+  "folder": ""
+}

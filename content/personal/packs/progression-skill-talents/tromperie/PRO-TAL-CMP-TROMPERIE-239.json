@@ -1,0 +1,74 @@
+{
+  "relisId": "PRO-TAL-CMP-TROMPERIE-239",
+  "name": "Identité opérationnelle",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Identité opérationnelle</strong>.</p><p>Avec des documents, accessoires, historiques, contacts ou accès réellement obtenus, le personnage construit une identité capable de résister à des interactions répétées.</p>\n<p>Il effectue un test de Tromperie contre le DD le plus élevé des vérifications prévues.</p>\n<p>• Réussite critique : il organise les preuves, habitudes, limites et réponses ; il ignore jusqu&#39;à 4 points de malus circonstanciel provenant d&#39;une seule source d&#39;examen ordinaire et reconnaît la première vérification dépassant les moyens de l&#39;identité.</p>\n<p>• Réussite : il ignore jusqu&#39;à 2 points de malus circonstanciel provenant d&#39;une source d&#39;examen ordinaire et gagne +2 circonstanciel à son premier test maintenant l&#39;identité.</p>\n<p>• Échec : l&#39;identité ne procure aucun bénéfice supérieur à une Couverture préparée.</p>\n<p>• Échec critique : une preuve essentielle contredit l&#39;identité ; le MJ la révèle avant son activation.</p>\n<p>Le talent ne crée aucun document, souvenir, droit, contact ou savoir et ne résiste pas automatiquement aux vérifications biométriques, magiques ou administratives appropriées.</p>",
+    "traits": [
+      "Compétence",
+      "Légendaire",
+      "Préparation",
+      "Social",
+      "Tromperie"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-TROMPERIE-235",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Déguisement méthodique",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TROMPERIE-236",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Version sous pression",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TROMPERIE-238",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Couvertures emboîtées",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Tromperie — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Tromperie",
+      "activation": "Activité de 1 jour",
+      "prerequisites": "Tromperie Légendaire ; Déguisement méthodique, Version sous pression et Couvertures emboîtées",
+      "choice": "",
+      "frequency": "une fois par identité",
+      "trigger": "",
+      "duration": "jusqu'à sa compromission majeure ou son abandon",
+      "metadata": {
+        "Compétence": "Tromperie",
+        "Niveau": "15",
+        "Traits": "Compétence, Légendaire, Préparation, Social, Tromperie",
+        "Type": "Activité de 1 jour",
+        "Fréquence": "une fois par identité",
+        "Durée": "jusqu'à sa compromission majeure ou son abandon",
+        "Prérequis": "Tromperie Légendaire ; Déguisement méthodique, Version sous pression et Couvertures emboîtées",
+        "Réussite critique": "il organise les preuves, habitudes, limites et réponses ; il ignore jusqu'à 4 points de malus circonstanciel provenant d'une seule source d'examen ordinaire et reconnaît la première vérification dépassant les moyens de l'identité.",
+        "Réussite": "il ignore jusqu'à 2 points de malus circonstanciel provenant d'une source d'examen ordinaire et gagne +2 circonstanciel à son premier test maintenant l'identité.",
+        "Échec": "l'identité ne procure aucun bénéfice supérieur à une Couverture préparée.",
+        "Échec critique": "une preuve essentielle contredit l'identité ; le MJ la révèle avant son activation."
+      }
+    },
+    "level": 15
+  },
+  "folder": "Tromperie"
+}

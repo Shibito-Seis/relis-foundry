@@ -3,7 +3,7 @@
   "format": "relis.crystal-attunement",
   "formatVersion": 1,
   "relisId": "QST-ECARLITHE-001",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "name": "Accord d’un Cœur d’Écarlithe",
   "nomenclature": {
     "canonicalTerm": "Écarlithe",
@@ -208,24 +208,37 @@
         {
           "id": "secure-people",
           "label": "Mettre les personnes à l’abri et tenir une zone sûre.",
-          "weights": { "guard": 2, "harmony": 1 }
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
         },
         {
           "id": "understand-failure",
           "label": "Isoler la panne et comprendre précisément sa cause.",
-          "weights": { "insight": 2, "creation": 1 }
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
         },
         {
           "id": "improvise-bypass",
           "label": "Improviser une dérivation pour rétablir immédiatement la fonction.",
-          "weights": { "creation": 2, "drive": 1 }
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
         },
         {
           "id": "enter-breach",
           "label": "Aller directement au point de rupture malgré le danger.",
-          "weights": { "drive": 2, "guard": 1 }
+          "weights": {
+            "drive": 2,
+            "guard": 1
+          }
         }
-      ]
+      ],
+      "difficulty": "simple"
     },
     {
       "id": "unknown-signal",
@@ -234,24 +247,37 @@
         {
           "id": "observe-patterns",
           "label": "Observer longtemps ses motifs avant toute réponse.",
-          "weights": { "insight": 2, "guard": 1 }
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
         },
         {
           "id": "answer-openly",
           "label": "Répondre avec prudence mais sans dissimuler l’intention de dialogue.",
-          "weights": { "harmony": 2, "freedom": 1 }
+          "weights": {
+            "harmony": 2,
+            "freedom": 1
+          }
         },
         {
           "id": "build-probe",
           "label": "Construire un relais ou une sonde pour établir un contact indirect.",
-          "weights": { "creation": 2, "insight": 1 }
+          "weights": {
+            "creation": 2,
+            "insight": 1
+          }
         },
         {
           "id": "cross-boundary",
           "label": "Franchir la limite et aller chercher la réponse soi-même.",
-          "weights": { "freedom": 2, "drive": 1 }
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
         }
-      ]
+      ],
+      "difficulty": "simple"
     },
     {
       "id": "unjust-order",
@@ -260,24 +286,37 @@
         {
           "id": "protect-targets",
           "label": "Protéger d’abord ceux que l’ordre met en danger.",
-          "weights": { "guard": 2, "harmony": 1 }
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
         },
         {
           "id": "seek-evidence",
           "label": "Rassembler des preuves et confronter la décision à ses conséquences.",
-          "weights": { "insight": 2, "guard": 1 }
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
         },
         {
           "id": "refuse-openly",
           "label": "Refuser ouvertement et accepter les conséquences.",
-          "weights": { "freedom": 2, "drive": 1 }
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
         },
         {
           "id": "change-method",
           "label": "Modifier l’exécution pour atteindre l’objectif sans commettre l’injustice.",
-          "weights": { "creation": 2, "harmony": 1 }
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
         }
-      ]
+      ],
+      "difficulty": "simple"
     },
     {
       "id": "scarce-seat",
@@ -286,24 +325,37 @@
         {
           "id": "stay-behind",
           "label": "Rester pour que quelqu’un d’autre parte.",
-          "weights": { "guard": 2, "harmony": 1 }
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
         },
         {
           "id": "maximize-survival",
           "label": "Choisir la personne dont la survie donne le plus de chances au groupe.",
-          "weights": { "insight": 2, "guard": 1 }
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
         },
         {
           "id": "make-another-way",
           "label": "Refuser le choix imposé et fabriquer une autre possibilité.",
-          "weights": { "creation": 2, "freedom": 1 }
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
         },
         {
           "id": "draw-lots",
           "label": "Donner à chacun une chance égale, toi compris.",
-          "weights": { "freedom": 2, "harmony": 1 }
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
         }
-      ]
+      ],
+      "difficulty": "simple"
     },
     {
       "id": "dangerous-discovery",
@@ -312,24 +364,37 @@
         {
           "id": "seal-it",
           "label": "La sceller jusqu’à ce qu’une garde fiable soit possible.",
-          "weights": { "guard": 2, "insight": 1 }
+          "weights": {
+            "guard": 2,
+            "insight": 1
+          }
         },
         {
           "id": "study-it",
           "label": "L’étudier entièrement avant de décider de son usage.",
-          "weights": { "insight": 2, "creation": 1 }
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
         },
         {
           "id": "share-carefully",
           "label": "La partager avec un cercle capable d’en porter collectivement la responsabilité.",
-          "weights": { "harmony": 2, "guard": 1 }
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
         },
         {
           "id": "break-monopoly",
           "label": "Empêcher qu’une seule autorité puisse en contrôler l’accès.",
-          "weights": { "freedom": 2, "drive": 1 }
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
         }
-      ]
+      ],
+      "difficulty": "intermediate"
     },
     {
       "id": "broken-companion",
@@ -338,24 +403,37 @@
         {
           "id": "stand-watch",
           "label": "Rester près de lui et porter sa part jusqu’à ce qu’il se relève.",
-          "weights": { "harmony": 2, "guard": 1 }
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
         },
         {
           "id": "give-truth",
           "label": "L’aider à nommer lucidement ce qui s’est passé et ce qui reste possible.",
-          "weights": { "insight": 2, "harmony": 1 }
+          "weights": {
+            "insight": 2,
+            "harmony": 1
+          }
         },
         {
           "id": "new-task",
           "label": "Lui proposer une tâche concrète qui transforme l’échec en prochaine étape.",
-          "weights": { "creation": 2, "drive": 1 }
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
         },
         {
           "id": "respect-choice",
           "label": "Respecter son choix tout en lui laissant une voie de retour.",
-          "weights": { "freedom": 2, "harmony": 1 }
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
         }
-      ]
+      ],
+      "difficulty": "intermediate"
     },
     {
       "id": "blocked-route",
@@ -364,24 +442,37 @@
         {
           "id": "hold-position",
           "label": "Consolider la position et protéger ce qui peut encore l’être.",
-          "weights": { "guard": 2, "creation": 1 }
+          "weights": {
+            "guard": 2,
+            "creation": 1
+          }
         },
         {
           "id": "map-causes",
           "label": "Comprendre pourquoi la route s’est fermée avant de repartir.",
-          "weights": { "insight": 2, "guard": 1 }
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
         },
         {
           "id": "open-route",
           "label": "Créer un passage que personne n’avait prévu.",
-          "weights": { "creation": 2, "freedom": 1 }
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
         },
         {
           "id": "move-now",
           "label": "Choisir une direction imparfaite et avancer avant d’être immobilisé.",
-          "weights": { "drive": 2, "freedom": 1 }
+          "weights": {
+            "drive": 2,
+            "freedom": 1
+          }
         }
-      ]
+      ],
+      "difficulty": "intermediate"
     },
     {
       "id": "lasting-mark",
@@ -390,22 +481,1595 @@
         {
           "id": "shelter",
           "label": "Un refuge qui continue de protéger après ton départ.",
-          "weights": { "guard": 2, "harmony": 1 }
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
         },
         {
           "id": "truth",
           "label": "Une vérité comprise et transmissible.",
-          "weights": { "insight": 2, "creation": 1 }
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
         },
         {
           "id": "work",
           "label": "Une œuvre utile que d’autres pourront améliorer.",
-          "weights": { "creation": 2, "harmony": 1 }
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
         },
         {
           "id": "open-door",
           "label": "Une porte ouverte que personne ne pourra refermer entièrement.",
-          "weights": { "freedom": 2, "drive": 1 }
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "failing-system-2",
+      "prompt": "Une conduite d’oxygène rompt dans un secteur occupé. Quel est ton premier geste ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "secure-people",
+          "label": "Mettre les personnes à l’abri et tenir une zone sûre.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "understand-failure",
+          "label": "Isoler la panne et comprendre précisément sa cause.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "improvise-bypass",
+          "label": "Improviser une dérivation pour rétablir immédiatement la fonction.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "enter-breach",
+          "label": "Aller directement au point de rupture malgré le danger.",
+          "weights": {
+            "drive": 2,
+            "guard": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "failing-system-3",
+      "prompt": "Le réacteur auxiliaire s’arrête pendant une évacuation. Que privilégies-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "secure-people",
+          "label": "Mettre les personnes à l’abri et tenir une zone sûre.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "understand-failure",
+          "label": "Isoler la panne et comprendre précisément sa cause.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "improvise-bypass",
+          "label": "Improviser une dérivation pour rétablir immédiatement la fonction.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "enter-breach",
+          "label": "Aller directement au point de rupture malgré le danger.",
+          "weights": {
+            "drive": 2,
+            "guard": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "failing-system-4",
+      "prompt": "Une station médicale perd toute alimentation au pire moment. Comment réagis-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "secure-people",
+          "label": "Mettre les personnes à l’abri et tenir une zone sûre.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "understand-failure",
+          "label": "Isoler la panne et comprendre précisément sa cause.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "improvise-bypass",
+          "label": "Improviser une dérivation pour rétablir immédiatement la fonction.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "enter-breach",
+          "label": "Aller directement au point de rupture malgré le danger.",
+          "weights": {
+            "drive": 2,
+            "guard": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "failing-system-5",
+      "prompt": "La coque se fissure tandis que les alarmes se contredisent. Par quoi commences-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "secure-people",
+          "label": "Mettre les personnes à l’abri et tenir une zone sûre.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "understand-failure",
+          "label": "Isoler la panne et comprendre précisément sa cause.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "improvise-bypass",
+          "label": "Improviser une dérivation pour rétablir immédiatement la fonction.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "enter-breach",
+          "label": "Aller directement au point de rupture malgré le danger.",
+          "weights": {
+            "drive": 2,
+            "guard": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "failing-system-6",
+      "prompt": "Un habitat entier dépend d’une réparation dont personne ne garantit l’issue. Quelle priorité guides-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "secure-people",
+          "label": "Mettre les personnes à l’abri et tenir une zone sûre.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "understand-failure",
+          "label": "Isoler la panne et comprendre précisément sa cause.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "improvise-bypass",
+          "label": "Improviser une dérivation pour rétablir immédiatement la fonction.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "enter-breach",
+          "label": "Aller directement au point de rupture malgré le danger.",
+          "weights": {
+            "drive": 2,
+            "guard": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-signal-2",
+      "prompt": "Une balise inconnue appelle au secours derrière une frontière interdite. Que fais-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "observe-patterns",
+          "label": "Observer longtemps ses motifs avant toute réponse.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "answer-openly",
+          "label": "Répondre avec prudence mais sans dissimuler l’intention de dialogue.",
+          "weights": {
+            "harmony": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "build-probe",
+          "label": "Construire un relais ou une sonde pour établir un contact indirect.",
+          "weights": {
+            "creation": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "cross-boundary",
+          "label": "Franchir la limite et aller chercher la réponse soi-même.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-signal-3",
+      "prompt": "Un message chiffré semble connaître ton nom sans révéler sa source. Comment réponds-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "observe-patterns",
+          "label": "Observer longtemps ses motifs avant toute réponse.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "answer-openly",
+          "label": "Répondre avec prudence mais sans dissimuler l’intention de dialogue.",
+          "weights": {
+            "harmony": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "build-probe",
+          "label": "Construire un relais ou une sonde pour établir un contact indirect.",
+          "weights": {
+            "creation": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "cross-boundary",
+          "label": "Franchir la limite et aller chercher la réponse soi-même.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-signal-4",
+      "prompt": "Une intelligence inconnue reproduit vos transmissions depuis une épave. Quelle approche choisis-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "observe-patterns",
+          "label": "Observer longtemps ses motifs avant toute réponse.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "answer-openly",
+          "label": "Répondre avec prudence mais sans dissimuler l’intention de dialogue.",
+          "weights": {
+            "harmony": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "build-probe",
+          "label": "Construire un relais ou une sonde pour établir un contact indirect.",
+          "weights": {
+            "creation": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "cross-boundary",
+          "label": "Franchir la limite et aller chercher la réponse soi-même.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-signal-5",
+      "prompt": "Un signal impossible traverse un brouillage total. Comment cherches-tu son origine ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "observe-patterns",
+          "label": "Observer longtemps ses motifs avant toute réponse.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "answer-openly",
+          "label": "Répondre avec prudence mais sans dissimuler l’intention de dialogue.",
+          "weights": {
+            "harmony": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "build-probe",
+          "label": "Construire un relais ou une sonde pour établir un contact indirect.",
+          "weights": {
+            "creation": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "cross-boundary",
+          "label": "Franchir la limite et aller chercher la réponse soi-même.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unknown-signal-6",
+      "prompt": "Une voix propose un savoir précieux à condition de rompre le silence radio. Que décides-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "observe-patterns",
+          "label": "Observer longtemps ses motifs avant toute réponse.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "answer-openly",
+          "label": "Répondre avec prudence mais sans dissimuler l’intention de dialogue.",
+          "weights": {
+            "harmony": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "build-probe",
+          "label": "Construire un relais ou une sonde pour établir un contact indirect.",
+          "weights": {
+            "creation": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "cross-boundary",
+          "label": "Franchir la limite et aller chercher la réponse soi-même.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unjust-order-2",
+      "prompt": "Ton supérieur exige l’abandon d’un groupe jugé non prioritaire. Que fais-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "protect-targets",
+          "label": "Protéger d’abord ceux que l’ordre met en danger.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "seek-evidence",
+          "label": "Rassembler des preuves et confronter la décision à ses conséquences.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "refuse-openly",
+          "label": "Refuser ouvertement et accepter les conséquences.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "change-method",
+          "label": "Modifier l’exécution pour atteindre l’objectif sans commettre l’injustice.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unjust-order-3",
+      "prompt": "Une règle légale condamne une personne que tu sais innocente. Que privilégies-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "protect-targets",
+          "label": "Protéger d’abord ceux que l’ordre met en danger.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "seek-evidence",
+          "label": "Rassembler des preuves et confronter la décision à ses conséquences.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "refuse-openly",
+          "label": "Refuser ouvertement et accepter les conséquences.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "change-method",
+          "label": "Modifier l’exécution pour atteindre l’objectif sans commettre l’injustice.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unjust-order-4",
+      "prompt": "Une mission utile impose un moyen que tu juges indigne. Comment agis-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "protect-targets",
+          "label": "Protéger d’abord ceux que l’ordre met en danger.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "seek-evidence",
+          "label": "Rassembler des preuves et confronter la décision à ses conséquences.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "refuse-openly",
+          "label": "Refuser ouvertement et accepter les conséquences.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "change-method",
+          "label": "Modifier l’exécution pour atteindre l’objectif sans commettre l’injustice.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unjust-order-5",
+      "prompt": "Le commandement ordonne de cacher une faute qui menace encore l’équipage. Quelle voie prends-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "protect-targets",
+          "label": "Protéger d’abord ceux que l’ordre met en danger.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "seek-evidence",
+          "label": "Rassembler des preuves et confronter la décision à ses conséquences.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "refuse-openly",
+          "label": "Refuser ouvertement et accepter les conséquences.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "change-method",
+          "label": "Modifier l’exécution pour atteindre l’objectif sans commettre l’injustice.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "unjust-order-6",
+      "prompt": "Obéir préserverait l’ordre immédiat mais installerait durablement une injustice. Comment tranches-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "protect-targets",
+          "label": "Protéger d’abord ceux que l’ordre met en danger.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "seek-evidence",
+          "label": "Rassembler des preuves et confronter la décision à ses conséquences.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "refuse-openly",
+          "label": "Refuser ouvertement et accepter les conséquences.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "change-method",
+          "label": "Modifier l’exécution pour atteindre l’objectif sans commettre l’injustice.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scarce-seat-2",
+      "prompt": "Il ne reste qu’une dose de traitement pour plusieurs blessés. Comment choisis-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "stay-behind",
+          "label": "Rester pour que quelqu’un d’autre parte.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "maximize-survival",
+          "label": "Choisir la personne dont la survie donne le plus de chances au groupe.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "make-another-way",
+          "label": "Refuser le choix imposé et fabriquer une autre possibilité.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "draw-lots",
+          "label": "Donner à chacun une chance égale, toi compris.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scarce-seat-3",
+      "prompt": "Une navette ne peut emporter qu’une partie d’une communauté menacée. Que proposes-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "stay-behind",
+          "label": "Rester pour que quelqu’un d’autre parte.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "maximize-survival",
+          "label": "Choisir la personne dont la survie donne le plus de chances au groupe.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "make-another-way",
+          "label": "Refuser le choix imposé et fabriquer une autre possibilité.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "draw-lots",
+          "label": "Donner à chacun une chance égale, toi compris.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scarce-seat-4",
+      "prompt": "Les réserves suffisent à sauver un seul secteur. Quel principe te guide ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "stay-behind",
+          "label": "Rester pour que quelqu’un d’autre parte.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "maximize-survival",
+          "label": "Choisir la personne dont la survie donne le plus de chances au groupe.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "make-another-way",
+          "label": "Refuser le choix imposé et fabriquer une autre possibilité.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "draw-lots",
+          "label": "Donner à chacun une chance égale, toi compris.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scarce-seat-5",
+      "prompt": "Tu peux garantir une seule extraction avant l’effondrement. Comment décides-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "stay-behind",
+          "label": "Rester pour que quelqu’un d’autre parte.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "maximize-survival",
+          "label": "Choisir la personne dont la survie donne le plus de chances au groupe.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "make-another-way",
+          "label": "Refuser le choix imposé et fabriquer une autre possibilité.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "draw-lots",
+          "label": "Donner à chacun une chance égale, toi compris.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scarce-seat-6",
+      "prompt": "Toute solution connue sauve certains et condamne les autres. Quelle responsabilité assumes-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "stay-behind",
+          "label": "Rester pour que quelqu’un d’autre parte.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "maximize-survival",
+          "label": "Choisir la personne dont la survie donne le plus de chances au groupe.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "make-another-way",
+          "label": "Refuser le choix imposé et fabriquer une autre possibilité.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "draw-lots",
+          "label": "Donner à chacun une chance égale, toi compris.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "dangerous-discovery-2",
+      "prompt": "Tu trouves une arme capable d’arrêter la guerre ou de l’aggraver. Qu’en fais-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "seal-it",
+          "label": "La sceller jusqu’à ce qu’une garde fiable soit possible.",
+          "weights": {
+            "guard": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "study-it",
+          "label": "L’étudier entièrement avant de décider de son usage.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "share-carefully",
+          "label": "La partager avec un cercle capable d’en porter collectivement la responsabilité.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "break-monopoly",
+          "label": "Empêcher qu’une seule autorité puisse en contrôler l’accès.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "dangerous-discovery-3",
+      "prompt": "Une archive révèle un secret qui pourrait libérer ou déstabiliser des millions de personnes. Que choisis-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "seal-it",
+          "label": "La sceller jusqu’à ce qu’une garde fiable soit possible.",
+          "weights": {
+            "guard": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "study-it",
+          "label": "L’étudier entièrement avant de décider de son usage.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "share-carefully",
+          "label": "La partager avec un cercle capable d’en porter collectivement la responsabilité.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "break-monopoly",
+          "label": "Empêcher qu’une seule autorité puisse en contrôler l’accès.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "dangerous-discovery-4",
+      "prompt": "Une technique interdite sauverait des vies mais personne n’en maîtrise les conséquences. Comment avances-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "seal-it",
+          "label": "La sceller jusqu’à ce qu’une garde fiable soit possible.",
+          "weights": {
+            "guard": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "study-it",
+          "label": "L’étudier entièrement avant de décider de son usage.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "share-carefully",
+          "label": "La partager avec un cercle capable d’en porter collectivement la responsabilité.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "break-monopoly",
+          "label": "Empêcher qu’une seule autorité puisse en contrôler l’accès.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "dangerous-discovery-5",
+      "prompt": "Tu découvres une faille donnant accès à tous les systèmes civils. Quelle décision prends-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "seal-it",
+          "label": "La sceller jusqu’à ce qu’une garde fiable soit possible.",
+          "weights": {
+            "guard": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "study-it",
+          "label": "L’étudier entièrement avant de décider de son usage.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "share-carefully",
+          "label": "La partager avec un cercle capable d’en porter collectivement la responsabilité.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "break-monopoly",
+          "label": "Empêcher qu’une seule autorité puisse en contrôler l’accès.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "dangerous-discovery-6",
+      "prompt": "Un savoir dangereux ne peut être détruit sans effacer aussi un remède irremplaçable. Que fais-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "seal-it",
+          "label": "La sceller jusqu’à ce qu’une garde fiable soit possible.",
+          "weights": {
+            "guard": 2,
+            "insight": 1
+          }
+        },
+        {
+          "id": "study-it",
+          "label": "L’étudier entièrement avant de décider de son usage.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "share-carefully",
+          "label": "La partager avec un cercle capable d’en porter collectivement la responsabilité.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "break-monopoly",
+          "label": "Empêcher qu’une seule autorité puisse en contrôler l’accès.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "broken-companion-2",
+      "prompt": "Après une erreur grave, un allié refuse de reprendre sa place. Comment l’aides-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "stand-watch",
+          "label": "Rester près de lui et porter sa part jusqu’à ce qu’il se relève.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "give-truth",
+          "label": "L’aider à nommer lucidement ce qui s’est passé et ce qui reste possible.",
+          "weights": {
+            "insight": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "new-task",
+          "label": "Lui proposer une tâche concrète qui transforme l’échec en prochaine étape.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "respect-choice",
+          "label": "Respecter son choix tout en lui laissant une voie de retour.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "broken-companion-3",
+      "prompt": "Une amie ne croit plus pouvoir protéger qui que ce soit. Que lui offres-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "stand-watch",
+          "label": "Rester près de lui et porter sa part jusqu’à ce qu’il se relève.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "give-truth",
+          "label": "L’aider à nommer lucidement ce qui s’est passé et ce qui reste possible.",
+          "weights": {
+            "insight": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "new-task",
+          "label": "Lui proposer une tâche concrète qui transforme l’échec en prochaine étape.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "respect-choice",
+          "label": "Respecter son choix tout en lui laissant une voie de retour.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "broken-companion-4",
+      "prompt": "Un membre de l’équipage s’isole après avoir perdu ceux qu’il guidait. Comment interviens-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "stand-watch",
+          "label": "Rester près de lui et porter sa part jusqu’à ce qu’il se relève.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "give-truth",
+          "label": "L’aider à nommer lucidement ce qui s’est passé et ce qui reste possible.",
+          "weights": {
+            "insight": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "new-task",
+          "label": "Lui proposer une tâche concrète qui transforme l’échec en prochaine étape.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "respect-choice",
+          "label": "Respecter son choix tout en lui laissant une voie de retour.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "broken-companion-5",
+      "prompt": "Quelqu’un que tu respectes demande qu’on le laisse abandonner sa vocation. Que fais-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "stand-watch",
+          "label": "Rester près de lui et porter sa part jusqu’à ce qu’il se relève.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "give-truth",
+          "label": "L’aider à nommer lucidement ce qui s’est passé et ce qui reste possible.",
+          "weights": {
+            "insight": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "new-task",
+          "label": "Lui proposer une tâche concrète qui transforme l’échec en prochaine étape.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "respect-choice",
+          "label": "Respecter son choix tout en lui laissant une voie de retour.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "broken-companion-6",
+      "prompt": "Un compagnon veut effacer toute trace de son échec, même au prix de ce qu’il est devenu. Comment réagis-tu ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "stand-watch",
+          "label": "Rester près de lui et porter sa part jusqu’à ce qu’il se relève.",
+          "weights": {
+            "harmony": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "give-truth",
+          "label": "L’aider à nommer lucidement ce qui s’est passé et ce qui reste possible.",
+          "weights": {
+            "insight": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "new-task",
+          "label": "Lui proposer une tâche concrète qui transforme l’échec en prochaine étape.",
+          "weights": {
+            "creation": 2,
+            "drive": 1
+          }
+        },
+        {
+          "id": "respect-choice",
+          "label": "Respecter son choix tout en lui laissant une voie de retour.",
+          "weights": {
+            "freedom": 2,
+            "harmony": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "blocked-route-2",
+      "prompt": "Votre itinéraire sûr disparaît et le temps manque. Quel réflexe prends-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "hold-position",
+          "label": "Consolider la position et protéger ce qui peut encore l’être.",
+          "weights": {
+            "guard": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "map-causes",
+          "label": "Comprendre pourquoi la route s’est fermée avant de repartir.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "open-route",
+          "label": "Créer un passage que personne n’avait prévu.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "move-now",
+          "label": "Choisir une direction imparfaite et avancer avant d’être immobilisé.",
+          "weights": {
+            "drive": 2,
+            "freedom": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "blocked-route-3",
+      "prompt": "Le plan préparé depuis des mois devient impossible en quelques secondes. Que fais-tu ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "hold-position",
+          "label": "Consolider la position et protéger ce qui peut encore l’être.",
+          "weights": {
+            "guard": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "map-causes",
+          "label": "Comprendre pourquoi la route s’est fermée avant de repartir.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "open-route",
+          "label": "Créer un passage que personne n’avait prévu.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "move-now",
+          "label": "Choisir une direction imparfaite et avancer avant d’être immobilisé.",
+          "weights": {
+            "drive": 2,
+            "freedom": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "blocked-route-4",
+      "prompt": "Une porte réputée inviolable bloque l’unique passage connu. Comment avances-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "hold-position",
+          "label": "Consolider la position et protéger ce qui peut encore l’être.",
+          "weights": {
+            "guard": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "map-causes",
+          "label": "Comprendre pourquoi la route s’est fermée avant de repartir.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "open-route",
+          "label": "Créer un passage que personne n’avait prévu.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "move-now",
+          "label": "Choisir une direction imparfaite et avancer avant d’être immobilisé.",
+          "weights": {
+            "drive": 2,
+            "freedom": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "blocked-route-5",
+      "prompt": "Toutes les cartes mènent désormais dans une zone perdue. Quelle méthode choisis-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "hold-position",
+          "label": "Consolider la position et protéger ce qui peut encore l’être.",
+          "weights": {
+            "guard": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "map-causes",
+          "label": "Comprendre pourquoi la route s’est fermée avant de repartir.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "open-route",
+          "label": "Créer un passage que personne n’avait prévu.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "move-now",
+          "label": "Choisir une direction imparfaite et avancer avant d’être immobilisé.",
+          "weights": {
+            "drive": 2,
+            "freedom": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "blocked-route-6",
+      "prompt": "Continuer exige d’abandonner le plan sans garantie de retour. Quel principe te guide ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "hold-position",
+          "label": "Consolider la position et protéger ce qui peut encore l’être.",
+          "weights": {
+            "guard": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "map-causes",
+          "label": "Comprendre pourquoi la route s’est fermée avant de repartir.",
+          "weights": {
+            "insight": 2,
+            "guard": 1
+          }
+        },
+        {
+          "id": "open-route",
+          "label": "Créer un passage que personne n’avait prévu.",
+          "weights": {
+            "creation": 2,
+            "freedom": 1
+          }
+        },
+        {
+          "id": "move-now",
+          "label": "Choisir une direction imparfaite et avancer avant d’être immobilisé.",
+          "weights": {
+            "drive": 2,
+            "freedom": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "lasting-mark-2",
+      "prompt": "Quelle œuvre voudrais-tu confier à ceux qui viendront après toi ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "shelter",
+          "label": "Un refuge qui continue de protéger après ton départ.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "truth",
+          "label": "Une vérité comprise et transmissible.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "work",
+          "label": "Une œuvre utile que d’autres pourront améliorer.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "open-door",
+          "label": "Une porte ouverte que personne ne pourra refermer entièrement.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "lasting-mark-3",
+      "prompt": "Que devrait retenir une communauté qui ne connaîtra jamais ton nom ?",
+      "difficulty": "simple",
+      "options": [
+        {
+          "id": "shelter",
+          "label": "Un refuge qui continue de protéger après ton départ.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "truth",
+          "label": "Une vérité comprise et transmissible.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "work",
+          "label": "Une œuvre utile que d’autres pourront améliorer.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "open-door",
+          "label": "Une porte ouverte que personne ne pourra refermer entièrement.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "lasting-mark-4",
+      "prompt": "Si tu pouvais réparer une seule chose pour les générations suivantes, laquelle choisirais-tu ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "shelter",
+          "label": "Un refuge qui continue de protéger après ton départ.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "truth",
+          "label": "Une vérité comprise et transmissible.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "work",
+          "label": "Une œuvre utile que d’autres pourront améliorer.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "open-door",
+          "label": "Une porte ouverte que personne ne pourra refermer entièrement.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "lasting-mark-5",
+      "prompt": "Quelle promesse mériterait de survivre à ton propre voyage ?",
+      "difficulty": "intermediate",
+      "options": [
+        {
+          "id": "shelter",
+          "label": "Un refuge qui continue de protéger après ton départ.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "truth",
+          "label": "Une vérité comprise et transmissible.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "work",
+          "label": "Une œuvre utile que d’autres pourront améliorer.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "open-door",
+          "label": "Une porte ouverte que personne ne pourra refermer entièrement.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "lasting-mark-6",
+      "prompt": "Au terme de ta route, qu’espères-tu avoir rendu possible pour les autres ?",
+      "difficulty": "complex",
+      "options": [
+        {
+          "id": "shelter",
+          "label": "Un refuge qui continue de protéger après ton départ.",
+          "weights": {
+            "guard": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "truth",
+          "label": "Une vérité comprise et transmissible.",
+          "weights": {
+            "insight": 2,
+            "creation": 1
+          }
+        },
+        {
+          "id": "work",
+          "label": "Une œuvre utile que d’autres pourront améliorer.",
+          "weights": {
+            "creation": 2,
+            "harmony": 1
+          }
+        },
+        {
+          "id": "open-door",
+          "label": "Une porte ouverte que personne ne pourra refermer entièrement.",
+          "weights": {
+            "freedom": 2,
+            "drive": 1
+          }
         }
       ]
     }
@@ -463,5 +2127,14 @@
     "usesChargeUnits": false,
     "usesCE": false,
     "pranaResolutionLot": "10-F"
+  },
+  "questionSelection": {
+    "count": 20,
+    "difficultyCounts": {
+      "simple": 8,
+      "intermediate": 8,
+      "complex": 4
+    },
+    "stableForItem": true
   }
 }

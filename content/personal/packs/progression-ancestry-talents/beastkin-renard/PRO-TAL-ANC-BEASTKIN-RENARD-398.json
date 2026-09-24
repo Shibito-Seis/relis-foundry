@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-398",
+  "name": "Mémoire des queues",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mémoire des queues</strong>.</p><p>Après chaque repos long, le personnage peut confier à une queue le souvenir exact d&#39;une scène vécue depuis son repos précédent. Il peut ensuite le revoir avec ses perceptions d&#39;alors et gagne +2 circonstanciel à un test de Culture ou d&#39;Investigation fondé directement sur ce souvenir.</p>\n<p>Il ne peut conserver qu&#39;un souvenir de cette manière ; en enregistrer un nouveau remplace l&#39;ancien. Une altération mémorielle ordinaire ne modifie pas le souvenir confié, mais un effet spirituel capable de viser la queue peut l&#39;atteindre.</p>\n<p>Le souvenir n&#39;est pas une preuve objective : il conserve les limites, erreurs de perception et illusions vécues au moment de la scène.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Renard", "Mémoire", "Queue", "Spiritualité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-382",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Seconde queue",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.110 Talents Beastkins Renards de niveau 9",
+      "family": "Queues, mémoire et ancienneté",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Passif et Activité de 1 minute",
+      "prerequisites": "Seconde queue",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Queues, mémoire et ancienneté",
+        "Traits": "Beastkin, Renard, Mémoire, Queue, Spiritualité",
+        "Prérequis": "Seconde queue",
+        "Type": "Passif et Activité de 1 minute"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Renard"
+}

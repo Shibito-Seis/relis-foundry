@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-036-ANCRAGE-ECARLATE-INCOMPLET",
+  "name": "Ancrage écarlate incomplet",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Ancrage écarlate incomplet</strong>.</p><p><strong>Valeur :</strong> -1/-2/-3</p>\n<p>Option réservée à une campagne où la Contamination forte constitue le Trait de campagne normal des PJ biologiques. -1 : Contamination modérée, maximum 2 Morts mineures. -2 : Contamination faible, maximum 1 Mort mineure. -3 : non contaminé, aucune Mort mineure. Ce Handicap ne s&#39;applique jamais aux IAAs et peut être refusé si la mortalité ne constitue pas un risque réel de la campagne.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2/-3",
+      "effect": "Option réservée à une campagne où la Contamination forte constitue le Trait de campagne normal des PJ biologiques. -1 : Contamination modérée, maximum 2 Morts mineures. -2 : Contamination faible, maximum 1 Mort mineure. -3 : non contaminé, aucune Mort mineure. Ce Handicap ne s'applique jamais aux IAAs et peut être refusé si la mortalité ne constitue pas un risque réel de la campagne."
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-GEN-039",
+  "name": "Constitution mythique",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Constitution mythique</strong>.</p><p>Le personnage choisit l&#39;effet correspondant :</p>\n<p>• améliorer le résultat du test d&#39;un degré ;</p>\n<p>• ou maintenir sa Fatigue à 4 au lieu de 5.</p>\n<p>Le talent ne réduit pas les dégâts directs, ne prévient pas une Blessure critique, ne traite pas une cause persistante et ne fonctionne pas contre une mort immédiate.</p>",
+    "traits": ["Général", "Mythique", "Physique", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-GEN-032",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps endurci",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.9 Talents généraux de niveau 23",
+      "family": "Vitalité et récupération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Corps endurci",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "le personnage obtient un échec ou un échec critique à un test physique de Vigueur, Dextérité ou Endurance, ou sa Fatigue devrait atteindre 5",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vitalité et récupération",
+        "Traits": "Général, Mythique, Physique, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par repos long",
+        "Prérequis": "Corps endurci",
+        "Déclencheur": "le personnage obtient un échec ou un échec critique à un test physique de Vigueur, Dextérité ou Endurance, ou sa Fatigue devrait atteindre 5"
+      }
+    },
+    "level": 23
+  },
+  "folder": "### 31.9 Talents généraux de niveau 23"
+}

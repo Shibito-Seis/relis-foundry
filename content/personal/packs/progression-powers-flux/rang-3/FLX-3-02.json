@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-3-02",
+  "name": "Gravité inversée locale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-3"],
+  "system": {
+    "description": "<p><strong>Gravité inversée locale</strong>.</p><p><strong>Flux — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / Explosion 2 à 24 m</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Pendant 2 tours, chute et appuis s&#39;orientent vers une direction choisie ; test d&#39;Acrobaties pour rester ancré.</p>\n<p><strong>Intensification :</strong> Rayon +1 ou durée +1 tour.</p>",
+    "traits": ["Flux", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "3",
+      "activation": "4 / 3 A / Explosion 2 à 24 m",
+      "discipline": "Transformation",
+      "effect": "Pendant 2 tours, chute et appuis s'orientent vers une direction choisie ; test d'Acrobaties pour rester ancré.",
+      "scaling": "Rayon +1 ou durée +1 tour."
+    },
+    "level": 10
+  },
+  "folder": "Rang 3"
+}

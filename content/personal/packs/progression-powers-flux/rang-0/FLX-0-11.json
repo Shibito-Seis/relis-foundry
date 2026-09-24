@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-0-11",
+  "name": "Frisson d'anomalie",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-0"],
+  "system": {
+    "description": "<p><strong>Frisson d&#39;anomalie</strong>.</p><p><strong>Flux — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 2 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Divination</p>\n<p>Détecte faille spatiale, boucle, téléportation récente ou gravité anormale.</p>\n<p><strong>Intensification :</strong> Indique nature générale, direction et ancienneté.</p>",
+    "traits": ["Flux", "Divination"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "0",
+      "activation": "2 A / émanation 6 m",
+      "discipline": "Divination",
+      "effect": "Détecte faille spatiale, boucle, téléportation récente ou gravité anormale.",
+      "scaling": "Indique nature générale, direction et ancienneté."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

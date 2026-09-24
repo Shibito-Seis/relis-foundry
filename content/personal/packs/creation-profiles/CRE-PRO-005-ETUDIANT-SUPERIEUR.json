@@ -1,0 +1,30 @@
+{
+  "relisId": "CRE-PRO-005-ETUDIANT-SUPERIEUR",
+  "name": "Étudiant supérieur",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Étudiant supérieur</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Technologie, Présence</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Technologie ; -Force, -Vigueur ou -Volonté</p>\n<p><strong>Compétences possibles :</strong> Sciences, Culture, Informatique, Médecine, Ingénierie, Diplomatie</p>\n<p><strong>Avantage typique :</strong> Spécialité universitaire, mentor</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Technologie", "Présence"],
+      "markedProfile": "+Intelligence, +Technologie ; -Force, -Vigueur ou -Volonté",
+      "skillChoices": [
+        "Sciences",
+        "Culture",
+        "Informatique",
+        "Médecine",
+        "Ingénierie",
+        "Diplomatie"
+      ],
+      "typicalBenefit": "Spécialité universitaire, mentor",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

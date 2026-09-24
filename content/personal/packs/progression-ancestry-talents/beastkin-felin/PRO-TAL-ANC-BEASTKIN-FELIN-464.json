@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-464",
+  "name": "Interception féline",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Interception féline</strong>.</p><p>Lorsqu&#39;un allié situé à 2 mètres est ciblé par une attaque que le personnage perçoit, celui-ci se déplace jusqu&#39;à 2 mètres vers un espace adjacent à cet allié. Il choisit ensuite de devenir la cible de l&#39;attaque si cela est physiquement possible, ou d&#39;accorder +2 circonstanciel à la défense de l&#39;allié.</p>\n<p>Ce déplacement ne traverse aucun obstacle, ne donne aucune attaque et ne peut être utilisé si le personnage est immobilisé.</p>",
+    "traits": ["Beastkin", "Félin", "Protection", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.131 Talents Beastkins Félins de niveau 5",
+      "family": "Territoire, clan et protection",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Territoire, clan et protection",
+        "Traits": "Beastkin, Félin, Protection, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Félin"
+}

@@ -1,0 +1,90 @@
+{
+  "relisId": "CLN-039",
+  "name": "Respirateur assisté polyvalent",
+  "type": "equipment",
+  "tags": ["materiel", "clinique"],
+  "system": {
+    "description": "<p><strong>Respirateur assisté polyvalent</strong> appartient au catalogue clinique.</p><p>1. Courant. 1. 8 h/cartouche, 12 h/cellule. FIL, CONC à partir de 14 % O₂. 046.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "clinique",
+      "sourceSection": "54.7 Respiration, EVA et température — CLN-039 à CLN-048",
+      "canonicalRow": [
+        "CLN-039",
+        "Respirateur assisté polyvalent",
+        "1",
+        "Courant",
+        "1",
+        "8 h/cartouche, 12 h/cellule",
+        "FIL, CONC à partir de 14 % O₂",
+        "046"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "clinique"
+}

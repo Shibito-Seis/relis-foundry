@@ -1,0 +1,41 @@
+{
+  "relisId": "PRO-SPE-04-04-DEFENSEUR",
+  "name": "Soldat — Défenseur",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "soldat"],
+  "system": {
+    "description": "<p><strong>Soldat — Défenseur</strong>.</p><p><strong>Voie :</strong> Soldat</p>\n<p><strong>Dotation principale :</strong> Bouclier tactique, armure légère renforcée ou module d&#39;interception.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-004-SOLDAT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Soldat",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Soldat",
+      "branchName": "Défenseur",
+      "primaryLoadout": "Bouclier tactique, armure légère renforcée ou module d'interception.",
+      "loadoutRefs": [
+        {
+          "relisId": "MAT-WPN-099-BOUCLIER-TACTIQUE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "weapon",
+          "state": "resolved",
+          "labelSnapshot": "Bouclier tactique",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  },
+  "folder": "Soldat"
+}

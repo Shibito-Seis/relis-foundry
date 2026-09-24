@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-0-10",
+  "name": "Microgravité",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-0"],
+  "system": {
+    "description": "<p><strong>Microgravité</strong>.</p><p><strong>Flux — Rang 0.</strong></p>\n<p><strong>Activation :</strong> R / personnel</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Réduit de 3 m la hauteur d&#39;une chute et permet d&#39;atterrir debout.</p>\n<p><strong>Intensification :</strong> Réduit de 9 m et déplace horizontalement de 2 m.</p>",
+    "traits": ["Flux", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "0",
+      "activation": "R / personnel",
+      "discipline": "Transformation",
+      "effect": "Réduit de 3 m la hauteur d'une chute et permet d'atterrir debout.",
+      "scaling": "Réduit de 9 m et déplace horizontalement de 2 m."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

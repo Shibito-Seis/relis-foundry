@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-463",
+  "name": "Rugissement d'arrêt",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Rugissement d&#39;arrêt</strong>.</p><p>Lorsqu&#39;une créature consciente entre volontairement à 6 mètres du personnage et peut l&#39;entendre, le Félin rugit et effectue un test d&#39;Intimidation contre sa Volonté. Sur une réussite, la créature choisit : interrompre son déplacement dans le dernier espace légal atteint, ou le poursuivre avec −2 circonstanciel à sa prochaine attaque avant la fin de son tour.</p>\n<p>L&#39;effet ne contrôle pas l&#39;esprit, ne fonctionne pas sur une créature immunisée à la peur ou incapable d&#39;entendre, et une même créature n&#39;y est exposée qu&#39;une fois par scène.</p>",
+    "traits": ["Beastkin", "Félin", "Audition", "Intimidation", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-455",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Voix du grand félin",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.131 Talents Beastkins Félins de niveau 5",
+      "family": "Rugissement et dominance",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Voix du grand félin",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Rugissement et dominance",
+        "Traits": "Beastkin, Félin, Audition, Intimidation, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Voix du grand félin"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Félin"
+}

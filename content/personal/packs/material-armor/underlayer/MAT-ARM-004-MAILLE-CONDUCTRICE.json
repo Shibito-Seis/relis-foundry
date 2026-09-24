@@ -1,0 +1,119 @@
+{
+  "relisId": "MAT-ARM-004-MAILLE-CONDUCTRICE",
+  "name": "Maille conductrice",
+  "type": "armor",
+  "tags": ["materiel", "armure", "underlayer"],
+  "system": {
+    "description": "<p><strong>Sous-couche :</strong> Maille conductrice. <strong>Niv. :</strong> 2. <strong>Accès :</strong> Martiale. <strong>CAP/CAE :</strong> +0/+1. <strong>Sol. P/E :</strong> 0/2. <strong>PV/SB :</strong> 10/5. <strong>Couverture :</strong> C. <strong>Fonction principale :</strong> Électrique et EMP, mise à la masse. <strong>Empl. :</strong> 1. <strong>Équip. :</strong> 3 Actions. <strong>Prix :</strong> 600.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.125 Lot 5-L1 — Sous-couches",
+      "columns": {
+        "#": "4",
+        "Sous-couche": "Maille conductrice",
+        "Niv.": "2",
+        "Accès": "Martiale",
+        "CAP/CAE": "+0/+1",
+        "Sol. P/E": "0/2",
+        "PV/SB": "10/5",
+        "Couverture": "C",
+        "Fonction principale": "Électrique et EMP, mise à la masse",
+        "Empl.": "1",
+        "Équip.": "3 Actions",
+        "Prix": "600"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "underlayer",
+        "slotsConfigured": true,
+        "bodySlots": ["underlayer"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 600,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "underlayer",
+      "access": "martial",
+      "capBonus": 0,
+      "caeBonus": 1,
+      "solidityPhysical": 0,
+      "solidityEnergy": 2,
+      "coverage": ["C"],
+      "constraintSummary": "# : 4 ; Sous-couche : Maille conductrice ; Niv. : 2 ; Accès : Martiale ; CAP/CAE : +0/+1 ; Sol. P/E : 0/2 ; PV/SB : 10/5 ; Couverture : C ; Fonction principale : Électrique et EMP, mise à la masse ; Empl. : 1 ; Équip. : 3 Actions ; Prix : 600"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "underlayer"
+}

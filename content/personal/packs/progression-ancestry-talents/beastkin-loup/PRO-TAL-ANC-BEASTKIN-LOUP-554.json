@@ -1,0 +1,63 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-554",
+  "name": "Chasse au-delà des frontières",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Chasse au-delà des frontières</strong>.</p><p>Le personnage désigne sa proie marquée. Pendant l&#39;effet :</p>\n<p>• les membres du cercle à 12 mètres gagnent +3 circonstanciel pour la percevoir, la poursuivre ou fermer ses issues ;</p>\n<p>• une dissimulation ordinaire ne suffit plus à rompre sa poursuite sans test opposé ;</p>\n<p>• la première fois de chaque tour qu&#39;un membre touche la proie, un autre membre gagne +2 circonstanciel à sa prochaine attaque ou manœuvre contre elle avant la fin du tour ;</p>\n<p>• une fois pendant la durée, le Loup peut relancer un test raté pour maintenir la chasse et conserver le meilleur résultat.</p>\n<p>Le talent ne révèle pas une cible imperceptible, ne traverse aucun obstacle infranchissable, n&#39;offre aucune attaque et cesse si la cible quitte physiquement la scène par un moyen impossible à suivre.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Loup", "Mythique", "Poursuite"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-547",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Jusqu'au bout du monde",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-552",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Meute des horizons",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-553",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Hurlement entre les mondes",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.158 Talent Beastkin Loup de niveau 25",
+      "family": "Transcendance lupine",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Meute des horizons ou Hurlement entre les mondes, et Jusqu'au bout du monde",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance lupine",
+        "Traits": "Beastkin, Loup, Mythique, Poursuite",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Meute des horizons ou Hurlement entre les mondes, et Jusqu'au bout du monde"
+      }
+    },
+    "level": 25
+  },
+  "folder": "Beastkin Loup"
+}

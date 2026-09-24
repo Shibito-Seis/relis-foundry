@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-388",
+  "name": "Orbe-étoile",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Orbe-étoile</strong>.</p><p>Le personnage entretient un petit orbe spirituel qui flotte près de lui ou demeure caché dans une queue. L&#39;orbe peut fournir une faible lumière, porter sa voix à 6 mètres ou enregistrer une minute de sons qu&#39;il perçoit.</p>\n<p>Lorsqu&#39;il gagne du Stress à cause de la peur, de la panique, d&#39;une illusion ou d&#39;une contrainte mentale, il peut utiliser sa réaction pour réduire ce gain de 1. L&#39;orbe s&#39;éteint alors jusqu&#39;au prochain repos long.</p>\n<p>L&#39;orbe n&#39;est pas une créature, ne possède ni tour, ni Actions, ni perception indépendante, et ne peut transporter d&#39;objet.</p>",
+    "traits": [
+      "Beastkin",
+      "Renard",
+      "Feu-follet",
+      "Protection",
+      "Spiritualité"
+    ],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.109 Talents Beastkins Renards de niveau 5",
+      "family": "Feux-follets et arts spirituels",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Feux-follets et arts spirituels",
+        "Traits": "Beastkin, Renard, Feu-follet, Protection, Spiritualité",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par jour pour la réaction"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Renard"
+}

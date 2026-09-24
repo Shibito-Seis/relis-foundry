@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-532",
+  "name": "Rabattre ensemble",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Rabattre ensemble</strong>.</p><p>Le personnage se déplace jusqu&#39;à la moitié de sa Vitesse vers sa proie marquée puis tente un test d&#39;Athlétisme contre son DD de manœuvre approprié. Sur une réussite, il la déplace de 1 case (1 à 2 mètres) vers un espace légal plus proche d&#39;un autre membre du cercle ou plus éloigné d&#39;une issue.</p>\n<p>Le talent n&#39;inflige aucun dégât, ne déplace pas une cible trop grande et ne permet pas de traverser un obstacle.</p>",
+    "traits": ["Beastkin", "Loup", "Athlétisme", "Mobilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-522",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Marquer la proie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.153 Talents Beastkins Loups de niveau 5",
+      "family": "Chasse concertée et encerclement",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Marquer la proie",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chasse concertée et encerclement",
+        "Traits": "Beastkin, Loup, Athlétisme, Mobilité",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Marquer la proie"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Loup"
+}

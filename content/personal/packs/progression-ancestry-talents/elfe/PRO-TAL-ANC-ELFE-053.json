@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-053",
+  "name": "Réflexes de la canopée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Réflexes de la canopée</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Dextérité ou d&#39;Acrobaties contre :</p>\n<p>• pièges physiques ;</p>\n<p>• effondrements ;</p>\n<p>• branches, câbles ou obstacles soudains ;</p>\n<p>• zones dangereuses visibles ;</p>\n<p>• perte brutale de gravité ou de stabilité.</p>\n<p>Lorsqu&#39;un tel danger se déclenche, il peut utiliser sa Réaction pour dégainer, saisir un appui ou manipuler un objet de sécurité immédiatement accessible sans dépenser l&#39;action normalement requise.</p>\n<p>Cette réaction ne déplace pas automatiquement le personnage hors de la zone.</p>",
+    "traits": ["Elfe", "Réflexes"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Grâce sylvestre",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Réflexes",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

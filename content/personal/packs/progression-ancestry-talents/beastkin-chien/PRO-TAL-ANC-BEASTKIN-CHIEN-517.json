@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-517",
+  "name": "Compagnon de tous les chemins",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Compagnon de tous les chemins</strong>.</p><p>Le personnage et son partenaire doivent pouvoir se percevoir à 12 mètres lors de l&#39;activation. Pendant l&#39;effet :</p>\n<p>• ils gagnent +3 circonstanciel contre peur, contrôle mental et effets qui voudraient les séparer ;</p>\n<p>• chacun peut, une fois pendant la durée et avec sa propre Réaction, se déplacer de 2 mètres vers l&#39;autre ;</p>\n<p>• la première aide réussie de chacun envers l&#39;autre permet au bénéficiaire de relancer le test aidé et de conserver le second résultat ;</p>\n<p>• lorsqu&#39;un des deux reçoit du Stress, l&#39;autre sait immédiatement qu&#39;il est en détresse, sans en connaître automatiquement la cause.</p>\n<p>Le talent ne partage ni pensées, ni dégâts, ni Actions, ne fonctionne pas sans perception initiale et n&#39;impose jamais au partenaire de participer.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Chien", "Coopération", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-509",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Deux volontés, un dessein",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.146 Talents Beastkins Chiens de niveau 21",
+      "family": "Transcendance canine",
+      "ancestry": "Beastkin Chien",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Deux volontés, un dessein",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance canine",
+        "Traits": "Beastkin, Chien, Coopération, Mythique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Deux volontés, un dessein"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Beastkin Chien"
+}

@@ -1,0 +1,128 @@
+{
+  "relisId": "MAT-ARM-042-EXO-ARMURE-D-INFANTERIE",
+  "name": "Exo-armure d'infanterie",
+  "type": "armor",
+  "tags": ["materiel", "armure", "exo"],
+  "system": {
+    "description": "<p><strong>Exo-armure :</strong> Exo-armure d&#39;infanterie. <strong>Niv. :</strong> 6. <strong>Accès :</strong> Lourde. <strong>CAP/CAE :</strong> +4/+3. <strong>Sol. P/E :</strong> 8/7. <strong>PV/SB :</strong> 68/34. <strong>Couverture :</strong> C. <strong>Force :</strong> 2. <strong>Vit. :</strong> 0. <strong>Batterie :</strong> 48 CE. <strong>Signature :</strong> Bruyante, énergétique. <strong>Empl. :</strong> 10. <strong>Enc. :</strong> 12. <strong>Prix :</strong> 22 000.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.135 Lot 5-L5 — Exo-armures",
+      "columns": {
+        "#": "2",
+        "Exo-armure": "Exo-armure d'infanterie",
+        "Niv.": "6",
+        "Accès": "Lourde",
+        "CAP/CAE": "+4/+3",
+        "Sol. P/E": "8/7",
+        "PV/SB": "68/34",
+        "Couverture": "C",
+        "Force": "2",
+        "Vit.": "0",
+        "Batterie": "48 CE",
+        "Signature": "Bruyante, énergétique",
+        "Empl.": "10",
+        "Enc.": "12",
+        "Prix": "22 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 12,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 6,
+    "referencePrice": {
+      "amount": 22000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "exo",
+      "access": "heavy",
+      "capBonus": 4,
+      "caeBonus": 3,
+      "solidityPhysical": 8,
+      "solidityEnergy": 7,
+      "coverage": ["C"],
+      "constraintSummary": "# : 2 ; Exo-armure : Exo-armure d'infanterie ; Niv. : 6 ; Accès : Lourde ; CAP/CAE : +4/+3 ; Sol. P/E : 8/7 ; PV/SB : 68/34 ; Couverture : C ; Force : 2 ; Vit. : 0 ; Batterie : 48 CE ; Signature : Bruyante, énergétique ; Empl. : 10 ; Enc. : 12 ; Prix : 22 000"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "exo"
+}

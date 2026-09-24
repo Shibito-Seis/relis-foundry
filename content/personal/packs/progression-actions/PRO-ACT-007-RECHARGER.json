@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-007-RECHARGER",
+  "name": "Recharger",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Recharger</strong>.</p><p><strong>Coût :</strong> Selon l&#39;équipement</p>\n<p>Introduire une munition, un chargeur, une batterie ou une alimentation compatible.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Selon l'équipement",
+      "summary": "Introduire une munition, un chargeur, une batterie ou une alimentation compatible."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 0
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

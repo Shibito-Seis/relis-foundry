@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-230",
+  "name": "Bouclier intérieur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bouclier intérieur</strong>.</p><p>Lorsqu&#39;une attaque magique ou énergétique cible directement le personnage, celui-ci gagne +2 circonstanciel à sa défense contre cette attaque.</p>\n<p>Si l&#39;attaque réussit malgré ce bonus, il réduit ses dégâts de 2. Le Bouclier ne protège pas d&#39;une zone qui ne cible pas directement le personnage, ni des dégâts secondaires purement physiques.</p>",
+    "traits": ["Elman", "Défense", "Prana", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-210",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Souffle intérieur",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-212",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ancrage du noyau",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.65 Talents Elmans de niveau 5",
+      "family": "Circuit intérieur",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Ancrage du noyau ou Souffle intérieur",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Circuit intérieur",
+        "Traits": "Elman, Défense, Prana, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Ancrage du noyau ou Souffle intérieur"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Elman"
+}

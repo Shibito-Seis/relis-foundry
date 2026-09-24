@@ -1,0 +1,37 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-303",
+  "name": "Châssis adaptable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Châssis adaptable</strong>.</p><p>Le personnage choisit un ajustement :</p>\n<p>• Tout-terrain : +2 circonstanciel aux tests de déplacement sur sol irrégulier ou instable.</p>\n<p>• Manipulateurs fins : +2 aux tests manuels exigeant une précision extrême lorsque les outils adaptés sont présents.</p>\n<p>• Joints étanches : +2 contre poussières, immersion brève et atmosphères corrosives légères.</p>\n<p>• Structure compacte : +2 pour se faufiler, se dissimuler derrière une couverture ou être transporté lorsqu&#39;il est inactif.</p>\n<p>L&#39;ajustement peut être remplacé après une heure dans un atelier approprié. Il ne change ni taille, ni profil corporel, ni besoin d&#39;équipement vital.</p>",
+    "traits": ["IAA", "Châssis", "Physiologie artificielle"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Châssis et modules",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "un ajustement de châssis",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Châssis et modules",
+        "Traits": "IAA, Châssis, Physiologie artificielle",
+        "Type": "Passif",
+        "Choix": "un ajustement de châssis",
+        "Tout-terrain": "+2 circonstanciel aux tests de déplacement sur sol irrégulier ou instable.",
+        "Manipulateurs fins": "+2 aux tests manuels exigeant une précision extrême lorsque les outils adaptés sont présents.",
+        "Joints étanches": "+2 contre poussières, immersion brève et atmosphères corrosives légères.",
+        "Structure compacte": "+2 pour se faufiler, se dissimuler derrière une couverture ou être transporté lorsqu'il est inactif."
+      }
+    },
+    "level": 1
+  },
+  "folder": "IAA"
+}

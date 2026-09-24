@@ -1,0 +1,108 @@
+{
+  "relisId": "MAT-WPN-PRANA-TECHNOLAME",
+  "name": "Techno-lame de Prana",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "techno-lame", "prana", "ecarlithe"],
+  "system": {
+    "description": "<p><strong>Techno-lame de Prana</strong>.</p><p>Techno-lame dédiée au Prana. Elle reçoit un Cœur d’Écarlithe réellement installé ; le Cœur n’est pas une batterie et ne contient aucun CE. Activation, désactivation, surcharge et valeurs de combat restent dans 10-F.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "prana-techno-blade",
+      "sourceSection": "81, 86 et 93–99",
+      "deferredRules": [
+        "activation",
+        "désactivation",
+        "surcharge",
+        "résolution de combat"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": [],
+        "providedSlots": {
+          "interface": 1
+        },
+        "interfaceIds": ["crystalSocket"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "weaponProfile": {
+      "familyId": "martialTechnoBlade",
+      "technoBladeVariant": "pranaCrystal",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "melee",
+      "defenseTarget": "cap",
+      "handsMode": "versatile",
+      "skillId": "melee",
+      "attributeId": "magicMastery",
+      "feedKind": "pranaCrystal",
+      "feedInterfaceId": "crystalSocket",
+      "ammunitionFamilyIds": [],
+      "modeIds": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "Mêlée martiale et techno-lames"
+}

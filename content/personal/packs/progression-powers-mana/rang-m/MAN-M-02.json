@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-M-02",
+  "name": "Couronne des expressions",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-m"],
+  "system": {
+    "description": "<p><strong>Couronne des expressions</strong>.</p><p><strong>Mana — Rang Mythique.</strong></p>\n<p><strong>Activation :</strong> 12 Mana + 1 PM / 3 A</p>\n<p><strong>Discipline :</strong> Projection / Protection</p>\n<p>Pendant une scène, contrôle six expressions énergétiques : immunité personnelle, conversion des dégâts reçus et une zone 24d6 par tour coûtant 2 Mana.</p>\n<p><strong>Intensification :</strong> Une seule zone par tour ; ne convertit pas Prana, Flux ou dégâts conceptuels.</p>",
+    "traits": ["Mana", "Projection / Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "M",
+      "activation": "12 Mana + 1 PM / 3 A",
+      "discipline": "Projection / Protection",
+      "effect": "Pendant une scène, contrôle six expressions énergétiques : immunité personnelle, conversion des dégâts reçus et une zone 24d6 par tour coûtant 2 Mana.",
+      "scaling": "Une seule zone par tour ; ne convertit pas Prana, Flux ou dégâts conceptuels."
+    },
+    "level": 30
+  },
+  "folder": "Rang M"
+}

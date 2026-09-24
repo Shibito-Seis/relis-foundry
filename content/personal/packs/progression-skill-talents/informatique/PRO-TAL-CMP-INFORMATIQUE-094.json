@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-INFORMATIQUE-094",
+  "name": "Routine opératoire",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Routine opératoire</strong>.</p><p>Le personnage prépare une routine limitée exécutant une séquence numérique répétitive qu&#39;il est déjà autorisé à accomplir : classer des rapports, comparer des valeurs, surveiller un seuil, synchroniser une sauvegarde ou préparer une requête.</p>\n<p>Il effectue un test d&#39;Informatique contre le DD de la tâche.</p>\n<p>• Réussite critique : la routine accomplit la séquence et signale les résultats atypiques pertinents.</p>\n<p>• Réussite : elle accomplit la séquence prévue.</p>\n<p>• Échec : elle ne peut pas être fiabilisée.</p>\n<p>• Échec critique : elle produit un résultat manifestement incomplet et s&#39;arrête avant d&#39;altérer les données sources.</p>\n<p>La routine n&#39;apprend pas, ne prend aucune décision autonome, n&#39;obtient aucun accès supplémentaire et ne peut attaquer, piloter ou contrôler une entité. Une seule routine du personnage peut être active par système.</p>",
+    "traits": ["Automatisation", "Compétence", "Informatique", "Préparation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Informatique — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Informatique",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Informatique Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'au prochain repos ou à la modification du système",
+      "metadata": {
+        "Compétence": "Informatique",
+        "Niveau": "3",
+        "Traits": "Automatisation, Compétence, Informatique, Préparation",
+        "Type": "Activité de 10 minutes",
+        "Durée": "jusqu'au prochain repos ou à la modification du système",
+        "Prérequis": "Informatique Expert",
+        "Réussite critique": "la routine accomplit la séquence et signale les résultats atypiques pertinents.",
+        "Réussite": "elle accomplit la séquence prévue.",
+        "Échec": "elle ne peut pas être fiabilisée.",
+        "Échec critique": "elle produit un résultat manifestement incomplet et s'arrête avant d'altérer les données sources."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Informatique"
+}

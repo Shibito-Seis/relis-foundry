@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-09-02-PILOTE-DE-CHASSE",
+  "name": "Pilote — Pilote de chasse",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "pilote"],
+  "system": {
+    "description": "<p><strong>Pilote — Pilote de chasse</strong>.</p><p><strong>Voie :</strong> Pilote</p>\n<p><strong>Dotation principale :</strong> Interface réflexe, casque de visée, harnais anti-G.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-009-PILOTE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Pilote",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Pilote",
+      "branchName": "Pilote de chasse",
+      "primaryLoadout": "Interface réflexe, casque de visée, harnais anti-G.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Pilote"
+}

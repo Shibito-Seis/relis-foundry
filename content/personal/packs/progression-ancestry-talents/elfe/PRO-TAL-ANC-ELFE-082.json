@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-082",
+  "name": "Pas entre les mondes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage disparaît dans une vibration du Flux et réapparaît dans un espace libre qu&#39;il voit à 6 mètres au maximum.</p>\n<p>Ce déplacement :</p>\n<p>• ne traverse pas physiquement les espaces intermédiaires ;</p>\n<p>• ne déclenche pas les réactions fondées uniquement sur le mouvement ;</p>\n<p>• peut franchir un obstacle, un vide ou une différence de hauteur si l&#39;espace d&#39;arrivée est visible ;</p>\n<p>• ne permet pas de traverser un champ bloquant la téléportation, une enceinte hermétique opaque ou un obstacle dont le personnage ignore l&#39;épaisseur ;</p>\n<p>• échoue sans consommer son utilisation si l&#39;espace d&#39;arrivée est occupé ou momentanément inaccessible.</p>\n<p>Le personnage doit pouvoir se mouvoir volontairement : il ne peut pas utiliser Pas entre les mondes lorsqu&#39;il est inconscient, paralysé ou soumis à un effet interdisant toute téléportation.</p>",
+    "traits": ["Elfe", "Magie", "Mouvement", "Téléportation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-072",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pas sans trace",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-073",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Danse entre les tirs",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.33 Talents Elfes de niveau 9",
+      "family": "Grâce sylvestre",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "1 Action (magique)",
+      "prerequisites": "Pas sans trace ou Danse entre les tirs",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Magie, Mouvement, Téléportation",
+        "Type": "1 Action (magique)",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Pas sans trace ou Danse entre les tirs"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Elfe"
+}

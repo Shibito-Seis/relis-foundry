@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-421",
+  "name": "Danse entre les jambes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Danse entre les jambes</strong>.</p><p>Le personnage tente un test d&#39;Acrobaties contre la défense appropriée d&#39;une créature adjacente. En cas de réussite, il traverse son espace et la cible subit -2 circonstanciel à sa prochaine Réaction ou à son prochain test de Dextérité avant le début du prochain tour du Chat. Il doit terminer dans un espace libre.</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.120 Talents Beastkins Chats de niveau 5",
+      "family": "Grâce féline et appuis",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce féline et appuis",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Chat"
+}

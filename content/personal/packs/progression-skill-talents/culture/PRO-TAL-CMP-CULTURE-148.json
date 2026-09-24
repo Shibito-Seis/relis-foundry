@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-CMP-CULTURE-148",
+  "name": "Histoire sous les récits",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Histoire sous les récits</strong>.</p><p>Le personnage compare au moins deux récits, archives ou traditions portant sur le même sujet.</p>\n<p>Sur un test de Culture réussi, il distingue :</p>\n<p>• les faits sur lesquels les sources convergent ;</p>\n<p>• les divergences de perspective ou d&#39;intérêt ;</p>\n<p>• un anachronisme, ajout tardif ou biais probable ;</p>\n<p>• l&#39;information qui demanderait une source supplémentaire pour être démontrée.</p>\n<p>Sur une réussite critique, il apprend aussi quelle source accessible paraît la plus proche de l&#39;événement ou de l&#39;institution étudiée et gagne +2 circonstanciel au prochain test d&#39;Investigation exploitant cette comparaison.</p>\n<p>Le talent ne déclare pas automatiquement un récit vrai ou mensonger et ne révèle pas l&#39;intention d&#39;un auteur inconnu.</p>",
+    "traits": ["Analyse", "Compétence", "Culture", "Recherche"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-CULTURE-141",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire des usages",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Culture — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Culture",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Culture Maître ; Mémoire des usages",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Culture",
+        "Niveau": "7",
+        "Traits": "Analyse, Compétence, Culture, Recherche",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Culture Maître ; Mémoire des usages"
+      }
+    },
+    "level": 7
+  },
+  "folder": "Culture"
+}

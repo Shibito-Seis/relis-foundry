@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-732",
+  "name": "Porte-parole des mondes mêlés",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Porte-parole des mondes mêlés</strong>.</p><p>Lorsqu&#39;un test de Diplomatie, Culture ou Commandement échoue à cause d&#39;une différence culturelle identifiable entre deux communautés terriennes, le personnage expose immédiatement le sens que chaque partie attribue aux mêmes paroles.</p>\n<p>L&#39;auteur du test le relance avec +2 circonstanciel et conserve le second résultat. Sur une réussite, chacun comprend au moins la nature du désaccord, même si personne ne change d&#39;avis.</p>\n<p>Le talent ne fonctionne pas contre une hostilité assumée, un mensonge volontaire ou un conflit d&#39;intérêts que les participants comprennent déjà parfaitement.</p>",
+    "traits": ["Ascendance universelle", "Diplomatie", "Réaction", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-723",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Double appartenance",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-725",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Gestes sans traduction",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.239 Talents universels d'Ascendance de niveau 13",
+      "family": "Coopération interraciale",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Double appartenance ou Gestes sans traduction",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Coopération interraciale",
+        "Traits": "Ascendance universelle, Diplomatie, Réaction, Social",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Double appartenance ou Gestes sans traduction"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Universel"
+}

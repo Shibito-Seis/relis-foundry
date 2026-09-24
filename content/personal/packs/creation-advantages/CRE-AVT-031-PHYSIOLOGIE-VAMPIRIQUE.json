@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-031-PHYSIOLOGIE-VAMPIRIQUE",
+  "name": "Physiologie vampirique",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Physiologie vampirique</strong>.</p><p><strong>Valeur :</strong> +3</p>\n<p>Atout lié. Le personnage possède l&#39;altération biologique techno-magique décrite au chapitre 30 : vision nocturne, sens du sang, crocs, Récupération sanguine, résistance biologique et vieillissement ralenti selon son Stade. Requiert obligatoirement Faim écarlate -3.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+3",
+      "effect": "Atout lié. Le personnage possède l'altération biologique techno-magique décrite au chapitre 30 : vision nocturne, sens du sang, crocs, Récupération sanguine, résistance biologique et vieillissement ralenti selon son Stade. Requiert obligatoirement Faim écarlate -3."
+    }
+  },
+  "folder": ""
+}

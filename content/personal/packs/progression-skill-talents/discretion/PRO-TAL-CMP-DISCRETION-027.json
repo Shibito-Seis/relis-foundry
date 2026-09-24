@@ -1,0 +1,46 @@
+{
+  "relisId": "PRO-TAL-CMP-DISCRETION-027",
+  "name": "Disparaître dans le tumulte",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Disparaître dans le tumulte</strong>.</p><p>Le personnage se déplace jusqu&#39;à la moitié de son déplacement et tente immédiatement un test de Discrétion.</p>\n<p>Sur une réussite, il devient dissimulé pour les observateurs qui ne peuvent maintenir une perception directe et ininterrompue. Sur une réussite critique, il peut aussi dissimuler un objet tenu de taille raisonnable ou entraîner un allié adjacent volontaire de sa taille ou plus petit ; cet allié utilise son propre résultat de Discrétion avec +2 circonstanciel.</p>\n<p>Le talent ne rend pas invisible, ne traverse pas une ligne de vue continue et prend fin normalement si le personnage attaque ou accomplit une action manifestement révélatrice.</p>",
+    "traits": ["Compétence", "Discrétion", "Mouvement", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-DISCRETION-025",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fenêtre d'ombre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Discrétion — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Discrétion",
+      "activation": "Réaction",
+      "prerequisites": "Discrétion Maître ; Fenêtre d'ombre",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "une explosion, une foule, une alarme, un écran de fumée, un mouvement massif ou un événement comparable perturbe réellement les perceptions",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Discrétion",
+        "Niveau": "7",
+        "Traits": "Compétence, Discrétion, Mouvement, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "une explosion, une foule, une alarme, un écran de fumée, un mouvement massif ou un événement comparable perturbe réellement les perceptions",
+        "Prérequis": "Discrétion Maître ; Fenêtre d'ombre"
+      }
+    },
+    "level": 7
+  },
+  "folder": "Discrétion"
+}

@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-016-TRAUMA-DE-CRYOSTASE",
+  "name": "Trauma de cryostase",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Trauma de cryostase</strong>.</p><p><strong>Valeur :</strong> -1/-2</p>\n<p>Déclencheurs possibles : capsule, réveil médical, isolement, froid, perte de temps. -1 : malaise ou malus circonstanciel. -2 : test de Sang-froid ou Volonté requis lors de scènes fortes.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2",
+      "effect": "Déclencheurs possibles : capsule, réveil médical, isolement, froid, perte de temps. -1 : malaise ou malus circonstanciel. -2 : test de Sang-froid ou Volonté requis lors de scènes fortes."
+    }
+  },
+  "folder": ""
+}

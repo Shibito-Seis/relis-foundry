@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-107",
+  "name": "Ossature compacte",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Ossature compacte</strong>.</p><p>La densité du squelette et des tissus du personnage amortit les contraintes mécaniques diffuses.</p>\n<p>Il réduit de 2 les dégâts qu&#39;il subit exclusivement à cause :</p>\n<p>• d&#39;une chute ;</p>\n<p>• d&#39;une collision non offensive ;</p>\n<p>• d&#39;une compression progressive ;</p>\n<p>• de vibrations structurelles ;</p>\n<p>• d&#39;une accélération ou décélération brutale.</p>\n<p>Il gagne également +2 circonstanciel aux tests de Vigueur ou d&#39;Endurance destinés à éviter une fracture, un écrasement ou une perte de connaissance provoquée par ces phénomènes.</p>\n<p>Cette réduction s&#39;applique après les protections. Elle ne réduit pas les dégâts d&#39;une arme contondante, d&#39;une explosion, d&#39;un projectile, d&#39;une attaque volontaire ou d&#39;un véhicule utilisé délibérément pour percuter le personnage.</p>",
+    "traits": ["Nain", "Physiologie", "Résistance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Robustesse des profondeurs",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse des profondeurs",
+        "Traits": "Nain, Physiologie, Résistance",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}

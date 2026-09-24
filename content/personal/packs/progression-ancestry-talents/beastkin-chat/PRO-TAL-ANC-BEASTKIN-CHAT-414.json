@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-414",
+  "name": "Griffes rétractiles",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Griffes rétractiles</strong>.</p><p>Le personnage peut sortir ou rétracter ses griffes librement. Rétractées, elles sont difficiles à identifier comme une arme et donnent +2 circonstanciel pour dissimuler leur nature. Il peut infliger des dégâts non létaux avec elles sans pénalité. Le talent n&#39;augmente pas leurs dégâts.</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-349",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Arme naturelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Griffes rétractiles et précision",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Arme naturelle choisie sous forme de griffes",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Griffes rétractiles et précision",
+        "Type": "Passif",
+        "Prérequis": "Arme naturelle choisie sous forme de griffes"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Chat"
+}

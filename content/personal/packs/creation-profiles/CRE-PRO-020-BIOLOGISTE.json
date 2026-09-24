@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-PRO-020-BIOLOGISTE",
+  "name": "Biologiste",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Biologiste</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Technologie, Volonté</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Technologie ; -Force, -Présence ou -Dextérité</p>\n<p><strong>Compétences possibles :</strong> Sciences, Médecine, Investigation, Survie</p>\n<p><strong>Avantage typique :</strong> Échantillonneur, notes de recherche</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Technologie", "Volonté"],
+      "markedProfile": "+Intelligence, +Technologie ; -Force, -Présence ou -Dextérité",
+      "skillChoices": ["Sciences", "Médecine", "Investigation", "Survie"],
+      "typicalBenefit": "Échantillonneur, notes de recherche",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-491",
+  "name": "Aboiement d'alerte",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Aboiement d&#39;alerte</strong>.</p><p>Lorsque le personnage détecte un danger soudain ou une intrusion, il émet un avertissement précis. Jusqu&#39;à deux alliés à 6 mètres capables de l&#39;entendre apprennent la direction générale du danger et gagnent +2 circonstanciel à leur prochain test de Perception ou d&#39;Initiative contre cette menace.</p>\n<p>Le talent ne révèle pas la nature exacte d&#39;un danger mal identifié, ne porte pas dans le vide et ne fournit aucune défense ou Réaction supplémentaire.</p>",
+    "traits": ["Beastkin", "Chien", "Audition", "Réaction", "Vigilance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-348",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réflexe animal",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.141 Talents Beastkins Chiens de niveau 1",
+      "family": "Voix, alerte et commandement",
+      "ancestry": "Beastkin Chien",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Réflexe animal",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Voix, alerte et commandement",
+        "Traits": "Beastkin, Chien, Audition, Réaction, Vigilance",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Réflexe animal"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Chien"
+}

@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-433",
+  "name": "Trouvaille improbable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Trouvaille improbable</strong>.</p><p>Après une fouille réussie, le personnage peut découvrir un objet mineur plausible déjà présent : outil commun, petite réserve, note abandonnée ou pièce détachée. Le MJ valide sa présence et sa qualité. Le talent ne crée ni arme rare, ni crédit, ni preuve décisive, ni objet étranger au lieu.</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-425",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Toujours regarder dessous",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.121 Talents Beastkins Chats de niveau 9",
+      "family": "Curiosité et exploration",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Toujours regarder dessous",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Curiosité et exploration",
+        "Prérequis": "Toujours regarder dessous",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par session"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Chat"
+}

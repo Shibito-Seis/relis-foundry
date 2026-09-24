@@ -95,16 +95,17 @@ function relativeInside(root, candidate, label, errors) {
 
 function listJsonFiles(directory) {
   if (!fs.existsSync(directory)) return [];
-  return fs
-    .readdirSync(directory, { withFileTypes: true })
-    .filter(
-      (entry) =>
-        entry.isFile() &&
-        entry.name.endsWith(".json") &&
-        !entry.name.startsWith("_"),
-    )
-    .map((entry) => path.join(directory, entry.name))
-    .sort((left, right) => left.localeCompare(right, "fr"));
+  const files = [];
+  const visit = (current) => {
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const absolute = path.join(current, entry.name);
+      if (entry.isDirectory()) visit(absolute);
+      else if (entry.isFile() && entry.name.endsWith(".json"))
+        files.push(absolute);
+    }
+  };
+  visit(directory);
+  return files.sort((left, right) => left.localeCompare(right, "fr"));
 }
 
 function validateManifest(value, sourceRoot, errors) {
@@ -235,6 +236,25 @@ function validateEntry(entry, file, pack, contentVersion, errors) {
       `${label} : contentVersion local doit correspondre au manifeste (${contentVersion}).`,
     );
   return entry;
+}
+
+function folderId(packId, folderName) {
+  return stableFoundryId(`FOLDER-${packId}-${folderName}`);
+}
+
+function createFoundryFolder(pack, folderName) {
+  const id = folderId(pack.id, folderName);
+  return {
+    _key: `!folders!${id}`,
+    _id: id,
+    name: folderName,
+    type: "Item",
+    folder: null,
+    sorting: "a",
+    sort: 0,
+    color: null,
+    flags: { relis: { generated: true, packId: pack.id } },
+  };
 }
 
 function collectReferences(value, pointer = "", results = []) {
@@ -389,9 +409,23 @@ function validateQuestionnaire(value, errors) {
     value.resolution.blackIsReservedForRawEcarlethe !== true
   )
     errors.push("Questionnaire : contrat de résolution chromatique incomplet.");
+  const selection = value.questionSelection;
+  if (
+    !isRecord(selection) ||
+    selection.count !== 20 ||
+    selection.stableForItem !== true ||
+    !isRecord(selection.difficultyCounts) ||
+    selection.difficultyCounts.simple !== 8 ||
+    selection.difficultyCounts.intermediate !== 8 ||
+    selection.difficultyCounts.complex !== 4
+  )
+    errors.push(
+      "Questionnaire : tirage stable attendu de 20 situations (8 simples, 8 intermédiaires, 4 complexes).",
+    );
   const questionIds = new Set();
-  if (value.questions?.length !== 8)
-    errors.push("Questionnaire : huit situations sont requises.");
+  if (value.questions?.length !== 48)
+    errors.push("Questionnaire : une banque de 48 situations est requise.");
+  const difficulties = { simple: 0, intermediate: 0, complex: 0 };
   for (const [questionIndex, question] of (value.questions ?? []).entries()) {
     const label = `Questionnaire : question ${questionIndex}`;
     if (
@@ -403,6 +437,9 @@ function validateQuestionnaire(value, errors) {
       errors.push(`${label} invalide.`);
       continue;
     }
+    if (!Object.hasOwn(difficulties, question.difficulty ?? ""))
+      errors.push(`${label} doit déclarer une difficulté reconnue.`);
+    else difficulties[question.difficulty] += 1;
     if (questionIds.has(question.id))
       errors.push(`${label} duplique ${question.id}.`);
     questionIds.add(question.id);
@@ -433,6 +470,15 @@ function validateQuestionnaire(value, errors) {
           errors.push(`${label} contient un poids invalide pour ${axis}.`);
     }
   }
+  for (const [difficulty, minimum] of Object.entries({
+    simple: 8,
+    intermediate: 8,
+    complex: 4,
+  }))
+    if (difficulties[difficulty] < minimum)
+      errors.push(
+        `Questionnaire : banque insuffisante pour la difficulté ${difficulty}.`,
+      );
   if (!isRecord(value.tieBreaker) || !Array.isArray(value.tieBreaker.options)) {
     errors.push("Questionnaire : départage explicite obligatoire.");
   } else {
@@ -479,7 +525,7 @@ export function stableFoundryId(relisId) {
     .slice(0, 16);
 }
 
-export function createFoundryItem(entry, manifest, packageVersion) {
+export function createFoundryItem(entry, manifest, packageVersion, pack) {
   const tags = Array.from(new Set(entry.tags ?? [])).sort((left, right) =>
     left.localeCompare(right, "fr"),
   );
@@ -513,7 +559,7 @@ export function createFoundryItem(entry, manifest, packageVersion) {
     img: entry.img ?? "icons/svg/item-bag.svg",
     system,
     effects: clone(entry.effects ?? []),
-    folder: entry.folder ?? null,
+    folder: entry.folder ? folderId(pack.id, entry.folder) : null,
     sort: entry.sort ?? 0,
     ownership: { default: 0 },
     flags: {
@@ -639,11 +685,21 @@ export function generatePersonalContent(
         left.entry.relisId.localeCompare(right.entry.relisId, "fr"),
       );
     counts[pack.name] = packEntries.length;
+    const folders = [
+      ...new Set(packEntries.map(({ entry }) => entry.folder).filter(Boolean)),
+    ].sort((left, right) => left.localeCompare(right, "fr"));
+    for (const folder of folders) {
+      const document = createFoundryFolder(pack, folder);
+      fs.writeFileSync(
+        path.join(target, `_folder-${document._id}.json`),
+        stableJson(document),
+      );
+    }
     for (const { entry } of packEntries)
       fs.writeFileSync(
         path.join(target, `${entry.relisId}.json`),
         stableJson(
-          createFoundryItem(entry, validation.manifest, packageVersion),
+          createFoundryItem(entry, validation.manifest, packageVersion, pack),
         ),
       );
   }
@@ -716,7 +772,9 @@ export async function buildPersonalPacks(
         log: false,
         transformName: (entry) => `${entry._id}.json`,
       });
-      const compiledCount = listJsonFiles(verificationRoot).length;
+      const compiledCount = listJsonFiles(verificationRoot)
+        .map((file) => readJson(file, []))
+        .filter((document) => document?._key?.startsWith("!items!")).length;
       const expectedCount = generated.counts[pack.name];
       if (compiledCount !== expectedCount)
         throw new Error(

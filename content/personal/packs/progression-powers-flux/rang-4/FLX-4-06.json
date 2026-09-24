@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-4-06",
+  "name": "Zone de probabilité",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-4"],
+  "system": {
+    "description": "<p><strong>Zone de probabilité</strong>.</p><p><strong>Flux — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 5 / 3 A / Explosion 3 à 24 m</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>Pendant 3 tours, alliés relancent leur premier échec simple ; ennemis relancent leur première réussite critique et gardent le second résultat.</p>\n<p><strong>Intensification :</strong> Durée +1 tour ou rayon +1.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "4",
+      "activation": "5 / 3 A / Explosion 3 à 24 m",
+      "discipline": "Préscience",
+      "effect": "Pendant 3 tours, alliés relancent leur premier échec simple ; ennemis relancent leur première réussite critique et gardent le second résultat.",
+      "scaling": "Durée +1 tour ou rayon +1."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

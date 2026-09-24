@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-486",
+  "name": "Confiance réciproque",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Confiance réciproque</strong>.</p><p>Lorsque son partenaire à 6 mètres entreprend un test auquel le Chien pourrait plausiblement contribuer par un signal, un appui, une mise en garde ou sa présence, celui-ci lui accorde +2 circonstanciel. Si le test réussit, le Chien gagne à son tour +2 circonstanciel à son prochain test poursuivant directement le même objectif avant la fin de son prochain tour.</p>\n<p>Le personnage doit percevoir la situation. Cette réaction ne lui permet ni de se déplacer, ni d&#39;agir à la place de son partenaire, ni de cumuler une seconde aide sur le même test.</p>",
+    "traits": ["Beastkin", "Chien", "Coopération", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-485",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Partenaire choisi",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.141 Talents Beastkins Chiens de niveau 1",
+      "family": "Fidélité choisie et partenariat",
+      "ancestry": "Beastkin Chien",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Partenaire choisi",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Fidélité choisie et partenariat",
+        "Traits": "Beastkin, Chien, Coopération, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Partenaire choisi"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Chien"
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-11-06-SCANNEUR-D-ANOMALIES",
+  "name": "Explorateur — Scanneur d'anomalies",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "explorateur"],
+  "system": {
+    "description": "<p><strong>Explorateur — Scanneur d&#39;anomalies</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Détecteur d&#39;anomalie, jauge de flux, balises de mesure.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-011-EXPLORATEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Explorateur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Explorateur",
+      "branchName": "Scanneur d'anomalies",
+      "primaryLoadout": "Détecteur d'anomalie, jauge de flux, balises de mesure.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Explorateur"
+}

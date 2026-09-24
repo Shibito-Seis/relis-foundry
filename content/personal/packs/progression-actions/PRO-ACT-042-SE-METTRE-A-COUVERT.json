@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-042-SE-METTRE-A-COUVERT",
+  "name": "Se mettre à couvert",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Se mettre à couvert</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>La créature exploite un obstacle adjacent ou sa position et améliore son couvert d&amp;#39;un degré, au maximum jusqu&amp;#39;au couvert renforcé. Le degré supplémentaire prend fin si elle : • quitte l&amp;#39;espace approprié ; • est déplacée hors de la protection ; • accomplit une action qui l&amp;#39;expose entièrement ; • perd l&amp;#39;obstacle. Une attaque effectuée en se penchant brièvement peut conserver le couvert naturel, mais met normalement fin au degré supplémentaire obtenu par cette Action.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "La créature exploite un obstacle adjacent ou sa position et améliore son couvert d&#39;un degré, au maximum jusqu&#39;au couvert renforcé. Le degré supplémentaire prend fin si elle : • quitte l&#39;espace approprié ; • est déplacée hors de la protection ; • accomplit une action qui l&#39;expose entièrement ; • perd l&#39;obstacle. Une attaque effectuée en se penchant brièvement peut conserver le couvert naturel, mais met normalement fin au degré supplémentaire obtenu par cette Action."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

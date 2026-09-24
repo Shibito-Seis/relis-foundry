@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-0-01",
+  "name": "Impact pranique",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Impact pranique</strong>.</p><p><strong>Prana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 2 A / contact ou 6 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAP au contact ou CAE à distance ; 1d6 Contondants ou énergie, choix appris.</p>\n<p><strong>Intensification :</strong> +1d6 ou dégâts normaux et repousse de 1 m.</p>",
+    "traits": ["Prana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "0",
+      "activation": "2 A / contact ou 6 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAP au contact ou CAE à distance ; 1d6 Contondants ou énergie, choix appris.",
+      "scaling": "+1d6 ou dégâts normaux et repousse de 1 m."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

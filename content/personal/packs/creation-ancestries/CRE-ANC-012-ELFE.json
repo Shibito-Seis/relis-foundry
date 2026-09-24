@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ANC-012-ELFE",
+  "name": "Elfe",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Elfe</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Présence, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p>Beau, agile, magique, mais de constitution plus fragile.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 Dextérité, +1 Présence, +1 Maîtrise Magique",
+      "attributePenalty": "-1 Vigueur",
+      "rationale": "Beau, agile, magique, mais de constitution plus fragile.",
+      "selectable": true
+    }
+  },
+  "folder": ""
+}

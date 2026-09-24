@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-4-05",
+  "name": "Invisibilité collective",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Invisibilité collective</strong>.</p><p><strong>Mana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 5 / 3 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Illusion</p>\n<p>Jusqu&#39;à six cibles deviennent invisibles pendant 3 tours ; une action hostile révèle seulement son auteur après résolution.</p>\n<p><strong>Intensification :</strong> Durée +2 tours ou deux cibles supplémentaires.</p>",
+    "traits": ["Mana", "Illusion"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "4",
+      "activation": "5 / 3 A / émanation 6 m",
+      "discipline": "Illusion",
+      "effect": "Jusqu'à six cibles deviennent invisibles pendant 3 tours ; une action hostile révèle seulement son auteur après résolution.",
+      "scaling": "Durée +2 tours ou deux cibles supplémentaires."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-GNOME-703",
+  "name": "Étincelle gnome",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Étincelle gnome</strong>.</p><p>Le personnage choisit une passion : art, exploration, invention, magie, vivant, récits, phénomènes inconnus ou autre domaine validé. Il gagne +2 circonstanciel aux tests de Perception, Culture ou Investigation pour remarquer ce qui est nouveau, exceptionnel ou profondément travaillé dans ce domaine.</p>\n<p>Le talent ne révèle aucun secret sans indice et ne rend pas le personnage Sujet à l&#39;Affadissement.</p>",
+    "traits": ["Demi-Gnome", "Curiosité", "Identité"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.224 Talents Demi-Gnomes de niveau 1",
+      "family": "Merveille partagée",
+      "ancestry": "Demi-Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une passion ou catégorie d'émerveillement",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Merveille partagée",
+        "Traits": "Demi-Gnome, Curiosité, Identité",
+        "Type": "Passif",
+        "Choix": "une passion ou catégorie d'émerveillement"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Demi-Gnome"
+}

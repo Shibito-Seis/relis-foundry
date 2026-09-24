@@ -1,0 +1,59 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-178",
+  "name": "Protocole d'anomalie",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Protocole d&#39;anomalie</strong>.</p><p>À partir de mesures réelles, d&#39;instruments et des protections disponibles, le personnage établit un protocole prudent pour observer un phénomène inconnu ou dangereux.</p>\n<p>Il effectue un test de Sciences contre le DD de l&#39;anomalie.</p>\n<p>• Réussite critique : jusqu&#39;à quatre participants gagnent +2 circonstanciel à leurs tests visant à mesurer l&#39;anomalie ou résister aux risques déjà identifiés ; la première contamination, rétroaction ou complication mineure causée par le protocole est évitée.</p>\n<p>• Réussite : jusqu&#39;à quatre participants gagnent +2 circonstanciel à leur premier test visant à mesurer l&#39;anomalie ou résister à un risque déjà identifié.</p>\n<p>• Échec : le protocole ne procure aucun bénéfice.</p>\n<p>• Échec critique : le protocole révèle une interaction dangereuse avec les moyens prévus ; le MJ la signale avant l&#39;exposition.</p>\n<p>Le talent ne neutralise pas l&#39;anomalie, ne protège pas d&#39;un risque inconnu et ne crée aucun équipement de confinement.</p>",
+    "traits": ["Anomalie", "Compétence", "Préparation", "Sciences"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-172",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Prélèvement contrôlé",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-176",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Relecture croisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Sciences Maître ; Prélèvement contrôlé et Relecture croisée",
+      "choice": "",
+      "frequency": "une fois par anomalie ou changement majeur de comportement",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la scène d'étude",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "7",
+        "Traits": "Anomalie, Compétence, Préparation, Sciences",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par anomalie ou changement majeur de comportement",
+        "Durée": "jusqu'à la fin de la scène d'étude",
+        "Prérequis": "Sciences Maître ; Prélèvement contrôlé et Relecture croisée",
+        "Réussite critique": "jusqu'à quatre participants gagnent +2 circonstanciel à leurs tests visant à mesurer l'anomalie ou résister aux risques déjà identifiés ; la première contamination, rétroaction ou complication mineure causée par le protocole est évitée.",
+        "Réussite": "jusqu'à quatre participants gagnent +2 circonstanciel à leur premier test visant à mesurer l'anomalie ou résister à un risque déjà identifié.",
+        "Échec": "le protocole ne procure aucun bénéfice.",
+        "Échec critique": "le protocole révèle une interaction dangereuse avec les moyens prévus ; le MJ la signale avant l'exposition."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Sciences"
+}

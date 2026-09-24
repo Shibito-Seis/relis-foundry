@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-286",
+  "name": "Mémoire du laboratoire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mémoire du laboratoire</strong>.</p><p>Le personnage peut déclarer reconnaître un détail mineur et accessible d&#39;un laboratoire, d&#39;un protocole génétique, d&#39;un instrument médical ou d&#39;une procédure de contention comparable à ceux de son expérience.</p>\n<p>Il pose au MJ une question sur la fonction apparente, le danger immédiat, l&#39;autorité habituelle ou la prochaine étape probable du protocole. Le MJ répond selon les indices présents, puis le personnage gagne +2 circonstanciel au premier test exploitant cette réponse.</p>\n<p>Le talent ne crée pas un souvenir secret, un code d&#39;accès, un nom de responsable ou une connaissance d&#39;un programme auquel le personnage n&#39;a jamais été exposé.</p>\n<p>---</p>",
+    "traits": ["Esman", "Investigation", "Mémoire"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-270",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Dossier du programme",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.77 Talents Esmans de niveau 9",
+      "family": "Survivants du programme",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Dossier du programme",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Survivants du programme",
+        "Traits": "Esman, Investigation, Mémoire",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Dossier du programme"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Esman"
+}

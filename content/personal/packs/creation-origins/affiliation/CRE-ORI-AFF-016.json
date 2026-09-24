@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-AFF-016",
+  "name": "Programme de colonisation",
+  "type": "origin",
+  "tags": ["creation", "origine", "affiliation"],
+  "system": {
+    "description": "<p><strong>Programme de colonisation</strong>.</p><p>Groupes préparant agriculture, habitat, biomes, protocoles Eden et installation durable. — Survivant-né, Éducation d’élite, Contact influent — Famille à nourrir, Serment contraignant, Secret compromettant</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-affiliation",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Groupes préparant agriculture, habitat, biomes, protocoles Eden et installation durable.",
+        "Atouts suggérés": "Survivant-né, Éducation d’élite, Contact influent",
+        "Handicaps suggérés": "Famille à nourrir, Serment contraignant, Secret compromettant"
+      }
+    }
+  },
+  "folder": "affiliation"
+}

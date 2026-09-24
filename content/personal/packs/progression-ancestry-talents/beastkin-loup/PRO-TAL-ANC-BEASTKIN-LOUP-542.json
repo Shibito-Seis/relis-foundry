@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-542",
+  "name": "Cœur de la meute",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Cœur de la meute</strong>.</p><p>Le personnage pousse un hurlement de cohésion. Les membres du cercle à 12 mètres capables de l&#39;entendre gagnent +2 circonstanciel à leur prochain test de Volonté ou de Sang-froid contre peur, isolement ou panique avant la fin de leur prochain tour.</p>\n<p>Le talent ne dissipe aucun effet déjà résolu, ne supprime aucun Stress et ne force personne à rester dans le cercle.</p>",
+    "traits": ["Beastkin", "Loup", "Audition", "Soutien", "Zone"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-535",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Hurlement de coordination",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.154 Talents Beastkins Loups de niveau 9",
+      "family": "Hurlement, rassemblement et intimidation",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Hurlement de coordination",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Hurlement, rassemblement et intimidation",
+        "Traits": "Beastkin, Loup, Audition, Soutien, Zone",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Hurlement de coordination"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Loup"
+}

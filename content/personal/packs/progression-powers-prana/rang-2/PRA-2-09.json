@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-2-09",
+  "name": "Cœur inflexible",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-2"],
+  "system": {
+    "description": "<p><strong>Cœur inflexible</strong>.</p><p><strong>Prana — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Pendant une scène, +2 contre peur, influence, possession et drainage de Prana.</p>\n<p><strong>Intensification :</strong> Deux cibles ou transforme un échec critique en échec une fois.</p>",
+    "traits": ["Prana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "2",
+      "activation": "2 / 2 A / contact",
+      "discipline": "Protection",
+      "effect": "Pendant une scène, +2 contre peur, influence, possession et drainage de Prana.",
+      "scaling": "Deux cibles ou transforme un échec critique en échec une fois."
+    },
+    "level": 7
+  },
+  "folder": "Rang 2"
+}

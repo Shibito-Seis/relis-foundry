@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-054",
+  "name": "Vision des lueurs",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Vision des lueurs</strong>.</p><p>Le personnage voit correctement dans une lumière faible et distingue les formes, couleurs et mouvements tant qu&#39;une lueur minimale existe.</p>\n<p>Il gagne également +2 circonstanciel aux tests d&#39;Investigation ou de Canalisation visant à distinguer :</p>\n<p>• une lumière naturelle d&#39;une émission magique ;</p>\n<p>• un reflet d&#39;une signature énergétique ;</p>\n<p>• une illusion lumineuse simple d&#39;un phénomène réel ;</p>\n<p>• une trace récente de Flux visible.</p>\n<p>Ce talent ne donne pas une vision parfaite dans l&#39;obscurité totale.</p>",
+    "traits": ["Elfe", "Perception"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Sens de la Fusion",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la Fusion",
+        "Traits": "Elfe, Perception",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

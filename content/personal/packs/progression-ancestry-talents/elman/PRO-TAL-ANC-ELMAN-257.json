@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-257",
+  "name": "Maître des deux énergies",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Maître des deux énergies</strong>.</p><p>Lorsqu&#39;un effet énergétique visible ou perceptible prend le personnage ou un allié à 12 mètres pour cible, le personnage peut tenter un test de Maîtrise Magique + Canalisation contre le DD de l&#39;effet.</p>\n<p>Le talent ne détourne ni conséquence déjà résolue, ni effet purement physique, ni phénomène d&#39;échelle supérieure à la scène personnelle. Il ne permet jamais de transformer une défense en attaque gratuite contre une autre créature.</p>\n<p>---</p>",
+    "traits": ["Elman", "Canalisation", "Convergence", "Mythique", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-256",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps de convergence",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.70 Talents Elmans de niveau 25",
+      "family": "Transcendance elman",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Corps de convergence",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elman",
+        "Traits": "Elman, Canalisation, Convergence, Mythique, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Corps de convergence"
+      }
+    },
+    "level": 25
+  },
+  "folder": "Elman"
+}

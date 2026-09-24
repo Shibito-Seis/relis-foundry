@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-BEASTKIN-671",
+  "name": "Habitude humaine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Habitude humaine</strong>.</p><p>Le personnage a appris à employer sa manifestation dans des infrastructures humaines. Il gagne +2 circonstanciel aux tests pour dissimuler sans magie un trait léger, expliquer sa physiologie, employer un poste humain ou éviter qu&#39;une manifestation gêne une manipulation ordinaire.</p>\n<p>Une fois par repos long, il peut réorganiser son équipement en dix minutes pour transférer Anatomie compatible vers une autre manifestation qu&#39;il possède. Le talent ne modifie pas son apparence et ne contourne aucun contrôle ou préjugé.</p>",
+    "traits": ["Demi-Beastkin", "Adaptation", "Humain"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.198 Talents Demi-Beastkins de niveau 5",
+      "family": "Corps hybride et compatibilité",
+      "ancestry": "Demi-Beastkin",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une manifestation parentale connue",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Corps hybride et compatibilité",
+        "Traits": "Demi-Beastkin, Adaptation, Humain",
+        "Type": "Passif",
+        "Choix": "une manifestation parentale connue"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Demi-Beastkin"
+}

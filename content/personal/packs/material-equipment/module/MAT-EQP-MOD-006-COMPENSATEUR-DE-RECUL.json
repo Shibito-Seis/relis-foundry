@@ -1,0 +1,115 @@
+{
+  "relisId": "MAT-EQP-MOD-006-COMPENSATEUR-DE-RECUL",
+  "name": "Compensateur de Recul",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "module-personnel"],
+  "system": {
+    "description": "<p><strong>Module :</strong> Compensateur de Recul. <strong>Niv. :</strong> 2. <strong>Emplacement :</strong> Bouche. <strong>Effet principal :</strong> Réduit Recul de 1, minimum 0 ; signature acoustique +1 cran. <strong>Installation :</strong> 1 Action. <strong>Enc. :</strong> 0. <strong>Prix :</strong> 600.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "module",
+      "sourceSection": "41.158 Modules d'armes — 16 profils",
+      "columns": {
+        "#": "6",
+        "Module": "Compensateur de Recul",
+        "Niv.": "2",
+        "Emplacement": "Bouche",
+        "Effet principal": "Réduit Recul de 1, minimum 0 ; signature acoustique +1 cran",
+        "Installation": "1 Action",
+        "Enc.": "0",
+        "Prix": "600"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "functionalCategory": "module",
+        "family": "resource",
+        "installable": true,
+        "installationKind": "accessory",
+        "slot": "Bouche",
+        "effectSummary": "Réduit Recul de 1, minimum 0 ; signature acoustique +1 cran",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 600,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "module"
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-546",
+  "name": "Chasse sans issue",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Chasse sans issue</strong>.</p><p>Lorsque la proie marquée termine volontairement un déplacement en s&#39;éloignant d&#39;au moins deux membres du cercle, le personnage se déplace jusqu&#39;à la moitié de sa Vitesse vers une issue qu&#39;elle pourrait emprunter. Jusqu&#39;au début de son prochain tour, la cible subit −2 circonstanciel aux tests pour traverser l&#39;espace menacé ou se dissimuler au cercle.</p>\n<p>Le talent n&#39;interrompt pas automatiquement le déplacement, ne donne aucune attaque et ne traverse aucun obstacle.</p>",
+    "traits": ["Beastkin", "Loup", "Mobilité", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-539",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fermer l'étau",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.155 Talents Beastkins Loups de niveau 13",
+      "family": "Chasse concertée et encerclement",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Fermer l'étau",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chasse concertée et encerclement",
+        "Traits": "Beastkin, Loup, Mobilité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Fermer l'étau"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Loup"
+}

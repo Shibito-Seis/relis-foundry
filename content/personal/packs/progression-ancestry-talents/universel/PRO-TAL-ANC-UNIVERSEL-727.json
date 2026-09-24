@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-727",
+  "name": "Acclimatation de bord",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Acclimatation de bord</strong>.</p><p>Le personnage supporte quarts décalés, espaces confinés, vibrations, recyclage atmosphérique et bruit mécanique ordinaire. Il gagne +2 circonstanciel aux tests d&#39;Endurance ou Sang-froid contre les difficultés ordinaires d&#39;une vie prolongée dans un vaisseau ou un habitat fermé.</p>\n<p>La première Fatigue de chaque période de voyage provenant uniquement d&#39;un quart régulier, du confinement ou d&#39;un sommeil interrompu par le fonctionnement normal du bord est différée jusqu&#39;à la prochaine halte sûre.</p>\n<p>Le talent ne protège ni d&#39;une panne, ni d&#39;une atmosphère dangereuse, ni d&#39;une privation réelle de sommeil et la Fatigue différée revient normalement.</p>\n<p>---</p>",
+    "traits": [
+      "Ascendance universelle",
+      "Endurance",
+      "Environnement",
+      "Vaisseau"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-715",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Enfant de l'Exode",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-720",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Gravité d'habitude",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.237 Talents universels d'Ascendance de niveau 5",
+      "family": "Habitats partagés",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Enfant de l'Exode ou Gravité d'habitude",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Habitats partagés",
+        "Traits": "Ascendance universelle, Endurance, Environnement, Vaisseau",
+        "Type": "Passif",
+        "Prérequis": "Enfant de l'Exode ou Gravité d'habitude"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Universel"
+}

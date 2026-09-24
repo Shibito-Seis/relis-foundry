@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-013-SAISIR",
+  "name": "Saisir",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Saisir</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Établir une Saisie avec une main, un appendice ou une arme compatible.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Établir une Saisie avec une main, un appendice ou une arme compatible."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

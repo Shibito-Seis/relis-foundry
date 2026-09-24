@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-INFORMATIQUE-091",
+  "name": "Recherche indexée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Recherche indexée</strong>.</p><p>Dans un corpus, terminal ou réseau auquel il possède un accès réel, le personnage organise sa recherche par métadonnées, liens et recoupements. Il effectue un test d&#39;Informatique contre le DD du corpus.</p>\n<p>• Réussite critique : il trouve l&#39;information accessible la plus pertinente, sa source et une donnée connexe utile que le corpus permet de déduire.</p>\n<p>• Réussite : il trouve l&#39;information accessible la plus pertinente ou confirme qu&#39;elle n&#39;est pas présente dans la portion consultable.</p>\n<p>• Échec : la recherche n&#39;aboutit pas dans le temps disponible.</p>\n<p>• Échec critique : il suit une piste obsolète ou déclenche une journalisation inhabituelle ; le MJ indique laquelle avant toute conséquence majeure.</p>\n<p>Lorsque la même recherche demanderait normalement plusieurs minutes ou davantage, un succès réduit sa durée de moitié. Le talent ne contourne aucune permission et ne retrouve pas une donnée absente ou irrécupérablement détruite.</p>",
+    "traits": ["Analyse", "Compétence", "Informatique", "Recherche"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Informatique — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Informatique",
+      "activation": "1 Action, ou Activité d'exploration",
+      "prerequisites": "Informatique Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Informatique",
+        "Niveau": "1",
+        "Traits": "Analyse, Compétence, Informatique, Recherche",
+        "Type": "1 Action, ou Activité d'exploration",
+        "Prérequis": "Informatique Qualifié",
+        "Réussite critique": "il trouve l'information accessible la plus pertinente, sa source et une donnée connexe utile que le corpus permet de déduire.",
+        "Réussite": "il trouve l'information accessible la plus pertinente ou confirme qu'elle n'est pas présente dans la portion consultable.",
+        "Échec": "la recherche n'aboutit pas dans le temps disponible.",
+        "Échec critique": "il suit une piste obsolète ou déclenche une journalisation inhabituelle ; le MJ indique laquelle avant toute conséquence majeure."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Informatique"
+}

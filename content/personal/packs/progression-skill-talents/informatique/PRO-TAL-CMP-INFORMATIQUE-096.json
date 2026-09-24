@@ -1,0 +1,50 @@
+{
+  "relisId": "PRO-TAL-CMP-INFORMATIQUE-096",
+  "name": "Cloisonnement réflexe",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Cloisonnement réflexe</strong>.</p><p>Le personnage ferme les chemins non essentiels et isole la portion qu&#39;il contrôle. Il effectue un test d&#39;Informatique contre le DD de l&#39;effet.</p>\n<p>• Réussite critique : la session est isolée ; l&#39;effet déclencheur ne se propage pas par elle et le personnage conserve une fonction locale non compromise de son choix.</p>\n<p>• Réussite : la session est isolée et perd ses connexions jusqu&#39;à sa réouverture.</p>\n<p>• Échec : l&#39;effet est résolu normalement.</p>\n<p>• Échec critique : l&#39;effet est résolu normalement et la session se verrouille ou se ferme après sa résolution.</p>\n<p>Le cloisonnement ne supprime pas une intrusion déjà implantée, ne protège pas les autres nœuds et ne fonctionne pas sans moyen réel de couper ou filtrer la connexion.</p>",
+    "traits": ["Compétence", "Défense", "Informatique", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INFORMATIQUE-093",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Session durcie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Informatique — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Informatique",
+      "activation": "Réaction",
+      "prerequisites": "Informatique Expert ; Session durcie",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "le personnage détecte qu'une session ou un appareil qu'il utilise subit une intrusion, une altération ou une propagation non autorisée",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Informatique",
+        "Niveau": "3",
+        "Traits": "Compétence, Défense, Informatique, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Déclencheur": "le personnage détecte qu'une session ou un appareil qu'il utilise subit une intrusion, une altération ou une propagation non autorisée",
+        "Prérequis": "Informatique Expert ; Session durcie",
+        "Réussite critique": "la session est isolée ; l'effet déclencheur ne se propage pas par elle et le personnage conserve une fonction locale non compromise de son choix.",
+        "Réussite": "la session est isolée et perd ses connexions jusqu'à sa réouverture.",
+        "Échec": "l'effet est résolu normalement.",
+        "Échec critique": "l'effet est résolu normalement et la session se verrouille ou se ferme après sa résolution."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Informatique"
+}

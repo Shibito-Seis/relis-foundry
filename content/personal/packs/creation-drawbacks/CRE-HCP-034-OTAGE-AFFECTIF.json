@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-034-OTAGE-AFFECTIF",
+  "name": "Otage affectif",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Otage affectif</strong>.</p><p><strong>Valeur :</strong> -2/-3</p>\n<p>Une personne chère peut être utilisée contre le personnage. -2 : vulnérable mais protégée ou lointaine. -3 : directement exposée, localisée ou menacée.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-2/-3",
+      "effect": "Une personne chère peut être utilisée contre le personnage. -2 : vulnérable mais protégée ou lointaine. -3 : directement exposée, localisée ou menacée."
+    }
+  },
+  "folder": ""
+}

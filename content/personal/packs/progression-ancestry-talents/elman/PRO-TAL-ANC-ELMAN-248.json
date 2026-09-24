@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-248",
+  "name": "Translation conductrice",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Translation conductrice</strong>.</p><p>Le personnage se téléporte jusqu&#39;à 12 mètres entre sa position et une source ou un courant d&#39;énergie qu&#39;il peut percevoir.</p>\n<p>Il peut traverser un obstacle ordinaire si l&#39;énergie circule effectivement à travers celui-ci et si la destination est connue, libre et sûre. Une isolation qui interrompt le courant bloque la translation.</p>\n<p>Le personnage ne peut pas emporter d&#39;autre créature, franchir une barrière hermétique au phénomène utilisé ni prendre une signature vivante non consentante comme point d&#39;arrivée.</p>",
+    "traits": ["Elman", "Déplacement", "Téléportation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-240",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pas entre les charges",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.67 Talents Elmans de niveau 13",
+      "family": "Mobilité conductrice",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Pas entre les charges",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité conductrice",
+        "Traits": "Elman, Déplacement, Téléportation",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Pas entre les charges"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Elman"
+}

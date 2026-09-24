@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-048",
+  "name": "Nouvelle Humanité",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage incarne une voie possible pour l&#39;avenir de l&#39;humanité plutôt qu&#39;une simple amélioration de l&#39;ancien modèle.</p>\n<p>Il obtient les deux bénéfices suivants.</p>\n<p>Le personnage gagne deux augmentations d&#39;Attribut, placées dans deux Attributs différents.</p>\n<p>Elles suivent les règles ordinaires des Attributs partiels et ne peuvent pas faire dépasser 8.</p>\n<p>Ces augmentations peuvent se cumuler avec celles d&#39;Humanité augmentée, car elles proviennent d&#39;une nouvelle source, mais Nouvelle Humanité doit toujours répartir ses propres augmentations entre deux Attributs différents.</p>\n<p>Le personnage gagne immédiatement un autre Talent Humain de niveau 21 qu&#39;il ne possède pas encore.</p>\n<p>Il doit satisfaire les prérequis de ce talent. Avec l&#39;accord du MJ, une transformation, une reconstruction corporelle ou un accomplissement narratif majeur peut tenir lieu de prérequis fictionnel, mais ne supprime pas un prérequis mécanique essentiel.</p>\n<p>Nouvelle Humanité peut modifier profondément l&#39;apparence, le corps, l&#39;identité ou le rapport du personnage à son héritage. Ces changements n&#39;accordent aucun effet supplémentaire non décrit.</p>\n<p>Ce talent ne rend pas immortel et ne transforme pas automatiquement toute l&#39;espèce humaine. Le personnage est un précurseur, pas encore une nouvelle population.</p>",
+    "traits": ["Humain", "Évolution", "Mythique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.28 Talents Humains de niveau 29",
+      "family": "Dépassement humain",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "au moins un Talent Humain de niveau 21",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Dépassement humain",
+        "Traits": "Humain, Évolution, Mythique",
+        "Type": "Passif",
+        "Prérequis": "au moins un Talent Humain de niveau 21"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Humain"
+}

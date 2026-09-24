@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-GNOME-708",
+  "name": "Curiosité sans vertige",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Curiosité sans vertige</strong>.</p><p>Après un échec non critique à un test de Perception, Investigation, Sciences ou Culture visant un phénomène inconnu, le personnage relance et conserve le second résultat.</p>\n<p>Le talent ne peut affecter un jet déjà soumis à Fortune ou Infortune et ne protège pas des conséquences d&#39;avoir approché le phénomène sans précaution.</p>",
+    "traits": ["Demi-Gnome", "Curiosité", "Fortune"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-GNOME-706",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Merveille partagée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.226 Talents Demi-Gnomes de niveau 9",
+      "family": "Merveille partagée",
+      "ancestry": "Demi-Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Merveille partagée",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Merveille partagée",
+        "Traits": "Demi-Gnome, Curiosité, Fortune",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Merveille partagée"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Demi-Gnome"
+}

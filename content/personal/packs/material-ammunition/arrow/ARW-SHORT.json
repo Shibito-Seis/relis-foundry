@@ -1,0 +1,89 @@
+{
+  "relisId": "ARW-SHORT",
+  "name": "Flèche — arc court",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "projectile", "fleche"],
+  "system": {
+    "description": "<p>Flèche — arc court conçu pour le standard propre à Arc court. Ce projectile se charge à l’unité et peut être récupéré lorsque la fiction le permet.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.175 et 41.180",
+      "compatibleWeapon": "Arc court"
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "ammunitionProfile": {
+      "familyId": "arrow",
+      "variantId": "standard",
+      "chamberingId": "ARW-SHORT",
+      "chamberId": "ARW-SHORT",
+      "pressureClassId": "specializedProjectile",
+      "pressureClass": "specializedProjectile",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": true,
+      "loadOrder": 0
+    }
+  },
+  "folder": "arrow"
+}

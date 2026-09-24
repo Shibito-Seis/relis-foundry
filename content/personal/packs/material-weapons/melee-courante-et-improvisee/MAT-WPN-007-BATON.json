@@ -1,0 +1,155 @@
+{
+  "relisId": "MAT-WPN-007-BATON",
+  "name": "Bâton",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "improvisedMelee"],
+  "system": {
+    "description": "<p><strong>Bâton</strong>.</p><p><strong>Niv. :</strong> 1. <strong>Accès :</strong> Courante. <strong>Mains :</strong> 1 ou 2. <strong>Attaque :</strong> Force + Mêlée. <strong>Déf. :</strong> CAP. <strong>Dégâts :</strong> 1d6 Contondant. <strong>Préc. :</strong> 0. <strong>Traits :</strong> Deux mains d8, Parade, Pousser, Repositionner. <strong>Fiab. :</strong> 4. <strong>Struct. :</strong> S. <strong>Empl. :</strong> 1. <strong>Prix :</strong> 40.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.97 Lot 5-K1 — Armes de mêlée courantes et improvisées",
+      "columns": {
+        "#": "7",
+        "Arme": "Bâton",
+        "Niv.": "1",
+        "Accès": "Courante",
+        "Mains": "1 ou 2",
+        "Attaque": "Force + Mêlée",
+        "Déf.": "CAP",
+        "Dégâts": "1d6 Contondant",
+        "Préc.": "0",
+        "Traits": "Deux mains d8, Parade, Pousser, Repositionner",
+        "Fiab.": "4",
+        "Struct.": "S",
+        "Empl.": "1",
+        "Prix": "40"
+      },
+      "reloadProfile": null
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 40,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "improvisedMelee",
+      "support": "personal",
+      "access": "common",
+      "attackMode": "melee",
+      "defenseTarget": "cap",
+      "handsMode": "versatile",
+      "skillId": "melee",
+      "attributeId": "force",
+      "accuracy": 0,
+      "damageDice": 1,
+      "damageDie": "d6",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d6 Contondant",
+      "damageTypes": ["blunt"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "special",
+      "range": "",
+      "rangeOptimal": null,
+      "rangeMaximum": null,
+      "recoil": null,
+      "feedKind": "none",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "loud",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "reloadActions": null,
+      "reloadProcedure": "",
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  },
+  "folder": "Mêlée courante et improvisée"
+}

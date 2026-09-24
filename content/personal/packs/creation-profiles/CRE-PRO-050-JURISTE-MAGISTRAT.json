@@ -1,0 +1,29 @@
+{
+  "relisId": "CRE-PRO-050-JURISTE-MAGISTRAT",
+  "name": "Juriste / magistrat",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Juriste / magistrat</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Présence, Volonté</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Volonté ; -Force, -Dextérité ou -Technologie</p>\n<p><strong>Compétences possibles :</strong> Culture, Diplomatie, Intimidation, Investigation, Sang-froid</p>\n<p><strong>Avantage typique :</strong> Code légal, contact institutionnel</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Présence", "Volonté"],
+      "markedProfile": "+Intelligence, +Volonté ; -Force, -Dextérité ou -Technologie",
+      "skillChoices": [
+        "Culture",
+        "Diplomatie",
+        "Intimidation",
+        "Investigation",
+        "Sang-froid"
+      ],
+      "typicalBenefit": "Code légal, contact institutionnel",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

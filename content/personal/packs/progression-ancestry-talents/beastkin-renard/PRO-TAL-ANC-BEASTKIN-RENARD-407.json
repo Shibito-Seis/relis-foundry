@@ -1,0 +1,41 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-407",
+  "name": "Sept chemins du renard",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Sept chemins du renard</strong>.</p><p>Après un repos long, le personnage choisit deux chemins. Une fois par scène, il active l&#39;un d&#39;eux :</p>\n<p>• Détour : après un talent de Ruse, se déplacer de 2 mètres.</p>\n<p>• Masque : gagner +3 circonstanciel à un test maintenant une métamorphose ou une identité.</p>\n<p>• Passage : ignorer les Réactions liées à un déplacement jusqu&#39;à la moitié de sa vitesse.</p>\n<p>• Braise : ajouter 1d4 dégâts à une Étincelle vulpine réussie.</p>\n<p>• Voix : donner +3 circonstanciel au prochain test de Sang-froid ou de Volonté d&#39;un allié qui l&#39;entend avant son prochain tour.</p>\n<p>• Queue : gagner +3 circonstanciel à un test de résistance contre illusion, fascination ou possession.</p>\n<p>• Mémoire : obtenir du MJ un détail réellement perçu mais oublié d&#39;une scène vécue.</p>\n<p>Les chemins peuvent être représentés par des queues spirituelles, mais leur nombre n&#39;est pas un prérequis. Un même test ou une même attaque ne reçoit qu&#39;un chemin.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Renard", "Spiritualité", "Transcendance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.113 Talents Beastkins Renards de niveau 21",
+      "family": "Transcendance renarde",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "préparation quotidienne et Activation libre",
+      "prerequisites": "deux talents Renards de niveau 13",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance renarde",
+        "Traits": "Beastkin, Renard, Spiritualité, Transcendance",
+        "Prérequis": "deux talents Renards de niveau 13",
+        "Type": "préparation quotidienne et Activation libre",
+        "Fréquence": "une fois par scène",
+        "Détour": "après un talent de Ruse, se déplacer de 2 mètres.",
+        "Masque": "gagner +3 circonstanciel à un test maintenant une métamorphose ou une identité.",
+        "Passage": "ignorer les Réactions liées à un déplacement jusqu'à la moitié de sa vitesse.",
+        "Braise": "ajouter 1d4 dégâts à une Étincelle vulpine réussie.",
+        "Voix": "donner +3 circonstanciel au prochain test de Sang-froid ou de Volonté d'un allié qui l'entend avant son prochain tour.",
+        "Queue": "gagner +3 circonstanciel à un test de résistance contre illusion, fascination ou possession.",
+        "Mémoire": "obtenir du MJ un détail réellement perçu mais oublié d'une scène vécue."
+      }
+    },
+    "level": 21
+  },
+  "folder": "Beastkin Renard"
+}

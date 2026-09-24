@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-DIPLOMATIE-203",
+  "name": "Méthode diplomatique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Méthode diplomatique</strong>.</p><p>Le personnage choisit une méthode définie avec le MJ : écoute, protocole, compromis, représentation, médiation ou approche comparable.</p>\n<p>Il gagne +2 circonstanciel aux tests de Diplomatie employant directement cette méthode dans une situation où elle est pertinente.</p>\n<p>Le talent peut être acquis plusieurs fois pour une méthode différente. Il n&#39;accorde ni statut officiel, ni connaissance culturelle, ni sincérité à l&#39;autre partie.</p>",
+    "traits": ["Compétence", "Diplomatie", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Diplomatie — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Diplomatie",
+      "activation": "Passif",
+      "prerequisites": "Diplomatie Qualifié",
+      "choice": "",
+      "frequency": "permanent ; talent répétable",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Diplomatie",
+        "Niveau": "1",
+        "Traits": "Compétence, Diplomatie, Social",
+        "Type": "Passif",
+        "Fréquence": "permanent ; talent répétable",
+        "Prérequis": "Diplomatie Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Diplomatie"
+}

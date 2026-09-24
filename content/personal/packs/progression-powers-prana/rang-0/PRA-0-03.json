@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-0-03",
+  "name": "Perception vitale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Perception vitale</strong>.</p><p><strong>Prana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 2 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Divination</p>\n<p>Détecte présence et direction des vivants non dissimulés par une isolation spécialisée.</p>\n<p><strong>Intensification :</strong> Distingue nombre, taille et état sain, blessé ou mourant.</p>",
+    "traits": ["Prana", "Divination"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "0",
+      "activation": "2 A / émanation 6 m",
+      "discipline": "Divination",
+      "effect": "Détecte présence et direction des vivants non dissimulés par une isolation spécialisée.",
+      "scaling": "Distingue nombre, taille et état sain, blessé ou mourant."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

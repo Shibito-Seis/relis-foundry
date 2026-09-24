@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-484",
+  "name": "Félin primordial",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Félin primordial</strong>.</p><p>Le personnage manifeste la figure mythique du grand prédateur sans quitter sa forme anthropomorphe. Pendant l&#39;effet :</p>\n<p>• sa Vitesse terrestre augmente de 3 mètres et ses bonds gagnent 2 mètres de portée utile ;</p>\n<p>• il compte comme d&#39;une taille supérieure pour saisir, porter, renverser et résister au déplacement forcé, sans changer d&#39;espace ni d&#39;allonge ;</p>\n<p>• ses armes naturelles infligent +4 dégâts circonstanciels ;</p>\n<p>• il gagne +3 circonstanciel aux tests de Perception, Athlétisme et Intimidation liés à la chasse ou à la protection de son clan ;</p>\n<p>• la première fois de chaque tour qu&#39;il devrait tomber à terre ou être déplacé contre sa volonté, il peut l&#39;ignorer s&#39;il possède encore un appui matériel suffisant.</p>\n<p>Le talent ne fournit ni Action, ni Réaction, ni attaque supplémentaire, ne permet ni vol, ni téléportation, ni véritable changement de taille. À la fin, le personnage gagne 2 Fatigue et 1 Stress.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Félin", "Mythique", "Physiologie", "Prédation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-483",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chasse inévitable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-370",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Éveil primordial",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.137 Talent Beastkin Félin de niveau 29",
+      "family": "Transcendance féline",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Chasse inévitable et Éveil primordial",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance féline",
+        "Traits": "Beastkin, Félin, Mythique, Physiologie, Prédation",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Chasse inévitable et Éveil primordial"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Beastkin Félin"
+}

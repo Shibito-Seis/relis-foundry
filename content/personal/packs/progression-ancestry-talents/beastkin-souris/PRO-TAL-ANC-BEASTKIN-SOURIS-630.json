@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-630",
+  "name": "Gabarit compact",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Gabarit compact</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests pour se déplacer, travailler ou se mettre à couvert dans un espace conçu pour une créature Petite ou dans un poste technique très contraint.</p>\n<p>Le talent ne réduit pas son corps, ne modifie pas son équipement et ne permet pas de traverser un passage matériellement trop étroit.</p>",
+    "traits": ["Beastkin", "Souris", "Morphologie", "Petit"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.185 Talents Beastkins Souris de niveau 1",
+      "family": "Petit gabarit et interstices",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Petit gabarit et interstices",
+        "Traits": "Beastkin, Souris, Morphologie, Petit",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Souris"
+}

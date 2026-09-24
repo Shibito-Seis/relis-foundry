@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-281",
+  "name": "Onde interne",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Onde interne</strong>.</p><p>Le personnage libère devant lui une onde de pression énergétique dans un cône de 3 mètres. Il effectue un test de Maîtrise Magique + Canalisation contre la défense appropriée de chaque créature dans la zone.</p>\n<p>Sur une réussite, la cible subit 2d6 dégâts d&#39;énergie et peut être repoussée de 1 mètre. Sur une réussite critique, les dégâts sont doublés selon les règles ordinaires et le déplacement passe à 2 mètres.</p>\n<p>L&#39;Onde n&#39;affecte pas automatiquement les objets massifs, ne traverse pas une protection totale et ne peut être combinée avec Frappe d&#39;overflow.</p>",
+    "traits": ["Esman", "Attaque", "Prana"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-274",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Frappe d'overflow",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-275",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réserve somatique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.77 Talents Esmans de niveau 9",
+      "family": "Puissance interne",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Frappe d'overflow ou Réserve somatique",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance interne",
+        "Traits": "Esman, Attaque, Prana",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Frappe d'overflow ou Réserve somatique"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Esman"
+}

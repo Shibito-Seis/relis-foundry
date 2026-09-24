@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-098",
+  "name": "Cœur de la Fusion",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Une fois par scène, lorsque le personnage devrait recevoir du Stress, du Surmenage ou un Contrecoup provenant directement d&#39;une canalisation magique, d&#39;un dispositif techno-magique ou d&#39;une anomalie de la Fusion, il réduit cette conséquence de 1, jusqu&#39;à un minimum de 0.</p>\n<p>Une fois par session, lorsqu&#39;il obtient un échec critique à un test de Canalisation ou de Techno-magie destiné à stabiliser, dissiper ou contenir un tel phénomène, il transforme cet échec critique en échec simple.</p>\n<p>Enfin, la Résistance accordée par Maîtrise élémentaire augmente de 2.</p>\n<p>Cœur de la Fusion ne réduit pas :</p>\n<p>• le Stress provenant d&#39;une peur, d&#39;un conflit ou d&#39;une perte ;</p>\n<p>• la Fatigue ordinaire ;</p>\n<p>• le coût volontaire d&#39;une capacité sans lien direct avec la Fusion ;</p>\n<p>• les dégâts, Blessures ou pannes déjà infligés par le phénomène.</p>\n<p>Les valeurs de Surmenage et de Contrecoup seront harmonisées lors des étapes 3 et 6 de la roadmap.</p>",
+    "traits": ["Elfe", "Fusion", "Magie", "Résilience"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-086",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maîtrise élémentaire",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-093",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritier de la Fusion",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.35 Talents Elfes de niveau 17",
+      "family": "Sang des Premiers Arbres",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Héritier de la Fusion et Maîtrise élémentaire",
+      "choice": "",
+      "frequency": "une fois par scène ; une fois par session pour la sauvegarde",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang des Premiers Arbres",
+        "Traits": "Elfe, Fusion, Magie, Résilience",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par scène ; une fois par session pour la sauvegarde",
+        "Prérequis": "Héritier de la Fusion et Maîtrise élémentaire"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Elfe"
+}

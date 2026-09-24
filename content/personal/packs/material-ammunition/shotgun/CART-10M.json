@@ -1,0 +1,111 @@
+{
+  "relisId": "CART-10M",
+  "name": "Calibre 10, chambre 89 mm",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "standard", "cart"],
+  "system": {
+    "description": "<p><strong>Chambrage :</strong> Calibre 10, chambre 89 mm. <strong>Classe :</strong> Très lourde. <strong>Usage courant :</strong> plateforme lourde uniquement. <strong>Prix standard :</strong> 10. <strong>Conditionnement :</strong> boîte de 10.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.174 Fusils à cartouches",
+      "columns": {
+        "Code": "CART-10M",
+        "Chambrage": "Calibre 10, chambre 89 mm",
+        "Classe": "Très lourde",
+        "Usage courant": "plateforme lourde uniquement",
+        "Prix standard": "10",
+        "Conditionnement": "boîte de 10"
+      }
+    },
+    "physical": {
+      "quantity": 10,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "referencePrice": {
+      "amount": 10,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 10,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "shotgun",
+      "variantId": "standard",
+      "chamberingId": "CART-10M",
+      "chamberId": "CART-10M",
+      "pressureClassId": "shellHeavy",
+      "pressureClass": "shellHeavy",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  },
+  "folder": "shotgun"
+}

@@ -1,0 +1,175 @@
+{
+  "relisId": "MAT-WPN-039-PISTOLET-LASER-DE-PRECISION",
+  "name": "Pistolet laser de précision",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "handgun"],
+  "system": {
+    "description": "<p><strong>Pistolet laser de précision</strong>.</p><p><strong>Niv. :</strong> 4. <strong>Accès :</strong> Spécialisée. <strong>Attaque :</strong> Dextérité + Tir. <strong>Déf. :</strong> CAE. <strong>Dégâts :</strong> 1d8 Photonique. <strong>Préc. :</strong> +1. <strong>Portée :</strong> 16/48. <strong>Capacité et Recharge :</strong> Batterie standard 24 CE ; 2 CE/tir ; Recharge 1. <strong>Recul :</strong> 0. <strong>Traits :</strong> Énergétique, Fatal d10, Localisable. <strong>Signature :</strong> Silencieuse, visible. <strong>Fiab. :</strong> 3. <strong>Struct. :</strong> L. <strong>Empl. :</strong> 3. <strong>Prix :</strong> 3 800.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.101 Lot 5-K3 — Armes de poing",
+      "columns": {
+        "#": "9",
+        "Arme": "Pistolet laser de précision",
+        "Niv.": "4",
+        "Accès": "Spécialisée",
+        "Attaque": "Dextérité + Tir",
+        "Déf.": "CAE",
+        "Dégâts": "1d8 Photonique",
+        "Préc.": "+1",
+        "Portée": "16/48",
+        "Capacité et Recharge": "Batterie standard 24 CE ; 2 CE/tir ; Recharge 1",
+        "Recul": "0",
+        "Traits": "Énergétique, Fatal d10, Localisable",
+        "Signature": "Silencieuse, visible",
+        "Fiab.": "3",
+        "Struct.": "L",
+        "Empl.": "3",
+        "Prix": "3 800"
+      },
+      "reloadProfile": null
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": [],
+        "providedSlots": {
+          "power": 1
+        },
+        "interfaceIds": ["cell"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 3800,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "handgun",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "ranged",
+      "defenseTarget": "cae",
+      "handsMode": "one",
+      "skillId": "shooting",
+      "attributeId": "dexterity",
+      "accuracy": 1,
+      "damageDice": 1,
+      "damageDie": "d8",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d8 Photonique",
+      "damageTypes": ["photonic"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "16/48",
+      "rangeOptimal": 16,
+      "rangeMaximum": 48,
+      "recoil": 0,
+      "feedKind": "energy",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": 1,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "silent",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "reloadActions": null,
+      "reloadProcedure": "",
+      "energyConsumption": {
+        "single": 2
+      }
+    },
+    "energyProfile": {
+      "kind": "",
+      "format": "standard",
+      "formatId": "standard",
+      "powerClass": "standard",
+      "powerClassId": "standard",
+      "technology": "",
+      "technologyId": "",
+      "interfaceId": "cell",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "Armes de poing"
+}

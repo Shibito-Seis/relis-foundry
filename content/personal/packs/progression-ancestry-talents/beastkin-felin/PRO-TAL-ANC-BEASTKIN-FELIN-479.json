@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-479",
+  "name": "Silence devant le roi",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Silence devant le roi</strong>.</p><p>Le personnage rugit. Les créatures hostiles capables de l&#39;entendre dans un rayon de 12 mètres résistent avec leur Volonté contre son Intimidation. Sur une réussite du Félin, une cible ne peut employer de Réaction jusqu&#39;au début de son prochain tour et subit −2 circonstanciel à sa première action hostile pendant cette durée. Sur une réussite critique, la pénalité devient −3.</p>\n<p>Une créature immunisée à la peur ou incapable d&#39;entendre n&#39;est pas affectée. Le talent n&#39;impose ni fuite, ni obéissance et ne traverse pas une protection acoustique.</p>",
+    "traits": ["Beastkin", "Félin", "Audition", "Intimidation", "Zone"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-471",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Présence dominante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.134 Talents Beastkins Félins de niveau 17",
+      "family": "Rugissement et dominance",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Présence dominante",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Rugissement et dominance",
+        "Traits": "Beastkin, Félin, Audition, Intimidation, Zone",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Présence dominante"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Félin"
+}

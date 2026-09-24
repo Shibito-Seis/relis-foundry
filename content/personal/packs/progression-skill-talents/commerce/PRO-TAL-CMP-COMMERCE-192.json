@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMERCE-192",
+  "name": "Lecture contractuelle",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Lecture contractuelle</strong>.</p><p>Le personnage étudie un contrat, accord de troc, dette ou commande accessible dans une langue qu&#39;il comprend.</p>\n<p>Il effectue un test de Commerce contre le DD du document.</p>\n<p>• Réussite critique : il identifie obligations, contreparties, échéances, pénalités, ambiguïtés visibles et la clause présentant le plus grand risque commercial.</p>\n<p>• Réussite : il identifie les obligations, contreparties, échéances et pénalités explicites.</p>\n<p>• Échec : il ne repère rien au-delà du sens manifeste.</p>\n<p>• Échec critique : une clause dépend d&#39;un usage, d&#39;un droit ou d&#39;une annexe absente ; le MJ indique qu&#39;une expertise supplémentaire est nécessaire.</p>\n<p>Le talent n&#39;interprète pas automatiquement un droit inconnu, ne rend pas le contrat exécutoire et ne révèle pas l&#39;intention secrète d&#39;une partie.</p>",
+    "traits": ["Analyse", "Commerce", "Compétence", "Recherche"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commerce — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commerce",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Commerce Qualifié",
+      "choice": "",
+      "frequency": "une fois par version d'un contrat",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Commerce",
+        "Niveau": "1",
+        "Traits": "Analyse, Commerce, Compétence, Recherche",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par version d'un contrat",
+        "Prérequis": "Commerce Qualifié",
+        "Réussite critique": "il identifie obligations, contreparties, échéances, pénalités, ambiguïtés visibles et la clause présentant le plus grand risque commercial.",
+        "Réussite": "il identifie les obligations, contreparties, échéances et pénalités explicites.",
+        "Échec": "il ne repère rien au-delà du sens manifeste.",
+        "Échec critique": "une clause dépend d'un usage, d'un droit ou d'une annexe absente ; le MJ indique qu'une expertise supplémentaire est nécessaire."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Commerce"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-031",
+  "name": "Résilience aux traumas",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Résilience aux traumas</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests provoqués directement par le déclencheur d&#39;un Traumatisme qu&#39;il possède.</p>\n<p>Lorsqu&#39;il réussit un tel test, il réduit de 1 le Stress reçu de cette confrontation, minimum 0. Le talent ne retire, ne traite ni ne dégrade automatiquement le Traumatisme et ne s&#39;applique pas aux sources de Stress sans rapport avec celui-ci.</p>\n<p>---</p>",
+    "traits": ["Général", "Mental", "Traumatisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.6 Talents généraux de niveau 11",
+      "family": "Volonté et Stress",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Sang-froid Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Volonté et Stress",
+        "Traits": "Général, Mental, Traumatisme",
+        "Type": "Passif",
+        "Prérequis": "Sang-froid Expert"
+      }
+    },
+    "level": 11
+  },
+  "folder": "### 31.6 Talents généraux de niveau 11"
+}

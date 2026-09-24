@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-138",
+  "name": "Nœud de panne",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Nœud de panne</strong>.</p><p>Le personnage isole l&#39;endroit exact où matière, logiciel, fonction et énergie cessent de s&#39;accorder dans un système hybride accessible.</p>\n<p>Il effectue un test de Techno-magie contre le DD le plus élevé des domaines impliqués.</p>\n<p>• Réussite critique : il identifie le nœud, chaque domaine en cause, l&#39;ordre sûr des interventions et une méthode pour isoler temporairement la panne ; les deux prochains spécialistes différents suivant ce plan gagnent +2 circonstanciel à leur test.</p>\n<p>• Réussite : il identifie le nœud, les domaines en cause et l&#39;ordre probable ; le prochain spécialiste gagne +2 circonstanciel.</p>\n<p>• Échec : le nœud ne peut pas être isolé.</p>\n<p>• Échec critique : les symptômes sont momentanément confondus ; aucun nouveau diagnostic ne peut bénéficier d&#39;un bonus circonstanciel avant le prochain tour du personnage.</p>\n<p>Le talent ne répare, ne pirate, ne soigne et ne dissipe rien. Chaque domaine doit ensuite être traité avec la compétence, l&#39;accès et les ressources appropriés.</p>",
+    "traits": ["Analyse", "Compétence", "Techno-magie", "Travail d'équipe"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-131",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lecture hybride",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-136",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Interprète de convergence",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Techno-magie — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Techno-magie",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Techno-magie Maître ; Lecture hybride et Interprète de convergence",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Techno-magie",
+        "Niveau": "7",
+        "Traits": "Analyse, Compétence, Techno-magie, Travail d'équipe",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Techno-magie Maître ; Lecture hybride et Interprète de convergence",
+        "Réussite critique": "il identifie le nœud, chaque domaine en cause, l'ordre sûr des interventions et une méthode pour isoler temporairement la panne ; les deux prochains spécialistes différents suivant ce plan gagnent +2 circonstanciel à leur test.",
+        "Réussite": "il identifie le nœud, les domaines en cause et l'ordre probable ; le prochain spécialiste gagne +2 circonstanciel.",
+        "Échec": "le nœud ne peut pas être isolé.",
+        "Échec critique": "les symptômes sont momentanément confondus ; aucun nouveau diagnostic ne peut bénéficier d'un bonus circonstanciel avant le prochain tour du personnage."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Techno-magie"
+}

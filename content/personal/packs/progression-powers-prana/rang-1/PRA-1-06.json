@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-1-06",
+  "name": "Sens du vivant",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Sens du vivant</strong>.</p><p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / émanation 12 m</p>\n<p><strong>Discipline :</strong> Divination</p>\n<p>Pendant 1 min, localise les vivants en mouvement et distingue blessure, inconscience et mort récente.</p>\n<p><strong>Intensification :</strong> Portée 24 m ou voit à travers 1 m de matière ordinaire.</p>",
+    "traits": ["Prana", "Divination"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / 2 A / émanation 12 m",
+      "discipline": "Divination",
+      "effect": "Pendant 1 min, localise les vivants en mouvement et distingue blessure, inconscience et mort récente.",
+      "scaling": "Portée 24 m ou voit à travers 1 m de matière ordinaire."
+    },
+    "level": 4
+  },
+  "folder": "Rang 1"
+}

@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-144",
+  "name": "Armure comme seconde peau",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Armure comme seconde peau</strong>.</p><p>Lorsque le personnage porte une armure qu&#39;il sait utiliser et reste dans sa capacité normale de charge :</p>\n<p>• il ignore toute réduction de vitesse provenant uniquement de cette armure, sans dépasser sa vitesse normale ;</p>\n<p>• il ignore jusqu&#39;à 2 points de malus circonstanciel aux tests d&#39;Acrobaties, Athlétisme ou Endurance provenant exclusivement de son ajustement, de sa rigidité ou de son poids ;</p>\n<p>• une fois par jour, il ignore le premier niveau de Fatigue qui serait causé uniquement par le port prolongé de l&#39;armure.</p>\n<p>Le talent n&#39;annule pas :</p>\n<p>• le bruit et la visibilité de l&#39;armure ;</p>\n<p>• son encombrement réel ;</p>\n<p>• une panne, un état Brisé ou une mauvaise étanchéité ;</p>\n<p>• un prérequis de Force, de maîtrise ou de Technologie ;</p>\n<p>• les malus provenant d&#39;une Blessure ou d&#39;une gravité extrême.</p>",
+    "traits": ["Nain", "Armure", "Endurance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-112",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Marche sous charge",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-123",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Armure familière",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Arsenal du bastion",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Armure familière et Marche sous charge",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Arsenal du bastion",
+        "Traits": "Nain, Armure, Endurance",
+        "Type": "Passif",
+        "Prérequis": "Armure familière et Marche sous charge"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Nain"
+}

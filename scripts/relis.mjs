@@ -1,8 +1,8 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.8.0";
+var PACKAGE_VERSION = "0.8.1";
 var RULES_VERSION = "1.0.0";
-var CONTENT_VERSION = "1.1.0";
+var CONTENT_VERSION = "1.2.0";
 var ACTOR_TYPES = [
 	"character",
 	"npc",
@@ -1253,7 +1253,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			...meta,
 			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
-			contentVersion: text(meta.contentVersion, "1.1.0") || "1.1.0",
+			contentVersion: text(meta.contentVersion, "1.2.0") || "1.2.0",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
 			sourceRef: normalizeReference(meta.sourceRef),
 			sourceVersion: text(meta.sourceVersion),
@@ -1623,7 +1623,13 @@ var CHAMBERINGS = {
 	"GAUSS-8": "Pénétrateur Gauss 8 mm",
 	"GL-40B": "Grenade 40 × 46 mm",
 	"ROQ-70": "Roquette 70 mm",
-	"MIS-90": "Missile guidé 90 mm"
+	"MIS-90": "Missile guidé 90 mm",
+	"ARW-SHORT": "Flèche pour arc court",
+	"ARW-LONG": "Flèche pour arc long",
+	"ARW-COMPOSITE": "Flèche pour arc composite",
+	"BOLT-LIGHT": "Carreau d’arbalète légère",
+	"BOLT-HEAVY": "Carreau d’arbalète lourde",
+	"BOLT-REPEATING": "Carreau d’arbalète à répétition"
 };
 var ARMOR_KINDS = {
 	underlayer: "Sous-couche",
@@ -5231,9 +5237,6 @@ function ammunitionCompatibility(ammunition, target) {
 	const errors = [];
 	if (!ammo.chamberId || ammo.chamberId !== targetProfile.chamberId) errors.push(`Chambre incompatible : ${ammo.chamberId || "non renseignée"} / ${targetProfile.chamberId}.`);
 	if (!ammo.pressureClass || !targetProfile.pressureClass || ammo.pressureClass !== targetProfile.pressureClass) errors.push(`Classe de pression ou d’énergie incompatible : ${ammo.pressureClass || "non renseignée"} / ${targetProfile.pressureClass || "non renseignée"}.`);
-	const targetInterface = String(targetProfile.interfaceId ?? targetProfile.feedInterface ?? "");
-	const interfaces = Array.from(ammo.feedInterfaces ?? [], String);
-	if (targetInterface && (!interfaces.length || !interfaces.includes(targetInterface))) errors.push(`Interface ${targetInterface} absente des compatibilités de la munition.`);
 	return errors;
 }
 function magazineCompatibility(magazine, weapon) {
@@ -8119,6 +8122,42 @@ function classificationContext(profile, type, isGM) {
 //#region src/rules/crystal-attunement.ts
 var ATTUNEMENT_CONTRACT_URL = "systems/relis/content/personal/crystal-attunement.json";
 var cachedContract = null;
+function stringSeed(value) {
+	let result = 2166136261;
+	for (const character of value) {
+		result ^= character.charCodeAt(0);
+		result = Math.imul(result, 16777619);
+	}
+	return result >>> 0;
+}
+function shuffled(values, seedText) {
+	let seed = stringSeed(seedText) || 1;
+	const random = () => {
+		seed ^= seed << 13;
+		seed ^= seed >>> 17;
+		seed ^= seed << 5;
+		return (seed >>> 0) / 4294967296;
+	};
+	const output = [...values];
+	for (let index = output.length - 1; index > 0; index -= 1) {
+		const selected = Math.floor(random() * (index + 1));
+		const current = output[index];
+		output[index] = output[selected];
+		output[selected] = current;
+	}
+	return output;
+}
+function selectAttunementQuestions(contract, itemSeed) {
+	const policy = contract.questionSelection;
+	if (!policy) return [...contract.questions];
+	return shuffled(Object.entries(policy.difficultyCounts).flatMap(([difficulty, count]) => shuffled(contract.questions.filter((question) => question.difficulty === difficulty), `${contract.contentVersion}:${itemSeed}:${difficulty}`).slice(0, count)), `${contract.contentVersion}:${itemSeed}:presentation`).slice(0, policy.count);
+}
+function attunementSessionContract(contract, itemSeed) {
+	return {
+		...contract,
+		questions: selectAttunementQuestions(contract, itemSeed)
+	};
+}
 async function loadAttunementContract() {
 	if (cachedContract) return cachedContract;
 	const response = await fetch(ATTUNEMENT_CONTRACT_URL);
@@ -8557,16 +8596,18 @@ function attunementDialogContent(contract, savedAnswers) {
 }
 async function askAttunement(contract, savedAnswers) {
 	const dialog = attunementDialogContent(contract, savedAnswers);
-	if (!await foundry.applications.api.DialogV2.input({
+	const result = await foundry.applications.api.DialogV2.input({
 		window: { title: contract.name },
 		content: dialog.content,
 		ok: { label: "Accorder le Cœur" },
 		modal: true,
 		rejectClose: false
-	})) return null;
+	});
+	if (!result) return null;
+	const values = result.object ?? result;
 	return {
-		answers: dialog.readAnswers(),
-		tieAxis: dialog.readTieAxis()
+		answers: Object.fromEntries(contract.questions.map(({ id }) => [id, String(values[`answer__${id}`] ?? "")])),
+		tieAxis: String(values.tieAxis ?? "")
 	};
 }
 async function askAttunementColor(contract, selected) {
@@ -8585,14 +8626,23 @@ async function askAttunementColor(contract, selected) {
 	}
 	field.append(select);
 	content.append(field);
-	if (!await foundry.applications.api.DialogV2.input({
+	const result = await foundry.applications.api.DialogV2.input({
 		window: { title: "Modifier l’accord du Cœur d’Écarlithe" },
 		content,
 		ok: { label: "Appliquer" },
 		modal: true,
 		rejectClose: false
-	})) return null;
-	return contract.palette.find(({ id }) => id === select.value) ?? null;
+	});
+	if (!result) return null;
+	const values = result.object ?? result;
+	return contract.palette.find(({ id }) => id === String(values.colorId ?? "")) ?? null;
+}
+function withoutAttunementIdentity(description) {
+	return description.replace(/<p class="relis-attunement-identity">[\s\S]*?<\/p>/gu, "");
+}
+function attunedDescription(description, color, subjectName) {
+	const safe = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\"", "&quot;");
+	return `${withoutAttunementIdentity(description)}<p class="relis-attunement-identity"><strong>Accord :</strong> ${safe(color.label)}${subjectName ? ` — lié à ${safe(subjectName)}` : ""}.</p>`;
 }
 var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 	static DEFAULT_OPTIONS = {
@@ -8609,7 +8659,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			ui.notifications.error("L’accord est réservé au propriétaire d’un PJ ou au MJ ; seul le MJ répond pour un PNJ.");
 			return;
 		}
-		const contract = await loadAttunementContract();
+		const contract = attunementSessionContract(await loadAttunementContract(), this.item.uuid || this.item.id || this.item.name);
 		const current = this.item.system.attunement ?? {};
 		const response = await askAttunement(contract, { ...current.answers ?? {} });
 		if (!response) return;
@@ -8621,18 +8671,23 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		const completedAt = (/* @__PURE__ */ new Date()).toISOString();
 		const history = Array.from(current.history ?? []);
 		history.push(attunementHistoryEntry("answer", current, completedAt));
-		await this.item.update({ "system.attunement": {
-			state: "attuned",
-			questionnaireVersion: contract.contentVersion,
-			answers: resolution.answers,
-			scores: resolution.scores,
-			colorId: resolution.color.id,
-			axisIds: resolution.color.axes,
-			subjectUuid: this.item.parent?.uuid ?? "",
-			subjectName: this.item.parent?.name ?? "",
-			completedAt,
-			history
-		} });
+		const subjectName = this.item.parent?.name ?? "";
+		await this.item.update({
+			name: `Cœur d’Écarlithe — ${resolution.color.label}`,
+			"system.description": attunedDescription(String(current.description ?? this.item.system.description ?? ""), resolution.color, subjectName),
+			"system.attunement": {
+				state: "attuned",
+				questionnaireVersion: contract.contentVersion,
+				answers: resolution.answers,
+				scores: resolution.scores,
+				colorId: resolution.color.id,
+				axisIds: resolution.color.axes,
+				subjectUuid: this.item.parent?.uuid ?? "",
+				subjectName,
+				completedAt,
+				history
+			}
+		});
 		ui.notifications.info(`Cœur d’Écarlithe accordé : ${resolution.color.label}.`);
 	}
 	async overrideCrystalAttunement() {
@@ -8644,17 +8699,21 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		const completedAt = (/* @__PURE__ */ new Date()).toISOString();
 		const history = Array.from(current.history ?? []);
 		history.push(attunementHistoryEntry("override", current, completedAt));
-		await this.item.update({ "system.attunement": {
-			...current,
-			state: "attuned",
-			questionnaireVersion: contract.contentVersion,
-			colorId: color.id,
-			axisIds: color.axes,
-			subjectUuid: this.item.parent?.uuid ?? "",
-			subjectName: this.item.parent?.name ?? "",
-			completedAt,
-			history
-		} });
+		await this.item.update({
+			name: `Cœur d’Écarlithe — ${color.label}`,
+			"system.description": attunedDescription(String(this.item.system.description ?? ""), color, this.item.parent?.name ?? ""),
+			"system.attunement": {
+				...current,
+				state: "attuned",
+				questionnaireVersion: contract.contentVersion,
+				colorId: color.id,
+				axisIds: color.axes,
+				subjectUuid: this.item.parent?.uuid ?? "",
+				subjectName: this.item.parent?.name ?? "",
+				completedAt,
+				history
+			}
+		});
 	}
 	async resetCrystalAttunement() {
 		if (!canManageAttunement(this.item, Boolean(game.user?.isGM))) return;
@@ -8662,18 +8721,22 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		const changedAt = (/* @__PURE__ */ new Date()).toISOString();
 		const history = Array.from(current.history ?? []);
 		history.push(attunementHistoryEntry("reset", current, changedAt));
-		await this.item.update({ "system.attunement": {
-			state: "unattuned",
-			questionnaireVersion: "",
-			answers: {},
-			scores: {},
-			colorId: "",
-			axisIds: [],
-			subjectUuid: "",
-			subjectName: "",
-			completedAt: "",
-			history
-		} });
+		await this.item.update({
+			name: "Cœur d’Écarlithe incolore",
+			"system.description": withoutAttunementIdentity(String(this.item.system.description ?? "")),
+			"system.attunement": {
+				state: "unattuned",
+				questionnaireVersion: "",
+				answers: {},
+				scores: {},
+				colorId: "",
+				axisIds: [],
+				subjectUuid: "",
+				subjectName: "",
+				completedAt: "",
+				history
+			}
+		});
 	}
 	async _prepareContext(optionsValue) {
 		const context = await super._prepareContext(optionsValue);
@@ -8774,6 +8837,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		})).rows.find((row) => row.item.id === this.item.id)?.containerUsage ?? null;
 		const weaponFeedKind = String(system.weaponProfile?.feedKind ?? "");
 		const weaponPhysicalFeedKind = physicalFeedKind(weaponFeedKind, String(system.weaponProfile?.hybridPhysicalFeedKind ?? ""));
+		const weaponUsesAmmunition = Array.from(system.weaponProfile?.ammunitionFamilyIds ?? []).length > 0;
 		const weaponModeIds = [.../* @__PURE__ */ new Set(["single", ...Array.from(system.weaponProfile?.modeIds ?? [], String)])].filter((value) => Object.hasOwn(FIRE_MODES, value));
 		const modeConsumptionRows = (kind) => weaponModeIds.map((mode) => ({
 			mode,
@@ -8782,6 +8846,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			path: `system.weaponProfile.${kind}Consumption.${mode}`
 		}));
 		const isPranaCrystalResource = this.item.type === "resource" && system.energyProfile?.kind === "pranaCrystal";
+		const focusProfile = system.catalog?.focusProfile ?? null;
 		let attunementContract = null;
 		if (isPranaCrystalResource) try {
 			attunementContract = await loadAttunementContract();
@@ -8826,7 +8891,12 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				"equipment"
 			].includes(this.item.type),
 			isTechnoBladeFamily: system.weaponProfile?.familyId === "martialTechnoBlade",
-			usesProjectileFeed: [
+			usesProjectileFeed: weaponUsesAmmunition || [
+				"chamber",
+				"internal",
+				"detachable"
+			].includes(weaponPhysicalFeedKind),
+			usesPhysicalFeedInterface: [
 				"chamber",
 				"internal",
 				"detachable"
@@ -8842,7 +8912,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				"chamber",
 				"internal",
 				"detachable"
-			].includes(weaponPhysicalFeedKind) || ["energy", "hybrid"].includes(weaponFeedKind),
+			].includes(weaponPhysicalFeedKind) || weaponUsesAmmunition || ["energy", "hybrid"].includes(weaponFeedKind),
 			ammunitionConsumptionRows: modeConsumptionRows("ammunition"),
 			energyConsumptionRows: modeConsumptionRows("energy"),
 			isEnergyTechnoBlade: system.weaponProfile?.familyId === "martialTechnoBlade" && ["vibratoryMaterial", "retractableConductor"].includes(String(system.weaponProfile?.technoBladeVariant ?? "")),
@@ -8855,6 +8925,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				"resource"
 			].includes(this.item.type),
 			isPranaCrystalResource,
+			isFocalizer: Boolean(focusProfile),
+			focusProfile,
 			crystalAttunement: isPranaCrystalResource ? {
 				state: String(attunement.state ?? "unattuned"),
 				stateLabel: attunement.state === "attuned" ? "Accordé" : "Incolore, non accordé",

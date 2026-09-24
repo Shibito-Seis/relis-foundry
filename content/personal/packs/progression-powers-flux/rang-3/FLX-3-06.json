@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-3-06",
+  "name": "Porte de perception",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-3"],
+  "system": {
+    "description": "<p><strong>Porte de perception</strong>.</p><p><strong>Flux — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 3 / 3 A / 10 km</p>\n<p><strong>Discipline :</strong> Divination</p>\n<p>Ouvre pendant 1 min une fenêtre sensorielle vers une balise connue ; vision et son normaux, interaction impossible.</p>\n<p><strong>Intensification :</strong> Portée planétaire avec relais ou durée 10 min.</p>",
+    "traits": ["Flux", "Divination"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "3",
+      "activation": "3 / 3 A / 10 km",
+      "discipline": "Divination",
+      "effect": "Ouvre pendant 1 min une fenêtre sensorielle vers une balise connue ; vision et son normaux, interaction impossible.",
+      "scaling": "Portée planétaire avec relais ou durée 10 min."
+    },
+    "level": 10
+  },
+  "folder": "Rang 3"
+}

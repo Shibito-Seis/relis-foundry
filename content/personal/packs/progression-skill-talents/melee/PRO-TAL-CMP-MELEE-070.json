@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-CMP-MELEE-070",
+  "name": "Toute chose est une arme",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Toute chose est une arme</strong>.</p><p>Le personnage peut employer comme arme de mêlée fiable presque tout objet solide qu&#39;il peut réellement tenir, déplacer et orienter : outil, barre, câble lesté, élément de mobilier, pièce de machine ou débris.</p>\n<p>Lorsqu&#39;il saisit l&#39;objet, il choisit le profil d&#39;arme commune non spéciale qui correspond le mieux à sa taille, sa masse et sa forme. L&#39;objet utilise les dégâts de base de ce profil, sans trait Fatal, Mortel, Pénétration, énergétique, de zone ou autre propriété que l&#39;objet ne possède pas matériellement. Si aucun profil ne convient, le MJ retient le profil improvisé ordinaire le plus proche.</p>\n<p>Le personnage :</p>\n<p>• est considéré comme formé pour manier cet objet précis jusqu&#39;à ce qu&#39;il le lâche ;</p>\n<p>• ignore le malus provenant uniquement de son caractère improvisé ;</p>\n<p>• peut appliquer Lecture de l&#39;arme à l&#39;objet sans dépenser d&#39;action ;</p>\n<p>• peut employer Rétention d&#39;arme, Rompre la mesure et Ouverture maîtrisée avec lui.</p>\n<p>L&#39;objet conserve sa fragilité, son encombrement et ses risques réels ; il peut se briser. Le talent ne copie aucun style de Bretteur ou de Briseur, ne permet pas de manier un objet trop lourd et n&#39;augmente pas les dégâts fondamentaux du profil retenu.</p>\n<p>---</p>",
+    "traits": ["Compétence", "Improvisation", "Mêlée", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-061",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lecture de l'arme",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-064",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Prise instantanée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Mêlée — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Mêlée",
+      "activation": "Passif",
+      "prerequisites": "Mêlée Mythique ; Lecture de l'arme et Prise instantanée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Mêlée",
+        "Niveau": "23",
+        "Traits": "Compétence, Improvisation, Mêlée, Mythique",
+        "Type": "Passif",
+        "Prérequis": "Mêlée Mythique ; Lecture de l'arme et Prise instantanée"
+      }
+    },
+    "level": 23
+  },
+  "folder": "Mêlée"
+}

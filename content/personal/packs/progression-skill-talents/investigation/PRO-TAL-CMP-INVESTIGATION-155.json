@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-INVESTIGATION-155",
+  "name": "Hypothèse testable",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Hypothèse testable</strong>.</p><p>À partir d&#39;au moins deux indices ou témoignages accessibles, le personnage formule une hypothèse explicite sur l&#39;événement étudié.</p>\n<p>Il effectue un test d&#39;Investigation contre le DD de l&#39;affaire.</p>\n<p>• Réussite critique : il apprend quels faits soutiennent l&#39;hypothèse, lesquels la fragilisent et deux preuves accessibles ou catégories de preuve susceptibles de la confirmer ou de l&#39;infirmer.</p>\n<p>• Réussite : il apprend quel fait soutient l&#39;hypothèse et quelle preuve pourrait la tester.</p>\n<p>• Échec : l&#39;hypothèse reste trop vague ou insuffisamment fondée.</p>\n<p>• Échec critique : un présupposé important est identifié comme incertain ; le personnage ne sait pas encore s&#39;il invalide l&#39;hypothèse.</p>\n<p>Le talent ne confirme jamais l&#39;hypothèse à lui seul et n&#39;assure pas que la preuve recherchée existe encore ou soit accessible.</p>",
+    "traits": ["Analyse", "Compétence", "Investigation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Investigation — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Investigation",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Investigation Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Investigation",
+        "Niveau": "3",
+        "Traits": "Analyse, Compétence, Investigation",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Investigation Expert",
+        "Réussite critique": "il apprend quels faits soutiennent l'hypothèse, lesquels la fragilisent et deux preuves accessibles ou catégories de preuve susceptibles de la confirmer ou de l'infirmer.",
+        "Réussite": "il apprend quel fait soutient l'hypothèse et quelle preuve pourrait la tester.",
+        "Échec": "l'hypothèse reste trop vague ou insuffisamment fondée.",
+        "Échec critique": "un présupposé important est identifié comme incertain ; le personnage ne sait pas encore s'il invalide l'hypothèse."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Investigation"
+}

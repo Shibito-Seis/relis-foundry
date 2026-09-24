@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-ELFE-685",
+  "name": "Grâce sans fragilité",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Grâce sans fragilité</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests associant équilibre, souplesse et résistance à un effort, comme traverser un support instable, amortir une réception ou maintenir une posture pénible.</p>\n<p>Après une réussite, il peut employer sa Réaction pour se déplacer de 1 mètre vers un appui légal. Le talent ne supprime pas le malus de Vigueur et ne fournit aucune esquive automatique.</p>",
+    "traits": ["Demi-Elfe", "Mobilité", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-ELFE-681",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Souffle humain",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.208 Talents Demi-Elfes de niveau 9",
+      "family": "Corps entre deux âges",
+      "ancestry": "Demi-Elfe",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Souffle humain",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Corps entre deux âges",
+        "Traits": "Demi-Elfe, Mobilité, Réaction",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Souffle humain"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Demi-Elfe"
+}

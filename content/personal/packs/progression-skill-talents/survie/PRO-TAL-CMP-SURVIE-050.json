@@ -1,0 +1,55 @@
+{
+  "relisId": "PRO-TAL-CMP-SURVIE-050",
+  "name": "Route des survivants",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage choisit un itinéraire matériellement praticable et prépare jusqu&#39;à dix créatures capables de suivre ses consignes.</p>\n<p>Pour cette étape :</p>\n<p>• l&#39;intensité de la menace environnementale dominante est considérée comme inférieure d&#39;un degré pour les tests et gains de Fatigue du groupe ;</p>\n<p>• les participants ignorent le premier point de malus circonstanciel provenant du terrain, du climat ou d&#39;une gravité inhabituelle ;</p>\n<p>• un échec simple collectif n&#39;entraîne ni perte de route, ni consommation supplémentaire due à une erreur ;</p>\n<p>• une fois pendant l&#39;étape, le personnage peut effectuer un test de Survie pour permettre au groupe de s&#39;arrêter dans un refuge ou un point sûr matériellement présent avant la résolution d&#39;un danger annoncé.</p>\n<p>Route des survivants ne crée ni chemin à travers une barrière infranchissable, ni air, ni eau, ni nourriture, ni protection absente. Elle rend possible l&#39;expédition par la lecture parfaite du milieu ; elle ne rend pas l&#39;environnement inoffensif.</p>\n<p>---</p>",
+    "traits": ["Compétence", "Exploration", "Mythique", "Survie", "Voyage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SURVIE-046",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Guide d'expédition",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SURVIE-049",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Refuge improbable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Survie — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Survie",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "Survie Mythique ; Guide d'expédition et Refuge improbable",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "une étape de voyage",
+      "metadata": {
+        "Compétence": "Survie",
+        "Niveau": "23",
+        "Traits": "Compétence, Exploration, Mythique, Survie, Voyage",
+        "Type": "préparation de 10 minutes",
+        "Fréquence": "une fois par repos long",
+        "Durée": "une étape de voyage",
+        "Prérequis": "Survie Mythique ; Guide d'expédition et Refuge improbable"
+      }
+    },
+    "level": 23
+  },
+  "folder": "Survie"
+}

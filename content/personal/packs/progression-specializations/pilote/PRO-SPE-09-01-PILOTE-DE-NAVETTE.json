@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-09-01-PILOTE-DE-NAVETTE",
+  "name": "Pilote — Pilote de navette",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "pilote"],
+  "system": {
+    "description": "<p><strong>Pilote — Pilote de navette</strong>.</p><p><strong>Voie :</strong> Pilote</p>\n<p><strong>Dotation principale :</strong> Interface navette, carte de procédures, combinaison de vol renforcée.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-009-PILOTE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Pilote",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Pilote",
+      "branchName": "Pilote de navette",
+      "primaryLoadout": "Interface navette, carte de procédures, combinaison de vol renforcée.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Pilote"
+}

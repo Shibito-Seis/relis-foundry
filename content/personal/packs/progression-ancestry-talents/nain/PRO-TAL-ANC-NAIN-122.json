@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-122",
+  "name": "Arsenal nain",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Arsenal nain</strong>.</p><p>Le personnage choisit deux familles cohérentes avec sa tradition, par exemple :</p>\n<p>• marteaux et masses ;</p>\n<p>• haches ;</p>\n<p>• pics et outils de mine adaptés au combat ;</p>\n<p>• armes lourdes de chantier ;</p>\n<p>• armes à feu de bastion ;</p>\n<p>• boucliers offensifs.</p>\n<p>Il est considéré comme familier avec les armes choisies et peut utiliser les modèles nains courants sans malus dû uniquement à leur conception culturelle, leur équilibre ou leur interface.</p>\n<p>Un outil robuste appartenant à l&#39;une des familles choisies peut être utilisé comme arme improvisée sans le malus circonstanciel provenant exclusivement de son statut improvisé. Il conserve toutefois les dégâts, la portée et les limites d&#39;un outil, pas ceux d&#39;une arme militaire complète.</p>\n<p>Les catégories exactes et les effets de familiarité seront harmonisés lors des étapes 4 et 5.</p>",
+    "traits": ["Nain", "Arme", "Culture"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Arsenal du bastion",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "deux familles d'armes ou d'outils de guerre nains",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Arsenal du bastion",
+        "Traits": "Nain, Arme, Culture",
+        "Type": "Passif",
+        "Choix": "deux familles d'armes ou d'outils de guerre nains"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}

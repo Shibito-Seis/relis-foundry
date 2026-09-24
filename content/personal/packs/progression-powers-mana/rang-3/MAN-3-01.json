@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-3-01",
+  "name": "Orbe de tempête",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Orbe de tempête</strong>.</p><p><strong>Mana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / Explosion 2 à 24 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAE ; 5d6 froid, foudre ou chaleur ; sur critique, déplacement de 2 m depuis le centre.</p>\n<p><strong>Intensification :</strong> +1d6 ou Explosion +1.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "3",
+      "activation": "4 / 3 A / Explosion 2 à 24 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAE ; 5d6 froid, foudre ou chaleur ; sur critique, déplacement de 2 m depuis le centre.",
+      "scaling": "+1d6 ou Explosion +1."
+    },
+    "level": 10
+  },
+  "folder": "Rang 3"
+}

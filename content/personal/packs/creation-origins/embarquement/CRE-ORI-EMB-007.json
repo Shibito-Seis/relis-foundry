@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-EMB-007",
+  "name": "Cryogénisé par erreur",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p><strong>Cryogénisé par erreur</strong>.</p><p>Dossier confus, mauvais nom, mauvaise capsule, mauvais corps ou mauvaise priorité. — Chance insolente, Mémoire intacte — Identité falsifiée, Dossier Xirea verrouillé, Amnésie de cryostase</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Dossier confus, mauvais nom, mauvaise capsule, mauvais corps ou mauvaise priorité.",
+        "Atouts suggérés": "Chance insolente, Mémoire intacte",
+        "Handicaps suggérés": "Identité falsifiée, Dossier Xirea verrouillé, Amnésie de cryostase"
+      }
+    }
+  },
+  "folder": "embarquement"
+}

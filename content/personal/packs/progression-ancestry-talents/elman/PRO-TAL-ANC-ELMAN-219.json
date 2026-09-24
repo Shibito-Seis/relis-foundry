@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-219",
+  "name": "Glissement d'inertie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Glissement d&#39;inertie</strong>.</p><p>Lorsque le personnage chute ou subit un déplacement forcé, il peut redistribuer l&#39;impulsion dans son circuit corporel. Il réduit de 3 mètres la distance effective d&#39;une chute ou de 2 mètres le déplacement forcé.</p>\n<p>S&#39;il atteint ainsi un espace sûr, il reste debout.</p>\n<p>Le talent ne réduit pas les dégâts d&#39;une collision déjà subie et ne permet pas de résister à un déplacement dont la force dépasse manifestement l&#39;échelle personnelle.</p>",
+    "traits": ["Elman", "Déplacement", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Mobilité conductrice",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité conductrice",
+        "Traits": "Elman, Déplacement, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elman"
+}

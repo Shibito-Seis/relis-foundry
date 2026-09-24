@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-MELEE-064",
+  "name": "Prise instantanée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Prise instantanée</strong>.</p><p>Au début ou à la fin d&#39;une action de déplacement ou d&#39;interaction, le personnage peut accomplir une manipulation simple sur une arme de mêlée accessible : la dégainer, changer sa prise, la transférer d&#39;une main à l&#39;autre ou ramasser une arme libre dans son espace.</p>\n<p>Cette manipulation ne peut pas servir à attaquer, recharger un dispositif, activer une propriété, récupérer une arme tenue par autrui ou contourner une entrave. Elle reste impossible si l&#39;arme est rangée sous une protection fermée ou hors d&#39;atteinte.</p>",
+    "traits": ["Compétence", "Manipulation", "Mêlée"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Mêlée — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Mêlée",
+      "activation": "Activation libre",
+      "prerequisites": "Mêlée Expert",
+      "choice": "",
+      "frequency": "une fois par tour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Mêlée",
+        "Niveau": "3",
+        "Traits": "Compétence, Manipulation, Mêlée",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par tour",
+        "Prérequis": "Mêlée Expert"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Mêlée"
+}

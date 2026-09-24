@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-138",
+  "name": "Impact ancré",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Si le personnage possède un appui solide, il absorbe l&#39;impulsion dans sa posture.</p>\n<p>• Le déplacement forcé est réduit à 0.</p>\n<p>• Les dégâts physiques de l&#39;effet sont réduits de 2 + sa Vigueur.</p>\n<p>• Le personnage ne tombe pas uniquement à cause de cet impact.</p>\n<p>Impact ancré s&#39;applique après les protections et peut se cumuler avec leur Solidité, mais pas avec Chair contre le choc sur le même déclencheur.</p>\n<p>Le talent ne fonctionne pas contre une téléportation, une surface qui s&#39;effondre sous le personnage, un véhicule ou une créature de taille catastrophique que le MJ juge impossible à arrêter, ni contre une zone dont le déplacement n&#39;est qu&#39;une conséquence secondaire déjà accomplie.</p>",
+    "traits": ["Nain", "Défense", "Gravité", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-111",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pieds ancrés",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-128",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Centre de gravité immuable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Maîtrise gravitationnelle",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Pieds ancrés et Centre de gravité immuable",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "une attaque physique, une collision ou une onde de choc touche le personnage et devrait le déplacer",
+      "duration": "",
+      "metadata": {
+        "Famille": "Maîtrise gravitationnelle",
+        "Traits": "Nain, Défense, Gravité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Pieds ancrés et Centre de gravité immuable",
+        "Déclencheur": "une attaque physique, une collision ou une onde de choc touche le personnage et devrait le déplacer"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Nain"
+}

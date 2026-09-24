@@ -1,0 +1,68 @@
+{
+  "relisId": "PRO-TAL-CMP-DIPLOMATIE-210",
+  "name": "Coalition des mondes",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Coalition des mondes</strong>.</p><p>Le personnage prépare une coalition entre plusieurs communautés, peuples ou factions autonomes autour d&#39;intérêts durables, de responsabilités, de garanties et de procédures d&#39;arbitrage réelles.</p>\n<p>Il effectue un test de Diplomatie contre le DD le plus élevé des partenaires.</p>\n<p>• Réussite critique : l&#39;accord proposé expose objectifs, obligations, limites, arbitrages et conditions de retrait ; jusqu&#39;à six représentants gagnent +2 circonstanciel à leurs tests suivant l&#39;accord, et le premier échec simple de coordination diplomatique devient une réussite.</p>\n<p>• Réussite : l&#39;accord proposé expose les obligations et garanties principales ; jusqu&#39;à six représentants gagnent +2 circonstanciel à leur premier test suivant l&#39;accord.</p>\n<p>• Échec : aucune coalition suffisamment robuste n&#39;est proposée.</p>\n<p>• Échec critique : une incompatibilité fondamentale est révélée avant toute proclamation.</p>\n<p>Chaque partenaire reste libre d&#39;accepter, refuser ou quitter selon les conditions convenues. Le talent ne crée ni confiance, ni ressources, ni paix sans engagements réels.</p>\n<p>---</p>",
+    "traits": ["Compétence", "Diplomatie", "Mythique", "Préparation", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-206",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Table de négociation",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-208",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Compromis à plusieurs voix",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-209",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Dernière chance de paix",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Diplomatie — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Diplomatie",
+      "activation": "Activité de 1 jour",
+      "prerequisites": "Diplomatie Mythique ; Table de négociation, Compromis à plusieurs voix et Dernière chance de paix",
+      "choice": "",
+      "frequency": "une fois par coalition majeure",
+      "trigger": "",
+      "duration": "jusqu'à l'accomplissement de l'objectif commun ou sa rupture politique majeure",
+      "metadata": {
+        "Compétence": "Diplomatie",
+        "Niveau": "23",
+        "Traits": "Compétence, Diplomatie, Mythique, Préparation, Social",
+        "Type": "Activité de 1 jour",
+        "Fréquence": "une fois par coalition majeure",
+        "Durée": "jusqu'à l'accomplissement de l'objectif commun ou sa rupture politique majeure",
+        "Prérequis": "Diplomatie Mythique ; Table de négociation, Compromis à plusieurs voix et Dernière chance de paix",
+        "Réussite critique": "l'accord proposé expose objectifs, obligations, limites, arbitrages et conditions de retrait ; jusqu'à six représentants gagnent +2 circonstanciel à leurs tests suivant l'accord, et le premier échec simple de coordination diplomatique devient une réussite.",
+        "Réussite": "l'accord proposé expose les obligations et garanties principales ; jusqu'à six représentants gagnent +2 circonstanciel à leur premier test suivant l'accord.",
+        "Échec": "aucune coalition suffisamment robuste n'est proposée.",
+        "Échec critique": "une incompatibilité fondamentale est révélée avant toute proclamation."
+      }
+    },
+    "level": 23
+  },
+  "folder": "Diplomatie"
+}

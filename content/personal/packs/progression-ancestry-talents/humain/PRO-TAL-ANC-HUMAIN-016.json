@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-016",
+  "name": "Culture de l'Ancien Monde",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Culture de l&#39;Ancien Monde</strong>.</p><p>Le personnage apprend deux langues humaines, systèmes d&#39;écriture ou codes culturels supplémentaires.</p>\n<p>Il gagne également +2 circonstanciel aux tests de Culture ou d&#39;Investigation portant directement sur :</p>\n<p>• l&#39;histoire humaine précédant l&#39;exode ;</p>\n<p>• les anciennes nations ;</p>\n<p>• les institutions terriennes ;</p>\n<p>• les cultures populaires ;</p>\n<p>• les religions humaines ;</p>\n<p>• les infrastructures civiles ;</p>\n<p>• les archives de la Terre ;</p>\n<p>• les événements sociaux antérieurs à 2738.</p>\n<p>Ce talent ne garantit pas la connaissance d&#39;informations classifiées ou volontairement effacées.</p>",
+    "traits": ["Humain", "Culture"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Héritages et institutions",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritages et institutions",
+        "Traits": "Humain, Culture",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Humain"
+}

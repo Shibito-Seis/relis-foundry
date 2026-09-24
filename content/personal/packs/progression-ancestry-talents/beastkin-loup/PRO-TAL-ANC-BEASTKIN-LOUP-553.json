@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-553",
+  "name": "Hurlement entre les mondes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Hurlement entre les mondes</strong>.</p><p>Le personnage émet un appel physique et instinctif que les membres de son cercle peuvent ressentir dans le même vaisseau, la même implantation ou la même région de surface, même si le son ordinaire est bloqué. Ils connaissent sa direction générale et une intention simple : danger, rassemblement, poursuite, repli ou survie.</p>\n<p>Chaque membre gagne +3 circonstanciel à son prochain test pour rejoindre le Loup ou agir selon l&#39;appel avant la fin de la scène. Le talent ne transmet aucun langage, ne franchit ni distance interplanétaire, ni changement de plan et ne localise personne exactement.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Loup", "Communication", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-551",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Hurlement ancestral",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.157 Talents Beastkins Loups de niveau 21",
+      "family": "Transcendance lupine",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Hurlement ancestral",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance lupine",
+        "Traits": "Beastkin, Loup, Communication, Mythique",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Hurlement ancestral"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Beastkin Loup"
+}

@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-729",
+  "name": "Communauté choisie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir partagé au moins une mission, un voyage ou une épreuve significative, le personnage peut désigner jusqu&#39;à quatre volontaires comme sa Communauté choisie. Le choix est révisable après un repos long et une conversation sincère.</p>\n<p>Une fois par scène, lorsqu&#39;un membre Aide un autre membre, un échec ordinaire devient une réussite ordinaire. Le test d&#39;Aide doit rester possible et les deux participants doivent pouvoir communiquer.</p>\n<p>Le talent ne crée ni loyauté forcée, ni contact disponible à distance et cesse de fonctionner envers une personne qui refuse clairement cette appartenance.</p>",
+    "traits": ["Ascendance universelle", "Communauté", "Coopération", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-716",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritage d'adoption",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-721",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Codes de voisinage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.238 Talents universels d'Ascendance de niveau 9",
+      "family": "Diaspora et communautés",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "préparation et Passif",
+      "prerequisites": "Codes de voisinage ou Héritage d'adoption",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Diaspora et communautés",
+        "Traits": "Ascendance universelle, Communauté, Coopération, Social",
+        "Type": "préparation et Passif",
+        "Prérequis": "Codes de voisinage ou Héritage d'adoption"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Universel"
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-063",
+  "name": "Langues d'avant l'Exode",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Langues d&#39;avant l&#39;Exode</strong>.</p><p>Le personnage apprend deux langues, systèmes d&#39;écriture ou protocoles de communication supplémentaires.</p>\n<p>Il gagne aussi +2 circonstanciel aux tests de Culture ou d&#39;Investigation visant à :</p>\n<p>• traduire un document ancien ;</p>\n<p>• reconnaître l&#39;époque ou l&#39;origine d&#39;un texte ;</p>\n<p>• comprendre une évolution linguistique ;</p>\n<p>• distinguer un code elfique d&#39;une imitation ;</p>\n<p>• interpréter une archive antérieure à 2738.</p>",
+    "traits": ["Elfe", "Culture", "Langue"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Mémoire séculaire",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire séculaire",
+        "Traits": "Elfe, Culture, Langue",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

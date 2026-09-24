@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-116",
+  "name": "Main du bâtisseur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec des matériaux et des outils adaptés, le personnage peut construire ou renforcer un ouvrage simple :</p>\n<p>• étai ;</p>\n<p>• barricade ;</p>\n<p>• rampe ou passerelle courte ;</p>\n<p>• fixation ;</p>\n<p>• scellement provisoire ;</p>\n<p>• point d&#39;ancrage ;</p>\n<p>• abri de travail ;</p>\n<p>• protection d&#39;une machine immobile.</p>\n<p>Il effectue un test d&#39;Ingénierie ou d&#39;Athlétisme selon la nature du travail. Sur une réussite, les créatures utilisant l&#39;ouvrage gagnent +2 circonstanciel aux tests destinés à résister à un effondrement, franchir l&#39;obstacle préparé ou maintenir la position qu&#39;il protège.</p>\n<p>Un seul ouvrage de Main du bâtisseur créé par le personnage peut fournir ce bonus à la fois. Il dure jusqu&#39;à sa destruction, son démontage ou la fin de la mission.</p>\n<p>Le talent ne crée aucun matériau, ne remplace pas une porte étanche et ne permet pas d&#39;édifier en dix minutes une structure complexe ou permanente.</p>",
+    "traits": ["Nain", "Construction", "Exploration", "Préparation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Forge et ouvrage",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Forge et ouvrage",
+        "Traits": "Nain, Construction, Exploration, Préparation",
+        "Type": "préparation de 10 minutes"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}

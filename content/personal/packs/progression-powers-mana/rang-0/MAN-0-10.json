@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-0-10",
+  "name": "Sceau mineur",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Sceau mineur</strong>.</p><p><strong>Mana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 10 min / contact</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Surveille un objet ou passage de 1 m pendant 8 h ; le lanceur perçoit une ouverture à 100 m.</p>\n<p><strong>Intensification :</strong> Durée 24 h ou alerte transmise à deux alliés accordés.</p>",
+    "traits": ["Mana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "0",
+      "activation": "10 min / contact",
+      "discipline": "Protection",
+      "effect": "Surveille un objet ou passage de 1 m pendant 8 h ; le lanceur perçoit une ouverture à 100 m.",
+      "scaling": "Durée 24 h ou alerte transmise à deux alliés accordés."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

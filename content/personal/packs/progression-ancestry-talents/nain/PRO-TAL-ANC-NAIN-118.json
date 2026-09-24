@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-118",
+  "name": "Mémoire de la pierre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mémoire de la pierre</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Culture, Ingénierie ou Investigation portant sur :</p>\n<p>• l&#39;âge approximatif d&#39;un ouvrage ;</p>\n<p>• sa méthode de taille, de fonte ou d&#39;assemblage ;</p>\n<p>• l&#39;origine culturelle de son architecture ;</p>\n<p>• les outils ayant laissé des traces ;</p>\n<p>• les réparations et transformations visibles ;</p>\n<p>• la fonction historique d&#39;une mine, d&#39;une forge ou d&#39;un habitat souterrain.</p>\n<p>Une fois par session, il peut demander au MJ un détail fiable qu&#39;une étude attentive des matériaux permet réellement de déduire : direction d&#39;un chantier disparu, époque d&#39;une réparation, usage d&#39;une salle ou différence entre deux phases de construction.</p>\n<p>La pierre ne parle pas et le talent ne révèle ni une conversation, ni une identité inconnue, ni un événement n&#39;ayant laissé aucune trace matérielle.</p>",
+    "traits": ["Nain", "Culture", "Mémoire", "Structure"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Sens de la pierre",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la pierre",
+        "Traits": "Nain, Culture, Mémoire, Structure",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}

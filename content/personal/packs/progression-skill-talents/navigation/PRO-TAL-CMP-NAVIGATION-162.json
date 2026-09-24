@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-162",
+  "name": "Route balisée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Route balisée</strong>.</p><p>Le personnage trace une route entre une origine et une destination connues à l&#39;aide des cartes, relevés ou observations disponibles.</p>\n<p>Il effectue un test de Navigation contre le DD de la route.</p>\n<p>• Réussite critique : il identifie la route praticable, son principal danger, un point de contrôle et une solution de repli accessible.</p>\n<p>• Réussite : il identifie une route praticable et son principal danger connu.</p>\n<p>• Échec : aucune route assez fiable n&#39;est établie.</p>\n<p>• Échec critique : la route contient une incertitude majeure ; le MJ la signale avant le départ.</p>\n<p>Les participants suivant la route gagnent +2 circonstanciel au premier test destiné à reconnaître un point de contrôle ou éviter de quitter l&#39;itinéraire. Le talent ne garantit ni sécurité, ni ressources, ni praticabilité après un changement du terrain.</p>",
+    "traits": ["Compétence", "Exploration", "Navigation", "Préparation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Navigation Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'à l'achèvement de l'étape préparée ou la modification majeure du milieu",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "1",
+        "Traits": "Compétence, Exploration, Navigation, Préparation",
+        "Type": "Activité d'exploration",
+        "Durée": "jusqu'à l'achèvement de l'étape préparée ou la modification majeure du milieu",
+        "Prérequis": "Navigation Qualifié",
+        "Réussite critique": "il identifie la route praticable, son principal danger, un point de contrôle et une solution de repli accessible.",
+        "Réussite": "il identifie une route praticable et son principal danger connu.",
+        "Échec": "aucune route assez fiable n'est établie.",
+        "Échec critique": "la route contient une incertitude majeure ; le MJ la signale avant le départ."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Navigation"
+}

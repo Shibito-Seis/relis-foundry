@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-VAM-009",
+  "name": "Réserve interne",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p>Lorsqu&#39;il consomme une ration complète, le personnage peut renoncer à sa Récupération sanguine immédiate pour créer une Réserve interne. Il note si la ration était fraîche, conservée ou synthétique.</p>\n<p>La Réserve subsiste vingt-quatre heures ou jusqu&#39;au prochain repos long. Le personnage peut la dépenser plus tard en une minute pour appliquer la Récupération sanguine correspondant à sa source, sans consommer une nouvelle ration.</p>\n<p>Une seule Réserve peut être conservée. La ration réduit normalement la Faim et peut produire une Marque d&#39;Abandon si elle constituait une surconsommation.</p>",
+    "traits": ["Général", "Réserve", "Vampirique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.14 Talents vampiriques de niveau 7",
+      "family": "Sang et régénération",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Préparation et Activité de 1 minute",
+      "prerequisites": "Physiologie vampirique ; Stade vampirique 2",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang et régénération",
+        "Traits": "Général, Réserve, Vampirique",
+        "Type": "Préparation et Activité de 1 minute",
+        "Prérequis": "Physiologie vampirique ; Stade vampirique 2"
+      }
+    },
+    "level": 7
+  },
+  "folder": "### 30.14 Talents vampiriques de niveau 7"
+}

@@ -1,0 +1,93 @@
+{
+  "relisId": "ALM-054",
+  "name": "Spiritueux terrien",
+  "type": "consumable",
+  "tags": ["materiel", "alimentation"],
+  "system": {
+    "description": "<p><strong>Spiritueux terrien</strong> appartient au catalogue alimentation.</p><p>L. 0,05 L. 0. alcool fort ; −1 cumulatif, maximum −3, aux tests fins pendant 2 h. plusieurs années.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "alimentation",
+      "sourceSection": "55.3.6 Boissons — ALM-045 à ALM-054",
+      "canonicalRow": [
+        "ALM-054",
+        "Spiritueux terrien",
+        "L",
+        "0,05 L",
+        "0",
+        "alcool fort ; −1 cumulatif, maximum −3, aux tests fins pendant 2 h",
+        "plusieurs années"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": null,
+    "consumableProfile": {
+      "kind": "utility",
+      "effectSummary": "alcool fort ; −1 cumulatif, maximum −3, aux tests fins pendant 2 h"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "alimentation"
+}

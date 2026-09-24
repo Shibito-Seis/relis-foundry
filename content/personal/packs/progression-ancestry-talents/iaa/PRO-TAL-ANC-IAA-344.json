@@ -1,0 +1,71 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-344",
+  "name": "Personne au-delà du support",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Personne au-delà du support</strong>.</p><p>Le personnage définit explicitement les conditions de sa continuité : quelles instances sont lui-même, lesquelles sont ses héritières et quels souvenirs sont nécessaires pour qu&#39;une restauration soit reconnue comme sa suite légitime.</p>\n<p>Tant qu&#39;une instance, sauvegarde ou fragment identitaire répondant à ces conditions subsiste, sa mort définitive ne peut être déclarée sans vérifier ce support. Une fois par mission, après la perte de l&#39;instance active, il peut éveiller immédiatement une sauvegarde ou un ancrage déjà disponible. Il devient Désincarné ou limité au support présent, perd les souvenirs non synchronisés et gagne 2 Stress.</p>\n<p>Le talent ne crée aucun support, ne reconstruit pas de châssis, ne ressuscite pas l&#39;instance morte et ne permet pas de reprendre une scène depuis un lieu inaccessible.</p>",
+    "traits": ["IAA", "Continuité", "Identité", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-332",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Migration d'urgence",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-IAA-335",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Noyau souverain",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-IAA-337",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Continuité répliquée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-IAA-341",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Identité inaltérable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.93 Talents IAA de niveau 29",
+      "family": "Transcendance IAA",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Identité inaltérable et Noyau souverain ou Migration d'urgence ou Continuité répliquée",
+      "choice": "",
+      "frequency": "une fois par mission pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance IAA",
+        "Traits": "IAA, Continuité, Identité, Mythique",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par mission pour l'activation",
+        "Prérequis": "Identité inaltérable et Noyau souverain ou Migration d'urgence ou Continuité répliquée"
+      }
+    },
+    "level": 29
+  },
+  "folder": "IAA"
+}

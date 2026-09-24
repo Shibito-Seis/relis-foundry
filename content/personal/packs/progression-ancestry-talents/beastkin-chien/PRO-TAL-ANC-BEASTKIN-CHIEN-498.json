@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-498",
+  "name": "Concentration de travail",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Concentration de travail</strong>.</p><p>Lorsque le personnage entreprend un test directement nécessaire à sa consigne, il ignore jusqu&#39;à 2 points de pénalité circonstancielle provenant du bruit, de l&#39;agitation, d&#39;une provocation, d&#39;une interruption mineure ou d&#39;un environnement de travail inconfortable.</p>\n<p>Le talent n&#39;ignore ni Blessure, ni Fatigue, ni absence d&#39;outil, ni danger matériel, ni impossibilité physique.</p>",
+    "traits": ["Beastkin", "Chien", "Concentration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-489",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Consigne choisie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.142 Talents Beastkins Chiens de niveau 5",
+      "family": "Discipline et maîtrise de soi",
+      "ancestry": "Beastkin Chien",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Consigne choisie",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Discipline et maîtrise de soi",
+        "Traits": "Beastkin, Chien, Concentration",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Consigne choisie"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Chien"
+}

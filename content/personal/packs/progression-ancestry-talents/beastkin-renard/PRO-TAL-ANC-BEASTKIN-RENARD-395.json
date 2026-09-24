@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-395",
+  "name": "Brasier des neuf sentiers",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Brasier des neuf sentiers</strong>.</p><p>Après une réussite avec Étincelle vulpine, le personnage peut faire bondir la flamme vers une seconde cible visible située à 2 mètres de la première. Il effectue une nouvelle attaque de Maîtrise Magique + Canalisation contre sa CAE.</p>\n<p>Une réussite inflige la moitié des dégâts lancés pour la première Étincelle, arrondis à l&#39;inférieur. La seconde flamme ne peut rebondir à nouveau et ne bénéficie d&#39;aucun autre effet multipliant les cibles.</p>",
+    "traits": ["Beastkin", "Renard", "Canalisation", "Énergie", "Feu-follet"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-379",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Étincelle vulpine",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.110 Talents Beastkins Renards de niveau 9",
+      "family": "Feux-follets et arts spirituels",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "amélioration d'attaque",
+      "prerequisites": "Étincelle vulpine",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Feux-follets et arts spirituels",
+        "Traits": "Beastkin, Renard, Canalisation, Énergie, Feu-follet",
+        "Prérequis": "Étincelle vulpine",
+        "Type": "amélioration d'attaque",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Renard"
+}

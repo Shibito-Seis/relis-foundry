@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-666",
+  "name": "Souris primordiale",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Souris primordiale</strong>.</p><p>Le personnage manifeste l&#39;archétype primordial de la survie murine sans changer de taille. Pendant l&#39;effet :</p>\n<p>• sa Vitesse terrestre augmente de 3 mètres et il ignore les 4 premiers mètres de terrain difficile de chaque tour ;</p>\n<p>• il gagne +3 circonstanciel aux tests de Dextérité, Technologie, Intelligence, Perception et Volonté liés à ses talents Souris ;</p>\n<p>• il peut traverser l&#39;espace d&#39;une créature plus grande avec un test d&#39;Acrobaties, sans devenir intangible ;</p>\n<p>• une fois par tour, après une réussite technique ou de mobilité, un membre du Cercle du terrier gagne +2 à son prochain test exploitant cette réussite ;</p>\n<p>• la première fois pendant la durée qu&#39;il devrait tomber à 0 PV sans destruction complète du corps, il reste à 1 PV et se déplace de 2 mètres vers un couvert légal.</p>\n<p>Le talent ne fournit ni invisibilité, ni Action, ni attaque, ni ressource, ni passage à travers une matière solide. À la fin, le personnage gagne 2 Fatigue et 1 Stress.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Souris", "Mythique", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-665",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réseau impossible",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-370",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Éveil primordial",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.192 Talent Beastkin Souris de niveau 29",
+      "family": "Transcendance murine",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Réseau impossible et Éveil primordial",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance murine",
+        "Traits": "Beastkin, Souris, Mythique, Physiologie",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Réseau impossible et Éveil primordial"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Beastkin Souris"
+}

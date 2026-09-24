@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-029-PATRIMOINE-CACHE",
+  "name": "Patrimoine caché",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Patrimoine caché</strong>.</p><p><strong>Valeur :</strong> +2</p>\n<p>Le personnage possède un bien, coffre, compte, donnée, héritage ou actif récupérable plus tard. Valeur indicative : 25 000 à 75 000 crédits, mais pas forcément accessible immédiatement.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "Le personnage possède un bien, coffre, compte, donnée, héritage ou actif récupérable plus tard. Valeur indicative : 25 000 à 75 000 crédits, mais pas forcément accessible immédiatement."
+    }
+  },
+  "folder": ""
+}

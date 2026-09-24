@@ -40,6 +40,7 @@ import type { RelisActor } from "../documents/actor";
 import { materialDiagnostics } from "../rules/personal-material";
 import {
   attunementHistoryEntry,
+  attunementSessionContract,
   canAnswerAttunement,
   canManageAttunement,
   loadAttunementContract,
@@ -640,7 +641,16 @@ async function askAttunement(
     rejectClose: false,
   });
   if (!result) return null;
-  return { answers: dialog.readAnswers(), tieAxis: dialog.readTieAxis() };
+  const values = ((result as any).object ?? result) as Record<string, unknown>;
+  return {
+    answers: Object.fromEntries(
+      contract.questions.map(({ id }) => [
+        id,
+        String(values[`answer__${id}`] ?? ""),
+      ]),
+    ),
+    tieAxis: String(values.tieAxis ?? ""),
+  };
 }
 
 async function askAttunementColor(
@@ -670,7 +680,32 @@ async function askAttunementColor(
     rejectClose: false,
   });
   if (!result) return null;
-  return contract.palette.find(({ id }) => id === select.value) ?? null;
+  const values = ((result as any).object ?? result) as Record<string, unknown>;
+  return (
+    contract.palette.find(({ id }) => id === String(values.colorId ?? "")) ??
+    null
+  );
+}
+
+function withoutAttunementIdentity(description: string): string {
+  return description.replace(
+    /<p class="relis-attunement-identity">[\s\S]*?<\/p>/gu,
+    "",
+  );
+}
+
+function attunedDescription(
+  description: string,
+  color: AttunementColor,
+  subjectName: string,
+): string {
+  const safe = (value: string) =>
+    value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+  return `${withoutAttunementIdentity(description)}<p class="relis-attunement-identity"><strong>Accord :</strong> ${safe(color.label)}${subjectName ? ` — lié à ${safe(subjectName)}` : ""}.</p>`;
 }
 
 export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
@@ -693,7 +728,11 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       );
       return;
     }
-    const contract = await loadAttunementContract();
+    const sourceContract = await loadAttunementContract();
+    const contract = attunementSessionContract(
+      sourceContract,
+      this.item.uuid || this.item.id || this.item.name,
+    );
     const current = this.item.system.attunement ?? {};
     const response = await askAttunement(contract, {
       ...(current.answers ?? {}),
@@ -713,7 +752,14 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const completedAt = new Date().toISOString();
     const history = Array.from(current.history ?? []);
     history.push(attunementHistoryEntry("answer", current, completedAt));
+    const subjectName = this.item.parent?.name ?? "";
     await this.item.update({
+      name: `Cœur d’Écarlithe — ${resolution.color.label}`,
+      "system.description": attunedDescription(
+        String(current.description ?? this.item.system.description ?? ""),
+        resolution.color,
+        subjectName,
+      ),
       "system.attunement": {
         state: "attuned",
         questionnaireVersion: contract.contentVersion,
@@ -722,7 +768,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         colorId: resolution.color.id,
         axisIds: resolution.color.axes,
         subjectUuid: this.item.parent?.uuid ?? "",
-        subjectName: this.item.parent?.name ?? "",
+        subjectName,
         completedAt,
         history,
       },
@@ -745,6 +791,12 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const history = Array.from(current.history ?? []);
     history.push(attunementHistoryEntry("override", current, completedAt));
     await this.item.update({
+      name: `Cœur d’Écarlithe — ${color.label}`,
+      "system.description": attunedDescription(
+        String(this.item.system.description ?? ""),
+        color,
+        this.item.parent?.name ?? "",
+      ),
       "system.attunement": {
         ...current,
         state: "attuned",
@@ -766,6 +818,10 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const history = Array.from(current.history ?? []);
     history.push(attunementHistoryEntry("reset", current, changedAt));
     await this.item.update({
+      name: "Cœur d’Écarlithe incolore",
+      "system.description": withoutAttunementIdentity(
+        String(this.item.system.description ?? ""),
+      ),
       "system.attunement": {
         state: "unattuned",
         questionnaireVersion: "",
@@ -940,6 +996,8 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       weaponFeedKind,
       String(system.weaponProfile?.hybridPhysicalFeedKind ?? ""),
     );
+    const weaponUsesAmmunition =
+      Array.from(system.weaponProfile?.ammunitionFamilyIds ?? []).length > 0;
     const weaponModeIds = [
       ...new Set([
         "single",
@@ -956,6 +1014,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const isPranaCrystalResource =
       this.item.type === "resource" &&
       system.energyProfile?.kind === "pranaCrystal";
+    const focusProfile = system.catalog?.focusProfile ?? null;
     let attunementContract: AttunementContract | null = null;
     if (isPranaCrystalResource) {
       try {
@@ -1014,7 +1073,10 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       ),
       isTechnoBladeFamily:
         system.weaponProfile?.familyId === "martialTechnoBlade",
-      usesProjectileFeed: ["chamber", "internal", "detachable"].includes(
+      usesProjectileFeed:
+        weaponUsesAmmunition ||
+        ["chamber", "internal", "detachable"].includes(weaponPhysicalFeedKind),
+      usesPhysicalFeedInterface: ["chamber", "internal", "detachable"].includes(
         weaponPhysicalFeedKind,
       ),
       usesEnergyFeed: ["energy", "hybrid"].includes(weaponFeedKind),
@@ -1029,7 +1091,9 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       usesReloadProcedure:
         ["chamber", "internal", "detachable"].includes(
           weaponPhysicalFeedKind,
-        ) || ["energy", "hybrid"].includes(weaponFeedKind),
+        ) ||
+        weaponUsesAmmunition ||
+        ["energy", "hybrid"].includes(weaponFeedKind),
       ammunitionConsumptionRows: modeConsumptionRows("ammunition"),
       energyConsumptionRows: modeConsumptionRows("energy"),
       isEnergyTechnoBlade:
@@ -1057,6 +1121,8 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         "resource",
       ].includes(this.item.type),
       isPranaCrystalResource,
+      isFocalizer: Boolean(focusProfile),
+      focusProfile,
       crystalAttunement: isPranaCrystalResource
         ? {
             state: String(attunement.state ?? "unattuned"),

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-192",
+  "name": "Génie transversal",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Génie transversal</strong>.</p><p>Le personnage augmente d&#39;un rang sa maîtrise dans deux compétences différentes parmi Culture, Informatique, Ingénierie, Investigation, Sciences, Systèmes de vaisseau et Techno-magie, jusqu&#39;à un maximum de Maître.</p>\n<p>Lorsqu&#39;une tâche exige réellement de combiner les deux compétences choisies, il gagne +2 circonstanciel au test principal ou à l&#39;aide fournie à un allié.</p>\n<p>Les augmentations respectent tous les seuils de Niveau général. Le bonus ne s&#39;applique pas lorsque l&#39;une des deux compétences n&#39;apporte qu&#39;un prétexte superficiel.</p>",
+    "traits": ["Gnome", "Compétence", "Synthèse"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.56 Talents Gnomes de niveau 13",
+      "family": "Curiosité insatiable",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Curiosité insatiable",
+        "Traits": "Gnome, Compétence, Synthèse",
+        "Type": "Passif"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Gnome"
+}

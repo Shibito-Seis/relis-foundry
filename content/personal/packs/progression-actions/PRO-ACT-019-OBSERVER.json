@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-019-OBSERVER",
+  "name": "Observer",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Observer</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Concentrer ses sens sur une cible ou une zone limitée.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Concentrer ses sens sur une cible ou une zone limitée."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

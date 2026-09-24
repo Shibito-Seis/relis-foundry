@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-622",
+  "name": "Abri du grand corps",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Abri du grand corps</strong>.</p><p>Avec des matériaux disponibles, le personnage aménage un abri temporaire pour lui-même et jusqu&#39;à quatre créatures. Les occupants gagnent +3 circonstanciel aux tests contre exposition, vent, pluie, froid ordinaire ou détection visuelle depuis l&#39;extérieur.</p>\n<p>Le talent ne crée aucun matériau, ne protège pas d&#39;une attaque, d&#39;un environnement hermétique requis ou d&#39;un danger que l&#39;abri ne peut physiquement arrêter.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Ours", "Exploration", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-604",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sens de la tanière",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.177 Talents Beastkins Ours de niveau 13",
+      "family": "Ressources, abri et sens du territoire",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Sens de la tanière",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ressources, abri et sens du territoire",
+        "Traits": "Beastkin, Ours, Exploration, Survie",
+        "Type": "Activité de 10 minutes",
+        "Prérequis": "Sens de la tanière"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Ours"
+}

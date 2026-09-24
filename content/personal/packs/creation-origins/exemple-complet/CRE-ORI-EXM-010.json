@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-ORI-EXM-010",
+  "name": "Substitut sans histoire",
+  "type": "origin",
+  "tags": ["creation", "origine", "exemple-complet"],
+  "system": {
+    "description": "<p><strong>Substitut sans histoire</strong>.</p><p>Modeste — Administration / gouvernement — Substitué ou cryogénisé par erreur — Le personnage semble banal, ce qui est rarement bon signe.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-exemple-complet",
+      "sourceSection": "7",
+      "fields": {
+        "Milieu social": "Modeste",
+        "Affiliation / communauté": "Administration / gouvernement",
+        "Condition d’embarquement": "Substitué ou cryogénisé par erreur",
+        "Lecture rapide": "Le personnage semble banal, ce qui est rarement bon signe."
+      }
+    }
+  },
+  "folder": "exemple-complet"
+}

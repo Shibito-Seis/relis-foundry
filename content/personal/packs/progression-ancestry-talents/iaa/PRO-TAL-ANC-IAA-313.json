@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-313",
+  "name": "Sauvegarde fondatrice",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec une infrastructure sécurisée et assez de stockage, le personnage maintient une sauvegarde dormante chiffrée. Elle contient son état mémoriel au moment de l&#39;enregistrement et peut être actualisée une fois par jour.</p>\n<p>Il ne peut entretenir qu&#39;une Sauvegarde fondatrice à la fois. Sa restauration exige un support compatible, du temps et une intervention appropriée.</p>\n<p>La sauvegarde n&#39;apprend rien pendant son sommeil. Sa restauration crée une continuité à partir de l&#39;état enregistré ; elle n&#39;annule pas la mort ni les expériences perdues d&#39;une instance plus récente.</p>",
+    "traits": ["IAA", "Architecture", "Répliquée", "Sauvegarde"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Répliquée",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Architecture Répliquée maîtrisée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Répliquée",
+        "Traits": "IAA, Architecture, Répliquée, Sauvegarde",
+        "Type": "Activité de 1 heure",
+        "Prérequis": "Architecture Répliquée maîtrisée"
+      }
+    },
+    "level": 1
+  },
+  "folder": "IAA"
+}

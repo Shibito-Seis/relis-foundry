@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-728",
+  "name": "Mémoire de la diaspora",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mémoire de la diaspora</strong>.</p><p>Le personnage sait confronter plusieurs versions d&#39;un déplacement, d&#39;une persécution, d&#39;une migration ou d&#39;une fondation communautaire. Lorsqu&#39;il échoue à un test de Culture ou Investigation portant sur une diaspora terrienne, il peut consacrer dix minutes à réorganiser ses sources puis relancer le test. Il conserve le second résultat.</p>\n<p>Sur une réussite, il distingue au moins ce qui relève du fait établi, de la mémoire revendiquée et de la légende, sans connaître automatiquement la vérité cachée.</p>\n<p>Il ne peut utiliser ce talent qu&#39;une fois par sujet au cours d&#39;une même scène ou période de recherche.</p>",
+    "traits": ["Ascendance universelle", "Culture", "Diaspora", "Mémoire"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-718",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire transmise",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.238 Talents universels d'Ascendance de niveau 9",
+      "family": "Mémoire transmise",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Passif et Activité d'exploration",
+      "prerequisites": "Mémoire transmise",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire transmise",
+        "Traits": "Ascendance universelle, Culture, Diaspora, Mémoire",
+        "Type": "Passif et Activité d'exploration",
+        "Prérequis": "Mémoire transmise"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Universel"
+}

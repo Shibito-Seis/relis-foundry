@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-036",
+  "name": "Seconde réserve",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Seconde réserve</strong>.</p><p>Le personnage mobilise ses dernières réserves, effectue une purge de chaleur ou réordonne ses priorités mentales. Il réduit simultanément :</p>\n<p>• sa Fatigue de 1 ;</p>\n<p>• son Stress de 2.</p>\n<p>Le talent ne franchit aucun plancher, ne retire pas une Fatigue dont la cause interdit la récupération, ne met pas fin à une Surcharge mentale déjà déclenchée et ne traite aucun Traumatisme.</p>",
+    "traits": ["Général", "Récupération"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.8 Talents généraux de niveau 19",
+      "family": "Effort et Surmenage",
+      "ancestry": "",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Effort et Surmenage",
+        "Traits": "Général, Récupération",
+        "Type": "1 Action",
+        "Fréquence": "une fois par repos long"
+      }
+    },
+    "level": 19
+  },
+  "folder": "### 31.8 Talents généraux de niveau 19"
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-ELFE-680",
+  "name": "Étincelle elfique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Étincelle elfique</strong>.</p><p>Le personnage perçoit faiblement la circulation des énergies. Il gagne +2 circonstanciel aux tests de Perception, Sciences ou Techno-magie pour reconnaître une manifestation active de Mana, Prana, Flux ou techno-magie accessible à ses sens.</p>\n<p>Le talent ne donne aucune réserve d&#39;énergie, aucun sort et ne révèle ni nature exacte, ni source cachée sans test approprié.</p>",
+    "traits": ["Demi-Elfe", "Magie", "Perception"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.206 Talents Demi-Elfes de niveau 1",
+      "family": "Magie tempérée",
+      "ancestry": "Demi-Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Magie tempérée",
+        "Traits": "Demi-Elfe, Magie, Perception",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Demi-Elfe"
+}

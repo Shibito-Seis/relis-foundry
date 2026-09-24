@@ -1,0 +1,47 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMANDEMENT-185",
+  "name": "Chaîne maintenue",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Chaîne maintenue</strong>.</p><p>Le personnage rappelle un signal, une priorité ou une procédure déjà comprise. Jusqu&#39;à quatre alliés capables de recevoir directement ou par relais cette consigne ignorent jusqu&#39;à 2 points de malus circonstanciel provenant uniquement de la dégradation déclenchante lorsqu&#39;ils suivent le plan existant.</p>\n<p>Le talent ne transmet pas à travers un moyen impossible, ne crée pas de nouveau plan et cesse pour un allié qui choisit une action incompatible avec la priorité rappelée.</p>",
+    "traits": ["Commandement", "Compétence", "Concentration", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-COMMANDEMENT-182",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Répartition des rôles",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commandement — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commandement",
+      "activation": "Réaction",
+      "prerequisites": "Commandement Expert ; Répartition des rôles",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "les communications, la visibilité ou la chaîne d'organisation d'un groupe suivant un plan préparé sont brutalement dégradées",
+      "duration": "jusqu'à la fin du prochain round ou de l'étape immédiate",
+      "metadata": {
+        "Compétence": "Commandement",
+        "Niveau": "3",
+        "Traits": "Commandement, Compétence, Concentration, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "les communications, la visibilité ou la chaîne d'organisation d'un groupe suivant un plan préparé sont brutalement dégradées",
+        "Durée": "jusqu'à la fin du prochain round ou de l'étape immédiate",
+        "Prérequis": "Commandement Expert ; Répartition des rôles"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Commandement"
+}

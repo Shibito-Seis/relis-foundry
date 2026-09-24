@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-4-03",
+  "name": "Armure arcane supérieure",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Armure arcane supérieure</strong>.</p><p><strong>Mana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 4 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Pendant une scène : +2 CAE et Résistance 4 à deux énergies choisies ; ne se cumule pas avec une armure magique équivalente.</p>\n<p><strong>Intensification :</strong> Résistance +2 ou seconde cible.</p>",
+    "traits": ["Mana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "4",
+      "activation": "4 / 2 A / contact",
+      "discipline": "Protection",
+      "effect": "Pendant une scène : +2 CAE et Résistance 4 à deux énergies choisies ; ne se cumule pas avec une armure magique équivalente.",
+      "scaling": "Résistance +2 ou seconde cible."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

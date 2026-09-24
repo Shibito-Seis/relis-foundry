@@ -97,6 +97,14 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     );
     expect(sheet).toContain('field.className = "relis-inventory-dialog-field"');
     expect(sheet).toContain("foundry.applications.api.DialogV2.input({");
+    const itemSheet = readFileSync("src/sheets/item-sheet.ts", "utf8");
+    expect(itemSheet).toContain(
+      'const content = document.createElement("div")',
+    );
+    expect(itemSheet).toContain("((result as any).object ?? result)");
+    expect(itemSheet).not.toMatch(
+      /DialogV2\.input\([\s\S]*?return \{ answers: dialog\.readAnswers\(\)/,
+    );
   });
   it("présente la charge simplifiée et conserve la recherche validée", () => {
     expect(template).toContain('role="meter"');

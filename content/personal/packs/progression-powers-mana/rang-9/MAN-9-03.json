@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-9-03",
+  "name": "Domaine d’accord",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-9"],
+  "system": {
+    "description": "<p><strong>Domaine d’accord</strong>.</p><p><strong>Mana — Rang 9.</strong></p>\n<p><strong>Activation :</strong> 10 / 1 h / rayon 1 km</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Pendant 24 h, règle climat local, lumière, température, gravité légère et disponibilité de Mana dans des limites habitables ; aucune destruction instantanée.</p>\n<p><strong>Intensification :</strong> Rayon ×5 ou durée 7 jours.</p>",
+    "traits": ["Mana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "9",
+      "activation": "10 / 1 h / rayon 1 km",
+      "discipline": "Transformation",
+      "effect": "Pendant 24 h, règle climat local, lumière, température, gravité légère et disponibilité de Mana dans des limites habitables ; aucune destruction instantanée.",
+      "scaling": "Rayon ×5 ou durée 7 jours."
+    },
+    "level": 28
+  },
+  "folder": "Rang 9"
+}

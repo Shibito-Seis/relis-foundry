@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-PRO-042-SPORTIF-DE-HAUT-NIVEAU",
+  "name": "Sportif de haut niveau",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Sportif de haut niveau</strong>.</p><p><strong>Attribut standard :</strong> Force, Dextérité, Vigueur</p>\n<p><strong>Profil marqué :</strong> +Dextérité, +Vigueur ; -Intelligence, -Technologie ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Acrobaties, Athlétisme, Endurance, Sang-froid</p>\n<p><strong>Avantage typique :</strong> Réputation sportive, équipement adapté</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Force", "Dextérité", "Vigueur"],
+      "markedProfile": "+Dextérité, +Vigueur ; -Intelligence, -Technologie ou -Maîtrise Magique",
+      "skillChoices": ["Acrobaties", "Athlétisme", "Endurance", "Sang-froid"],
+      "typicalBenefit": "Réputation sportive, équipement adapté",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

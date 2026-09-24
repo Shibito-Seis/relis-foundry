@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-045",
+  "name": "Humanité augmentée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Humanité augmentée</strong>.</p><p>Le personnage transcende une limite humaine par une augmentation volontaire : génétique, cybernétique, biomécanique, techno-magique ou issue d&#39;une combinaison maîtrisée.</p>\n<p>Il gagne immédiatement deux augmentations d&#39;Attribut, placées dans deux Attributs différents.</p>\n<p>Ces augmentations :</p>\n<p>• suivent la règle des Attributs partiels au-dessus de 4 ;</p>\n<p>• ne peuvent pas faire dépasser la valeur maximale de 8 ;</p>\n<p>• constituent une même source et doivent donc viser deux Attributs différents ;</p>\n<p>• sont permanentes tant que l&#39;augmentation demeure fonctionnelle.</p>\n<p>Le joueur décrit la forme de l&#39;augmentation et son intégration au personnage. Cette description peut modifier son apparence ou sa nature corporelle avec l&#39;accord du MJ, mais ne donne pas gratuitement :</p>\n<p>• d&#39;appendice fonctionnel supplémentaire ;</p>\n<p>• d&#39;arme intégrée ;</p>\n<p>• d&#39;organe énergétique ;</p>\n<p>• d&#39;Architecture IAA ;</p>\n<p>• de capacité d&#39;une autre Ascendance ;</p>\n<p>• d&#39;immunité ou de résistance non mentionnée.</p>\n<p>Une augmentation faisant partie du talent ne devrait pas être neutralisée durablement par une panne ordinaire ; une suppression permanente demande un événement majeur et doit permettre une reconstruction ou un réentraînement équivalent.</p>\n<p>---</p>",
+    "traits": ["Humain", "Augmentation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-018",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Appropriation technologique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.26 Talents Humains de niveau 21",
+      "family": "Dépassement humain",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Appropriation technologique, Atout Corps adapté ou une modification corporelle validée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Dépassement humain",
+        "Traits": "Humain, Augmentation",
+        "Type": "Passif",
+        "Prérequis": "Appropriation technologique, Atout Corps adapté ou une modification corporelle validée",
+        "Source": "biologique, cybernétique, biomécanique ou techno-magique"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Humain"
+}

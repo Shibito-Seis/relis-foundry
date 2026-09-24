@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-AFF-004",
+  "name": "Laboratoire privé",
+  "type": "origin",
+  "tags": ["creation", "origine", "affiliation"],
+  "system": {
+    "description": "<p><strong>Laboratoire privé</strong>.</p><p>Structure de recherche indépendante, industrielle, médicale, génétique ou énergétique. — Prototype personnel, Contact influent, Patrimoine caché — Secret compromettant, Modification génétique instable, Dossier Xirea verrouillé</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-affiliation",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Structure de recherche indépendante, industrielle, médicale, génétique ou énergétique.",
+        "Atouts suggérés": "Prototype personnel, Contact influent, Patrimoine caché",
+        "Handicaps suggérés": "Secret compromettant, Modification génétique instable, Dossier Xirea verrouillé"
+      }
+    }
+  },
+  "folder": "affiliation"
+}

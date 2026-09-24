@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-023",
+  "name": "Adaptation hostile",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Adaptation hostile</strong>.</p><p>Après au moins 10 minutes passées à observer, tester ou subir un environnement hostile, le personnage choisit une menace dominante de la zone.</p>\n<p>Exemples :</p>\n<p>• froid ;</p>\n<p>• chaleur ;</p>\n<p>• faible oxygène ;</p>\n<p>• gravité anormale ;</p>\n<p>• toxines légères ;</p>\n<p>• radiations faibles ;</p>\n<p>• ruines instables ;</p>\n<p>• marche forcée ;</p>\n<p>• obscurité oppressante ;</p>\n<p>• panique collective ;</p>\n<p>• manque de ressources ;</p>\n<p>• environnement post-catastrophe.</p>\n<p>Tant qu&#39;il reste dans cette zone ou une zone comparable, il gagne +2 circonstanciel aux tests appropriés pour résister, progresser ou garder son calme face à cette menace.</p>\n<p>Compétences ou jets concernés selon le cas :</p>\n<p>• Endurance ;</p>\n<p>• Survie ;</p>\n<p>• Sang-froid ;</p>\n<p>• Volonté ;</p>\n<p>• Athlétisme ;</p>\n<p>• Navigation ;</p>\n<p>• Investigation, uniquement pour lire les signes de danger.</p>\n<p>Une fois par scène, lorsque cette menace lui infligerait du Stress ou de la Fatigue, il réduit ce gain de 1, avec un minimum de 0.</p>\n<p>Ce talent ne donne pas d&#39;immunité biologique. Il ne protège pas contre une exposition extrême, une toxine militaire, une radiation mortelle ou une anomalie surnaturelle sans équipement adapté.</p>",
+    "traits": ["Humain", "Survie", "Exploration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-012",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Survivant de l'effondrement",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-013",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ténacité humaine",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.22 Talents Humains de niveau 5",
+      "family": "Résilience terrienne",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Activité d'exploration / préparation",
+      "prerequisites": "Survivant de l'effondrement ou Ténacité humaine",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résilience terrienne",
+        "Traits": "Humain, Survie, Exploration",
+        "Type": "Activité d'exploration / préparation",
+        "Prérequis": "Survivant de l'effondrement ou Ténacité humaine"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Humain"
+}

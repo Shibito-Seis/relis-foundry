@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-446",
+  "name": "Toujours sur ses pattes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Toujours sur ses pattes</strong>.</p><p>Pendant trois tours, le personnage ne peut être renversé tant qu&#39;il reste conscient, transforme ses échecs critiques d&#39;Acrobaties et de Dextérité en échecs ordinaires et peut se déplacer de 2 mètres après chaque réussite défensive, au maximum une fois par tour. S&#39;il tombe à 0 PV, il peut achever son tour en cours avant de subir les conséquences normales. Aucune Action supplémentaire ni immunité à la mort n&#39;est accordée.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-445",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Neuvième vie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.126 Talent Beastkin Chat de niveau 29",
+      "family": "Transcendance féline",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Neuvième vie",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance féline",
+        "Prérequis": "Neuvième vie",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Beastkin Chat"
+}

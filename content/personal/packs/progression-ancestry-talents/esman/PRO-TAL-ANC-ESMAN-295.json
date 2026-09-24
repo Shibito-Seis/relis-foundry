@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-295",
+  "name": "Mutation souveraine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mutation souveraine</strong>.</p><p>Le personnage entretient deux modifications de Mutation stabilisée à la fois. Après dix minutes de concentration et d&#39;ajustement biologique dans un lieu sûr, il peut remplacer l&#39;une d&#39;elles par une autre option de la liste.</p>\n<p>Il gagne +3 circonstanciel aux tests pour résister à une mutation imposée ou conserver son identité biologique face à une corruption transformatrice.</p>\n<p>Le talent ne permet pas d&#39;inventer une nouvelle modification, de changer d&#39;Ascendance ou de restaurer un organe détruit.</p>\n<p>---</p>",
+    "traits": ["Esman", "Mutation", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-290",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps de seconde génération",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.79 Talents Esmans de niveau 17",
+      "family": "Physiologie modifiée",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif et Activité de 10 minutes",
+      "prerequisites": "Corps de seconde génération",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie modifiée",
+        "Traits": "Esman, Mutation, Physiologie",
+        "Type": "Passif et Activité de 10 minutes",
+        "Prérequis": "Corps de seconde génération"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Esman"
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-468",
+  "name": "Poursuite brève",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Poursuite brève</strong>.</p><p>Lorsqu&#39;une créature que le personnage perçoit termine volontairement un déplacement en s&#39;éloignant de lui, le Félin se déplace jusqu&#39;à la moitié de sa Vitesse vers elle.</p>\n<p>Il doit suivre un trajet légal, ne peut dépasser la position finale de la cible et n&#39;effectue aucune attaque pendant cette réaction.</p>",
+    "traits": ["Beastkin", "Félin", "Mobilité", "Poursuite", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-460",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Bond sur la proie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.132 Talents Beastkins Félins de niveau 9",
+      "family": "Bond, charge et poursuite",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Bond sur la proie",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bond, charge et poursuite",
+        "Traits": "Beastkin, Félin, Mobilité, Poursuite, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Bond sur la proie"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Félin"
+}

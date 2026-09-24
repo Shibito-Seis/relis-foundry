@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-361",
+  "name": "Perception croisée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Perception croisée</strong>.</p><p>Le personnage apprend à confirmer un signal par un second sens. Il choisit un second sens plausible différent de son Sens dominant.</p>\n<p>Lorsqu&#39;un obstacle, une illusion ou un brouillage ne neutralise qu&#39;un des deux sens, il ignore la première pénalité circonstancielle provenant uniquement de cette obstruction.</p>\n<p>Une fois par scène, il peut comparer immédiatement les deux perceptions et gagner +2 circonstanciel à un test pour détecter une incohérence, une dissimulation ou une imitation sensorielle.</p>\n<p>Le talent ne permet pas de percevoir une cible indétectable par ses deux sens et ne confère aucun sens surnaturel.</p>",
+    "traits": ["Beastkin", "Perception", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-346",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sens dominant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.99 Talents Beastkins universels de niveau 9",
+      "family": "Sens animaux",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Sens dominant",
+      "choice": "",
+      "frequency": "une fois par scène pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens animaux",
+        "Traits": "Beastkin, Perception, Physiologie",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par scène pour l'activation",
+        "Prérequis": "Sens dominant"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin universel"
+}

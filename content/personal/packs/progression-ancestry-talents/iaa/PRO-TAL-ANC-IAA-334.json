@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-334",
+  "name": "Intelligence de ruche",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Intelligence de ruche</strong>.</p><p>Tant qu&#39;au moins deux châssis perçoivent une même zone et restent synchronisés, le personnage gagne +2 circonstanciel aux tests de Perception, Investigation et à sa défense contre feinte, embuscade ou dissimulation dans cette zone.</p>\n<p>Une fois par scène, lorsqu&#39;un châssis échoue à un tel test, un autre peut lui transmettre immédiatement son angle d&#39;observation et transformer l&#39;échec critique en échec ordinaire, ou relancer un échec ordinaire.</p>\n<p>Le second résultat est conservé. Le talent ne donne aucune Action ni attaque supplémentaire.</p>\n<p>---</p>",
+    "traits": ["IAA", "Architecture", "Collective", "Perception"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-329",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Essaim spécialisé",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.89 Talents IAA de niveau 13",
+      "family": "Collective / Essaim",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Essaim spécialisé",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Collective / Essaim",
+        "Traits": "IAA, Architecture, Collective, Perception",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Essaim spécialisé"
+      }
+    },
+    "level": 13
+  },
+  "folder": "IAA"
+}

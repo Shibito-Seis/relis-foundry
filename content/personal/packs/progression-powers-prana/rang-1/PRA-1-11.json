@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-1-11",
+  "name": "Poussée musculaire",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Poussée musculaire</strong>.</p><p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 1 A / personnel</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>+2 circonstanciel au prochain test de Force ou Athlétisme et capacité de charge doublée pendant 1 tour.</p>\n<p><strong>Intensification :</strong> Durée 3 tours.</p>",
+    "traits": ["Prana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / 1 A / personnel",
+      "discipline": "Transformation",
+      "effect": "+2 circonstanciel au prochain test de Force ou Athlétisme et capacité de charge doublée pendant 1 tour.",
+      "scaling": "Durée 3 tours."
+    },
+    "level": 4
+  },
+  "folder": "Rang 1"
+}

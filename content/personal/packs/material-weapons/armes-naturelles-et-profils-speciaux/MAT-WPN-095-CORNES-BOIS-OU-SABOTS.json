@@ -1,0 +1,151 @@
+{
+  "relisId": "MAT-WPN-095-CORNES-BOIS-OU-SABOTS",
+  "name": "Cornes, bois ou sabots",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "naturalSpecial"],
+  "system": {
+    "description": "<p><strong>Modèle :</strong> Cornes, bois ou sabots. <strong>Niv. :</strong> 1. <strong>Accès :</strong> Innée. <strong>Mains :</strong> 0. <strong>Dégâts / Déf. :</strong> 1d8 Contondant ou Perforant / CAP. <strong>Traits de base :</strong> Charge, Naturelle. <strong>Signature :</strong> Bruyante à l&#39;impact. <strong>Empl. :</strong> 0. <strong>Prix :</strong> —.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.117 Lot 5-K8 — Modèles d'armes naturelles",
+      "columns": {
+        "#": "3",
+        "Modèle": "Cornes, bois ou sabots",
+        "Niv.": "1",
+        "Accès": "Innée",
+        "Mains": "0",
+        "Dégâts / Déf.": "1d8 Contondant ou Perforant / CAP",
+        "Traits de base": "Charge, Naturelle",
+        "Signature": "Bruyante à l'impact",
+        "Empl.": "0",
+        "Prix": "—"
+      },
+      "reloadProfile": null
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": null,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "naturalSpecial",
+      "support": "natural",
+      "access": "",
+      "attackMode": "natural",
+      "defenseTarget": "cap",
+      "handsMode": "natural",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": null,
+      "damageDice": 1,
+      "damageDie": "d8",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d8 Contondant ou Perforant / CAP",
+      "damageTypes": ["blunt", "piercing"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "special",
+      "range": "",
+      "rangeOptimal": null,
+      "rangeMaximum": null,
+      "recoil": null,
+      "feedKind": "none",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "loud",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "reloadActions": null,
+      "reloadProcedure": "",
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  },
+  "folder": "Armes naturelles et profils spéciaux"
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "CRE-PST-004-ASTRO-NAVIGATEUR",
+  "name": "Astro-Navigateur",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>L’Astro-Navigateur est responsable de la route du vaisseau mère, de ses sauts, de ses trajectoires lourdes et de sa survie dans l’espace profond.</p>\n<p>Le Commandant décide où aller et pourquoi. L’Astro-Navigateur décide comment y aller sans transformer le vaisseau en météorite administrative.</p>\n<p>• trajectoire du vaisseau mère ;</p>\n<p>• calcul de saut ;</p>\n<p>• approche orbitale ;</p>\n<p>• navigation profonde ;</p>\n<p>• trajectoires d’urgence ;</p>\n<p>• manœuvres lourdes ;</p>\n<p>• analyse des dangers spatiaux ;</p>\n<p>• coordination avec moteurs, capteurs et Xirea pour le déplacement du vaisseau.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.7 Astro-Navigateur",
+      "capabilities": [
+        {
+          "name": "Correction de trajectoire",
+          "phase": "[Exploration / Combat spatial]",
+          "effect": "Modifie une trajectoire dangereuse : évite un champ de débris, réduit un risque d’impact, améliore une approche orbitale ou repositionne le vaisseau en combat spatial."
+        },
+        {
+          "name": "Calcul de saut",
+          "phase": "[Exploration]",
+          "effect": "Prépare une route longue, inconnue ou risquée. Permet d’obtenir une estimation fiable : durée, danger, coût en carburant ou énergie, probabilité d’anomalie, alternatives possibles."
+        },
+        {
+          "name": "Manœuvre impossible",
+          "phase": "[Combat spatial / Crise de vaisseau]",
+          "effect": "Tente une manœuvre extrême avec le vaisseau mère : esquive lourde, virage d’urgence, passage étroit, freinage dangereux, décrochage gravitationnel ou sortie de trajectoire hostile."
+        },
+        {
+          "name": "Fenêtre d’approche",
+          "phase": "[Exploration / Combat spatial]",
+          "effect": "Trouve le bon angle d’entrée ou d’approche : atmosphère, champ gravitationnel, station, ruine orbitale, carcasse, ceinture d’astéroïdes, zone de saut ou vecteur d’abordage. Peut ouvrir une opportunité d’exploration, d’infiltration ou d’abordage."
+        },
+        {
+          "name": "Tenez-vous prêts à l’impact",
+          "phase": "[Crise de vaisseau / Combat spatial]",
+          "effect": "Annonce et prépare une secousse, collision, turbulence, entrée atmosphérique ou manœuvre violente. Les alliés ou systèmes préparés réduisent les conséquences d’un choc, d’une perte de contrôle ou d’une secousse majeure."
+        }
+      ]
+    }
+  },
+  "folder": ""
+}

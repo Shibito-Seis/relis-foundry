@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-ORI-EXM-009",
+  "name": "Technicien corporatiste",
+  "type": "origin",
+  "tags": ["creation", "origine", "exemple-complet"],
+  "system": {
+    "description": "<p><strong>Technicien corporatiste</strong>.</p><p>Classe moyenne ou modeste — Corporation industrielle — Sélectionné — Compétence pratique, loyauté professionnelle, ancien contrat.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-exemple-complet",
+      "sourceSection": "7",
+      "fields": {
+        "Milieu social": "Classe moyenne ou modeste",
+        "Affiliation / communauté": "Corporation industrielle",
+        "Condition d’embarquement": "Sélectionné",
+        "Lecture rapide": "Compétence pratique, loyauté professionnelle, ancien contrat."
+      }
+    }
+  },
+  "folder": "exemple-complet"
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-415",
+  "name": "Curiosité féline",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Curiosité féline</strong>.</p><p>En examinant un objet, un mécanisme ou une petite zone accessible, le personnage gagne +2 circonstanciel au premier test d&#39;Investigation effectué pour comprendre comment on l&#39;a ouvert, déplacé, utilisé ou altéré récemment. Il ne révèle pas automatiquement l&#39;auteur ni une fonction cachée sans indice réel.</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Curiosité et exploration",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Activité de 1 minute (Concentration)",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Curiosité et exploration",
+        "Type": "Activité de 1 minute (Concentration)"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Chat"
+}

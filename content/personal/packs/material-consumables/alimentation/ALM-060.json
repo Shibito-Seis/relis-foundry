@@ -1,0 +1,93 @@
+{
+  "relisId": "ALM-060",
+  "name": "Salade de jardin",
+  "type": "consumable",
+  "tags": ["materiel", "alimentation"],
+  "system": {
+    "description": "<p><strong>Salade de jardin</strong> appartient au catalogue alimentation.</p><p>1 bol. 0,25. 0,35 L. 15 min. deux légumes et un aromate ; ne couvre pas seule la DVJ.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "alimentation",
+      "sourceSection": "55.3.7 Repas préparés et restauration — ALM-055 à ALM-064",
+      "canonicalRow": [
+        "ALM-060",
+        "Salade de jardin",
+        "1 bol",
+        "0,25",
+        "0,35 L",
+        "15 min",
+        "deux légumes et un aromate ; ne couvre pas seule la DVJ"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "utility",
+      "effectSummary": "15 min"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "alimentation"
+}

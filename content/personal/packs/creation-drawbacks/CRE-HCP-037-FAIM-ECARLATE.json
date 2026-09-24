@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-037-FAIM-ECARLATE",
+  "name": "Faim écarlate",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Faim écarlate</strong>.</p><p><strong>Valeur :</strong> -3</p>\n<p>Handicap lié. Le personnage subit le besoin sanguin, la Faim, les Crises, les UV, les Marques d&#39;Abandon, les dix Stades et leurs planchers décrits au chapitre 30. Requiert obligatoirement Physiologie vampirique +3.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-3",
+      "effect": "Handicap lié. Le personnage subit le besoin sanguin, la Faim, les Crises, les UV, les Marques d'Abandon, les dix Stades et leurs planchers décrits au chapitre 30. Requiert obligatoirement Physiologie vampirique +3."
+    }
+  },
+  "folder": ""
+}

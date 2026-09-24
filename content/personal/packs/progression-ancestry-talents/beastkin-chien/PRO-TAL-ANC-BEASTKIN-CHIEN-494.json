@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-494",
+  "name": "Métiers de confiance",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Métiers de confiance</strong>.</p><p>Le personnage connaît les usages d&#39;un réseau de gardiens, secouristes, pisteurs, accompagnants, logisticiens, travailleurs itinérants ou autre métier cohérent. Il gagne +2 circonstanciel aux tests de Culture, Commerce ou Diplomatie portant sur ses pratiques, ses signes de reconnaissance et ses services ordinaires.</p>\n<p>Il définit un contact crédible dans ce milieu. Ce contact conserve ses intérêts, ne fournit aucun accès interdit et n&#39;offre gratuitement ni matériel coûteux, ni service dangereux.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Chien", "Culture", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.141 Talents Beastkins Chiens de niveau 1",
+      "family": "Culture canine et métiers",
+      "ancestry": "Beastkin Chien",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une institution ou communauté de métier",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture canine et métiers",
+        "Traits": "Beastkin, Chien, Culture, Social",
+        "Type": "Passif",
+        "Choix": "une institution ou communauté de métier"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Chien"
+}

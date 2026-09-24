@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-011",
+  "name": "Discipline respiratoire",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Discipline respiratoire</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Vigueur + Endurance contre fumée, apnée, atmosphère pauvre en oxygène ou effort respiratoire intense.</p>\n<p>Lorsqu&#39;un échec à l&#39;un de ces tests devrait lui infliger exactement 1 Fatigue, il peut retarder cette Fatigue jusqu&#39;à la fin de son prochain tour. Si la source a cessé et qu&#39;il peut respirer normalement avant cette échéance, la Fatigue est évitée ; sinon elle s&#39;applique.</p>\n<p>Le talent ne permet pas de respirer dans le vide, sous l&#39;eau ou dans une atmosphère incompatible.</p>",
+    "traits": ["Endurance", "Général", "Respiration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Effort et Surmenage",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Effort et Surmenage",
+        "Traits": "Endurance, Général, Respiration",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction"
+      }
+    },
+    "level": 1
+  },
+  "folder": "### 31.3 Talents généraux de niveau 1"
+}

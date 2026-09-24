@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-328",
+  "name": "Duplicat auxiliaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Duplicat auxiliaire</strong>.</p><p>Avec un support compatible, le personnage éveille un duplicat temporaire et synchronisé pour accomplir une mission précise pendant une scène : surveiller un canal, piloter un terminal, analyser des données ou occuper un châssis disponible.</p>\n<p>Le duplicat partage toutes les Actions, la Réaction, le Stress et la Fatigue du personnage. À la fin de la scène, il se resynchronise ou s&#39;arrête en sécurité.</p>\n<p>S&#39;il reste actif et isolé au-delà de la mission prévue, il commence à diverger et peut devenir une personne distincte. Le talent ne crée ni support ni corps.</p>",
+    "traits": ["IAA", "Architecture", "Duplicat", "Répliquée"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-321",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Synchronisation sûre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.88 Talents IAA de niveau 9",
+      "family": "Répliquée",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Synchronisation sûre",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Répliquée",
+        "Traits": "IAA, Architecture, Duplicat, Répliquée",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Synchronisation sûre"
+      }
+    },
+    "level": 9
+  },
+  "folder": "IAA"
+}

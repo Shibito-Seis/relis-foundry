@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-134",
+  "name": "Fraternité de l'enclume",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Fraternité de l&#39;enclume</strong>.</p><p>Le personnage apporte une consigne, un effort synchronisé, un outil, un appui ou le rappel d&#39;une responsabilité partagée.</p>\n<p>L&#39;allié gagne +2 circonstanciel à son test s&#39;il concerne directement :</p>\n<p>• une construction ou une réparation ;</p>\n<p>• le maintien d&#39;une position ;</p>\n<p>• le déplacement d&#39;une charge ;</p>\n<p>• la protection d&#39;un autre allié ;</p>\n<p>• l&#39;accomplissement d&#39;un serment ou d&#39;un contrat commun.</p>\n<p>Si le test réussit, le personnage gagne +1 circonstanciel à son prochain test prolongeant directement le même effort avant la fin de son prochain tour ou de la séquence narrative immédiate.</p>\n<p>Ce second bonus ne se cumule pas avec un bonus d&#39;Aide ou de coordination destiné au même test.</p>\n<p>---</p>",
+    "traits": ["Nain", "Coopération", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-124",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Nom de clan",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-125",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Serment gravé",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Clans et serments",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Nom de clan ou Serment gravé",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "un allié visible, audible ou relié au personnage effectue un test contribuant à un travail, une défense ou un engagement commun",
+      "duration": "",
+      "metadata": {
+        "Famille": "Clans et serments",
+        "Traits": "Nain, Coopération, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Nom de clan ou Serment gravé",
+        "Déclencheur": "un allié visible, audible ou relié au personnage effectue un test contribuant à un travail, une défense ou un engagement commun"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Nain"
+}

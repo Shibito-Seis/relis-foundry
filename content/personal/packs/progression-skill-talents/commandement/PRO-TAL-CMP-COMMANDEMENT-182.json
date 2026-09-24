@@ -1,0 +1,40 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMANDEMENT-182",
+  "name": "Répartition des rôles",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Répartition des rôles</strong>.</p><p>Le personnage répartit une tâche définie entre un maximum de quatre participants consentants, avec un rôle distinct et une responsabilité concrète pour chacun.</p>\n<p>Il effectue un test de Commandement contre le DD de la tâche.</p>\n<p>• Réussite critique : chaque participant gagne +2 circonstanciel à son premier test directement lié à son rôle ; la première Aide réussie de l&#39;équipe devient une réussite critique.</p>\n<p>• Réussite : chaque participant gagne +2 circonstanciel à son premier test d&#39;Aide ou de coordination directement lié à son rôle.</p>\n<p>• Échec : la répartition ne procure aucun bénéfice.</p>\n<p>• Échec critique : un chevauchement de responsabilités est découvert avant le début ; le MJ l&#39;indique et la préparation doit être reprise.</p>\n<p>Le talent ne prête aucune maîtrise et ne permet pas à plusieurs personnages d&#39;accomplir simultanément une action qui exige un opérateur unique.</p>",
+    "traits": ["Commandement", "Compétence", "Préparation", "Travail d'équipe"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commandement — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commandement",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Commandement Qualifié",
+      "choice": "",
+      "frequency": "une fois par tâche collective",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la tâche ou de la scène",
+      "metadata": {
+        "Compétence": "Commandement",
+        "Niveau": "1",
+        "Traits": "Commandement, Compétence, Préparation, Travail d'équipe",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par tâche collective",
+        "Durée": "jusqu'à la fin de la tâche ou de la scène",
+        "Prérequis": "Commandement Qualifié",
+        "Réussite critique": "chaque participant gagne +2 circonstanciel à son premier test directement lié à son rôle ; la première Aide réussie de l'équipe devient une réussite critique.",
+        "Réussite": "chaque participant gagne +2 circonstanciel à son premier test d'Aide ou de coordination directement lié à son rôle.",
+        "Échec": "la répartition ne procure aucun bénéfice.",
+        "Échec critique": "un chevauchement de responsabilités est découvert avant le début ; le MJ l'indique et la préparation doit être reprise."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Commandement"
+}

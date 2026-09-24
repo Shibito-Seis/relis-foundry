@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-720",
+  "name": "Gravité d'habitude",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Gravité d&#39;habitude</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Acrobaties, Athlétisme ou Pilotage personnel destinés à s&#39;orienter, se propulser, s&#39;arrêter ou maintenir une trajectoire dans la gravité choisie.</p>\n<p>La première fois de chaque scène qu&#39;un échec ordinaire devrait seulement le faire dériver, tourner sur lui-même ou manquer un appui, il perd le déplacement prévu mais rejoint l&#39;appui sûr le plus proche à portée immédiate.</p>\n<p>Le talent ne fournit ni propulsion, ni respiration, ni protection contre une accélération extrême, une gravité écrasante ou le vide.</p>",
+    "traits": [
+      "Acrobaties",
+      "Ascendance universelle",
+      "Environnement",
+      "Gravité"
+    ],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.236 Talents universels d'Ascendance de niveau 1",
+      "family": "Habitats partagés",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "microgravité, faible gravité ou gravité variable",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Habitats partagés",
+        "Traits": "Acrobaties, Ascendance universelle, Environnement, Gravité",
+        "Type": "Passif",
+        "Choix": "microgravité, faible gravité ou gravité variable"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Universel"
+}

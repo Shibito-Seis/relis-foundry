@@ -1,0 +1,21 @@
+{
+  "relisId": "CRE-ANC-013-DEMI-ELFE",
+  "name": "Demi-Elfe",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance"],
+  "system": {
+    "description": "<p><strong>Demi-Elfe</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Dextérité, Présence, Maîtrise Magique, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p>Héritage elfique et souplesse humaine. Le bonus libre peut compenser la Vigueur.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5",
+      "attributeBonuses": "+1 dans 2 parmi Dextérité, Présence, Maîtrise Magique, +1 libre",
+      "attributePenalty": "-1 Vigueur",
+      "rationale": "Héritage elfique et souplesse humaine. Le bonus libre peut compenser la Vigueur.",
+      "selectable": true
+    }
+  },
+  "folder": ""
+}

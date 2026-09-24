@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-007",
+  "name": "Maniement d'urgence",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Maniement d&#39;urgence</strong>.</p><p>Le personnage est considéré comme formé au maniement élémentaire de la famille choisie. Il peut préparer, porter, recharger et utiliser normalement ces armes sans subir une future pénalité d&#39;inexpérience propre au maniement.</p>\n<p>Le talent ne donne aucun talent de Mêlée, Tir ou Armes lourdes, aucune attaque supplémentaire, aucun bonus de dégâts et aucun accès aux propriétés exigeant une formation spécialisée de Voie.</p>",
+    "traits": ["Arme", "Formation", "Général"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Formation martiale et protection",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une famille commune d'armes simples ou une famille d'armes commune validée par le MJ",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Formation martiale et protection",
+        "Traits": "Arme, Formation, Général",
+        "Type": "Passif",
+        "Choix": "une famille commune d'armes simples ou une famille d'armes commune validée par le MJ"
+      }
+    },
+    "level": 1
+  },
+  "folder": "### 31.3 Talents généraux de niveau 1"
+}

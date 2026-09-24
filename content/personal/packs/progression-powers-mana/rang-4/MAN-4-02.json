@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-4-02",
+  "name": "Cercle de restauration",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Cercle de restauration</strong>.</p><p><strong>Mana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 5 / 3 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Jusqu&#39;à six vivants récupèrent 4d8 + moitié de MM PV et une cible peut être stabilisée.</p>\n<p><strong>Intensification :</strong> +1d8 ou deux cibles supplémentaires.</p>",
+    "traits": ["Mana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "4",
+      "activation": "5 / 3 A / émanation 6 m",
+      "discipline": "Vitalisme",
+      "effect": "Jusqu'à six vivants récupèrent 4d8 + moitié de MM PV et une cible peut être stabilisée.",
+      "scaling": "+1d8 ou deux cibles supplémentaires."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

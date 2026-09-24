@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-ORI-EXM-007",
+  "name": "IAA protocolaire prioritaire",
+  "type": "origin",
+  "tags": ["creation", "origine", "exemple-complet"],
+  "system": {
+    "description": "<p><strong>IAA protocolaire prioritaire</strong>.</p><p>Institutionnel — Programme IAA / robotique — Prioritaire — Corps artificiel utile, accès systèmes, soupçons politiques.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-exemple-complet",
+      "sourceSection": "7",
+      "fields": {
+        "Milieu social": "Institutionnel",
+        "Affiliation / communauté": "Programme IAA / robotique",
+        "Condition d’embarquement": "Prioritaire",
+        "Lecture rapide": "Corps artificiel utile, accès systèmes, soupçons politiques."
+      }
+    }
+  },
+  "folder": "exemple-complet"
+}

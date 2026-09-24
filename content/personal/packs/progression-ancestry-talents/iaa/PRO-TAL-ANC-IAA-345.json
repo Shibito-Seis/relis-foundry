@@ -1,0 +1,62 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-345",
+  "name": "Conscience constellation",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Conscience constellation</strong>.</p><p>Le personnage peut maintenir les quatre Architectures fondamentales simultanément s&#39;il les maîtrise et dispose de tous leurs supports. Il reste une seule personne et conserve une seule économie d&#39;Actions, mais une coupure locale ne rompt plus automatiquement la synchronisation des autres branches.</p>\n<p>Une fois par session, lorsqu&#39;une crise numérique, énergétique ou existentielle devrait produire un échec collectif dans une zone ou un réseau proche, il effectue un test d&#39;Intelligence + Informatique, de Technologie + Systèmes de vaisseau ou de Volonté + Sang-froid contre le DD le plus élevé :</p>\n<p>• sur une réussite critique, l&#39;échec devient une réussite et les données ou identités essentielles sont préservées ;</p>\n<p>• sur une réussite, l&#39;échec devient une réussite avec une complication majeure mais surmontable ;</p>\n<p>• sur un échec, la crise est retardée jusqu&#39;à la fin du prochain tour ou de l&#39;opération en cours ;</p>\n<p>• sur un échec critique, rien n&#39;est retardé et le personnage gagne 1 Fatigue et 2 Stress.</p>\n<p>Le talent ne contrôle aucune conscience indépendante, ne crée ni énergie ni matériel et ne résout pas une crise planétaire ou stellaire.</p>\n<p>---</p>",
+    "traits": ["IAA", "Architecture", "Conscience", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-339",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Architecture sans frontière",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-IAA-342",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Multiprésence souveraine",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-IAA-343",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Archive vivante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.93 Talents IAA de niveau 29",
+      "family": "Transcendance IAA",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Architecture sans frontière et Multiprésence souveraine ou Archive vivante",
+      "choice": "",
+      "frequency": "une fois par session pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance IAA",
+        "Traits": "IAA, Architecture, Conscience, Mythique",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par session pour la réaction",
+        "Prérequis": "Architecture sans frontière et Multiprésence souveraine ou Archive vivante"
+      }
+    },
+    "level": 29
+  },
+  "folder": "IAA"
+}

@@ -1,0 +1,62 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-289",
+  "name": "Maîtrise du contrecoup",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Maîtrise du contrecoup</strong>.</p><p>Lorsque le personnage active un talent de Surcharge, il peut renforcer son bénéfice :</p>\n<p>• le bonus d&#39;Oser la surcharge devient +3 ;</p>\n<p>• les dégâts de Surcharge offensive deviennent 1d12 ;</p>\n<p>• la réduction de Surcharge protectrice devient 2 + la moitié du Niveau général.</p>\n<p>Après la résolution, il gagne 1 Fatigue au lieu du Stress normalement prévu. Cette Fatigue ne peut être empêchée par Soupape volontaire ou Contrecoup choisi.</p>\n<p>Le talent ne renforce qu&#39;une surcharge et ne permet pas de cumuler plusieurs bénéfices sur le même effet.</p>",
+    "traits": ["Esman", "Contrôle", "Surcharge"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-276",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Contrecoup choisi",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-282",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Surcharge offensive",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-283",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Surcharge protectrice",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.78 Talents Esmans de niveau 13",
+      "family": "Surcharge maîtrisée",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Contrecoup choisi et Surcharge offensive ou Surcharge protectrice",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Surcharge maîtrisée",
+        "Traits": "Esman, Contrôle, Surcharge",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Contrecoup choisi et Surcharge offensive ou Surcharge protectrice"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Esman"
+}

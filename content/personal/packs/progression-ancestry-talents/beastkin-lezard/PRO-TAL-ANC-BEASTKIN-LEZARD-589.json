@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-589",
+  "name": "Patience de pierre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Patience de pierre</strong>.</p><p>Le personnage s&#39;immobilise presque totalement. Pendant l&#39;effet, il gagne +3 circonstanciel aux tests de Perception et de Sang-froid, ainsi qu&#39;à ses défenses contre peur, douleur et déplacement forcé. La première fois qu&#39;une menace observée agit contre lui, il peut se déplacer de 2 mètres avec sa Réaction ou gagner +3 à sa prochaine manœuvre de contrôle contre elle.</p>\n<p>L&#39;effet prend fin dès que le personnage attaque, se déplace volontairement de plus de 2 mètres ou accomplit une activité complexe. Il ne rend pas invisible et ne fournit aucune attaque.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Lézard", "Concentration", "Vigilance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-575",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Attendre le moment",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.167 Talents Beastkins Lézards de niveau 17",
+      "family": "Patience, immobilité et affût",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Attendre le moment",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "jusqu'à 3 tours",
+      "metadata": {
+        "Famille": "Patience, immobilité et affût",
+        "Traits": "Beastkin, Lézard, Concentration, Vigilance",
+        "Type": "1 Action",
+        "Fréquence": "une fois par jour",
+        "Durée": "jusqu'à 3 tours",
+        "Prérequis": "Attendre le moment"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Lézard"
+}

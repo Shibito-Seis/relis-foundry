@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-GEN-034",
+  "name": "Surmenage calculé",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Surmenage calculé</strong>.</p><p>Le personnage améliore d&#39;un degré la conséquence de Surmenage :</p>\n<p>• échec critique vers échec ;</p>\n<p>• échec vers réussite.</p>\n<p>Une réussite ne devient pas une réussite critique. Pour une 6e action, on utilise les conséquences propres à la 6e action. Le talent ne modifie pas le résultat du dé pour d&#39;autres effets et n&#39;annule jamais le coût d&#39;une capacité distincte.</p>",
+    "traits": ["Endurance", "Général", "Surmenage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.7 Talents généraux de niveau 15",
+      "family": "Effort et Surmenage",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Endurance Maître",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage vient de résoudre un test de Surmenage",
+      "duration": "",
+      "metadata": {
+        "Famille": "Effort et Surmenage",
+        "Traits": "Endurance, Général, Surmenage",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Endurance Maître",
+        "Déclencheur": "le personnage vient de résoudre un test de Surmenage"
+      }
+    },
+    "level": 15
+  },
+  "folder": "### 31.7 Talents généraux de niveau 15"
+}

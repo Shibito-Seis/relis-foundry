@@ -1,0 +1,62 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-342",
+  "name": "Multiprésence souveraine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Multiprésence souveraine</strong>.</p><p>Pendant 3 tours, le personnage traite ses présences synchronisées comme une seule pensée parfaitement distribuée.</p>\n<p>Une fois par tour, il obtient une Action cognitive supplémentaire utilisable uniquement pour percevoir, rappeler une donnée, communiquer, analyser, déplacer sa présence entre deux supports autorisés ou interagir avec une interface déjà accessible.</p>\n<p>Cette Action ne peut ni attaquer, ni infliger un état, ni pirater, ni lancer un pouvoir, ni commander un système hostile. À la fin de l&#39;effet, le personnage gagne 1 Stress.</p>\n<p>Le talent exige au moins deux supports actifs et ne donne aucun tour indépendant à une copie ou à un châssis.</p>",
+    "traits": ["IAA", "Architecture", "Mythique", "Réseau"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-336",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ubiquité réseau",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-IAA-337",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Continuité répliquée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-IAA-338",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Essaim intégral",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.92 Talents IAA de niveau 25",
+      "family": "Transcendance IAA",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Ubiquité réseau ou Continuité répliquée ou Essaim intégral",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance IAA",
+        "Traits": "IAA, Architecture, Mythique, Réseau",
+        "Type": "1 Action",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Ubiquité réseau ou Continuité répliquée ou Essaim intégral"
+      }
+    },
+    "level": 25
+  },
+  "folder": "IAA"
+}

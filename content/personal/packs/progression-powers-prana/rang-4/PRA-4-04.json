@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-4-04",
+  "name": "Purge de corruption",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Purge de corruption</strong>.</p><p><strong>Prana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Test contre DD ; retire malédiction, possession organique, parasite énergétique ou corruption majeure ; échec : suppression 1 h.</p>\n<p><strong>Intensification :</strong> +2 au test ou seconde cible.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "4",
+      "activation": "4 / 3 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Test contre DD ; retire malédiction, possession organique, parasite énergétique ou corruption majeure ; échec : suppression 1 h.",
+      "scaling": "+2 au test ou seconde cible."
+    },
+    "level": 13
+  },
+  "folder": "Rang 4"
+}

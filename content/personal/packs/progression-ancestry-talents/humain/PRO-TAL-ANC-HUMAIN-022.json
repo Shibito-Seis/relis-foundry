@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-022",
+  "name": "Coordination instinctive",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Coordination instinctive</strong>.</p><p>Quand le personnage réussit une action d&#39;Aide, il peut étendre partiellement sa coordination à un second allié impliqué dans le même effort.</p>\n<p>Effet :</p>\n<p>• l&#39;allié principalement aidé reçoit le bonus normal d&#39;Aide ;</p>\n<p>• un second allié capable de voir, entendre ou comprendre la coordination reçoit +1 circonstanciel à un test directement lié au même objectif.</p>\n<p>Si l&#39;Aide est une réussite critique, le second allié reçoit +2 circonstanciel au lieu de +1.</p>\n<p>Restrictions :</p>\n<p>• les deux alliés doivent participer à une même action collective, un même combat, une même réparation, une même fuite, une même négociation ou une même procédure ;</p>\n<p>• le second bonus ne peut pas être stocké pour une scène différente ;</p>\n<p>• le personnage doit pouvoir expliquer comment sa coordination aide réellement les deux alliés ;</p>\n<p>• plusieurs Coordinations instinctives ne se cumulent pas sur un même allié pour le même test.</p>\n<p>La formulation exacte dépend de l&#39;action universelle Aider, stabilisée par la procédure d&#39;Aide de la section 38.10.</p>",
+    "traits": ["Humain", "Coopération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-010",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Esprit d'équipe",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.22 Talents Humains de niveau 5",
+      "family": "Coopération et communauté",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Esprit d'équipe",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Coopération et communauté",
+        "Traits": "Humain, Coopération",
+        "Type": "Passif",
+        "Prérequis": "Esprit d'équipe"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Humain"
+}

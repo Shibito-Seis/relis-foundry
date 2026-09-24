@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-1-07",
+  "name": "Distorsion de portée",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-1"],
+  "system": {
+    "description": "<p><strong>Distorsion de portée</strong>.</p><p><strong>Flux — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / R / 12 m</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Déclencheur : formule ou projectile ; modifie sa portée nécessaire de 3 m, pouvant rendre la cible légale ou illégale.</p>\n<p><strong>Intensification :</strong> Modification +3 m.</p>",
+    "traits": ["Flux", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "1",
+      "activation": "1 / R / 12 m",
+      "discipline": "Transformation",
+      "effect": "Déclencheur : formule ou projectile ; modifie sa portée nécessaire de 3 m, pouvant rendre la cible légale ou illégale.",
+      "scaling": "Modification +3 m."
+    },
+    "level": 4
+  },
+  "folder": "Rang 1"
+}

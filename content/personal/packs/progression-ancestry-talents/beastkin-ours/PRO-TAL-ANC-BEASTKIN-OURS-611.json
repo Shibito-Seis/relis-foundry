@@ -1,0 +1,50 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-611",
+  "name": "Impact ursin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Impact ursin</strong>.</p><p>Le personnage effectue une attaque de griffes avec −2 circonstanciel. Sur une réussite, il inflige ses dégâts normaux réduits de 2 et tente immédiatement un test d&#39;Athlétisme pour renverser ou déplacer la cible de 1 mètre.</p>\n<p>Le test suit les pénalités d&#39;une seconde action offensive. Le talent ne fonctionne pas sur une cible trop grande ou impossible à déstabiliser et ne produit aucune attaque supplémentaire.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": [
+      "Beastkin",
+      "Ours",
+      "Arme naturelle",
+      "Athlétisme",
+      "Attaque",
+      "Manœuvre"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-603",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Patte lourde",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.175 Talents Beastkins Ours de niveau 5",
+      "family": "Griffes et impact ursin",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Patte lourde",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Griffes et impact ursin",
+        "Traits": "Beastkin, Ours, Arme naturelle, Athlétisme, Attaque, Manœuvre",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Patte lourde"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Ours"
+}

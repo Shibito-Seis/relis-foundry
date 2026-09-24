@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-171",
+  "name": "Interface fantasque",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Interface fantasque</strong>.</p><p>Le personnage réorganise temporairement les commandes accessibles d&#39;un appareil qu&#39;il peut manipuler : code couleur, gestes, sons, symboles, familiers holographiques ou disposition personnelle.</p>\n<p>Il gagne +2 circonstanciel au premier test d&#39;Informatique, Systèmes de vaisseau ou Techno-magie effectué avec cette interface pendant la scène. Un seul appareil peut être ainsi reconfiguré à la fois.</p>\n<p>Le talent ne donne aucun droit d&#39;accès, ne traduit pas un système inconnu sans analyse et ne modifie pas les commandes destinées à empêcher un usage non autorisé. Un autre utilisateur peut trouver l&#39;interface plus difficile, sans subir de malus chiffré automatique.</p>",
+    "traits": ["Gnome", "Interface", "Technologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Techno-magie expérimentale",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "préparation d'une minute",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Techno-magie expérimentale",
+        "Traits": "Gnome, Interface, Technologie",
+        "Type": "préparation d'une minute"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Gnome"
+}

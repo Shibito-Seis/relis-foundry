@@ -2,9 +2,11 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.8.0` met 10-K2-P en recette après la validation de 10-K1-P. Elle publie les trois compendiums personnels canoniques, construits par le pipeline reproductible de K1-P : 199 Items de Création, 1 444 de Progression et 755 de Matériel, soit 2 398 entrées issues de la Bible v162. Les références sont strictes, les identifiants Foundry stables et les métadonnées de provenance conservées. Aucun contenu canonique absent n’est inventé. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
+La version `0.8.1` corrige la recette de 10-K2-P sans clore le lot. Elle publie 23 compendiums personnels classés comme une bibliothèque : Création, Progression et Matériel regroupent leurs catégories, tandis que les Talents, Pouvoirs, Armes et autres grandes familles possèdent leurs propres sous-classements. Les 2 404 Items comprennent les 2 398 entrées de la Bible v163 et les six profils techniques de flèches et carreaux explicitement requis par les armes déjà canoniques. Les références restent strictes, les identifiants Foundry stables et le schéma Item demeure 7, sans migration de monde.
 
-L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. La fiche du Cœur porte le questionnaire déterministe d’accord : huit situations, six axes, quinze couleurs, départage des égalités, persistance et historique. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
+L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. Chaque Cœur reçoit un tirage stable de 20 situations dans une banque de 48 — 8 simples, 8 intermédiaires et 4 complexes — sur six axes et quinze couleurs. Réponses, choix MJ, nom coloré, sujet de l’accord et historique persistent. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
+
+Les 111 armes ont été recalculées. Arcs et arbalètes utilisent désormais Tir et Dextérité avec leurs flèches ou carreaux exacts ; les armes lancées utilisent aussi Tir et ajoutent la Force seulement lorsque leur profil le prévoit. Les boîtes de munitions créent le nombre réel de projectiles, les munitions libres ne portent plus l’interface du chargeur, et une arme laser n’exige plus une batterie artificiellement « laser ». Le rechargement unitaire enregistre la formule `1 + Dextérité`, dont l’automatisation d’action reste en 10-F. Les seize focaliseurs MYS affichent séparément tampon magique, CE, rang, formules et identité.
 
 Le matériel validé en `0.6.2` reste intégralement protégé. Une arme énergétique n’est plus une réserve rechargeable : une batterie Item compatible s’insère dans l’arme et conserve ses propres CE. Les consommations de CE ou de munitions sont structurées par mode pour le futur moteur 10-F. Un chargeur détachable porte seul sa capacité et ses vrais Items de munitions ; une chambre seule vaut 1, tandis qu’un magasin interne déclare sa propre capacité. Les techno-lames à Prana reçoivent un véritable cristal Item, incolore et non accordé, jamais assimilé à une batterie. Les modules, munitions et sources installées sont présentés sous leur hôte ; l’inventaire affiche aussi les logements vides et la charge restante de la batterie insérée. Le liquide physique porté est résumé par devise, tandis que la banque reste explicitement non raccordée. 10-E3-P et 10-E4-P sont validés et toutes leurs protections restent actives. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
 familles matérielles apparaissent dans un inventaire personnel hiérarchique :
@@ -47,7 +49,7 @@ en SVG interne jusqu’à la passe graphique finale.
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
-10-K2-P attend la recette 0.8.0. Aucun contrôle visuel automatisé par navigateur :
+10-K2-P attend la recette 0.8.1. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -71,7 +73,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.8.0.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.8.1.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -80,6 +82,15 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.8.1 — correctif de recette 10-K2-P
+
+- Réorganise les 2 404 Items dans 23 compendiums et des dossiers internes inspirés de l’ergonomie PF2e.
+- Corrige les 111 armes, ajoute six profils de flèches/carreaux et transforme les conditionnements en quantités physiques réelles.
+- Sépare chambrage, chargeur et batterie : l’interface appartient au chargeur ; la technologie d’effet ne filtre plus arbitrairement les batteries.
+- Structure les seize focaliseurs MYS et remplace les descriptions techniques brutes par des descriptions lisibles issues du canon.
+- Étend l’accord de l’Écarlithe à une banque de 48 situations, avec tirage stable de 20, persistance des réponses et véritable renommage chromatique.
+- Conserve le schéma Item 7, les données existantes, les permissions, les portraits et le contrat DialogV2 de Foundry 14. 10-K2-P reste ouvert jusqu’à validation explicite de la recette 0.8.1.
 
 ## 0.8.0 — compendiums personnels canoniques 10-K2-P
 

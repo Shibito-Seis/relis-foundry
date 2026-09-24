@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-GEN-028",
+  "name": "Réaction de réserve",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage obtient une Réaction de réserve utilisable avant le début de son prochain tour, uniquement pour une Réaction défensive provenant d&#39;un Talent général.</p>\n<p>Après l&#39;avoir utilisée, il gagne 1 Surmenage. Cette Réaction ne peut pas répondre au même événement que la Réaction déjà dépensée, ne peut pas être conservée au-delà du round et ne permet jamais d&#39;obtenir plus d&#39;une Réaction supplémentaire.</p>",
+    "traits": ["Général", "Réaction", "Surmenage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.6 Talents généraux de niveau 11",
+      "family": "Vigilance et réactions",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage a déjà dépensé sa Réaction du round",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vigilance et réactions",
+        "Traits": "Général, Réaction, Surmenage",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "le personnage a déjà dépensé sa Réaction du round"
+      }
+    },
+    "level": 11
+  },
+  "folder": "### 31.6 Talents généraux de niveau 11"
+}

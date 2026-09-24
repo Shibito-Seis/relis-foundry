@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-NAIN-693",
+  "name": "Appuis humains",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Appuis humains</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;équilibre, de franchissement ou de repositionnement lorsqu&#39;il doit adapter une posture naine dense à un équipement, véhicule ou passage de proportions humaines.</p>\n<p>Le talent ne supprime pas le malus de Dextérité, ne réduit pas une armure et ne fournit aucune Vitesse supplémentaire.</p>",
+    "traits": ["Demi-Nain", "Équilibre", "Mobilité"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.215 Talents Demi-Nains de niveau 1",
+      "family": "Souplesse humaine",
+      "ancestry": "Demi-Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Souplesse humaine",
+        "Traits": "Demi-Nain, Équilibre, Mobilité",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Demi-Nain"
+}

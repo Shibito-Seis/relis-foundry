@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-276",
+  "name": "Contrecoup choisi",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Contrecoup choisi</strong>.</p><p>Lorsqu&#39;une surcharge volontaire devrait produire une complication, le personnage peut en réduire la gravité d&#39;un degré et choisir l&#39;une des contreparties suivantes :</p>\n<p>• gagner 1 Stress ;</p>\n<p>• rendre ses talents de Corne inutilisables pendant dix minutes ;</p>\n<p>• émettre une signature énergétique traçable jusqu&#39;au prochain repos long ;</p>\n<p>• subir -2 circonstanciel à son prochain test de Canalisation avant la fin de la scène.</p>\n<p>Le choix doit avoir une conséquence réelle. Le talent ne réduit pas une complication provenant d&#39;une autre source et ne peut effacer un coût déjà payé.</p>",
+    "traits": ["Esman", "Contrôle", "Surcharge"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-265",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Oser la surcharge",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-266",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Soupape volontaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.76 Talents Esmans de niveau 5",
+      "family": "Surcharge maîtrisée",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Oser la surcharge ou Soupape volontaire",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Surcharge maîtrisée",
+        "Traits": "Esman, Contrôle, Surcharge",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Oser la surcharge ou Soupape volontaire"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Esman"
+}

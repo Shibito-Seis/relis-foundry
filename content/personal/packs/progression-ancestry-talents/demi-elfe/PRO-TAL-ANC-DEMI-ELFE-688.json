@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-ELFE-688",
+  "name": "Héritier des deux âges",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Héritier des deux âges</strong>.</p><p>Le personnage choisit deux axes différents : Mémoire, Magie, Adaptation ou Présence. Pendant l&#39;effet, il gagne +3 circonstanciel aux tests directement liés aux deux axes choisis.</p>\n<p>Une fois pendant la durée, il peut employer Accord des deux héritages sans consommer sa fréquence. Le talent ne donne aucune énergie, Action ou compétence nouvelle. À la fin, il gagne 1 Stress.</p>",
+    "traits": ["Demi-Elfe", "Identité", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-ELFE-686",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Accord des deux héritages",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-ELFE-687",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Identité intemporelle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.211 Talent Demi-Elfe de niveau 21",
+      "family": "Transcendance hybride",
+      "ancestry": "Demi-Elfe",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Accord des deux héritages et Identité intemporelle",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance hybride",
+        "Traits": "Demi-Elfe, Identité, Mythique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Accord des deux héritages et Identité intemporelle"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Demi-Elfe"
+}

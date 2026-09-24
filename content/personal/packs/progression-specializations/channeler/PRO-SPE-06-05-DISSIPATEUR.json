@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-06-05-DISSIPATEUR",
+  "name": "Channeler — Dissipateur",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "channeler"],
+  "system": {
+    "description": "<p><strong>Channeler — Dissipateur</strong>.</p><p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Outil de rupture de flux, anneau de dissipation, jauge d&#39;instabilité.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-006-CHANNELER",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Channeler",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Channeler",
+      "branchName": "Dissipateur",
+      "primaryLoadout": "Outil de rupture de flux, anneau de dissipation, jauge d'instabilité.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Channeler"
+}

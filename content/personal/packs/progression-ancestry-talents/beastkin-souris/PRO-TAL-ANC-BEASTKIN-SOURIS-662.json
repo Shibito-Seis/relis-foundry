@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-662",
+  "name": "Impossible à écraser",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Impossible à écraser</strong>.</p><p>Lorsque le personnage échoue à une défense contre peur, coercition, renversement ou déplacement forcé provenant d&#39;une créature plus grande, il relance le test et conserve le meilleur résultat.</p>\n<p>Sur une réussite, il peut se déplacer de 2 mètres vers un couvert ou rester debout s&#39;il possède encore un appui. Le talent ne modifie pas sa Force et ne fonctionne pas contre annihilation ou perte du support entier.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Souris", "Fortune", "Mental", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-639",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Face aux géants",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-640",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pas si petite",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.189 Talents Beastkins Souris de niveau 17",
+      "family": "Courage face aux plus grands",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Face aux géants ou Pas si petite",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Courage face aux plus grands",
+        "Traits": "Beastkin, Souris, Fortune, Mental, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Face aux géants ou Pas si petite"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Souris"
+}

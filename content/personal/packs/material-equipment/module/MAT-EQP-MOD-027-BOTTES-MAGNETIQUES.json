@@ -1,0 +1,115 @@
+{
+  "relisId": "MAT-EQP-MOD-027-BOTTES-MAGNETIQUES",
+  "name": "Bottes magnétiques",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "module-personnel"],
+  "system": {
+    "description": "<p><strong>Module :</strong> Bottes magnétiques. <strong>Niv. :</strong> 2. <strong>Emplacement :</strong> Mobilité. <strong>Effet principal :</strong> Adhérence aux surfaces ferromagnétiques, Activation libre 1/tour. <strong>Consommation :</strong> 1 CE/h. <strong>Enc. :</strong> 1. <strong>Prix :</strong> 800.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "module",
+      "sourceSection": "41.159 Modules de protections — 16 profils",
+      "columns": {
+        "#": "11",
+        "Module": "Bottes magnétiques",
+        "Niv.": "2",
+        "Emplacement": "Mobilité",
+        "Effet principal": "Adhérence aux surfaces ferromagnétiques, Activation libre 1/tour",
+        "Consommation": "1 CE/h",
+        "Enc.": "1",
+        "Prix": "800"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "functionalCategory": "module",
+        "family": "resource",
+        "installable": true,
+        "installationKind": "accessory",
+        "slot": "Mobilité",
+        "effectSummary": "Adhérence aux surfaces ferromagnétiques, Activation libre 1/tour",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 800,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "module"
+}

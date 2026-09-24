@@ -2,7 +2,7 @@
   "id": "relis",
   "title": "RE:LIS — RE: Lost in Space",
   "description": "Système de jeu officiel RE:LIS pour Foundry Virtual Tabletop.",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "compatibility": {
     "minimum": "14",
     "verified": "14",
@@ -24,25 +24,231 @@
   ],
   "packs": [
     {
-      "name": "personal-creation",
-      "label": "RE:LIS — Création de personnage",
-      "path": "packs/personal-creation",
+      "name": "creation-ancestries",
+      "label": "RE:LIS — Ascendances",
+      "path": "packs/creation-ancestries",
       "type": "Item",
       "system": "relis"
     },
     {
-      "name": "personal-progression",
-      "label": "RE:LIS — Progression personnelle",
-      "path": "packs/personal-progression",
+      "name": "creation-profiles",
+      "label": "RE:LIS — Profils",
+      "path": "packs/creation-profiles",
       "type": "Item",
       "system": "relis"
     },
     {
-      "name": "personal-material",
-      "label": "RE:LIS — Matériel personnel",
-      "path": "packs/personal-material",
+      "name": "creation-origins",
+      "label": "RE:LIS — Origines",
+      "path": "packs/creation-origins",
       "type": "Item",
       "system": "relis"
+    },
+    {
+      "name": "creation-advantages",
+      "label": "RE:LIS — Atouts",
+      "path": "packs/creation-advantages",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "creation-drawbacks",
+      "label": "RE:LIS — Handicaps",
+      "path": "packs/creation-drawbacks",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "creation-posts",
+      "label": "RE:LIS — Postes",
+      "path": "packs/creation-posts",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-paths",
+      "label": "RE:LIS — Voies",
+      "path": "packs/progression-paths",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-specializations",
+      "label": "RE:LIS — Spécialisations",
+      "path": "packs/progression-specializations",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-ancestry-talents",
+      "label": "RE:LIS — Talents d’Ascendance",
+      "path": "packs/progression-ancestry-talents",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-skill-talents",
+      "label": "RE:LIS — Talents de compétence",
+      "path": "packs/progression-skill-talents",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-general-talents",
+      "label": "RE:LIS — Talents généraux",
+      "path": "packs/progression-general-talents",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-vampire-talents",
+      "label": "RE:LIS — Talents vampiriques",
+      "path": "packs/progression-vampire-talents",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-actions",
+      "label": "RE:LIS — Actions",
+      "path": "packs/progression-actions",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-powers-mana",
+      "label": "RE:LIS — Pouvoirs de Mana",
+      "path": "packs/progression-powers-mana",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-powers-prana",
+      "label": "RE:LIS — Pouvoirs de Prana",
+      "path": "packs/progression-powers-prana",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-powers-flux",
+      "label": "RE:LIS — Pouvoirs de Flux",
+      "path": "packs/progression-powers-flux",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "material-weapons",
+      "label": "RE:LIS — Armes",
+      "path": "packs/material-weapons",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "material-armor",
+      "label": "RE:LIS — Armures et protections",
+      "path": "packs/material-armor",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "material-equipment",
+      "label": "RE:LIS — Équipements et modules",
+      "path": "packs/material-equipment",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "material-consumables",
+      "label": "RE:LIS — Consommables",
+      "path": "packs/material-consumables",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "material-ammunition",
+      "label": "RE:LIS — Munitions",
+      "path": "packs/material-ammunition",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "material-resources",
+      "label": "RE:LIS — Ressources et batteries",
+      "path": "packs/material-resources",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "material-containers",
+      "label": "RE:LIS — Conteneurs et chargeurs",
+      "path": "packs/material-containers",
+      "type": "Item",
+      "system": "relis"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "RE:LIS — Création de personnage",
+      "sorting": "m",
+      "packs": [
+        "creation-ancestries",
+        "creation-profiles",
+        "creation-origins",
+        "creation-advantages",
+        "creation-drawbacks",
+        "creation-posts"
+      ]
+    },
+    {
+      "name": "RE:LIS — Progression personnelle",
+      "sorting": "m",
+      "folders": [
+        {
+          "name": "Voies et spécialisations",
+          "sorting": "m",
+          "packs": ["progression-paths", "progression-specializations"]
+        },
+        {
+          "name": "Talents",
+          "sorting": "m",
+          "packs": [
+            "progression-ancestry-talents",
+            "progression-skill-talents",
+            "progression-general-talents",
+            "progression-vampire-talents"
+          ]
+        },
+        {
+          "name": "Actions et pouvoirs",
+          "sorting": "m",
+          "packs": [
+            "progression-actions",
+            "progression-powers-mana",
+            "progression-powers-prana",
+            "progression-powers-flux"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RE:LIS — Matériel personnel",
+      "sorting": "m",
+      "folders": [
+        {
+          "name": "Combat et protection",
+          "sorting": "m",
+          "packs": ["material-weapons", "material-armor", "material-ammunition"]
+        },
+        {
+          "name": "Équipement",
+          "sorting": "m",
+          "packs": ["material-equipment", "material-consumables"]
+        },
+        {
+          "name": "Logistique",
+          "sorting": "m",
+          "packs": ["material-resources", "material-containers"]
+        }
+      ]
     }
   ],
   "socket": true,
@@ -54,7 +260,7 @@
   "primaryTokenAttribute": "derived.trackables.hitPoints",
   "url": "https://github.com/Shibito-Seis/relis-foundry",
   "manifest": "https://raw.githubusercontent.com/Shibito-Seis/relis-foundry/main/system.json",
-  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.0/relis-v0.8.0.zip",
+  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.1/relis-v0.8.1.zip",
   "documentTypes": {
     "Actor": {
       "character": {

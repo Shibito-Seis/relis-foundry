@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-178",
+  "name": "Passion vivifiante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Passion vivifiante</strong>.</p><p>Le personnage définit une troisième Ancre d&#39;Éclat.</p>\n<p>Lorsque cette Ancre produit un Épisode d&#39;Éclat, le personnage gagne également +2 circonstanciel au premier test de Volonté, Sang-froid ou Vigueur effectué avant la fin de la scène pour résister au découragement, à la peur ou à la Fatigue.</p>\n<p>La troisième Ancre suit toutes les règles ordinaires de définition et de remplacement. La posséder ne transforme pas une distraction superficielle en Épisode d&#39;Éclat.</p>",
+    "traits": ["Gnome", "Affadissement", "Passion"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Éclat gnome",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Éclat gnome",
+        "Traits": "Gnome, Affadissement, Passion",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Gnome"
+}

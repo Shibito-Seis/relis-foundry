@@ -1,0 +1,121 @@
+{
+  "relisId": "MAT-ARM-011-GILET-DE-PROTECTION-CIVIL",
+  "name": "Gilet de protection civil",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<p><strong>Armure légère :</strong> Gilet de protection civil. <strong>Niv. :</strong> 1. <strong>Accès :</strong> Courante. <strong>CAP/CAE :</strong> +1/+0. <strong>Sol. P/E :</strong> 2/1. <strong>PV/SB :</strong> 18/9. <strong>Couverture :</strong> T. <strong>Force :</strong> 0. <strong>Bruit/signature :</strong> Discret sous vêtement. <strong>Empl. :</strong> 2. <strong>Enc. :</strong> 1. <strong>Équip. :</strong> 2 Actions. <strong>Prix :</strong> 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.127 Lot 5-L2 — Armures légères",
+      "columns": {
+        "#": "1",
+        "Armure légère": "Gilet de protection civil",
+        "Niv.": "1",
+        "Accès": "Courante",
+        "CAP/CAE": "+1/+0",
+        "Sol. P/E": "2/1",
+        "PV/SB": "18/9",
+        "Couverture": "T",
+        "Force": "0",
+        "Bruit/signature": "Discret sous vêtement",
+        "Empl.": "2",
+        "Enc.": "1",
+        "Équip.": "2 Actions",
+        "Prix": "500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 1,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "common",
+      "capBonus": 1,
+      "caeBonus": 0,
+      "solidityPhysical": 2,
+      "solidityEnergy": 1,
+      "coverage": ["T"],
+      "constraintSummary": "# : 1 ; Armure légère : Gilet de protection civil ; Niv. : 1 ; Accès : Courante ; CAP/CAE : +1/+0 ; Sol. P/E : 2/1 ; PV/SB : 18/9 ; Couverture : T ; Force : 0 ; Bruit/signature : Discret sous vêtement ; Empl. : 2 ; Enc. : 1 ; Équip. : 2 Actions ; Prix : 500"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "light"
+}

@@ -1,0 +1,90 @@
+{
+  "relisId": "CLN-038",
+  "name": "Unité de gestation artificielle",
+  "type": "equipment",
+  "tags": ["materiel", "clinique"],
+  "system": {
+    "description": "<p><strong>Unité de gestation artificielle</strong> appartient au catalogue clinique.</p><p>6. Rare. installation. 1 gestation. supporte une gestation seulement après protocole, certification d’Ascendance, énergie, biomasse et surveillance continue. 037/031/035.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "clinique",
+      "sourceSection": "54.6 Grossesse, accouchement et néonatalogie — CLN-031 à CLN-038",
+      "canonicalRow": [
+        "CLN-038",
+        "Unité de gestation artificielle",
+        "6",
+        "Rare",
+        "installation",
+        "1 gestation",
+        "supporte une gestation seulement après protocole, certification d’Ascendance, énergie, biomasse et surveillance continue",
+        "037/031/035"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "clinique"
+}

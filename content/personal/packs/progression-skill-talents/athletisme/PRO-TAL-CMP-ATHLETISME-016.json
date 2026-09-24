@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-ATHLETISME-016",
+  "name": "Cordée efficace",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Cordée efficace</strong>.</p><p>Avec des cordes, lignes, flotteurs, ancrages ou équipements comparables, le personnage organise jusqu&#39;à six participants pour une escalade, une nage, une descente ou un passage exposé.</p>\n<p>Chaque participant qui suit la méthode préparée gagne +1 circonstanciel à son premier test d&#39;Athlétisme du franchissement.</p>\n<p>Une fois pendant l&#39;étape, lorsqu&#39;un participant obtient un échec simple, il peut rester suspendu, flotter ou s&#39;arrêter au dernier point sûr au lieu de subir immédiatement une chute ou une dérive.</p>\n<p>La Cordée ne protège pas d&#39;un échec critique, d&#39;un ancrage rompu ou d&#39;une force dépassant le matériel disponible.</p>",
+    "traits": ["Aide", "Athlétisme", "Compétence", "Exploration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Athlétisme — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Athlétisme",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "Athlétisme Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "une étape de franchissement",
+      "metadata": {
+        "Compétence": "Athlétisme",
+        "Niveau": "3",
+        "Traits": "Aide, Athlétisme, Compétence, Exploration",
+        "Type": "préparation de 10 minutes",
+        "Durée": "une étape de franchissement",
+        "Prérequis": "Athlétisme Expert"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Athlétisme"
+}

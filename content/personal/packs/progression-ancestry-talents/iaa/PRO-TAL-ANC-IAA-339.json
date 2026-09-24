@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-339",
+  "name": "Architecture sans frontière",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Architecture sans frontière</strong>.</p><p>Le personnage peut déployer simultanément jusqu&#39;à trois Architectures maîtrisées lorsque tous leurs supports matériels sont disponibles.</p>\n<p>Il peut passer d&#39;une combinaison préparée à une autre en dix minutes. Une fois par jour, il effectue cette transition en une minute et ignore le Stress provenant uniquement du transfert ou de la réorganisation.</p>\n<p>Chaque Architecture conserve ses vulnérabilités et toutes partagent les Actions, la Réaction et les ressources du personnage. Le talent ne confère aucune Architecture non maîtrisée et ne crée aucun support.</p>",
+    "traits": ["IAA", "Architecture", "Évolution", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-330",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Convergence architecturale",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.91 Talents IAA de niveau 21",
+      "family": "Transcendance IAA",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif et Activité de 10 minutes",
+      "prerequisites": "Convergence architecturale",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance IAA",
+        "Traits": "IAA, Architecture, Évolution, Mythique",
+        "Type": "Passif et Activité de 10 minutes",
+        "Prérequis": "Convergence architecturale"
+      }
+    },
+    "level": 21
+  },
+  "folder": "IAA"
+}

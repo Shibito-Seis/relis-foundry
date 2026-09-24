@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-ARMES-LOURDES-053",
+  "name": "Servant désigné",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Servant désigné</strong>.</p><p>Lorsque le personnage acquiert ce talent, il choisit une fonction : chargeur, pointeur, responsable d&#39;appui ou responsable d&#39;alimentation et de refroidissement.</p>\n<p>Lorsqu&#39;il occupe réellement cette fonction auprès d&#39;une arme lourde accessible et consacre au moins 1 action à aider son opérateur, il effectue un test d&#39;Armes lourdes contre le DD de la situation.</p>\n<p>• Réussite critique : l&#39;opérateur gagne +2 circonstanciel au prochain test directement lié à cette fonction et l&#39;aide reste valable jusqu&#39;à la fin de son prochain tour.</p>\n<p>• Réussite : l&#39;opérateur gagne +2 circonstanciel au prochain test directement lié à cette fonction.</p>\n<p>• Échec : aucun effet.</p>\n<p>• Échec critique : aucun effet et le personnage ne peut plus aider cette arme avant le début de son prochain tour.</p>\n<p>Le bonus peut aider un déploiement, un rechargement, une acquisition ou la résolution d&#39;un incident, mais jamais augmenter les dégâts. Le talent peut être acquis plusieurs fois, pour une fonction différente.</p>",
+    "traits": ["Aide", "Armes lourdes", "Compétence", "Équipage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Armes lourdes — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Armes lourdes",
+      "activation": "Passif",
+      "prerequisites": "Armes lourdes Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Armes lourdes",
+        "Niveau": "1",
+        "Traits": "Aide, Armes lourdes, Compétence, Équipage",
+        "Type": "Passif",
+        "Prérequis": "Armes lourdes Qualifié",
+        "Réussite critique": "l'opérateur gagne +2 circonstanciel au prochain test directement lié à cette fonction et l'aide reste valable jusqu'à la fin de son prochain tour.",
+        "Réussite": "l'opérateur gagne +2 circonstanciel au prochain test directement lié à cette fonction.",
+        "Échec": "aucun effet.",
+        "Échec critique": "aucun effet et le personnage ne peut plus aider cette arme avant le début de son prochain tour."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Armes lourdes"
+}

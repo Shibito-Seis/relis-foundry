@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-BEASTKIN-677",
+  "name": "Héritage sans contradiction",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Héritage sans contradiction</strong>.</p><p>Le personnage choisit un talent Humain connu et un talent parental connu produisant des fonctions différentes. Pendant l&#39;effet, leurs prérequis de posture, d&#39;équipement ou de manifestation peuvent coexister, et leurs bonus circonstanciels passent à +3 lorsqu&#39;ils s&#39;appliquent à des tests distincts.</p>\n<p>Le talent ne fusionne pas deux bonus sur le même test, ne recharge aucune fréquence et ne retire aucun coût, Fatigue ou Stress.</p>",
+    "traits": ["Demi-Beastkin", "Adaptation", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-BEASTKIN-676",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Parangon des frontières",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.203 Talent Demi-Beastkin de niveau 25",
+      "family": "Transcendance hybride",
+      "ancestry": "Demi-Beastkin",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Parangon des frontières",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance hybride",
+        "Traits": "Demi-Beastkin, Adaptation, Mythique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Parangon des frontières"
+      }
+    },
+    "level": 25
+  },
+  "folder": "Demi-Beastkin"
+}

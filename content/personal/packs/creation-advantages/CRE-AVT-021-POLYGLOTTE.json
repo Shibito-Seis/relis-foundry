@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-021-POLYGLOTTE",
+  "name": "Polyglotte",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Polyglotte</strong>.</p><p><strong>Valeur :</strong> +1</p>\n<p>Le personnage connaît plusieurs langues ou familles linguistiques humaines ou non-humaines. +2 aux jets de Culture ou Diplomatie pour comprendre une langue, un accent, un code culturel ou une traduction.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+1",
+      "effect": "Le personnage connaît plusieurs langues ou familles linguistiques humaines ou non-humaines. +2 aux jets de Culture ou Diplomatie pour comprendre une langue, un accent, un code culturel ou une traduction."
+    }
+  },
+  "folder": ""
+}

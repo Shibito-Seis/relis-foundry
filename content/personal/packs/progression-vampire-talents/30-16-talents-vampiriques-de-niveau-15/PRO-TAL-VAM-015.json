@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-VAM-015",
+  "name": "Piste rouge",
+  "type": "talent",
+  "tags": ["progression", "talent", "vampirique"],
+  "system": {
+    "description": "<p><strong>Piste rouge</strong>.</p><p>Le personnage gagne +3 circonstanciel aux tests de Survie ou Investigation pour suivre une créature ayant laissé du sang dans les dernières quarante-huit heures.</p>\n<p>Après chaque réussite, il connaît la direction générale, l&#39;ancienneté relative et si la piste s&#39;affaiblit, s&#39;intensifie ou a été volontairement brouillée.</p>\n<p>Une pluie abondante, une décontamination, un environnement hermétique, le vide, une saturation chimique ou une piste entièrement transportée dans un contenant peut rompre le suivi. Le talent ne révèle jamais directement la destination finale.</p>",
+    "traits": ["Exploration", "Général", "Pistage", "Vampirique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-VAM-007",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Trace pulsatile",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-vampirique",
+      "sourceSection": "### 30.16 Talents vampiriques de niveau 15",
+      "family": "Sens du sang",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Trace pulsatile ; Stade vampirique 4",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens du sang",
+        "Traits": "Exploration, Général, Pistage, Vampirique",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Trace pulsatile ; Stade vampirique 4"
+      }
+    },
+    "level": 15
+  },
+  "folder": "### 30.16 Talents vampiriques de niveau 15"
+}

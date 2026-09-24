@@ -1,0 +1,108 @@
+{
+  "relisId": "MAT-AMM-SPC-009-EXPLOSIVE",
+  "name": "Explosive",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "munition-speciale"],
+  "system": {
+    "description": "<p><strong>Modèle :</strong> Explosive. <strong>Niv. :</strong> 4. <strong>Effet :</strong> petite Explosion 1 selon le profil. <strong>Restrictions principales :</strong> interdite aux petits calibres ordinaires. <strong>Prix :</strong> ×5.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-variant",
+      "sourceSection": "41.181 Modèles de munitions spéciales",
+      "columns": {
+        "#": "9",
+        "Modèle": "Explosive",
+        "Niv.": "4",
+        "Effet": "petite Explosion 1 selon le profil",
+        "Restrictions principales": "interdite aux petits calibres ordinaires",
+        "Prix": "×5"
+      },
+      "restrictions": "interdite aux petits calibres ordinaires"
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 5,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "special",
+      "variantId": "explosive",
+      "chamberingId": "",
+      "feedInterfaceIds": [],
+      "effectSummary": "petite Explosion 1 selon le profil",
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  },
+  "folder": "special"
+}

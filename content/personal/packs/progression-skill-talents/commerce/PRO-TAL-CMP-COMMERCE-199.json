@@ -1,0 +1,74 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMERCE-199",
+  "name": "Route des échanges",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Route des échanges</strong>.</p><p>Le personnage relie plusieurs fournisseurs, transporteurs, marchés ou institutions réellement accessibles afin d&#39;ouvrir un échange normalement presque impossible.</p>\n<p>Il effectue un test de Commerce contre le DD le plus élevé de la chaîne.</p>\n<p>• Réussite critique : il établit les étapes, marges, garanties et solutions de repli ; jusqu&#39;à six participants gagnent +2 circonstanciel à leur premier test suivant la route, et la première complication logistique mineure est détectée avant de rompre l&#39;échange.</p>\n<p>• Réussite : il établit les étapes et garanties principales ; jusqu&#39;à six participants gagnent +2 circonstanciel à leur premier test suivant la route.</p>\n<p>• Échec : aucune route assez fiable n&#39;est établie.</p>\n<p>• Échec critique : une étape reste sans partenaire ou moyen réel ; le MJ l&#39;indique avant tout engagement irréversible.</p>\n<p>Le talent ne crée aucun partenaire, marché, bien, transport, crédit ou protection politique.</p>",
+    "traits": [
+      "Commerce",
+      "Compétence",
+      "Légendaire",
+      "Logistique",
+      "Préparation"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-COMMERCE-195",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chaîne d'approvisionnement",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-COMMERCE-197",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Marché sous tension",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-COMMERCE-198",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Garanties croisées",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commerce — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commerce",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Commerce Légendaire ; Chaîne d'approvisionnement, Marché sous tension et Garanties croisées",
+      "choice": "",
+      "frequency": "une fois par route commerciale",
+      "trigger": "",
+      "duration": "jusqu'à la rupture majeure de la route ou la fin de l'expédition",
+      "metadata": {
+        "Compétence": "Commerce",
+        "Niveau": "15",
+        "Traits": "Commerce, Compétence, Légendaire, Logistique, Préparation",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par route commerciale",
+        "Durée": "jusqu'à la rupture majeure de la route ou la fin de l'expédition",
+        "Prérequis": "Commerce Légendaire ; Chaîne d'approvisionnement, Marché sous tension et Garanties croisées",
+        "Réussite critique": "il établit les étapes, marges, garanties et solutions de repli ; jusqu'à six participants gagnent +2 circonstanciel à leur premier test suivant la route, et la première complication logistique mineure est détectée avant de rompre l'échange.",
+        "Réussite": "il établit les étapes et garanties principales ; jusqu'à six participants gagnent +2 circonstanciel à leur premier test suivant la route.",
+        "Échec": "aucune route assez fiable n'est établie.",
+        "Échec critique": "une étape reste sans partenaire ou moyen réel ; le MJ l'indique avant tout engagement irréversible."
+      }
+    },
+    "level": 15
+  },
+  "folder": "Commerce"
+}

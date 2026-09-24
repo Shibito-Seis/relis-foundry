@@ -1,0 +1,74 @@
+{
+  "relisId": "PRO-TAL-CMP-COMMERCE-200",
+  "name": "Architecte des marchés",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Architecte des marchés</strong>.</p><p>Le personnage conçoit un réseau d&#39;échanges entre plusieurs communautés ou systèmes : besoins, surplus, routes, garanties, arbitrages, réserves et limites acceptées.</p>\n<p>Il effectue un test de Commerce contre le DD le plus élevé du réseau.</p>\n<p>• Réussite critique : le modèle identifie les dépendances, vulnérabilités et mécanismes d&#39;équilibre ; jusqu&#39;à six responsables gagnent +2 circonstanciel à leurs tests suivant le modèle, et le premier échec simple de logistique ou négociation économique du réseau devient une réussite.</p>\n<p>• Réussite : le modèle identifie les dépendances principales ; jusqu&#39;à six responsables gagnent +2 circonstanciel à leur premier test suivant le modèle.</p>\n<p>• Échec : le modèle ne procure aucun bénéfice.</p>\n<p>• Échec critique : une contradiction entre deux besoins fondamentaux est révélée avant la mise en œuvre.</p>\n<p>Le réseau exige consentement, ressources, transports, institutions et entretien réels. Le talent n&#39;abolit ni rareté, ni dette, ni conflit d&#39;intérêts.</p>\n<p>---</p>",
+    "traits": [
+      "Commerce",
+      "Compétence",
+      "Mythique",
+      "Préparation",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-COMMERCE-197",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Marché sous tension",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-COMMERCE-198",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Garanties croisées",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-COMMERCE-199",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Route des échanges",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Commerce — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Commerce",
+      "activation": "Activité de 1 jour",
+      "prerequisites": "Commerce Mythique ; Marché sous tension, Garanties croisées et Route des échanges",
+      "choice": "",
+      "frequency": "une fois par réseau économique majeur",
+      "trigger": "",
+      "duration": "jusqu'à un bouleversement politique, logistique ou économique majeur",
+      "metadata": {
+        "Compétence": "Commerce",
+        "Niveau": "23",
+        "Traits": "Commerce, Compétence, Mythique, Préparation, Travail d'équipe",
+        "Type": "Activité de 1 jour",
+        "Fréquence": "une fois par réseau économique majeur",
+        "Durée": "jusqu'à un bouleversement politique, logistique ou économique majeur",
+        "Prérequis": "Commerce Mythique ; Marché sous tension, Garanties croisées et Route des échanges",
+        "Réussite critique": "le modèle identifie les dépendances, vulnérabilités et mécanismes d'équilibre ; jusqu'à six responsables gagnent +2 circonstanciel à leurs tests suivant le modèle, et le premier échec simple de logistique ou négociation économique du réseau devient une réussite.",
+        "Réussite": "le modèle identifie les dépendances principales ; jusqu'à six responsables gagnent +2 circonstanciel à leur premier test suivant le modèle.",
+        "Échec": "le modèle ne procure aucun bénéfice.",
+        "Échec critique": "une contradiction entre deux besoins fondamentaux est révélée avant la mise en œuvre."
+      }
+    },
+    "level": 23
+  },
+  "folder": "Commerce"
+}

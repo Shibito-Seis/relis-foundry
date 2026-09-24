@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-022-AMPUTATION",
+  "name": "Amputation",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Amputation</strong>.</p><p><strong>Valeur :</strong> -2/-3</p>\n<p>-2 : perte d’une fonction importante compensable. -3 : perte majeure ou double contrainte. Une prothèse peut compenser, mais doit être obtenue ou prise comme Atout/équipement.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-2/-3",
+      "effect": "-2 : perte d’une fonction importante compensable. -3 : perte majeure ou double contrainte. Une prothèse peut compenser, mais doit être obtenue ou prise comme Atout/équipement."
+    }
+  },
+  "folder": ""
+}

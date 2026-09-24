@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-599",
+  "name": "Porteur né",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Porteur né</strong>.</p><p>Pour déterminer sa capacité de charge, de portage ou de traction hors combat, le personnage traite sa Force comme supérieure de 2. Il gagne également +2 circonstanciel aux tests pour maintenir une charge stable ou la répartir correctement.</p>\n<p>Le talent n&#39;augmente ni les dégâts, ni les tests d&#39;attaque et ne permet pas d&#39;ignorer la résistance d&#39;un sol, d&#39;un véhicule ou d&#39;un équipement.</p>",
+    "traits": ["Beastkin", "Ours", "Force", "Utilitaire"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Force soutenue et portage",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Force soutenue et portage",
+        "Traits": "Beastkin, Ours, Force, Utilitaire",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Ours"
+}

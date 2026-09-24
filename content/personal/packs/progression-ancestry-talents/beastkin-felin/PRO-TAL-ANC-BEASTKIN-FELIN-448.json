@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-448",
+  "name": "Prise du prédateur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Prise du prédateur</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests pour saisir, maintenir ou déplacer une créature qu&#39;il peut physiquement agripper. Lorsqu&#39;il réussit une saisie, il choisit s&#39;il immobilise avec les bras, la gueule ou l&#39;ensemble de son corps.</p>\n<p>Une gueule employée ainsi ne peut simultanément attaquer, parler clairement ou manipuler un autre objectif. Le talent ne permet pas une saisie gratuite après une attaque.</p>",
+    "traits": ["Beastkin", "Félin", "Athlétisme", "Contrôle"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.130 Talents Beastkins Félins de niveau 1",
+      "family": "Puissance prédatrice",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance prédatrice",
+        "Traits": "Beastkin, Félin, Athlétisme, Contrôle",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Félin"
+}

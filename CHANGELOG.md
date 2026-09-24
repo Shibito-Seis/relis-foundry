@@ -1,5 +1,16 @@
 # Journal des versions
 
+## 0.8.1 — correctif de recette 10-K2-P
+
+- Répartit Création, Progression et Matériel dans 23 compendiums regroupés par dossiers Foundry, avec sous-classement des Talents, Pouvoirs, Armes et autres familles.
+- Recalcule les 111 armes : arcs, arbalètes et armes lancées emploient les compétences, Attributs, alimentations et capacités canoniques ; six profils de flèches et carreaux complètent les munitions.
+- Stocke le contenu réel des boîtes de munitions, garde le prix lié au conditionnement et réserve l’interface mécanique au couple chargeur-arme.
+- Supprime la fausse égalité entre technologie de dégâts et technologie de batterie ; les CE demeurent portés par la batterie installée.
+- Structure les seize focaliseurs MYS (source, rang, formules, tampon, CE et identité) sans anticiper leur exécution de 10-F.
+- Audite les 2 404 descriptions et supprime les tableaux techniques bruts des descriptions d’Items.
+- Remplace les huit questions fixes de l’Écarlithe par une banque de 48 situations et un tirage stable de 20 ; corrige la persistance des réponses, le choix direct MJ, le nom coloré et l’identité de l’accord.
+- Conserve le schéma Item 7, les permissions, les transactions, les portraits, les versions dynamiques et le contrat DialogV2 de Foundry 14. 10-K2-P reste en recette jusqu’à validation explicite de la v0.8.1.
+
 ## 0.8.0 — 10-K2-P, compendiums personnels canoniques
 
 - Publie ensemble les trois compendiums Item de Création, Progression et Matériel personnel, soit 2 398 entrées issues de la Bible v162 : 199, 1 444 et 755 Items respectivement.

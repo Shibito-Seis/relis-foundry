@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-473",
+  "name": "Seigneur de lignée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Seigneur de lignée</strong>.</p><p>Le personnage choisit une seconde expression de la liste d&#39;Héritage du grand félin et en obtient l&#39;effet de niveau 1, sans son perfectionnement d&#39;Instinct de lignée.</p>\n<p>Une fois par scène, il peut activer simultanément ses deux expressions pendant un tour. Leurs bonus ne se cumulent pas sur un même test ; chaque expression doit soutenir une fonction différente.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Félin", "Héritage", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-465",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Instinct de lignée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.132 Talents Beastkins Félins de niveau 9",
+      "family": "Expressions de grands félins",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Instinct de lignée",
+      "choice": "",
+      "frequency": "une fois par scène pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Expressions de grands félins",
+        "Traits": "Beastkin, Félin, Héritage, Physiologie",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par scène pour l'activation",
+        "Prérequis": "Instinct de lignée"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Félin"
+}

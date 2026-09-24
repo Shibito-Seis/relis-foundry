@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-513",
+  "name": "Gardien inébranlable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Gardien inébranlable</strong>.</p><p>Tant que le personnage demeure à portée de son poste ou d&#39;une cible gardée :</p>\n<p>• il gagne une Résistance aux dégâts physiques égale au tiers de son Niveau général, arrondi à l&#39;inférieur ;</p>\n<p>• il gagne +3 circonstanciel contre renversement, déplacement forcé, peur et douleur ;</p>\n<p>• la première fois pendant la durée qu&#39;Interception canine le fait devenir la cible d&#39;un effet, il réduit les dégâts reçus d&#39;un montant égal à son Niveau général.</p>\n<p>Le talent ne fournit aucune Réaction supplémentaire, ne protège pas automatiquement les objectifs gardés et cesse s&#39;il abandonne volontairement son poste pour un autre but.</p>",
+    "traits": ["Beastkin", "Chien", "Défense", "Endurance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHIEN-510",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Poste imprenable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.145 Talents Beastkins Chiens de niveau 17",
+      "family": "Garde et interception",
+      "ancestry": "Beastkin Chien",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Poste imprenable",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Garde et interception",
+        "Traits": "Beastkin, Chien, Défense, Endurance",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Durée": "3 tours",
+        "Prérequis": "Poste imprenable"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Chien"
+}

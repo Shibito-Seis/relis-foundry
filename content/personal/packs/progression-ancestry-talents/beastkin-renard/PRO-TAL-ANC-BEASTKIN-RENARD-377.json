@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-377",
+  "name": "Forme du petit renard",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Forme du petit renard</strong>.</p><p>Le personnage adopte la forme d&#39;un petit renard quadrupède. Sa taille devient Petite, sa vitesse terrestre reste inchangée et il conserve ses Attributs, PV, défenses et économie d&#39;Actions.</p>\n<p>Il gagne +2 circonstanciel aux tests de Discrétion lorsqu&#39;une petite taille fournit réellement une couverture. Il ne peut ni parler clairement, ni manier un équipement humanoïde, ni accomplir une manipulation exigeant des mains. Son équipement incompatible est fondu dans la forme, inactif et inaccessible.</p>\n<p>Le talent ne donne aucune attaque naturelle ; une morsure utilisable exige une règle ou un talent correspondant.</p>",
+    "traits": ["Beastkin", "Renard", "Métamorphose", "Vulpin"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.108 Talents Beastkins Renards de niveau 1",
+      "family": "Masques et métamorphoses",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masques et métamorphoses",
+        "Traits": "Beastkin, Renard, Métamorphose, Vulpin",
+        "Type": "1 Action"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Renard"
+}

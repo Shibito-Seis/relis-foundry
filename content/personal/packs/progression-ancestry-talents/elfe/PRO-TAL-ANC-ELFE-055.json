@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-055",
+  "name": "Écoute du Flux",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>En se concentrant pendant environ une minute, le personnage peut déterminer si une magie active, une anomalie énergétique ou un dispositif techno-magique fonctionne à proximité immédiate.</p>\n<p>Il apprend :</p>\n<p>• si une signature est présente ;</p>\n<p>• sa direction générale ;</p>\n<p>• si elle semble stable, perturbée ou dangereusement intense.</p>\n<p>Il gagne +2 circonstanciel au premier test de Canalisation, Investigation ou Techno-magie destiné à identifier cette signature.</p>\n<p>Écoute du Flux ne traverse pas automatiquement un blindage, un champ d&#39;isolation ou un brouillage conçu pour masquer l&#39;énergie.</p>",
+    "traits": ["Elfe", "Détection", "Magie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Sens de la Fusion",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Activité de 1 minute (Concentration ou Activité d'exploration)",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la Fusion",
+        "Traits": "Elfe, Détection, Magie",
+        "Type": "Activité de 1 minute (Concentration ou Activité d'exploration)"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-ELFE-683",
+  "name": "Magie tempérée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Magie tempérée</strong>.</p><p>Lorsqu&#39;une capacité magique ou techno-magique du personnage devrait lui faire gagner du Stress, de la Fatigue ou un degré de surcharge en raison de son activation, il réduit cette conséquence de 1, avec un minimum de 0.</p>\n<p>Le talent ne réduit ni coût énergétique normal, ni dégâts reçus, ni conséquence d&#39;un échec critique. Les catégories exactes seront harmonisées à l&#39;étape 6.</p>",
+    "traits": ["Demi-Elfe", "Énergie", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-ELFE-680",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Étincelle elfique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.207 Talents Demi-Elfes de niveau 5",
+      "family": "Magie tempérée",
+      "ancestry": "Demi-Elfe",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Étincelle elfique",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Magie tempérée",
+        "Traits": "Demi-Elfe, Énergie, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Étincelle elfique"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Demi-Elfe"
+}

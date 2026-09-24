@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-015-RICHE",
+  "name": "Riche",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Riche</strong>.</p><p><strong>Valeur :</strong> +2</p>\n<p>Le personnage commence avec 50 000 crédits ou un équivalent patrimonial immédiatement accessible. Incompatible avec Pauvre, Très pauvre et Sans le sou.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "Le personnage commence avec 50 000 crédits ou un équivalent patrimonial immédiatement accessible. Incompatible avec Pauvre, Très pauvre et Sans le sou."
+    }
+  },
+  "folder": ""
+}

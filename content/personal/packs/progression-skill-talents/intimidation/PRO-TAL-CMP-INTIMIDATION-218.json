@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-CMP-INTIMIDATION-218",
+  "name": "Choix sans équivoque",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Choix sans équivoque</strong>.</p><p>Le personnage présente à une cible consciente un ultimatum comprenant deux options réelles, leurs conséquences crédibles et le délai dont elle dispose.</p>\n<p>Il effectue un test d&#39;Intimidation opposé à Volonté + Sang-froid de la cible.</p>\n<p>• Réussite critique : la cible choisit une option ou formule immédiatement une troisième option réalisable de coût comparable ; elle ne peut feindre de ne pas avoir compris l&#39;ultimatum.</p>\n<p>• Réussite : la cible répond à l&#39;ultimatum avant le délai, même si sa réponse est refus, fuite, appel à l&#39;aide ou contre-menace.</p>\n<p>• Échec : elle peut l&#39;ignorer.</p>\n<p>• Échec critique : elle considère le personnage incapable d&#39;imposer les conséquences ; une nouvelle tentative exige une preuve ou un levier nouveau.</p>\n<p>Aucune option ne peut imposer suicide, automutilation, trahison fondamentale ou action manifestement pire que la conséquence annoncée.</p>",
+    "traits": ["Compétence", "Intimidation", "Mental", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-214",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Interrogatoire sous pression",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-215",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Une seconde d'hésitation",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Intimidation — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Intimidation",
+      "activation": "Activité de 2 Actions ou échange formel",
+      "prerequisites": "Intimidation Maître ; Interrogatoire sous pression et Une seconde d'hésitation",
+      "choice": "",
+      "frequency": "une fois par cible et par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Intimidation",
+        "Niveau": "7",
+        "Traits": "Compétence, Intimidation, Mental, Social",
+        "Type": "Activité de 2 Actions ou échange formel",
+        "Fréquence": "une fois par cible et par scène",
+        "Prérequis": "Intimidation Maître ; Interrogatoire sous pression et Une seconde d'hésitation",
+        "Réussite critique": "la cible choisit une option ou formule immédiatement une troisième option réalisable de coût comparable ; elle ne peut feindre de ne pas avoir compris l'ultimatum.",
+        "Réussite": "la cible répond à l'ultimatum avant le délai, même si sa réponse est refus, fuite, appel à l'aide ou contre-menace.",
+        "Échec": "elle peut l'ignorer.",
+        "Échec critique": "elle considère le personnage incapable d'imposer les conséquences ; une nouvelle tentative exige une preuve ou un levier nouveau."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Intimidation"
+}

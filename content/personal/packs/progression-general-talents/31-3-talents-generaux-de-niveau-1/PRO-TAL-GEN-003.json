@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-GEN-003",
+  "name": "Réflexe de sauvegarde",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Réflexe de sauvegarde</strong>.</p><p>Le personnage gagne +2 circonstanciel au test déclenché.</p>\n<p>Ce talent ne modifie pas la CAP ou la CAE contre une attaque ciblée et ne fonctionne pas contre un danger totalement imperceptible avant sa résolution.</p>",
+    "traits": ["Défense", "Général", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Vigilance et réactions",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "le personnage doit effectuer un test de Dextérité contre une explosion, un piège, un effondrement ou une zone dangereuse qu'il peut percevoir",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vigilance et réactions",
+        "Traits": "Défense, Général, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Déclencheur": "le personnage doit effectuer un test de Dextérité contre une explosion, un piège, un effondrement ou une zone dangereuse qu'il peut percevoir"
+      }
+    },
+    "level": 1
+  },
+  "folder": "### 31.3 Talents généraux de niveau 1"
+}

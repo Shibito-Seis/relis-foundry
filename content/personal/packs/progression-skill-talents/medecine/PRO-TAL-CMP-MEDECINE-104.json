@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-CMP-MEDECINE-104",
+  "name": "Intervention rapide",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Intervention rapide</strong>.</p><p>Lorsque le personnage a réussi un Diagnostic rapide sur une cible pendant la scène, il réduit de 1 action, minimum 1, le coût de sa prochaine tentative pour Stabiliser cette cible avec un kit ou un consommable compatible.</p>\n<p>S&#39;il emploie une Stabilisation improvisée, son coût passe de 3 à 2 actions, mais son DD et ses risques restent ceux d&#39;une intervention improvisée.</p>\n<p>Le talent ne réduit pas la durée d&#39;une chirurgie, ne rend aucun PV et ne dispense ni du test, ni du matériel, ni du consommable.</p>",
+    "traits": ["Compétence", "Médecine", "Soin", "Stabilisation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-MEDECINE-101",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Triage clinique",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-MEDECINE-102",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Stabilisation sûre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Médecine — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Médecine",
+      "activation": "Passif",
+      "prerequisites": "Médecine Expert ; Triage clinique ou Stabilisation sûre",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Médecine",
+        "Niveau": "3",
+        "Traits": "Compétence, Médecine, Soin, Stabilisation",
+        "Type": "Passif",
+        "Fréquence": "une fois par round",
+        "Prérequis": "Médecine Expert ; Triage clinique ou Stabilisation sûre"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Médecine"
+}

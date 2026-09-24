@@ -1,0 +1,49 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-521",
+  "name": "Rôles mouvants",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Rôles mouvants</strong>.</p><p>Le personnage choisit un rôle jusqu&#39;à sa prochaine préparation :</p>\n<p>• Pisteur : +2 circonstanciel pour lire la direction ou la fraîcheur d&#39;une piste ;</p>\n<p>• Rabatteur : +2 aux tests destinés à fermer une issue ou déplacer une cible ;</p>\n<p>• Flanqueur : +2 aux tests d&#39;Acrobaties pour atteindre un angle opposé à un allié ;</p>\n<p>• Veilleur : +2 à la Perception contre une menace visant le cercle ;</p>\n<p>• Endurant : +2 aux tests d&#39;Endurance pendant un voyage ou une poursuite ;</p>\n<p>• Rassembleur : +2 aux tests de Commandement ou de Survie pour regrouper des alliés dispersés.</p>\n<p>Le rôle ne donne ni profession, ni rang, ni Action supplémentaire. Le personnage peut en changer lors d&#39;une nouvelle préparation.</p>",
+    "traits": ["Beastkin", "Loup", "Coopération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-520",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cercle choisi",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Meute choisie et rôles mouvants",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "Cercle choisi",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Meute choisie et rôles mouvants",
+        "Traits": "Beastkin, Loup, Coopération",
+        "Type": "préparation de 10 minutes",
+        "Prérequis": "Cercle choisi",
+        "Pisteur": "+2 circonstanciel pour lire la direction ou la fraîcheur d'une piste ;",
+        "Rabatteur": "+2 aux tests destinés à fermer une issue ou déplacer une cible ;",
+        "Flanqueur": "+2 aux tests d'Acrobaties pour atteindre un angle opposé à un allié ;",
+        "Veilleur": "+2 à la Perception contre une menace visant le cercle ;",
+        "Endurant": "+2 aux tests d'Endurance pendant un voyage ou une poursuite ;",
+        "Rassembleur": "+2 aux tests de Commandement ou de Survie pour regrouper des alliés dispersés."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Loup"
+}

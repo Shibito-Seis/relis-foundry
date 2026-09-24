@@ -1,0 +1,93 @@
+{
+  "relisId": "CLN-029",
+  "name": "Milieu de fécondation in vitro",
+  "type": "consumable",
+  "tags": ["materiel", "clinique"],
+  "system": {
+    "description": "<p><strong>Milieu de fécondation in vitro</strong> appartient au catalogue clinique.</p><p>4. Spécialisé. L. 1 tentative. modificateur ×1,75 avec laboratoire, spécialistes et échantillons compatibles. 037/031.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "clinique",
+      "sourceSection": "54.5 Contraception et aide à la conception — CLN-021 à CLN-030",
+      "canonicalRow": [
+        "CLN-029",
+        "Milieu de fécondation in vitro",
+        "4",
+        "Spécialisé",
+        "L",
+        "1 tentative",
+        "modificateur ×1,75 avec laboratoire, spécialistes et échantillons compatibles",
+        "037/031"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "modificateur ×1,75 avec laboratoire, spécialistes et échantillons compatibles"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "clinique"
+}

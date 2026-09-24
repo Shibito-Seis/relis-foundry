@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-654",
+  "name": "Carte vibratoire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Carte vibratoire</strong>.</p><p>Au contact d&#39;une structure, le personnage en étudie les vibrations dans un rayon de 12 mètres. Il peut distinguer les directions générales de mouvements importants, machines actives, chocs répétés ou circulation dans les conduits reliés.</p>\n<p>Il gagne +3 circonstanciel au prochain test pour localiser l&#39;une de ces sources. Le talent ne donne ni identité, ni nombre exact, ni détection à travers un isolant ou dans une structure sans continuité physique.</p>",
+    "traits": ["Beastkin", "Souris", "Perception", "Vibration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-647",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lire le courant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.187 Talents Beastkins Souris de niveau 9",
+      "family": "Vibrisses, vibrations et vigilance",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Lire le courant",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vibrisses, vibrations et vigilance",
+        "Traits": "Beastkin, Souris, Perception, Vibration",
+        "Type": "Activité de 1 minute",
+        "Prérequis": "Lire le courant"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Souris"
+}

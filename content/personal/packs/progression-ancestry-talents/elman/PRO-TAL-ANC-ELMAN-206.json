@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-206",
+  "name": "Organes conducteurs",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Organes conducteurs</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Vigueur ou d&#39;Endurance pour résister à un choc électrique, une décharge énergétique, une surcharge ou un dérèglement provoqué par une énergie traversant son corps.</p>\n<p>Après avoir subi ou résisté à l&#39;effet, il distingue si sa source principale était ambiante, interne, technologique ou techno-magique.</p>\n<p>Le talent ne réduit pas directement les dégâts et ne fournit aucune protection contre les effets purement thermiques, chimiques ou cinétiques.</p>",
+    "traits": ["Elman", "Énergie", "Résistance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Physiologie évoluée",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Physiologie évoluée",
+        "Traits": "Elman, Énergie, Résistance",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elman"
+}

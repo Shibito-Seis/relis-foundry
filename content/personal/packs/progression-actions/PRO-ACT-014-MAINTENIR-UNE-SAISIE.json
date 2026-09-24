@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-014-MAINTENIR-UNE-SAISIE",
+  "name": "Maintenir une saisie",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Maintenir une saisie</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Prolonger une Saisie déjà établie sans nouveau test ordinaire.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Prolonger une Saisie déjà établie sans nouveau test ordinaire."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

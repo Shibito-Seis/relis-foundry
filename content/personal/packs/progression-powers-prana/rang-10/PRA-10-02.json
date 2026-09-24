@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-10-02",
+  "name": "Forme du premier souffle",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-10"],
+  "system": {
+    "description": "<p><strong>Forme du premier souffle</strong>.</p><p><strong>Prana — Rang 10.</strong></p>\n<p><strong>Activation :</strong> 10 / 3 A / personnel</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Pendant 1 min : Résistance 25, régénération 6d8/tour, vol 30 m, deux Réactions défensives, attaques 6d8, immunité aux états physiologiques non mythiques ; Fatigue 4 après effet.</p>\n<p><strong>Intensification :</strong> Pas d’intensification ordinaire.</p>",
+    "traits": ["Prana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "10",
+      "activation": "10 / 3 A / personnel",
+      "discipline": "Transformation",
+      "effect": "Pendant 1 min : Résistance 25, régénération 6d8/tour, vol 30 m, deux Réactions défensives, attaques 6d8, immunité aux états physiologiques non mythiques ; Fatigue 4 après effet.",
+      "scaling": "Pas d’intensification ordinaire."
+    },
+    "level": 30
+  },
+  "folder": "Rang 10"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-006",
+  "name": "Ambition terrienne",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Ambition terrienne</strong>.</p><p>Le personnage gagne immédiatement un Talent de niveau 1 supplémentaire de sa Spécialisation Principale.</p>\n<p>Il doit :</p>\n<p>• appartenir à la branche principale du personnage ;</p>\n<p>• être un talent normal de niveau 1 ;</p>\n<p>• ne pas être réservé à une progression spéciale ;</p>\n<p>• ne pas être mythique ;</p>\n<p>• respecter tous ses autres prérequis.</p>\n<p>Ce talent représente les Humains capables de pousser très tôt leur vocation principale plus loin que la norme.</p>\n<p>Il ne peut pas être utilisé pour acquérir un talent de Spécialisation secondaire.</p>",
+    "traits": ["Humain", "Voie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Ambition et apprentissage",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "une Voie principale et une Spécialisation Principale choisies",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ambition et apprentissage",
+        "Traits": "Humain, Voie",
+        "Type": "Passif",
+        "Prérequis": "une Voie principale et une Spécialisation Principale choisies"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Humain"
+}

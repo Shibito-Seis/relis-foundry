@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-394",
+  "name": "Renard des interstices",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Renard des interstices</strong>.</p><p>Pendant un déplacement, le personnage peut traverser l&#39;espace occupé ou contrôlé par une créature d&#39;au moins sa taille, glisser entre deux adversaires ou franchir un passage encombré sans provoquer de Réaction liée à ce mouvement.</p>\n<p>Il doit terminer dans un espace libre qu&#39;il perçoit. Le talent ne traverse ni paroi, ni champ de force, ni créature hermétique et peut exiger un test d&#39;Acrobaties si l&#39;ouverture est réellement étroite.</p>",
+    "traits": ["Beastkin", "Renard", "Acrobaties", "Mobilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-378",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pas de côté du renard",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.110 Talents Beastkins Renards de niveau 9",
+      "family": "Mobilité vulpine",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Pas de côté du renard",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité vulpine",
+        "Traits": "Beastkin, Renard, Acrobaties, Mobilité",
+        "Prérequis": "Pas de côté du renard",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Renard"
+}

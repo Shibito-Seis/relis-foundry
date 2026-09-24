@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-735",
+  "name": "Mémoire des derniers Terriens",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Mémoire des derniers Terriens</strong>.</p><p>Lorsqu&#39;un groupe allié subit du Stress à cause d&#39;une perte collective, d&#39;une révélation sur la Terre, d&#39;un échec de colonisation ou de la disparition d&#39;une communauté, le personnage rappelle ce qui a déjà été sauvé et transmis.</p>\n<p>Jusqu&#39;à quatre alliés à 8 mètres réduisent le Stress reçu de 1 et gagnent +3 circonstanciel à leur prochain test de Volonté ou Sang-froid lié au même événement.</p>\n<p>Le talent ne nie pas la perte, ne retire aucun Traumatisme et ne peut réduire le Stress d&#39;une même source qu&#39;une seule fois.</p>",
+    "traits": ["Ascendance universelle", "Communauté", "Mémoire", "Mental"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-726",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Tradition vivante",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-728",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire de la diaspora",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.241 Talents universels d'Ascendance de niveau 21",
+      "family": "Mémoire transmise",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Mémoire de la diaspora ou Tradition vivante",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire transmise",
+        "Traits": "Ascendance universelle, Communauté, Mémoire, Mental",
+        "Type": "Réaction",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Mémoire de la diaspora ou Tradition vivante"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Universel"
+}

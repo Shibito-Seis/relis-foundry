@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-CMP-PILOTAGE-112",
+  "name": "Approche stabilisée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Approche stabilisée</strong>.</p><p>Lorsque le personnage effectue une approche, un accostage, un stationnement ou un atterrissage ordinaire avec un véhicule compatible, il ignore jusqu&#39;à 2 points de malus circonstanciel provenant uniquement d&#39;un espace étroit, d&#39;une visibilité imparfaite ou d&#39;un balisage incomplet.</p>\n<p>Sur un échec simple, il peut interrompre la manœuvre au dernier point sûr plutôt que de provoquer une collision mineure due uniquement à l&#39;approche. Le véhicule conserve néanmoins sa position, sa vitesse et les dangers qui en découlent.</p>\n<p>Le talent ne protège pas d&#39;une panne, d&#39;un obstacle soudain, d&#39;un échec critique ou d&#39;une surface incapable de recevoir le véhicule.</p>",
+    "traits": ["Compétence", "Manœuvre", "Pilotage", "Sécurité"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Pilotage — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Pilotage",
+      "activation": "Passif",
+      "prerequisites": "Pilotage Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Pilotage",
+        "Niveau": "1",
+        "Traits": "Compétence, Manœuvre, Pilotage, Sécurité",
+        "Type": "Passif",
+        "Prérequis": "Pilotage Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Pilotage"
+}

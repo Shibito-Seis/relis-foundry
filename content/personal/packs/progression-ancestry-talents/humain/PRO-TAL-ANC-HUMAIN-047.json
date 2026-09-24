@@ -1,0 +1,61 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-047",
+  "name": "Héritier des mondes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Héritier des mondes</strong>.</p><p>Le personnage choisit un peuple, une civilisation ou une Ascendance avec laquelle il a établi un contact réel et significatif.</p>\n<p>Il obtient :</p>\n<p>• une langue, forme de communication ou protocole culturel courant de ce peuple ;</p>\n<p>• la familiarité avec ses usages sociaux et technologiques ordinaires ;</p>\n<p>• la possibilité de sélectionner un Talent d&#39;Ascendance de niveau 13 ou moins explicitement marqué Culturel et appartenant à ce peuple.</p>\n<p>Le talent culturel choisi devient son héritage des mondes actif.</p>\n<p>Restrictions :</p>\n<p>• le personnage doit remplir les prérequis non liés à l&#39;Ascendance ;</p>\n<p>• le talent ne peut pas demander une anatomie, un organe, une physiologie ou un métabolisme absent ;</p>\n<p>• il ne peut pas demander une Architecture IAA, une corne Esman, une énergie innée ou une longévité raciale ;</p>\n<p>• il ne peut pas être mythique ;</p>\n<p>• il ne transforme pas le personnage en membre biologique du peuple concerné.</p>\n<p>Après une nouvelle période d&#39;immersion d&#39;au moins sept jours, le personnage peut remplacer son héritage actif par un autre talent culturel admissible d&#39;un peuple qu&#39;il connaît réellement.</p>\n<p>Les langues et familiarités déjà apprises demeurent, mais un seul Talent d&#39;Ascendance emprunté peut être actif à la fois.</p>\n<p>---</p>",
+    "traits": ["Humain", "Culture", "Héritage", "Exploration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-004",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritage multiple",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-017",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Enfant de la diversité humaine",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-040",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritier de Prométhée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.27 Talents Humains de niveau 25",
+      "family": "Dépassement humain",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "temps long ; au moins sept jours d'immersion ou d'étude",
+      "prerequisites": "Héritage multiple, Enfant de la diversité humaine ou Héritier de Prométhée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Dépassement humain",
+        "Traits": "Humain, Culture, Héritage, Exploration",
+        "Type": "temps long ; au moins sept jours d'immersion ou d'étude",
+        "Prérequis": "Héritage multiple, Enfant de la diversité humaine ou Héritier de Prométhée"
+      }
+    },
+    "level": 25
+  },
+  "folder": "Humain"
+}

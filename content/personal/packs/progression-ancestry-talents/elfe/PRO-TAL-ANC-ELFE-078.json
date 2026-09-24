@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-078",
+  "name": "Circuit arcanique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage inscrit temporairement un circuit arcanique sur un outil, une interface ou un équipement qu&#39;il peut manipuler.</p>\n<p>Il choisit une fonction précise : analyse, activation, stabilisation, diagnostic ou réparation.</p>\n<p>Pendant 24 heures :</p>\n<p>• l&#39;objet est considéré comme un outil approprié pour cette fonction techno-magique ordinaire ;</p>\n<p>• son utilisateur gagne +1 circonstanciel au test correspondant ;</p>\n<p>• une créature Qualifiée en Techno-magie peut comprendre les indications fondamentales laissées par le circuit.</p>\n<p>Un seul Circuit arcanique créé par le personnage peut être actif à la fois. Le circuit ne fournit ni énergie, ni compétence, ni autorisation et ne transforme pas un outil courant en laboratoire spécialisé.</p>",
+    "traits": ["Elfe", "Technologie", "Techno-magie", "Préparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-064",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Interface techno-magique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.32 Talents Elfes de niveau 5",
+      "family": "Art techno-magique elfe",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "Interface techno-magique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Art techno-magique elfe",
+        "Traits": "Elfe, Technologie, Techno-magie, Préparation",
+        "Type": "préparation de 10 minutes",
+        "Prérequis": "Interface techno-magique"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Elfe"
+}

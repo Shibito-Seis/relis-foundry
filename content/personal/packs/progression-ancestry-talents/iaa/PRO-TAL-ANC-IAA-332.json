@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-332",
+  "name": "Migration d'urgence",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Migration d&#39;urgence</strong>.</p><p>Lorsque le châssis, terminal ou serveur hébergeant l&#39;instance active devrait être détruit ou rendu inaccessible, le personnage tente un test d&#39;Intelligence + Informatique ou de Technologie + Systèmes de vaisseau contre le DD du danger.</p>\n<p>Sur une réussite, il migre vers un ancrage autorisé et compatible du même réseau. Il perd les données non transmises depuis le début de la scène et gagne 1 Stress. Sur un échec, il retarde la destruction jusqu&#39;à la fin de son prochain tour, mais doit trouver une autre solution.</p>\n<p>La migration ne traverse pas une coupure, ne crée pas d&#39;ancrage et ne protège pas le matériel abandonné.</p>",
+    "traits": ["IAA", "Architecture", "Réaction", "Réseau", "Transfert"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-327",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Distribution cognitive",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.89 Talents IAA de niveau 13",
+      "family": "Réseau",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Distribution cognitive",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Réseau",
+        "Traits": "IAA, Architecture, Réaction, Réseau, Transfert",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Distribution cognitive"
+      }
+    },
+    "level": 13
+  },
+  "folder": "IAA"
+}

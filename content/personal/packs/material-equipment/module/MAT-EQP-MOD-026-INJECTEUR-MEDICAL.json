@@ -1,0 +1,115 @@
+{
+  "relisId": "MAT-EQP-MOD-026-INJECTEUR-MEDICAL",
+  "name": "Injecteur médical",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "module-personnel"],
+  "system": {
+    "description": "<p><strong>Module :</strong> Injecteur médical. <strong>Niv. :</strong> 2. <strong>Emplacement :</strong> Utilitaire. <strong>Effet principal :</strong> Contient un consommable ; l&#39;utiliser coûte toujours l&#39;Action normale. <strong>Consommation :</strong> —. <strong>Enc. :</strong> 0. <strong>Prix :</strong> 500.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "module",
+      "sourceSection": "41.159 Modules de protections — 16 profils",
+      "columns": {
+        "#": "10",
+        "Module": "Injecteur médical",
+        "Niv.": "2",
+        "Emplacement": "Utilitaire",
+        "Effet principal": "Contient un consommable ; l'utiliser coûte toujours l'Action normale",
+        "Consommation": "—",
+        "Enc.": "0",
+        "Prix": "500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "functionalCategory": "module",
+        "family": "resource",
+        "installable": true,
+        "installationKind": "accessory",
+        "slot": "Utilitaire",
+        "effectSummary": "Contient un consommable ; l'utiliser coûte toujours l'Action normale",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "module"
+}

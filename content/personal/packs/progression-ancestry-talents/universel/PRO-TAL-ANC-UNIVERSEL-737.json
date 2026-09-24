@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-737",
+  "name": "Peuple au-delà des lignées",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Peuple au-delà des lignées</strong>.</p><p>La Communauté choisie du personnage peut comprendre jusqu&#39;à huit volontaires. Une fois par tour, lorsqu&#39;un membre réussit à Aider un autre membre, le bénéficiaire reçoit +3 circonstanciel au lieu du bonus normal de l&#39;Aide.</p>\n<p>Une fois par scène, lorsqu&#39;un membre devrait gagner du Stress ou de la Fatigue en protégeant directement un autre membre, il en réduit la quantité de 1, minimum 0.</p>\n<p>Le talent ne partage ni dégâts, ni ressources, ni Actions et ne fonctionne pas entre personnes qui ne peuvent plus se percevoir ou coordonner leurs efforts.</p>\n<p>---</p>",
+    "traits": ["Ascendance universelle", "Communauté", "Coopération", "Mental"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-729",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Communauté choisie",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-734",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritage sans frontière",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.242 Talent universel d'Ascendance de niveau 25",
+      "family": "Diaspora et communautés",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "préparation et Passif",
+      "prerequisites": "Communauté choisie et Héritage sans frontière",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Diaspora et communautés",
+        "Traits": "Ascendance universelle, Communauté, Coopération, Mental",
+        "Type": "préparation et Passif",
+        "Prérequis": "Communauté choisie et Héritage sans frontière"
+      }
+    },
+    "level": 25
+  },
+  "folder": "Universel"
+}

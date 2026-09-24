@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-393",
+  "name": "Galerie d'identités",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Galerie d&#39;identités</strong>.</p><p>Le personnage prépare jusqu&#39;à trois identités humanoïdes ou renardes complètes : apparence, voix, posture et habitudes visibles. Il peut passer de l&#39;une à l&#39;autre par une activation en scène d&#39;action ou en quelques secondes hors pression.</p>\n<p>Il gagne +2 circonstanciel aux tests de Tromperie destinés à maintenir les habitudes d&#39;une identité préparée. Remplacer une identité exige une heure d&#39;observation, de répétition et de préparation.</p>\n<p>Chaque identité reste un déguisement : elle n&#39;apporte ni documents, ni droits d&#39;accès, ni connaissances, ni relations.</p>",
+    "traits": ["Beastkin", "Renard", "Métamorphose"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-385",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Masque sans queue",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.110 Talents Beastkins Renards de niveau 9",
+      "family": "Masques et métamorphoses",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Passif et 1 Action",
+      "prerequisites": "Masque sans queue",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masques et métamorphoses",
+        "Traits": "Beastkin, Renard, Métamorphose",
+        "Prérequis": "Masque sans queue",
+        "Type": "Passif et 1 Action"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Renard"
+}

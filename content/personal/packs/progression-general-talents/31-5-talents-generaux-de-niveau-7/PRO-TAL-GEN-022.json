@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-GEN-022",
+  "name": "Anticipation du danger",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Anticipation du danger</strong>.</p><p>Le personnage effectue immédiatement un test d&#39;Investigation contre le DD du danger.</p>\n<p>Le déplacement ne permet pas de franchir un obstacle et ne garantit pas de quitter la zone du danger.</p>",
+    "traits": ["Défense", "Général", "Investigation", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-GEN-004",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Vigilance entraînée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.5 Talents généraux de niveau 7",
+      "family": "Vigilance et réactions",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Vigilance entraînée",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "un piège, danger de terrain ou phénomène perceptible est sur le point d'affecter le personnage",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vigilance et réactions",
+        "Traits": "Défense, Général, Investigation, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Vigilance entraînée",
+        "Déclencheur": "un piège, danger de terrain ou phénomène perceptible est sur le point d'affecter le personnage"
+      }
+    },
+    "level": 7
+  },
+  "folder": "### 31.5 Talents généraux de niveau 7"
+}

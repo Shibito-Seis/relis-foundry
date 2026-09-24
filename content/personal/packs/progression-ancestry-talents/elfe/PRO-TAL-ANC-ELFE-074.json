@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-074",
+  "name": "Lecture des courants",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Lecture des courants</strong>.</p><p>Lorsque le personnage détecte une signature grâce à Écoute du Flux, il apprend également :</p>\n<p>• si elle est naturelle, magique, techno-magique ou anormale ;</p>\n<p>• son ordre de grandeur général ;</p>\n<p>• si elle se déplace, s&#39;accumule ou se dissipe ;</p>\n<p>• la direction du courant énergétique dominant.</p>\n<p>Il gagne +2 circonstanciel aux tests de Navigation, Investigation ou Canalisation destinés à suivre, éviter ou exploiter ce courant.</p>\n<p>Tant qu&#39;une menace énergétique reste perceptible grâce à cette lecture, le personnage ne peut pas être considéré comme totalement surpris par son activation, même s&#39;il ignore sa nature précise.</p>",
+    "traits": ["Elfe", "Détection", "Flux", "Exploration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELFE-055",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Écoute du Flux",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.32 Talents Elfes de niveau 5",
+      "family": "Sens de la Fusion",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Écoute du Flux",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la Fusion",
+        "Traits": "Elfe, Détection, Flux, Exploration",
+        "Type": "Passif",
+        "Prérequis": "Écoute du Flux"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Elfe"
+}

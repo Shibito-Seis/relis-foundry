@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-522",
+  "name": "Marquer la proie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Marquer la proie</strong>.</p><p>Le personnage désigne une créature qu&#39;il perçoit et en signale la posture aux membres de son cercle. Jusqu&#39;à la fin de la scène, le Loup gagne +2 circonstanciel à son premier test pour la pister, prévoir son déplacement ou atteindre une position complémentaire à celle d&#39;un allié.</p>\n<p>Une seule proie peut être marquée. Le talent ne révèle aucune statistique, faiblesse surnaturelle ou position cachée.</p>",
+    "traits": ["Beastkin", "Loup", "Observation", "Prédation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Chasse concertée et encerclement",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chasse concertée et encerclement",
+        "Traits": "Beastkin, Loup, Observation, Prédation",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Loup"
+}

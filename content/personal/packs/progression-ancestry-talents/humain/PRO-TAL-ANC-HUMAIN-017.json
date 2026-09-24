@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-017",
+  "name": "Enfant de la diversité humaine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Enfant de la diversité humaine</strong>.</p><p>Le personnage a vécu durablement parmi les membres de cette Ascendance sans nécessairement en adopter complètement l&#39;héritage.</p>\n<p>Il obtient :</p>\n<p>• une langue ou forme de communication courante de cette communauté ;</p>\n<p>• +2 circonstanciel aux tests de Culture visant ses coutumes ordinaires ;</p>\n<p>• +2 circonstanciel aux tests de Diplomatie destinés à éviter un malentendu culturel avec elle.</p>\n<p>Le personnage est considéré comme culturellement familier avec cette Ascendance pour les interactions courantes.</p>\n<p>Contrairement à Héritage multiple, ce talent ne donne pas accès à ses Talents d&#39;Ascendance culturels.</p>\n<p>Les deux talents peuvent être combinés sur la même Ascendance.</p>",
+    "traits": ["Humain", "Culture", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Héritages et institutions",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une Ascendance terrienne non humaine",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritages et institutions",
+        "Traits": "Humain, Culture, Social",
+        "Type": "Passif",
+        "Choix": "une Ascendance terrienne non humaine"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Humain"
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-03-06-ARMES-LOURDES",
+  "name": "Tireur — Armes lourdes",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "tireur"],
+  "system": {
+    "description": "<p><strong>Tireur — Armes lourdes</strong>.</p><p><strong>Voie :</strong> Tireur</p>\n<p><strong>Dotation principale :</strong> Lanceur léger, mitrailleuse portable, canon court ou arme anti-blindage simple.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-003-TIREUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Tireur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Tireur",
+      "branchName": "Armes lourdes",
+      "primaryLoadout": "Lanceur léger, mitrailleuse portable, canon court ou arme anti-blindage simple.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Tireur"
+}

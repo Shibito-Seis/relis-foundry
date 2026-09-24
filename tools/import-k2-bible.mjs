@@ -8,7 +8,7 @@ const projectRoot = process.cwd();
 
 if (!biblePath || !fs.existsSync(biblePath)) {
   throw new Error(
-    "Usage : node tools/import-k2-bible.mjs --bible /chemin/RE-LIS_Bible_v162.md",
+    "Usage : node tools/import-k2-bible.mjs --bible /chemin/RE-LIS_Bible_v163.md",
   );
 }
 
@@ -512,7 +512,7 @@ for (const [catalogIndex, catalog] of ancestryCatalogStarts.entries()) {
     findLine("## 6. Profils", catalog.index);
   const block = lines.slice(catalog.index, end);
   const ancestryName = clean(catalog.line)
-    .replace(/^5\.\d+ Catalogue /, "")
+    .replace(/^###\s+5\.\d+\s+Catalogue\s+/, "")
     .replace(/ — architecture générale$/, "")
     .replace(/^universel d'Ascendance$/i, "Universel");
   let levelHeading = catalog.line;
@@ -784,12 +784,17 @@ function columnsSummary(header, row) {
 }
 
 function rowDescription(header, row) {
-  return `<dl>${header
-    .map(
-      (label, index) =>
-        `<div><dt>${inlineHtml(label)}</dt><dd>${inlineHtml(row[index] ?? "")}</dd></div>`,
+  const meaningful = header
+    .map((label, index) => [clean(label), clean(row[index] ?? "")])
+    .filter(
+      ([label, value]) =>
+        value && !["#", "ID", "Code", "Nom", "Objet", "Arme"].includes(label),
     )
-    .join("\n")}</dl>`;
+    .map(
+      ([label, value]) =>
+        `<strong>${inlineHtml(label)} :</strong> ${inlineHtml(value)}`,
+    );
+  return `<p>${meaningful.join(". ")}.</p>`;
 }
 
 function physicalBase() {
@@ -1101,6 +1106,8 @@ for (const table of chamberTables) {
 }
 
 function ammunitionFamilyId(chamberingId) {
+  if (chamberingId.startsWith("ARW-") || chamberingId.startsWith("BOLT-"))
+    return "arrow";
   if (chamberingId.startsWith("CART-")) return "shotgun";
   if (
     ["DARD-", "AIG-", "TRANQ-"].some((prefix) =>
@@ -1116,6 +1123,52 @@ function ammunitionFamilyId(chamberingId) {
     return "projectile";
   return chamberingId ? "ballistic" : "";
 }
+
+const BOW_CROSSBOW_PROFILES = {
+  "Arc court": {
+    feedKind: "none",
+    chamberingId: "ARW-SHORT",
+    pressureClassId: "specializedProjectile",
+    ammunitionFamilyIds: ["arrow"],
+    reloadProcedure: "Encochage d’une flèche inclus dans le tir.",
+  },
+  "Arc long": {
+    feedKind: "none",
+    chamberingId: "ARW-LONG",
+    pressureClassId: "specializedProjectile",
+    ammunitionFamilyIds: ["arrow"],
+    reloadProcedure: "Encochage d’une flèche inclus dans le tir.",
+  },
+  "Arc composite": {
+    feedKind: "none",
+    chamberingId: "ARW-COMPOSITE",
+    pressureClassId: "specializedProjectile",
+    ammunitionFamilyIds: ["arrow"],
+    reloadProcedure: "Encochage d’une flèche inclus dans le tir.",
+  },
+  "Arbalète légère": {
+    feedKind: "chamber",
+    chamberingId: "BOLT-LIGHT",
+    pressureClassId: "specializedProjectile",
+    ammunitionFamilyIds: ["arrow"],
+    reloadProcedure: "Chargement unitaire d’un carreau.",
+  },
+  "Arbalète lourde": {
+    feedKind: "chamber",
+    chamberingId: "BOLT-HEAVY",
+    pressureClassId: "specializedProjectile",
+    ammunitionFamilyIds: ["arrow"],
+    reloadProcedure: "Chargement unitaire d’un carreau.",
+  },
+  "Arbalète à répétition": {
+    feedKind: "internal",
+    chamberingId: "BOLT-REPEATING",
+    pressureClassId: "specializedProjectile",
+    ammunitionFamilyIds: ["arrow"],
+    internalCapacity: 6,
+    reloadProcedure: "Chargement manuel du magasin interne de six carreaux.",
+  },
+};
 
 function buildWeaponSystem(table, row, isShield = false) {
   const header = table.header;
@@ -1138,6 +1191,7 @@ function buildWeaponSystem(table, row, isShield = false) {
     rangeColumn >= 0 ? row[rangeColumn] : isShield ? "Contact" : "",
   );
   const explicitFeed = feedByWeapon.get(name.replaceAll("’", "'"));
+  const bowProfile = BOW_CROSSBOW_PROFILES[name];
   const familyId = isShield
     ? "martialTechnoBlade"
     : weaponFamily(table.heading);
@@ -1152,7 +1206,10 @@ function buildWeaponSystem(table, row, isShield = false) {
     /batterie|CE/i.test(energyText) || familyId === "energyLongGun";
   let feedKind = "none";
   let physicalFeedKind = "";
-  if (explicitFeed) {
+  if (bowProfile) {
+    feedKind = bowProfile.feedKind;
+    physicalFeedKind = bowProfile.feedKind;
+  } else if (explicitFeed) {
     if (/chargeur|cassette|bande|tambour/i.test(explicitFeed.feed))
       physicalFeedKind = "detachable";
     else if (/magasin|barillet|réservoir/i.test(explicitFeed.feed))
@@ -1160,21 +1217,16 @@ function buildWeaponSystem(table, row, isShield = false) {
     else physicalFeedKind = "chamber";
     feedKind = isEnergy ? "hybrid" : physicalFeedKind;
   } else if (isEnergy) feedKind = "energy";
-  else if (
-    [
-      "handgun",
-      "physicalLongGun",
-      "heavyLauncher",
-      "bowCrossbowThrown",
-    ].includes(familyId)
-  )
+  else if (["handgun", "physicalLongGun", "heavyLauncher"].includes(familyId))
     feedKind = "chamber";
   const attackLower = attack.toLocaleLowerCase("fr");
   const skillId = attackLower.includes("armes lourdes")
     ? "heavyWeapons"
     : attackLower.includes("tir")
       ? "shooting"
-      : "melee";
+      : familyId === "bowCrossbowThrown"
+        ? "shooting"
+        : "melee";
   const attributeId = attackLower.includes("technologie")
     ? "technology"
     : attackLower.includes("maîtrise magique")
@@ -1194,15 +1246,18 @@ function buildWeaponSystem(table, row, isShield = false) {
   if (/Automatique/i.test(combined)) modeIds.push("automatic");
   if (/Suppression/i.test(combined)) modeIds.push("suppression");
   const bulk = bulkColumn >= 0 ? nullableNumber(row[bulkColumn]) : null;
-  const chamberingId = explicitFeed?.chamberingId ?? "";
-  const chamberData = chamberDataById.get(chamberingId) ?? {};
+  const chamberingId =
+    bowProfile?.chamberingId ?? explicitFeed?.chamberingId ?? "";
+  const chamberData = chamberDataById.get(chamberingId) ?? {
+    pressureClassId: bowProfile?.pressureClassId ?? "",
+  };
   const physicalInterfaceId = explicitFeed
     ? feedInterfaceId(explicitFeed.feed)
     : "";
   const targetFormatId = isEnergy ? batteryFormatId(energyText) : "";
-  const targetTechnologyId = isEnergy
-    ? technologyId(`${name} ${combined}`) || "electric"
-    : "";
+  // La technologie décrit l’effet de l’arme, pas la chimie de sa batterie.
+  // Elle ne devient une contrainte de logement que si le canon l’exige.
+  const targetTechnologyId = "";
   const physical = physicalBase();
   physical.bulkEach = bulk;
   physical.equipmentProfile = isShield
@@ -1224,6 +1279,15 @@ function buildWeaponSystem(table, row, isShield = false) {
       kind: isShield ? "shield" : "weapon",
       sourceSection: table.heading,
       columns: columnsObject(header, row),
+      reloadProfile:
+        explicitFeed || bowProfile
+          ? {
+              unitaryFormula: "1 + Dextérité",
+              unitaryFormulaId: "one-plus-dexterity",
+              automationLot: "10-F",
+              mayLoadOneByOne: true,
+            }
+          : null,
     },
     {
       level: integerValue(row[findColumn(header, "Niv.")]),
@@ -1251,7 +1315,9 @@ function buildWeaponSystem(table, row, isShield = false) {
                   "heavyLauncher",
                   "bowCrossbowThrown",
                 ].includes(familyId)
-              ? "ranged"
+              ? familyId === "bowCrossbowThrown" && /javelot|disque/i.test(name)
+                ? "thrown"
+                : "ranged"
               : "melee",
         defenseTarget,
         handsMode: isShield
@@ -1270,7 +1336,10 @@ function buildWeaponSystem(table, row, isShield = false) {
         damageDice: damage.damageDice,
         damageDie: damage.damageDie,
         damageBonus: damage.damageBonus,
-        damageAttribute: damageText.includes("Force") ? "force" : "none",
+        damageAttribute:
+          damageText.includes("Force") || /javelot|disque/i.test(name)
+            ? "force"
+            : "none",
         damageFormula: damage.damageFormula,
         damageTypes: damage.damageTypes,
         damageSources:
@@ -1296,14 +1365,15 @@ function buildWeaponSystem(table, row, isShield = false) {
         feedInterfaceId: physicalInterfaceId,
         feedInterface: physicalInterfaceId,
         internalCapacity:
-          physicalFeedKind === "internal" || feedKind === "internal"
+          bowProfile?.internalCapacity ??
+          (physicalFeedKind === "internal" || feedKind === "internal"
             ? nullableNumber(explicitFeed?.feed ?? energyText)
-            : null,
+            : null),
         batterySlotCount: isEnergy ? 1 : null,
         modeIds,
-        ammunitionFamilyIds: explicitFeed
-          ? [ammunitionFamilyId(chamberingId)]
-          : [],
+        ammunitionFamilyIds:
+          bowProfile?.ammunitionFamilyIds ??
+          (explicitFeed ? [ammunitionFamilyId(chamberingId)] : []),
         acousticSignature: /silenc/i.test(combined)
           ? "silent"
           : /discr/i.test(combined)
@@ -1311,7 +1381,17 @@ function buildWeaponSystem(table, row, isShield = false) {
             : /déton/i.test(combined)
               ? "detonating"
               : "loud",
-        ammunitionConsumption: { single: !explicitFeed ? null : 1 },
+        ammunitionConsumption: {
+          single:
+            explicitFeed || bowProfile?.ammunitionFamilyIds?.length ? 1 : null,
+        },
+        reloadActions:
+          bowProfile?.feedKind === "none" ? 0 : bowProfile ? 1 : null,
+        reloadProcedure:
+          bowProfile?.reloadProcedure ??
+          (explicitFeed
+            ? "Chargement manuel : jusqu’à 1 + Dextérité munitions par action, sans dépasser la capacité."
+            : ""),
         energyConsumption: {
           single: isEnergy
             ? nullableNumber(
@@ -1764,18 +1844,22 @@ const AMMUNITION_VARIANT_IDS = {
   "Projectile de brèche": "breaching",
 };
 
+function packageQuantity(value) {
+  const text = clean(value).toLocaleLowerCase("fr");
+  if (/unité|unitaire/.test(text)) return 1;
+  return integerValue(text) ?? 1;
+}
+
 for (const table of chamberTables) {
   for (const row of table.rows) {
     const relisId = row[0];
     const prefix = relisId.split("-")[0];
     const name = row[1];
     const priceColumn = findColumn(table.header, "Prix standard");
+    const packageColumn = findColumn(table.header, "Conditionnement");
+    const packagedQuantity =
+      packageColumn >= 0 ? packageQuantity(row[packageColumn]) : 1;
     const chamberData = chamberDataById.get(relisId) ?? {};
-    const sourceInterfaceColumn = findColumn(table.header, "Interface");
-    const sourceInterfaces =
-      sourceInterfaceColumn >= 0
-        ? [feedInterfaceId(row[sourceInterfaceColumn])].filter(Boolean)
-        : [];
     add("material", {
       relisId,
       name,
@@ -1793,9 +1877,10 @@ for (const table of chamberTables) {
             amount: priceColumn >= 0 ? priceValue(row[priceColumn]) : null,
             currencyRef: reference("MAT-RES-CREDIT", "resource", "Crédit"),
             unit: "count",
-            quantityBasis: 1,
+            quantityBasis: packagedQuantity,
             sourceRefs: [],
           },
+          physical: { ...physicalBase(), quantity: packagedQuantity },
           ammunitionProfile: {
             familyId: ammunitionFamilyId(relisId),
             variantId: "standard",
@@ -1805,8 +1890,9 @@ for (const table of chamberTables) {
               chamberData.pressureClassId ?? "specializedProjectile",
             pressureClass:
               chamberData.pressureClassId ?? "specializedProjectile",
-            feedInterfaceIds: sourceInterfaces,
-            feedInterfaces: sourceInterfaces,
+            // L’interface appartient au chargeur, jamais à la munition libre.
+            feedInterfaceIds: [],
+            feedInterfaces: [],
             damageTypes: [],
             damageSources:
               prefix === "EM" || prefix === "GAUSS"
@@ -1820,6 +1906,49 @@ for (const table of chamberTables) {
       ),
     });
   }
+}
+
+for (const [weaponName, profile] of Object.entries(BOW_CROSSBOW_PROFILES)) {
+  if (!profile.ammunitionFamilyIds?.length) continue;
+  const isArrow = profile.chamberingId.startsWith("ARW-");
+  const name = `${isArrow ? "Flèche" : "Carreau"} — ${weaponName.toLocaleLowerCase("fr")}`;
+  add("material", {
+    relisId: profile.chamberingId,
+    name,
+    type: "ammunition",
+    tags: [
+      "materiel",
+      "munition",
+      "projectile",
+      isArrow ? "fleche" : "carreau",
+    ],
+    system: materialSystem(
+      `<p>${inlineHtml(name)} conçu pour le standard propre à ${inlineHtml(weaponName)}. Ce projectile se charge à l’unité et peut être récupéré lorsque la fiction le permet.</p>`,
+      {
+        kind: "ammunition-standard",
+        sourceSection: "41.175 et 41.180",
+        compatibleWeapon: weaponName,
+      },
+      {
+        physical: { ...physicalBase(), quantity: 1 },
+        ammunitionProfile: {
+          familyId: "arrow",
+          variantId: "standard",
+          chamberingId: profile.chamberingId,
+          chamberId: profile.chamberingId,
+          pressureClassId: "specializedProjectile",
+          pressureClass: "specializedProjectile",
+          feedInterfaceIds: [],
+          feedInterfaces: [],
+          damageTypes: [],
+          damageSources: ["ballistic"],
+          specialTraits: [],
+          recoverable: true,
+          loadOrder: 0,
+        },
+      },
+    ),
+  });
 }
 
 for (const row of specialAmmunitionTable.rows) {
@@ -1999,13 +2128,18 @@ function genericCatalogEntry({
   catalog = {},
   overrides = {},
 }) {
+  const details = row
+    .slice(2)
+    .map(clean)
+    .filter(Boolean)
+    .map((value) => inlineHtml(value));
   add("material", {
     relisId,
     name,
     type,
     tags: ["materiel", family, ...tags],
     system: materialSystem(
-      `<p>${row.slice(2).map(inlineHtml).join(" — ")}</p>`,
+      `<p><strong>${inlineHtml(name)}</strong> appartient au catalogue ${inlineHtml(family.replaceAll("-", " "))}.</p>${details.length ? `<p>${details.join(". ")}.</p>` : ""}`,
       {
         kind: family,
         sourceSection,
@@ -2151,6 +2285,7 @@ for (const [prefix, expectedCount] of [
       `${expectedCount} objets ${prefix} attendus, reçu ${rows.length}.`,
     );
   for (const { heading, row } of rows) {
+    const numericId = Number(row[0].slice(4));
     let type = "equipment";
     if (
       prefix === "ALM" ||
@@ -2158,18 +2293,19 @@ for (const [prefix, expectedCount] of [
       (prefix === "MYS" && Number(row[0].slice(4)) <= 48)
     )
       type = "consumable";
-    if (prefix === "MYS" && Number(row[0].slice(4)) >= 81) type = "ammunition";
+    if (prefix === "MYS" && numericId >= 81) type = "ammunition";
     if (
       prefix === "MYS" &&
-      Number(row[0].slice(4)) >= 65 &&
-      Number(row[0].slice(4)) <= 80 &&
-      ![69, 74, 79].includes(Number(row[0].slice(4)))
+      numericId >= 65 &&
+      numericId <= 80 &&
+      ![69, 74, 79].includes(numericId)
     )
       type = "consumable";
     if (prefix === "UTL" && [29, 39, 63].includes(Number(row[0].slice(4))))
       type = "consumable";
     if (prefix === "UTL" && [41, 42, 61].includes(Number(row[0].slice(4))))
       type = "container";
+    const isFocalizer = prefix === "MYS" && numericId >= 49 && numericId <= 64;
     const overrides =
       type === "container"
         ? {
@@ -2226,6 +2362,35 @@ for (const [prefix, expectedCount] of [
                 },
                 supplyProfile: {},
               };
+    if (isFocalizer) {
+      const ce = integerValue(row[6]);
+      overrides.energyProfile = {
+        kind: "internal",
+        format: "focalizer",
+        powerClass: "special",
+        technology: "technomagical",
+        formatId: "special",
+        powerClassId: "special",
+        technologyId: "technomagical",
+        interfaceId: "",
+        current: ce,
+        maximum: ce,
+        output: null,
+        outputClass: "special",
+        cycle: "rechargeable",
+        rechargeMethod: `Source compatible de ${row[3]}`,
+        rechargeMethodId: "technomagical",
+        rechargeable: true,
+      };
+      overrides.physical = {
+        ...physicalBase(),
+        equipmentProfile: {
+          family: "manipulable",
+          slotsConfigured: true,
+          bodySlots: [],
+        },
+      };
+    }
     const formulaId =
       prefix === "MYS"
         ? row.find((value) => /^(?:MAN|PRA|FLX)-(?:\d+|M)-\d+$/.test(value))
@@ -2246,7 +2411,25 @@ for (const [prefix, expectedCount] of [
               : "utilitaire",
       sourceSection: heading,
       row,
-      catalog: formulaId ? { formulaRef: formulaId } : {},
+      catalog: {
+        ...(formulaId ? { formulaRef: formulaId } : {}),
+        ...(isFocalizer
+          ? {
+              focusProfile: {
+                maxRank: integerValue(row[2]),
+                source: row[3],
+                formulasOrFamily: row[4],
+                buffer: row[5],
+                ceMaximum: integerValue(row[6]),
+                identity: row[7],
+                cePerEffectiveRank: "au moins 1 CE par rang effectif",
+                bufferRecharge: `source compatible de ${row[3]}`,
+                ceDoesNotRefillBuffer: true,
+                automationLot: "10-F",
+              },
+            }
+          : {}),
+      },
       overrides,
     });
   }
@@ -2449,6 +2632,90 @@ for (const pathEntry of entries.filter((entry) => entry.type === "path"))
     )
     .map((entry) => reference(entry.relisId, entry.type, entry.name));
 
+const PACK_BY_TYPE = {
+  ancestry: "creation-ancestries",
+  profile: "creation-profiles",
+  origin: "creation-origins",
+  advantage: "creation-advantages",
+  drawback: "creation-drawbacks",
+  post: "creation-posts",
+  path: "progression-paths",
+  specialization: "progression-specializations",
+  action: "progression-actions",
+  weapon: "material-weapons",
+  armor: "material-armor",
+  equipment: "material-equipment",
+  consumable: "material-consumables",
+  ammunition: "material-ammunition",
+  resource: "material-resources",
+  container: "material-containers",
+};
+
+const WEAPON_FOLDER_LABELS = {
+  improvisedMelee: "Mêlée courante et improvisée",
+  martialTechnoBlade: "Mêlée martiale et techno-lames",
+  handgun: "Armes de poing",
+  physicalLongGun: "Armes longues physiques",
+  energyLongGun: "Armes longues énergétiques",
+  bowCrossbowThrown: "Arcs, arbalètes et armes lancées",
+  heavyLauncher: "Armes lourdes et lanceurs",
+  naturalSpecial: "Armes naturelles et profils spéciaux",
+};
+
+function assignPack(entry) {
+  if (entry.type === "talent") {
+    const kind = String(entry.system.catalog?.kind ?? "");
+    if (kind === "talent-ascendance") return "progression-ancestry-talents";
+    if (kind === "talent-competence") return "progression-skill-talents";
+    if (kind === "talent-vampirique") return "progression-vampire-talents";
+    return "progression-general-talents";
+  }
+  if (entry.type === "power") {
+    if (entry.relisId.startsWith("MAN-")) return "progression-powers-mana";
+    if (entry.relisId.startsWith("PRA-")) return "progression-powers-prana";
+    return "progression-powers-flux";
+  }
+  return PACK_BY_TYPE[entry.type];
+}
+
+function assignFolder(entry) {
+  const catalog = entry.system.catalog ?? {};
+  if (entry.type === "origin")
+    return String(catalog.kind ?? "Origines").replace(/^origin-/, "");
+  if (entry.type === "specialization") return String(catalog.pathName ?? "");
+  if (entry.type === "talent")
+    return String(
+      catalog.ancestry || catalog.skill || catalog.sourceSection || "",
+    );
+  if (entry.type === "power")
+    return `Rang ${String(catalog.rank ?? "non renseigné")}`;
+  if (entry.type === "weapon")
+    return (
+      WEAPON_FOLDER_LABELS[entry.system.weaponProfile?.familyId] ??
+      "Autres armes"
+    );
+  if (entry.type === "armor")
+    return String(entry.system.protectionProfile?.kind || "Autres protections");
+  if (entry.type === "ammunition")
+    return String(
+      entry.system.ammunitionProfile?.familyId || "Autres munitions",
+    );
+  if (entry.type === "container")
+    return String(entry.system.containerKind || "Conteneurs généraux");
+  if (["equipment", "consumable", "resource"].includes(entry.type))
+    return String(catalog.kind || entry.tags?.[1] || "Autres");
+  return "";
+}
+
+for (const entry of entries) {
+  entry.pack = assignPack(entry);
+  entry.folder = assignFolder(entry);
+  const description = String(entry.system.description ?? "").trim();
+  const escapedName = inlineHtml(entry.name);
+  if (!description.includes(escapedName))
+    entry.system.description = `<p><strong>${escapedName}</strong>.</p>${description}`;
+}
+
 const expected = {
   ancestry: 20,
   profile: 52,
@@ -2465,7 +2732,7 @@ const expected = {
   armor: 80,
   equipment: 147,
   consumable: 267,
-  ammunition: 60,
+  ammunition: 66,
   resource: 62,
   container: 28,
 };
@@ -2478,25 +2745,27 @@ for (const [type, count] of Object.entries(expected)) {
 
 const dryRun = argv.includes("--dry-run");
 if (!dryRun) {
-  for (const pack of ["creation", "progression", "material"]) {
-    const directory = path.join(outputRoot, pack);
-    fs.mkdirSync(directory, { recursive: true });
-    for (const file of fs.readdirSync(directory)) {
-      if (file.endsWith(".json") && !file.startsWith("_"))
-        fs.rmSync(path.join(directory, file));
-    }
-  }
+  fs.rmSync(outputRoot, { recursive: true, force: true });
+  fs.mkdirSync(outputRoot, { recursive: true });
   for (const { pack, ...entry } of entries) {
-    const file = path.join(outputRoot, pack, `${entry.relisId}.json`);
+    const directory = path.join(
+      outputRoot,
+      pack,
+      entry.folder ? slug(entry.folder).toLocaleLowerCase("fr") : "",
+    );
+    fs.mkdirSync(directory, { recursive: true });
+    const file = path.join(directory, `${entry.relisId}.json`);
     fs.writeFileSync(file, `${JSON.stringify(entry, null, 2)}\n`);
   }
 }
 
 const counts = Object.fromEntries(
-  ["creation", "progression", "material"].map((pack) => [
-    pack,
-    entries.filter((entry) => entry.pack === pack).length,
-  ]),
+  [...new Set(entries.map((entry) => entry.pack))]
+    .sort()
+    .map((pack) => [
+      pack,
+      entries.filter((entry) => entry.pack === pack).length,
+    ]),
 );
 console.log(
   JSON.stringify({ total: entries.length, counts, expected }, null, 2),

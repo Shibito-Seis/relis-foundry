@@ -1,0 +1,122 @@
+{
+  "relisId": "MAT-ARM-073-COMBINAISON-ORBITALE-D-URGENCE",
+  "name": "Combinaison orbitale d'urgence",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<p><strong>Combinaison EVA :</strong> Combinaison orbitale d&#39;urgence. <strong>Niv. :</strong> 1. <strong>Accès :</strong> Courante. <strong>Slots :</strong> S+A. <strong>CAP/CAE :</strong> +0/+0. <strong>Sol. P/E :</strong> 1/1. <strong>PV/SB :</strong> 12/6. <strong>Dex :</strong> 4. <strong>Force :</strong> 0. <strong>Vit. :</strong> -1. <strong>Autonomie :</strong> 30 minutes. <strong>Empl. :</strong> 2. <strong>Enc. :</strong> 2. <strong>Prix :</strong> 1 200.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.147 Lot 5-L9 — Combinaisons spatiales et EVA",
+      "columns": {
+        "#": "1",
+        "Combinaison EVA": "Combinaison orbitale d'urgence",
+        "Niv.": "1",
+        "Accès": "Courante",
+        "Slots": "S+A",
+        "CAP/CAE": "+0/+0",
+        "Sol. P/E": "1/1",
+        "PV/SB": "12/6",
+        "Dex": "4",
+        "Force": "0",
+        "Vit.": "-1",
+        "Autonomie": "30 minutes",
+        "Empl.": "2",
+        "Enc.": "2",
+        "Prix": "1 200"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 2,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 1200,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "common",
+      "capBonus": 0,
+      "caeBonus": 0,
+      "solidityPhysical": 1,
+      "solidityEnergy": 1,
+      "coverage": [],
+      "constraintSummary": "# : 1 ; Combinaison EVA : Combinaison orbitale d'urgence ; Niv. : 1 ; Accès : Courante ; Slots : S+A ; CAP/CAE : +0/+0 ; Sol. P/E : 1/1 ; PV/SB : 12/6 ; Dex : 4 ; Force : 0 ; Vit. : -1 ; Autonomie : 30 minutes ; Empl. : 2 ; Enc. : 2 ; Prix : 1 200"
+    },
+    "supplyProfile": {}
+  },
+  "folder": "light"
+}

@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-7-03",
+  "name": "Inversion causale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-7"],
+  "system": {
+    "description": "<p><strong>Inversion causale</strong>.</p><p><strong>Flux — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 8 / R / 24 m</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>Annule un test, état ou jusqu’à 12d8 + MM dégâts survenu depuis le début du tour ; la résolution précédente est effacée et rejouée.</p>\n<p><strong>Intensification :</strong> Affecte deux cibles du même événement.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "7",
+      "activation": "8 / R / 24 m",
+      "discipline": "Préscience",
+      "effect": "Annule un test, état ou jusqu’à 12d8 + MM dégâts survenu depuis le début du tour ; la résolution précédente est effacée et rejouée.",
+      "scaling": "Affecte deux cibles du même événement."
+    },
+    "level": 22
+  },
+  "folder": "Rang 7"
+}

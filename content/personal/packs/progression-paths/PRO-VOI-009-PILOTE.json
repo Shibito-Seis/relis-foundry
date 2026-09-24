@@ -1,0 +1,105 @@
+{
+  "relisId": "PRO-VOI-009-PILOTE",
+  "name": "Pilote",
+  "type": "path",
+  "tags": ["progression", "voie"],
+  "system": {
+    "description": "<p><strong>Pilote</strong>.</p><p><strong>Attribut clef :</strong> Dextérité ou Technologie</p>\n<p><strong>Compétences :</strong> Hybride — 5 — Pilotage, Navigation, Systèmes de vaisseau — Sang-froid, Tir, Armes lourdes, Acrobaties, Informatique, Investigation</p>\n<p><strong>Dotation :</strong> Combinaison de vol légère, interface de navigation personnelle, licence ou accès de pilotage.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "path",
+      "sourceSection": "9",
+      "keyAttributes": ["Dextérité", "Technologie"],
+      "skillFamily": "Hybride",
+      "qualifiedSkillTotal": 5,
+      "requiredSkills": ["Pilotage", "Navigation", "Systèmes de vaisseau"],
+      "skillChoices": [
+        "Sang-froid",
+        "Tir",
+        "Armes lourdes",
+        "Acrobaties",
+        "Informatique",
+        "Investigation"
+      ],
+      "branchNames": [
+        "Pilote de navette",
+        "Pilote de chasse",
+        "Manœuvres d'évasion",
+        "As du crash contrôlé",
+        "Combat embarqué",
+        "Pilotage assisté par Xirea",
+        "Véhicules terrestres"
+      ],
+      "initialLoadout": "Combinaison de vol légère, interface de navigation personnelle, licence ou accès de pilotage.",
+      "loadoutRefs": [],
+      "specializationRefs": [
+        {
+          "relisId": "PRO-SPE-09-01-PILOTE-DE-NAVETTE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Pilote — Pilote de navette",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-09-02-PILOTE-DE-CHASSE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Pilote — Pilote de chasse",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-09-03-MAN-UVRES-D-EVASION",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Pilote — Manœuvres d'évasion",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-09-04-AS-DU-CRASH-CONTROLE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Pilote — As du crash contrôlé",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-09-05-COMBAT-EMBARQUE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Pilote — Combat embarqué",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-09-06-PILOTAGE-ASSISTE-PAR-XIREA",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Pilote — Pilotage assisté par Xirea",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-09-07-VEHICULES-TERRESTRES",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Pilote — Véhicules terrestres",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  },
+  "folder": ""
+}

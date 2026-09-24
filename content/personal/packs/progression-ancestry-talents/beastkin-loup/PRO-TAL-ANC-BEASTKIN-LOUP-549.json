@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-549",
+  "name": "Course sans fin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Course sans fin</strong>.</p><p>Pendant l&#39;effet, la Vitesse terrestre du personnage augmente de 2 mètres, il ignore les pénalités provenant de ses 2 premiers points de Fatigue et gagne +3 circonstanciel aux tests de poursuite.</p>\n<p>La Fatigue reste présente et retrouve tous ses effets à la fin. Le personnage gagne alors 1 Fatigue supplémentaire. Le talent ne dispense ni de respirer, ni de boire, ni de franchir légalement les obstacles.</p>",
+    "traits": ["Beastkin", "Loup", "Endurance", "Poursuite"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-547",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Jusqu'au bout du monde",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.156 Talents Beastkins Loups de niveau 17",
+      "family": "Pistage et poursuite prolongée",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Jusqu'au bout du monde",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "une heure ou une scène de poursuite",
+      "metadata": {
+        "Famille": "Pistage et poursuite prolongée",
+        "Traits": "Beastkin, Loup, Endurance, Poursuite",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Durée": "une heure ou une scène de poursuite",
+        "Prérequis": "Jusqu'au bout du monde"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Loup"
+}

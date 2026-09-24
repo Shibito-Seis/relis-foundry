@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-293",
+  "name": "Réacteur vivant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>La première fois de chaque scène que le personnage utilise un talent de Puissance interne limité à une fois par scène, il peut l&#39;utiliser une seconde fois pendant cette scène. Après cette seconde utilisation, il gagne 1 Stress.</p>\n<p>Une fois par jour, il peut remplacer la Fatigue de Réserve somatique par 2 Stress.</p>\n<p>Réacteur vivant n&#39;affecte ni les talents de Transformation, ni ceux limités à une fois par jour ou par session. Il ne permet jamais une troisième utilisation.</p>",
+    "traits": ["Esman", "Prana", "Surcharge"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-288",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forme d'overflow",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.79 Talents Esmans de niveau 17",
+      "family": "Puissance interne",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Forme d'overflow",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance interne",
+        "Traits": "Esman, Prana, Surcharge",
+        "Type": "Passif",
+        "Prérequis": "Forme d'overflow"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Esman"
+}

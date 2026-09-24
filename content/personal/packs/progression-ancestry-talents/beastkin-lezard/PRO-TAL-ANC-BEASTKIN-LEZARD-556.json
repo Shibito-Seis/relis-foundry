@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-556",
+  "name": "Peau écailleuse",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Peau écailleuse</strong>.</p><p>Lorsque le personnage subit des dégâts physiques provenant d&#39;un impact, d&#39;une coupure ou d&#39;une perforation atteignant une zone écailleuse, il réduit ces dégâts de 2.</p>\n<p>La protection ne fonctionne pas contre une attaque ignorant les tissus extérieurs, une zone dépourvue d&#39;écailles ou un danger énergétique. Si une armure ou un autre effet réduit exactement les mêmes dégâts, seul le meilleur effet s&#39;applique.</p>",
+    "traits": ["Beastkin", "Lézard", "Physiologie", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.163 Talents Beastkins Lézards de niveau 1",
+      "family": "Écailles et défense physiologique",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Écailles et défense physiologique",
+        "Traits": "Beastkin, Lézard, Physiologie, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Lézard"
+}

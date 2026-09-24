@@ -1,0 +1,29 @@
+{
+  "relisId": "CRE-PRO-008-APPRENTI-STAGIAIRE",
+  "name": "Apprenti / stagiaire",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Apprenti / stagiaire</strong>.</p><p><strong>Attribut standard :</strong> Dextérité, Intelligence, Technologie</p>\n<p><strong>Profil marqué :</strong> +Dextérité, +Intelligence ; -Présence, -Volonté ou -Force</p>\n<p><strong>Compétences possibles :</strong> Ingénierie, Informatique, Culture, Investigation, Sciences</p>\n<p><strong>Avantage typique :</strong> Maître d’apprentissage, accès atelier</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Dextérité", "Intelligence", "Technologie"],
+      "markedProfile": "+Dextérité, +Intelligence ; -Présence, -Volonté ou -Force",
+      "skillChoices": [
+        "Ingénierie",
+        "Informatique",
+        "Culture",
+        "Investigation",
+        "Sciences"
+      ],
+      "typicalBenefit": "Maître d’apprentissage, accès atelier",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

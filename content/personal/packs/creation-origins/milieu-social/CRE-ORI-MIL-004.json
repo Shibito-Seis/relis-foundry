@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-MIL-004",
+  "name": "Privilégié",
+  "type": "origin",
+  "tags": ["creation", "origine", "milieu-social"],
+  "system": {
+    "description": "<p><strong>Privilégié</strong>.</p><p>Le personnage est issu d’une famille influente, riche ou protégée par des réseaux puissants. — Riche, Très riche, Contact influent, Statut officiel — Dette, Secret compromettant, Réputation noire, Famille à nourrir</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-milieu-social",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Le personnage est issu d’une famille influente, riche ou protégée par des réseaux puissants.",
+        "Atouts suggérés": "Riche, Très riche, Contact influent, Statut officiel",
+        "Handicaps suggérés": "Dette, Secret compromettant, Réputation noire, Famille à nourrir"
+      }
+    }
+  },
+  "folder": "milieu-social"
+}

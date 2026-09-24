@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-215",
+  "name": "Accord élémentaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Accord élémentaire</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de résistance contre l&#39;énergie choisie.</p>\n<p>Une fois par scène, lorsqu&#39;il subit des dégâts de cette énergie, il les réduit de 2 après l&#39;application des autres protections.</p>\n<p>Ce choix est permanent, sauf transformation majeure validée par le MJ. La réduction ne se cumule pas avec une autre réduction circonstancielle provenant d&#39;un Talent d&#39;Ascendance.</p>",
+    "traits": ["Elman", "Affinité", "Énergie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Résonance ambiante",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "chaleur, froid, foudre, lumière ou énergie arcanique",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résonance ambiante",
+        "Traits": "Elman, Affinité, Énergie",
+        "Type": "Passif et Réaction",
+        "Choix": "chaleur, froid, foudre, lumière ou énergie arcanique",
+        "Fréquence": "une fois par scène pour la réaction"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elman"
+}

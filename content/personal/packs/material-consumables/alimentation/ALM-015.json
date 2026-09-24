@@ -1,0 +1,94 @@
+{
+  "relisId": "ALM-015",
+  "name": "Orange",
+  "type": "consumable",
+  "tags": ["materiel", "alimentation"],
+  "system": {
+    "description": "<p><strong>Orange</strong> appartient au catalogue alimentation.</p><p>1 fruit. 0,10. 0,18 L. 80 j / 50 portions. 25 j froid. agrume ; pollinisation assistée utile.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "alimentation",
+      "sourceSection": "55.3.4 Fruits terrestres cultivables — ALM-013 à ALM-028",
+      "canonicalRow": [
+        "ALM-015",
+        "Orange",
+        "1 fruit",
+        "0,10",
+        "0,18 L",
+        "80 j / 50 portions",
+        "25 j froid",
+        "agrume ; pollinisation assistée utile"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "utility",
+      "effectSummary": "25 j froid"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "alimentation"
+}

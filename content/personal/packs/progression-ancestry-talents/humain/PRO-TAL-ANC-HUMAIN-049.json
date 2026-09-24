@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-049",
+  "name": "Dernier Espoir",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque tout semble perdu, le personnage rallie les survivants encore capables d&#39;entendre son appel.</p>\n<p>Il choisit jusqu&#39;à 5 + sa Présence alliés, avec un minimum de 5. Lui-même peut être inclus.</p>\n<p>Chaque bénéficiaire applique l&#39;effet correspondant à son état :</p>\n<p>• Hors de combat et non stabilisé : il devient stabilisé, mais reste Hors de combat ;</p>\n<p>• Hors de combat et déjà stabilisé : il récupère 1 PV et peut reprendre conscience si aucune Blessure ou condition ne l&#39;en empêche ;</p>\n<p>• en Panique : la Panique prend fin ;</p>\n<p>• conscient : il réduit son Stress de 2 et son Contrecoup de 1.</p>\n<p>Tous les bénéficiaires capables d&#39;agir gagnent également +2 circonstanciel à leur prochain test directement consacré à la survie du groupe ou à l&#39;accomplissement de l&#39;objectif décisif annoncé. Ce bonus doit être utilisé avant la fin de leur prochain tour ou de la séquence narrative immédiate.</p>\n<p>Dernier Espoir :</p>\n<p>• ne ressuscite pas un mort ;</p>\n<p>• ne prévient pas une mort immédiate déjà accomplie ;</p>\n<p>• n&#39;annule ni Blessure critique, ni mutilation, ni Traumatisme ;</p>\n<p>• ne répare pas un équipement ou un vaisseau ;</p>\n<p>• ne permet pas à un personnage de reprendre conscience si son état médical l&#39;interdit ;</p>\n<p>• ne peut bénéficier à un même personnage qu&#39;une fois par session, même si plusieurs Humains possèdent ce talent.</p>\n<p>Ce talent ouvre une dernière fenêtre d&#39;action. Il ne garantit pas la victoire : il rend seulement de nouveau possible le fait de se battre pour elle.</p>\n<p>---</p>",
+    "traits": ["Humain", "Fortune", "Mental", "Coopération", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-042",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Humanité debout",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-046",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Flambeau de l'espèce",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.28 Talents Humains de niveau 29",
+      "family": "Dépassement humain",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Activité de 3 Actions en rencontre ; environ une minute en narration",
+      "prerequisites": "Humanité debout ou Flambeau de l'espèce",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Dépassement humain",
+        "Traits": "Humain, Fortune, Mental, Coopération, Mythique",
+        "Type": "Activité de 3 Actions en rencontre ; environ une minute en narration",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Humanité debout ou Flambeau de l'espèce",
+        "Hors de combat et non stabilisé": "il devient stabilisé, mais reste Hors de combat ;",
+        "Hors de combat et déjà stabilisé": "il récupère 1 PV et peut reprendre conscience si aucune Blessure ou condition ne l'en empêche ;",
+        "en Panique": "la Panique prend fin ;",
+        "conscient": "il réduit son Stress de 2 et son Contrecoup de 1."
+      }
+    },
+    "level": 29
+  },
+  "folder": "Humain"
+}

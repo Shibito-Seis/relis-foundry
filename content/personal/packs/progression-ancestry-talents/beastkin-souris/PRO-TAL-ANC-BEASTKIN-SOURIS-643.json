@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-643",
+  "name": "Outil compact",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Outil compact</strong>.</p><p>Le personnage adapte un outil qu&#39;il possède pour un usage en espace contraint. Jusqu&#39;à sa prochaine maintenance, cet outil ignore 2 points de pénalité provenant du manque de place et peut être rangé dans la moitié de son volume habituel.</p>\n<p>L&#39;adaptation exige atelier ou pièces appropriés, ne change pas la fonction de l&#39;outil et ne réduit ni son poids réel, ni son coût.</p>",
+    "traits": ["Beastkin", "Souris", "Équipement", "Technique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-634",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Geste minutieux",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.186 Talents Beastkins Souris de niveau 5",
+      "family": "Précision technique",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Geste minutieux",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précision technique",
+        "Traits": "Beastkin, Souris, Équipement, Technique",
+        "Type": "Activité de 1 heure",
+        "Prérequis": "Geste minutieux"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Souris"
+}

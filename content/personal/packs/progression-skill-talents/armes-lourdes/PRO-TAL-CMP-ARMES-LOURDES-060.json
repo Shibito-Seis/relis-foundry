@@ -1,0 +1,65 @@
+{
+  "relisId": "PRO-TAL-CMP-ARMES-LOURDES-060",
+  "name": "Maître de batterie",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Maître de batterie</strong>.</p><p>Le personnage prend le contrôle opérationnel d&#39;une batterie, d&#39;un affût majeur ou d&#39;une plateforme comprenant jusqu&#39;à trois armes lourdes proches et jusqu&#39;à six servants consentants capables de l&#39;entendre ou de recevoir ses données.</p>\n<p>Au début de l&#39;activité, il effectue un test d&#39;Armes lourdes contre le DD le plus élevé des armes ou de la situation.</p>\n<p>• Réussite critique : pendant la durée, chaque arme coordonnée réduit de 1 action, minimum 1, sa première opération de déploiement, rechargement ou résolution d&#39;incident de chaque round ; le premier incident simple de la batterie est également évité.</p>\n<p>• Réussite : pendant la durée, chaque arme coordonnée réduit de 1 action, minimum 1, sa première opération de déploiement, rechargement ou résolution d&#39;incident de la scène.</p>\n<p>• Échec : la coordination ne produit aucun bénéfice, mais ne désorganise pas la batterie.</p>\n<p>• Échec critique : la coordination échoue et ne peut pas être retentée pendant la scène.</p>\n<p>Chaque arme doit conserver son opérateur, ses servants nécessaires, ses munitions, son alimentation et ses lignes de tir. Une même opération ne bénéficie que d&#39;une réduction. Le talent ne donne aucune attaque, n&#39;augmente aucun dégât et ne remplace ni un Poste de vaisseau ni les règles de combat spatial.</p>\n<p>---</p>",
+    "traits": [
+      "Armes lourdes",
+      "Compétence",
+      "Coordination",
+      "Équipage",
+      "Mythique"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-ARMES-LOURDES-053",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Servant désigné",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-ARMES-LOURDES-056",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Relève sous pression",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Armes lourdes — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Armes lourdes",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Armes lourdes Mythique ; Servant désigné et Relève sous pression",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "jusqu'à 3 rounds",
+      "metadata": {
+        "Compétence": "Armes lourdes",
+        "Niveau": "23",
+        "Traits": "Armes lourdes, Compétence, Coordination, Équipage, Mythique",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par scène",
+        "Durée": "jusqu'à 3 rounds",
+        "Prérequis": "Armes lourdes Mythique ; Servant désigné et Relève sous pression",
+        "Réussite critique": "pendant la durée, chaque arme coordonnée réduit de 1 action, minimum 1, sa première opération de déploiement, rechargement ou résolution d'incident de chaque round ; le premier incident simple de la batterie est également évité.",
+        "Réussite": "pendant la durée, chaque arme coordonnée réduit de 1 action, minimum 1, sa première opération de déploiement, rechargement ou résolution d'incident de la scène.",
+        "Échec": "la coordination ne produit aucun bénéfice, mais ne désorganise pas la batterie.",
+        "Échec critique": "la coordination échoue et ne peut pas être retentée pendant la scène."
+      }
+    },
+    "level": 23
+  },
+  "folder": "Armes lourdes"
+}

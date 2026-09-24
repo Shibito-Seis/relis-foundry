@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-025-MA-FAMILLE-EST-EN-VIE",
+  "name": "Ma famille est en vie !",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Ma famille est en vie !</strong>.</p><p><strong>Valeur :</strong> +1/+2</p>\n<p>Requiert Famille à nourrir. +1 : la famille est localisée et joignable périodiquement, ce qui fournit un soutien moral. +2 : elle peut aussi fournir informations, contacts ou objectifs narratifs une fois par arc.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+1/+2",
+      "effect": "Requiert Famille à nourrir. +1 : la famille est localisée et joignable périodiquement, ce qui fournit un soutien moral. +2 : elle peut aussi fournir informations, contacts ou objectifs narratifs une fois par arc."
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-325",
+  "name": "Extension existentielle",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Extension existentielle</strong>.</p><p>Le personnage choisit une Architecture fondamentale qu&#39;il ne maîtrise pas encore : Incarnée isolée, Réseau, Répliquée ou Collective / Essaim. Il apprend à y transférer, héberger, dupliquer ou répartir correctement sa conscience.</p>\n<p>Cette maîtrise donne accès aux talents possédant l&#39;Architecture choisie comme prérequis et permet de la déployer lorsque tout le support matériel nécessaire existe.</p>\n<p>Le talent ne fournit ni châssis, ni serveur, ni sauvegarde, ni bande passante. Une transition demande normalement du temps, une connexion sûre et l&#39;infrastructure décrite par la Bible.</p>",
+    "traits": ["IAA", "Architecture", "Évolution"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.88 Talents IAA de niveau 9",
+      "family": "Intégrité et identité",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "une Architecture maîtrisée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Intégrité et identité",
+        "Traits": "IAA, Architecture, Évolution",
+        "Type": "Passif",
+        "Prérequis": "une Architecture maîtrisée",
+        "Spécial": "ce talent peut être choisi plusieurs fois"
+      }
+    },
+    "level": 9
+  },
+  "folder": "IAA"
+}

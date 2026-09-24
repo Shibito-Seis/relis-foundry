@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-028-CESSER-UN-MAINTIEN",
+  "name": "Cesser un maintien",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Cesser un maintien</strong>.</p><p><strong>Coût :</strong> Activation libre</p>\n<p>Mettre volontairement fin à un effet maintenu.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Activation libre",
+      "summary": "Mettre volontairement fin à un effet maintenu."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 0
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

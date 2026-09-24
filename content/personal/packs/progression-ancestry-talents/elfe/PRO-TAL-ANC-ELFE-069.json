@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-069",
+  "name": "Port altier",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Port altier</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Diplomatie ou de Commandement lorsqu&#39;il s&#39;appuie sur :</p>\n<p>• une étiquette formelle ;</p>\n<p>• une responsabilité assumée publiquement ;</p>\n<p>• une négociation entre communautés ;</p>\n<p>• une cérémonie ;</p>\n<p>• une tradition reconnue ;</p>\n<p>• la représentation officielle d&#39;un groupe.</p>\n<p>Ce bonus ne s&#39;applique pas à la Tromperie et ne force personne à reconnaître une autorité inexistante.</p>",
+    "traits": ["Elfe", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Présence intemporelle",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence intemporelle",
+        "Traits": "Elfe, Social",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

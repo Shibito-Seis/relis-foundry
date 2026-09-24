@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-011",
+  "name": "Solidarité de crise",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage intervient immédiatement par une parole, un contact, un rappel personnel ou une consigne claire.</p>\n<p>Le Stress gagné par l&#39;allié est réduit de 1, avec un minimum de 0.</p>\n<p>Le personnage doit :</p>\n<p>• pouvoir communiquer avec l&#39;allié ;</p>\n<p>• être conscient de la crise ;</p>\n<p>• ne pas être lui-même Hors de combat ou en panique totale.</p>\n<p>Solidarité de crise ne peut réduire plusieurs fois le même gain de Stress, même si plusieurs personnages possèdent ce talent.</p>",
+    "traits": ["Humain", "Mental", "Coopération"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.21 Talents Humains de niveau 1",
+      "family": "Coopération et communauté",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "un allié capable de percevoir le personnage gagne du Stress",
+      "duration": "",
+      "metadata": {
+        "Famille": "Coopération et communauté",
+        "Traits": "Humain, Mental, Coopération",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "un allié capable de percevoir le personnage gagne du Stress"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Humain"
+}

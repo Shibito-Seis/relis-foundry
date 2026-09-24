@@ -1,0 +1,94 @@
+{
+  "relisId": "PHA-033",
+  "name": "Comprimé caféiné",
+  "type": "consumable",
+  "tags": ["materiel", "pharmacie"],
+  "system": {
+    "description": "<p><strong>Comprimé caféiné</strong> appartient au catalogue pharmacie.</p><p>0. orale. T1/D1. 2 h. ignore les effets de Fatigue 1. aucune réduction de veille ; Tolérance après 2 doses.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "pharmacie",
+      "sourceSection": "55.4.4 Stimulants, sédatifs et anesthésie — PHA-033 à PHA-048",
+      "canonicalRow": [
+        "PHA-033",
+        "Comprimé caféiné",
+        "0",
+        "orale",
+        "T1/D1",
+        "2 h",
+        "ignore les effets de Fatigue 1",
+        "aucune réduction de veille ; Tolérance après 2 doses"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 0,
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "ignore les effets de Fatigue 1"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "pharmacie"
+}

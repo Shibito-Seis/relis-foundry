@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-GNOME-705",
+  "name": "Ancrage humain",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Ancrage humain</strong>.</p><p>Le personnage choisit une personne, une communauté, un lieu, une pratique ou un idéal humain qui structure son identité. Il gagne +2 circonstanciel aux tests de Volonté ou de Sang-froid contre monotonie, désespoir, perte de sens ou altération de son identité.</p>\n<p>L&#39;ancrage n&#39;est pas invulnérable et ne rend pas immunisé à l&#39;Affadissement si le personnage choisit plus tard d&#39;y être sujet.</p>",
+    "traits": ["Demi-Gnome", "Humain", "Mental"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.224 Talents Demi-Gnomes de niveau 1",
+      "family": "Affadissement et ancrage",
+      "ancestry": "Demi-Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "un ancrage personnel",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Affadissement et ancrage",
+        "Traits": "Demi-Gnome, Humain, Mental",
+        "Type": "Passif",
+        "Choix": "un ancrage personnel"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Demi-Gnome"
+}

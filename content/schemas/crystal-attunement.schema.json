@@ -13,6 +13,7 @@
     "axes",
     "palette",
     "resolution",
+    "questionSelection",
     "questions",
     "tieBreaker",
     "permissions",
@@ -53,7 +54,23 @@
       }
     },
     "resolution": { "type": "object" },
-    "questions": { "type": "array", "minItems": 8, "maxItems": 8 },
+    "questionSelection": {
+      "type": "object",
+      "required": ["count", "difficultyCounts", "stableForItem"],
+      "properties": {
+        "count": { "const": 20 },
+        "difficultyCounts": {
+          "type": "object",
+          "properties": {
+            "simple": { "const": 8 },
+            "intermediate": { "const": 8 },
+            "complex": { "const": 4 }
+          }
+        },
+        "stableForItem": { "const": true }
+      }
+    },
+    "questions": { "type": "array", "minItems": 48, "maxItems": 48 },
     "tieBreaker": { "type": "object" },
     "permissions": { "type": "object" },
     "persistence": { "type": "object" },

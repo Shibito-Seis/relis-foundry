@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-333",
+  "name": "Fusion mémorielle",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Fusion mémorielle</strong>.</p><p>Deux instances consentantes issues de la même continuité peuvent comparer puis fusionner tout ou partie de leurs souvenirs récents. Le personnage effectue un test de Volonté + Sang-froid ou d&#39;Intelligence + Informatique contre un DD déterminé par leur divergence.</p>\n<p>Sur une réussite, les souvenirs choisis sont intégrés et la synchronisation n&#39;inflige pas de Stress supplémentaire. Sur un échec, aucun souvenir n&#39;est perdu, mais la fusion est interrompue et chaque instance gagne 1 Stress.</p>\n<p>Le talent ne fusionne pas les volontés, ne détruit pas une instance et ne résout pas automatiquement une contradiction identitaire.</p>",
+    "traits": ["IAA", "Architecture", "Mémoire", "Répliquée"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-328",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Duplicat auxiliaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.89 Talents IAA de niveau 13",
+      "family": "Répliquée",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Duplicat auxiliaire",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Répliquée",
+        "Traits": "IAA, Architecture, Mémoire, Répliquée",
+        "Type": "Activité de 1 heure",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Duplicat auxiliaire"
+      }
+    },
+    "level": 13
+  },
+  "folder": "IAA"
+}

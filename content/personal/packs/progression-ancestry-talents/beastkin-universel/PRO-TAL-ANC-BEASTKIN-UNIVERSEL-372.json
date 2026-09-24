@@ -1,0 +1,50 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-372",
+  "name": "Avatar du vivant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Avatar du vivant</strong>.</p><p>Le personnage choisit deux manifestations au moment de l&#39;activation :</p>\n<p>• Prédateur : ses armes naturelles gagnent +3 circonstanciel aux dégâts et il gagne +2 aux tests de poursuite ;</p>\n<p>• Éclaireur : sa Vitesse terrestre augmente de 3 mètres et il ignore les quatre premiers mètres de terrain difficile naturel de chaque tour ;</p>\n<p>• Vigilant : il gagne +3 aux tests de Perception et ne peut subir un échec critique à un test de Perception fondé sur un sens fonctionnel ;</p>\n<p>• Endurant : il gagne une Résistance aux dégâts physiques égale au tiers de son Niveau général, arrondi à l&#39;inférieur ;</p>\n<p>• Adaptatif : il traite les dangers environnementaux ordinaires comme inférieurs de deux degrés et peut retenir sa respiration dix fois plus longtemps.</p>\n<p>Les deux manifestations utilisent la morphologie existante du personnage. Elles ne donnent aucune Action, aucune Vitesse de vol, aucune respiration dans le vide et aucun pouvoir propre à un sous-type.</p>\n<p>Lorsque l&#39;effet prend fin, le personnage gagne 2 Fatigue.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Mythique", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-370",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Éveil primordial",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.103 Talent Beastkin universel de niveau 25",
+      "family": "Héritage primordial",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Éveil primordial",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "une scène",
+      "metadata": {
+        "Famille": "Héritage primordial",
+        "Traits": "Beastkin, Mythique, Physiologie",
+        "Type": "1 Action",
+        "Fréquence": "une fois par jour",
+        "Durée": "une scène",
+        "Prérequis": "Éveil primordial",
+        "Prédateur": "ses armes naturelles gagnent +3 circonstanciel aux dégâts et il gagne +2 aux tests de poursuite ;",
+        "Éclaireur": "sa Vitesse terrestre augmente de 3 mètres et il ignore les quatre premiers mètres de terrain difficile naturel de chaque tour ;",
+        "Vigilant": "il gagne +3 aux tests de Perception et ne peut subir un échec critique à un test de Perception fondé sur un sens fonctionnel ;",
+        "Endurant": "il gagne une Résistance aux dégâts physiques égale au tiers de son Niveau général, arrondi à l'inférieur ;",
+        "Adaptatif": "il traite les dangers environnementaux ordinaires comme inférieurs de deux degrés et peut retenir sa respiration dix fois plus longtemps."
+      }
+    },
+    "level": 25
+  },
+  "folder": "Beastkin universel"
+}

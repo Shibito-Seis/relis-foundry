@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-297",
+  "name": "Cœur cristallin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Cœur cristallin</strong>.</p><p>Lorsque le personnage subit des dégâts d&#39;énergie, il en capture une partie dans son réseau cristallin. Il réduit ces dégâts d&#39;un montant égal à son Niveau général, après les autres protections.</p>\n<p>Avant la fin de son prochain tour, il doit libérer l&#39;énergie capturée de l&#39;une des manières suivantes :</p>\n<p>• gagner +3 circonstanciel à un test de Force, Vigueur ou Canalisation ;</p>\n<p>• ajouter 2d6 dégâts d&#39;énergie à une attaque réussie ;</p>\n<p>• alimenter pendant un tour un appareil ou effet personnel dont le besoin énergétique est comparable.</p>\n<p>S&#39;il ne la libère pas, il gagne 1 Stress. Le talent ne conserve pas l&#39;énergie entre les scènes, ne recharge pas une réserve durable et ne se cumule pas avec une autre réduction d&#39;Ascendance sur le même effet.</p>",
+    "traits": ["Esman", "Corne", "Énergie", "Mythique", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-292",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Couronne noire",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-293",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réacteur vivant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.80 Talents Esmans de niveau 21",
+      "family": "Transcendance esman",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Couronne noire ou Réacteur vivant",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance esman",
+        "Traits": "Esman, Corne, Énergie, Mythique, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Couronne noire ou Réacteur vivant"
+      }
+    },
+    "level": 21
+  },
+  "folder": "Esman"
+}

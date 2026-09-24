@@ -1,0 +1,61 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-480",
+  "name": "Dernier prédateur debout",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Dernier prédateur debout</strong>.</p><p>Lorsque le personnage déclenche Instinct de survie, il peut choisir de rester debout et de se déplacer jusqu&#39;à 2 mètres vers une cible ou un abri accessible. Il peut ensuite effectuer une attaque avec une arme naturelle contre une cible déjà à portée, avec −2 circonstanciel.</p>\n<p>Cette attaque constitue l&#39;unique attaque accordée par la réaction. Le personnage gagne 1 Stress en plus de la Fatigue d&#39;Instinct de survie et ne peut utiliser le talent s&#39;il est immobilisé ou inconscient.</p>\n<p>---</p>",
+    "traits": [
+      "Beastkin",
+      "Félin",
+      "Arme naturelle",
+      "Attaque",
+      "Fortune",
+      "Réaction",
+      "Survie"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-466",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fureur blessée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-362",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Instinct de survie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.134 Talents Beastkins Félins de niveau 17",
+      "family": "Férocité et refus de tomber",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Fureur blessée et Instinct de survie",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Férocité et refus de tomber",
+        "Traits": "Beastkin, Félin, Arme naturelle, Attaque, Fortune, Réaction, Survie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Fureur blessée et Instinct de survie"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Félin"
+}

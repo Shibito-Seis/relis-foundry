@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-140",
+  "name": "Ouvrage durable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec un plan, un atelier, des composants adaptés et l&#39;autorisation d&#39;intervenir, le personnage renforce durablement un objet ou un composant structurel qu&#39;il construit ou répare intégralement.</p>\n<p>Il choisit une partie cohérente : châssis, porte, blindage local, armature, bouclier, support, outil lourd ou mécanisme.</p>\n<p>Sur une réussite au test approprié :</p>\n<p>• la partie renforcée gagne +1 Solidité ;</p>\n<p>• elle gagne +2 circonstanciel aux tests ou seuils destinés à résister à l&#39;usure, aux vibrations et aux contraintes ordinaires ;</p>\n<p>• sa méthode de maintenance est clairement documentée pour un technicien Qualifié.</p>\n<p>Un seul Ouvrage durable créé par le personnage peut être actif à la fois. En créer un nouveau retire le bénéfice surnaturel ou exceptionnel du précédent après sa prochaine maintenance, sans le détruire.</p>\n<p>Le talent n&#39;augmente pas la Solidité d&#39;un champ énergétique, ne se cumule pas avec lui-même et ne peut pas renforcer un vaisseau entier comme un seul objet.</p>",
+    "traits": ["Nain", "Construction", "Structure", "Technologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-116",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Main du bâtisseur",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-130",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Assemblage riveté",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.44 Talents Nains de niveau 9",
+      "family": "Forge et ouvrage",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "projet d'au moins 8 heures",
+      "prerequisites": "Assemblage riveté ou Main du bâtisseur",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Forge et ouvrage",
+        "Traits": "Nain, Construction, Structure, Technologie",
+        "Type": "projet d'au moins 8 heures",
+        "Prérequis": "Assemblage riveté ou Main du bâtisseur"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Nain"
+}

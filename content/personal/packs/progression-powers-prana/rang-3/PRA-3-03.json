@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-3-03",
+  "name": "Onde de Prana",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Onde de Prana</strong>.</p><p><strong>Prana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / cône 9 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAP ; 5d6 dégâts et repousse 3 m.</p>\n<p><strong>Intensification :</strong> +1d6 ou cône +3 m.</p>",
+    "traits": ["Prana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "3",
+      "activation": "4 / 3 A / cône 9 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAP ; 5d6 dégâts et repousse 3 m.",
+      "scaling": "+1d6 ou cône +3 m."
+    },
+    "level": 10
+  },
+  "folder": "Rang 3"
+}

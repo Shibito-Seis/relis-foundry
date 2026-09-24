@@ -1,0 +1,63 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-665",
+  "name": "Réseau impossible",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Réseau impossible</strong>.</p><p>Les membres du Cercle du terrier situés dans la même zone partagent instantanément directions, inventaire utile et gestes préparés tant qu&#39;une chaîne de communication réelle subsiste. Pendant l&#39;effet :</p>\n<p>• chaque membre gagne +3 circonstanciel à son premier test de chaque tour pour suivre la Route de repli, transmettre un objet ou accomplir une tâche préparée ;</p>\n<p>• une fois pendant la durée, chaque membre peut employer sa propre Réaction pour se déplacer de 2 mètres ou transmettre un petit objet à portée ;</p>\n<p>• le premier échec collectif de récupération ou de maintenance devient un échec simple sans perte supplémentaire de matière.</p>\n<p>Le talent ne donne aucun contrôle sur un membre, ne franchit aucune coupure de communication et ne crée ni objet, ni Action, ni ressource.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Souris", "Communauté", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-661",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Communauté indispersable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-663",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Partout à la fois",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-664",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "La plus petite faille",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.191 Talent Beastkin Souris de niveau 25",
+      "family": "Transcendance murine",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Partout à la fois ou La plus petite faille, et Communauté indispersable",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance murine",
+        "Traits": "Beastkin, Souris, Communauté, Mythique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Partout à la fois ou La plus petite faille, et Communauté indispersable"
+      }
+    },
+    "level": 25
+  },
+  "folder": "Beastkin Souris"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-311",
+  "name": "Noyau incarné",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Noyau incarné</strong>.</p><p>Le noyau identitaire du personnage fonctionne sans connexion permanente. Il gagne +2 circonstanciel contre brouillage, coupure réseau, traçage distant et tentative d&#39;intrusion passant par une connexion externe.</p>\n<p>Il peut désactiver toutes ses communications sans perdre ses fonctions cognitives ou sensorielles locales.</p>\n<p>Le talent ne protège pas d&#39;un accès physique au noyau, d&#39;une panne du châssis ou d&#39;un logiciel déjà installé localement.</p>",
+    "traits": ["IAA", "Architecture", "Incarnée"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Incarnée isolée",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Architecture Incarnée isolée maîtrisée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Incarnée isolée",
+        "Traits": "IAA, Architecture, Incarnée",
+        "Type": "Passif",
+        "Prérequis": "Architecture Incarnée isolée maîtrisée"
+      }
+    },
+    "level": 1
+  },
+  "folder": "IAA"
+}

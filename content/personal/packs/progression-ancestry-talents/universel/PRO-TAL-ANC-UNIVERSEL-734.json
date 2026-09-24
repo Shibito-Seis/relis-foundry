@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-734",
+  "name": "Héritage sans frontière",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Héritage sans frontière</strong>.</p><p>Le personnage choisit une seconde communauté pour Héritage d&#39;adoption. Lorsqu&#39;un Talent universel d&#39;Ascendance lui demande de choisir une culture, une communauté, une langue ou une tradition, il peut entretenir simultanément un choix lié à chacune de ses deux appartenances et sélectionner le choix pertinent au moment de l&#39;utilisation.</p>\n<p>Il gagne également +3 circonstanciel aux tests de Volonté ou Sang-froid contre toute tentative de réduire son identité à une seule origine imposée.</p>\n<p>Le talent n&#39;accorde toujours aucun trait d&#39;Ascendance, accès biologique, catalogue parental, statut officiel ou pouvoir réservé.</p>\n<p>---</p>",
+    "traits": ["Ascendance universelle", "Culture", "Identité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-723",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Double appartenance",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-728",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire de la diaspora",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.240 Talent universel d'Ascendance de niveau 17",
+      "family": "Cultures adoptées",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Double appartenance et Mémoire de la diaspora",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cultures adoptées",
+        "Traits": "Ascendance universelle, Culture, Identité",
+        "Type": "Passif",
+        "Prérequis": "Double appartenance et Mémoire de la diaspora"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Universel"
+}

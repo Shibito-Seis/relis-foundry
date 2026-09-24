@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-338",
+  "name": "Essaim intégral",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Essaim intégral</strong>.</p><p>Le personnage peut coordonner un châssis supplémentaire au-delà de la limite normale de son Architecture, s&#39;il possède le matériel, l&#39;énergie et la bande passante nécessaires.</p>\n<p>Chaque châssis gagne +2 circonstanciel aux tests contre brouillage, perte de synchronisation et contamination passant par un autre membre de l&#39;Essaim. Lorsqu&#39;un châssis est détruit, les autres ne perdent pas leurs Actions déjà attribuées pour le tour.</p>\n<p>Les Actions normales, la Réaction, le Stress, la Fatigue et le Surmenage restent communs. Le talent ne fournit pas le châssis supplémentaire.</p>\n<p>---</p>",
+    "traits": ["IAA", "Architecture", "Châssis", "Collective"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-334",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Intelligence de ruche",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.90 Talents IAA de niveau 17",
+      "family": "Collective / Essaim",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Intelligence de ruche",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Collective / Essaim",
+        "Traits": "IAA, Architecture, Châssis, Collective",
+        "Type": "Passif",
+        "Prérequis": "Intelligence de ruche"
+      }
+    },
+    "level": 17
+  },
+  "folder": "IAA"
+}

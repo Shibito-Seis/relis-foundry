@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-5-04",
+  "name": "Rappel du seuil",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-5"],
+  "system": {
+    "description": "<p><strong>Rappel du seuil</strong>.</p><p><strong>Prana — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Un vivant mort depuis au plus 1 tour revient à 1 PV, Fatigue 2 et Blessure critique ; le lanceur engage 1 Prana maximal jusqu&#39;au repos long. Une fois par cible et par session.</p>\n<p><strong>Intensification :</strong> Fenêtre +1 tour ou rend 2d8 PV, jamais les deux au même palier.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "5",
+      "activation": "6 / 3 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Un vivant mort depuis au plus 1 tour revient à 1 PV, Fatigue 2 et Blessure critique ; le lanceur engage 1 Prana maximal jusqu'au repos long. Une fois par cible et par session.",
+      "scaling": "Fenêtre +1 tour ou rend 2d8 PV, jamais les deux au même palier."
+    },
+    "level": 16
+  },
+  "folder": "Rang 5"
+}

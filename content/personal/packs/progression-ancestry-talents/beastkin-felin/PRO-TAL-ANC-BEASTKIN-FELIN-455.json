@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-455",
+  "name": "Voix du grand félin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Voix du grand félin</strong>.</p><p>Le personnage sait donner à sa voix une profondeur prédatrice. Il gagne +2 circonstanciel aux tests d&#39;Intimidation ou de Commandement fondés sur un avertissement audible, un défi direct ou un appel destiné à couvrir le tumulte.</p>\n<p>Le talent ne porte pas dans le vide, ne force aucune obéissance et peut être neutralisé par une protection auditive adaptée.</p>",
+    "traits": ["Beastkin", "Félin", "Audition", "Intimidation", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.130 Talents Beastkins Félins de niveau 1",
+      "family": "Rugissement et dominance",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Rugissement et dominance",
+        "Traits": "Beastkin, Félin, Audition, Intimidation, Social",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Félin"
+}

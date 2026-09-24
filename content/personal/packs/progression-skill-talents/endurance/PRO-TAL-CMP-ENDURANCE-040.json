@@ -1,0 +1,46 @@
+{
+  "relisId": "PRO-TAL-CMP-ENDURANCE-040",
+  "name": "Inépuisable un instant",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Pendant la durée, le personnage conserve ses niveaux réels de Fatigue mais les traite comme s&#39;ils étaient à 0 pour déterminer :</p>\n<p>• son nombre normal d&#39;actions ;</p>\n<p>• les limites de Surmenage ;</p>\n<p>• les malus aux tests d&#39;Endurance et de Surmenage.</p>\n<p>Il ne peut pas activer ce talent à Fatigue 5 s&#39;il est déjà inconscient ou matériellement incapable d&#39;agir.</p>\n<p>À la fin de l&#39;effet, les conséquences normales de sa Fatigue reprennent. Il gagne ensuite 1 Fatigue, jusqu&#39;au maximum de 5, et 2 Surmenage.</p>\n<p>Inépuisable un instant ne retire aucune Blessure, n&#39;annule aucun coût volontaire et ne permet pas d&#39;accomplir une action rendue impossible par la destruction d&#39;une fonction corporelle ou mécanique.</p>\n<p>---</p>",
+    "traits": ["Compétence", "Endurance", "Mythique", "Surmenage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-ENDURANCE-039",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Effort sans rupture",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Endurance — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Endurance",
+      "activation": "Activation libre",
+      "prerequisites": "Endurance Mythique ; Effort sans rupture",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "3 rounds",
+      "metadata": {
+        "Compétence": "Endurance",
+        "Niveau": "23",
+        "Traits": "Compétence, Endurance, Mythique, Surmenage",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par repos long",
+        "Durée": "3 rounds",
+        "Prérequis": "Endurance Mythique ; Effort sans rupture"
+      }
+    },
+    "level": 23
+  },
+  "folder": "Endurance"
+}

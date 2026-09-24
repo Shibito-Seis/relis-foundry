@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-07-01-CATALYSEURS",
+  "name": "Techno-mage — Catalyseurs",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "techno-mage"],
+  "system": {
+    "description": "<p><strong>Techno-mage — Catalyseurs</strong>.</p><p><strong>Voie :</strong> Techno-mage</p>\n<p><strong>Dotation principale :</strong> Catalyseur modulable, batteries de charge, outils de conversion.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-007-TECHNO-MAGE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Techno-mage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Techno-mage",
+      "branchName": "Catalyseurs",
+      "primaryLoadout": "Catalyseur modulable, batteries de charge, outils de conversion.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Techno-mage"
+}

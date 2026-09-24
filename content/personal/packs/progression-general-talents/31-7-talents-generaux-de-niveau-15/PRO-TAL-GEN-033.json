@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-GEN-033",
+  "name": "Mental inébranlable",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Mental inébranlable</strong>.</p><p>Le résultat est amélioré d&#39;un degré : échec critique vers échec, ou échec vers réussite. Après la résolution, le personnage gagne 1 Stress inévitable.</p>\n<p>Le talent ne réduit pas un coût de Stress volontaire, ne transforme pas une réussite en réussite critique et ne protège pas contre un effet qui ne permet aucun test.</p>",
+    "traits": ["Général", "Mental", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.7 Talents généraux de niveau 15",
+      "family": "Volonté et Stress",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Volonté 4 ; Sang-froid Maître",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "le personnage obtient un échec ou un échec critique à un test contre peur, Panique, domination, corruption mentale ou source de Stress",
+      "duration": "",
+      "metadata": {
+        "Famille": "Volonté et Stress",
+        "Traits": "Général, Mental, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par repos long",
+        "Prérequis": "Volonté 4 ; Sang-froid Maître",
+        "Déclencheur": "le personnage obtient un échec ou un échec critique à un test contre peur, Panique, domination, corruption mentale ou source de Stress"
+      }
+    },
+    "level": 15
+  },
+  "folder": "### 31.7 Talents généraux de niveau 15"
+}

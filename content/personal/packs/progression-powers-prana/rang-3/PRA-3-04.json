@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-3-04",
+  "name": "Purification profonde",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Purification profonde</strong>.</p><p><strong>Prana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 3 / 3 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Retire une maladie, un poison ou un état physiologique majeur après test ; sur échec, le suspend pour 1 h.</p>\n<p><strong>Intensification :</strong> Deux effets ou +2 au test.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "3",
+      "activation": "3 / 3 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Retire une maladie, un poison ou un état physiologique majeur après test ; sur échec, le suspend pour 1 h.",
+      "scaling": "Deux effets ou +2 au test."
+    },
+    "level": 10
+  },
+  "folder": "Rang 3"
+}

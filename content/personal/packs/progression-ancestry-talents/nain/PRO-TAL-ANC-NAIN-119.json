@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-119",
+  "name": "Oreille des structures",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Oreille des structures</strong>.</p><p>En posant une main, un outil ou son oreille contre une surface pendant environ une minute, le personnage peut détecter dans un rayon indicatif de 6 mètres :</p>\n<p>• une cavité importante ;</p>\n<p>• une fissure active ;</p>\n<p>• un écoulement ou une vibration mécanique ;</p>\n<p>• une zone portant une charge anormale ;</p>\n<p>• un élément creux derrière un revêtement ;</p>\n<p>• le mouvement régulier d&#39;une machine lourde.</p>\n<p>Il gagne +2 circonstanciel au premier test d&#39;Investigation ou d&#39;Ingénierie visant à localiser ou comprendre ce phénomène.</p>\n<p>Le talent ne fournit pas une image précise, ne traverse pas automatiquement un matériau isolant et ne distingue pas une créature immobile d&#39;une masse ordinaire sans autre indice.</p>",
+    "traits": ["Nain", "Détection", "Perception", "Structure"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Sens de la pierre",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la pierre",
+        "Traits": "Nain, Détection, Perception, Structure",
+        "Type": "Activité d'exploration"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}

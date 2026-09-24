@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-NAIN-692",
+  "name": "Sang de pierre allégé",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Sang de pierre allégé</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Endurance contre poison minéral, poussière, pression, froid souterrain ou effort prolongé dans une structure confinée.</p>\n<p>Le talent ne donne aucune Résistance aux dégâts, immunité toxique ou capacité de survie sans équipement.</p>",
+    "traits": ["Demi-Nain", "Endurance", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.215 Talents Demi-Nains de niveau 1",
+      "family": "Robustesse mesurée",
+      "ancestry": "Demi-Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse mesurée",
+        "Traits": "Demi-Nain, Endurance, Physiologie",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Demi-Nain"
+}

@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-027-CORRUPTION-LATENTE",
+  "name": "Corruption latente",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Corruption latente</strong>.</p><p><strong>Valeur :</strong> -2/-3</p>\n<p>Le personnage porte une trace écarlate, anomalie ou contamination dormante. -2 : détectable et risquée. -3 : évolutive, dangereuse, attirant entités, capteurs ou soupçons.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-2/-3",
+      "effect": "Le personnage porte une trace écarlate, anomalie ou contamination dormante. -2 : détectable et risquée. -3 : évolutive, dangereuse, attirant entités, capteurs ou soupçons."
+    }
+  },
+  "folder": ""
+}

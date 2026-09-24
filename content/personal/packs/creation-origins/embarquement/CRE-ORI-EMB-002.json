@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-EMB-002",
+  "name": "Sélectionné",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p><strong>Sélectionné</strong>.</p><p>Il a été choisi pour ses compétences, sa jeunesse, son utilité ou son potentiel. — Éducation d’élite, Réputation positive, Talent précoce — Embarqué de force, Dossier Xirea verrouillé, Dette</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Il a été choisi pour ses compétences, sa jeunesse, son utilité ou son potentiel.",
+        "Atouts suggérés": "Éducation d’élite, Réputation positive, Talent précoce",
+        "Handicaps suggérés": "Embarqué de force, Dossier Xirea verrouillé, Dette"
+      }
+    }
+  },
+  "folder": "embarquement"
+}

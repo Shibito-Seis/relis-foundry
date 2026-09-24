@@ -1,0 +1,49 @@
+{
+  "relisId": "PRO-TAL-CMP-DIPLOMATIE-205",
+  "name": "Terrain commun",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Terrain commun</strong>.</p><p>Le personnage écoute deux parties capables de formuler leurs intérêts et recherche un besoin, une limite ou un risque réellement partagé.</p>\n<p>Il effectue un test de Diplomatie contre le DD le plus élevé des parties.</p>\n<p>• Réussite critique : il identifie un intérêt commun, le principal obstacle et une question neutre permettant de poursuivre ; chaque partie gagne +2 circonstanciel à son premier test sincère visant cet intérêt.</p>\n<p>• Réussite : il identifie un intérêt commun ou une limite partagée permettant de continuer la discussion.</p>\n<p>• Échec : aucun terrain commun exploitable n&#39;est identifié.</p>\n<p>• Échec critique : un intérêt présenté comme commun ne l&#39;est pas ; le MJ le signale avant toute proposition formelle.</p>\n<p>Le talent ne révèle pas une motivation dissimulée sans indice et ne force aucune partie à préférer l&#39;accord.</p>",
+    "traits": ["Analyse", "Compétence", "Diplomatie", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-DIPLOMATIE-202",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Parole d'apaisement",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Diplomatie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Diplomatie",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Diplomatie Expert ; Parole d'apaisement",
+      "choice": "",
+      "frequency": "une fois par conflit ou après modification majeure des intérêts",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Diplomatie",
+        "Niveau": "3",
+        "Traits": "Analyse, Compétence, Diplomatie, Social",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par conflit ou après modification majeure des intérêts",
+        "Prérequis": "Diplomatie Expert ; Parole d'apaisement",
+        "Réussite critique": "il identifie un intérêt commun, le principal obstacle et une question neutre permettant de poursuivre ; chaque partie gagne +2 circonstanciel à son premier test sincère visant cet intérêt.",
+        "Réussite": "il identifie un intérêt commun ou une limite partagée permettant de continuer la discussion.",
+        "Échec": "aucun terrain commun exploitable n'est identifié.",
+        "Échec critique": "un intérêt présenté comme commun ne l'est pas ; le MJ le signale avant toute proposition formelle."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Diplomatie"
+}

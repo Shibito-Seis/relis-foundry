@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-130",
+  "name": "Assemblage riveté",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec des pièces, plaques, câbles ou renforts adaptés, le personnage consolide un objet, une porte, une barricade, une armure, un bouclier ou un élément structurel non Détruit.</p>\n<p>L&#39;ouvrage gagne une réserve de PV structurels temporaires égale à :</p>\n<p>text 2 + le Niveau général du personnage.</p>\n<p>Ces PV temporaires sont perdus avant les PV structurels normaux. Ils disparaissent au prochain repos long, au démontage du renfort ou lorsque l&#39;ouvrage reçoit une réparation complète.</p>\n<p>Un seul Assemblage riveté créé par le personnage peut être actif à la fois. Le talent :</p>\n<p>• ne restaure aucun PV structurel réel ;</p>\n<p>• ne retire pas l&#39;état Brisé ;</p>\n<p>• ne recrée pas un objet Détruit ;</p>\n<p>• ne fournit aucune Solidité supplémentaire ;</p>\n<p>• exige des matériaux cohérents avec la taille de l&#39;ouvrage.</p>",
+    "traits": ["Nain", "Construction", "Préparation", "Structure"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-115",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réparation méthodique",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-116",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Main du bâtisseur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Forge et ouvrage",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "Main du bâtisseur ou Réparation méthodique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Forge et ouvrage",
+        "Traits": "Nain, Construction, Préparation, Structure",
+        "Type": "préparation de 10 minutes",
+        "Prérequis": "Main du bâtisseur ou Réparation méthodique"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Nain"
+}

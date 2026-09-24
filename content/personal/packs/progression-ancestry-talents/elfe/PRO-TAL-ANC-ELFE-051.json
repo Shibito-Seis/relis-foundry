@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELFE-051",
+  "name": "Équilibre elfique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Équilibre elfique</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests d&#39;Acrobaties destinés à :</p>\n<p>• garder l&#39;équilibre ;</p>\n<p>• progresser sur une surface étroite ou instable ;</p>\n<p>• résister à une chute provoquée par un mouvement ;</p>\n<p>• évoluer dans une gravité faible ou irrégulière ;</p>\n<p>• se réceptionner après un saut ou une chute courte.</p>\n<p>Lorsqu&#39;il réussit un test pour garder l&#39;équilibre, il ne perd pas automatiquement le reste de son mouvement, sauf danger ou effet particulier.</p>",
+    "traits": ["Elfe", "Mouvement"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Grâce sylvestre",
+      "ancestry": "Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Mouvement",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elfe"
+}

@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-7-02",
+  "name": "Création majeure",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Création majeure</strong>.</p><p><strong>Mana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 7 / 1 h / contact</p>\n<p><strong>Discipline :</strong> Manifestation</p>\n<p>Crée définitivement jusqu’à 1 tonne de matière ouvrée Q-3 à partir de composants valant au moins la moitié ; aucun artefact, vie ou substance stratégique.</p>\n<p><strong>Intensification :</strong> Masse ×5 ou Q-4 avec projet et test.</p>",
+    "traits": ["Mana", "Manifestation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "7",
+      "activation": "7 / 1 h / contact",
+      "discipline": "Manifestation",
+      "effect": "Crée définitivement jusqu’à 1 tonne de matière ouvrée Q-3 à partir de composants valant au moins la moitié ; aucun artefact, vie ou substance stratégique.",
+      "scaling": "Masse ×5 ou Q-4 avec projet et test."
+    },
+    "level": 22
+  },
+  "folder": "Rang 7"
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LOUP-530",
+  "name": "Rang refusé",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Rang refusé</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Volonté ou de Sang-froid contre une coercition, humiliation ou intimidation qui prétend lui imposer une place sociale, un chef ou un rôle de meute contre son gré.</p>\n<p>Le talent ne permet pas d&#39;ignorer une autorité légale, un contrat accepté ou un contrôle mental réussi ; il protège le libre choix du rôle, pas l&#39;impunité.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Loup", "Identité", "Volonté"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.152 Talents Beastkins Loups de niveau 1",
+      "family": "Culture lupine et individualité",
+      "ancestry": "Beastkin Loup",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture lupine et individualité",
+        "Traits": "Beastkin, Loup, Identité, Volonté",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Loup"
+}

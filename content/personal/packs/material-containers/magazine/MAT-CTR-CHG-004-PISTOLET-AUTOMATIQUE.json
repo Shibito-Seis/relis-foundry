@@ -1,0 +1,90 @@
+{
+  "relisId": "MAT-CTR-CHG-004-PISTOLET-AUTOMATIQUE",
+  "name": "chargeur automatique renforcé — Pistolet automatique",
+  "type": "container",
+  "tags": ["materiel", "conteneur", "chargeur"],
+  "system": {
+    "description": "<p><strong>chargeur automatique renforcé — Pistolet automatique</strong>.</p><p><strong>Arme :</strong> Pistolet automatique</p>\n<p><strong>Chambrage :</strong> BAL-9P</p>\n<p><strong>Alimentation :</strong> chargeur automatique renforcé, 20</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "magazine",
+      "sourceSection": "41.177 Armes de poing physiques",
+      "weaponName": "Pistolet automatique",
+      "chamberingId": "BAL-9P",
+      "feed": "chargeur automatique renforcé, 20"
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "containerKind": "magazine",
+    "capacity": {
+      "mass": null,
+      "volume": null,
+      "bulk": null,
+      "units": 20
+    },
+    "accessRule": "normal",
+    "magazineProfile": {
+      "chamberId": "BAL-9P",
+      "pressureClass": "standard",
+      "interfaceId": "boxMagazine",
+      "capacity": 20
+    }
+  },
+  "folder": "magazine"
+}

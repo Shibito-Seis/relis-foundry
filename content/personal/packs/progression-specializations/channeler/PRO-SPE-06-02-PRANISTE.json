@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-06-02-PRANISTE",
+  "name": "Channeler — Praniste",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "channeler"],
+  "system": {
+    "description": "<p><strong>Channeler — Praniste</strong>.</p><p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Bracelets corporels, sceaux internes, catalyseur Prana.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-006-CHANNELER",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Channeler",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Channeler",
+      "branchName": "Praniste",
+      "primaryLoadout": "Bracelets corporels, sceaux internes, catalyseur Prana.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Channeler"
+}

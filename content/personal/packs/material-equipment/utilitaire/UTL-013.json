@@ -1,0 +1,90 @@
+{
+  "relisId": "UTL-013",
+  "name": "Batterie de cuisine de terrain",
+  "type": "equipment",
+  "tags": ["materiel", "utilitaire"],
+  "system": {
+    "description": "<p><strong>Batterie de cuisine de terrain</strong> appartient au catalogue utilitaire.</p><p>0. 2. durable. prépare jusqu’à 6 portions ; couteau, récipient et chauffe. 040.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "utilitaire",
+      "sourceSection": "55.6.2 Trousses techniques et scientifiques — UTL-001 à UTL-016",
+      "canonicalRow": [
+        "UTL-013",
+        "Batterie de cuisine de terrain",
+        "0",
+        "2",
+        "durable",
+        "prépare jusqu’à 6 portions ; couteau, récipient et chauffe",
+        "040"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 0,
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "utilitaire"
+}

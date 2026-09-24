@@ -1,0 +1,46 @@
+{
+  "relisId": "PRO-TAL-CMP-SURVIE-047",
+  "name": "Milieu mis à profit",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Milieu mis à profit</strong>.</p><p>Le personnage identifie immédiatement un relief, une structure, un courant, une dépression ou une propriété du milieu réellement présente.</p>\n<p>Il choisit l&#39;un des effets suivants :</p>\n<p>• lui-même et l&#39;allié déclencheur gagnent +2 circonstanciel à leur test contre le danger ;</p>\n<p>• l&#39;un d&#39;eux se déplace de 2 mètres vers un espace libre offrant une protection pertinente, si cet espace est accessible ;</p>\n<p>• le danger est traité comme inférieur d&#39;un degré d&#39;intensité pour déterminer la Fatigue qu&#39;il inflige à l&#39;un d&#39;eux.</p>\n<p>Le talent ne crée pas d&#39;abri, ne fonctionne pas contre une attaque ciblée ordinaire et n&#39;annule pas un environnement létal sans protection.</p>",
+    "traits": ["Compétence", "Environnement", "Réaction", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SURVIE-041",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lire le terrain",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Survie — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Survie",
+      "activation": "Réaction",
+      "prerequisites": "Survie Maître ; Lire le terrain",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "un danger de terrain ou d'environnement perceptible est sur le point d'affecter le personnage ou un allié adjacent",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Survie",
+        "Niveau": "7",
+        "Traits": "Compétence, Environnement, Réaction, Survie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "un danger de terrain ou d'environnement perceptible est sur le point d'affecter le personnage ou un allié adjacent",
+        "Prérequis": "Survie Maître ; Lire le terrain"
+      }
+    },
+    "level": 7
+  },
+  "folder": "Survie"
+}

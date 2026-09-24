@@ -1,0 +1,23 @@
+{
+  "relisId": "CRE-ORI-EXM-001",
+  "name": "Enfant d’enclave réfugiée",
+  "type": "origin",
+  "tags": ["creation", "origine", "exemple-complet"],
+  "system": {
+    "description": "<p><strong>Enfant d’enclave réfugiée</strong>.</p><p>Réfugié — Enclave de réfugiés — Sélectionné ou sauvé à la dernière minute — Jeune survivant choisi pour l’espoir qu’il représente.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-exemple-complet",
+      "sourceSection": "7",
+      "fields": {
+        "Milieu social": "Réfugié",
+        "Affiliation / communauté": "Enclave de réfugiés",
+        "Condition d’embarquement": "Sélectionné ou sauvé à la dernière minute",
+        "Lecture rapide": "Jeune survivant choisi pour l’espoir qu’il représente."
+      }
+    }
+  },
+  "folder": "exemple-complet"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-362",
+  "name": "Instinct de survie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Instinct de survie</strong>.</p><p>Lorsque des dégâts devraient réduire le personnage à 0 PV sans provoquer une mort immédiate ou détruire une localisation vitale, il reste à 1 PV et gagne 1 Fatigue.</p>\n<p>Il doit immédiatement choisir entre tomber à terre dans son espace ou se déplacer de 2 mètres vers un espace sûr accessible, sans traverser un obstacle ni provoquer d&#39;autre action.</p>\n<p>Le talent ne fonctionne pas contre une exécution, une Blessure Mortelle déjà résolue, la destruction complète du corps ou un effet déclarant explicitement qu&#39;aucune survie physique n&#39;est possible.</p>",
+    "traits": ["Beastkin", "Fortune", "Instinct", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.99 Talents Beastkins universels de niveau 9",
+      "family": "Instinct et vigilance",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Instinct et vigilance",
+        "Traits": "Beastkin, Fortune, Instinct, Survie",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin universel"
+}

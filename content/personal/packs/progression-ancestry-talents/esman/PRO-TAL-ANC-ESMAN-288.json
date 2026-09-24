@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-288",
+  "name": "Forme d'overflow",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Forme d&#39;overflow</strong>.</p><p>Pendant 3 tours, l&#39;énergie interne du personnage déborde dans ses muscles et ses cornes :</p>\n<p>• sa Vitesse augmente de 2 mètres ;</p>\n<p>• il gagne +2 circonstanciel aux tests de Force, Vigueur, Athlétisme et Endurance ;</p>\n<p>• ses attaques de mêlée peuvent infliger des dégâts d&#39;énergie au lieu de leur type ordinaire ;</p>\n<p>• la première Frappe d&#39;overflow utilisée pendant la forme ne consomme pas sa fréquence de scène.</p>\n<p>Lorsque la forme prend fin, le personnage gagne 1 Stress. Elle ne se cumule pas avec une autre transformation corporelle majeure, sauf Corps-cataclysme.</p>",
+    "traits": ["Esman", "Prana", "Transformation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-275",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réserve somatique",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-281",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Onde interne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.78 Talents Esmans de niveau 13",
+      "family": "Puissance interne",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Onde interne et Réserve somatique",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Puissance interne",
+        "Traits": "Esman, Prana, Transformation",
+        "Type": "1 Action",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Onde interne et Réserve somatique"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Esman"
+}

@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-CMP-SURVIE-049",
+  "name": "Refuge improbable",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Refuge improbable</strong>.</p><p>Avec du matériel, un emplacement exploitable et au moins une source minimale de protection, le personnage aménage un refuge pour jusqu&#39;à huit créatures et effectue un test de Survie contre le DD de l&#39;environnement.</p>\n<p>• Réussite critique : pour la durée d&#39;un repos long, l&#39;intensité environnementale est considérée comme inférieure de deux degrés à l&#39;intérieur du refuge.</p>\n<p>• Réussite : elle est considérée comme inférieure d&#39;un degré.</p>\n<p>• Échec : le refuge fonctionne comme un Camp de terrain normal.</p>\n<p>• Échec critique : le défaut principal est identifié avant le repos, mais une heure supplémentaire ou une autre solution est nécessaire.</p>\n<p>Le refuge ne rend pas habitable le vide, une atmosphère mortelle, une radiation extrême ou une température létale sans équipement capable d&#39;assurer la fonction manquante. Il n&#39;empêche pas une attaque volontaire.</p>",
+    "traits": ["Camp", "Compétence", "Exploration", "Légendaire", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SURVIE-042",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Camp de terrain",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SURVIE-046",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Guide d'expédition",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Survie — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Survie",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Survie Légendaire ; Camp de terrain ou Guide d'expédition",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Survie",
+        "Niveau": "15",
+        "Traits": "Camp, Compétence, Exploration, Légendaire, Survie",
+        "Type": "Activité de 1 heure",
+        "Prérequis": "Survie Légendaire ; Camp de terrain ou Guide d'expédition",
+        "Réussite critique": "pour la durée d'un repos long, l'intensité environnementale est considérée comme inférieure de deux degrés à l'intérieur du refuge.",
+        "Réussite": "elle est considérée comme inférieure d'un degré.",
+        "Échec": "le refuge fonctionne comme un Camp de terrain normal.",
+        "Échec critique": "le défaut principal est identifié avant le repos, mais une heure supplémentaire ou une autre solution est nécessaire."
+      }
+    },
+    "level": 15
+  },
+  "folder": "Survie"
+}

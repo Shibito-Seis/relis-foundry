@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-0-09",
+  "name": "Détection d'accord",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-0"],
+  "system": {
+    "description": "<p><strong>Détection d&#39;accord</strong>.</p><p><strong>Mana — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 2 A / émanation 9 m</p>\n<p><strong>Discipline :</strong> Divination</p>\n<p>Indique présence, direction et intensité grossière d&#39;une source de Mana ou formule active.</p>\n<p><strong>Intensification :</strong> Identifie énergie, Rang approximatif et stabilité.</p>",
+    "traits": ["Mana", "Divination"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "0",
+      "activation": "2 A / émanation 9 m",
+      "discipline": "Divination",
+      "effect": "Indique présence, direction et intensité grossière d'une source de Mana ou formule active.",
+      "scaling": "Identifie énergie, Rang approximatif et stabilité."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

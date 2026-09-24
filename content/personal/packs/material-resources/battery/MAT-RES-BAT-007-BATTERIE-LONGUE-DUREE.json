@@ -1,0 +1,138 @@
+{
+  "relisId": "MAT-RES-BAT-007-BATTERIE-LONGUE-DUREE",
+  "name": "Batterie longue durée",
+  "type": "resource",
+  "tags": ["materiel", "ressource", "batterie"],
+  "system": {
+    "description": "<p><strong>Batterie :</strong> Batterie longue durée. <strong>Niv. :</strong> 3. <strong>Format :</strong> Standard. <strong>Capacité :</strong> 36 CE. <strong>Sortie :</strong> Standard. <strong>Technologie :</strong> Chimique avancée. <strong>Cycle :</strong> Rechargeable. <strong>Recharge complète :</strong> 12 h. <strong>Sol./PV/SB :</strong> 3/12/6. <strong>Signature :</strong> Faible. <strong>Enc. :</strong> 2. <strong>Prix :</strong> 650.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "battery",
+      "sourceSection": "41.155 Lot 5-L12 — Batteries et alimentations — 11 profils",
+      "columns": {
+        "#": "7",
+        "Batterie": "Batterie longue durée",
+        "Niv.": "3",
+        "Format": "Standard",
+        "Capacité": "36 CE",
+        "Sortie": "Standard",
+        "Technologie": "Chimique avancée",
+        "Cycle": "Rechargeable",
+        "Recharge complète": "12 h",
+        "Sol./PV/SB": "3/12/6",
+        "Signature": "Faible",
+        "Enc.": "2",
+        "Prix": "650"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 2,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "resource",
+        "functionalCategory": "power",
+        "installable": true,
+        "installationKind": "accessory",
+        "requiredSlots": {
+          "power": 1
+        },
+        "compatibleInterfaces": ["cell"],
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 650,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "battery",
+      "format": "standard",
+      "formatId": "standard",
+      "powerClass": "standard",
+      "powerClassId": "standard",
+      "technology": "chemicalAdvanced",
+      "technologyId": "chemicalAdvanced",
+      "interfaceId": "cell",
+      "current": 36,
+      "maximum": 36,
+      "output": null,
+      "outputClass": "standard",
+      "cycle": "rechargeable",
+      "rechargeDuration": "12 h",
+      "rechargeable": true
+    },
+    "currencyProfile": {
+      "physicalCash": false,
+      "currencyId": "",
+      "currencyLabel": "",
+      "denomination": 1
+    }
+  },
+  "folder": "battery"
+}

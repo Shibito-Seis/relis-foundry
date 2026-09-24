@@ -1,0 +1,54 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-660",
+  "name": "Main de précision",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Main de précision</strong>.</p><p>Pendant l&#39;effet, le personnage gagne +3 circonstanciel aux tests dont la difficulté principale provient d&#39;un accès étroit, d&#39;une miniaturisation ou d&#39;un réglage fin. Son premier échec non critique ne consomme ni composant ni charge de l&#39;outil employé.</p>\n<p>Une fois pendant la durée, il peut transformer un échec critique à une manipulation minutieuse en échec simple. Le talent ne s&#39;applique ni à une attaque, ni à un piratage distant, ni à une tâche sans qualification ou matériel.</p>",
+    "traits": ["Beastkin", "Souris", "Manipulation", "Technique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-651",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ajustement parfait",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-655",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réemploi méthodique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.189 Talents Beastkins Souris de niveau 17",
+      "family": "Précision technique",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Ajustement parfait et Réemploi méthodique",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "une scène technique",
+      "metadata": {
+        "Famille": "Précision technique",
+        "Traits": "Beastkin, Souris, Manipulation, Technique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Durée": "une scène technique",
+        "Prérequis": "Ajustement parfait et Réemploi méthodique"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin Souris"
+}

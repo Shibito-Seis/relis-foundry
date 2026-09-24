@@ -1,0 +1,108 @@
+{
+  "relisId": "MAT-AMM-SPC-011-TECHNO-MAGIQUE",
+  "name": "Techno-magique",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "munition-speciale"],
+  "system": {
+    "description": "<p><strong>Modèle :</strong> Techno-magique. <strong>Niv. :</strong> 4. <strong>Effet :</strong> ajoute Techno-magique et l’accord indiqué. <strong>Restrictions principales :</strong> arme ou adaptateur compatible. <strong>Prix :</strong> ×5.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-variant",
+      "sourceSection": "41.181 Modèles de munitions spéciales",
+      "columns": {
+        "#": "11",
+        "Modèle": "Techno-magique",
+        "Niv.": "4",
+        "Effet": "ajoute Techno-magique et l’accord indiqué",
+        "Restrictions principales": "arme ou adaptateur compatible",
+        "Prix": "×5"
+      },
+      "restrictions": "arme ou adaptateur compatible"
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 5,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "special",
+      "variantId": "technomagical",
+      "chamberingId": "",
+      "feedInterfaceIds": [],
+      "effectSummary": "ajoute Techno-magique et l’accord indiqué",
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  },
+  "folder": "special"
+}

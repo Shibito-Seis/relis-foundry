@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-CMP-MEDECINE-103",
+  "name": "Domaine clinique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Domaine clinique</strong>.</p><p>Lorsque le personnage acquiert ce talent, il choisit un domaine :</p>\n<p>• traumatologie : hémorragies, fractures, brûlures et impacts ;</p>\n<p>• toxicologie et infection : poisons, maladies, parasites et contamination ;</p>\n<p>• xénomédecine étudiée : une famille physiologique alien documentée ;</p>\n<p>• assistance artificielle : implants, prothèses et fonctions biologiques soutenues par une machine.</p>\n<p>Il gagne +2 circonstanciel aux tests de Médecine destinés à diagnostiquer une atteinte de ce domaine, préparer le traitement adapté ou surveiller sa récupération. Le bonus ne s&#39;applique pas à un jet rendant directement des PV ou traitant une Blessure sans préparation.</p>\n<p>Le talent peut être acquis plusieurs fois pour un domaine différent. Assistance artificielle ne remplace pas Ingénierie sur un châssis IAA ou une panne mécanique.</p>",
+    "traits": ["Compétence", "Connaissance", "Médecine"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Médecine — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Médecine",
+      "activation": "Passif",
+      "prerequisites": "Médecine Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Médecine",
+        "Niveau": "1",
+        "Traits": "Compétence, Connaissance, Médecine",
+        "Type": "Passif",
+        "Prérequis": "Médecine Qualifié"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Médecine"
+}

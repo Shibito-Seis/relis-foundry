@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-366",
+  "name": "Vigilance multisensorielle",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Vigilance multisensorielle</strong>.</p><p>Tant qu&#39;au moins deux de ses sens restent fonctionnels, le personnage gagne +2 circonstanciel aux tests et défenses contre embuscades, feintes, déguisements sensoriels et créatures dissimulées qu&#39;au moins l&#39;un de ces sens peut détecter.</p>\n<p>Une fois par scène, lorsqu&#39;il échoue à un tel test, il peut le relancer et conserver le second résultat.</p>\n<p>Le talent ne permet pas de détecter une présence sans aucun indice et ne protège pas d&#39;un effet mental dépourvu de composante perceptible.</p>",
+    "traits": ["Beastkin", "Perception", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-361",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Perception croisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.100 Talents Beastkins universels de niveau 13",
+      "family": "Sens animaux",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Perception croisée",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens animaux",
+        "Traits": "Beastkin, Perception, Physiologie",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Perception croisée"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin universel"
+}

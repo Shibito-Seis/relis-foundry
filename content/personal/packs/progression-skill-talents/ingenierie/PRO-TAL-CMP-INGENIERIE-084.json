@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-CMP-INGENIERIE-084",
+  "name": "Réparation méthodique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Réparation méthodique</strong>.</p><p>Après un Diagnostic structurel réussi et avec les outils et pièces requis, le personnage réduit de 1 action, minimum 1, le coût d&#39;une réparation d&#39;urgence accomplie en rencontre.</p>\n<p>Lorsqu&#39;une réparation complète est mesurée en minutes ou en heures, il réduit sa durée d&#39;un quart sur une réussite ou de moitié sur une réussite critique au test de réparation.</p>\n<p>Ce talent ne modifie ni les PV rendus, ni le coût en pièces, ni le type de réparation nécessaire. Il ne transforme pas une reconstruction en réparation complète.</p>",
+    "traits": ["Compétence", "Ingénierie", "Manipulation", "Réparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INGENIERIE-081",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Diagnostic structurel",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Ingénierie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Ingénierie",
+      "activation": "Passif",
+      "prerequisites": "Ingénierie Expert ; Diagnostic structurel",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Ingénierie",
+        "Niveau": "3",
+        "Traits": "Compétence, Ingénierie, Manipulation, Réparation",
+        "Type": "Passif",
+        "Prérequis": "Ingénierie Expert ; Diagnostic structurel"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Ingénierie"
+}

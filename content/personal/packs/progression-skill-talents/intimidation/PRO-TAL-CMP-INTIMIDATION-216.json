@@ -1,0 +1,56 @@
+{
+  "relisId": "PRO-TAL-CMP-INTIMIDATION-216",
+  "name": "Démonstration de force",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Démonstration de force</strong>.</p><p>Le personnage organise jusqu&#39;à quatre alliés volontaires et des moyens réellement présents afin de rendre visible une capacité, une position ou une conséquence crédible.</p>\n<p>Il effectue un test d&#39;Intimidation contre le DD de l&#39;observateur le plus résistant visé.</p>\n<p>• Réussite critique : les participants gagnent +2 circonstanciel à leur premier test d&#39;Intimidation exploitant directement la démonstration ; le premier observateur raisonnable qui refuse comprend néanmoins correctement le rapport de force présenté.</p>\n<p>• Réussite : les participants gagnent +2 circonstanciel à leur premier test d&#39;Intimidation exploitant directement la démonstration.</p>\n<p>• Échec : la mise en scène ne procure aucun bénéfice.</p>\n<p>• Échec critique : un élément affaiblit la crédibilité de l&#39;ensemble ; le MJ le révèle avant la confrontation.</p>\n<p>Le talent ne crée aucune arme, troupe, réputation ou puissance et ne permet pas aux alliés de mentir sans utiliser Tromperie.</p>",
+    "traits": [
+      "Compétence",
+      "Intimidation",
+      "Préparation",
+      "Social",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-213",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Registre intimidant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Intimidation — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Intimidation",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Intimidation Expert ; Registre intimidant",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la confrontation préparée",
+      "metadata": {
+        "Compétence": "Intimidation",
+        "Niveau": "3",
+        "Traits": "Compétence, Intimidation, Préparation, Social, Travail d'équipe",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par scène",
+        "Durée": "jusqu'à la fin de la confrontation préparée",
+        "Prérequis": "Intimidation Expert ; Registre intimidant",
+        "Réussite critique": "les participants gagnent +2 circonstanciel à leur premier test d'Intimidation exploitant directement la démonstration ; le premier observateur raisonnable qui refuse comprend néanmoins correctement le rapport de force présenté.",
+        "Réussite": "les participants gagnent +2 circonstanciel à leur premier test d'Intimidation exploitant directement la démonstration.",
+        "Échec": "la mise en scène ne procure aucun bénéfice.",
+        "Échec critique": "un élément affaiblit la crédibilité de l'ensemble ; le MJ le révèle avant la confrontation."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Intimidation"
+}

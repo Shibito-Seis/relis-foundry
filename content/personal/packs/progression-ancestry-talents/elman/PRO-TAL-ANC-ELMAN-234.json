@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-234",
+  "name": "Médiateur des mutations",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Médiateur des mutations</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Diplomatie, Médecine ou Sciences portant sur une personne ou une communauté humaine naturellement évoluée, génétiquement modifiée ou énergétiquement transformée.</p>\n<p>Après dix minutes de dialogue sincère, il peut aider une créature consentante confrontée à la peur ou à la stigmatisation d&#39;une telle transformation. La cible gagne +2 circonstanciel à son prochain test de Sang-froid ou de Volonté directement lié à cette situation.</p>\n<p>Le talent ne rend pas les expériences forcées acceptables, ne révèle aucune physiologie inconnue et ne permet pas de parler au nom de toutes les personnes transformées.</p>\n<p>---</p>",
+    "traits": ["Elman", "Connaissance", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.65 Talents Elmans de niveau 5",
+      "family": "Héritage humain transformé",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Passif et Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritage humain transformé",
+        "Traits": "Elman, Connaissance, Social",
+        "Type": "Passif et Activité de 10 minutes"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Elman"
+}

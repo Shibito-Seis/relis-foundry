@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-07-03-CHAMPS-ET-BOUCLIERS",
+  "name": "Techno-mage — Champs et boucliers",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "techno-mage"],
+  "system": {
+    "description": "<p><strong>Techno-mage — Champs et boucliers</strong>.</p><p><strong>Voie :</strong> Techno-mage</p>\n<p><strong>Dotation principale :</strong> Projecteur de champ léger, générateur CAE ou plaques énergétiques.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-007-TECHNO-MAGE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Techno-mage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Techno-mage",
+      "branchName": "Champs et boucliers",
+      "primaryLoadout": "Projecteur de champ léger, générateur CAE ou plaques énergétiques.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Techno-mage"
+}

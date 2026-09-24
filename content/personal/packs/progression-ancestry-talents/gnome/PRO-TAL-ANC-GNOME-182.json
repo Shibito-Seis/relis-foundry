@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-182",
+  "name": "Ça devrait tenir",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Ça devrait tenir</strong>.</p><p>Lorsqu&#39;un objet stabilisé par Réparation créative devrait cesser de fonctionner, le personnage peut prolonger sa fonction jusqu&#39;à la fin du tour suivant ou de l&#39;action complexe en cours.</p>\n<p>La défaillance est différée, jamais annulée. Lorsque le délai expire, l&#39;objet s&#39;arrête et ne peut plus bénéficier de Réparation créative avant une réparation réelle.</p>\n<p>Le talent ne retient pas une brèche, une explosion ou un effondrement déjà déclenché et ne permet pas à une machine dépourvue d&#39;énergie ou de matière de continuer.</p>",
+    "traits": ["Gnome", "Réaction", "Réparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-GNOME-168",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réparation créative",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.54 Talents Gnomes de niveau 5",
+      "family": "Bidouillage improbable",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Réparation créative",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bidouillage improbable",
+        "Traits": "Gnome, Réaction, Réparation",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Réparation créative"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Gnome"
+}

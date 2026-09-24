@@ -1,0 +1,46 @@
+{
+  "relisId": "PRO-TAL-CMP-TROMPERIE-235",
+  "name": "Déguisement méthodique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Déguisement méthodique</strong>.</p><p>Avec vêtements, accessoires, maquillage ou prothèses réellement disponibles, le personnage modifie apparence, posture et habitudes visibles dans les limites de sa morphologie.</p>\n<p>Il effectue un test de Tromperie contre le DD de la transformation. En cas de réussite, son résultat devient le DD des observations ordinaires visant directement le déguisement.</p>\n<p>Sur une réussite critique, il gagne également +2 circonstanciel au premier test destiné à imiter les habitudes visibles préparées. Sur un échec, le déguisement ne résiste pas à une observation attentive. Sur un échec critique, un élément artificiel est immédiatement visible.</p>\n<p>Le talent ne change ni Ascendance, ni taille de manière impossible, ni voix administrative, ni signature biologique, ni équipement et ne crée aucun document.</p>",
+    "traits": ["Compétence", "Manipulation", "Préparation", "Tromperie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-TROMPERIE-233",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Registre de couverture",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Tromperie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Tromperie",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Tromperie Expert ; Registre de couverture",
+      "choice": "",
+      "frequency": "une fois par déguisement",
+      "trigger": "",
+      "duration": "jusqu'au retrait ou à l'altération significative du déguisement",
+      "metadata": {
+        "Compétence": "Tromperie",
+        "Niveau": "3",
+        "Traits": "Compétence, Manipulation, Préparation, Tromperie",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par déguisement",
+        "Durée": "jusqu'au retrait ou à l'altération significative du déguisement",
+        "Prérequis": "Tromperie Expert ; Registre de couverture"
+      }
+    },
+    "level": 3
+  },
+  "folder": "Tromperie"
+}

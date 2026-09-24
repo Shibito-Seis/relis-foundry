@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-3-03",
+  "name": "Vol de Mana",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Vol de Mana</strong>.</p><p><strong>Mana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 3 / 2 A / 18 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Attaque contre CAE ; 4d6 dégâts énergétiques et la cible perd 1 Mana stabilisé si elle en possède ; le lanceur en récupère 1, une fois par scène.</p>\n<p><strong>Intensification :</strong> +1d6 et perte +1, sans récupération supplémentaire.</p>",
+    "traits": ["Mana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "3",
+      "activation": "3 / 2 A / 18 m",
+      "discipline": "Vitalisme",
+      "effect": "Attaque contre CAE ; 4d6 dégâts énergétiques et la cible perd 1 Mana stabilisé si elle en possède ; le lanceur en récupère 1, une fois par scène.",
+      "scaling": "+1d6 et perte +1, sans récupération supplémentaire."
+    },
+    "level": 10
+  },
+  "folder": "Rang 3"
+}

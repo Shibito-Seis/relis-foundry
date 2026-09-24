@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-171",
+  "name": "Observation instrumentée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Observation instrumentée</strong>.</p><p>Le personnage observe un phénomène accessible ou un échantillon réel à l&#39;aide de ses sens et, lorsque la mesure l&#39;exige, d&#39;un instrument approprié.</p>\n<p>Il effectue un test de Sciences contre le DD du phénomène.</p>\n<p>• Réussite critique : il identifie ses propriétés mesurables, sa catégorie scientifique, la variable dominante et la meilleure mesure complémentaire réalisable.</p>\n<p>• Réussite : il identifie ses principales propriétés mesurables et sa catégorie probable.</p>\n<p>• Échec : les données ne permettent pas de conclusion fiable.</p>\n<p>• Échec critique : une mesure paraît contradictoire ; le MJ indique qu&#39;elle doit être vérifiée avant toute conclusion.</p>\n<p>Le talent ne révèle aucune propriété inaccessible à l&#39;instrumentation employée et ne remplace ni prélèvement, ni expérience, ni compétence appliquée.</p>",
+    "traits": ["Analyse", "Compétence", "Sciences"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Sciences Qualifié",
+      "choice": "",
+      "frequency": "une fois par phénomène ou échantillon",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "1",
+        "Traits": "Analyse, Compétence, Sciences",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par phénomène ou échantillon",
+        "Prérequis": "Sciences Qualifié",
+        "Réussite critique": "il identifie ses propriétés mesurables, sa catégorie scientifique, la variable dominante et la meilleure mesure complémentaire réalisable.",
+        "Réussite": "il identifie ses principales propriétés mesurables et sa catégorie probable.",
+        "Échec": "les données ne permettent pas de conclusion fiable.",
+        "Échec critique": "une mesure paraît contradictoire ; le MJ indique qu'elle doit être vérifiée avant toute conclusion."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Sciences"
+}

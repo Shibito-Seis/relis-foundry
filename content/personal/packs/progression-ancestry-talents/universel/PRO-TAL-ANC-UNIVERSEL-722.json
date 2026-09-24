@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-722",
+  "name": "Culture de la Fusion",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Culture de la Fusion</strong>.</p><p>Le personnage comprend les grandes traditions nées du contact entre magie, science terrienne et peuples apparus après la Fusion des Mondes. Il gagne +2 circonstanciel aux tests de Culture, Sciences ou Techno-magie visant à déterminer si une pratique, un objet ou une institution provient de cette rencontre.</p>\n<p>Après une minute d&#39;étude, il peut poser une question simple sur l&#39;élément observé : origine culturelle probable, fonction générale, énergie attendue ou risque historique connu. La réponse reflète les connaissances accessibles, pas les secrets de l&#39;objet.</p>\n<p>Le talent ne donne ni Mana, ni Prana, ni Flux, ne permet aucune activation et ne remplace pas une analyse technique complète.</p>\n<p>---</p>",
+    "traits": ["Ascendance universelle", "Culture", "Fusion", "Techno-magie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.236 Talents universels d'Ascendance de niveau 1",
+      "family": "Héritage de la Fusion",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Passif et Activité d'exploration",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritage de la Fusion",
+        "Traits": "Ascendance universelle, Culture, Fusion, Techno-magie",
+        "Type": "Passif et Activité d'exploration"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Universel"
+}

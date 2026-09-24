@@ -1,0 +1,94 @@
+{
+  "relisId": "PHA-088",
+  "name": "Correcteur épigénétique limité",
+  "type": "consumable",
+  "tags": ["materiel", "pharmacie"],
+  "system": {
+    "description": "<p><strong>Correcteur épigénétique limité</strong> appartient au catalogue pharmacie.</p><p>9. perfusée. T4/D0. traite une expression pathologique nommée. ne change ni Ascendance ni attribut librement. 037/031.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "pharmacie",
+      "sourceSection": "55.4.7 Biomédecine avancée — PHA-081 à PHA-096",
+      "canonicalRow": [
+        "PHA-088",
+        "Correcteur épigénétique limité",
+        "9",
+        "perfusée",
+        "T4/D0",
+        "traite une expression pathologique nommée",
+        "ne change ni Ascendance ni attribut librement",
+        "037/031"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 9,
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "ne change ni Ascendance ni attribut librement"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "pharmacie"
+}

@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-GEN-037",
+  "name": "Présence imperturbable",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p><strong>Présence imperturbable</strong>.</p><p>Les alliés volontaires à 8 mètres qui peuvent percevoir le personnage réduisent immédiatement leur Stress de 1 et gagnent +2 circonstanciel aux tests contre peur, Panique et sources de Stress pendant la durée.</p>\n<p>Un allié ne peut réduire son Stress qu&#39;une fois par activation, même s&#39;il quitte puis rejoint l&#39;aura. À la fin de l&#39;effet, le personnage gagne 1 Stress. L&#39;aura ne force aucune obéissance et ne retire aucun Traumatisme.</p>",
+    "traits": ["Aura", "Général", "Mental", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.8 Talents généraux de niveau 19",
+      "family": "Cohésion et autonomie",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "3 rounds",
+      "metadata": {
+        "Famille": "Cohésion et autonomie",
+        "Traits": "Aura, Général, Mental, Social",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par repos long",
+        "Durée": "3 rounds"
+      }
+    },
+    "level": 19
+  },
+  "folder": "### 31.8 Talents généraux de niveau 19"
+}

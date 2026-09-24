@@ -1,0 +1,55 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-167",
+  "name": "Repères dégradés",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Repères dégradés</strong>.</p><p>Le personnage maintient une solution de navigation malgré cartes incomplètes, capteurs partiels, balises perdues ou repères fortement altérés.</p>\n<p>Il choisit une source de dégradation et ignore jusqu&#39;à 4 points de malus circonstanciel provenant de celle-ci lors de ses tests de Navigation pendant la durée.</p>\n<p>Sur un échec simple, il conserve la dernière position ou route fiable et apprend que les nouvelles données ne suffisent pas à la corriger. Il ne transmet donc pas une fausse précision comme une certitude.</p>\n<p>Le talent ne fonctionne pas sans aucun repère ni donnée, ne rétablit aucun capteur et ne protège pas le groupe des dangers rencontrés.</p>",
+    "traits": ["Compétence", "Concentration", "Navigation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-161",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Position estimée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-165",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Marge de trajectoire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "Activation libre",
+      "prerequisites": "Navigation Maître ; Position estimée et Marge de trajectoire",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin de l'étape en cours ou 3 rounds",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "7",
+        "Traits": "Compétence, Concentration, Navigation",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Durée": "jusqu'à la fin de l'étape en cours ou 3 rounds",
+        "Prérequis": "Navigation Maître ; Position estimée et Marge de trajectoire"
+      }
+    },
+    "level": 7
+  },
+  "folder": "Navigation"
+}

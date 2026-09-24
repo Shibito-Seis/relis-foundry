@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-304",
+  "name": "Module utilitaire intégré",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Module utilitaire intégré</strong>.</p><p>Le châssis intègre une fonction commune : lampe, communicateur, enregistreur, outils de diagnostic, micro-soudeur, compartiment sécurisé, projecteur ou équivalent.</p>\n<p>Elle compte comme un outil de base pour sa fonction et accorde +1 circonstanciel aux tests directement assistés par le module.</p>\n<p>Le module ne peut être une arme, une armure, une batterie supplémentaire, un médicament, un objet rare ou un appareil normalement encombrant. Il peut être réparé ou remplacé comme un équipement commun.</p>",
+    "traits": ["IAA", "Équipement", "Module"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.86 Talents IAA de niveau 1",
+      "family": "Châssis et modules",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une fonction utilitaire commune",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Châssis et modules",
+        "Traits": "IAA, Équipement, Module",
+        "Type": "Passif",
+        "Choix": "une fonction utilitaire commune"
+      }
+    },
+    "level": 1
+  },
+  "folder": "IAA"
+}

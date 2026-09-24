@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-124",
+  "name": "Nom de clan",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Nom de clan</strong>.</p><p>Une fois par lieu civilisé ou par étape importante d&#39;un voyage, le personnage peut tenter de retrouver :</p>\n<p>• un membre, allié ou débiteur de la communauté ;</p>\n<p>• un atelier affilié ;</p>\n<p>• une archive ;</p>\n<p>• un protocole de reconnaissance ;</p>\n<p>• une commande, un contrat ou une trace d&#39;ouvrage ;</p>\n<p>• un refuge ou une ressource culturelle mineure.</p>\n<p>Il gagne +2 circonstanciel au premier test de Culture, Commerce, Diplomatie ou Commandement destiné à établir son identité et la légitimité de sa demande.</p>\n<p>Le nom n&#39;impose aucune loyauté. Il peut porter une réputation, une dette, une rivalité, des obligations ou des attentes. Dans un secteur sans présence naine raisonnable, le talent peut révéler une balise ou une archive plutôt qu&#39;un contact vivant.</p>",
+    "traits": ["Nain", "Culture", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Clans et serments",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Activité d'exploration ou narratif",
+      "prerequisites": "",
+      "choice": "un clan, atelier, équipage, cité, maison, corporation ou communauté naine",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Clans et serments",
+        "Traits": "Nain, Culture, Social",
+        "Type": "Activité d'exploration ou narratif",
+        "Choix": "un clan, atelier, équipage, cité, maison, corporation ou communauté naine"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-369",
+  "name": "Refus de la cage",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Refus de la cage</strong>.</p><p>Lorsque le personnage échoue à un test contre immobilisation, entrave, paralysie, contrôle mental ou transformation corporelle imposée, il relance le test et conserve le meilleur résultat.</p>\n<p>Sur une réussite de cette relance contre une contrainte physique, il peut également se déplacer de 2 mètres dans un espace accessible ou libérer un appendice immobilisé.</p>\n<p>Le talent ne brise pas un obstacle indestructible, ne permet pas de traverser une créature ou une paroi et ne protège pas d&#39;une transformation volontaire.</p>",
+    "traits": ["Beastkin", "Fortune", "Instinct", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.101 Talents Beastkins universels de niveau 17",
+      "family": "Instinct et vigilance",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Instinct et vigilance",
+        "Traits": "Beastkin, Fortune, Instinct, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Beastkin universel"
+}

@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-426",
+  "name": "Selon mon choix",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Selon mon choix</strong>.</p><p>Après un échec non critique contre charme, coercition ou ordre surnaturel, le personnage relance son test de Volonté et conserve le meilleur résultat. En cas de réussite, il comprend qu&#39;une influence a tenté d&#39;orienter son choix, sans identifier automatiquement sa source.</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-417",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Libre de partir",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.120 Talents Beastkins Chats de niveau 5",
+      "family": "Indépendance et sang-froid",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Libre de partir",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Indépendance et sang-froid",
+        "Prérequis": "Libre de partir",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Chat"
+}

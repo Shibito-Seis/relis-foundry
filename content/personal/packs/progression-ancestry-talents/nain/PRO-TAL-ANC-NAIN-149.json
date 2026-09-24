@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-149",
+  "name": "Architecture indéfectible",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage conçoit une redondance, un verrouillage mécanique ou un chemin de secours dans un objet ou un composant qu&#39;il construit ou reconstruit avec les ressources adaptées.</p>\n<p>Il choisit une fonction essentielle : maintien de charge, verrouillage, alimentation, commande manuelle, refroidissement, étanchéité locale ou transmission mécanique.</p>\n<p>La première fois avant sa prochaine maintenance complète que le composant devrait devenir Brisé, cette fonction essentielle continue de fonctionner dans un mode dégradé pendant la scène :</p>\n<p>• ses bonus de CAP, CAE ou Solidité restent réduits normalement ;</p>\n<p>• aucune fonction secondaire n&#39;est préservée ;</p>\n<p>• son utilisation peut demander un test ou produire une conséquence déterminée par le MJ ;</p>\n<p>• il devient Brisé normalement à la fin de la scène si aucune réparation d&#39;urgence n&#39;a été effectuée.</p>\n<p>Une seule Architecture indéfectible créée par le personnage peut être active à la fois. Le talent ne protège pas un objet Détruit et ne peut pas préserver un vaisseau entier par une unique application.</p>",
+    "traits": ["Nain", "Construction", "Structure", "Technologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-139",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maître d'atelier",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-140",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ouvrage durable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.45 Talents Nains de niveau 13",
+      "family": "Forge et ouvrage",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "projet d'au moins 8 heures",
+      "prerequisites": "Ouvrage durable et Maître d'atelier",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Forge et ouvrage",
+        "Traits": "Nain, Construction, Structure, Technologie",
+        "Type": "projet d'au moins 8 heures",
+        "Prérequis": "Ouvrage durable et Maître d'atelier"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Nain"
+}

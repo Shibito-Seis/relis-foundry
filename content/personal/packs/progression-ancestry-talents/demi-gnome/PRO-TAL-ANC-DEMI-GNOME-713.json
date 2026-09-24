@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-GNOME-713",
+  "name": "Pont de l'émerveillement",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Pont de l&#39;émerveillement</strong>.</p><p>Le personnage partage une vision reliant créativité gnome et capacité humaine à la rendre durable. Jusqu&#39;à quatre alliés à 12 mètres gagnent +3 circonstanciel à leur premier test de la durée pour comprendre, réparer, créer ou résister au désespoir.</p>\n<p>La première fois qu&#39;un bénéficiaire réussit un tel test, il réduit de 1 un Stress directement lié au même problème. Le talent ne donne aucune compétence, Action ou immunité.</p>",
+    "traits": ["Demi-Gnome", "Coopération", "Mental", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-GNOME-712",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritier du possible",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.230 Talent Demi-Gnome de niveau 25",
+      "family": "Transcendance hybride",
+      "ancestry": "Demi-Gnome",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Héritier du possible",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance hybride",
+        "Traits": "Demi-Gnome, Coopération, Mental, Mythique",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Héritier du possible"
+      }
+    },
+    "level": 25
+  },
+  "folder": "Demi-Gnome"
+}

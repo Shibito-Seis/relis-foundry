@@ -1,0 +1,90 @@
+{
+  "relisId": "UTL-022",
+  "name": "Purificateur d’eau portatif",
+  "type": "equipment",
+  "tags": ["materiel", "utilitaire"],
+  "system": {
+    "description": "<p><strong>Purificateur d’eau portatif</strong> appartient au catalogue utilitaire.</p><p>1. 2. 10 L/h. filtre et traite contaminants connus. cartouche 100 L.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "utilitaire",
+      "sourceSection": "55.6.3 Bivouac et environnement — UTL-017 à UTL-032",
+      "canonicalRow": [
+        "UTL-022",
+        "Purificateur d’eau portatif",
+        "1",
+        "2",
+        "10 L/h",
+        "filtre et traite contaminants connus",
+        "cartouche 100 L"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {}
+  },
+  "folder": "utilitaire"
+}

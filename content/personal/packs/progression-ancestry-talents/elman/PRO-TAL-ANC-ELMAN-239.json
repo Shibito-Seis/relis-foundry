@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-239",
+  "name": "Tissage ambiant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Tissage ambiant</strong>.</p><p>Lorsqu&#39;un allié visible à 6 mètres subit des dégâts d&#39;énergie et qu&#39;une énergie ambiante accessible est présente, le personnage en tisse un écran provisoire.</p>\n<p>Les dégâts sont réduits de 2 + un tiers du Niveau général du personnage, arrondi à l&#39;inférieur, après les autres protections.</p>\n<p>Le Tissage ne protège pas des dégâts physiques secondaires, ne peut affecter le personnage lui-même et ne se cumule pas avec une autre réduction circonstancielle de Talent d&#39;Ascendance appliquée au même effet.</p>",
+    "traits": ["Elman", "Défense", "Mana", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-216",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Aspiration ambiante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.66 Talents Elmans de niveau 9",
+      "family": "Résonance ambiante",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Aspiration ambiante",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résonance ambiante",
+        "Traits": "Elman, Défense, Mana, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Aspiration ambiante"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Elman"
+}

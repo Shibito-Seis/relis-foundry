@@ -1,0 +1,29 @@
+{
+  "relisId": "CRE-PRO-001-CIVIL-ORDINAIRE",
+  "name": "Civil ordinaire",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Civil ordinaire</strong>.</p><p><strong>Attribut standard :</strong> Présence, Volonté, Intelligence</p>\n<p><strong>Profil marqué :</strong> +Présence, +Volonté ; -Force, -Technologie ou -Maîtrise Magique</p>\n<p><strong>Compétences possibles :</strong> Culture, Diplomatie, Commerce, Sang-froid, Survie</p>\n<p><strong>Avantage typique :</strong> Objet personnel, contact civil, souvenir utile</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Présence", "Volonté", "Intelligence"],
+      "markedProfile": "+Présence, +Volonté ; -Force, -Technologie ou -Maîtrise Magique",
+      "skillChoices": [
+        "Culture",
+        "Diplomatie",
+        "Commerce",
+        "Sang-froid",
+        "Survie"
+      ],
+      "typicalBenefit": "Objet personnel, contact civil, souvenir utile",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

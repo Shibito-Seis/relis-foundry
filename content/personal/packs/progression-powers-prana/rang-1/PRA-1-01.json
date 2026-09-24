@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-1-01",
+  "name": "Égide vitale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-1"],
+  "system": {
+    "description": "<p><strong>Égide vitale</strong>.</p><p><strong>Prana — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / R / personnel</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Réduit une instance de dégâts perçue de 1d8 + moitié de MM.</p>\n<p><strong>Intensification :</strong> +1d8 réduction.</p>",
+    "traits": ["Prana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "1",
+      "activation": "1 / R / personnel",
+      "discipline": "Protection",
+      "effect": "Réduit une instance de dégâts perçue de 1d8 + moitié de MM.",
+      "scaling": "+1d8 réduction."
+    },
+    "level": 4
+  },
+  "folder": "Rang 1"
+}

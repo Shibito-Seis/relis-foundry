@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-M-02",
+  "name": "Cœur d’espèce",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-m"],
+  "system": {
+    "description": "<p><strong>Cœur d’espèce</strong>.</p><p><strong>Prana — Rang Mythique.</strong></p>\n<p><strong>Activation :</strong> 12 Prana + 1 PM / projet de 7 jours</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Préserve un patrimoine biologique, guérit une stérilité ou maladie d’espèce et crée une banque vivante capable de restaurer une population viable.</p>\n<p><strong>Intensification :</strong> Consentement, diversité génétique, installation et décennies de croissance restent nécessaires.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "M",
+      "activation": "12 Prana + 1 PM / projet de 7 jours",
+      "discipline": "Vitalisme",
+      "effect": "Préserve un patrimoine biologique, guérit une stérilité ou maladie d’espèce et crée une banque vivante capable de restaurer une population viable.",
+      "scaling": "Consentement, diversité génétique, installation et décennies de croissance restent nécessaires."
+    },
+    "level": 30
+  },
+  "folder": "Rang M"
+}

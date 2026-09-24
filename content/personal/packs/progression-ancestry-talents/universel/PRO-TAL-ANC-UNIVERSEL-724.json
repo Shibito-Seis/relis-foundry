@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-UNIVERSEL-724",
+  "name": "Réveil d'urgence",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Réveil d&#39;urgence</strong>.</p><p>Lorsque le personnage est réveillé brutalement d&#39;une stase, d&#39;un sommeil médical ou d&#39;une longue inconscience par un danger immédiat, il applique Réveil discipliné sans attendre une minute et gagne +2 circonstanciel à son Initiative.</p>\n<p>Il peut saisir un objet accessible, se détacher d&#39;un dispositif déjà ouvert ou se mettre debout dans son espace dans le cadre de la réaction, si aucun obstacle ou état ne l&#39;en empêche.</p>\n<p>Le talent ne réveille pas un personnage que la capsule ne peut libérer, ne soigne aucune complication médicale et n&#39;accorde aucune Action offensive.</p>",
+    "traits": ["Ascendance universelle", "Cryostase", "Initiative", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-UNIVERSEL-719",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réveil discipliné",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.237 Talents universels d'Ascendance de niveau 5",
+      "family": "Cryostase et réveil",
+      "ancestry": "Universel",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Réveil discipliné",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cryostase et réveil",
+        "Traits": "Ascendance universelle, Cryostase, Initiative, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par repos long",
+        "Prérequis": "Réveil discipliné"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Universel"
+}

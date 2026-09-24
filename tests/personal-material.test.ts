@@ -55,9 +55,7 @@ describe("10-E4-P — profils matériels personnels", () => {
     weapon.system.weaponProfile.chamberId = "CH-9X";
     expect(ammunitionCompatibility(ammunition, weapon)).toEqual([]);
     weapon.system.weaponProfile.feedInterface = "MAG-B";
-    expect(ammunitionCompatibility(ammunition, weapon).join(" ")).toMatch(
-      /Interface MAG-B/,
-    );
+    expect(ammunitionCompatibility(ammunition, weapon)).toEqual([]);
   });
 
   it("contrôle chambre, pression et interface d’un chargeur détachable", () => {
@@ -90,9 +88,7 @@ describe("10-E4-P — profils matériels personnels", () => {
         feedInterfaces: [],
       },
     });
-    expect(ammunitionCompatibility(ammunition, magazine).join(" ")).toMatch(
-      /Interface IF-A/,
-    );
+    expect(ammunitionCompatibility(ammunition, magazine)).toEqual([]);
   });
 
   it("diagnostique les profils incomplets sans inventer de valeur", () => {

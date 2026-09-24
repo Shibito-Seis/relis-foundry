@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-EMB-001",
+  "name": "Volontaire",
+  "type": "origin",
+  "tags": ["creation", "origine", "embarquement"],
+  "system": {
+    "description": "<p><strong>Volontaire</strong>.</p><p>Le personnage a accepté l’exode par devoir, conviction, foi, ambition ou espoir. — Ancre morale, Statut officiel, Sang-froid exceptionnel — Serment contraignant, Culpabilité du survivant, Famille à nourrir</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-embarquement",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Le personnage a accepté l’exode par devoir, conviction, foi, ambition ou espoir.",
+        "Atouts suggérés": "Ancre morale, Statut officiel, Sang-froid exceptionnel",
+        "Handicaps suggérés": "Serment contraignant, Culpabilité du survivant, Famille à nourrir"
+      }
+    }
+  },
+  "folder": "embarquement"
+}

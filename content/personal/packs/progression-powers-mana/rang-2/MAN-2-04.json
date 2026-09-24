@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-2-04",
+  "name": "Rayon pénétrant",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-2"],
+  "system": {
+    "description": "<p><strong>Rayon pénétrant</strong>.</p><p><strong>Mana — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 3 / 2 A / 24 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAE ; 3d8 énergie et Pénétration 1.</p>\n<p><strong>Intensification :</strong> +1d8; tous les 2 paliers, Pénétration +1.</p>",
+    "traits": ["Mana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "2",
+      "activation": "3 / 2 A / 24 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAE ; 3d8 énergie et Pénétration 1.",
+      "scaling": "+1d8; tous les 2 paliers, Pénétration +1."
+    },
+    "level": 7
+  },
+  "folder": "Rang 2"
+}

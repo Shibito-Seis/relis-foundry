@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-615",
+  "name": "Force de durée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Force de durée</strong>.</p><p>Pendant l&#39;effet, le personnage gagne +3 circonstanciel aux tests d&#39;Endurance et d&#39;Athlétisme liés à un portage, une traction, un maintien ou un travail physique continu. La première Fatigue provenant de cet effort est différée jusqu&#39;à la fin.</p>\n<p>Le talent n&#39;améliore ni les attaques, ni les dégâts. Lorsque l&#39;effet prend fin, la Fatigue différée s&#39;applique normalement.</p>",
+    "traits": ["Beastkin", "Ours", "Endurance", "Force"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-608",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Traction puissante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.176 Talents Beastkins Ours de niveau 9",
+      "family": "Force soutenue et portage",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Traction puissante",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "une heure ou une scène d'effort",
+      "metadata": {
+        "Famille": "Force soutenue et portage",
+        "Traits": "Beastkin, Ours, Endurance, Force",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Durée": "une heure ou une scène d'effort",
+        "Prérequis": "Traction puissante"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Ours"
+}

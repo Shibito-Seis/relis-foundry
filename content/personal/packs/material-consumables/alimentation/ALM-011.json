@@ -1,0 +1,95 @@
+{
+  "relisId": "ALM-011",
+  "name": "Mélange de céréales sec",
+  "type": "consumable",
+  "tags": ["materiel", "alimentation"],
+  "system": {
+    "description": "<p><strong>Mélange de céréales sec</strong> appartient au catalogue alimentation.</p><p>1. 4 portions. 1. 0. 3 ans. chaque portion exige eau ou lait ; base de cuisine. 033.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "alimentation",
+      "sourceSection": "55.3.3 Rations et aliments conservés — ALM-001 à ALM-012",
+      "canonicalRow": [
+        "ALM-011",
+        "Mélange de céréales sec",
+        "1",
+        "4 portions",
+        "1",
+        "0",
+        "3 ans",
+        "chaque portion exige eau ou lait ; base de cuisine",
+        "033"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "utility",
+      "effectSummary": "chaque portion exige eau ou lait ; base de cuisine"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "alimentation"
+}

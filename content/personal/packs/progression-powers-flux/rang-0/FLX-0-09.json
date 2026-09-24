@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-0-09",
+  "name": "Pendule causal",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-0"],
+  "system": {
+    "description": "<p><strong>Pendule causal</strong>.</p><p><strong>Flux — Rang 0.</strong></p>\n<p><strong>Activation :</strong> 1 A / personnel</p>\n<p><strong>Discipline :</strong> Préscience</p>\n<p>+1 circonstanciel à l&#39;Initiative ou au prochain test visant un danger déjà observé.</p>\n<p><strong>Intensification :</strong> Lance deux fois le prochain test de Perception concerné et garde le meilleur.</p>",
+    "traits": ["Flux", "Préscience"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "0",
+      "activation": "1 A / personnel",
+      "discipline": "Préscience",
+      "effect": "+1 circonstanciel à l'Initiative ou au prochain test visant un danger déjà observé.",
+      "scaling": "Lance deux fois le prochain test de Perception concerné et garde le meilleur."
+    },
+    "level": 1
+  },
+  "folder": "Rang 0"
+}

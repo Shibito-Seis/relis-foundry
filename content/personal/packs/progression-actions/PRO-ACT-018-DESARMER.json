@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-018-DESARMER",
+  "name": "Désarmer",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Désarmer</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Compromettre la prise d&#39;un objet tenu ou le faire tomber.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Compromettre la prise d'un objet tenu ou le faire tomber."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

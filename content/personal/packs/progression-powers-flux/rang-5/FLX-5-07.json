@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-5-07",
+  "name": "Champ d'inertie",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-5"],
+  "system": {
+    "description": "<p><strong>Champ d&#39;inertie</strong>.</p><p><strong>Flux — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 5 / 3 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Pendant 5 tours, réduit de 10 tout déplacement forcé, dégâts de chute, collision et Recul subis par les alliés ; projectiles hostiles −2.</p>\n<p><strong>Intensification :</strong> Réduction +5 ou émanation +3 m.</p>",
+    "traits": ["Flux", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "5",
+      "activation": "5 / 3 A / émanation 6 m",
+      "discipline": "Protection",
+      "effect": "Pendant 5 tours, réduit de 10 tout déplacement forcé, dégâts de chute, collision et Recul subis par les alliés ; projectiles hostiles −2.",
+      "scaling": "Réduction +5 ou émanation +3 m."
+    },
+    "level": 16
+  },
+  "folder": "Rang 5"
+}

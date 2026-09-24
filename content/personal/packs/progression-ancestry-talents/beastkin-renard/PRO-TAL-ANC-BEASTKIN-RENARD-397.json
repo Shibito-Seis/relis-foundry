@@ -1,0 +1,45 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-397",
+  "name": "Queue-miroir",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>La queue projette un décalage d&#39;image. Le personnage gagne +2 circonstanciel à la défense contre l&#39;attaque. Si elle échoue, une image résiduelle apparaît dans un espace adjacent jusqu&#39;au début du prochain tour du personnage, révélant l&#39;usage d&#39;une illusion.</p>\n<p>Queue-miroir ne se cumule pas avec Pas de côté du renard contre la même attaque.</p>",
+    "traits": ["Beastkin", "Renard", "Illusion", "Queue", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-382",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Seconde queue",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.110 Talents Beastkins Renards de niveau 9",
+      "family": "Queues, mémoire et ancienneté",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Seconde queue",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage est pris pour cible par une attaque qu'il peut percevoir",
+      "duration": "",
+      "metadata": {
+        "Famille": "Queues, mémoire et ancienneté",
+        "Traits": "Beastkin, Renard, Illusion, Queue, Réaction",
+        "Prérequis": "Seconde queue",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "le personnage est pris pour cible par une attaque qu'il peut percevoir"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Beastkin Renard"
+}

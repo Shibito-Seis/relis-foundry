@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-194",
+  "name": "Refus de pâlir",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage devrait gagner un rang d&#39;Affadissement, il peut refuser cette augmentation. Il gagne à la place 1 Fatigue et 2 Stress.</p>\n<p>Cette Fatigue ne peut être retirée avant que le personnage ait vécu un Épisode d&#39;Éclat ou remplacé sincèrement une Ancre devenue inaccessible. Refus de pâlir ne peut pas être utilisé si le personnage se trouve déjà à Extinction.</p>\n<p>Le talent représente un sursis volontaire, pas une guérison : la privation prolongée continue normalement.</p>\n<p>---</p>",
+    "traits": ["Gnome", "Affadissement", "Endurance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-GNOME-191",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Inaltérable curiosité",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.56 Talents Gnomes de niveau 13",
+      "family": "Éclat gnome",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Inaltérable curiosité et Sujet à l'Affadissement",
+      "choice": "",
+      "frequency": "une fois par période de 30 jours",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Éclat gnome",
+        "Traits": "Gnome, Affadissement, Endurance",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par période de 30 jours",
+        "Prérequis": "Inaltérable curiosité et Sujet à l'Affadissement"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Gnome"
+}

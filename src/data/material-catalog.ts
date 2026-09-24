@@ -284,6 +284,12 @@ export const CHAMBERINGS = {
   "GL-40B": "Grenade 40 × 46 mm",
   "ROQ-70": "Roquette 70 mm",
   "MIS-90": "Missile guidé 90 mm",
+  "ARW-SHORT": "Flèche pour arc court",
+  "ARW-LONG": "Flèche pour arc long",
+  "ARW-COMPOSITE": "Flèche pour arc composite",
+  "BOLT-LIGHT": "Carreau d’arbalète légère",
+  "BOLT-HEAVY": "Carreau d’arbalète lourde",
+  "BOLT-REPEATING": "Carreau d’arbalète à répétition",
 } as const;
 
 export const ARMOR_KINDS = {

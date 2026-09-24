@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-423",
+  "name": "Retomber encore",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Retomber encore</strong>.</p><p>Lorsqu&#39;il tombe ou devrait être renversé, le personnage réduit encore la hauteur effective de 4 mètres et peut rester debout s&#39;il demeure conscient. Il peut ensuite se déplacer de 1 mètre. Le talent ne réduit pas les dégâts d&#39;une collision, d&#39;un écrasement ou d&#39;une surface dangereuse.</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-358",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chute contrôlée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.120 Talents Beastkins Chats de niveau 5",
+      "family": "Chute, chance et neuf vies",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Chute contrôlée",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chute, chance et neuf vies",
+        "Prérequis": "Chute contrôlée",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Chat"
+}

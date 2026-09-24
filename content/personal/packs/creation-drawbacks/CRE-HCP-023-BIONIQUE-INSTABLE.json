@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-023-BIONIQUE-INSTABLE",
+  "name": "Bionique instable",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Bionique instable</strong>.</p><p><strong>Valeur :</strong> -1/-2</p>\n<p>Une prothèse ou amélioration fonctionne mais peut buguer. -1 : panne sur complication ou environnement hostile. -2 : piratable, douloureuse ou nécessitant maintenance fréquente.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2",
+      "effect": "Une prothèse ou amélioration fonctionne mais peut buguer. -1 : panne sur complication ou environnement hostile. -2 : piratable, douloureuse ou nécessitant maintenance fréquente."
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-035",
+  "name": "Adaptation absolue",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant un test de compétence, le personnage rassemble tout ce qu&#39;il a appris et adapte instantanément sa méthode.</p>\n<p>Pour ce test uniquement, il peut se considérer comme Maître dans la compétence utilisée si son rang réel est inférieur à Maître.</p>\n<p>S&#39;il est déjà Maître ou davantage, il ignore à la place jusqu&#39;à 2 points de malus circonstanciel provenant exclusivement :</p>\n<p>• de l&#39;improvisation ;</p>\n<p>• d&#39;une technologie ou culture inconnue ;</p>\n<p>• de l&#39;absence d&#39;un outil ordinaire ;</p>\n<p>• d&#39;une procédure inhabituelle ;</p>\n<p>• d&#39;un environnement de travail dégradé.</p>\n<p>Adaptation absolue :</p>\n<p>• ne satisfait aucun prérequis ;</p>\n<p>• ne permet pas d&#39;activer un talent demandant Maître ;</p>\n<p>• ne donne pas accès aux capacités d&#39;une Voie ;</p>\n<p>• ne remplace pas un outil spécialisé indispensable ;</p>\n<p>• ne contourne pas une incompatibilité biologique, énergétique ou artificielle ;</p>\n<p>• ne permet pas d&#39;effectuer l&#39;impossible.</p>\n<p>Le personnage atteint momentanément le niveau d&#39;exécution d&#39;un maître, mais ne possède ni toute son expérience ni ses techniques exclusives.</p>",
+    "traits": ["Humain", "Adaptation", "Compétence", "Concentration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-026",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Spécialiste de circonstance",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.24 Talents Humains de niveau 13",
+      "family": "Polyvalence adaptative",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Spécialiste de circonstance",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Polyvalence adaptative",
+        "Traits": "Humain, Adaptation, Compétence, Concentration",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Spécialiste de circonstance"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Humain"
+}

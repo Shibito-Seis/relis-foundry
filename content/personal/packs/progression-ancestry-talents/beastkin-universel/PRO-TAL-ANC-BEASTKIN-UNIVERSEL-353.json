@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-353",
+  "name": "Langage du corps animal",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Langage du corps animal</strong>.</p><p>Le personnage comprend les signaux corporels généraux des animaux et des Beastkins : peur, agressivité, douleur, curiosité, soumission, territorialité ou confiance.</p>\n<p>Il peut transmettre les mêmes intentions simples sans langue commune et gagne +2 circonstanciel aux tests de Diplomatie, Intimidation, Sang-froid ou Survie directement fondés sur cette communication.</p>\n<p>Le talent ne permet pas une conversation complexe, ne force aucun comportement et peut être trompé par un dressage, une maladie, une créature surnaturelle ou une morphologie inconnue.</p>",
+    "traits": ["Beastkin", "Communication", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.97 Talents Beastkins universels de niveau 1",
+      "family": "Rapport au vivant",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Rapport au vivant",
+        "Traits": "Beastkin, Communication, Social",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin universel"
+}

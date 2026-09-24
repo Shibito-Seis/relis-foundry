@@ -1,0 +1,24 @@
+{
+  "relisId": "FLX-1-11",
+  "name": "Liaison de position",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "flux", "rang-1"],
+  "system": {
+    "description": "<p><strong>Liaison de position</strong>.</p><p><strong>Flux — Rang 1.</strong></p>\n<p><strong>Activation :</strong> 1 / 2 A / 12 m</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Lie deux cibles consentantes pendant 3 tours ; elles savent direction et distance mutuelles et gagnent +1 contre séparation forcée.</p>\n<p><strong>Intensification :</strong> Durée 1 min ou distance maximale 30 m.</p>",
+    "traits": ["Flux", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Flux",
+      "rank": "1",
+      "activation": "1 / 2 A / 12 m",
+      "discipline": "Protection",
+      "effect": "Lie deux cibles consentantes pendant 3 tours ; elles savent direction et distance mutuelles et gagnent +1 contre séparation forcée.",
+      "scaling": "Durée 1 min ou distance maximale 30 m."
+    },
+    "level": 4
+  },
+  "folder": "Rang 1"
+}

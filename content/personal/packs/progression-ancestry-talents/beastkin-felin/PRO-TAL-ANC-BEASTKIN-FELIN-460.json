@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-460",
+  "name": "Bond sur la proie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bond sur la proie</strong>.</p><p>Le personnage bondit ou court jusqu&#39;à la moitié de sa Vitesse terrestre, puis effectue une attaque avec une arme naturelle contre une cible à portée. Il gagne +2 circonstanciel au test de saut ou de franchissement nécessaire à ce trajet.</p>\n<p>Le déplacement et l&#39;attaque consomment ensemble deux Actions, suivent les réactions et pénalités ordinaires, et ne permettent pas de traverser un obstacle infranchissable.</p>",
+    "traits": ["Beastkin", "Félin", "Attaque", "Mobilité", "Combat"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-449",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Départ foudroyant",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-450",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Appui bondissant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.131 Talents Beastkins Félins de niveau 5",
+      "family": "Bond, charge et poursuite",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Départ foudroyant ou Appui bondissant",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bond, charge et poursuite",
+        "Traits": "Beastkin, Félin, Attaque, Mobilité, Combat",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Départ foudroyant ou Appui bondissant"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Félin"
+}

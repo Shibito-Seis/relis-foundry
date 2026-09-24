@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-011-AFFINITE-TECHNO-MAGIQUE",
+  "name": "Affinité techno-magique",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Affinité techno-magique</strong>.</p><p><strong>Valeur :</strong> +2</p>\n<p>+2 aux jets de Techno-magie pour activer, stabiliser, identifier ou réparer un dispositif techno-magique. Une fois par session, il peut réduire une complication de surcharge techno-magique mineure.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+2",
+      "effect": "+2 aux jets de Techno-magie pour activer, stabiliser, identifier ou réparer un dispositif techno-magique. Une fois par session, il peut réduire une complication de surcharge techno-magique mineure."
+    }
+  },
+  "folder": ""
+}

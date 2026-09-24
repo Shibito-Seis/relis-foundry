@@ -1,0 +1,104 @@
+{
+  "relisId": "MYS-032",
+  "name": "Matrice de Dissipation mineure",
+  "type": "consumable",
+  "tags": ["materiel", "techno-magie"],
+  "system": {
+    "description": "<p><strong>Matrice de Dissipation mineure</strong> appartient au catalogue techno magie.</p><p>1. Mana. MAN-1-10. 3. test requis.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [
+      {
+        "relisId": "MAN-1-10",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "power",
+        "state": "resolved",
+        "labelSnapshot": "MAN-1-10",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "catalog": {
+      "kind": "techno-magie",
+      "sourceSection": "55.5.3 Parchemins et matrices à usage limité — MYS-025 à MYS-048",
+      "canonicalRow": [
+        "MYS-032",
+        "Matrice de Dissipation mineure",
+        "1",
+        "Mana",
+        "MAN-1-10",
+        "3",
+        "test requis"
+      ],
+      "formulaRef": "MAN-1-10"
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "matrix",
+      "effectSummary": "3"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "techno-magie"
+}

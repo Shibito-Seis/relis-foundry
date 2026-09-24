@@ -24,8 +24,8 @@ npm run content:build
 npm run content:check
 ```
 
-`content:generate` produit les JSON Foundry déterministes dans `build/content-source`. `content:build` utilise l’outil officiel Foundry pour compiler les trois familles dans `build/content-packs`. En 10-K2-P, elles contiennent 2 398 Items canoniques : 199 de Création, 1 444 de Progression et 755 de Matériel.
+`content:generate` produit les JSON Foundry déterministes dans `build/content-source`. `content:build` utilise l’outil officiel Foundry pour compiler 23 compendiums dans `build/content-packs`. En 10-K2-P v0.8.1, ils contiennent 2 404 Items : 199 de Création, 1 444 de Progression et 761 de Matériel. Les six entrées supplémentaires sont les standards techniques de flèches et carreaux requis par les armes canoniques. Les dossiers sources et les dossiers internes Foundry sont générés depuis la même classification stable.
 
 ## Aliases et questionnaire
 
-`aliases.json` conserve les anciens identifiants sans jamais les réémettre. `crystal-attunement.json` fixe la nomenclature et le contrat du questionnaire d’accord des Cœurs d’Écarlithe. 10-K2-P fournit les vrais Items, l’interface et les compendiums ; l’activation et la surcharge au Prana appartiennent toujours à 10-F.
+`aliases.json` conserve les anciens identifiants sans jamais les réémettre. `crystal-attunement.json` fixe la nomenclature et le contrat du questionnaire d’accord des Cœurs d’Écarlithe : banque de 48 situations et tirage stable de 20 par Cœur. 10-K2-P fournit les vrais Items, l’interface et les compendiums ; l’activation et la surcharge au Prana appartiennent toujours à 10-F.

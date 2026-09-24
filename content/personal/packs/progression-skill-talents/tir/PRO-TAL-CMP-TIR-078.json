@@ -1,0 +1,40 @@
+{
+  "relisId": "PRO-TAL-CMP-TIR-078",
+  "name": "Incident de tir maîtrisé",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Incident de tir maîtrisé</strong>.</p><p>Le personnage effectue un test de Tir contre le DD de l&#39;arme ou de l&#39;incident.</p>\n<p>• Réussite critique : l&#39;incident est immédiatement résolu et l&#39;arme conserve une Visée déjà préparée si la cible reste perceptible.</p>\n<p>• Réussite : l&#39;incident est immédiatement résolu.</p>\n<p>• Échec : l&#39;incident persiste et doit être résolu normalement.</p>\n<p>• Échec critique : l&#39;incident persiste et l&#39;arme ne peut pas être utilisée avant le début du prochain tour du personnage.</p>\n<p>Le talent ne restaure aucun PV structurel, ne remplace aucune pièce, ne refroidit pas instantanément un système en emballement et ne fonctionne pas sur une arme Brisée ou Détruite lorsque son état interdit le tir.</p>",
+    "traits": ["Compétence", "Manipulation", "Réaction", "Tir"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Tir — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Tir",
+      "activation": "Réaction",
+      "prerequisites": "Tir Maître",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "une arme à distance tenue par le personnage subit un incident simple ou perd l'alignement de son système de visée",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Tir",
+        "Niveau": "7",
+        "Traits": "Compétence, Manipulation, Réaction, Tir",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "une arme à distance tenue par le personnage subit un incident simple ou perd l'alignement de son système de visée",
+        "Prérequis": "Tir Maître",
+        "Réussite critique": "l'incident est immédiatement résolu et l'arme conserve une Visée déjà préparée si la cible reste perceptible.",
+        "Réussite": "l'incident est immédiatement résolu.",
+        "Échec": "l'incident persiste et doit être résolu normalement.",
+        "Échec critique": "l'incident persiste et l'arme ne peut pas être utilisée avant le début du prochain tour du personnage."
+      }
+    },
+    "level": 7
+  },
+  "folder": "Tir"
+}

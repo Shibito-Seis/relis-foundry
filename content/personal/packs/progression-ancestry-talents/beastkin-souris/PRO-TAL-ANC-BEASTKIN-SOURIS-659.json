@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-659",
+  "name": "Rien ne bouge sans moi",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Rien ne bouge sans moi</strong>.</p><p>Tant que le personnage touche une structure stable, il ne peut être considéré comme totalement surpris par un mouvement important que ses vibrisses pouvaient réellement détecter.</p>\n<p>Une fois par scène, lorsqu&#39;une source ainsi perçue entre dans un rayon de 6 mètres, il peut employer sa Réaction pour alerter ses alliés ou se déplacer de 2 mètres. L&#39;alerte ne révèle que la direction générale et le mouvement.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Souris", "Perception", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-654",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Carte vibratoire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.188 Talents Beastkins Souris de niveau 13",
+      "family": "Vibrisses, vibrations et vigilance",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Carte vibratoire",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vibrisses, vibrations et vigilance",
+        "Traits": "Beastkin, Souris, Perception, Réaction",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Carte vibratoire"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Souris"
+}

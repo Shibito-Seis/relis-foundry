@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-011-NAVIGATEUR-SPATIAL",
+  "name": "Navigateur spatial",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Navigateur spatial</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Technologie, Volonté</p>\n<p><strong>Profil marqué :</strong> +Intelligence, +Technologie ; -Force, -Présence ou -Dextérité</p>\n<p><strong>Compétences possibles :</strong> Navigation, Systèmes de vaisseau, Sciences, Investigation</p>\n<p><strong>Avantage typique :</strong> Cartes stellaires</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Technologie", "Volonté"],
+      "markedProfile": "+Intelligence, +Technologie ; -Force, -Présence ou -Dextérité",
+      "skillChoices": [
+        "Navigation",
+        "Systèmes de vaisseau",
+        "Sciences",
+        "Investigation"
+      ],
+      "typicalBenefit": "Cartes stellaires",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

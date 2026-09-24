@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-571",
+  "name": "Fouet d'équilibre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Fouet d&#39;équilibre</strong>.</p><p>Lorsque le personnage échoue sans échec critique à un test d&#39;équilibre, de renversement ou de déplacement forcé, il réduit de 2 mètres la chute, la glissade ou le déplacement obtenu. S&#39;il ne reste aucun déplacement, il conserve son appui.</p>\n<p>Le talent ne transforme pas un résultat critique, ne crée aucun point d&#39;ancrage et ne permet pas à la queue de saisir un objet.</p>",
+    "traits": ["Beastkin", "Lézard", "Appendice", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-561",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Queue stabilisatrice",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.164 Talents Beastkins Lézards de niveau 5",
+      "family": "Queue, stabilité et mobilité",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Queue stabilisatrice",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Queue, stabilité et mobilité",
+        "Traits": "Beastkin, Lézard, Appendice, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Queue stabilisatrice"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Lézard"
+}

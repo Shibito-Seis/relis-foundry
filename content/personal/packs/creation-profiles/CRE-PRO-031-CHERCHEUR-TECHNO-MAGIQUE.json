@@ -1,0 +1,28 @@
+{
+  "relisId": "CRE-PRO-031-CHERCHEUR-TECHNO-MAGIQUE",
+  "name": "Chercheur techno-magique",
+  "type": "profile",
+  "tags": ["creation", "profil"],
+  "system": {
+    "description": "<p><strong>Chercheur techno-magique</strong>.</p><p><strong>Attribut standard :</strong> Intelligence, Technologie, Maîtrise Magique</p>\n<p><strong>Profil marqué :</strong> +Technologie, +Maîtrise Magique ; -Force, -Vigueur ou -Présence</p>\n<p><strong>Compétences possibles :</strong> Techno-magie, Sciences, Canalisation, Ingénierie</p>\n<p><strong>Avantage typique :</strong> Catalyseur expérimental</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "profile",
+      "sourceSection": "6",
+      "standardAttributes": ["Intelligence", "Technologie", "Maîtrise Magique"],
+      "markedProfile": "+Technologie, +Maîtrise Magique ; -Force, -Vigueur ou -Présence",
+      "skillChoices": [
+        "Techno-magie",
+        "Sciences",
+        "Canalisation",
+        "Ingénierie"
+      ],
+      "typicalBenefit": "Catalyseur expérimental",
+      "qualifiedSkillChoices": 2,
+      "skillTalentLevel": 1
+    }
+  },
+  "folder": ""
+}

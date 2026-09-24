@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-IAA-319",
+  "name": "Bastion du noyau",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bastion du noyau</strong>.</p><p>Lorsque le châssis est détruit mais que le noyau n&#39;a pas été spécifiquement détruit par une Blessure Grave, Mortelle ou une attaque ciblée appropriée, le noyau reste récupérable.</p>\n<p>Le personnage peut demeurer conscient, communiquer par une interface d&#39;urgence à portée de main et percevoir très grossièrement son environnement pendant une heure avant un arrêt sécurisé.</p>\n<p>Il gagne +2 circonstanciel aux tests de réparation, extraction ou transfert du noyau. Le talent ne lui permet aucune action physique sans châssis.</p>",
+    "traits": ["IAA", "Architecture", "Incarnée", "Noyau"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-IAA-311",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Noyau incarné",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.87 Talents IAA de niveau 5",
+      "family": "Incarnée isolée",
+      "ancestry": "IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Noyau incarné",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Incarnée isolée",
+        "Traits": "IAA, Architecture, Incarnée, Noyau",
+        "Type": "Passif",
+        "Prérequis": "Noyau incarné"
+      }
+    },
+    "level": 5
+  },
+  "folder": "IAA"
+}

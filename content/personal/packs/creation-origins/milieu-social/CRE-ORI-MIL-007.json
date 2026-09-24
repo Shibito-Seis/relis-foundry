@@ -1,0 +1,22 @@
+{
+  "relisId": "CRE-ORI-MIL-007",
+  "name": "Réfugié",
+  "type": "origin",
+  "tags": ["creation", "origine", "milieu-social"],
+  "system": {
+    "description": "<p><strong>Réfugié</strong>.</p><p>Le personnage vient d’une zone détruite, évacuée ou devenue invivable avant le départ. — Instinct de survie, Ancre morale, Ma famille est en vie ! — Famille à nourrir, Otage affectif, Culpabilité du survivant, Trauma de cryostase</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "origin-milieu-social",
+      "sourceSection": "7",
+      "fields": {
+        "Description": "Le personnage vient d’une zone détruite, évacuée ou devenue invivable avant le départ.",
+        "Atouts suggérés": "Instinct de survie, Ancre morale, Ma famille est en vie !",
+        "Handicaps suggérés": "Famille à nourrir, Otage affectif, Culpabilité du survivant, Trauma de cryostase"
+      }
+    }
+  },
+  "folder": "milieu-social"
+}

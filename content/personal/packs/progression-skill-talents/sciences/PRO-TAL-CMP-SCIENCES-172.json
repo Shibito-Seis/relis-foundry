@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-172",
+  "name": "Prélèvement contrôlé",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Prélèvement contrôlé</strong>.</p><p>Avec des outils adaptés, le personnage prélève et documente un échantillon accessible sans perdre son contexte immédiat.</p>\n<p>Il effectue un test de Sciences contre le DD de la source.</p>\n<p>• Réussite critique : il conserve l&#39;échantillon, ses conditions utiles et un témoin de contrôle ; il identifie aussi les exigences particulières de stockage.</p>\n<p>• Réussite : il conserve l&#39;échantillon et son contexte ; le premier test visant à l&#39;analyser gagne +2 circonstanciel.</p>\n<p>• Échec : le prélèvement n&#39;est pas exploitable, mais la source n&#39;est pas davantage altérée.</p>\n<p>• Échec critique : un risque de contamination ou de dégradation est détecté avant l&#39;analyse ; l&#39;échantillon doit être repris ou traité.</p>\n<p>Le talent ne crée pas de contenant, ne rend pas inoffensive une matière dangereuse et ne permet pas de prélever une source physiquement inaccessible.</p>",
+    "traits": ["Compétence", "Exploration", "Sciences"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Sciences Qualifié",
+      "choice": "",
+      "frequency": "une fois par source d'échantillon",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "1",
+        "Traits": "Compétence, Exploration, Sciences",
+        "Type": "Activité de 1 minute",
+        "Fréquence": "une fois par source d'échantillon",
+        "Prérequis": "Sciences Qualifié",
+        "Réussite critique": "il conserve l'échantillon, ses conditions utiles et un témoin de contrôle ; il identifie aussi les exigences particulières de stockage.",
+        "Réussite": "il conserve l'échantillon et son contexte ; le premier test visant à l'analyser gagne +2 circonstanciel.",
+        "Échec": "le prélèvement n'est pas exploitable, mais la source n'est pas davantage altérée.",
+        "Échec critique": "un risque de contamination ou de dégradation est détecté avant l'analyse ; l'échantillon doit être repris ou traité."
+      }
+    },
+    "level": 1
+  },
+  "folder": "Sciences"
+}

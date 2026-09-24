@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-5-06",
+  "name": "Avatar colossal",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-5"],
+  "system": {
+    "description": "<p><strong>Avatar colossal</strong>.</p><p><strong>Prana — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / personnel</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Pendant 5 tours, gabarit +1, allonge +2 m, Résistance 6, dégâts physiques +2d8, mais Signature +2 et espaces exigés.</p>\n<p><strong>Intensification :</strong> Gabarit ou Résistance +1 palier, selon environnement.</p>",
+    "traits": ["Prana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "5",
+      "activation": "6 / 3 A / personnel",
+      "discipline": "Transformation",
+      "effect": "Pendant 5 tours, gabarit +1, allonge +2 m, Résistance 6, dégâts physiques +2d8, mais Signature +2 et espaces exigés.",
+      "scaling": "Gabarit ou Résistance +1 palier, selon environnement."
+    },
+    "level": 16
+  },
+  "folder": "Rang 5"
+}

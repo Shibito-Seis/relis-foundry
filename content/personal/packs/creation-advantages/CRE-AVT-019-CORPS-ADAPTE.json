@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-AVT-019-CORPS-ADAPTE",
+  "name": "Corps adapté",
+  "type": "advantage",
+  "tags": ["creation", "atout"],
+  "system": {
+    "description": "<p><strong>Corps adapté</strong>.</p><p><strong>Valeur :</strong> +1</p>\n<p>Choisir un environnement : froid, chaleur, faible oxygène, gravité forte/faible, toxines légères, radiation faible. Le personnage gagne +2 aux jets pour y résister.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "advantage",
+      "sourceSection": "8",
+      "value": "+1",
+      "effect": "Choisir un environnement : froid, chaleur, faible oxygène, gravité forte/faible, toxines légères, radiation faible. Le personnage gagne +2 aux jets pour y résister."
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,74 @@
+{
+  "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-130",
+  "name": "Vision synoptique absolue",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Vision synoptique absolue</strong>.</p><p>Le personnage rassemble les informations accessibles de plusieurs postes et établit un plan unique pour préserver les fonctions vitales d&#39;un bâtiment en crise.</p>\n<p>Il effectue un test de Systèmes de vaisseau contre le DD le plus élevé des sous-systèmes concernés.</p>\n<p>• Réussite critique : il identifie toutes les dépendances accessibles, l&#39;ordre optimal des opérations et la prochaine cascade probable ; jusqu&#39;à six opérateurs gagnent +2 circonstanciel à leurs tests suivant le plan, et le premier échec simple portant sur une procédure prévue devient une réussite.</p>\n<p>• Réussite : il identifie les dépendances principales et l&#39;ordre des opérations ; jusqu&#39;à six opérateurs gagnent +2 circonstanciel à leur premier test suivant le plan.</p>\n<p>• Échec : la situation évolue trop vite pour procurer un bénéfice.</p>\n<p>• Échec critique : une dépendance reste incertaine ; le MJ l&#39;annonce avant la première décision irréversible.</p>\n<p>Chaque opérateur doit disposer de son Poste, de ses permissions, de ses ressources et de sa compétence. Le talent ne crée aucune capacité du bâtiment et ne remplace ni commandement d&#39;équipage, ni réparation, ni pilotage, ni combat spatial.</p>\n<p>---</p>",
+    "traits": [
+      "Analyse",
+      "Compétence",
+      "Mythique",
+      "Systèmes de vaisseau",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-122",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Diagnostic de bord",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-126",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Liaison interpostes",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-128",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Distribution prioritaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Systèmes de vaisseau — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Systèmes de vaisseau",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Systèmes de vaisseau Mythique ; Diagnostic de bord, Liaison interpostes et Distribution prioritaire",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "jusqu'à 3 rounds",
+      "metadata": {
+        "Compétence": "Systèmes de vaisseau",
+        "Niveau": "23",
+        "Traits": "Analyse, Compétence, Mythique, Systèmes de vaisseau, Travail d'équipe",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par scène",
+        "Durée": "jusqu'à 3 rounds",
+        "Prérequis": "Systèmes de vaisseau Mythique ; Diagnostic de bord, Liaison interpostes et Distribution prioritaire",
+        "Réussite critique": "il identifie toutes les dépendances accessibles, l'ordre optimal des opérations et la prochaine cascade probable ; jusqu'à six opérateurs gagnent +2 circonstanciel à leurs tests suivant le plan, et le premier échec simple portant sur une procédure prévue devient une réussite.",
+        "Réussite": "il identifie les dépendances principales et l'ordre des opérations ; jusqu'à six opérateurs gagnent +2 circonstanciel à leur premier test suivant le plan.",
+        "Échec": "la situation évolue trop vite pour procurer un bénéfice.",
+        "Échec critique": "une dépendance reste incertaine ; le MJ l'annonce avant la première décision irréversible."
+      }
+    },
+    "level": 23
+  },
+  "folder": "Systèmes de vaisseau"
+}

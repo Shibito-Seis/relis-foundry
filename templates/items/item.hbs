@@ -113,6 +113,34 @@
       </section>
     {{/if}}
 
+    {{#if isFocalizer}}
+      <section class="relis-card relis-material-profile relis-focus-profile">
+        <p class="relis-kicker">Focaliseur techno-magique</p>
+        <h2>Réserve et formules encodées</h2>
+        <dl class="relis-fact-list">
+          <div><span>Source</span><strong>{{focusProfile.source}}</strong></div>
+          <div><span>Rang maximal</span><strong
+            >{{focusProfile.maxRank}}</strong></div>
+          <div><span>Formules ou famille</span><strong
+            >{{focusProfile.formulasOrFamily}}</strong></div>
+          <div><span>Tampon magique</span><strong
+            >{{focusProfile.buffer}}</strong></div>
+          <div><span>Charge interne</span><strong
+            >{{system.energyProfile.current}}
+              /
+              {{system.energyProfile.maximum}}
+              CE</strong></div>
+          <div><span>Coût</span><strong
+            >{{focusProfile.cePerEffectiveRank}}</strong></div>
+          <div><span>Identité</span><strong
+            >{{focusProfile.identity}}</strong></div>
+        </dl>
+        <p class="relis-scope-note">Le tampon se recharge depuis une
+          {{focusProfile.bufferRecharge}}. Les CE ne rechargent jamais ce
+          tampon. L’exécution des formules sera automatisée en 10-F.</p>
+      </section>
+    {{/if}}
+
     {{#if isPranaCrystalResource}}
       <section class="relis-card relis-attunement-card">
         <p class="relis-kicker">Cœur d’Écarlithe</p>
@@ -749,12 +777,12 @@
                     pressureClassOptions
                     selected=system.weaponProfile.pressureClassId
                   }}</select></label>
-              <label>Interface d’alimentation<select
-                  data-document-field="system.weaponProfile.feedInterfaceId"
-                >{{selectOptions
-                    feedInterfaceOptions
-                    selected=system.weaponProfile.feedInterfaceId
-                  }}</select></label>
+              {{#if usesPhysicalFeedInterface}}<label>Interface d’alimentation<select
+                    data-document-field="system.weaponProfile.feedInterfaceId"
+                  >{{selectOptions
+                      feedInterfaceOptions
+                      selected=system.weaponProfile.feedInterfaceId
+                    }}</select></label>{{/if}}
             {{/if}}
             {{#if usesInternalFeed}}
               <label>Capacité du magasin interne<input
@@ -775,13 +803,17 @@
                   data-value-type="nullable-number"
                   data-document-field="system.weaponProfile.reloadActions"
                 /></label>
+              {{#if system.weaponProfile.reloadProcedure}}<p
+                  class="relis-scope-note"
+                >{{system.weaponProfile.reloadProcedure}}</p>{{/if}}
             {{/if}}
             {{#if usesDetachableFeed}}<p class="relis-scope-note">La capacité
                 appartient au chargeur Item installé, jamais à l’arme.</p>{{/if}}
             {{#if usesChamberFeed}}<p class="relis-scope-note">Une munition peut
                 être placée directement dans la chambre. La capacité implicite
                 est de 1.</p>{{/if}}
-            {{#if usesProjectileFeed}}{{#unless usesChamberFeed}}<label><input
+            {{#if usesPhysicalFeedInterface}}{{#unless usesChamberFeed}}<label
+                ><input
                     type="checkbox"
                     {{checked system.weaponProfile.chamberSeparate}}
                     data-value-type="boolean"
@@ -814,12 +846,6 @@
                 >{{selectOptions
                     powerClassOptions
                     selected=system.energyProfile.powerClassId
-                  }}</select></label>
-              <label>Technologie compatible<select
-                  data-document-field="system.energyProfile.technologyId"
-                >{{selectOptions
-                    technologyOptions
-                    selected=system.energyProfile.technologyId
                   }}</select></label>
               <label>Interface de batterie<select
                   data-document-field="system.energyProfile.interfaceId"
@@ -1307,14 +1333,6 @@
                   pressureClassOptions
                   selected=system.ammunitionProfile.pressureClassId
                 }}</select></label>
-            <label>Interfaces compatibles<multi-select
-                name="system.ammunitionProfile.feedInterfaceIds"
-                data-value-type="string-set"
-                data-document-field="system.ammunitionProfile.feedInterfaceIds"
-              >{{selectOptions
-                  technicalInterfaceOptions
-                  selected=system.ammunitionProfile.feedInterfaceIds
-                }}</multi-select></label>
             <label>Types de dégâts<multi-select
                 name="system.ammunitionProfile.damageTypes"
                 data-value-type="string-set"

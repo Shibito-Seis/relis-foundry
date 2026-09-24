@@ -1,0 +1,161 @@
+{
+  "relisId": "MAT-WPN-058-FUSIL-A-AIGUILLES",
+  "name": "Fusil à aiguilles",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "physicalLongGun"],
+  "system": {
+    "description": "<p><strong>Fusil à aiguilles</strong>.</p><p><strong>Niv. :</strong> 4. <strong>Accès :</strong> Spécialisée. <strong>Dégâts / Déf. :</strong> 1d6 Perforant / CAP. <strong>Préc. :</strong> +1. <strong>Portée :</strong> 24/72. <strong>Capacité / Recharge :</strong> 20 aiguilles ; Recharge 1. <strong>Recul :</strong> 0. <strong>Traits :</strong> Localisable, Pénétration 2. <strong>Signature :</strong> Discrète. <strong>Fiab. :</strong> 3. <strong>Struct. :</strong> S. <strong>Empl. :</strong> 3. <strong>Prix :</strong> 3 800.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.105 Lot 5-K4 — Armes longues physiques",
+      "columns": {
+        "#": "14",
+        "Arme": "Fusil à aiguilles",
+        "Niv.": "4",
+        "Accès": "Spécialisée",
+        "Dégâts / Déf.": "1d6 Perforant / CAP",
+        "Préc.": "+1",
+        "Portée": "24/72",
+        "Capacité / Recharge": "20 aiguilles ; Recharge 1",
+        "Recul": "0",
+        "Traits": "Localisable, Pénétration 2",
+        "Signature": "Discrète",
+        "Fiab.": "3",
+        "Struct.": "S",
+        "Empl.": "3",
+        "Prix": "3 800"
+      },
+      "reloadProfile": {
+        "unitaryFormula": "1 + Dextérité",
+        "unitaryFormulaId": "one-plus-dexterity",
+        "automationLot": "10-F",
+        "mayLoadOneByOne": true
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 3800,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "physicalLongGun",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": 1,
+      "damageDice": 1,
+      "damageDie": "d6",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d6 Perforant / CAP",
+      "damageTypes": ["piercing"],
+      "damageSources": ["ballistic"],
+      "penetration": 2,
+      "rangeKind": "increments",
+      "range": "24/72",
+      "rangeOptimal": 24,
+      "rangeMaximum": 72,
+      "recoil": 0,
+      "feedKind": "detachable",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "AIG-3",
+      "chamberId": "AIG-3",
+      "pressureClassId": "specializedProjectile",
+      "pressureClass": "specializedProjectile",
+      "feedInterfaceId": "cassette",
+      "feedInterface": "cassette",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": ["dart"],
+      "acousticSignature": "discreet",
+      "ammunitionConsumption": {
+        "single": 1
+      },
+      "reloadActions": null,
+      "reloadProcedure": "Chargement manuel : jusqu’à 1 + Dextérité munitions par action, sans dépasser la capacité.",
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  },
+  "folder": "Armes longues physiques"
+}

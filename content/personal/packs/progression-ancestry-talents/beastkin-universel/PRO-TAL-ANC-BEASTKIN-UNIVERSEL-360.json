@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-360",
+  "name": "Coordination instinctive",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Coordination instinctive</strong>.</p><p>Lorsqu&#39;un allié à 6 mètres entreprend un test physique, sensoriel ou de Survie auquel le personnage pourrait plausiblement contribuer par un geste, un signal, un appui ou son anatomie, il lui accorde +2 circonstanciel.</p>\n<p>Le personnage doit percevoir la situation et décrire son aide. Cette réaction ne lui permet pas de se déplacer, d&#39;attaquer ou de manipuler un second objectif.</p>\n<p>Le talent ne se cumule pas avec une autre aide circonstancielle apportée par le personnage au même test.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Coopération", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.98 Talents Beastkins universels de niveau 5",
+      "family": "Peuple Beastkin",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Peuple Beastkin",
+        "Traits": "Beastkin, Coopération, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin universel"
+}

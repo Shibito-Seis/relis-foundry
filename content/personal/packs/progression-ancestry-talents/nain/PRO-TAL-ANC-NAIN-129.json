@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-129",
+  "name": "Forge de campagne",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage assemble, ajuste ou détourne un petit ensemble d&#39;outils afin de remplir une fonction précise :</p>\n<p>• diagnostic ;</p>\n<p>• découpe ;</p>\n<p>• soudure ou scellement ;</p>\n<p>• assemblage ;</p>\n<p>• réparation d&#39;urgence ;</p>\n<p>• calibration mécanique.</p>\n<p>Pendant la scène ou la tâche longue qui suit :</p>\n<p>• l&#39;ensemble est considéré comme un outil approprié pour une intervention ordinaire de cette fonction ;</p>\n<p>• son utilisateur gagne +1 circonstanciel au test correspondant ;</p>\n<p>• l&#39;outil peut compenser l&#39;absence d&#39;un instrument courant, mais jamais celle d&#39;un atelier ou d&#39;un appareil spécialisé indispensable.</p>\n<p>Une seule Forge de campagne créée par le personnage peut être active à la fois. Elle consomme ou immobilise des outils et matériaux réellement disponibles et cesse d&#39;être fonctionnelle lorsqu&#39;ils sont rendus à leur usage normal.</p>",
+    "traits": ["Nain", "Exploration", "Outil", "Réparation", "Technologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-114",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Formation de la forge",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-115",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réparation méthodique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Forge et ouvrage",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "Formation de la forge ou Réparation méthodique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Forge et ouvrage",
+        "Traits": "Nain, Exploration, Outil, Réparation, Technologie",
+        "Type": "préparation de 10 minutes",
+        "Prérequis": "Formation de la forge ou Réparation méthodique"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Nain"
+}

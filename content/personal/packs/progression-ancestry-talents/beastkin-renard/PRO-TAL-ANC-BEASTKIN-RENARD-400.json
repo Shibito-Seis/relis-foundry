@@ -1,0 +1,55 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-400",
+  "name": "Forme sans limite",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Forme sans limite</strong>.</p><p>Pendant trois tours, le personnage donne à l&#39;une de ses formes une stature minuscule ou imposante.</p>\n<p>• Forme réduite : sa taille descend d&#39;une catégorie, au minimum Très Petite ; il gagne +2 circonstanciel en Discrétion lorsque sa taille aide réellement et peut franchir des ouvertures adaptées, mais subit -2 circonstanciel aux tests de Force et d&#39;Athlétisme dépendant de la masse.</p>\n<p>• Forme imposante : sa taille augmente d&#39;une catégorie, au maximum Grande ; il gagne +2 circonstanciel aux tests d&#39;Athlétisme pour pousser, soulever ou résister au déplacement et aux tests d&#39;Intimidation fondés sur sa stature.</p>\n<p>La transformation ne modifie ni portée, ni dégâts, ni PV, ni nombre d&#39;espaces contrôlés. Elle ne permet pas d&#39;écraser une créature ou de traverser une structure trop fragile sans conséquence.</p>",
+    "traits": ["Beastkin", "Renard", "Métamorphose"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-376",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Visage emprunté",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-377",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forme du petit renard",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.111 Talents Beastkins Renards de niveau 13",
+      "family": "Masques et métamorphoses",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Visage emprunté ou Forme du petit renard",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masques et métamorphoses",
+        "Traits": "Beastkin, Renard, Métamorphose",
+        "Prérequis": "Visage emprunté ou Forme du petit renard",
+        "Type": "1 Action",
+        "Fréquence": "une fois par jour",
+        "Forme réduite": "sa taille descend d'une catégorie, au minimum Très Petite ; il gagne +2 circonstanciel en Discrétion lorsque sa taille aide réellement et peut franchir des ouvertures adaptées, mais subit -2 circonstanciel aux tests de Force et d'Athlétisme dépendant de la masse.",
+        "Forme imposante": "sa taille augmente d'une catégorie, au maximum Grande ; il gagne +2 circonstanciel aux tests d'Athlétisme pour pousser, soulever ou résister au déplacement et aux tests d'Intimidation fondés sur sa stature."
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Renard"
+}

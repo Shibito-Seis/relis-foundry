@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-ACROBATIES-005",
+  "name": "Traversée vive",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>Traversée vive</strong>.</p><p>Le personnage se déplace jusqu&#39;à son déplacement sur des appuis étroits, instables ou mobiles et effectue un seul test d&#39;Acrobaties contre le DD le plus élevé rencontré pendant cette traversée.</p>\n<p>• Réussite critique : il accomplit tout le déplacement et ignore le terrain difficile ordinaire provenant uniquement de ces appuis.</p>\n<p>• Réussite : il accomplit tout le déplacement.</p>\n<p>• Échec : il s&#39;arrête au dernier espace stable avant le danger qui a provoqué l&#39;échec.</p>\n<p>• Échec critique : il subit la conséquence normale du terrain : chute, glissade, perte d&#39;appui ou autre effet approprié.</p>\n<p>Le talent ne permet pas de franchir une interruption sans saut, de courir sur une surface verticale ou de traverser un espace dépourvu de tout appui.</p>",
+    "traits": ["Acrobaties", "Compétence", "Mouvement"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Acrobaties — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Acrobaties",
+      "activation": "1 Action",
+      "prerequisites": "Acrobaties Expert",
+      "choice": "",
+      "frequency": "une fois par tour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Acrobaties",
+        "Niveau": "3",
+        "Traits": "Acrobaties, Compétence, Mouvement",
+        "Type": "1 Action",
+        "Fréquence": "une fois par tour",
+        "Prérequis": "Acrobaties Expert",
+        "Réussite critique": "il accomplit tout le déplacement et ignore le terrain difficile ordinaire provenant uniquement de ces appuis.",
+        "Réussite": "il accomplit tout le déplacement.",
+        "Échec": "il s'arrête au dernier espace stable avant le danger qui a provoqué l'échec.",
+        "Échec critique": "il subit la conséquence normale du terrain : chute, glissade, perte d'appui ou autre effet approprié."
+      }
+    },
+    "level": 3
+  },
+  "folder": "Acrobaties"
+}

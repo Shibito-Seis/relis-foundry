@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-LEZARD-557",
+  "name": "Plaques orientées",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Plaques orientées</strong>.</p><p>Le personnage sait présenter les plaques les plus résistantes de son corps. Il gagne +2 circonstanciel aux tests destinés à résister à une éraflure, une abrasion, une pression superficielle ou une Blessure ciblant explicitement une zone protégée par ses écailles.</p>\n<p>Le talent ne protège pas une articulation, un œil, une plaie ouverte ou un organe interne et ne modifie pas sa catégorie d&#39;armure.</p>",
+    "traits": ["Beastkin", "Lézard", "Défense", "Physiologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.163 Talents Beastkins Lézards de niveau 1",
+      "family": "Écailles et défense physiologique",
+      "ancestry": "Beastkin Lézard",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Écailles et défense physiologique",
+        "Traits": "Beastkin, Lézard, Défense, Physiologie",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Lézard"
+}

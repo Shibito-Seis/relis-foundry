@@ -1,0 +1,105 @@
+{
+  "relisId": "PRO-VOI-008-INGENIEUR",
+  "name": "Ingénieur",
+  "type": "path",
+  "tags": ["progression", "voie"],
+  "system": {
+    "description": "<p><strong>Ingénieur</strong>.</p><p><strong>Attribut clef :</strong> Technologie ou Intelligence</p>\n<p><strong>Compétences :</strong> Large / savante — 6 — Ingénierie, Systèmes de vaisseau, Sciences — Informatique, Investigation, Endurance, Techno-magie, Pilotage, Armes lourdes</p>\n<p><strong>Dotation :</strong> Trousse d&#39;ingénierie, outils de réparation, pièces ou patchs techniques.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "path",
+      "sourceSection": "9",
+      "keyAttributes": ["Technologie", "Intelligence"],
+      "skillFamily": "Large / savante",
+      "qualifiedSkillTotal": 6,
+      "requiredSkills": ["Ingénierie", "Systèmes de vaisseau", "Sciences"],
+      "skillChoices": [
+        "Informatique",
+        "Investigation",
+        "Endurance",
+        "Techno-magie",
+        "Pilotage",
+        "Armes lourdes"
+      ],
+      "branchNames": [
+        "Réparateur de crise",
+        "Modules de vaisseau",
+        "Drones",
+        "Robotique",
+        "Saboteur",
+        "Constructeur de terrain",
+        "Armurier"
+      ],
+      "initialLoadout": "Trousse d'ingénierie, outils de réparation, pièces ou patchs techniques.",
+      "loadoutRefs": [],
+      "specializationRefs": [
+        {
+          "relisId": "PRO-SPE-08-01-REPARATEUR-DE-CRISE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Ingénieur — Réparateur de crise",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-08-02-MODULES-DE-VAISSEAU",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Ingénieur — Modules de vaisseau",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-08-03-DRONES",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Ingénieur — Drones",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-08-04-ROBOTIQUE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Ingénieur — Robotique",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-08-05-SABOTEUR",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Ingénieur — Saboteur",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-08-06-CONSTRUCTEUR-DE-TERRAIN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Ingénieur — Constructeur de terrain",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "PRO-SPE-08-07-ARMURIER",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "specialization",
+          "state": "resolved",
+          "labelSnapshot": "Ingénieur — Armurier",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  },
+  "folder": ""
+}

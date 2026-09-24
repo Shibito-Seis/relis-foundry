@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-212",
+  "name": "Ancrage du noyau",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Ancrage du noyau</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Volonté ou de Canalisation pour résister au drainage, à la possession, à l&#39;altération de son énergie interne ou à la perte de contrôle de son propre pouvoir.</p>\n<p>Une fois par session, il peut transformer un échec critique à l&#39;un de ces tests en échec ordinaire.</p>\n<p>Le talent ne protège pas d&#39;une influence mentale sans composante énergétique et ne rend aucune ressource impossible à épuiser.</p>",
+    "traits": ["Elman", "Défense", "Prana", "Volonté"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Circuit intérieur",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Circuit intérieur",
+        "Traits": "Elman, Défense, Prana, Volonté",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elman"
+}

@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-237",
+  "name": "Regard sans spectre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Regard sans spectre</strong>.</p><p>Pendant une minute, le personnage perçoit les signatures énergétiques qui échappent au spectre ordinaire : résidus très faibles, invisibilité alimentée, illusion active, conduit dissimulé ou rupture locale du Flux.</p>\n<p>Il gagne +2 circonstanciel aux tests de Perception, Investigation ou Canalisation destinés à localiser ou distinguer ces phénomènes.</p>\n<p>Le talent ne voit pas une créature physiquement invisible si elle ne produit aucune trace accessible, ne traverse pas un blindage et ne dissipe aucune illusion.</p>",
+    "traits": ["Elman", "Détection", "Énergie", "Illusion"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ELMAN-227",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Vision énergétique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.66 Talents Elmans de niveau 9",
+      "family": "Sensibilité énergétique",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Vision énergétique",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sensibilité énergétique",
+        "Traits": "Elman, Détection, Énergie, Illusion",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Vision énergétique"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Elman"
+}

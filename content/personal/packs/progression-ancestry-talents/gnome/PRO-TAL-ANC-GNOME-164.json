@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-164",
+  "name": "Formation buissonnière",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Formation buissonnière</strong>.</p><p>Le personnage devient Qualifié dans la compétence choisie.</p>\n<p>Lorsqu&#39;il apprend par manipulation, observation directe ou expérimentation et dispose d&#39;au moins dix minutes, il gagne +2 circonstanciel au premier test utilisant cette compétence pour comprendre le sujet étudié.</p>\n<p>Cette formation ne fournit ni laboratoire, ni outil, ni accès à une procédure classifiée. Le bonus ne s&#39;applique pas lorsqu&#39;aucune expérimentation raisonnable n&#39;est possible.</p>",
+    "traits": ["Gnome", "Compétence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Curiosité insatiable",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "Culture, Informatique, Ingénierie, Investigation, Sciences ou Techno-magie",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Curiosité insatiable",
+        "Traits": "Gnome, Compétence",
+        "Type": "Passif",
+        "Choix": "Culture, Informatique, Ingénierie, Investigation, Sciences ou Techno-magie"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Gnome"
+}

@@ -1,0 +1,111 @@
+{
+  "relisId": "MAT-CON-EXP-011-CHARGE-DE-DEMOLITION",
+  "name": "Charge de démolition",
+  "type": "consumable",
+  "tags": ["materiel", "consommable", "explosif-personnel"],
+  "system": {
+    "description": "<p><strong>Consommable :</strong> Charge de démolition. <strong>Niv. :</strong> 3. <strong>Coût :</strong> 3 Actions poser. <strong>Zone :</strong> Explosion 2. <strong>Déf. :</strong> CAP. <strong>Effet principal :</strong> 3d10 Contondant, Anti-matériel. <strong>Prix :</strong> 600.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "explosive-consumable",
+      "sourceSection": "41.184 Catalogue corrigé — 12 profils",
+      "columns": {
+        "#": "11",
+        "Consommable": "Charge de démolition",
+        "Niv.": "3",
+        "Coût": "3 Actions poser",
+        "Zone": "Explosion 2",
+        "Déf.": "CAP",
+        "Effet principal": "3d10 Contondant, Anti-matériel",
+        "Prix": "600"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 600,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "consumableProfile": {
+      "kind": "charge",
+      "actionCost": 3,
+      "area": "Explosion 2",
+      "effectSummary": "3d10 Contondant, Anti-matériel"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  },
+  "folder": "explosive-consumable"
+}

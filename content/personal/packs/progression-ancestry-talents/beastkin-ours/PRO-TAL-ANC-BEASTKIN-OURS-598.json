@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-OURS-598",
+  "name": "Bras d'ours",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Bras d&#39;ours</strong>.</p><p>Lorsque ses deux mains sont libres, le personnage gagne +2 circonstanciel aux tests d&#39;Athlétisme pour établir ou maintenir une saisie sur une cible accessible.</p>\n<p>Le talent ne permet pas de saisir une cible trop grande ou intangible. Les mains employées ne peuvent simultanément porter une arme, manipuler un objet ou saisir une autre cible.</p>",
+    "traits": ["Beastkin", "Ours", "Athlétisme", "Contrôle"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.174 Talents Beastkins Ours de niveau 1",
+      "family": "Saisie et étreinte",
+      "ancestry": "Beastkin Ours",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Saisie et étreinte",
+        "Traits": "Beastkin, Ours, Athlétisme, Contrôle",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Ours"
+}

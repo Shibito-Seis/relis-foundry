@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-HUMAIN-034",
+  "name": "Réparer les fautes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage active l&#39;Orientation Réparer de Porter le Précepte, il peut désigner une même scène, opération ou tâche longue consacrée à la réparation d&#39;un tort lié à l&#39;humanité.</p>\n<p>Au lieu de recevoir +2 circonstanciel à un seul test, il reçoit +2 circonstanciel à ses deux prochains tests directement consacrés au même objectif.</p>\n<p>Cela peut concerner :</p>\n<p>• réparer un dommage matériel causé par des Humains ;</p>\n<p>• restituer une ressource ou une archive ;</p>\n<p>• secourir une communauté lésée ;</p>\n<p>• désamorcer un conflit historique ;</p>\n<p>• corriger une expérience, un protocole ou une institution humaine ;</p>\n<p>• protéger les victimes d&#39;une décision terrienne ;</p>\n<p>• restaurer une coopération rompue.</p>\n<p>Les deux tests doivent contribuer au même effort. Le bonus ne s&#39;applique pas aux actions sans rapport direct avec la réparation annoncée.</p>\n<p>Si au moins l&#39;un des deux tests réussit, le personnage choisit également l&#39;un des effets suivants :</p>\n<p>• lui-même et un allié ou interlocuteur directement concerné réduisent chacun leur Stress de 1 ;</p>\n<p>• le personnage gagne +2 circonstanciel au prochain test social effectué avec les bénéficiaires de la réparation avant la fin de la scène ;</p>\n<p>• un malus circonstanciel social allant jusqu&#39;à -2, provenant exclusivement du Précepte de l&#39;Humanité, est ignoré pour la suite de cette interaction.</p>\n<p>Réparer les fautes ne supprime ni le Handicap Précepte de l&#39;Humanité ni les conséquences légitimes des actes du personnage.</p>\n<p>---</p>",
+    "traits": ["Humain", "Précepte", "Mental", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-HUMAIN-025",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Choisir notre héritage",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.23 Talents Humains de niveau 9",
+      "family": "Précepte de l'Humanité",
+      "ancestry": "Humain",
+      "skill": "",
+      "activation": "amélioration d'Orientation",
+      "prerequisites": "Choisir notre héritage ; Orientation Réparer",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précepte de l'Humanité",
+        "Traits": "Humain, Précepte, Mental, Social",
+        "Type": "amélioration d'Orientation",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Choisir notre héritage ; Orientation Réparer"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Humain"
+}

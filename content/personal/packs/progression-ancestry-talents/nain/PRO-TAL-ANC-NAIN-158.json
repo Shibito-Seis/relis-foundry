@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-158",
+  "name": "Forge du Premier Monde",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Forge du Premier Monde</strong>.</p><p>Avec un atelier approprié, un plan, des composants exceptionnels et les coûts normaux de fabrication, le personnage crée ou reconstruit son Chef-d&#39;œuvre du Premier Monde.</p>\n<p>Le chef-d&#39;œuvre est un objet personnel ou un composant de taille raisonnable : arme, armure, bouclier, outil, interface, porte, support, générateur mécanique ou élément de véhicule. Il reçoit deux propriétés choisies :</p>\n<p>• Indéformable : +2 Solidité ;</p>\n<p>• Endurant : PV structurels maximum augmentés de 50 % ;</p>\n<p>• Fiable : la première fois par session qu&#39;il devient Brisé, une fonction essentielle continue pendant 1 round ;</p>\n<p>• Précis : +2 circonstanciel au premier test par scène utilisant sa fonction principale ;</p>\n<p>• Adapté : son utilisateur ignore jusqu&#39;à 2 points de malus circonstanciel provenant d&#39;une interface, d&#39;un recul, d&#39;un ajustement ou d&#39;une gravité inhabituelle ;</p>\n<p>• Réparable : une réparation d&#39;urgence réussie lui rend également des PV structurels supplémentaires égaux au Niveau général du créateur.</p>\n<p>Les propriétés Indéformable et Fiable remplacent, sans s&#39;y ajouter, les bénéfices équivalents d&#39;Ouvrage durable ou d&#39;Architecture indéfectible. Les propriétés provenant de plusieurs exemplaires de ce talent ne se cumulent jamais.</p>\n<p>Le personnage ne peut maintenir qu&#39;un seul Chef-d&#39;œuvre du Premier Monde. Un nouvel ouvrage retire ces propriétés exceptionnelles au précédent lors de sa prochaine maintenance sans le détruire.</p>\n<p>Le talent n&#39;ajoute pas une fonction absente, un module sans emplacement, une source d&#39;énergie, une conscience, une Architecture IAA ou une capacité d&#39;une autre Ascendance.</p>",
+    "traits": ["Nain", "Artisanat", "Construction", "Technologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-140",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ouvrage durable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-156",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maître des citadelles stellaires",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.48 Talents Nains de niveau 25",
+      "family": "Transcendance naine",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "projet d'au moins une journée",
+      "prerequisites": "Ouvrage durable et Maître des citadelles stellaires",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance naine",
+        "Traits": "Nain, Artisanat, Construction, Technologie",
+        "Type": "projet d'au moins une journée",
+        "Prérequis": "Ouvrage durable et Maître des citadelles stellaires",
+        "Indéformable": "+2 Solidité ;",
+        "Endurant": "PV structurels maximum augmentés de 50 % ;",
+        "Fiable": "la première fois par session qu'il devient Brisé, une fonction essentielle continue pendant 1 round ;",
+        "Précis": "+2 circonstanciel au premier test par scène utilisant sa fonction principale ;",
+        "Adapté": "son utilisateur ignore jusqu'à 2 points de malus circonstanciel provenant d'une interface, d'un recul, d'un ajustement ou d'une gravité inhabituelle ;",
+        "Réparable": "une réparation d'urgence réussie lui rend également des PV structurels supplémentaires égaux au Niveau général du créateur."
+      }
+    },
+    "level": 25
+  },
+  "folder": "Nain"
+}

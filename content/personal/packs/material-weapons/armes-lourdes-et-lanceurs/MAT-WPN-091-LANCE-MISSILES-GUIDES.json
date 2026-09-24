@@ -1,0 +1,161 @@
+{
+  "relisId": "MAT-WPN-091-LANCE-MISSILES-GUIDES",
+  "name": "Lance-missiles guidés",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "heavyLauncher"],
+  "system": {
+    "description": "<p><strong>Lance-missiles guidés</strong>.</p><p><strong>Niv. :</strong> 7. <strong>Accès :</strong> Lourde. <strong>Dégâts / Déf. :</strong> 2d8 Perforant / CAP. <strong>Préc. :</strong> 0. <strong>Portée ou zone :</strong> 30/90 ; explosion 2. <strong>Capacité / Recharge :</strong> 2 missiles ; Recharge 2 : 1, Recharge 3 : complet. <strong>Recul :</strong> 2. <strong>Traits :</strong> Anti-matériel, Explosif, Guidage, Lourde 3, Pénétration 2. <strong>Signature :</strong> Détonante, guidage actif, très visible. <strong>Fiab. :</strong> 3. <strong>Struct. :</strong> H. <strong>Empl. :</strong> 7. <strong>Prix :</strong> 12 000.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.113 Lot 5-K7 — Armes lourdes et lanceurs",
+      "columns": {
+        "#": "7",
+        "Arme": "Lance-missiles guidés",
+        "Niv.": "7",
+        "Accès": "Lourde",
+        "Dégâts / Déf.": "2d8 Perforant / CAP",
+        "Préc.": "0",
+        "Portée ou zone": "30/90 ; explosion 2",
+        "Capacité / Recharge": "2 missiles ; Recharge 2 : 1, Recharge 3 : complet",
+        "Recul": "2",
+        "Traits": "Anti-matériel, Explosif, Guidage, Lourde 3, Pénétration 2",
+        "Signature": "Détonante, guidage actif, très visible",
+        "Fiab.": "3",
+        "Struct.": "H",
+        "Empl.": "7",
+        "Prix": "12 000"
+      },
+      "reloadProfile": {
+        "unitaryFormula": "1 + Dextérité",
+        "unitaryFormulaId": "one-plus-dexterity",
+        "automationLot": "10-F",
+        "mayLoadOneByOne": true
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 7,
+    "referencePrice": {
+      "amount": 12000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "heavyLauncher",
+      "support": "personal",
+      "access": "heavy",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": 0,
+      "damageDice": 2,
+      "damageDie": "d8",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "2d8 Perforant / CAP",
+      "damageTypes": ["piercing"],
+      "damageSources": ["ballistic"],
+      "penetration": 2,
+      "rangeKind": "increments",
+      "range": "30/90 ; explosion 2",
+      "rangeOptimal": 30,
+      "rangeMaximum": 90,
+      "recoil": 2,
+      "feedKind": "chamber",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "MIS-90",
+      "chamberId": "MIS-90",
+      "pressureClassId": "specializedProjectile",
+      "pressureClass": "specializedProjectile",
+      "feedInterfaceId": "rail",
+      "feedInterface": "rail",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": ["grenade"],
+      "acousticSignature": "detonating",
+      "ammunitionConsumption": {
+        "single": 1
+      },
+      "reloadActions": null,
+      "reloadProcedure": "Chargement manuel : jusqu’à 1 + Dextérité munitions par action, sans dépasser la capacité.",
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  },
+  "folder": "Armes lourdes et lanceurs"
+}

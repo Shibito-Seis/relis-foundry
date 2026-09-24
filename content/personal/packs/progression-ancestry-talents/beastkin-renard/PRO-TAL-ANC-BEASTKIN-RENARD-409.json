@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-409",
+  "name": "Esprit aux mille visages",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Esprit aux mille visages</strong>.</p><p>Pendant une scène, le personnage peut prendre librement toute apparence renarde ou humanoïde compatible avec ses talents, modifier sa voix et sa stature, et faire apparaître autour de lui des échos de ses identités passées. En scène d&#39;action, les effets tactiques durent au maximum cinq tours.</p>\n<p>Pendant cette manifestation :</p>\n<p>• il gagne +3 circonstanciel aux tests de Tromperie ou de Discrétion fondés sur son apparence, ses échos ou un changement d&#39;identité ;</p>\n<p>• une fois par tour, après avoir utilisé une Action ou une Réaction Renard, il peut se déplacer de 2 mètres vers un espace libre visible ;</p>\n<p>• il peut utiliser les talents Renards qu&#39;il possède malgré un prérequis de forme, en manifestant brièvement l&#39;organe nécessaire ;</p>\n<p>• une fois pendant l&#39;activation, lorsqu&#39;une attaque le touche ou qu&#39;un observateur perce un de ses masques, il peut forcer la créature à relancer son jet ou son attaque et conserver le second résultat.</p>\n<p>Les échos n&#39;ont ni corps, ni tour, ni attaque, ni perception. Le talent ne crée aucune identité administrative, ne copie aucun pouvoir, ne fournit aucune Action supplémentaire et n&#39;immunise pas contre les capteurs, l&#39;enquête ou les conséquences d&#39;une contradiction matérielle.</p>\n<p>---</p>",
+    "traits": [
+      "Beastkin",
+      "Renard",
+      "Illusion",
+      "Métamorphose",
+      "Mythique",
+      "Spiritualité"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-RENARD-408",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Renard légendaire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.115 Talent Beastkin Renard de niveau 29",
+      "family": "Transcendance renarde",
+      "ancestry": "Beastkin Renard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Renard légendaire",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance renarde",
+        "Traits": "Beastkin, Renard, Illusion, Métamorphose, Mythique, Spiritualité",
+        "Prérequis": "Renard légendaire",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session"
+      }
+    },
+    "level": 29
+  },
+  "folder": "Beastkin Renard"
+}

@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-8-01",
+  "name": "Résurrection majeure",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-8"],
+  "system": {
+    "description": "<p><strong>Résurrection majeure</strong>.</p><p><strong>Prana — Rang 8.</strong></p>\n<p><strong>Activation :</strong> 9 / 1 h / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Rappelle un vivant mort depuis moins de 24 h avec dépouille ou Ancre corporelle ; revient à moitié PV, Prana 0, Fatigue 3 et deux Blessures. Aucune Mort majeure.</p>\n<p><strong>Intensification :</strong> Fenêtre 7 jours avec focaliseur rare ou retire une Blessure.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "8",
+      "activation": "9 / 1 h / contact",
+      "discipline": "Vitalisme",
+      "effect": "Rappelle un vivant mort depuis moins de 24 h avec dépouille ou Ancre corporelle ; revient à moitié PV, Prana 0, Fatigue 3 et deux Blessures. Aucune Mort majeure.",
+      "scaling": "Fenêtre 7 jours avec focaliseur rare ou retire une Blessure."
+    },
+    "level": 25
+  },
+  "folder": "Rang 8"
+}

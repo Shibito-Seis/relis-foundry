@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ELMAN-224",
+  "name": "Toucher d'accord",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Toucher d&#39;accord</strong>.</p><p>En touchant un appareil, un conduit ou un système techno-magique, le personnage perçoit si son alimentation est stable, instable, dormante, interrompue ou surchargée.</p>\n<p>Il gagne +2 circonstanciel au premier test de Systèmes de vaisseau ou de Techno-magie effectué pendant la scène pour diagnostiquer cette alimentation.</p>\n<p>Le talent ne donne aucun droit d&#39;accès, ne révèle pas les données du système et ne permet pas de l&#39;alimenter ou de le commander à distance.</p>\n<p>---</p>",
+    "traits": ["Elman", "Interface", "Techno-magie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.64 Talents Elmans de niveau 1",
+      "family": "Interfaces bioénergétiques",
+      "ancestry": "Elman",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Interfaces bioénergétiques",
+        "Traits": "Elman, Interface, Techno-magie",
+        "Type": "Activité de 1 minute"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Elman"
+}

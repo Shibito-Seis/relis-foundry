@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-647",
+  "name": "Lire le courant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Lire le courant</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests pour déterminer la direction d&#39;une ventilation, d&#39;un courant d&#39;air, d&#39;une ouverture proche ou d&#39;un déplacement important dans un conduit.</p>\n<p>Sur une réussite, il distingue aussi si l&#39;air paraît stagnant, filtré, chaud, froid ou contaminé par une substance perceptible. Il ne peut analyser une composition chimique sans équipement.</p>",
+    "traits": ["Beastkin", "Souris", "Air", "Perception"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-637",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Vibrisses sensibles",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.186 Talents Beastkins Souris de niveau 5",
+      "family": "Vibrisses, vibrations et vigilance",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Vibrisses sensibles",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vibrisses, vibrations et vigilance",
+        "Traits": "Beastkin, Souris, Air, Perception",
+        "Type": "Passif",
+        "Prérequis": "Vibrisses sensibles"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin Souris"
+}

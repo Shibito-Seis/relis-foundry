@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-008-ENNEMI-PERSONNEL",
+  "name": "Ennemi personnel",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Ennemi personnel</strong>.</p><p><strong>Valeur :</strong> -1/-2/-3</p>\n<p>-1 : rival ou ennemi limité. -2 : adversaire compétent et motivé. -3 : ennemi puissant, cruel ou doté de ressources importantes.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2/-3",
+      "effect": "-1 : rival ou ennemi limité. -2 : adversaire compétent et motivé. -3 : ennemi puissant, cruel ou doté de ressources importantes."
+    }
+  },
+  "folder": ""
+}

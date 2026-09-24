@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-6-06",
+  "name": "Dissipation souveraine",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Dissipation souveraine</strong>.</p><p><strong>Mana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / Explosion 3 à 30 m</p>\n<p><strong>Discipline :</strong> Dissipation</p>\n<p>Test par effet ; met fin aux Rangs 5 ou moins et suspend les Rangs 6 pendant 3 tours.</p>\n<p><strong>Intensification :</strong> Rang maximal +1 ou rayon +1.</p>",
+    "traits": ["Mana", "Dissipation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "6",
+      "activation": "6 / 3 A / Explosion 3 à 30 m",
+      "discipline": "Dissipation",
+      "effect": "Test par effet ; met fin aux Rangs 5 ou moins et suspend les Rangs 6 pendant 3 tours.",
+      "scaling": "Rang maximal +1 ou rayon +1."
+    },
+    "level": 19
+  },
+  "folder": "Rang 6"
+}

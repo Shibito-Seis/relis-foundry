@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-2-06",
+  "name": "Peau inviolée",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-2"],
+  "system": {
+    "description": "<p><strong>Peau inviolée</strong>.</p><p><strong>Prana — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 2 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Résistance 3 aux dégâts physiques pendant 3 tours.</p>\n<p><strong>Intensification :</strong> Résistance +2 ou durée +2 tours.</p>",
+    "traits": ["Prana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "2",
+      "activation": "2 / 2 A / contact",
+      "discipline": "Protection",
+      "effect": "Résistance 3 aux dégâts physiques pendant 3 tours.",
+      "scaling": "Résistance +2 ou durée +2 tours."
+    },
+    "level": 7
+  },
+  "folder": "Rang 2"
+}

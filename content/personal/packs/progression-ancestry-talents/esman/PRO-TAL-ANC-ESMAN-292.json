@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-292",
+  "name": "Couronne noire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Couronne noire</strong>.</p><p>Le personnage acquiert les fonctions mineures des trois architectures cristallines. Son architecture dominante conserve son plein bénéfice ; pour les deux autres :</p>\n<p>• Accumulateur accorde seulement +1 après une réduction de dégâts ;</p>\n<p>• Prisme permet de choisir entre deux types d&#39;énergie définis lors d&#39;un repos long ;</p>\n<p>• Résonateur porte Résonance cristalline à 9 mètres et maintient son bonus à +2.</p>\n<p>Une fois par jour, pendant 3 tours, toutes les architectures fonctionnent à pleine puissance. Cette activation rend les cornes visibles malgré l&#39;état Dissimulé et inflige 1 Stress lorsqu&#39;elle prend fin.</p>",
+    "traits": ["Esman", "Corne", "Maîtrise"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-280",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Architecture cristalline",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-ESMAN-287",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lance cristalline",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.79 Talents Esmans de niveau 17",
+      "family": "Cornes cristallines",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "Passif et 1 Action",
+      "prerequisites": "Architecture cristalline et Lance cristalline",
+      "choice": "",
+      "frequency": "une fois par jour pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cornes cristallines",
+        "Traits": "Esman, Corne, Maîtrise",
+        "Type": "Passif et 1 Action",
+        "Fréquence": "une fois par jour pour l'activation",
+        "Prérequis": "Architecture cristalline et Lance cristalline"
+      }
+    },
+    "level": 17
+  },
+  "folder": "Esman"
+}

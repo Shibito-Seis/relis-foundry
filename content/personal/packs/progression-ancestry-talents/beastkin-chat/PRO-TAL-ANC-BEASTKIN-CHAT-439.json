@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-439",
+  "name": "Cœur du foyer",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant un repos auquel le personnage participe, les alliés consentants récupèrent 1 Stress supplémentaire et gagnent +2 circonstanciel au premier test de Sang-froid du jour suivant. Une créature ne bénéficie que d&#39;un seul Cœur du foyer par repos. Aucun Traumatisme n&#39;est supprimé.</p>\n<p>---</p>",
+    "traits": [""],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-418",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ronronnement apaisant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.122 Talents Beastkins Chats de niveau 13",
+      "family": "Présence féline et liens",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Ronronnement apaisant",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence féline et liens",
+        "Prérequis": "Ronronnement apaisant",
+        "Type": "Passif"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Chat"
+}

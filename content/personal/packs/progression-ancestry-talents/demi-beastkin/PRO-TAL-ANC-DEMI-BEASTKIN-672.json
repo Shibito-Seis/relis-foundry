@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-DEMI-BEASTKIN-672",
+  "name": "Expression héritée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Expression héritée</strong>.</p><p>L&#39;héritage parental s&#39;approfondit :</p>\n<p>Le choix interne du Lézard est fixé à l&#39;acquisition. Chaque variante demeure inférieure à la chaîne spécialisée du parent complet.</p>",
+    "traits": ["Demi-Beastkin", "Expression parentale", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-DEMI-BEASTKIN-670",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Instinct parental",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.199 Talents Demi-Beastkins de niveau 9",
+      "family": "Manifestation parentale",
+      "ancestry": "Demi-Beastkin",
+      "skill": "",
+      "activation": "Passif et 1 Action",
+      "prerequisites": "Instinct parental",
+      "choice": "",
+      "frequency": "une fois par scène pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Manifestation parentale",
+        "Traits": "Demi-Beastkin, Expression parentale, Physiologie",
+        "Type": "Passif et 1 Action",
+        "Fréquence": "une fois par scène pour l'activation",
+        "Prérequis": "Instinct parental"
+      }
+    },
+    "level": 9
+  },
+  "folder": "Demi-Beastkin"
+}

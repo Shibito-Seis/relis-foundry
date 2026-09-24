@@ -1,0 +1,75 @@
+{
+  "relisId": "PRO-TAL-CMP-INTIMIDATION-219",
+  "name": "La foule recule",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p><strong>La foule recule</strong>.</p><p>Le personnage s&#39;adresse à une foule ou force hostile capable de le percevoir et déjà confrontée à un risque crédible, une issue étroite ou une démonstration de conséquences.</p>\n<p>Il effectue un test d&#39;Intimidation contre le DD de la faction la plus déterminée.</p>\n<p>• Réussite critique : la foule suspend son avancée assez longtemps pour choisir repli, dispersion, reddition, négociation ou poursuite consciente du risque ; jusqu&#39;à six meneurs hostiles subissent −2 circonstanciel à leur premier test visant à relancer immédiatement l&#39;avancée.</p>\n<p>• Réussite : l&#39;avancée est suspendue pour un échange, une évacuation brève ou une proposition de retrait.</p>\n<p>• Échec : aucun effet.</p>\n<p>• Échec critique : la foule refuse de céder et devient immunisée à ce talent pour la scène.</p>\n<p>Le talent ne contrôle aucun individu, ne fonctionne pas sans possibilité raisonnable d&#39;arrêt et peut durablement augmenter Peur, Hostilité ou désir de vengeance.</p>",
+    "traits": [
+      "Audition",
+      "Compétence",
+      "Émotion",
+      "Intimidation",
+      "Légendaire",
+      "Mental"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-215",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Une seconde d'hésitation",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-217",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Moral fissuré",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-218",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Choix sans équivoque",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Intimidation — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Intimidation",
+      "activation": "Activité de 3 Actions ou discours bref",
+      "prerequisites": "Intimidation Légendaire ; Une seconde d'hésitation, Moral fissuré et Choix sans équivoque",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin du prochain round ou de l'échange immédiat",
+      "metadata": {
+        "Compétence": "Intimidation",
+        "Niveau": "15",
+        "Traits": "Audition, Compétence, Émotion, Intimidation, Légendaire, Mental",
+        "Type": "Activité de 3 Actions ou discours bref",
+        "Fréquence": "une fois par scène",
+        "Durée": "jusqu'à la fin du prochain round ou de l'échange immédiat",
+        "Prérequis": "Intimidation Légendaire ; Une seconde d'hésitation, Moral fissuré et Choix sans équivoque",
+        "Réussite critique": "la foule suspend son avancée assez longtemps pour choisir repli, dispersion, reddition, négociation ou poursuite consciente du risque ; jusqu'à six meneurs hostiles subissent −2 circonstanciel à leur premier test visant à relancer immédiatement l'avancée.",
+        "Réussite": "l'avancée est suspendue pour un échange, une évacuation brève ou une proposition de retrait.",
+        "Échec": "aucun effet.",
+        "Échec critique": "la foule refuse de céder et devient immunisée à ce talent pour la scène."
+      }
+    },
+    "level": 15
+  },
+  "folder": "Intimidation"
+}

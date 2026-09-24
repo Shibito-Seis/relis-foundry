@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-027-MAINTENIR",
+  "name": "Maintenir",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Maintenir</strong>.</p><p><strong>Coût :</strong> Selon l&#39;effet</p>\n<p>Prolonger une capacité exigeant un maintien.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Selon l'effet",
+      "summary": "Prolonger une capacité exigeant un maintien."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 0
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

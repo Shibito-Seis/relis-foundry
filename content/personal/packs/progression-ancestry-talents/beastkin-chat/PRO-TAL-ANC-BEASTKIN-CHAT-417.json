@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-CHAT-417",
+  "name": "Libre de partir",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Libre de partir</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Volonté ou de Sang-froid contre un effet qui lui ordonne de rester, suivre, obéir ou renoncer à un déplacement. Ce bonus ne s&#39;applique pas à une barrière physique, un contrat librement accepté ou aux conséquences légales d&#39;un refus.</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Indépendance et sang-froid",
+      "ancestry": "Beastkin Chat",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Indépendance et sang-froid",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin Chat"
+}

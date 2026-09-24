@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-359",
+  "name": "Affinité faunique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Affinité faunique</strong>.</p><p>Le personnage établit un échange d&#39;intentions avec un animal ordinaire capable de le percevoir. Il peut comprendre ses besoins immédiats, la présence d&#39;un danger marquant ou l&#39;émotion associée à un lieu récent.</p>\n<p>Il gagne +2 circonstanciel aux tests destinés à calmer, approcher, guider ou obtenir une coopération simple de cet animal.</p>\n<p>Le talent ne domine pas l&#39;animal, ne lui enseigne pas instantanément un ordre, ne garantit pas sa coopération et ne permet pas d&#39;interroger précisément une faune dépourvue du souvenir ou des sens nécessaires.</p>",
+    "traits": ["Beastkin", "Animal", "Exploration", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-353",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Langage du corps animal",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.98 Talents Beastkins universels de niveau 5",
+      "family": "Rapport au vivant",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Langage du corps animal",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Rapport au vivant",
+        "Traits": "Beastkin, Animal, Exploration, Social",
+        "Type": "Activité de 1 minute",
+        "Prérequis": "Langage du corps animal"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Beastkin universel"
+}

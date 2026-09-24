@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-475",
+  "name": "Impact du chasseur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Impact du chasseur</strong>.</p><p>Le personnage se déplace jusqu&#39;à sa Vitesse terrestre et effectue une attaque avec une arme naturelle. S&#39;il a parcouru au moins 4 mètres avant de toucher, l&#39;attaque inflige +1d6 dégâts physiques circonstanciels et la cible doit résister ou être repoussée de 1 mètre.</p>\n<p>Le déplacement et l&#39;attaque consomment deux Actions, provoquent les réactions ordinaires et ne permettent pas de franchir un obstacle impossible.</p>",
+    "traits": ["Beastkin", "Félin", "Attaque", "Mobilité", "Combat"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-FELIN-468",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Poursuite brève",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.133 Talents Beastkins Félins de niveau 13",
+      "family": "Bond, charge et poursuite",
+      "ancestry": "Beastkin Félin",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Poursuite brève",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Bond, charge et poursuite",
+        "Traits": "Beastkin, Félin, Attaque, Mobilité, Combat",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Poursuite brève"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Félin"
+}

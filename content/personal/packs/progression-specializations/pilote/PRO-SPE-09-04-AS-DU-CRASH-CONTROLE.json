@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-SPE-09-04-AS-DU-CRASH-CONTROLE",
+  "name": "Pilote — As du crash contrôlé",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "pilote"],
+  "system": {
+    "description": "<p><strong>Pilote — As du crash contrôlé</strong>.</p><p><strong>Voie :</strong> Pilote</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;urgence cockpit, balises d&#39;impact, harnais de survie crash.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-009-PILOTE",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Pilote",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Pilote",
+      "branchName": "As du crash contrôlé",
+      "primaryLoadout": "Kit d'urgence cockpit, balises d'impact, harnais de survie crash.",
+      "loadoutRefs": []
+    }
+  },
+  "folder": "Pilote"
+}

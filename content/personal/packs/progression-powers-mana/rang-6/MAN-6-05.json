@@ -1,0 +1,24 @@
+{
+  "relisId": "MAN-6-05",
+  "name": "Transmutation de masse",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "mana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Transmutation de masse</strong>.</p><p><strong>Mana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 1 h / contact</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Transforme définitivement jusqu’à 5 tonnes de matière commune en une matière commune de valeur comparable, sans mécanisme ni vie.</p>\n<p><strong>Intensification :</strong> Masse ×5 ou matériau Q supérieur avec test et focaliseur.</p>",
+    "traits": ["Mana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Mana",
+      "rank": "6",
+      "activation": "6 / 1 h / contact",
+      "discipline": "Transformation",
+      "effect": "Transforme définitivement jusqu’à 5 tonnes de matière commune en une matière commune de valeur comparable, sans mécanisme ni vie.",
+      "scaling": "Masse ×5 ou matériau Q supérieur avec test et focaliseur."
+    },
+    "level": 19
+  },
+  "folder": "Rang 6"
+}

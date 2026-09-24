@@ -1,0 +1,24 @@
+{
+  "relisId": "PRA-6-05",
+  "name": "Marche immortelle",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Marche immortelle</strong>.</p><p><strong>Prana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / émanation 9 m</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Jusqu’à six alliés ne peuvent mourir d’une Mort mineure pendant 3 tours : ils restent à 1 PV, puis subissent Fatigue 2 et Blessure critique.</p>\n<p><strong>Intensification :</strong> Durée +1 tour ou deux alliés.</p>",
+    "traits": ["Prana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "6",
+      "activation": "6 / 3 A / émanation 9 m",
+      "discipline": "Protection",
+      "effect": "Jusqu’à six alliés ne peuvent mourir d’une Mort mineure pendant 3 tours : ils restent à 1 PV, puis subissent Fatigue 2 et Blessure critique.",
+      "scaling": "Durée +1 tour ou deux alliés."
+    },
+    "level": 19
+  },
+  "folder": "Rang 6"
+}

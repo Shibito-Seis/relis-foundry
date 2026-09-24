@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-ACT-010-TIRER",
+  "name": "Tirer",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Tirer</strong>.</p><p><strong>Coût :</strong> 1 Action</p>\n<p>Effectuer une attaque à distance portant le trait Attaque.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Effectuer une attaque à distance portant le trait Attaque."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  },
+  "folder": ""
+}

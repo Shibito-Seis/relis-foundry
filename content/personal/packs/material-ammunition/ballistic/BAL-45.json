@@ -1,0 +1,111 @@
+{
+  "relisId": "BAL-45",
+  "name": "11,43 × 23 mm",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "standard", "bal"],
+  "system": {
+    "description": "<p><strong>Chambrage :</strong> 11,43 × 23 mm. <strong>Classe :</strong> Standard lourde. <strong>Usage courant :</strong> pistolet lourd subsonique. <strong>Prix standard :</strong> 2. <strong>Conditionnement :</strong> boîte de 40.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.172 Armes de poing et armes compactes",
+      "columns": {
+        "Code": "BAL-45",
+        "Chambrage": "11,43 × 23 mm",
+        "Classe": "Standard lourde",
+        "Usage courant": "pistolet lourd subsonique",
+        "Prix standard": "2",
+        "Conditionnement": "boîte de 40"
+      }
+    },
+    "physical": {
+      "quantity": 40,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "referencePrice": {
+      "amount": 2,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 40,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "ballistic",
+      "variantId": "standard",
+      "chamberingId": "BAL-45",
+      "chamberId": "BAL-45",
+      "pressureClassId": "heavyStandard",
+      "pressureClass": "heavyStandard",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  },
+  "folder": "ballistic"
+}

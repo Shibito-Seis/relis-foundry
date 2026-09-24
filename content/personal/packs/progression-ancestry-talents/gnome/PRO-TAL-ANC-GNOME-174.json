@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-GNOME-174",
+  "name": "Regard décalé",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Regard décalé</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Perception, Investigation ou Sang-froid destinés à remarquer :</p>\n<p>• une répétition trop parfaite ;</p>\n<p>• une perspective incohérente ;</p>\n<p>• un décalage entre plusieurs sens ;</p>\n<p>• une illusion ou simulation présentant une contradiction observable ;</p>\n<p>• le comportement anormal d&#39;un objet, d&#39;un espace ou d&#39;un phénomène.</p>\n<p>Le talent ne donne pas automatiquement la vérité derrière l&#39;incohérence et ne permet pas de résister à une illusion qui ne laisse aucun indice accessible.</p>",
+    "traits": ["Gnome", "Perception", "Illusion"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.53 Talents Gnomes de niveau 1",
+      "family": "Sens des anomalies",
+      "ancestry": "Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens des anomalies",
+        "Traits": "Gnome, Perception, Illusion",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Gnome"
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-UNIVERSEL-352",
+  "name": "Adaptation naturelle",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Adaptation naturelle</strong>.</p><p>Le personnage gagne +2 circonstanciel aux tests de Survie et de résistance contre les difficultés ordinaires de l&#39;environnement choisi.</p>\n<p>Lorsqu&#39;une exposition non extrême possède plusieurs degrés de gravité, il la traite comme inférieure d&#39;un degré pour déterminer inconfort, progression de la Fatigue ou perte de temps.</p>\n<p>Le talent ne fournit ni respiration spéciale, ni immunité, ni protection contre le vide spatial, les radiations, une température surnaturelle ou l&#39;absence d&#39;équipement vital.</p>",
+    "traits": ["Beastkin", "Environnement", "Physiologie", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.97 Talents Beastkins universels de niveau 1",
+      "family": "Mobilité et adaptation",
+      "ancestry": "Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "froid, chaleur, altitude, humidité, sécheresse, milieu urbain encombré ou autre environnement naturel plausible",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité et adaptation",
+        "Traits": "Beastkin, Environnement, Physiologie, Survie",
+        "Type": "Passif",
+        "Choix": "froid, chaleur, altitude, humidité, sécheresse, milieu urbain encombré ou autre environnement naturel plausible"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Beastkin universel"
+}

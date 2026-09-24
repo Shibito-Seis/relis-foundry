@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-657",
+  "name": "Toujours une sortie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Toujours une sortie</strong>.</p><p>Lorsque le personnage échoue sans échec critique à un test pour se désengager, éviter une saisie ou atteindre sa Route de repli, il relance le test et conserve le second résultat. Après une réussite, il peut se déplacer de 1 mètre vers l&#39;issue avec la même Réaction.</p>\n<p>Le talent ne peut affecter un jet déjà soumis à Fortune ou Infortune et ne fonctionne pas si aucune issue matérielle n&#39;existe.</p>",
+    "traits": ["Beastkin", "Souris", "Fortune", "Mobilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-BEASTKIN-SOURIS-650",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Route de repli",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.188 Talents Beastkins Souris de niveau 13",
+      "family": "Fuite et voies de repli",
+      "ancestry": "Beastkin Souris",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Route de repli",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Fuite et voies de repli",
+        "Traits": "Beastkin, Souris, Fortune, Mobilité",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Route de repli"
+      }
+    },
+    "level": 13
+  },
+  "folder": "Beastkin Souris"
+}

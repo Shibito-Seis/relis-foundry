@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-ESMAN-269",
+  "name": "Sentir l'instable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Sentir l&#39;instable</strong>.</p><p>En observant une créature, un objet ou une zone accessible, le personnage apprend si une énergie y paraît stable, croissante, fuyante, bloquée ou proche de la rupture.</p>\n<p>Il gagne +2 circonstanciel au premier test de Canalisation, Investigation ou Sciences destiné à confirmer ou traiter cette instabilité.</p>\n<p>Le talent n&#39;en révèle ni la cause exacte, ni le moment précis de rupture, ni les conséquences futures.</p>",
+    "traits": ["Esman", "Détection", "Énergie", "Exploration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.75 Talents Esmans de niveau 1",
+      "family": "Perception des fractures",
+      "ancestry": "Esman",
+      "skill": "",
+      "activation": "1 Action (Concentration)",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Perception des fractures",
+        "Traits": "Esman, Détection, Énergie, Exploration",
+        "Type": "1 Action (Concentration)"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Esman"
+}

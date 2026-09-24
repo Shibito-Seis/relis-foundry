@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-132",
+  "name": "Progression souterraine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p><strong>Progression souterraine</strong>.</p><p>Le personnage ignore le terrain difficile ordinaire provenant exclusivement :</p>\n<p>• de gravats stables ;</p>\n<p>• d&#39;un sol rocheux irrégulier ;</p>\n<p>• de galeries basses mais praticables ;</p>\n<p>• de pentes minières aménagées ;</p>\n<p>• de conduites, câbles ou rails de chantier au sol.</p>\n<p>En guidant un groupe à vitesse d&#39;exploration, il peut choisir et signaler les appuis les plus sûrs. Jusqu&#39;à 2 + sa Technologie alliés, avec un minimum de 2, gagnent +2 circonstanciel à leur premier test de déplacement ou de Survie pour franchir la même zone.</p>\n<p>Ce talent ne permet pas de traverser un effondrement instable, une roche pleine, une zone piégée ou un passage trop étroit pour le corps et l&#39;équipement transporté.</p>",
+    "traits": ["Nain", "Exploration", "Mouvement"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-120",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mineur spatial",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-NAIN-121",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Habitué des espaces clos",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.43 Talents Nains de niveau 5",
+      "family": "Mineurs des mondes",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif et Activité d'exploration",
+      "prerequisites": "Mineur spatial ou Habitué des espaces clos",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mineurs des mondes",
+        "Traits": "Nain, Exploration, Mouvement",
+        "Type": "Passif et Activité d'exploration",
+        "Prérequis": "Mineur spatial ou Habitué des espaces clos"
+      }
+    },
+    "level": 5
+  },
+  "folder": "Nain"
+}

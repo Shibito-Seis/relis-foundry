@@ -1,0 +1,19 @@
+{
+  "relisId": "CRE-HCP-032-SERMENT-CONTRAIGNANT",
+  "name": "Serment contraignant",
+  "type": "drawback",
+  "tags": ["creation", "handicap"],
+  "system": {
+    "description": "<p><strong>Serment contraignant</strong>.</p><p><strong>Valeur :</strong> -1/-2</p>\n<p>Le personnage est lié par un code, vœu, ordre ou doctrine. -1 : gêne occasionnelle. -2 : le briser provoque crise morale, perte de réputation ou conflit interne.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "drawback",
+      "sourceSection": "8",
+      "value": "-1/-2",
+      "effect": "Le personnage est lié par un code, vœu, ordre ou doctrine. -1 : gêne occasionnelle. -2 : le briser provoque crise morale, perte de réputation ou conflit interne."
+    }
+  },
+  "folder": ""
+}

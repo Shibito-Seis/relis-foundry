@@ -1,0 +1,44 @@
+{
+  "relisId": "CRE-PST-001-COMMANDANT",
+  "name": "Commandant",
+  "type": "post",
+  "tags": ["creation", "poste"],
+  "system": {
+    "description": "<p>Le Commandant dirige l’équipage, tranche les décisions stratégiques et donne les ordres de bord.</p>\n<p>Il décide notamment des grandes priorités : partir, rester, fuir, poursuivre, négocier, explorer, défendre, évacuer ou engager une crise majeure. Il ne remplace pas les spécialistes, mais il donne le cap et impose la coordination générale.</p>\n<p>• décisions stratégiques ;</p>\n<p>• arbitrage des conflits d’équipage ;</p>\n<p>• ordre de mission ;</p>\n<p>• moral de bord ;</p>\n<p>• priorités de crise ;</p>\n<p>• décision générale de déplacement du vaisseau, en coordination avec l’Astro-Navigateur.</p>\n<p>Tenir bon : un groupe d’alliés ignore une conséquence de panique, hésitation, désorganisation ou rupture morale pendant une action critique.</p>\n<p>Pas maintenant : un allié sur le point de tomber à 0 PV, de subir une panique totale, de remplir entièrement sa jauge de Stress ou de perdre le contrôle reste debout à 1 PV ou au seuil minimal fonctionnel. Il ne peut pas être réduit à 0 pendant 1 tour. S’il n’est pas soigné, stabilisé ou repris en main avant la fin de ce délai, il tombe à 0 ou subit l’état critique normalement.</p>\n<p>---</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "post",
+      "sourceSection": "10.4 Commandant",
+      "capabilities": [
+        {
+          "name": "Motivation des troupes",
+          "phase": "[Toutes phases]",
+          "effect": "Le Commandant donne un ordre clair, un discours, une coordination radio ou une impulsion tactique. Un ou plusieurs alliés gagnent +2 aux chances de toucher ou de réussite offensive/active jusqu’à la fin de leur prochaine action importante. S’applique aux attaques de tir, attaques de mêlée, sorts, techniques offensives, manœuvres de vaisseau et actions offensives de combat spatial."
+        },
+        {
+          "name": "C’est à toi de briller !",
+          "phase": "[Combat tout type]",
+          "effect": "Le Commandant désigne un autre PJ allié. Ce PJ gagne immédiatement un tour gratuit réduit : 2 actions et 0 mouvement gratuit. Limite : 1 fois par tour ; chaque PJ ne peut bénéficier de cette capacité qu’une seule fois par combat."
+        },
+        {
+          "name": "Vous n’êtes rien !",
+          "phase": "[Combat tout type]",
+          "effect": "Le Commandant provoque, intimide ou brise la coordination adverse. Les ennemis ciblés effectuent un jet de Volonté ou de Sang-froid. Réussite critique : aucun effet. Réussite : −1 aux chances de toucher jusqu’à la fin du prochain tour de la cible. Échec : −2 aux chances de toucher, −1 CAP et −1 CAE pendant la même durée. Échec critique personnel : effet d’échec, perte de la Réaction et 1 Stress. Échec critique spatial : effet d’échec, perte d’une Réaction de Poste au prochain tour et dégradation d’un cran d’une Piste partagée choisie par le Commandant si elle dépendait de la coordination visée. Une même cible ne subit l’aggravation qu’une fois par round. En combat spatial, les modificateurs CAP/CAE deviennent −1 à la CA ou défense équivalente lorsque ces valeurs ne s’appliquent pas."
+        },
+        {
+          "name": "Tenez la ligne !",
+          "phase": "[Réaction — Combat tout type / Crise]",
+          "effect": "Limite : 1 fois par session. Le Commandant intervient au moment critique où un allié ou le groupe risque de céder. Au déclenchement, choisir un mode : Tenir bon ou Pas maintenant."
+        },
+        {
+          "name": "Ordre prioritaire",
+          "phase": "[Exploration / Crise de vaisseau]",
+          "effect": "Le Commandant déclare une priorité officielle : évacuation, réparation, défense, analyse, poursuite, fuite, quarantaine, exploration ou autre objectif critique. L’équipage, les systèmes de bord ou Xirea doivent traiter cette priorité comme l’objectif principal de bord, sauf opposition narrative majeure."
+        }
+      ]
+    }
+  },
+  "folder": ""
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-NAIN-114",
+  "name": "Formation de la forge",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage devient Qualifié dans la compétence choisie.</p>\n<p>Il gagne également +2 circonstanciel aux tests de Culture ou d&#39;Investigation destinés à reconnaître :</p>\n<p>• une méthode de fabrication naine ;</p>\n<p>• la fonction générale d&#39;un outil d&#39;atelier ;</p>\n<p>• la signature d&#39;un artisan, d&#39;une forge ou d&#39;un chantier connu ;</p>\n<p>• une tradition de construction, de métallurgie ou d&#39;assemblage ;</p>\n<p>• la différence entre un ouvrage nain authentique et une imitation grossière.</p>\n<p>Formation de la forge représente une transmission culturelle ou professionnelle initiale. Elle ne fournit ni atelier, ni plan secret, ni talent de Voie.</p>",
+    "traits": ["Nain", "Compétence", "Culture", "Technologie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Forge et ouvrage",
+      "ancestry": "Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "Ingénierie, Systèmes de vaisseau ou Techno-magie",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Forge et ouvrage",
+        "Traits": "Nain, Compétence, Culture, Technologie",
+        "Type": "Passif",
+        "Choix": "Ingénierie, Systèmes de vaisseau ou Techno-magie"
+      }
+    },
+    "level": 1
+  },
+  "folder": "Nain"
+}
