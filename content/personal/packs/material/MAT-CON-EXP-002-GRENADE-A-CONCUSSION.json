@@ -1,0 +1,110 @@
+{
+  "relisId": "MAT-CON-EXP-002-GRENADE-A-CONCUSSION",
+  "name": "Grenade à concussion",
+  "type": "consumable",
+  "tags": ["materiel", "consommable", "explosif-personnel"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>2</dd></div>\n<div><dt>Consommable</dt><dd>Grenade à concussion</dd></div>\n<div><dt>Niv.</dt><dd>1</dd></div>\n<div><dt>Coût</dt><dd>1+1 Actions</dd></div>\n<div><dt>Zone</dt><dd>Explosion 2</dd></div>\n<div><dt>Déf.</dt><dd>CAP</dd></div>\n<div><dt>Effet principal</dt><dd>2d6 Contondant Non létal ; étourdissement selon résultat</dd></div>\n<div><dt>Prix</dt><dd>180</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "explosive-consumable",
+      "sourceSection": "41.184 Catalogue corrigé — 12 profils",
+      "columns": {
+        "#": "2",
+        "Consommable": "Grenade à concussion",
+        "Niv.": "1",
+        "Coût": "1+1 Actions",
+        "Zone": "Explosion 2",
+        "Déf.": "CAP",
+        "Effet principal": "2d6 Contondant Non létal ; étourdissement selon résultat",
+        "Prix": "180"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 180,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "consumableProfile": {
+      "kind": "grenade",
+      "actionCost": 1,
+      "area": "Explosion 2",
+      "effectSummary": "2d6 Contondant Non létal ; étourdissement selon résultat"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

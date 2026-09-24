@@ -1,0 +1,110 @@
+{
+  "relisId": "MAT-CON-EXP-005-GRENADE-INCENDIAIRE",
+  "name": "Grenade incendiaire",
+  "type": "consumable",
+  "tags": ["materiel", "consommable", "explosif-personnel"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>5</dd></div>\n<div><dt>Consommable</dt><dd>Grenade incendiaire</dd></div>\n<div><dt>Niv.</dt><dd>2</dd></div>\n<div><dt>Coût</dt><dd>1+1 Actions</dd></div>\n<div><dt>Zone</dt><dd>Explosion 2</dd></div>\n<div><dt>Déf.</dt><dd>CAE</dd></div>\n<div><dt>Effet principal</dt><dd>2d6 Thermique ; zone inflammable 2 tours</dd></div>\n<div><dt>Prix</dt><dd>300</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "explosive-consumable",
+      "sourceSection": "41.184 Catalogue corrigé — 12 profils",
+      "columns": {
+        "#": "5",
+        "Consommable": "Grenade incendiaire",
+        "Niv.": "2",
+        "Coût": "1+1 Actions",
+        "Zone": "Explosion 2",
+        "Déf.": "CAE",
+        "Effet principal": "2d6 Thermique ; zone inflammable 2 tours",
+        "Prix": "300"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 300,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "consumableProfile": {
+      "kind": "grenade",
+      "actionCost": 1,
+      "area": "Explosion 2",
+      "effectSummary": "2d6 Thermique ; zone inflammable 2 tours"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

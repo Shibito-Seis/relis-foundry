@@ -1,0 +1,118 @@
+{
+  "relisId": "MAT-ARM-058-CASQUE-ANTI-ENERGIE",
+  "name": "Casque anti-énergie",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>4</dd></div>\n<div><dt>Casque</dt><dd>Casque anti-énergie</dd></div>\n<div><dt>Niv.</dt><dd>2</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>CAP/CAE</dt><dd>+0/+1</dd></div>\n<div><dt>Sol. P/E</dt><dd>1/4</dd></div>\n<div><dt>PV/SB</dt><dd>14/7</dd></div>\n<div><dt>Scellement</dt><dd>Non</dd></div>\n<div><dt>Fonction principale</dt><dd>Photonique, Électrique et rayonnement tactique</dd></div>\n<div><dt>Empl.</dt><dd>2</dd></div>\n<div><dt>Signature</dt><dd>Énergétique détectable</dd></div>\n<div><dt>Prix</dt><dd>1 400</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.142 Lot 5-L7 — Casques principaux",
+      "columns": {
+        "#": "4",
+        "Casque": "Casque anti-énergie",
+        "Niv.": "2",
+        "Accès": "Spécialisée",
+        "CAP/CAE": "+0/+1",
+        "Sol. P/E": "1/4",
+        "PV/SB": "14/7",
+        "Scellement": "Non",
+        "Fonction principale": "Photonique, Électrique et rayonnement tactique",
+        "Empl.": "2",
+        "Signature": "Énergétique détectable",
+        "Prix": "1 400"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainHelmet",
+        "slotsConfigured": true,
+        "bodySlots": ["mainHelmet"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 1400,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "specialized",
+      "capBonus": 0,
+      "caeBonus": 1,
+      "solidityPhysical": 1,
+      "solidityEnergy": 4,
+      "coverage": [],
+      "constraintSummary": "# : 4 ; Casque : Casque anti-énergie ; Niv. : 2 ; Accès : Spécialisée ; CAP/CAE : +0/+1 ; Sol. P/E : 1/4 ; PV/SB : 14/7 ; Scellement : Non ; Fonction principale : Photonique, Électrique et rayonnement tactique ; Empl. : 2 ; Signature : Énergétique détectable ; Prix : 1 400"
+    },
+    "supplyProfile": {}
+  }
+}

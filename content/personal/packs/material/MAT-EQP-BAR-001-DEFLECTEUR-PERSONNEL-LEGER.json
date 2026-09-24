@@ -1,0 +1,131 @@
+{
+  "relisId": "MAT-EQP-BAR-001-DEFLECTEUR-PERSONNEL-LEGER",
+  "name": "Déflecteur personnel léger",
+  "type": "equipment",
+  "tags": ["materiel", "equipement", "barriere"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>1</dd></div>\n<div><dt>Champ ou barrière</dt><dd>Déflecteur personnel léger</dd></div>\n<div><dt>Niv.</dt><dd>2</dd></div>\n<div><dt>Type</dt><dd>Personnel</dd></div>\n<div><dt>Compatibilité</dt><dd>Toutes attaques ordinaires</dd></div>\n<div><dt>Absorption</dt><dd>1d6</dd></div>\n<div><dt>RB</dt><dd>8</dd></div>\n<div><dt>Batterie</dt><dd>12 CE</dd></div>\n<div><dt>Activation</dt><dd>1 Action, 1 CE</dd></div>\n<div><dt>Entretien</dt><dd>1 CE/10 min</dd></div>\n<div><dt>Gén. Sol./PV</dt><dd>2/10</dd></div>\n<div><dt>Empl.</dt><dd>2</dd></div>\n<div><dt>Prix</dt><dd>2 500</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "barrier",
+      "sourceSection": "41.153 Réserve de Barrière",
+      "columns": {
+        "#": "1",
+        "Champ ou barrière": "Déflecteur personnel léger",
+        "Niv.": "2",
+        "Type": "Personnel",
+        "Compatibilité": "Toutes attaques ordinaires",
+        "Absorption": "1d6",
+        "RB": "8",
+        "Batterie": "12 CE",
+        "Activation": "1 Action, 1 CE",
+        "Entretien": "1 CE/10 min",
+        "Gén. Sol./PV": "2/10",
+        "Empl.": "2",
+        "Prix": "2 500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "functionalCategory": "generator",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 2500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    },
+    "supplyProfile": {},
+    "protectionProfile": {
+      "kind": "barrier",
+      "access": "",
+      "barrierCurrent": 8,
+      "barrierMaximum": 8,
+      "barrierKind": "personal",
+      "barrierCompatibilities": ["Toutes attaques ordinaires"],
+      "absorptionFormula": "1d6",
+      "activationCost": 1,
+      "upkeep": "1 CE/10 min",
+      "rechargeRatePerCe": 4,
+      "rechargeDuration": "1 minute",
+      "interception": "Personnel",
+      "collapseEffect": "Effondrement à 0 RB ; réactivation après restauration d’au moins 1 RB.",
+      "constraintSummary": "# : 1 ; Champ ou barrière : Déflecteur personnel léger ; Niv. : 2 ; Type : Personnel ; Compatibilité : Toutes attaques ordinaires ; Absorption : 1d6 ; RB : 8 ; Batterie : 12 CE ; Activation : 1 Action, 1 CE ; Entretien : 1 CE/10 min ; Gén. Sol./PV : 2/10 ; Empl. : 2 ; Prix : 2 500"
+    }
+  }
+}

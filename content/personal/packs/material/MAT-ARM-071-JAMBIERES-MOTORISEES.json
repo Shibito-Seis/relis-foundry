@@ -1,0 +1,118 @@
+{
+  "relisId": "MAT-ARM-071-JAMBIERES-MOTORISEES",
+  "name": "Jambières motorisées",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>7</dd></div>\n<div><dt>Protection</dt><dd>Jambières motorisées</dd></div>\n<div><dt>Niv.</dt><dd>3</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Zone</dt><dd>J</dd></div>\n<div><dt>Sol. P/E</dt><dd>3/3</dd></div>\n<div><dt>PV/SB</dt><dd>18/9</dd></div>\n<div><dt>Fonction</dt><dd>Assistance de marche et stabilisation</dd></div>\n<div><dt>Empl. module</dt><dd>3</dd></div>\n<div><dt>Enc.</dt><dd>3</dd></div>\n<div><dt>Équip.</dt><dd>1 minute</dd></div>\n<div><dt>Prix</dt><dd>3 200</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.144 Lot 5-L8 — Protections modulaires de membres",
+      "columns": {
+        "#": "7",
+        "Protection": "Jambières motorisées",
+        "Niv.": "3",
+        "Accès": "Spécialisée",
+        "Zone": "J",
+        "Sol. P/E": "3/3",
+        "PV/SB": "18/9",
+        "Fonction": "Assistance de marche et stabilisation",
+        "Empl. module": "3",
+        "Enc.": "3",
+        "Équip.": "1 minute",
+        "Prix": "3 200"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 3,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 3200,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "specialized",
+      "capBonus": null,
+      "caeBonus": null,
+      "solidityPhysical": 3,
+      "solidityEnergy": 3,
+      "coverage": ["J"],
+      "constraintSummary": "# : 7 ; Protection : Jambières motorisées ; Niv. : 3 ; Accès : Spécialisée ; Zone : J ; Sol. P/E : 3/3 ; PV/SB : 18/9 ; Fonction : Assistance de marche et stabilisation ; Empl. module : 3 ; Enc. : 3 ; Équip. : 1 minute ; Prix : 3 200"
+    },
+    "supplyProfile": {}
+  }
+}

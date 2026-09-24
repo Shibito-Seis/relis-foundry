@@ -1,0 +1,121 @@
+{
+  "relisId": "MAT-ARM-075-COMBINAISON-EVA-INDUSTRIELLE",
+  "name": "Combinaison EVA industrielle",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>3</dd></div>\n<div><dt>Combinaison EVA</dt><dd>Combinaison EVA industrielle</dd></div>\n<div><dt>Niv.</dt><dd>3</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Slots</dt><dd>A</dd></div>\n<div><dt>CAP/CAE</dt><dd>+2/+1</dd></div>\n<div><dt>Sol. P/E</dt><dd>4/3</dd></div>\n<div><dt>PV/SB</dt><dd>36/18</dd></div>\n<div><dt>Dex</dt><dd>3</dd></div>\n<div><dt>Force</dt><dd>1</dd></div>\n<div><dt>Vit.</dt><dd>-1</dd></div>\n<div><dt>Autonomie</dt><dd>6 heures</dd></div>\n<div><dt>Empl.</dt><dd>7</dd></div>\n<div><dt>Enc.</dt><dd>7</dd></div>\n<div><dt>Prix</dt><dd>6 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.147 Lot 5-L9 — Combinaisons spatiales et EVA",
+      "columns": {
+        "#": "3",
+        "Combinaison EVA": "Combinaison EVA industrielle",
+        "Niv.": "3",
+        "Accès": "Spécialisée",
+        "Slots": "A",
+        "CAP/CAE": "+2/+1",
+        "Sol. P/E": "4/3",
+        "PV/SB": "36/18",
+        "Dex": "3",
+        "Force": "1",
+        "Vit.": "-1",
+        "Autonomie": "6 heures",
+        "Empl.": "7",
+        "Enc.": "7",
+        "Prix": "6 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 7,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 6000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "specialized",
+      "capBonus": 2,
+      "caeBonus": 1,
+      "solidityPhysical": 4,
+      "solidityEnergy": 3,
+      "coverage": [],
+      "constraintSummary": "# : 3 ; Combinaison EVA : Combinaison EVA industrielle ; Niv. : 3 ; Accès : Spécialisée ; Slots : A ; CAP/CAE : +2/+1 ; Sol. P/E : 4/3 ; PV/SB : 36/18 ; Dex : 3 ; Force : 1 ; Vit. : -1 ; Autonomie : 6 heures ; Empl. : 7 ; Enc. : 7 ; Prix : 6 000"
+    },
+    "supplyProfile": {}
+  }
+}

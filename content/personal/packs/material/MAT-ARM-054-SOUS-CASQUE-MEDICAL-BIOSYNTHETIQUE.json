@@ -1,0 +1,116 @@
+{
+  "relisId": "MAT-ARM-054-SOUS-CASQUE-MEDICAL-BIOSYNTHETIQUE",
+  "name": "Sous-casque médical biosynthétique",
+  "type": "armor",
+  "tags": ["materiel", "armure", "underlayer"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>6</dd></div>\n<div><dt>Sous-casque</dt><dd>Sous-casque médical biosynthétique</dd></div>\n<div><dt>Niv.</dt><dd>2</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Sol. P/E</dt><dd>1/1</dd></div>\n<div><dt>PV/SB</dt><dd>8/4</dd></div>\n<div><dt>Fonction</dt><dd>Capteurs vitaux, stabilisation et traitement</dd></div>\n<div><dt>Empl.</dt><dd>2</dd></div>\n<div><dt>Signature</dt><dd>Médicale</dd></div>\n<div><dt>Prix</dt><dd>1 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.140 Lot 5-L6 — Sous-casques",
+      "columns": {
+        "#": "6",
+        "Sous-casque": "Sous-casque médical biosynthétique",
+        "Niv.": "2",
+        "Accès": "Spécialisée",
+        "Sol. P/E": "1/1",
+        "PV/SB": "8/4",
+        "Fonction": "Capteurs vitaux, stabilisation et traitement",
+        "Empl.": "2",
+        "Signature": "Médicale",
+        "Prix": "1 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "underHelmet",
+        "slotsConfigured": true,
+        "bodySlots": ["underHelmet"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 1000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "underlayer",
+      "access": "specialized",
+      "capBonus": null,
+      "caeBonus": null,
+      "solidityPhysical": 1,
+      "solidityEnergy": 1,
+      "coverage": [],
+      "constraintSummary": "# : 6 ; Sous-casque : Sous-casque médical biosynthétique ; Niv. : 2 ; Accès : Spécialisée ; Sol. P/E : 1/1 ; PV/SB : 8/4 ; Fonction : Capteurs vitaux, stabilisation et traitement ; Empl. : 2 ; Signature : Médicale ; Prix : 1 000"
+    },
+    "supplyProfile": {}
+  }
+}

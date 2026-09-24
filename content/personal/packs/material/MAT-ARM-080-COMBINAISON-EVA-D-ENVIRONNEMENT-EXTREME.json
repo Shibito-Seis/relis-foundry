@@ -1,0 +1,121 @@
+{
+  "relisId": "MAT-ARM-080-COMBINAISON-EVA-D-ENVIRONNEMENT-EXTREME",
+  "name": "Combinaison EVA d'environnement extrême",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>8</dd></div>\n<div><dt>Combinaison EVA</dt><dd>Combinaison EVA d&#39;environnement extrême</dd></div>\n<div><dt>Niv.</dt><dd>6</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Slots</dt><dd>S+A</dd></div>\n<div><dt>CAP/CAE</dt><dd>+2/+4</dd></div>\n<div><dt>Sol. P/E</dt><dd>5/8</dd></div>\n<div><dt>PV/SB</dt><dd>50/25</dd></div>\n<div><dt>Dex</dt><dd>2</dd></div>\n<div><dt>Force</dt><dd>2</dd></div>\n<div><dt>Vit.</dt><dd>-1</dd></div>\n<div><dt>Autonomie</dt><dd>8 heures</dd></div>\n<div><dt>Empl.</dt><dd>10</dd></div>\n<div><dt>Enc.</dt><dd>10</dd></div>\n<div><dt>Prix</dt><dd>18 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.147 Lot 5-L9 — Combinaisons spatiales et EVA",
+      "columns": {
+        "#": "8",
+        "Combinaison EVA": "Combinaison EVA d'environnement extrême",
+        "Niv.": "6",
+        "Accès": "Spécialisée",
+        "Slots": "S+A",
+        "CAP/CAE": "+2/+4",
+        "Sol. P/E": "5/8",
+        "PV/SB": "50/25",
+        "Dex": "2",
+        "Force": "2",
+        "Vit.": "-1",
+        "Autonomie": "8 heures",
+        "Empl.": "10",
+        "Enc.": "10",
+        "Prix": "18 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 10,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 6,
+    "referencePrice": {
+      "amount": 18000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "specialized",
+      "capBonus": 2,
+      "caeBonus": 4,
+      "solidityPhysical": 5,
+      "solidityEnergy": 8,
+      "coverage": [],
+      "constraintSummary": "# : 8 ; Combinaison EVA : Combinaison EVA d'environnement extrême ; Niv. : 6 ; Accès : Spécialisée ; Slots : S+A ; CAP/CAE : +2/+4 ; Sol. P/E : 5/8 ; PV/SB : 50/25 ; Dex : 2 ; Force : 2 ; Vit. : -1 ; Autonomie : 8 heures ; Empl. : 10 ; Enc. : 10 ; Prix : 18 000"
+    },
+    "supplyProfile": {}
+  }
+}
