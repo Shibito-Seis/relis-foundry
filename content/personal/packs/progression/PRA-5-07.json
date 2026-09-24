@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-5-07",
+  "name": "Partage souverain",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-5"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 5 / 3 A / émanation 9 m</p>\n<p><strong>Discipline :</strong> Influence</p>\n<p>Jusqu&#39;à huit alliés gagnent +2 Volonté/Vigueur, +3 m vitesse et partagent les appels mentaux pendant une scène.</p>\n<p><strong>Intensification :</strong> Deux alliés, portée +3 m ou bonus physique +1.</p>",
+    "traits": ["Prana", "Influence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "5",
+      "activation": "5 / 3 A / émanation 9 m",
+      "discipline": "Influence",
+      "effect": "Jusqu'à huit alliés gagnent +2 Volonté/Vigueur, +3 m vitesse et partagent les appels mentaux pendant une scène.",
+      "scaling": "Deux alliés, portée +3 m ou bonus physique +1."
+    },
+    "level": 16
+  }
+}

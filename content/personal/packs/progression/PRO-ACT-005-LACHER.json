@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-005-LACHER",
+  "name": "Lâcher",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Activation libre</p>\n<p>Relâcher un objet tenu sans le poser soigneusement.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Activation libre",
+      "summary": "Relâcher un objet tenu sans le poser soigneusement."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 0
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

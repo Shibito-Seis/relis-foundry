@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-7-05",
+  "name": "Héraut du vivant",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / émanation 18 m</p>\n<p><strong>Discipline :</strong> Influence</p>\n<p>Pendant une scène, alliés gagnent +3 contre peur, mort, corruption, +6 m vitesse et récupèrent 1d8 PV au début de leur tour s’ils ont au moins 1 PV.</p>\n<p><strong>Intensification :</strong> Régénération +1d8 ou rayon +6 m.</p>",
+    "traits": ["Prana", "Influence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "7",
+      "activation": "7 / 3 A / émanation 18 m",
+      "discipline": "Influence",
+      "effect": "Pendant une scène, alliés gagnent +3 contre peur, mort, corruption, +6 m vitesse et récupèrent 1d8 PV au début de leur tour s’ils ont au moins 1 PV.",
+      "scaling": "Régénération +1d8 ou rayon +6 m."
+    },
+    "level": 22
+  }
+}

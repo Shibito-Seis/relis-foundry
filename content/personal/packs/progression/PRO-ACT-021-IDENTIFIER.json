@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-021-IDENTIFIER",
+  "name": "Identifier",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> 1 Action ou Activité</p>\n<p>Déterminer la nature générale ou détaillée d&#39;un phénomène perçu.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action ou Activité",
+      "summary": "Déterminer la nature générale ou détaillée d'un phénomène perçu."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

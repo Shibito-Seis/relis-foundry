@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-2-07",
+  "name": "Frappe intérieure",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-2"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 2.</strong></p>\n<p><strong>Activation :</strong> 3 / 2 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Attaque contre Vigueur ; 3d8 dégâts internes, ignore armure matérielle mais pas champ ni Résistance vitale.</p>\n<p><strong>Intensification :</strong> +1d8.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "2",
+      "activation": "3 / 2 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Attaque contre Vigueur ; 3d8 dégâts internes, ignore armure matérielle mais pas champ ni Résistance vitale.",
+      "scaling": "+1d8."
+    },
+    "level": 7
+  }
+}

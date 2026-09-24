@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-7-06",
+  "name": "Rupture vitale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 8 / 3 A / contact ou 12 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Test contre Vigueur ; 14d10 dégâts internes, Ralentie 2 pendant 2 tours sur échec ; une IAA ne subit que les dégâts énergétiques sans états vitaux.</p>\n<p><strong>Intensification :</strong> +1d10 ou durée +1 tour.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "7",
+      "activation": "8 / 3 A / contact ou 12 m",
+      "discipline": "Vitalisme",
+      "effect": "Test contre Vigueur ; 14d10 dégâts internes, Ralentie 2 pendant 2 tours sur échec ; une IAA ne subit que les dégâts énergétiques sans états vitaux.",
+      "scaling": "+1d10 ou durée +1 tour."
+    },
+    "level": 22
+  }
+}

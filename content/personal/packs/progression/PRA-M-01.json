@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-M-01",
+  "name": "Chœur des survivants",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-m"],
+  "system": {
+    "description": "<p><strong>Prana — Rang Mythique.</strong></p>\n<p><strong>Activation :</strong> 15 Prana + 1 PM / 1 min / rayon 1 km</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Les vivants alliés sont stabilisés, guéris de 20d8, et toute Mort mineure survenue pendant l’activité est rappelée à 1 PV.</p>\n<p><strong>Intensification :</strong> Aucune Mort majeure ; le lanceur engage 3 Prana max jusqu’à la fin de l’arc.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "M",
+      "activation": "15 Prana + 1 PM / 1 min / rayon 1 km",
+      "discipline": "Vitalisme",
+      "effect": "Les vivants alliés sont stabilisés, guéris de 20d8, et toute Mort mineure survenue pendant l’activité est rappelée à 1 PV.",
+      "scaling": "Aucune Mort majeure ; le lanceur engage 3 Prana max jusqu’à la fin de l’arc."
+    },
+    "level": 30
+  }
+}

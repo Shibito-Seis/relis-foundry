@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-037-SAUT-EN-LONGUEUR-OU-EN-HAUTEUR",
+  "name": "Saut en longueur ou en hauteur",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Activité de 2 Actions</p>\n<p>L&amp;#39;Activité inclut une courte course d&amp;#39;élan et un test d&amp;#39;Athlétisme. Pour un saut horizontal : • la distance annoncée ne peut normalement pas dépasser la Vitesse terrestre ; • le DD est 10 pour 2 cases, puis augmente de 2 par case supplémentaire. Pour un saut vertical : • le DD est 10 pour atteindre 1 case de hauteur ; • il augmente de 3 par case verticale supplémentaire. Sans course d&amp;#39;élan possible, le DD augmente de 2. • Réussite critique : le personnage atteint la distance annoncée et maîtrise sa réception ; • Réussite : il atteint la distance annoncée ; • Échec : il n&amp;#39;atteint qu&amp;#39;une progression partielle si un appui existe, sinon il chute ; • Échec critique : il perd immédiatement son appui et subit la conséquence du terrain. Élan mesuré supprime le malus provenant uniquement de l&amp;#39;absence de course d&amp;#39;élan et augmente les distances selon son texte validé.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Activité de 2 Actions",
+      "summary": "L&#39;Activité inclut une courte course d&#39;élan et un test d&#39;Athlétisme. Pour un saut horizontal : • la distance annoncée ne peut normalement pas dépasser la Vitesse terrestre ; • le DD est 10 pour 2 cases, puis augmente de 2 par case supplémentaire. Pour un saut vertical : • le DD est 10 pour atteindre 1 case de hauteur ; • il augmente de 3 par case verticale supplémentaire. Sans course d&#39;élan possible, le DD augmente de 2. • Réussite critique : le personnage atteint la distance annoncée et maîtrise sa réception ; • Réussite : il atteint la distance annoncée ; • Échec : il n&#39;atteint qu&#39;une progression partielle si un appui existe, sinon il chute ; • Échec critique : il perd immédiatement son appui et subit la conséquence du terrain. Élan mesuré supprime le malus provenant uniquement de l&#39;absence de course d&#39;élan et augmente les distances selon son texte validé."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 2
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

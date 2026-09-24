@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-006-UTILISER-UN-OBJET",
+  "name": "Utiliser un objet",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Généralement 1 Action</p>\n<p>Employer un objet déjà tenu, connecté ou placé dans un emplacement d&#39;accès rapide.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Généralement 1 Action",
+      "summary": "Employer un objet déjà tenu, connecté ou placé dans un emplacement d'accès rapide."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

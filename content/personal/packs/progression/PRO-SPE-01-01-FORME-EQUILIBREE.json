@@ -1,0 +1,40 @@
+{
+  "relisId": "PRO-SPE-01-01-FORME-EQUILIBREE",
+  "name": "Bretteur — Forme équilibrée",
+  "type": "specialization",
+  "tags": ["progression", "specialisation", "bretteur"],
+  "system": {
+    "description": "<p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Lame polyvalente, sabre ou épée courte équilibrée ; protection légère adaptée au duel.</p>",
+    "traits": [],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-VOI-001-BRETTEUR",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "path",
+        "state": "resolved",
+        "labelSnapshot": "Bretteur",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "specialization",
+      "sourceSection": "9",
+      "pathName": "Bretteur",
+      "branchName": "Forme équilibrée",
+      "primaryLoadout": "Lame polyvalente, sabre ou épée courte équilibrée ; protection légère adaptée au duel.",
+      "loadoutRefs": [
+        {
+          "relisId": "MAT-WPN-013-EPEE-COURTE",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "weapon",
+          "state": "resolved",
+          "labelSnapshot": "Épée courte",
+          "missingPolicy": "diagnose"
+        }
+      ]
+    }
+  }
+}

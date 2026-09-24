@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-039-S-ACCROUPIR",
+  "name": "S'accroupir",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> 1 Action</p>\n<p>Le personnage devient Accroupi ou À genoux. Tant qu&amp;#39;il reste Accroupi : • chaque case terrestre lui coûte 2 points de réserve, comme un terrain difficile ; • il gagne +1 circonstanciel aux attaques avec une arme à feu pouvant réellement profiter de la réduction du recul ; • il ne gagne aucun bonus défensif dans un espace découvert ; • derrière un obstacle adapté, sa silhouette réduite peut lui accorder un couvert ou améliorer son couvert d&amp;#39;un degré, au maximum jusqu&amp;#39;au couvert renforcé ; • une arme ou un Talent spécialisé peut améliorer ou étendre le bénéfice offensif. Le point 5 identifiera les propriétés Recul, Appui ou Stabilisable permettant de déterminer automatiquement les armes compatibles. Jusque-là, le MJ tranche selon l&amp;#39;arme et la situation.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Le personnage devient Accroupi ou À genoux. Tant qu&#39;il reste Accroupi : • chaque case terrestre lui coûte 2 points de réserve, comme un terrain difficile ; • il gagne +1 circonstanciel aux attaques avec une arme à feu pouvant réellement profiter de la réduction du recul ; • il ne gagne aucun bonus défensif dans un espace découvert ; • derrière un obstacle adapté, sa silhouette réduite peut lui accorder un couvert ou améliorer son couvert d&#39;un degré, au maximum jusqu&#39;au couvert renforcé ; • une arme ou un Talent spécialisé peut améliorer ou étendre le bénéfice offensif. Le point 5 identifiera les propriétés Recul, Appui ou Stabilisable permettant de déterminer automatiquement les armes compatibles. Jusque-là, le MJ tranche selon l&#39;arme et la situation."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

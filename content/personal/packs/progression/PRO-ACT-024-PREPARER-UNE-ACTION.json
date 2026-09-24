@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-024-PREPARER-UNE-ACTION",
+  "name": "Préparer une Action",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Activité de 2 Actions</p>\n<p>Programmer une Action ou Activité de 1 ou 2 Actions sur un déclencheur.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Activité de 2 Actions",
+      "summary": "Programmer une Action ou Activité de 1 ou 2 Actions sur un déclencheur."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 2
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

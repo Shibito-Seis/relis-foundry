@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-3-08",
+  "name": "Saisie du souffle",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-3"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 3.</strong></p>\n<p><strong>Activation :</strong> 3 / 2 A / 18 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Test contre Vigueur ; échec de la cible : 4d8 dégâts internes, sans Réaction et Essoufflée jusqu&#39;à son prochain tour ; critique : durée 2 tours.</p>\n<p><strong>Intensification :</strong> +1d8 ou durée +1 tour.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "3",
+      "activation": "3 / 2 A / 18 m",
+      "discipline": "Vitalisme",
+      "effect": "Test contre Vigueur ; échec de la cible : 4d8 dégâts internes, sans Réaction et Essoufflée jusqu'à son prochain tour ; critique : durée 2 tours.",
+      "scaling": "+1d8 ou durée +1 tour."
+    },
+    "level": 10
+  }
+}

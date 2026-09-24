@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-6-01",
+  "name": "Renaissance intégrale",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 6 / 3 A / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Un vivant récupère 10d8 + MM PV, retire trois complications et commence à régénérer un organe ou membre viable en 24 h.</p>\n<p><strong>Intensification :</strong> +2d8 ou régénération réduite à 1 h.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "6",
+      "activation": "6 / 3 A / contact",
+      "discipline": "Vitalisme",
+      "effect": "Un vivant récupère 10d8 + MM PV, retire trois complications et commence à régénérer un organe ou membre viable en 24 h.",
+      "scaling": "+2d8 ou régénération réduite à 1 h."
+    },
+    "level": 19
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-6-03",
+  "name": "Onde souveraine",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-6"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 6.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / cône 18 m</p>\n<p><strong>Discipline :</strong> Projection</p>\n<p>Attaque contre CAP ; 12d8 dégâts, repousse 8 m et met À terre sur réussite.</p>\n<p><strong>Intensification :</strong> +1d8, cône +3 m ou repousse +3 m.</p>",
+    "traits": ["Prana", "Projection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "6",
+      "activation": "7 / 3 A / cône 18 m",
+      "discipline": "Projection",
+      "effect": "Attaque contre CAP ; 12d8 dégâts, repousse 8 m et met À terre sur réussite.",
+      "scaling": "+1d8, cône +3 m ou repousse +3 m."
+    },
+    "level": 19
+  }
+}

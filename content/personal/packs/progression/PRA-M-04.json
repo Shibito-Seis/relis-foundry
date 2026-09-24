@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-M-04",
+  "name": "Jugement du sang",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-m"],
+  "system": {
+    "description": "<p><strong>Prana — Rang Mythique.</strong></p>\n<p><strong>Activation :</strong> 15 Prana + 1 PM / 3 A / 100 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Une créature Mythique teste Vigueur ; 30d10 dégâts vitaux, Débit 0 et aucune régénération pendant 1 min sur échec.</p>\n<p><strong>Intensification :</strong> Ne tue pas automatiquement, n’affecte pas une IAA comme vivant et ne crée pas une Mort majeure.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "M",
+      "activation": "15 Prana + 1 PM / 3 A / 100 m",
+      "discipline": "Vitalisme",
+      "effect": "Une créature Mythique teste Vigueur ; 30d10 dégâts vitaux, Débit 0 et aucune régénération pendant 1 min sur échec.",
+      "scaling": "Ne tue pas automatiquement, n’affecte pas une IAA comme vivant et ne crée pas une Mort majeure."
+    },
+    "level": 30
+  }
+}

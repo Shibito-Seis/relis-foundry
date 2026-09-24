@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-10-01",
+  "name": "Source de vie",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-10"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 10.</strong></p>\n<p><strong>Activation :</strong> 12 / 1 min / rayon 100 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Les alliés vivants reviennent à leurs PV maximaux, retirent trois complications majeures ; morts depuis moins de 1 min reviennent à moitié PV, Prana 0 et Fatigue 4. Aucune Mort majeure.</p>\n<p><strong>Intensification :</strong> Pas d’intensification ordinaire ; un projet peut étendre le rayon.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "10",
+      "activation": "12 / 1 min / rayon 100 m",
+      "discipline": "Vitalisme",
+      "effect": "Les alliés vivants reviennent à leurs PV maximaux, retirent trois complications majeures ; morts depuis moins de 1 min reviennent à moitié PV, Prana 0 et Fatigue 4. Aucune Mort majeure.",
+      "scaling": "Pas d’intensification ordinaire ; un projet peut étendre le rayon."
+    },
+    "level": 30
+  }
+}

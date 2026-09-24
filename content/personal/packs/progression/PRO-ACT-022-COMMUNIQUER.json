@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-022-COMMUNIQUER",
+  "name": "Communiquer",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Activation libre ou 1 Action</p>\n<p>Transmettre un message bref ou une instruction complexe.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Activation libre ou 1 Action",
+      "summary": "Transmettre un message bref ou une instruction complexe."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

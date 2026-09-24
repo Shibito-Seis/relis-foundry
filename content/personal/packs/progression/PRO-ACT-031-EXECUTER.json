@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-031-EXECUTER",
+  "name": "Exécuter",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Progression de 3 Actions</p>\n<p>Mettre à mort ou mutiler volontairement une cible entièrement sans défense.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Progression de 3 Actions",
+      "summary": "Mettre à mort ou mutiler volontairement une cible entièrement sans défense."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 3
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

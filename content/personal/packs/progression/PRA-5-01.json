@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-5-01",
+  "name": "Corps transcendant",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-5"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 5.</strong></p>\n<p><strong>Activation :</strong> 5 / 2 A / personnel</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Pendant 5 tours : vitesse +6 m, Résistance physique 8, immunité Fatigue mineure et +2 aux tests physiques ; après effet, Fatigue 1.</p>\n<p><strong>Intensification :</strong> Durée +2 tours ou Résistance +2.</p>",
+    "traits": ["Prana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "5",
+      "activation": "5 / 2 A / personnel",
+      "discipline": "Transformation",
+      "effect": "Pendant 5 tours : vitesse +6 m, Résistance physique 8, immunité Fatigue mineure et +2 aux tests physiques ; après effet, Fatigue 1.",
+      "scaling": "Durée +2 tours ou Résistance +2."
+    },
+    "level": 16
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-001-SE-DEPLACER",
+  "name": "Se déplacer",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> 1 Action</p>\n<p>Créer une réserve de déplacement égale à la Vitesse pour le reste du tour.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Créer une réserve de déplacement égale à la Vitesse pour le reste du tour."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

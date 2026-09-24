@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-002-PAS-MESURE",
+  "name": "Pas mesuré",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Activation libre, une fois par tour</p>\n<p>Parcourir la première case de déplacement volontaire du tour sans déclencher de Réaction fondée uniquement sur ce déplacement.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Activation libre, une fois par tour",
+      "summary": "Parcourir la première case de déplacement volontaire du tour sans déclencher de Réaction fondée uniquement sur ce déplacement."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 0
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

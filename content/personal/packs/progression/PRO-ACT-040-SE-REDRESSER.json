@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-040-SE-REDRESSER",
+  "name": "Se redresser",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> 1 Action</p>\n<p>Le personnage quitte l&amp;#39;état Accroupi et revient Debout.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "1 Action",
+      "summary": "Le personnage quitte l&#39;état Accroupi et revient Debout."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 1
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

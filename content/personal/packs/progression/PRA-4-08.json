@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-4-08",
+  "name": "Union des souffles",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-4"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 4.</strong></p>\n<p><strong>Activation :</strong> 4 / 3 A / émanation 6 m</p>\n<p><strong>Discipline :</strong> Influence</p>\n<p>Jusqu&#39;à six alliés partagent perceptions d&#39;alerte et peuvent transférer entre eux jusqu&#39;à 5 dégâts par tour pendant une scène.</p>\n<p><strong>Intensification :</strong> Seuil +5 ou deux alliés supplémentaires.</p>",
+    "traits": ["Prana", "Influence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "4",
+      "activation": "4 / 3 A / émanation 6 m",
+      "discipline": "Influence",
+      "effect": "Jusqu'à six alliés partagent perceptions d'alerte et peuvent transférer entre eux jusqu'à 5 dégâts par tour pendant une scène.",
+      "scaling": "Seuil +5 ou deux alliés supplémentaires."
+    },
+    "level": 13
+  }
+}

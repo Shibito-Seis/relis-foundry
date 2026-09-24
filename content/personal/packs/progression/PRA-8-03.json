@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-8-03",
+  "name": "Souffle de vie",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-8"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 8.</strong></p>\n<p><strong>Activation :</strong> 8 / 3 A / émanation 18 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Jusqu’à vingt vivants récupèrent 12d8 + MM PV, sont stabilisés et retirent Fatigue 1, peur et deux complications modérées.</p>\n<p><strong>Intensification :</strong> +2d8 ou dix cibles.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "8",
+      "activation": "8 / 3 A / émanation 18 m",
+      "discipline": "Vitalisme",
+      "effect": "Jusqu’à vingt vivants récupèrent 12d8 + MM PV, sont stabilisés et retirent Fatigue 1, peur et deux complications modérées.",
+      "scaling": "+2d8 ou dix cibles."
+    },
+    "level": 25
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-7-04",
+  "name": "Guérison collective profonde",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / émanation 12 m</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Jusqu’à dix vivants récupèrent 10d8 + MM PV et retirent une complication majeure ou deux modérées.</p>\n<p><strong>Intensification :</strong> +2d8 ou deux cibles.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "7",
+      "activation": "7 / 3 A / émanation 12 m",
+      "discipline": "Vitalisme",
+      "effect": "Jusqu’à dix vivants récupèrent 10d8 + MM PV et retirent une complication majeure ou deux modérées.",
+      "scaling": "+2d8 ou deux cibles."
+    },
+    "level": 22
+  }
+}

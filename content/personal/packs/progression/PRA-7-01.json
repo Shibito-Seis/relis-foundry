@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-7-01",
+  "name": "Retour à la vie",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 8 / 10 min / contact</p>\n<p><strong>Discipline :</strong> Vitalisme</p>\n<p>Rappelle un vivant mort depuis moins de 10 min, corps suffisamment présent ; revient à 4d8 PV, Fatigue 3, Blessure critique et Prana 0. Aucune Mort majeure.</p>\n<p><strong>Intensification :</strong> Fenêtre 1 h ou PV +4d8, jamais les deux.</p>",
+    "traits": ["Prana", "Vitalisme"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "7",
+      "activation": "8 / 10 min / contact",
+      "discipline": "Vitalisme",
+      "effect": "Rappelle un vivant mort depuis moins de 10 min, corps suffisamment présent ; revient à 4d8 PV, Fatigue 3, Blessure critique et Prana 0. Aucune Mort majeure.",
+      "scaling": "Fenêtre 1 h ou PV +4d8, jamais les deux."
+    },
+    "level": 22
+  }
+}

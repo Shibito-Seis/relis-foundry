@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-ACT-029-SE-RENDRE",
+  "name": "Se rendre",
+  "type": "action",
+  "tags": ["progression", "action", "universelle"],
+  "system": {
+    "description": "<p><strong>Coût :</strong> Activation libre</p>\n<p>Cesser volontairement les hostilités et manifester sa reddition.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "universal-action",
+      "sourceSection": "38",
+      "activation": "Activation libre",
+      "summary": "Cesser volontairement les hostilités et manifester sa reddition."
+    },
+    "test": {
+      "configured": false,
+      "attributeKey": "",
+      "skillKey": "",
+      "difficulty": null,
+      "resourceKey": "",
+      "cost": 0
+    },
+    "effect": {
+      "conditionKey": "",
+      "intensity": 0,
+      "durationRounds": 0
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-7-02",
+  "name": "Corps indestructible",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-7"],
+  "system": {
+    "description": "<p><strong>Prana — Rang 7.</strong></p>\n<p><strong>Activation :</strong> 7 / 3 A / contact</p>\n<p><strong>Discipline :</strong> Protection</p>\n<p>Pendant 5 tours : Résistance 15 physique/énergétique, immunité aux Blessures nouvelles, mais les dégâts nets restent comptés et peuvent faire tomber à 0 PV.</p>\n<p><strong>Intensification :</strong> Résistance +3 ou durée +2 tours.</p>",
+    "traits": ["Prana", "Protection"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "7",
+      "activation": "7 / 3 A / contact",
+      "discipline": "Protection",
+      "effect": "Pendant 5 tours : Résistance 15 physique/énergétique, immunité aux Blessures nouvelles, mais les dégâts nets restent comptés et peuvent faire tomber à 0 PV.",
+      "scaling": "Résistance +3 ou durée +2 tours."
+    },
+    "level": 22
+  }
+}

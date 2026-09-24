@@ -1,0 +1,23 @@
+{
+  "relisId": "PRA-M-03",
+  "name": "Incarnation du vivant",
+  "type": "power",
+  "tags": ["progression", "pouvoir", "prana", "rang-m"],
+  "system": {
+    "description": "<p><strong>Prana — Rang Mythique.</strong></p>\n<p><strong>Activation :</strong> 12 Prana + 1 PM / 3 A</p>\n<p><strong>Discipline :</strong> Transformation</p>\n<p>Pendant une scène : gabarit choisi jusqu’à colossal, Résistance 30, régénération 10d8, vol 40 m, aura de soin 5d8 et attaques 8d8.</p>\n<p><strong>Intensification :</strong> Fatigue 5, Prana 0 et engagement de 2 Prana max après effet.</p>",
+    "traits": ["Prana", "Transformation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "power-formula",
+      "sourceSection": "43.20–43.76",
+      "energy": "Prana",
+      "rank": "M",
+      "activation": "12 Prana + 1 PM / 3 A",
+      "discipline": "Transformation",
+      "effect": "Pendant une scène : gabarit choisi jusqu’à colossal, Résistance 30, régénération 10d8, vol 40 m, aura de soin 5d8 et attaques 8d8.",
+      "scaling": "Fatigue 5, Prana 0 et engagement de 2 Prana max après effet."
+    },
+    "level": 30
+  }
+}
