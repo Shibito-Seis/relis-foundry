@@ -1,0 +1,110 @@
+{
+  "relisId": "BAL-127L",
+  "name": "12,7 × 99 mm",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "standard", "bal"],
+  "system": {
+    "description": "<dl><div><dt>Code</dt><dd>BAL-127L</dd></div>\n<div><dt>Chambrage</dt><dd>12,7 × 99 mm</dd></div>\n<div><dt>Classe</dt><dd>Anti-matériel</dd></div>\n<div><dt>Usage courant</dt><dd>fusil anti-matériel, mitrailleuse lourde</dd></div>\n<div><dt>Prix standard</dt><dd>20</dd></div>\n<div><dt>Conditionnement</dt><dd>boîte de 10</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.173 Carabines, fusils et armes automatiques",
+      "columns": {
+        "Code": "BAL-127L",
+        "Chambrage": "12,7 × 99 mm",
+        "Classe": "Anti-matériel",
+        "Usage courant": "fusil anti-matériel, mitrailleuse lourde",
+        "Prix standard": "20",
+        "Conditionnement": "boîte de 10"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "referencePrice": {
+      "amount": 20,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "ballistic",
+      "variantId": "standard",
+      "chamberingId": "BAL-127L",
+      "chamberId": "BAL-127L",
+      "pressureClassId": "antiMateriel",
+      "pressureClass": "antiMateriel",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  }
+}

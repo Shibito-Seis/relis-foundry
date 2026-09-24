@@ -1,0 +1,92 @@
+{
+  "relisId": "CLN-002",
+  "name": "Patch biométrique continu",
+  "type": "consumable",
+  "tags": ["materiel", "clinique"],
+  "system": {
+    "description": "<p>1 — Courant — L — 72 h — journalise température, pouls, respiration et activité ; autorise les alertes privées — 037</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "clinique",
+      "sourceSection": "54.3 Diagnostic et suivi — CLN-001 à CLN-008",
+      "canonicalRow": [
+        "CLN-002",
+        "Patch biométrique continu",
+        "1",
+        "Courant",
+        "L",
+        "72 h",
+        "journalise température, pouls, respiration et activité ; autorise les alertes privées",
+        "037"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "consumableProfile": {
+      "kind": "medical",
+      "effectSummary": "journalise température, pouls, respiration et activité ; autorise les alertes privées"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

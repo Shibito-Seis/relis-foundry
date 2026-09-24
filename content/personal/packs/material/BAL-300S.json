@@ -1,0 +1,110 @@
+{
+  "relisId": "BAL-300S",
+  "name": "7,62 × 35 mm subsonique",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "standard", "bal"],
+  "system": {
+    "description": "<dl><div><dt>Code</dt><dd>BAL-300S</dd></div>\n<div><dt>Chambrage</dt><dd>7,62 × 35 mm subsonique</dd></div>\n<div><dt>Classe</dt><dd>Fusil subsonique</dd></div>\n<div><dt>Usage courant</dt><dd>carabine discrète</dd></div>\n<div><dt>Prix standard</dt><dd>3</dd></div>\n<div><dt>Conditionnement</dt><dd>boîte de 20</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.173 Carabines, fusils et armes automatiques",
+      "columns": {
+        "Code": "BAL-300S",
+        "Chambrage": "7,62 × 35 mm subsonique",
+        "Classe": "Fusil subsonique",
+        "Usage courant": "carabine discrète",
+        "Prix standard": "3",
+        "Conditionnement": "boîte de 20"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "referencePrice": {
+      "amount": 3,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "ballistic",
+      "variantId": "standard",
+      "chamberingId": "BAL-300S",
+      "chamberId": "BAL-300S",
+      "pressureClassId": "rifleSubsonic",
+      "pressureClass": "rifleSubsonic",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  }
+}

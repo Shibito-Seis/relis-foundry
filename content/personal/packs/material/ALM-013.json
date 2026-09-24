@@ -1,0 +1,93 @@
+{
+  "relisId": "ALM-013",
+  "name": "Pomme",
+  "type": "consumable",
+  "tags": ["materiel", "alimentation"],
+  "system": {
+    "description": "<p>1 fruit — 0,10 — 0,15 L — 90 j / 48 portions — 30 j froid — arbre nain ou greffe ; stockage robuste</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "alimentation",
+      "sourceSection": "55.3.4 Fruits terrestres cultivables — ALM-013 à ALM-028",
+      "canonicalRow": [
+        "ALM-013",
+        "Pomme",
+        "1 fruit",
+        "0,10",
+        "0,15 L",
+        "90 j / 48 portions",
+        "30 j froid",
+        "arbre nain ou greffe ; stockage robuste"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "utility",
+      "effectSummary": "30 j froid"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

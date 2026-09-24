@@ -1,0 +1,110 @@
+{
+  "relisId": "BAL-10A",
+  "name": "10 × 25 mm",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "standard", "bal"],
+  "system": {
+    "description": "<dl><div><dt>Code</dt><dd>BAL-10A</dd></div>\n<div><dt>Chambrage</dt><dd>10 × 25 mm</dd></div>\n<div><dt>Classe</dt><dd>Haute pression</dd></div>\n<div><dt>Usage courant</dt><dd>pistolet lourd</dd></div>\n<div><dt>Prix standard</dt><dd>2</dd></div>\n<div><dt>Conditionnement</dt><dd>boîte de 40</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-standard",
+      "sourceSection": "41.172 Armes de poing et armes compactes",
+      "columns": {
+        "Code": "BAL-10A",
+        "Chambrage": "10 × 25 mm",
+        "Classe": "Haute pression",
+        "Usage courant": "pistolet lourd",
+        "Prix standard": "2",
+        "Conditionnement": "boîte de 40"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "referencePrice": {
+      "amount": 2,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "ballistic",
+      "variantId": "standard",
+      "chamberingId": "BAL-10A",
+      "chamberId": "BAL-10A",
+      "pressureClassId": "highPressure",
+      "pressureClass": "highPressure",
+      "feedInterfaceIds": [],
+      "feedInterfaces": [],
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  }
+}
