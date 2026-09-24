@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-033",
+  "name": "Innovation de crise",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>En combinant des pièces, outils, appareils ou fonctions qui n&#39;étaient pas prévus pour fonctionner ensemble, le personnage improvise une solution technique d&#39;urgence.</p>\n<p>Il décrit une fonction ordinaire manquante et effectue un test approprié, généralement avec :</p>\n<p>• Ingénierie ;</p>\n<p>• Informatique ;</p>\n<p>• Systèmes de vaisseau ;</p>\n<p>• Techno-magie ;</p>\n<p>• Sciences, lorsque l&#39;innovation repose sur un principe analysable.</p>\n<p>Il gagne +2 circonstanciel à ce test.</p>\n<p>Sur une réussite, le montage fournit la fonction recherchée pendant la scène ou pour une tâche précise. Exemples :</p>\n<p>• relais d&#39;énergie provisoire ;</p>\n<p>• balise ou liaison de communication ;</p>\n<p>• capteur rudimentaire ;</p>\n<p>• commande de secours ;</p>\n<p>• joint, verrou ou scellement temporaire ;</p>\n<p>• refroidissement improvisé ;</p>\n<p>• alimentation d&#39;un appareil essentiel ;</p>\n<p>• interface ou adaptateur de fortune ;</p>\n<p>• mécanisme de diversion technique.</p>\n<p>Sur une réussite normale, le personnage ou le MJ choisit un coût cohérent :</p>\n<p>• consommation d&#39;une batterie, charge ou pièce ;</p>\n<p>• dégradation d&#39;un composant ;</p>\n<p>• Surmenage +1 dans une scène d&#39;action ;</p>\n<p>• maintenance obligatoire après la scène ;</p>\n<p>• fonctionnement instable ou limité.</p>\n<p>Sur une réussite critique, le montage fonctionne sans coût immédiat et peut durer jusqu&#39;au prochain repos long ou jusqu&#39;à ce que la situation le rende inutilisable.</p>\n<p>Innovation de crise ne permet pas de créer gratuitement :</p>\n<p>• une arme militaire complète ;</p>\n<p>• un soin avancé ;</p>\n<p>• une armure lourde ;</p>\n<p>• un module entier de vaisseau ;</p>\n<p>• une ressource énergétique permanente ;</p>\n<p>• une capacité biologique, magique ou artificielle unique ;</p>\n<p>• un moyen automatique de contourner authentification, cryptage ou verrouillage majeur.</p>",
+    "traits": ["Humain", "Technologie", "Improvisation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-024",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Détournement fonctionnel",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.23 Talents Humains de niveau 9",
+      "family": "Ingéniosité prométhéenne",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Activité de 2 Actions en rencontre, ou Activité d'exploration",
+      "prerequisites": "Détournement fonctionnel",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ingéniosité prométhéenne",
+        "Traits": "Humain, Technologie, Improvisation",
+        "Type": "Activité de 2 Actions en rencontre, ou Activité d'exploration",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Détournement fonctionnel"
+      }
+    },
+    "level": 9
+  }
+}

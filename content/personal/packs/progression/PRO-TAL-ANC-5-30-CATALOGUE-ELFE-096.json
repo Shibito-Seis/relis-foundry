@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-096",
+  "name": "Présence inaltérable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel contre :</p>\n<p>• coercition et intimidation ;</p>\n<p>• altération de mémoire ou d&#39;identité ;</p>\n<p>• humiliation destinée à lui faire abandonner sa fonction ;</p>\n<p>• pression visant à lui faire trahir une communauté dont il a accepté la responsabilité.</p>\n<p>Une fois par session, lorsqu&#39;il obtient un échec simple à un test de Volonté, Sang-froid, Diplomatie ou Commandement en défendant directement son identité, sa parole donnée ou une communauté sous sa responsabilité, il transforme cet échec en réussite assortie d&#39;une complication choisie par le MJ.</p>\n<p>La complication peut être une concession, une obligation, une perte de temps, du Stress, une attention hostile ou une dette. Elle ne peut pas annuler entièrement la réussite obtenue.</p>\n<p>---</p>",
+    "traits": ["Elfe", "Fortune", "Mental", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-081",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Refus de l'effacement",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-090",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Autorité des Anciens",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.34 Talents Elfes de niveau 13",
+      "family": "Présence intemporelle",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Refus de l'effacement ou Autorité des Anciens",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence intemporelle",
+        "Traits": "Elfe, Fortune, Mental, Social",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation",
+        "Prérequis": "Refus de l'effacement ou Autorité des Anciens"
+      }
+    },
+    "level": 13
+  }
+}

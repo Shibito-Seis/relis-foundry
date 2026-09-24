@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-092",
+  "name": "Prescience des courants",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage avertit la cible un instant avant que le courant dangereux ne se referme.</p>\n<p>La cible relance le test et doit conserver le second résultat. Le test peut utiliser Dextérité, Volonté, Maîtrise Magique ou une compétence pertinente, à condition qu&#39;il serve directement à éviter, contenir ou résister à la menace perçue.</p>\n<p>Prescience des courants :</p>\n<p>• ne s&#39;applique pas à un échec critique ;</p>\n<p>• ne fonctionne pas si le danger est complètement indétectable pour le personnage ;</p>\n<p>• ne peut pas affecter un jet déjà modifié par un autre effet de Fortune ;</p>\n<p>• n&#39;empêche pas les conséquences d&#39;une menace qui n&#39;était pas couverte par le test relancé.</p>",
+    "traits": ["Elfe", "Fortune", "Flux", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-084",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Regard au-delà du voile",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-085",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Cartographe du Flux",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.34 Talents Elfes de niveau 13",
+      "family": "Sens de la Fusion",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Cartographe du Flux ou Regard au-delà du voile",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage ou un allié à 12 mètres échoue à un test contre une menace magique, énergétique ou issue de la Fusion que le personnage peut percevoir",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la Fusion",
+        "Traits": "Elfe, Fortune, Flux, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Cartographe du Flux ou Regard au-delà du voile",
+        "Déclencheur": "le personnage ou un allié à 12 mètres échoue à un test contre une menace magique, énergétique ou issue de la Fusion que le personnage peut percevoir"
+      }
+    },
+    "level": 13
+  }
+}

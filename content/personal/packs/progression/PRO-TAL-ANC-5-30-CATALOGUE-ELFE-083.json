@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-083",
+  "name": "Précision immémoriale",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir effectué une attaque utilisant la Dextérité et obtenu un échec, le personnage peut relancer le jet et doit conserver le second résultat.</p>\n<p>S&#39;il a consacré une Action à Viser ou à préparer précisément l&#39;attaque, il ignore également jusqu&#39;à 2 points de malus circonstanciel provenant d&#39;un couvert léger, de la portée, d&#39;une posture corporelle instable ou d&#39;une visibilité imparfaite.</p>\n<p>Précision immémoriale :</p>\n<p>• ne s&#39;applique pas à un échec critique ;</p>\n<p>• ne permet pas de cibler une créature que le personnage ne peut pas localiser ;</p>\n<p>• ne contourne pas un couvert total ou l&#39;absence de ligne d&#39;effet ;</p>\n<p>• ne peut pas être combinée avec un autre effet de Fortune sur le même jet.</p>",
+    "traits": ["Elfe", "Fortune", "Précision"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-052",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Précision sylvestre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.33 Talents Elfes de niveau 9",
+      "family": "Grâce sylvestre",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Précision sylvestre",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Fortune, Précision",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Précision sylvestre"
+      }
+    },
+    "level": 9
+  }
+}

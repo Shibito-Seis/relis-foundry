@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-040",
+  "name": "Héritier de Prométhée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut créer un schéma prométhéen à partir d&#39;un équipement, d&#39;une technologie ou d&#39;un dispositif techno-magique qu&#39;il est capable d&#39;étudier.</p>\n<p>Il effectue un test approprié d&#39;Ingénierie, Informatique, Sciences, Systèmes de vaisseau ou Techno-magie.</p>\n<p>Sur une réussite, le schéma reste actif jusqu&#39;à ce que le personnage en crée un autre. Pour l&#39;objet ou la famille de dispositifs étudiée :</p>\n<p>• le personnage ignore jusqu&#39;à 2 points de malus circonstanciel provenant de son caractère alien, oublié, expérimental ou non standard ;</p>\n<p>• les alliés qu&#39;il instruit pendant au moins 10 minutes ignorent jusqu&#39;à 1 point du même malus ;</p>\n<p>• les fonctions ordinaires peuvent être réparées, adaptées ou reproduites avec des outils humains appropriés, selon le DD et les ressources fixés par le MJ ;</p>\n<p>• l&#39;objet est considéré comme familier pour les usages élémentaires et la maintenance courante.</p>\n<p>Sur une réussite critique, le personnage peut conserver deux schémas prométhéens actifs au lieu d&#39;un jusqu&#39;à ce qu&#39;il en remplace un.</p>\n<p>Le schéma ne permet pas de reproduire :</p>\n<p>• une capacité unique ou un artefact ;</p>\n<p>• une conscience artificielle ;</p>\n<p>• une Architecture IAA ;</p>\n<p>• une interface biologique absente ;</p>\n<p>• un organe, une corne ou une énergie innée ;</p>\n<p>• une technologie dont les matériaux ou les lois demeurent incompréhensibles ;</p>\n<p>• une fonction militaire, médicale ou énergétique sans les composants requis.</p>",
+    "traits": ["Humain", "Technologie", "Exploration", "Techno-magie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-033",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Innovation de crise",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.24 Talents Humains de niveau 13",
+      "family": "Ingéniosité prométhéenne",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "étude d'au moins une heure",
+      "prerequisites": "Innovation de crise",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ingéniosité prométhéenne",
+        "Traits": "Humain, Technologie, Exploration, Techno-magie",
+        "Type": "étude d'au moins une heure",
+        "Prérequis": "Innovation de crise"
+      }
+    },
+    "level": 13
+  }
+}

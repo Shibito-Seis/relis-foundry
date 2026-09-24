@@ -1,0 +1,48 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-039",
+  "name": "Institution vivante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage ne porte plus seulement le nom de son institution : il en conserve les méthodes, les protocoles et la capacité de transmission.</p>\n<p>Il choisit une compétence liée à son Héritage institutionnel dans laquelle il est au moins Expert.</p>\n<p>Après une heure de préparation, d&#39;instruction ou de simulation, il choisit une procédure précise appartenant à cette compétence, par exemple :</p>\n<p>• triage d&#39;urgence ;</p>\n<p>• protocole d&#39;évacuation ;</p>\n<p>• chaîne de commandement ;</p>\n<p>• lecture d&#39;archives ;</p>\n<p>• contrôle administratif ;</p>\n<p>• maintenance standardisée ;</p>\n<p>• procédure scientifique ;</p>\n<p>• sécurisation d&#39;un réseau ;</p>\n<p>• négociation institutionnelle.</p>\n<p>Il peut former un nombre d&#39;alliés égal à 2 + sa Présence, avec un minimum de 2.</p>\n<p>Jusqu&#39;à la fin de la mission préparée ou jusqu&#39;au prochain repos long :</p>\n<p>• un allié Inexpérimenté est considéré comme Qualifié pour les usages ordinaires de cette procédure précise ;</p>\n<p>• un allié déjà Qualifié ou davantage gagne +1 circonstanciel aux tests de cette même procédure.</p>\n<p>Cette formation :</p>\n<p>• ne satisfait aucun prérequis ;</p>\n<p>• ne donne pas accès à un Talent de compétence ;</p>\n<p>• ne permet pas les actes réservés à Expert ou davantage ;</p>\n<p>• ne remplace pas l&#39;équipement, l&#39;accréditation ou la capacité de Voie nécessaires ;</p>\n<p>• ne concerne pas toute la compétence, seulement la procédure préparée.</p>\n<p>Avec du temps et l&#39;accord du MJ, Institution vivante permet également de fonder ou de restaurer une cellule locale de l&#39;institution, sans garantir ses ressources ni sa loyauté future.</p>",
+    "traits": [
+      "Humain",
+      "Culture",
+      "Institution",
+      "Coopération",
+      "Exploration"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-032",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Autorité héritée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.24 Talents Humains de niveau 13",
+      "family": "Héritages et institutions",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "préparation ou temps long",
+      "prerequisites": "Autorité héritée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritages et institutions",
+        "Traits": "Humain, Culture, Institution, Coopération, Exploration",
+        "Type": "préparation ou temps long",
+        "Prérequis": "Autorité héritée"
+      }
+    },
+    "level": 13
+  }
+}

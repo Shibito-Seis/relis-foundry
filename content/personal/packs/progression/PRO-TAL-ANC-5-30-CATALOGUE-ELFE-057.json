@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-057",
+  "name": "Magie innée mineure",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit une manifestation mineure :</p>\n<p>• créer ou éteindre une petite lumière ;</p>\n<p>• produire un son simple ;</p>\n<p>• déplacer lentement un objet léger à courte portée ;</p>\n<p>• modifier légèrement la température d&#39;un objet ;</p>\n<p>• faire croître ou orienter une petite plante ;</p>\n<p>• marquer brièvement un objet d&#39;une signature visible dans le Flux.</p>\n<p>La manifestation ne peut pas :</p>\n<p>• infliger de dégâts ;</p>\n<p>• déplacer plus de 1 kilogramme ;</p>\n<p>• reproduire un outil spécialisé ;</p>\n<p>• créer de la nourriture, de l&#39;oxygène ou une ressource énergétique ;</p>\n<p>• aveugler, assourdir ou contrôler une créature.</p>\n<p>Le personnage peut utiliser cette manifestation librement hors pression. En scène d&#39;action, elle demande normalement une action et peut exiger un test de Maîtrise Magique + Canalisation si elle est contrariée ou utilisée avec précision.</p>",
+    "traits": ["Elfe", "Magie", "Innée"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Sang des Premiers Arbres",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif et Activité magique",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang des Premiers Arbres",
+        "Traits": "Elfe, Magie, Innée",
+        "Type": "Passif et Activité magique"
+      }
+    },
+    "level": 1
+  }
+}

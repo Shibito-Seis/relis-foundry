@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-052",
+  "name": "Précision sylvestre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant une attaque utilisant la Dextérité, le personnage ignore jusqu&#39;à 1 point de malus circonstanciel provenant exclusivement :</p>\n<p>• d&#39;un couvert léger ;</p>\n<p>• d&#39;une portée défavorable ;</p>\n<p>• d&#39;une posture instable ;</p>\n<p>• d&#39;un mouvement récent ;</p>\n<p>• d&#39;une visibilité imparfaite mais non totale.</p>\n<p>Ce talent ne permet pas de voir une cible invisible, de tirer sans ligne d&#39;effet ou d&#39;ignorer un couvert total.</p>",
+    "traits": ["Elfe", "Précision"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Grâce sylvestre",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Précision",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

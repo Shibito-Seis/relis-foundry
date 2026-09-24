@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-085",
+  "name": "Cartographe du Flux",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage observe les circulations magiques et trace une carte énergétique d&#39;une zone, d&#39;un complexe ou d&#39;une étape de voyage.</p>\n<p>Tant que les courants ne changent pas sensiblement, lui-même et les alliés auxquels il explique la carte gagnent +2 circonstanciel aux tests destinés à :</p>\n<p>• naviguer dans la zone ;</p>\n<p>• éviter une poche d&#39;énergie ou une anomalie repérée ;</p>\n<p>• choisir un emplacement stable pour canaliser ;</p>\n<p>• suivre une signature énergétique ;</p>\n<p>• identifier la voie d&#39;approche la moins exposée au Flux.</p>\n<p>La préparation révèle les zones de courant fort, faible, instable ou interrompu qui sont accessibles à ses sens. Elle ne révèle pas automatiquement une source volontairement masquée, un piège purement mécanique ou une modification survenue après le relevé.</p>\n<p>Une créature ne peut bénéficier que d&#39;une seule carte du Flux pour un même test.</p>",
+    "traits": ["Elfe", "Exploration", "Flux", "Préparation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-074",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lecture des courants",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.33 Talents Elfes de niveau 9",
+      "family": "Sens de la Fusion",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Activité d'exploration de 10 minutes",
+      "prerequisites": "Lecture des courants",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la Fusion",
+        "Traits": "Elfe, Exploration, Flux, Préparation",
+        "Type": "Activité d'exploration de 10 minutes",
+        "Prérequis": "Lecture des courants"
+      }
+    },
+    "level": 9
+  }
+}

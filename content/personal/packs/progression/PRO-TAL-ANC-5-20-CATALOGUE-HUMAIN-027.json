@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-027",
+  "name": "Polycompétence supérieure",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne immédiatement deux augmentations de maîtrise.</p>\n<p>Ces augmentations doivent être placées dans deux compétences différentes et ne peuvent pas élever une compétence au-dessus du rang Expert.</p>\n<p>Elles suivent toutes les règles normales de maîtrise :</p>\n<p>• Inexpérimenté devient Qualifié ;</p>\n<p>• Qualifié devient Expert ;</p>\n<p>• les seuils de Niveau général restent applicables ;</p>\n<p>• elles comptent comme de vraies maîtrises et satisfont les prérequis correspondants.</p>\n<p>Polycompétence supérieure développe la largeur de formation humaine. Elle ne permet pas d&#39;atteindre Maître, Légendaire ou Mythique plus tôt que la progression commune.</p>",
+    "traits": ["Humain", "Compétence"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-002",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Esprit polyvalent",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.23 Talents Humains de niveau 9",
+      "family": "Polyvalence adaptative",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Esprit polyvalent",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Polyvalence adaptative",
+        "Traits": "Humain, Compétence",
+        "Type": "Passif",
+        "Prérequis": "Esprit polyvalent"
+      }
+    },
+    "level": 9
+  }
+}

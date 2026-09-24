@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-025",
+  "name": "Choisir notre héritage",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage approfondit la manière dont il porte le Précepte de l&#39;Humanité.</p>\n<p>Il choisit une seconde Orientation du Précepte parmi :</p>\n<p>• Assumer ;</p>\n<p>• Réparer ;</p>\n<p>• Rompre.</p>\n<p>Il possède désormais deux Orientations, mais ne peut toujours activer qu&#39;une seule Orientation par session grâce à Porter le Précepte.</p>\n<p>Cependant, une fois par session, si le MJ active réellement le Handicap Précepte de l&#39;Humanité comme complication significative, le personnage peut utiliser l&#39;une de ses Orientations sans consommer son activation normale de Porter le Précepte.</p>\n<p>La complication doit être réelle :</p>\n<p>• refus d&#39;accès ;</p>\n<p>• accusation collective ;</p>\n<p>• tension avec une autre Ascendance ;</p>\n<p>• rappel d&#39;une faute humaine ;</p>\n<p>• crise liée à l&#39;UJC ;</p>\n<p>• conséquence d&#39;une expérience humaine ;</p>\n<p>• méfiance envers l&#39;humanité ;</p>\n<p>• dilemme moral hérité de la Terre.</p>\n<p>Ce talent ne supprime pas le Handicap. Il transforme le poids de l&#39;humanité en choix conscient : le personnage ne subit plus seulement l&#39;héritage, il décide ce qu&#39;il en fait.</p>",
+    "traits": ["Humain", "Précepte", "Mental", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-019",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Porter le Précepte",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.22 Talents Humains de niveau 5",
+      "family": "Précepte de l'Humanité",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Porter le Précepte",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précepte de l'Humanité",
+        "Traits": "Humain, Précepte, Mental, Social",
+        "Type": "Passif",
+        "Prérequis": "Porter le Précepte"
+      }
+    },
+    "level": 5
+  }
+}

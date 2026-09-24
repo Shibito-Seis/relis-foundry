@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-102",
+  "name": "Maître des deux réalités",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pour un test portant véritablement sur un phénomène ou un système hybride, le personnage peut associer :</p>\n<p>• le meilleur des Attributs Technologie et Maîtrise Magique ;</p>\n<p>• la meilleure compétence pertinente parmi Ingénierie, Informatique, Systèmes de vaisseau, Canalisation et Techno-magie.</p>\n<p>Le choix doit correspondre à une méthode crédible et ne donne aucune maîtrise permanente dans la compétence utilisée.</p>\n<p>Une fois par scène, lorsqu&#39;il obtient un échec critique à un tel test, il le transforme en échec simple. S&#39;il s&#39;agit de contenir l&#39;effondrement d&#39;un système ou d&#39;une anomalie, il peut à la place maintenir sa fonction essentielle pendant 1 round ou quelques secondes narratives, donnant à un allié une dernière occasion d&#39;agir.</p>\n<p>Ce talent ne fournit ni énergie, ni équipement, ni autorisation et ne permet pas de reproduire une Architecture IAA ou un pouvoir de Voie.</p>\n<p>---</p>",
+    "traits": ["Elfe", "Fusion", "Technologie", "Techno-magie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-093",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritier de la Fusion",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-095",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Architecture des deux mondes",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.36 Talents Elfes de niveau 21",
+      "family": "Transcendance elfique",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Architecture des deux mondes ou Héritier de la Fusion",
+      "choice": "",
+      "frequency": "une fois par scène pour la sauvegarde",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elfique",
+        "Traits": "Elfe, Fusion, Technologie, Techno-magie",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par scène pour la sauvegarde",
+        "Prérequis": "Architecture des deux mondes ou Héritier de la Fusion"
+      }
+    },
+    "level": 21
+  }
+}

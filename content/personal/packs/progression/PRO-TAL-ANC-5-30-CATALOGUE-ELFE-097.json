@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-097",
+  "name": "Marche hors d'atteinte",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage se décale entre les mondes et se téléporte vers un espace libre qu&#39;il voit à 6 mètres au maximum.</p>\n<p>Si ce déplacement le place hors de portée, derrière un couvert total, hors de la ligne d&#39;effet ou en dehors de la zone, l&#39;attaque ou l&#39;effet le manque. Dans le cas contraire, la résolution continue depuis sa nouvelle position.</p>\n<p>Marche hors d&#39;atteinte :</p>\n<p>• ne fonctionne pas contre un coup critique ;</p>\n<p>• ne traverse pas un champ bloquant la téléportation ;</p>\n<p>• ne permet pas d&#39;échapper à un effet qui couvre également l&#39;espace d&#39;arrivée ;</p>\n<p>• n&#39;annule pas les conséquences déjà subies avant son déclenchement ;</p>\n<p>• ne peut pas transporter une autre créature.</p>\n<p>Cette réaction ne consomme pas l&#39;utilisation de Pas entre les mondes.</p>",
+    "traits": ["Elfe", "Défense", "Magie", "Réaction", "Téléportation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-082",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Pas entre les mondes",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-091",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Grâce impossible",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.35 Talents Elfes de niveau 17",
+      "family": "Grâce sylvestre",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Pas entre les mondes et Grâce impossible",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "une attaque devrait toucher le personnage sans obtenir de coup critique, ou une zone dangereuse devrait l'affecter immédiatement",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Défense, Magie, Réaction, Téléportation",
+        "Type": "Réaction",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Pas entre les mondes et Grâce impossible",
+        "Déclencheur": "une attaque devrait toucher le personnage sans obtenir de coup critique, ou une zone dangereuse devrait l'affecter immédiatement"
+      }
+    },
+    "level": 17
+  }
+}

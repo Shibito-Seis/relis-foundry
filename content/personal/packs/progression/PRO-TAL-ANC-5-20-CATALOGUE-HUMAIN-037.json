@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-037",
+  "name": "Unis face à l'inconnu",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Tant que le personnage peut communiquer avec au moins deux alliés affrontant la même menace inconnue, tous les membres de ce groupe capables de percevoir la coordination gagnent +1 circonstanciel aux tests de Volonté ou de Sang-froid contre :</p>\n<p>• la peur provoquée par cette menace ;</p>\n<p>• le Stress qu&#39;elle inflige ;</p>\n<p>• la panique collective ;</p>\n<p>• l&#39;isolement qu&#39;elle cherche à imposer ;</p>\n<p>• la confusion née de son caractère inconnu.</p>\n<p>Ce bonus ne se cumule pas avec celui d&#39;un autre exemplaire d&#39;Unis face à l&#39;inconnu.</p>\n<p>Une fois par scène, lorsqu&#39;un membre du groupe obtient une réussite critique contre une source de peur, de Stress ou de Panique liée à cette menace, le personnage peut déclencher sa réaction.</p>\n<p>Jusqu&#39;à trois alliés capables de percevoir cette réussite ou son annonce réduisent chacun leur Stress de 1.</p>\n<p>Ce talent ne protège pas automatiquement contre la domination mentale, la corruption ou une attaque psychique ne reposant pas sur la peur, le choc ou l&#39;inconnu.</p>",
+    "traits": ["Humain", "Coopération", "Mental"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-011",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Solidarité de crise",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-030",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Chaîne de confiance",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.24 Talents Humains de niveau 13",
+      "family": "Coopération et communauté",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Chaîne de confiance ou Solidarité de crise",
+      "choice": "",
+      "frequency": "une fois par scène pour l'effet de récupération",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Coopération et communauté",
+        "Traits": "Humain, Coopération, Mental",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour l'effet de récupération",
+        "Prérequis": "Chaîne de confiance ou Solidarité de crise"
+      }
+    },
+    "level": 13
+  }
+}

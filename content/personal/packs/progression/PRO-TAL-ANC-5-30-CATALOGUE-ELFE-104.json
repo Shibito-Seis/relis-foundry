@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-104",
+  "name": "Éternité en marche",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage ne subit plus de perte d&#39;Attribut ni de dégradation physique obligatoire causée uniquement par le vieillissement biologique normal.</p>\n<p>Il gagne +2 circonstanciel aux tests contre :</p>\n<p>• vieillissement accéléré ;</p>\n<p>• ralentissement temporel ;</p>\n<p>• stase hostile ;</p>\n<p>• effets cherchant à désynchroniser son corps et son esprit.</p>\n<p>Une fois par session, il peut ignorer pendant une scène un état de ralentissement, de stase partielle ou de vieillissement forcé qui l&#39;affecte. Les effets reprennent ensuite s&#39;ils possèdent encore une durée, mais le temps ainsi ignoré n&#39;est pas ajouté rétroactivement.</p>\n<p>Éternité en marche :</p>\n<p>• ne rend pas le personnage immortel ;</p>\n<p>• ne le protège ni des dégâts, ni des maladies, ni du vide ;</p>\n<p>• ne le rajeunit pas ;</p>\n<p>• ne supprime pas la fin naturelle de vie si celle-ci est atteinte ;</p>\n<p>• ne contredit pas les règles d&#39;Âge biologique validées à l&#39;étape 2.5-A.</p>\n<p>---</p>",
+    "traits": ["Elfe", "Âge", "Temps"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-096",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Présence inaltérable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-099",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ancêtre avant l'âge",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.37 Talents Elfes de niveau 25",
+      "family": "Transcendance elfique",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Présence inaltérable ou Ancêtre avant l'âge",
+      "choice": "",
+      "frequency": "une fois par session pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elfique",
+        "Traits": "Elfe, Âge, Temps",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session pour l'activation",
+        "Prérequis": "Présence inaltérable ou Ancêtre avant l'âge"
+      }
+    },
+    "level": 25
+  }
+}

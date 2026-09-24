@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-064",
+  "name": "Interface techno-magique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel au premier test effectué sur un dispositif techno-magique afin de :</p>\n<p>• identifier son principe ;</p>\n<p>• comprendre son interface ;</p>\n<p>• l&#39;activer normalement ;</p>\n<p>• détecter une incompatibilité ;</p>\n<p>• stabiliser son fonctionnement élémentaire.</p>\n<p>Après une réussite, le dispositif est considéré comme familier pour le personnage pendant 24 heures.</p>\n<p>Ce talent ne contourne ni verrouillage, ni authentification, ni prérequis de maîtrise.</p>",
+    "traits": ["Elfe", "Technologie", "Techno-magie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Art techno-magique elfe",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Art techno-magique elfe",
+        "Traits": "Elfe, Technologie, Techno-magie",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-024",
+  "name": "Détournement fonctionnel",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage a étudié ou utilisé un équipement grâce à Appropriation technologique, il peut tenter de le détourner pour produire un usage secondaire temporaire.</p>\n<p>Exemples :</p>\n<p>• utiliser un scanner comme détecteur de mouvement rudimentaire ;</p>\n<p>• transformer un outil de découpe en système de verrouillage provisoire ;</p>\n<p>• employer une batterie comme surcharge contrôlée ;</p>\n<p>• détourner un traducteur en analyseur de signal simple ;</p>\n<p>• utiliser un drone utilitaire comme relais de communication ;</p>\n<p>• bricoler un module médical pour stabiliser un capteur biologique ;</p>\n<p>• transformer un projecteur lumineux en balise de guidage ou distraction.</p>\n<p>Le personnage gagne +2 circonstanciel au test nécessaire pour ce détournement, généralement avec :</p>\n<p>• Ingénierie ;</p>\n<p>• Informatique ;</p>\n<p>• Systèmes de vaisseau ;</p>\n<p>• Techno-magie ;</p>\n<p>• Investigation ;</p>\n<p>• Sciences, si l&#39;usage repose sur l&#39;analyse.</p>\n<p>Sur réussite, l&#39;objet produit l&#39;effet secondaire voulu pendant la scène ou pour une tâche précise.</p>\n<p>Limites :</p>\n<p>• le détournement n&#39;est pas durable ;</p>\n<p>• il peut consommer plus d&#39;énergie que prévu ;</p>\n<p>• il peut endommager l&#39;objet ;</p>\n<p>• il ne crée pas gratuitement une arme militaire, un soin avancé, une protection lourde ou un module de vaisseau complet ;</p>\n<p>• il ne contourne pas un verrouillage de sécurité ou une incompatibilité majeure ;</p>\n<p>• il ne remplace pas un vrai plan d&#39;Ingénieur, d&#39;Interfaceur ou de Techno-mage.</p>\n<p>En cas d&#39;échec critique, l&#39;objet peut tomber en panne, déclencher une alerte ou produire une complication technique.</p>",
+    "traits": ["Humain", "Technologie", "Improvisation", "Exploration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-018",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Appropriation technologique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.22 Talents Humains de niveau 5",
+      "family": "Ingéniosité prométhéenne",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Activité d'exploration / scène",
+      "prerequisites": "Appropriation technologique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ingéniosité prométhéenne",
+        "Traits": "Humain, Technologie, Improvisation, Exploration",
+        "Type": "Activité d'exploration / scène",
+        "Prérequis": "Appropriation technologique"
+      }
+    },
+    "level": 5
+  }
+}

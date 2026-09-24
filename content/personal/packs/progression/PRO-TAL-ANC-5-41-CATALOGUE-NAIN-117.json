@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-117",
+  "name": "Regard du prospecteur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Sciences ou d&#39;Investigation destinés à :</p>\n<p>• reconnaître un minerai, une roche, un cristal ou un métal ;</p>\n<p>• estimer sa pureté et sa valeur générale ;</p>\n<p>• repérer une veine exploitable ;</p>\n<p>• identifier une contamination minérale ;</p>\n<p>• distinguer un matériau naturel d&#39;un composite industriel ;</p>\n<p>• choisir un échantillon représentatif.</p>\n<p>Après une minute d&#39;examen, il peut estimer sans test si un gisement accessible est pauvre, ordinaire, riche ou exceptionnel, sans connaître sa quantité totale ni sa valeur commerciale exacte.</p>\n<p>Ce talent ne détecte pas un matériau à travers un blindage ou une distance qu&#39;aucun sens ni instrument ne peut franchir.</p>",
+    "traits": ["Nain", "Exploration", "Perception", "Sciences"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Sens de la pierre",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sens de la pierre",
+        "Traits": "Nain, Exploration, Perception, Sciences",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

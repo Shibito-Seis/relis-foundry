@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-041",
+  "name": "Symbole de l'Exode",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage assume publiquement ce que représente l&#39;Exode : les fautes de la Terre, les vies encore suspendues à la mission et la possibilité de bâtir autre chose.</p>\n<p>Il prononce quelques mots, transmet un message ou accomplit un geste symbolique compréhensible par ses alliés.</p>\n<p>Les alliés capables de le percevoir et de comprendre son intention obtiennent les effets suivants :</p>\n<p>• ils réduisent chacun leur Stress de 1 ;</p>\n<p>• ils gagnent +2 circonstanciel à leur prochain test de Volonté, Sang-froid, Commandement, Diplomatie ou Endurance directement consacré à l&#39;objectif commun annoncé ;</p>\n<p>• ce bonus doit être utilisé avant la fin de la scène.</p>\n<p>Lorsqu&#39;il s&#39;adresse à une audience dont l&#39;hostilité provient principalement du Précepte de l&#39;Humanité, le personnage peut également ignorer jusqu&#39;à 2 points de malus circonstanciel à son premier test social. Cela ne rend pas l&#39;audience amicale et n&#39;efface aucun grief légitime.</p>\n<p>Un personnage ne peut bénéficier que d&#39;un seul Symbole de l&#39;Exode par scène.</p>\n<p>---</p>",
+    "traits": ["Humain", "Précepte", "Mental", "Social", "Coopération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-025",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Choisir notre héritage",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-034",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réparer les fautes",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.24 Talents Humains de niveau 13",
+      "family": "Précepte de l'Humanité",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Activité de 3 Actions en rencontre ; environ une minute en narration",
+      "prerequisites": "Choisir notre héritage ou Réparer les fautes",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précepte de l'Humanité",
+        "Traits": "Humain, Précepte, Mental, Social, Coopération",
+        "Type": "Activité de 3 Actions en rencontre ; environ une minute en narration",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Choisir notre héritage ou Réparer les fautes"
+      }
+    },
+    "level": 13
+  }
+}

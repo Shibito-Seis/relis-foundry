@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-020",
+  "name": "Reconfiguration d'expérience",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un repos long, une préparation de mission ou une phase d&#39;étude d&#39;au moins 1 heure, le personnage choisit une compétence dans laquelle il est Inexpérimenté.</p>\n<p>Jusqu&#39;à sa prochaine préparation de mission ou son prochain repos long, il peut effectuer les usages ordinaires de cette compétence comme s&#39;il était Qualifié.</p>\n<p>Cette qualification temporaire :</p>\n<p>• ne satisfait aucun prérequis ;</p>\n<p>• ne permet pas de sélectionner un Talent de compétence ;</p>\n<p>• ne permet pas d&#39;utiliser une capacité demandant Expert ou plus ;</p>\n<p>• ne donne pas accès aux procédures rares, militaires, médicales critiques ou classifiées ;</p>\n<p>• ne remplace pas un vrai spécialiste.</p>\n<p>S&#39;il utilise Adaptation immédiate sur cette même compétence pendant la durée de Reconfiguration d&#39;expérience, il ne devient pas doublement Qualifié. À la place, il gagne +2 circonstanciel au test concerné.</p>\n<p>Ce talent représente l&#39;Humain capable de préparer une procédure, de lire un manuel, d&#39;observer un collègue et de devenir assez compétent pour ne pas tuer tout le monde tout de suite.</p>",
+    "traits": ["Humain", "Adaptation", "Compétence"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-001",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Adaptation immédiate",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-002",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Esprit polyvalent",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.22 Talents Humains de niveau 5",
+      "family": "Polyvalence adaptative",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "préparation / temps long",
+      "prerequisites": "Adaptation immédiate ou Esprit polyvalent",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Polyvalence adaptative",
+        "Traits": "Humain, Adaptation, Compétence",
+        "Type": "préparation / temps long",
+        "Prérequis": "Adaptation immédiate ou Esprit polyvalent"
+      }
+    },
+    "level": 5
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-038",
+  "name": "Indomptable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit immédiatement l&#39;un des effets suivants :</p>\n<p>• réduire le Stress reçu de 2, avec un minimum de 0 ;</p>\n<p>• réduire la Fatigue reçue de 1, avec un minimum de 0 ;</p>\n<p>• réduire le Contrecoup reçu de 1, avec un minimum de 0 ;</p>\n<p>• réduire la durée de la Panique : sa contrainte prend fin à la fin du tour actuel ou de l&#39;action narrative immédiate, au lieu de durer jusqu&#39;à la fin du prochain tour.</p>\n<p>Indomptable agit après les réductions ordinaires, mais avant d&#39;appliquer les conséquences finales du gain.</p>\n<p>Il ne peut pas réduire un coût explicitement présenté comme inévitable ou impossible à prévenir. Il ne supprime pas une Fatigue, un Stress ou un état déjà présent avant le déclencheur.</p>",
+    "traits": ["Humain", "Mental", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-014",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Refus de céder",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-031",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Toujours se relever",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.24 Talents Humains de niveau 13",
+      "family": "Résilience terrienne",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Toujours se relever ou Refus de céder",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "le personnage reçoit du Stress, de la Fatigue, du Contrecoup ou subit une Panique",
+      "duration": "",
+      "metadata": {
+        "Famille": "Résilience terrienne",
+        "Traits": "Humain, Mental, Survie",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Toujours se relever ou Refus de céder",
+        "Déclencheur": "le personnage reçoit du Stress, de la Fatigue, du Contrecoup ou subit une Panique"
+      }
+    },
+    "level": 13
+  }
+}

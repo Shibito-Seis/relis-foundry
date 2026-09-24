@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-077",
+  "name": "Patience sans âge",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pour un test hors combat qui peut raisonnablement être repris, le personnage peut consacrer au moins dix fois le temps normal à vérifier chaque étape.</p>\n<p>Il lance deux fois le test et conserve le meilleur résultat.</p>\n<p>Patience sans âge ne peut pas être utilisé :</p>\n<p>• sous une menace immédiate ;</p>\n<p>• pour une attaque ;</p>\n<p>• pour un test dont l&#39;échec détruit déjà l&#39;objet ou consomme l&#39;unique tentative ;</p>\n<p>• lorsqu&#39;une échéance ne permet pas réellement ce temps supplémentaire ;</p>\n<p>• sur un test déjà affecté par un autre effet de Fortune.</p>",
+    "traits": ["Elfe", "Concentration", "Fortune", "Exploration"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-061",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire des siècles",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-062",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Formation patiente",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.32 Talents Elfes de niveau 5",
+      "family": "Mémoire séculaire",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "temps long",
+      "prerequisites": "Formation patiente ou Mémoire des siècles",
+      "choice": "",
+      "frequency": "une fois par heure",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire séculaire",
+        "Traits": "Elfe, Concentration, Fortune, Exploration",
+        "Type": "temps long",
+        "Fréquence": "une fois par heure",
+        "Prérequis": "Formation patiente ou Mémoire des siècles"
+      }
+    },
+    "level": 5
+  }
+}

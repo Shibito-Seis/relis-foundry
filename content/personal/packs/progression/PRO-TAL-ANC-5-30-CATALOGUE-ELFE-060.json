@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-060",
+  "name": "Affinité élémentaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests de Canalisation ou de Volonté destinés à :</p>\n<p>• identifier une manifestation de l&#39;élément choisi ;</p>\n<p>• stabiliser une énergie correspondante ;</p>\n<p>• résister à une surcharge mineure liée à cet élément ;</p>\n<p>• contrôler un effet inné du même type.</p>\n<p>Il peut également produire des manifestations cosmétiques inoffensives : étincelles, givre superficiel, chaleur douce, lueur ou vibration arcanique.</p>\n<p>Ce talent ne donne aucune Résistance aux dégâts par lui-même.</p>",
+    "traits": ["Elfe", "Magie", "Élément"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Sang des Premiers Arbres",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "chaleur, froid, foudre, lumière ou énergie arcanique",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang des Premiers Arbres",
+        "Traits": "Elfe, Magie, Élément",
+        "Type": "Passif",
+        "Choix": "chaleur, froid, foudre, lumière ou énergie arcanique"
+      }
+    },
+    "level": 1
+  }
+}

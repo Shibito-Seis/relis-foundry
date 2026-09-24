@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-036",
+  "name": "Génie d'acquisition",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne immédiatement l&#39;un des talents suivants, dont il remplit les prérequis :</p>\n<p>• un Talent général de niveau 13 ou moins ;</p>\n<p>• un Talent de compétence de niveau 13 ou moins.</p>\n<p>Le talent obtenu est appelé son acquisition majeure.</p>\n<p>Pendant une période d&#39;intermède d&#39;au moins trois jours, avec une source d&#39;apprentissage crédible, le personnage peut remplacer son acquisition majeure par un autre Talent général ou de compétence admissible de niveau 13 ou moins.</p>\n<p>La source peut être :</p>\n<p>• un formateur ;</p>\n<p>• une archive complète ;</p>\n<p>• un simulateur ;</p>\n<p>• une IAA pédagogique ;</p>\n<p>• une institution ;</p>\n<p>• une expérience de terrain suffisamment riche.</p>\n<p>Le remplacement ne peut pas :</p>\n<p>• retirer un prérequis encore nécessaire à un autre talent ou effet ;</p>\n<p>• contourner une maîtrise requise ;</p>\n<p>• transformer un talent temporaire en prérequis permanent ;</p>\n<p>• être effectué pendant une mission ou une scène d&#39;urgence.</p>\n<p>Le délai exact pourra être harmonisé avec la future règle générale de réentraînement.</p>",
+    "traits": ["Humain", "Apprentissage", "Général", "Compétence"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-008",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Talent transversal",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-029",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Voie autodidacte",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.24 Talents Humains de niveau 13",
+      "family": "Ambition et apprentissage",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif et temps long",
+      "prerequisites": "Talent transversal ou Voie autodidacte",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ambition et apprentissage",
+        "Traits": "Humain, Apprentissage, Général, Compétence",
+        "Type": "Passif et temps long",
+        "Prérequis": "Talent transversal ou Voie autodidacte"
+      }
+    },
+    "level": 13
+  }
+}

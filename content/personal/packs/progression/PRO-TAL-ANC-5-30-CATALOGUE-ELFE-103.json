@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-103",
+  "name": "Héritier des Premiers Arbres",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>À partir d&#39;une graine, d&#39;une plante vivante ou d&#39;une structure organique, le personnage déploie pour une heure un sanctuaire vivant dans un rayon maximal de 10 mètres.</p>\n<p>À la fin des dix minutes de formation, jusqu&#39;à six créatures ayant participé au rituel peuvent chacune :</p>\n<p>• réduire leur Stress de 2 ;</p>\n<p>• réduire leur Fatigue de 1 ;</p>\n<p>• gagner +2 circonstanciel à leur prochain test de récupération, de Médecine ou de Survie effectué dans le sanctuaire.</p>\n<p>Pendant sa durée, le sanctuaire :</p>\n<p>• produit une lumière douce ;</p>\n<p>• filtre une contamination ordinaire de l&#39;eau ou de l&#39;air qui le traverse ;</p>\n<p>• stabilise la température dans des limites habitables si une source minimale d&#39;énergie existe ;</p>\n<p>• signale au personnage la présence d&#39;un organisme malade ou d&#39;une contamination commune dans sa zone.</p>\n<p>Il ne crée pas d&#39;oxygène dans le vide, ne neutralise pas un poison militaire ou magique majeur, ne guérit pas automatiquement une Blessure et ne remplace ni nourriture, ni sommeil, ni soins.</p>\n<p>Une même créature ne peut recevoir les réductions de Stress et de Fatigue de ce talent qu&#39;une fois par jour.</p>",
+    "traits": ["Elfe", "Aura", "Magie", "Nature", "Récupération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-089",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Gardien de l'arche vivante",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.37 Talents Elfes de niveau 25",
+      "family": "Transcendance elfique",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "rituel de 10 minutes",
+      "prerequisites": "Gardien de l'arche vivante",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elfique",
+        "Traits": "Elfe, Aura, Magie, Nature, Récupération",
+        "Type": "rituel de 10 minutes",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Gardien de l'arche vivante"
+      }
+    },
+    "level": 25
+  }
+}

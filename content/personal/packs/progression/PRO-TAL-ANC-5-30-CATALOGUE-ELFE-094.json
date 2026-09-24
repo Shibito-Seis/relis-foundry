@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-094",
+  "name": "Savoir sans frontières",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne immédiatement trois augmentations de maîtrise.</p>\n<p>Il peut en investir jusqu&#39;à deux dans la même compétence, mais aucune de ces augmentations ne peut élever une compétence au-dessus du rang Maître. Tous les seuils de Niveau général restent applicables.</p>\n<p>Ces augmentations sont permanentes, suivent toutes les règles normales de maîtrise et satisfont les prérequis correspondant aux rangs réellement atteints.</p>\n<p>Savoir sans frontières représente une érudition séculaire capable d&#39;approfondir plusieurs disciplines sans reproduire la polyvalence instantanée humaine. Les trois augmentations doivent être attribuées lors de l&#39;acquisition du talent.</p>",
+    "traits": ["Elfe", "Compétence"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-077",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Patience sans âge",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-087",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Expertise de longue vie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.34 Talents Elfes de niveau 13",
+      "family": "Mémoire séculaire",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Expertise de longue vie ou Patience sans âge",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire séculaire",
+        "Traits": "Elfe, Compétence",
+        "Type": "Passif",
+        "Prérequis": "Expertise de longue vie ou Patience sans âge"
+      }
+    },
+    "level": 13
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-058",
+  "name": "Étincelle de la Fusion",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage projette une étincelle d&#39;énergie à une portée maximale de 12 mètres.</p>\n<p>Il effectue une attaque avec Maîtrise Magique + Canalisation contre la CAE de la cible.</p>\n<p>Sur une réussite, l&#39;étincelle inflige 1d6 dégâts énergétiques. Sur un coup critique, elle suit la règle normale des critiques de pouvoir.</p>\n<p>Les dégâts augmentent à 2d6 au niveau 5, puis de 1d6 supplémentaire aux niveaux 9, 13, 17, 21, 25 et 29.</p>\n<p>Le type visuel et énergétique est choisi lors de l&#39;acquisition du talent : lumière, chaleur, froid, foudre ou énergie arcanique. Ce choix n&#39;accorde pas d&#39;effet secondaire automatique.</p>",
+    "traits": ["Elfe", "Magie", "Attaque", "Fusion"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Sang des Premiers Arbres",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Activité de 2 Actions (magique)",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Sang des Premiers Arbres",
+        "Traits": "Elfe, Magie, Attaque, Fusion",
+        "Type": "Activité de 2 Actions (magique)",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

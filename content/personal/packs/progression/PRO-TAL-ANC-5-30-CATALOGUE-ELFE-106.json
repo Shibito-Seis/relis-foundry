@@ -1,0 +1,62 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-106",
+  "name": "Gardien des millénaires",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage suspend jusqu&#39;au début de son prochain tour un nombre de cibles de son choix égal à 2 + sa Présence, avec un minimum de 2.</p>\n<p>Une cible suspendue :</p>\n<p>• ne peut ni agir, ni se déplacer, ni être déplacée volontairement ;</p>\n<p>• ne subit aucun nouveau dégât ;</p>\n<p>• n&#39;aggrave pas ses Blessures, son état de mort imminente, sa panne ou sa destruction en cours ;</p>\n<p>• reste affectée par les dégâts et conséquences déjà résolus avant la suspension.</p>\n<p>Au terme de la suspension, le temps reprend normalement. Les cibles doivent être secourues, déplacées, réparées ou protégées par les actions du groupe ; le talent ne leur rend aucun PV et n&#39;annule aucune Blessure.</p>\n<p>Gardien des millénaires ne peut pas :</p>\n<p>• ressusciter une créature déjà morte ;</p>\n<p>• reconstituer un objet déjà détruit ;</p>\n<p>• annuler une désintégration achevée ;</p>\n<p>• suspendre un vaisseau entier, un astre ou une zone plus vaste ;</p>\n<p>• empêcher une menace persistante de recommencer à agir après la fin de la stase.</p>\n<p>---</p>",
+    "traits": ["Elfe", "Mythique", "Protection", "Réaction", "Temps"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-100",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps de lumière sylvestre",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-101",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire du monde perdu",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-102",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maître des deux réalités",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.38 Talents Elfes de niveau 29",
+      "family": "Transcendance elfique",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Corps de lumière sylvestre, Mémoire du monde perdu ou Maître des deux réalités",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "le personnage, des alliés ou des objets essentiels situés dans un rayon de 6 mètres viennent de subir un effet catastrophique et risquent de subir immédiatement d'autres dégâts, une aggravation ou une destruction définitive",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elfique",
+        "Traits": "Elfe, Mythique, Protection, Réaction, Temps",
+        "Type": "Réaction",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Corps de lumière sylvestre, Mémoire du monde perdu ou Maître des deux réalités",
+        "Déclencheur": "le personnage, des alliés ou des objets essentiels situés dans un rayon de 6 mètres viennent de subir un effet catastrophique et risquent de subir immédiatement d'autres dégâts, une aggravation ou une destruction définitive"
+      }
+    },
+    "level": 29
+  }
+}

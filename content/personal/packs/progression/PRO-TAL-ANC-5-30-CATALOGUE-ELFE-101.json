@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-101",
+  "name": "Mémoire du monde perdu",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage se relie aux récits, graines-mémoires et traces laissées par les Elfes depuis la Fusion des Mondes.</p>\n<p>Il choisit un événement, un lieu, un peuple, une technologie ou une tradition ancienne. Le MJ lui révèle jusqu&#39;à trois informations factuelles auxquelles la mémoire elfique collective, ses propres études ou une archive accessible ont raisonnablement pu avoir accès.</p>\n<p>Ces réponses peuvent inclure :</p>\n<p>• un fait historique fiable ;</p>\n<p>• le fonctionnement ancien d&#39;un lieu ou d&#39;un objet ;</p>\n<p>• une coutume, un serment ou une relation oubliée ;</p>\n<p>• un danger déjà rencontré par les Elfes ;</p>\n<p>• une piste vers une archive ou un témoin pertinent.</p>\n<p>Elles ne révèlent pas les pensées privées, les événements jamais observés, un secret effacé de toute mémoire ou l&#39;état actuel d&#39;un lieu non revisité.</p>\n<p>Le personnage peut projeter une brève reconstitution à ses alliés. Jusqu&#39;à la fin de la scène d&#39;étude ou d&#39;exploration, les témoins gagnent +2 circonstanciel à leur premier test directement éclairé par la mémoire révélée.</p>",
+    "traits": ["Elfe", "Culture", "Mémoire"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-094",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Savoir sans frontières",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-099",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ancêtre avant l'âge",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.36 Talents Elfes de niveau 21",
+      "family": "Transcendance elfique",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Activité d'exploration de 10 minutes",
+      "prerequisites": "Savoir sans frontières ou Ancêtre avant l'âge",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance elfique",
+        "Traits": "Elfe, Culture, Mémoire",
+        "Type": "Activité d'exploration de 10 minutes",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Savoir sans frontières ou Ancêtre avant l'âge"
+      }
+    },
+    "level": 21
+  }
+}

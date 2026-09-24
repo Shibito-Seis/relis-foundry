@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-021",
+  "name": "Seconde vocation",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit une de ses Spécialisations secondaires déjà définies.</p>\n<p>Il gagne immédiatement un Talent supplémentaire de niveau 1 dans cette Spécialisation secondaire.</p>\n<p>Ce talent :</p>\n<p>• doit appartenir à la branche secondaire choisie ;</p>\n<p>• doit être un talent normal de niveau 1 ;</p>\n<p>• doit respecter ses prérequis ;</p>\n<p>• ne donne pas de Rang secondaire supplémentaire ;</p>\n<p>• ne donne pas de compétence Qualifiée ;</p>\n<p>• ne donne pas d&#39;équipement supplémentaire ;</p>\n<p>• ne modifie pas la répartition finale du Schéma Duo, Trio ou Quatuor.</p>\n<p>Si le personnage possède encore un emplacement de Spécialisation secondaire en réserve, il peut laisser Seconde vocation en attente jusqu&#39;à ce que cette Spécialisation soit définie.</p>\n<p>Ce talent permet à un Humain d&#39;avoir une vraie petite accroche secondaire, sans casser la progression verrouillée des Rangs secondaires.</p>",
+    "traits": ["Humain", "Voie", "Apprentissage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-006",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ambition terrienne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.22 Talents Humains de niveau 5",
+      "family": "Ambition et apprentissage",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Ambition terrienne",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ambition et apprentissage",
+        "Traits": "Humain, Voie, Apprentissage",
+        "Type": "Passif",
+        "Prérequis": "Ambition terrienne"
+      }
+    },
+    "level": 5
+  }
+}

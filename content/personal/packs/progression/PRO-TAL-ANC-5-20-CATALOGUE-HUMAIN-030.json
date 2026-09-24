@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-030",
+  "name": "Chaîne de confiance",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le succès obtenu devient immédiatement un point d&#39;appui pour un autre membre du groupe.</p>\n<p>Le personnage choisit un second allié qui :</p>\n<p>• participe au même objectif ;</p>\n<p>• peut percevoir ou comprendre la coordination ;</p>\n<p>• accomplit une action prolongeant directement le succès obtenu.</p>\n<p>Cet allié gagne +2 circonstanciel à son prochain test directement lié au même objectif, effectué avant la fin de son prochain tour ou de la séquence narrative immédiate.</p>\n<p>Exemples :</p>\n<p>• une analyse réussie ouvre la voie au piratage suivant ;</p>\n<p>• une manœuvre de couverture permet à un autre allié de progresser ;</p>\n<p>• une stabilisation technique facilite la réparation finale ;</p>\n<p>• un argument diplomatique prépare l&#39;intervention d&#39;un second négociateur ;</p>\n<p>• un éclaireur sécurise le passage utilisé par le reste du groupe.</p>\n<p>Le bonus de Chaîne de confiance remplace, sans s&#39;y ajouter, tout bonus secondaire de Coordination instinctive destiné au même test.</p>\n<p>Une réussite ne peut déclencher qu&#39;une seule Chaîne de confiance, même si plusieurs personnages possèdent ce talent.</p>",
+    "traits": ["Humain", "Coopération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-022",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Coordination instinctive",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.23 Talents Humains de niveau 9",
+      "family": "Coopération et communauté",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Coordination instinctive",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "un allié bénéficiant de l'Aide du personnage réussit son test",
+      "duration": "",
+      "metadata": {
+        "Famille": "Coopération et communauté",
+        "Traits": "Humain, Coopération",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Coordination instinctive",
+        "Déclencheur": "un allié bénéficiant de l'Aide du personnage réussit son test"
+      }
+    },
+    "level": 9
+  }
+}

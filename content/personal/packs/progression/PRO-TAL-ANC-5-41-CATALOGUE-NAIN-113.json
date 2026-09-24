@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-113",
+  "name": "Sens gravitationnel",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après environ une minute d&#39;observation et de mouvement, le personnage peut déterminer :</p>\n<p>• la direction de la gravité dominante ;</p>\n<p>• si elle est naturelle ou artificielle selon les signes accessibles ;</p>\n<p>• si son intensité est faible, normale, forte ou dangereusement instable ;</p>\n<p>• si elle varie sensiblement dans l&#39;espace proche.</p>\n<p>Il gagne +2 circonstanciel au premier test d&#39;Acrobaties, Athlétisme, Endurance, Navigation ou Pilotage destiné à s&#39;adapter à cette gravité.</p>\n<p>Le talent ne révèle pas automatiquement l&#39;emplacement d&#39;un générateur, une panne dissimulée ou une fluctuation qui n&#39;a pas encore commencé. Un phénomène conçu pour tromper les capteurs et les sens peut demander un test d&#39;Investigation ou de Sciences.</p>",
+    "traits": ["Nain", "Gravité", "Perception"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.42 Talents Nains de niveau 1",
+      "family": "Maîtrise gravitationnelle",
+      "ancestry": "### 5.41 Catalogue Nain",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Maîtrise gravitationnelle",
+        "Traits": "Nain, Gravité, Perception",
+        "Type": "Activité d'exploration"
+      }
+    },
+    "level": 1
+  }
+}

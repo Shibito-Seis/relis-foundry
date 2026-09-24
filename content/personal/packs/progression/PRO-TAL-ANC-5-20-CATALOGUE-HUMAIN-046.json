@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-046",
+  "name": "Flambeau de l'espèce",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage devient, pour un instant, le point autour duquel les autres refusent de céder.</p>\n<p>Il choisit jusqu&#39;à 5 + sa Présence alliés capables de percevoir et comprendre son appel, avec un minimum de 5.</p>\n<p>Chaque allié choisi :</p>\n<p>• met immédiatement fin à une Panique ordinaire ;</p>\n<p>• réduit son Stress de 2 ;</p>\n<p>• réduit son Contrecoup de 1, avec un minimum de 0 ;</p>\n<p>• gagne +2 circonstanciel à son prochain test directement consacré à l&#39;objectif commun proclamé.</p>\n<p>Le bonus doit être utilisé avant la fin du prochain tour de l&#39;allié ou de la séquence narrative immédiate.</p>\n<p>Un allié Surchargé mentalement ne quitte pas automatiquement sa Surcharge, mais peut mettre fin à la réaction de Panique immédiate et bénéficier des autres effets compatibles.</p>\n<p>Flambeau de l&#39;espèce :</p>\n<p>• n&#39;affecte pas un allié inconscient incapable de percevoir l&#39;appel ;</p>\n<p>• ne supprime pas un Traumatisme ;</p>\n<p>• ne retire pas de Fatigue ;</p>\n<p>• ne force pas un personnage à suivre l&#39;objectif annoncé ;</p>\n<p>• ne se cumule pas avec un autre Flambeau de l&#39;espèce pendant la même scène.</p>\n<p>Une foule plus large peut être touchée narrativement, mais seuls les alliés choisis reçoivent les effets mécaniques complets.</p>",
+    "traits": ["Humain", "Mental", "Social", "Coopération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-041",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Symbole de l'Exode",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-20-CATALOGUE-HUMAIN-042",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Humanité debout",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.27 Talents Humains de niveau 25",
+      "family": "Dépassement humain",
+      "ancestry": "### 5.20 Catalogue Humain",
+      "skill": "",
+      "activation": "Activité de 3 Actions en rencontre ; environ une minute en narration",
+      "prerequisites": "Symbole de l'Exode ou Humanité debout",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Dépassement humain",
+        "Traits": "Humain, Mental, Social, Coopération",
+        "Type": "Activité de 3 Actions en rencontre ; environ une minute en narration",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Symbole de l'Exode ou Humanité debout"
+      }
+    },
+    "level": 25
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-30-CATALOGUE-ELFE-050",
+  "name": "Pas allongé",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>La vitesse terrestre du personnage augmente de 2 mètres.</p>\n<p>Cette augmentation représente l&#39;allonge, la fluidité et l&#39;économie de mouvement elfiques. Elle ne s&#39;applique pas automatiquement à une vitesse de vol, de nage, d&#39;escalade ou à un véhicule.</p>\n<p>La valeur exacte pourra être harmonisée avec les règles définitives de déplacement sans réduire le bénéfice relatif du talent.</p>",
+    "traits": ["Elfe", "Mouvement"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.31 Talents Elfes de niveau 1",
+      "family": "Grâce sylvestre",
+      "ancestry": "### 5.30 Catalogue Elfe",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Grâce sylvestre",
+        "Traits": "Elfe, Mouvement",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}
