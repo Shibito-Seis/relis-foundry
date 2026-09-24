@@ -1,0 +1,171 @@
+{
+  "relisId": "MAT-WPN-042-PISTOLET-SONIQUE",
+  "name": "Pistolet sonique",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "handgun"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>12</dd></div>\n<div><dt>Arme</dt><dd>Pistolet sonique</dd></div>\n<div><dt>Niv.</dt><dd>4</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Attaque</dt><dd>Dextérité + Tir</dd></div>\n<div><dt>Déf.</dt><dd>CAE</dd></div>\n<div><dt>Dégâts</dt><dd>1d6 Sonique</dd></div>\n<div><dt>Préc.</dt><dd>0</dd></div>\n<div><dt>Portée</dt><dd>10/30</dd></div>\n<div><dt>Capacité et Recharge</dt><dd>Cellule légère 12 CE ; 2 CE/tir ; Recharge 1</dd></div>\n<div><dt>Recul</dt><dd>0</dd></div>\n<div><dt>Traits</dt><dd>Énergétique, Non létale</dd></div>\n<div><dt>Signature</dt><dd>Bruyante</dd></div>\n<div><dt>Fiab.</dt><dd>3</dd></div>\n<div><dt>Struct.</dt><dd>L</dd></div>\n<div><dt>Empl.</dt><dd>2</dd></div>\n<div><dt>Prix</dt><dd>3 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.101 Lot 5-K3 — Armes de poing",
+      "columns": {
+        "#": "12",
+        "Arme": "Pistolet sonique",
+        "Niv.": "4",
+        "Accès": "Spécialisée",
+        "Attaque": "Dextérité + Tir",
+        "Déf.": "CAE",
+        "Dégâts": "1d6 Sonique",
+        "Préc.": "0",
+        "Portée": "10/30",
+        "Capacité et Recharge": "Cellule légère 12 CE ; 2 CE/tir ; Recharge 1",
+        "Recul": "0",
+        "Traits": "Énergétique, Non létale",
+        "Signature": "Bruyante",
+        "Fiab.": "3",
+        "Struct.": "L",
+        "Empl.": "2",
+        "Prix": "3 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": [],
+        "providedSlots": {
+          "power": 1
+        },
+        "interfaceIds": ["cell"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 3000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "handgun",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "ranged",
+      "defenseTarget": "cae",
+      "handsMode": "one",
+      "skillId": "shooting",
+      "attributeId": "dexterity",
+      "accuracy": 0,
+      "damageDice": 1,
+      "damageDie": "d6",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d6 Sonique",
+      "damageTypes": ["sonic"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "10/30",
+      "rangeOptimal": 10,
+      "rangeMaximum": 30,
+      "recoil": 0,
+      "feedKind": "energy",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": 1,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "loud",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "energyConsumption": {
+        "single": 2
+      }
+    },
+    "energyProfile": {
+      "kind": "",
+      "format": "light",
+      "formatId": "light",
+      "powerClass": "light",
+      "powerClassId": "light",
+      "technology": "sonic",
+      "technologyId": "sonic",
+      "interfaceId": "cell",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

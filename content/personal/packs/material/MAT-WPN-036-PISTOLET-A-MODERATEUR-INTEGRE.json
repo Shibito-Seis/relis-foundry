@@ -1,0 +1,154 @@
+{
+  "relisId": "MAT-WPN-036-PISTOLET-A-MODERATEUR-INTEGRE",
+  "name": "Pistolet à modérateur intégré",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "handgun"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>6</dd></div>\n<div><dt>Arme</dt><dd>Pistolet à modérateur intégré</dd></div>\n<div><dt>Niv.</dt><dd>3</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Attaque</dt><dd>Dextérité + Tir</dd></div>\n<div><dt>Déf.</dt><dd>CAP</dd></div>\n<div><dt>Dégâts</dt><dd>1d6 Perforant</dd></div>\n<div><dt>Préc.</dt><dd>0</dd></div>\n<div><dt>Portée</dt><dd>10/30</dd></div>\n<div><dt>Capacité et Recharge</dt><dd>10 ; Recharge 1</dd></div>\n<div><dt>Recul</dt><dd>0</dd></div>\n<div><dt>Traits</dt><dd>Balistique, Localisable</dd></div>\n<div><dt>Signature</dt><dd>Discrète</dd></div>\n<div><dt>Fiab.</dt><dd>3</dd></div>\n<div><dt>Struct.</dt><dd>L</dd></div>\n<div><dt>Empl.</dt><dd>2</dd></div>\n<div><dt>Prix</dt><dd>1 800</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.101 Lot 5-K3 — Armes de poing",
+      "columns": {
+        "#": "6",
+        "Arme": "Pistolet à modérateur intégré",
+        "Niv.": "3",
+        "Accès": "Spécialisée",
+        "Attaque": "Dextérité + Tir",
+        "Déf.": "CAP",
+        "Dégâts": "1d6 Perforant",
+        "Préc.": "0",
+        "Portée": "10/30",
+        "Capacité et Recharge": "10 ; Recharge 1",
+        "Recul": "0",
+        "Traits": "Balistique, Localisable",
+        "Signature": "Discrète",
+        "Fiab.": "3",
+        "Struct.": "L",
+        "Empl.": "2",
+        "Prix": "1 800"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 1800,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "handgun",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "one",
+      "skillId": "shooting",
+      "attributeId": "dexterity",
+      "accuracy": 0,
+      "damageDice": 1,
+      "damageDie": "d6",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d6 Perforant",
+      "damageTypes": ["piercing"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "10/30",
+      "rangeOptimal": 10,
+      "rangeMaximum": 30,
+      "recoil": 0,
+      "feedKind": "detachable",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "BAL-9P",
+      "chamberId": "BAL-9P",
+      "pressureClassId": "standard",
+      "pressureClass": "standard",
+      "feedInterfaceId": "boxMagazine",
+      "feedInterface": "boxMagazine",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": ["ballistic"],
+      "acousticSignature": "discreet",
+      "ammunitionConsumption": {
+        "single": 1
+      },
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  }
+}

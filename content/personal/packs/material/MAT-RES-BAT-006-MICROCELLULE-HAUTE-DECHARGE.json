@@ -1,0 +1,137 @@
+{
+  "relisId": "MAT-RES-BAT-006-MICROCELLULE-HAUTE-DECHARGE",
+  "name": "Microcellule haute décharge",
+  "type": "resource",
+  "tags": ["materiel", "ressource", "batterie"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>6</dd></div>\n<div><dt>Batterie</dt><dd>Microcellule haute décharge</dd></div>\n<div><dt>Niv.</dt><dd>2</dd></div>\n<div><dt>Format</dt><dd>Micro</dd></div>\n<div><dt>Capacité</dt><dd>6 CE</dd></div>\n<div><dt>Sortie</dt><dd>Légère</dd></div>\n<div><dt>Technologie</dt><dd>Plasma compact</dd></div>\n<div><dt>Cycle</dt><dd>Rechargeable</dd></div>\n<div><dt>Recharge complète</dt><dd>3 h</dd></div>\n<div><dt>Sol./PV/SB</dt><dd>1/4/2</dd></div>\n<div><dt>Signature</dt><dd>Thermique</dd></div>\n<div><dt>Enc.</dt><dd>0</dd></div>\n<div><dt>Prix</dt><dd>180</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "battery",
+      "sourceSection": "41.155 Lot 5-L12 — Batteries et alimentations — 11 profils",
+      "columns": {
+        "#": "6",
+        "Batterie": "Microcellule haute décharge",
+        "Niv.": "2",
+        "Format": "Micro",
+        "Capacité": "6 CE",
+        "Sortie": "Légère",
+        "Technologie": "Plasma compact",
+        "Cycle": "Rechargeable",
+        "Recharge complète": "3 h",
+        "Sol./PV/SB": "1/4/2",
+        "Signature": "Thermique",
+        "Enc.": "0",
+        "Prix": "180"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 0,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "resource",
+        "functionalCategory": "power",
+        "installable": true,
+        "installationKind": "accessory",
+        "requiredSlots": {
+          "power": 1
+        },
+        "compatibleInterfaces": ["cell"],
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 180,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "energyProfile": {
+      "kind": "battery",
+      "format": "micro",
+      "formatId": "micro",
+      "powerClass": "light",
+      "powerClassId": "light",
+      "technology": "plasmaCompact",
+      "technologyId": "plasmaCompact",
+      "interfaceId": "cell",
+      "current": 6,
+      "maximum": 6,
+      "output": null,
+      "outputClass": "light",
+      "cycle": "rechargeable",
+      "rechargeDuration": "3 h",
+      "rechargeable": true
+    },
+    "currencyProfile": {
+      "physicalCash": false,
+      "currencyId": "",
+      "currencyLabel": "",
+      "denomination": 1
+    }
+  }
+}
