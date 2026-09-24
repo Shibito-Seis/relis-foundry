@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-196-CATALOGUE-DEMI-BEASTKIN-673",
+  "name": "Pont des communautés",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +3 circonstanciel aux tests de Culture concernant migrations, conflits, institutions et alliances entre Humains et son peuple parental.</p>\n<p>Une fois par session, il peut rappeler un médiateur, une coutume, une implantation ou un précédent plausible et établi. Le MJ détermine ce qui existe encore ; le talent ne crée ni contact, ni dette, ni faction.</p>",
+    "traits": ["Demi-Beastkin", "Culture", "Exploration", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-196-CATALOGUE-DEMI-BEASTKIN-669",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Visage des deux mondes",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.199 Talents Demi-Beastkins de niveau 9",
+      "family": "Double appartenance",
+      "ancestry": "### 5.196 Catalogue Demi-Beastkin",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Visage des deux mondes",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Double appartenance",
+        "Traits": "Demi-Beastkin, Culture, Exploration, Social",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Visage des deux mondes"
+      }
+    },
+    "level": 9
+  }
+}

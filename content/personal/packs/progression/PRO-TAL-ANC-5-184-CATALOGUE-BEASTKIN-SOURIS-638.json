@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-638",
+  "name": "Doigts de mécanicien",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests pour saisir, trier, extraire ou replacer une petite pièce accessible sans l&#39;endommager.</p>\n<p>Le talent ne remplace ni outil spécialisé, ni compétence technique et ne permet pas de manipuler un mécanisme sous tension ou protégé sans en subir les risques.</p>",
+    "traits": ["Beastkin", "Souris", "Dextérité", "Manipulation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.185 Talents Beastkins Souris de niveau 1",
+      "family": "Mains fines et récupération matérielle",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mains fines et récupération matérielle",
+        "Traits": "Beastkin, Souris, Dextérité, Manipulation",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

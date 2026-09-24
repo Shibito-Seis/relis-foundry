@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-640",
+  "name": "Pas si petite",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant un test destiné à se faire entendre, défendre sa place ou refuser d&#39;être ignoré en raison de son gabarit, le personnage gagne +2 circonstanciel au test de Présence, Commandement, Diplomatie ou Intimidation approprié.</p>\n<p>Le talent ne donne aucune autorité automatique et ne transforme pas une protestation en réussite sans test.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Souris", "Identité", "Présence"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.185 Talents Beastkins Souris de niveau 1",
+      "family": "Courage face aux plus grands",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Courage face aux plus grands",
+        "Traits": "Beastkin, Souris, Identité, Présence",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 1
+  }
+}

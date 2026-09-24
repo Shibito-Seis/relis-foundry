@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-223-CATALOGUE-DEMI-GNOME-707",
+  "name": "Affadissement hérité",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage accepte que son héritage gnome dépende profondément de l&#39;émerveillement. Il devient explicitement Sujet à l&#39;Affadissement et peut désormais choisir les talents gnomes possédant ce prérequis.</p>\n<p>Il gagne +2 circonstanciel aux tests pour résister à une progression de l&#39;Affadissement lorsqu&#39;il poursuit activement sa passion ou retrouve son Ancrage humain. Il assume en contrepartie tous les risques, besoins et effets de l&#39;Affadissement. Ce choix ne peut être retiré par un simple réentraînement.</p>",
+    "traits": ["Demi-Gnome", "Affadissement", "Héritage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-223-CATALOGUE-DEMI-GNOME-703",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Étincelle gnome",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.225 Talents Demi-Gnomes de niveau 5",
+      "family": "Affadissement et ancrage",
+      "ancestry": "### 5.223 Catalogue Demi-Gnome",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Étincelle gnome",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Affadissement et ancrage",
+        "Traits": "Demi-Gnome, Affadissement, Héritage",
+        "Type": "Passif",
+        "Prérequis": "Étincelle gnome"
+      }
+    },
+    "level": 5
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-642",
+  "name": "Décrochage murin",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir réussi une défense contre une attaque de contact, une saisie ou un déplacement forcé, le personnage se déplace de 2 mètres vers son Issue repérée ou un couvert visible.</p>\n<p>Le mouvement suit un trajet légal, ne traverse aucune créature et n&#39;accorde ni attaque, ni défense supplémentaire.</p>",
+    "traits": ["Beastkin", "Souris", "Mobilité", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-633",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Premier pas de côté",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.186 Talents Beastkins Souris de niveau 5",
+      "family": "Fuite et voies de repli",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Premier pas de côté",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Fuite et voies de repli",
+        "Traits": "Beastkin, Souris, Mobilité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Premier pas de côté"
+      }
+    },
+    "level": 5
+  }
+}

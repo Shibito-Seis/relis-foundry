@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-196-CATALOGUE-DEMI-BEASTKIN-670",
+  "name": "Instinct parental",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage déclenche la réaction de son parent :</p>\n<p>Aucune variante ne fournit une Action, une attaque ou un pouvoir complet du catalogue parental.</p>",
+    "traits": ["Demi-Beastkin", "Expression parentale", "Instinct", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-196-CATALOGUE-DEMI-BEASTKIN-667",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritage animal partiel",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.198 Talents Demi-Beastkins de niveau 5",
+      "family": "Manifestation parentale",
+      "ancestry": "### 5.196 Catalogue Demi-Beastkin",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Héritage animal partiel",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Manifestation parentale",
+        "Traits": "Demi-Beastkin, Expression parentale, Instinct, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Héritage animal partiel"
+      }
+    },
+    "level": 5
+  }
+}

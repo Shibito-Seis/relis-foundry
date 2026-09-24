@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-717",
+  "name": "Langue du foyer",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage parle, lit ou interprète couramment la langue choisie. Lorsqu&#39;une incompréhension simple de vocabulaire, d&#39;accent ou de registre devrait provoquer l&#39;échec d&#39;une communication accessible, il peut signaler immédiatement l&#39;erreur.</p>\n<p>L&#39;interlocuteur ou l&#39;allié concerné peut reformuler et gagne +2 circonstanciel à son prochain test directement destiné à transmettre le même message.</p>\n<p>Le talent ne déchiffre ni code secret, ni langue inconnue, ni concept culturel que le personnage ne connaît pas. Contrairement à Polyglotte, il ne donne pas une maîtrise étendue de plusieurs familles linguistiques.</p>",
+    "traits": ["Ascendance universelle", "Communication", "Culture", "Langue"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.236 Talents universels d'Ascendance de niveau 1",
+      "family": "Cultures adoptées",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "une langue ou un code communautaire",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cultures adoptées",
+        "Traits": "Ascendance universelle, Communication, Culture, Langue",
+        "Type": "Passif et Réaction",
+        "Choix": "une langue ou un code communautaire",
+        "Fréquence": "une fois par scène pour la réaction"
+      }
+    },
+    "level": 1
+  }
+}

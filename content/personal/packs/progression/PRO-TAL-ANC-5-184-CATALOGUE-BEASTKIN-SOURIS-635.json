@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-635",
+  "name": "Rien ne se perd",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage examine un objet, un lot ou une ration réellement présent. Il gagne +2 circonstanciel au test destiné à séparer une portion encore utilisable, réduire une perte ou identifier ce qui peut être conservé sans danger.</p>\n<p>Le talent ne crée aucune ressource et ne rend pas utilisable une matière détruite, contaminée ou incompatible.</p>",
+    "traits": ["Beastkin", "Souris", "Exploration", "Ressource"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.185 Talents Beastkins Souris de niveau 1",
+      "family": "Récupération et frugalité",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Récupération et frugalité",
+        "Traits": "Beastkin, Souris, Exploration, Ressource",
+        "Type": "Activité de 10 minutes"
+      }
+    },
+    "level": 1
+  }
+}

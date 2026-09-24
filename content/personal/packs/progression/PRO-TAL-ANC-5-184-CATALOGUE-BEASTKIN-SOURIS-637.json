@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-637",
+  "name": "Vibrisses sensibles",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>À proximité immédiate d&#39;une surface ou dans un courant d&#39;air accessible, le personnage gagne +2 circonstanciel aux tests de Perception pour remarquer mouvement, vibration, variation d&#39;air ou obstacle proche.</p>\n<p>Le talent ne détecte pas l&#39;imperceptible, ne fonctionne pas à travers un support isolant approprié et ne donne aucune position exacte au-delà de la portée des vibrisses.</p>",
+    "traits": ["Beastkin", "Souris", "Perception", "Vibration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.185 Talents Beastkins Souris de niveau 1",
+      "family": "Vibrisses, vibrations et vigilance",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Vibrisses, vibrations et vigilance",
+        "Traits": "Beastkin, Souris, Perception, Vibration",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

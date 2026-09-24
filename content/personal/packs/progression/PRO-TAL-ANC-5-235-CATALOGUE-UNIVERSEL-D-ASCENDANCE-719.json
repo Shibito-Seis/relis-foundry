@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-719",
+  "name": "Réveil discipliné",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage a appris à reconstruire rapidement ses repères après une cryostase, une stase médicale ou une longue inconscience. Il gagne +2 circonstanciel aux tests de Vigueur, Volonté ou Sang-froid contre confusion, nausée, panique ou désorientation directement provoquées par le réveil.</p>\n<p>La première pénalité circonstancielle mineure de chaque réveil provenant uniquement de la réorientation est ignorée après une minute de sécurité et de diagnostic élémentaire.</p>\n<p>Le talent ne retire ni Fatigue, ni Blessure, ni Traumatisme de cryostase et ne protège pas d&#39;une capsule défectueuse, d&#39;une hypoxie ou d&#39;un réveil médicalement dangereux.</p>",
+    "traits": ["Ascendance universelle", "Cryostase", "Vigueur", "Volonté"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.236 Talents universels d'Ascendance de niveau 1",
+      "family": "Cryostase et réveil",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cryostase et réveil",
+        "Traits": "Ascendance universelle, Cryostase, Vigueur, Volonté",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

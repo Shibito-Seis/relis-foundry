@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-205-CATALOGUE-DEMI-ELFE-686",
+  "name": "Accord des deux héritages",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après avoir réussi un test bénéficiant d&#39;un talent Humain, le personnage gagne +2 circonstanciel à son prochain test distinct bénéficiant d&#39;un talent Elfe avant la fin de son prochain tour, ou inversement.</p>\n<p>Les deux tests doivent poursuivre le même objectif général sans employer la même compétence ni cumuler leurs bonus. Le talent ne recharge aucune activation.</p>",
+    "traits": ["Demi-Elfe", "Adaptation", "Coopération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-205-CATALOGUE-DEMI-ELFE-683",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Magie tempérée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-205-CATALOGUE-DEMI-ELFE-684",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire à deux échelles",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.209 Talent Demi-Elfe de niveau 13",
+      "family": "Magie tempérée",
+      "ancestry": "### 5.205 Catalogue Demi-Elfe",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Magie tempérée et Mémoire à deux échelles",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Magie tempérée",
+        "Traits": "Demi-Elfe, Adaptation, Coopération",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Magie tempérée et Mémoire à deux échelles"
+      }
+    },
+    "level": 13
+  }
+}

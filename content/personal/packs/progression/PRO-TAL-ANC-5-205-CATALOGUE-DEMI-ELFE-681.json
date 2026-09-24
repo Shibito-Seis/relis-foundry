@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-205-CATALOGUE-DEMI-ELFE-681",
+  "name": "Souffle humain",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage devrait gagner 1 Fatigue à cause d&#39;un effort physique prolongé, d&#39;une veille ou de l&#39;usage d&#39;une capacité elfique, il en diffère les effets jusqu&#39;à la fin de la scène ou sa prochaine halte.</p>\n<p>La Fatigue est ensuite reçue normalement. Le talent ne l&#39;annule pas et ne protège ni d&#39;une surcharge énergétique, ni d&#39;un manque vital.</p>",
+    "traits": ["Demi-Elfe", "Endurance", "Humain"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.206 Talents Demi-Elfes de niveau 1",
+      "family": "Corps entre deux âges",
+      "ancestry": "### 5.205 Catalogue Demi-Elfe",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Corps entre deux âges",
+        "Traits": "Demi-Elfe, Endurance, Humain",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 1
+  }
+}

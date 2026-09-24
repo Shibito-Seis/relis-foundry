@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-697",
+  "name": "Tenue souple",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Dans une armure ou un équipement adapté à son corps, le personnage réduit de 2 les pénalités circonstancielles de mouvement provenant exclusivement de la différence de gabarit ou de rigidité.</p>\n<p>Une fois par scène, avant un test d&#39;équilibre ou de déplacement, il gagne +3 au lieu de +2. Le talent ne donne aucune maîtrise d&#39;armure et ne réduit ni poids, ni pénalité propre au modèle.</p>",
+    "traits": ["Demi-Nain", "Équipement", "Mobilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-693",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Appuis humains",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.217 Talents Demi-Nains de niveau 9",
+      "family": "Souplesse humaine",
+      "ancestry": "### 5.214 Catalogue Demi-Nain",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Appuis humains",
+      "choice": "",
+      "frequency": "une fois par scène pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Souplesse humaine",
+        "Traits": "Demi-Nain, Équipement, Mobilité",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par scène pour l'activation",
+        "Prérequis": "Appuis humains"
+      }
+    },
+    "level": 9
+  }
+}

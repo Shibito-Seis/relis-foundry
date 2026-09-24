@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-625",
+  "name": "Instinct des saisons",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +3 circonstanciel aux tests portant sur réserves, météo, abris, migrations de ressources et viabilité d&#39;un lieu de repos.</p>\n<p>Une fois par session, il peut relancer un test échoué pour anticiper une pénurie, trouver un refuge plausible ou répartir des ressources de survie, et conserve le meilleur résultat. Le talent ne crée aucune ressource ou implantation absente.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Ours", "Exploration", "Fortune", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-622",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Abri du grand corps",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.178 Talents Beastkins Ours de niveau 17",
+      "family": "Ressources, abri et sens du territoire",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Abri du grand corps",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ressources, abri et sens du territoire",
+        "Traits": "Beastkin, Ours, Exploration, Fortune, Survie",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Abri du grand corps"
+      }
+    },
+    "level": 17
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-695",
+  "name": "Robustesse mesurée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;il subit un dommage physique ou environnemental qu&#39;il pouvait percevoir, le personnage le réduit de 2 et gagne +2 à sa prochaine défense contre douleur ou renversement avant la fin de son prochain tour.</p>\n<p>Si une armure ou un autre effet protège exactement du même dommage, seul le meilleur s&#39;applique. Le talent ne protège pas d&#39;une attaque interne ou mentale.</p>",
+    "traits": ["Demi-Nain", "Réaction", "Résistance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-692",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sang de pierre allégé",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.216 Talents Demi-Nains de niveau 5",
+      "family": "Robustesse mesurée",
+      "ancestry": "### 5.214 Catalogue Demi-Nain",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Sang de pierre allégé",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse mesurée",
+        "Traits": "Demi-Nain, Réaction, Résistance",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Sang de pierre allégé"
+      }
+    },
+    "level": 5
+  }
+}

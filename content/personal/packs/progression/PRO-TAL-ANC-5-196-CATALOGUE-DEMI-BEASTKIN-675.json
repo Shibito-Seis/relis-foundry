@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-196-CATALOGUE-DEMI-BEASTKIN-675",
+  "name": "Deux natures, une volonté",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsque le personnage échoue à un test de Volonté ou de Sang-froid contre une transformation imposée, un effacement d&#39;identité, une coercition fondée sur son ascendance ou l&#39;obligation de renier l&#39;un de ses héritages, il relance et conserve le meilleur résultat.</p>\n<p>Sur une réussite, il peut également se déplacer de 2 mètres vers un allié ou un symbole de l&#39;une de ses communautés. Le talent ne protège pas de toute coercition générale.</p>",
+    "traits": ["Demi-Beastkin", "Fortune", "Identité", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.201 Talent Demi-Beastkin de niveau 17",
+      "family": "Conciliation des héritages",
+      "ancestry": "### 5.196 Catalogue Demi-Beastkin",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Conciliation des héritages",
+        "Traits": "Demi-Beastkin, Fortune, Identité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 17
+  }
+}

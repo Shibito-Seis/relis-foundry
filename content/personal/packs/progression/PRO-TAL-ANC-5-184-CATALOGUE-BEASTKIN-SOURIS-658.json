@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-658",
+  "name": "Atelier de fortune",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avec des débris, outils et surfaces réellement disponibles, le personnage aménage un poste de travail temporaire. Jusqu&#39;à son démontage, jusqu&#39;à quatre créatures gagnent +3 circonstanciel aux tests pour récupérer, trier, entretenir ou réparer de petits équipements dans cet atelier.</p>\n<p>L&#39;atelier ne remplace aucune installation lourde, certification, source d&#39;énergie ou matière spécialisée. Un seul Atelier de fortune du personnage peut exister à la fois.</p>",
+    "traits": ["Beastkin", "Souris", "Exploration", "Technique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-652",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Faire durer",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-655",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Réemploi méthodique",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.188 Talents Beastkins Souris de niveau 13",
+      "family": "Récupération et frugalité",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Activité de 1 heure",
+      "prerequisites": "Faire durer et Réemploi méthodique",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Récupération et frugalité",
+        "Traits": "Beastkin, Souris, Exploration, Technique",
+        "Type": "Activité de 1 heure",
+        "Prérequis": "Faire durer et Réemploi méthodique"
+      }
+    },
+    "level": 13
+  }
+}

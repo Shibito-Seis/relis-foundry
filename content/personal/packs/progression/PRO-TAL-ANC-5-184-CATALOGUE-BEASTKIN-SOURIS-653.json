@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-653",
+  "name": "Mémoire partagée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Les membres du Cercle du terrier consignent ensemble inventaire, itinéraire, procédure ou observation. Jusqu&#39;au prochain repos long, chacun gagne +2 circonstanciel au premier test destiné à retrouver, vérifier ou transmettre cette information.</p>\n<p>Une seule mémoire partagée peut être active. Le talent ne crée aucune connaissance absente et chaque membre ne connaît que ce qui lui a réellement été transmis.</p>",
+    "traits": ["Beastkin", "Souris", "Communauté", "Mémoire"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-646",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Petites mains réunies",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.187 Talents Beastkins Souris de niveau 9",
+      "family": "Communautés et entraide",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Petites mains réunies",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Communautés et entraide",
+        "Traits": "Beastkin, Souris, Communauté, Mémoire",
+        "Type": "Activité de 10 minutes",
+        "Prérequis": "Petites mains réunies"
+      }
+    },
+    "level": 9
+  }
+}

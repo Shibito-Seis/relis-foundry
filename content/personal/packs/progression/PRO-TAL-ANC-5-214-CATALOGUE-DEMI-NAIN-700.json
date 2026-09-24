@@ -1,0 +1,62 @@
+{
+  "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-700",
+  "name": "Héritier des fondations",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant l&#39;effet, le personnage gagne +3 circonstanciel aux tests d&#39;Ingénierie, d&#39;Endurance et aux défenses contre déplacement ou effondrement. Il peut identifier sans test la fonction générale des éléments structurels visibles et la direction d&#39;une contrainte majeure.</p>\n<p>Une fois pendant la durée, il peut maintenir un élément ou un objet malgré un échec simple, sans empêcher sa défaillance au tour suivant. Le talent ne crée aucun matériau. À la fin, il gagne 1 Fatigue.</p>",
+    "traits": ["Demi-Nain", "Artisanat", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-698",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps de frontière",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-699",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Inébranlable sans rigidité",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-41-CATALOGUE-NAIN-152",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Inébranlable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.220 Talent Demi-Nain de niveau 21",
+      "family": "Transcendance hybride",
+      "ancestry": "### 5.214 Catalogue Demi-Nain",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Corps de frontière et Inébranlable sans rigidité",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance hybride",
+        "Traits": "Demi-Nain, Artisanat, Mythique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Corps de frontière et Inébranlable sans rigidité"
+      }
+    },
+    "level": 21
+  }
+}

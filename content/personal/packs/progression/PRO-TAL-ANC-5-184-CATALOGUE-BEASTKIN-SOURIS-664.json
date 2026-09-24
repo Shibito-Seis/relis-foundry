@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-664",
+  "name": "La plus petite faille",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage identifie le point d&#39;accès matériel le plus exploitable d&#39;un dispositif ou d&#39;une structure qu&#39;il peut étudier. Pendant l&#39;effet, lui-même et les membres du Cercle du terrier gagnent +3 circonstanciel aux tests pour l&#39;atteindre, l&#39;ouvrir, le réparer ou y intervenir avec les compétences appropriées.</p>\n<p>Une fois pendant la durée, le personnage peut relancer un test technique échoué et conserver le meilleur résultat. Le talent ne révèle aucun code, ne contourne aucune protection sans test et ne crée aucune faille inexistante.</p>\n<p>---</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Souris", "Mythique", "Technique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-658",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Atelier de fortune",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-660",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Main de précision",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.190 Talents Beastkins Souris de niveau 21",
+      "family": "Transcendance murine",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Main de précision et Atelier de fortune",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "une scène technique",
+      "metadata": {
+        "Famille": "Transcendance murine",
+        "Traits": "Beastkin, Souris, Mythique, Technique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par session",
+        "Durée": "une scène technique",
+        "Prérequis": "Main de précision et Atelier de fortune"
+      }
+    },
+    "level": 21
+  }
+}

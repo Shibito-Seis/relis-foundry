@@ -1,0 +1,55 @@
+{
+  "relisId": "PRO-TAL-ANC-5-223-CATALOGUE-DEMI-GNOME-712",
+  "name": "Héritier du possible",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit Émerveillement ou Stabilité :</p>\n<p>• Émerveillement : +3 aux tests de découverte, imagination, magie expérimentale et inspiration d&#39;un allié ;</p>\n<p>• Stabilité : +3 aux tests de réparation, contrôle, simplification et résistance à une instabilité technique ou mentale.</p>\n<p>Une fois pendant la durée, il peut changer d&#39;expression sans Action. Le talent ne crée ni invention, ni ressource. À la fin, il gagne 1 Stress.</p>",
+    "traits": ["Demi-Gnome", "Curiosité", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-223-CATALOGUE-DEMI-GNOME-710",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Deux méthodes, une invention",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-223-CATALOGUE-DEMI-GNOME-711",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Deux rythmes d'émerveillement",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.229 Talent Demi-Gnome de niveau 21",
+      "family": "Transcendance hybride",
+      "ancestry": "### 5.223 Catalogue Demi-Gnome",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Deux méthodes, une invention et Deux rythmes d'émerveillement",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance hybride",
+        "Traits": "Demi-Gnome, Curiosité, Mythique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Deux méthodes, une invention et Deux rythmes d'émerveillement",
+        "Émerveillement": "+3 aux tests de découverte, imagination, magie expérimentale et inspiration d'un allié ;",
+        "Stabilité": "+3 aux tests de réparation, contrôle, simplification et résistance à une instabilité technique ou mentale."
+      }
+    },
+    "level": 21
+  }
+}

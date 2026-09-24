@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-235-CATALOGUE-UNIVERSEL-D-ASCENDANCE-718",
+  "name": "Mémoire transmise",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage a reçu des récits, chants, archives, gestes ou témoignages transmis par son groupe. Après dix minutes consacrées à les ordonner, il gagne +2 circonstanciel à un test de Culture ou d&#39;Investigation portant sur cette mémoire collective.</p>\n<p>Au lieu d&#39;effectuer lui-même le test, il peut raconter les éléments pertinents à un allié ; cet allié reçoit le bonus à son prochain test effectué avant la fin de la scène.</p>\n<p>Le talent ne produit aucune information qui n&#39;a jamais pu être transmise, ne garantit pas l&#39;exactitude d&#39;une légende et ne reproduit ni Mémoire intacte, ni Mémoire eidétique.</p>",
+    "traits": ["Ascendance universelle", "Culture", "Exploration", "Mémoire"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.236 Talents universels d'Ascendance de niveau 1",
+      "family": "Mémoire transmise",
+      "ancestry": "### 5.235 Catalogue universel d'Ascendance",
+      "skill": "",
+      "activation": "Activité d'exploration",
+      "prerequisites": "",
+      "choice": "une communauté, tradition ou diaspora de référence",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mémoire transmise",
+        "Traits": "Ascendance universelle, Culture, Exploration, Mémoire",
+        "Type": "Activité d'exploration",
+        "Choix": "une communauté, tradition ou diaspora de référence"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-651",
+  "name": "Ajustement parfait",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un échec non critique à un test technique dont la difficulté principale provient d&#39;un réglage, d&#39;une connexion ou d&#39;une pièce de petite taille, le personnage relance et conserve le second résultat.</p>\n<p>Le talent ne peut affecter un jet déjà soumis à Fortune ou Infortune, une conception complète, une intrusion logicielle distante ou une tâche dont il ne possède pas les outils et prérequis.</p>",
+    "traits": ["Beastkin", "Souris", "Fortune", "Technique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-643",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Outil compact",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-644",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Diagnostic d'accès",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.187 Talents Beastkins Souris de niveau 9",
+      "family": "Précision technique",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Outil compact ou Diagnostic d'accès",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précision technique",
+        "Traits": "Beastkin, Souris, Fortune, Technique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Prérequis": "Outil compact ou Diagnostic d'accès"
+      }
+    },
+    "level": 9
+  }
+}

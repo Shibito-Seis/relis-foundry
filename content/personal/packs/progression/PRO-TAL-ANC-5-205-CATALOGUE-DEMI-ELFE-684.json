@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-205-CATALOGUE-DEMI-ELFE-684",
+  "name": "Mémoire à deux échelles",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +3 circonstanciel aux tests de Culture portant sur la manière dont un même événement est conservé dans des archives humaines et elfes.</p>\n<p>Une fois par session, il peut rappeler un fait plausible qu&#39;il a vécu, étudié ou reçu d&#39;une tradition familiale : ancien lieu, version contradictoire, personne connue ou conséquence oubliée. Le talent n&#39;invente aucun souvenir ancestral.</p>",
+    "traits": ["Demi-Elfe", "Culture", "Mémoire"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-205-CATALOGUE-DEMI-ELFE-682",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Éducation croisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.208 Talents Demi-Elfes de niveau 9",
+      "family": "Double culture",
+      "ancestry": "### 5.205 Catalogue Demi-Elfe",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Éducation croisée",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Double culture",
+        "Traits": "Demi-Elfe, Culture, Mémoire",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Éducation croisée"
+      }
+    },
+    "level": 9
+  }
+}

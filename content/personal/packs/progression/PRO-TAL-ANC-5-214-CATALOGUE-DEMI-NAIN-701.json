@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-701",
+  "name": "Pont de pierre et d'horizon",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage coordonne une méthode naine de fondation avec une procédure humaine d&#39;évacuation, de construction ou de navigation. Jusqu&#39;à la fin de la scène, lui-même et jusqu&#39;à quatre alliés informés gagnent +3 circonstanciel à leur premier test pour réparer, consolider, franchir ou évacuer la structure choisie.</p>\n<p>Le talent ne répare rien sans travail, ne donne aucune Action et cesse si la structure est entièrement détruite.</p>",
+    "traits": ["Demi-Nain", "Coopération", "Mythique", "Structure"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-700",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Héritier des fondations",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.221 Talent Demi-Nain de niveau 25",
+      "family": "Transcendance hybride",
+      "ancestry": "### 5.214 Catalogue Demi-Nain",
+      "skill": "",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Héritier des fondations",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance hybride",
+        "Traits": "Demi-Nain, Coopération, Mythique, Structure",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par session",
+        "Prérequis": "Héritier des fondations"
+      }
+    },
+    "level": 25
+  }
+}

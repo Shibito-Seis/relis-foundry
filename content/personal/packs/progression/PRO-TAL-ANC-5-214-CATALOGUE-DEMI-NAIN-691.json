@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-691",
+  "name": "Atelier de deux peuples",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit une tradition artisanale ou industrielle transmise par une communauté humaine et une communauté naine. Il gagne +2 circonstanciel aux tests de Culture, d&#39;Ingénierie ou de Commerce pour comparer leurs méthodes, reconnaître leurs marques et éviter une incompatibilité connue.</p>\n<p>Le talent ne donne ni atelier, ni outil, ni rang professionnel et ne garantit aucune reconnaissance par les artisans concernés.</p>",
+    "traits": ["Demi-Nain", "Artisanat", "Culture"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.215 Talents Demi-Nains de niveau 1",
+      "family": "Double tradition artisanale",
+      "ancestry": "### 5.214 Catalogue Demi-Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Double tradition artisanale",
+        "Traits": "Demi-Nain, Artisanat, Culture",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-621",
+  "name": "Hiver intérieur",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Dans un abri viable et après constitution de réserves, le personnage entre en hibernation. Sa consommation de nourriture et d&#39;eau est divisée par quatre, il traite froid et inconfort ordinaires comme inférieurs de deux degrés, et chaque période complète de 24 heures compte comme un repos long.</p>\n<p>Il subit −4 circonstanciel pour se réveiller sans déclencheur prévu et nécessite une minute pour retrouver toutes ses capacités. Il continue de respirer, ne guérit aucune Blessure critique sans traitement et ne peut survivre à un environnement mortel ou à une pénurie dépassant ses réserves.</p>",
+    "traits": ["Beastkin", "Ours", "Récupération", "Survie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-616",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Torpeur préparée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.177 Talents Beastkins Ours de niveau 13",
+      "family": "Hibernation et réserve métabolique",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Activité de 4 heures",
+      "prerequisites": "Torpeur préparée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Hibernation et réserve métabolique",
+        "Traits": "Beastkin, Ours, Récupération, Survie",
+        "Type": "Activité de 4 heures",
+        "Durée maximale": "sept jours",
+        "Prérequis": "Torpeur préparée"
+      }
+    },
+    "level": 13
+  }
+}

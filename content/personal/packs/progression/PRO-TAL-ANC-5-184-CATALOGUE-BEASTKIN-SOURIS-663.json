@@ -1,0 +1,53 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-663",
+  "name": "Partout à la fois",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant l&#39;effet :</p>\n<p>• la Vitesse terrestre du personnage augmente de 3 mètres ;</p>\n<p>• il ignore les 4 premiers mètres de terrain difficile de chaque tour dans les espaces contraints ;</p>\n<p>• il gagne +3 circonstanciel aux tests pour traverser un espace occupé, se désengager ou atteindre un couvert ;</p>\n<p>• une fois par tour, après une défense réussie, il peut se déplacer de 1 mètre sans Action supplémentaire.</p>\n<p>Chaque déplacement suit un trajet légal et ne traverse aucun obstacle matériel. Le talent ne rend pas invisible et ne fournit aucune attaque. À la fin, le personnage gagne 1 Fatigue.</p>",
+    "traits": ["Beastkin", "Souris", "Mobilité", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-656",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Là où nul ne passe",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-657",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Toujours une sortie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.190 Talents Beastkins Souris de niveau 21",
+      "family": "Transcendance murine",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Là où nul ne passe et Toujours une sortie",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Transcendance murine",
+        "Traits": "Beastkin, Souris, Mobilité, Mythique",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Durée": "3 tours",
+        "Prérequis": "Là où nul ne passe et Toujours une sortie"
+      }
+    },
+    "level": 21
+  }
+}

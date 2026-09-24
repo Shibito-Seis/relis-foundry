@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-698",
+  "name": "Corps de frontière",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage compte comme une catégorie de masse supérieure uniquement pour porter une charge stable et résister à un déplacement forcé, jamais pour taille, allonge ou saisie offensive.</p>\n<p>Une fois par scène, Robustesse mesurée réduit le dommage de 4 au lieu de 2. Le talent ne cumule pas cette réduction avec une armure protégeant du même impact.</p>",
+    "traits": ["Demi-Nain", "Adaptation", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-695",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Robustesse mesurée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-214-CATALOGUE-DEMI-NAIN-697",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Tenue souple",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.218 Talent Demi-Nain de niveau 13",
+      "family": "Robustesse mesurée",
+      "ancestry": "### 5.214 Catalogue Demi-Nain",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Robustesse mesurée et Tenue souple",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Robustesse mesurée",
+        "Traits": "Demi-Nain, Adaptation, Physiologie",
+        "Type": "Passif",
+        "Prérequis": "Robustesse mesurée et Tenue souple"
+      }
+    },
+    "level": 13
+  }
+}

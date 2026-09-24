@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-644",
+  "name": "Diagnostic d'accès",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage étudie un dispositif auquel il peut accéder physiquement. Sur un test approprié réussi, il identifie le meilleur point d&#39;accès, la pièce locale la plus probablement défaillante et l&#39;outil requis pour intervenir.</p>\n<p>Lui-même ou un allié gagne +2 circonstanciel au premier test exploitant ce diagnostic. Le talent ne révèle ni code secret, ni architecture complète, ni défaut sans trace observable.</p>",
+    "traits": ["Beastkin", "Souris", "Investigation", "Technique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-184-CATALOGUE-BEASTKIN-SOURIS-634",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Geste minutieux",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.186 Talents Beastkins Souris de niveau 5",
+      "family": "Précision technique",
+      "ancestry": "### 5.184 Catalogue Beastkin Souris",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Geste minutieux",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Précision technique",
+        "Traits": "Beastkin, Souris, Investigation, Technique",
+        "Type": "Activité de 1 minute",
+        "Prérequis": "Geste minutieux"
+      }
+    },
+    "level": 5
+  }
+}

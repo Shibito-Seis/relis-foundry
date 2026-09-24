@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-624",
+  "name": "Étreinte du colosse",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant l&#39;effet, le personnage gagne +3 circonstanciel aux tests pour établir, maintenir ou déplacer une cible avec Étreinte contrôlée et compte comme une catégorie de taille plus grande uniquement pour déterminer ce qu&#39;il peut saisir ou retenir.</p>\n<p>Une fois pendant la durée, après avoir maintenu sa prise, il peut choisir sans Action supplémentaire de déplacer la cible de 2 mètres, de lui imposer −2 à sa prochaine action physique ou de donner un couvert renforcé à une cible volontaire. Aucun choix n&#39;inflige de dégâts et la maintenance exige toujours une Action.</p>",
+    "traits": ["Beastkin", "Ours", "Athlétisme", "Contrôle"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-173-CATALOGUE-BEASTKIN-OURS-614",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Prise totale",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.178 Talents Beastkins Ours de niveau 17",
+      "family": "Saisie et étreinte",
+      "ancestry": "### 5.173 Catalogue Beastkin Ours",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "Prise totale",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "3 tours",
+      "metadata": {
+        "Famille": "Saisie et étreinte",
+        "Traits": "Beastkin, Ours, Athlétisme, Contrôle",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour",
+        "Durée": "3 tours",
+        "Prérequis": "Prise totale"
+      }
+    },
+    "level": 17
+  }
+}
