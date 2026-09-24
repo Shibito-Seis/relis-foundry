@@ -78,6 +78,7 @@ describe("amorçage Foundry 10-C", () => {
           BooleanField: MockField,
           HTMLField: MockField,
           ArrayField: MockField,
+          ObjectField: MockField,
         },
       },
       applications: {

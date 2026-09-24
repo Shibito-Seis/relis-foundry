@@ -717,6 +717,27 @@ function currencyProfileField(): any {
   });
 }
 
+function attunementField(): any {
+  return new fields.SchemaField({
+    state: stringChoiceField(
+      ["not-applicable", "unattuned", "attuned"],
+      "not-applicable",
+    ),
+    questionnaireVersion: optionalStringField(),
+    answers: new fields.ObjectField({ required: true, initial: () => ({}) }),
+    scores: new fields.ObjectField({ required: true, initial: () => ({}) }),
+    colorId: optionalStringField(),
+    axisIds: stringArrayField(),
+    subjectUuid: optionalStringField(),
+    subjectName: optionalStringField(),
+    completedAt: optionalStringField(),
+    history: new fields.ArrayField(
+      new fields.ObjectField({ required: true, initial: () => ({}) }),
+      { required: true, initial: () => [] },
+    ),
+  });
+}
+
 export class RelisItemData extends foundry.abstract.TypeDataModel {
   static isPhysical = false;
 
@@ -729,6 +750,10 @@ export class RelisItemData extends foundry.abstract.TypeDataModel {
         required: true,
         blank: true,
         initial: "",
+      }),
+      catalog: new fields.ObjectField({
+        required: true,
+        initial: () => ({}),
       }),
       traits: new fields.ArrayField(new fields.StringField(), {
         required: true,
@@ -793,22 +818,10 @@ export class ActionData extends RelisItemData {
     return {
       ...super.defineSchema(),
       test: new fields.SchemaField({
-        attributeKey: new fields.StringField({
-          required: true,
-          blank: false,
-          initial: "dexterity",
-        }),
-        skillKey: new fields.StringField({
-          required: true,
-          blank: false,
-          initial: "shooting",
-        }),
-        difficulty: new fields.NumberField({
-          required: true,
-          integer: true,
-          min: 0,
-          initial: 15,
-        }),
+        configured: new fields.BooleanField({ required: true, initial: false }),
+        attributeKey: optionalStringField(),
+        skillKey: optionalStringField(),
+        difficulty: optionalNumberField(),
         resourceKey: optionalStringField(),
         cost: new fields.NumberField({
           required: true,
@@ -862,6 +875,7 @@ export class EquipmentData extends PhysicalItemData {
   static defineSchema(): Record<string, any> {
     return {
       ...super.defineSchema(),
+      protectionProfile: protectionProfileField(),
       energyProfile: energyProfileField(),
       supplyProfile: supplyProfileField(),
     };
@@ -893,6 +907,7 @@ export class ResourceData extends PhysicalItemData {
       ...super.defineSchema(),
       energyProfile: energyProfileField(),
       currencyProfile: currencyProfileField(),
+      attunement: attunementField(),
     };
   }
 }

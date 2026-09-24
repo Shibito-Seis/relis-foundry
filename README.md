@@ -2,7 +2,9 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.7.0` ouvre 10-K1-P après la validation fonctionnelle de 10-E4-P. Elle fournit le pipeline reconstructible des données personnelles : sources JSON versionnées, identifiants canoniques, `_id` Foundry stables, aliases, validation croisée, génération déterministe et compilation des futurs packs par l’outil officiel Foundry. Les familles Création, Progression et Matériel sont préparées mais restent volontairement vides jusqu’à 10-K2-P : aucun faux Item ni faux compendium n’est publié. La nomenclature **Écarlithe**, sa taxonomie et le contrat déterministe du questionnaire d’accord sont fixés comme données sources ; les vrais Cœurs d’Écarlithe et leur interface appartiennent à 10-K2-P, tandis que l’activation et la surcharge au Prana restent en 10-F. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
+La version `0.8.0` met 10-K2-P en recette après la validation de 10-K1-P. Elle publie les trois compendiums personnels canoniques, construits par le pipeline reproductible de K1-P : 199 Items de Création, 1 444 de Progression et 755 de Matériel, soit 2 398 entrées issues de la Bible v162. Les références sont strictes, les identifiants Foundry stables et les métadonnées de provenance conservées. Aucun contenu canonique absent n’est inventé. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
+
+L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. La fiche du Cœur porte le questionnaire déterministe d’accord : huit situations, six axes, quinze couleurs, départage des égalités, persistance et historique. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
 
 Le matériel validé en `0.6.2` reste intégralement protégé. Une arme énergétique n’est plus une réserve rechargeable : une batterie Item compatible s’insère dans l’arme et conserve ses propres CE. Les consommations de CE ou de munitions sont structurées par mode pour le futur moteur 10-F. Un chargeur détachable porte seul sa capacité et ses vrais Items de munitions ; une chambre seule vaut 1, tandis qu’un magasin interne déclare sa propre capacité. Les techno-lames à Prana reçoivent un véritable cristal Item, incolore et non accordé, jamais assimilé à une batterie. Les modules, munitions et sources installées sont présentés sous leur hôte ; l’inventaire affiche aussi les logements vides et la charge restante de la batterie insérée. Le liquide physique porté est résumé par devise, tandis que la banque reste explicitement non raccordée. 10-E3-P et 10-E4-P sont validés et toutes leurs protections restent actives. Les catégories repliables, la recherche par nom et les chemins des conteneurs validés en 0.4.3 sont conservés. Les sept
 familles matérielles apparaissent dans un inventaire personnel hiérarchique :
@@ -33,18 +35,19 @@ confirmés, sans débiter automatiquement une horloge ou des actions de combat.
 Une interruption conserve une sauvegarde récupérable par le MJ.
 
 La résolution des attaques, dégâts, protections et effets reste dans 10-F ; le
-pipeline de sources relève de 10-K1-P et les vrais compendiums de 10-K2-P. Les
+pipeline de sources de 10-K1-P alimente les compendiums publiés en 10-K2-P. Les
 images/Présentations de Garde-Robe restent dans 10-D5. L’installation de ce lot
 concerne un hôte physique personnel unique, hors conteneur. Détacher ses
 installations avant de déplacer/transférer cet ensemble ; les plateformes
 spécialisées restent dans les lots prévus.
-Aucun catalogue fictif ni contenu canonique n’est livré. Les visuels fonctionnels
-restent réalisés en CSS et en SVG interne jusqu’à la passe graphique finale.
+Aucun catalogue fictif n’est livré : les entrées absentes du canon ne sont pas
+complétées par supposition. Les visuels fonctionnels restent réalisés en CSS et
+en SVG interne jusqu’à la passe graphique finale.
 
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
-10-E2-P, la revue visuelle 0.4.3, 10-E3-P et 10-E4-P sont validés. 10-K1-P attend
-sa recette 0.7.0. Aucun contrôle visuel automatisé par navigateur :
+10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
+10-K2-P attend la recette 0.8.0. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -68,7 +71,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.7.0.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.8.0.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -77,6 +80,14 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.8.0 — compendiums personnels canoniques 10-K2-P
+
+- Publie 2 398 Items dans les compendiums Création, Progression et Matériel, avec comptes et types contrôlés automatiquement.
+- Couvre toutes les familles personnelles prévues par la Bible v162 ; les références croisées sont strictes et aucune entrée fictive ne comble les absences du canon.
+- Ajoute les vrais Items d’Écarlithe et l’accord du Cœur à quinze couleurs, persistant et historisé, avec les permissions PJ/PNJ/MJ prévues.
+- N’invente ni jet d’Action, ni bonus de couleur, ni règle de combat différée à 10-F.
+- Conserve le schéma Item 7, les inventaires, portraits, permissions, contrats DialogV2 et versions dynamiques. 10-K2-P reste en recette jusqu’à validation explicite de la v0.8.0.
 
 ## 0.7.0 — pipeline des données personnelles 10-K1-P
 

@@ -2,7 +2,7 @@
   "id": "relis",
   "title": "RE:LIS — RE: Lost in Space",
   "description": "Système de jeu officiel RE:LIS pour Foundry Virtual Tabletop.",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14",
@@ -22,6 +22,29 @@
       "path": "lang/fr.json"
     }
   ],
+  "packs": [
+    {
+      "name": "personal-creation",
+      "label": "RE:LIS — Création de personnage",
+      "path": "packs/personal-creation",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "personal-progression",
+      "label": "RE:LIS — Progression personnelle",
+      "path": "packs/personal-progression",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "personal-material",
+      "label": "RE:LIS — Matériel personnel",
+      "path": "packs/personal-material",
+      "type": "Item",
+      "system": "relis"
+    }
+  ],
   "socket": true,
   "initiative": "1d20",
   "grid": {
@@ -31,7 +54,7 @@
   "primaryTokenAttribute": "derived.trackables.hitPoints",
   "url": "https://github.com/Shibito-Seis/relis-foundry",
   "manifest": "https://raw.githubusercontent.com/Shibito-Seis/relis-foundry/main/system.json",
-  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.7.0/relis-v0.7.0.zip",
+  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.0/relis-v0.8.0.zip",
   "documentTypes": {
     "Actor": {
       "character": {

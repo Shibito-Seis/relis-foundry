@@ -17,6 +17,11 @@ function makeProject() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "relis-k1-test-"));
   temporaryRoots.push(root);
   fs.cpSync("content", path.join(root, "content"), { recursive: true });
+  for (const pack of ["creation", "progression", "material"]) {
+    const directory = path.join(root, "content", "personal", "packs", pack);
+    fs.rmSync(directory, { recursive: true, force: true });
+    fs.mkdirSync(directory, { recursive: true });
+  }
   fs.copyFileSync("package.json", path.join(root, "package.json"));
   return root;
 }
@@ -50,15 +55,56 @@ afterEach(() => {
     fs.rmSync(root, { recursive: true, force: true });
 });
 
-describe("pipeline de données personnelles 10-K1-P", () => {
-  it("valide le manifeste canonique vide sans fabriquer de faux Item", () => {
+describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
+  it("valide l’inventaire canonique exhaustif de 2 398 Items", () => {
     const result = validatePersonalContent();
-    expect(result.entries).toHaveLength(0);
+    expect(result.entries).toHaveLength(2398);
     expect(result.manifest.packs.map((pack) => pack.id)).toEqual([
       "creation",
       "progression",
       "material",
     ]);
+    expect(
+      Object.fromEntries(
+        result.manifest.packs.map((pack) => [
+          pack.id,
+          result.entries.filter(
+            ({ pack: sourcePack }) => sourcePack.id === pack.id,
+          ).length,
+        ]),
+      ),
+    ).toEqual({ creation: 199, progression: 1444, material: 755 });
+    expect(
+      Object.fromEntries(
+        Object.entries(
+          result.entries.reduce((counts, { entry }) => {
+            counts[entry.type] = (counts[entry.type] ?? 0) + 1;
+            return counts;
+          }, {}),
+        ).sort(([left], [right]) => left.localeCompare(right)),
+      ),
+    ).toEqual({
+      action: 42,
+      advantage: 31,
+      ammunition: 60,
+      ancestry: 20,
+      armor: 80,
+      consumable: 267,
+      container: 28,
+      drawback: 37,
+      equipment: 147,
+      origin: 48,
+      path: 12,
+      post: 11,
+      power: 252,
+      profile: 52,
+      resource: 62,
+      specialization: 84,
+      talent: 1054,
+      weapon: 111,
+    });
+    expect(result.warnings).toEqual([]);
+    expect(result.manifest.strictReferences).toBe(true);
     expect(result.questionnaire.nomenclature.canonicalTerm).toBe("Écarlithe");
   });
 
@@ -83,10 +129,11 @@ describe("pipeline de données personnelles 10-K1-P", () => {
       ),
     );
     expect(generated._id).toBe(stableFoundryId("TST-ITEM-001"));
+    expect(generated._key).toBe(`!items!${stableFoundryId("TST-ITEM-001")}`);
     expect(generated.system.meta).toMatchObject({
       relisId: "TST-ITEM-001",
       schemaVersion: "7",
-      contentVersion: "1.0.0",
+      contentVersion: "1.1.0",
       status: "active",
     });
     expect(generated.system.meta.sourceRef.relisId).toBe("");
@@ -111,6 +158,15 @@ describe("pipeline de données personnelles 10-K1-P", () => {
 
   it("signale les références absentes puis les bloque en mode strict", () => {
     const root = makeProject();
+    const manifestPath = path.join(
+      root,
+      "content",
+      "personal",
+      "manifest.json",
+    );
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    manifest.strictReferences = false;
+    fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
     writeEntry(
       root,
       "material",
@@ -128,13 +184,6 @@ describe("pipeline de données personnelles 10-K1-P", () => {
       }),
     );
     expect(validatePersonalContent(root).warnings).toHaveLength(1);
-    const manifestPath = path.join(
-      root,
-      "content",
-      "personal",
-      "manifest.json",
-    );
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
     manifest.strictReferences = true;
     fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
     expect(() => validatePersonalContent(root)).toThrow(
@@ -149,14 +198,28 @@ describe("pipeline de données personnelles 10-K1-P", () => {
     const packOutput = path.join(root, "build", "packs");
     const result = await buildPersonalPacks(root, sourceOutput, packOutput);
     expect(result.built).toEqual(["personal-material"]);
+    expect(result.compiledCounts).toEqual({ "personal-material": 1 });
+    const compiledDirectory = path.join(packOutput, "personal-material");
     expect(
-      fs.readdirSync(path.join(packOutput, "personal-material")).length,
-    ).toBeGreaterThan(0);
+      fs
+        .readdirSync(compiledDirectory)
+        .reduce(
+          (size, file) =>
+            size + fs.statSync(path.join(compiledDirectory, file)).size,
+          0,
+        ),
+    ).toBeGreaterThan(100);
   });
 
   it("protège le questionnaire : résultat non moral, sans bonus et modifications directes réservées au MJ", () => {
     const { questionnaire } = validatePersonalContent();
-    expect(questionnaire.palette).toHaveLength(questionnaire.axes.length);
+    expect(questionnaire.palette).toHaveLength(15);
+    expect(
+      questionnaire.palette.reduce((counts, color) => {
+        counts[color.kind] = (counts[color.kind] ?? 0) + 1;
+        return counts;
+      }, {}),
+    ).toEqual({ dominant: 6, conjunction: 6, equilibrium: 3 });
     expect(questionnaire.mechanics.grantsMechanicalBonus).toBe(false);
     expect(questionnaire.mechanics.usesCE).toBe(false);
     expect(questionnaire.permissions.directColorEdit).toBe("gm");

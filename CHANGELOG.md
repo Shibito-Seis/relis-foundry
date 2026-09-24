@@ -1,5 +1,15 @@
 # Journal des versions
 
+## 0.8.0 — 10-K2-P, compendiums personnels canoniques
+
+- Publie ensemble les trois compendiums Item de Création, Progression et Matériel personnel, soit 2 398 entrées issues de la Bible v162 : 199, 1 444 et 755 Items respectivement.
+- Couvre Ascendances, Profils, Origines, Atouts, Handicaps, Postes, Voies, Spécialisations, Talents, Actions, Pouvoirs, armes, armures, équipements, consommables, munitions, ressources et conteneurs sans contenu fictif.
+- Active les références canoniques strictes, les identifiants Foundry stables, les métadonnées de provenance et la compilation LevelDB déterministe des trois packs.
+- Ajoute l’Écarlithe noire brute, le Cœur d’Écarlithe incolore installable et la techno-lame de Prana, sans assimiler le Cœur à une batterie ni lui attribuer de CE.
+- Rend le questionnaire d’accord opératoire sur la fiche du Cœur : huit situations, six axes, quinze couleurs, départage déterministe, persistance et historique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation.
+- N’invente aucun jet aux Actions de catalogue et reporte leur automatisation à 10-F. La couleur d’un Cœur n’accorde aucun bonus mécanique en 10-K2-P.
+- Conserve le schéma Item 7 sans migration et toutes les non-régressions validées de 10-E4-P/10-K1-P. 10-K2-P reste en recette jusqu’à validation explicite de la v0.8.0.
+
 ## 0.7.0 — 10-K1-P, pipeline des données personnelles
 
 - Clôt 10-E4-P après validation fonctionnelle explicite de la recette 0.6.2 et conserve toutes ses non-régressions.

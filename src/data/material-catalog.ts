@@ -189,6 +189,10 @@ export const TECHNOLOGIES = {
   electromagnetic: "Électromagnétique",
   laser: "Laser",
   plasma: "Plasma",
+  plasmaCompact: "Plasma compact",
+  chemicalAdvanced: "Chimique avancée",
+  photovoltaic: "Photovoltaïque",
+  hybrid: "Hybride",
   sonic: "Sonique",
   chemical: "Chimique",
   technomagical: "Techno-magique",
@@ -207,7 +211,9 @@ export const TECHNICAL_SIZES = {
 
 export const FEED_INTERFACES = {
   boxMagazine: "Chargeur droit ou boîte",
+  drum: "Chargeur tambour",
   tubularMagazine: "Magasin tubulaire",
+  internalMagazine: "Magasin interne",
   cylinder: "Barillet",
   belt: "Bande",
   cassette: "Cassette",
@@ -227,10 +233,18 @@ export const PRESSURE_CLASSES = {
   highVelocity: "Haute vélocité",
   magnum: "Magnum",
   heavyMagnum: "Magnum lourde",
+  magnumAutomatic: "Magnum automatique",
   rifleLight: "Fusil léger",
   rifleIntermediate: "Fusil intermédiaire",
+  rifleSubsonic: "Fusil subsonique",
+  riflePrecisionIntermediate: "Fusil de précision intermédiaire",
   rifleHeavy: "Fusil lourd",
+  precisionHeavy: "Précision lourde",
   antiMateriel: "Anti-matériel",
+  shellLight: "Cartouche légère",
+  shellStandard: "Cartouche standard",
+  shellHeavy: "Cartouche très lourde",
+  specializedProjectile: "Projectile spécialisé",
   electromagnetic: "Électromagnétique",
   energyMicro: "Énergie micro",
   energyLight: "Énergie légère",
@@ -341,6 +355,7 @@ export const AMMUNITION_FAMILIES = {
   battery: "Cellule ou batterie énergétique",
   technomagical: "Charge techno-magique",
   pranaCrystal: "Cristal de Prana",
+  special: "Variante spéciale à appliquer à un profil compatible",
 } as const;
 
 export const AMMUNITION_VARIANTS = {

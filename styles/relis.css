@@ -1958,6 +1958,56 @@
   margin: 0.2rem 0;
 }
 
+.relis-attunement-result {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.65rem;
+  border: 1px solid #315d6c;
+  background: rgb(7 25 34 / 78%);
+}
+
+.relis-attunement-result p {
+  margin: 0.2rem 0 0;
+}
+
+.relis-attunement-swatch {
+  flex: 0 0 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 2px solid #d9f8ff;
+  border-radius: 50%;
+  background: var(--relis-attunement-color, transparent);
+  box-shadow: 0 0 0.8rem var(--relis-attunement-color, transparent);
+}
+
+.relis-attunement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.relis-attunement-dialog {
+  display: grid;
+  gap: 0.7rem;
+  max-height: min(72vh, 52rem);
+  overflow-y: auto;
+  padding: 0.2rem;
+}
+
+.relis-attunement-question {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.55rem;
+  border-left: 3px solid #4f9aaa;
+  background: rgb(16 54 68 / 55%);
+}
+
+.relis-canonical-source .relis-fact-list strong {
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
 @media (max-width: 700px) {
   .relis-finance-band {
     grid-template-columns: 1fr;

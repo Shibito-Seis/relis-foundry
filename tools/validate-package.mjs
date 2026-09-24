@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { validatePersonalContent } from "./personal-content.mjs";
 
 const root = process.cwd();
 const manifest = JSON.parse(
@@ -58,6 +59,7 @@ const inventoryServiceSource = fs.readFileSync(
   path.join(root, "src/services/inventory.ts"),
   "utf8",
 );
+const personalContent = validatePersonalContent(root);
 
 assert.equal(manifest.id, "relis");
 assert.equal(manifest.title, "RE:LIS — RE: Lost in Space");
@@ -83,6 +85,16 @@ assert.match(
   actorSheetSource,
   /function dialogContent\(\): HTMLDivElement \{\s*return document\.createElement\("div"\);\s*\}/,
   "DialogV2 exige un div racine sans attribut pour les formulaires d’inventaire",
+);
+assert.match(
+  itemSheetSource,
+  /function attunementDialogContent[\s\S]*?const content = document\.createElement\("div"\);\s*const panel = document\.createElement\("div"\);/,
+  "Le questionnaire DialogV2 doit conserver un div racine sans attribut",
+);
+assert.match(
+  itemSheetSource,
+  /async function askAttunementColor[\s\S]*?const content = document\.createElement\("div"\);\s*const field = document\.createElement\("label"\);/,
+  "Le dialogue MJ de couleur doit conserver un div racine sans attribut",
 );
 assert.deepEqual(manifest.authors, [{ name: "Maoilios aka ShibitoSeis" }]);
 assert.equal(manifest.url, "https://github.com/Shibito-Seis/relis-foundry");
@@ -146,6 +158,16 @@ assert.match(
   itemTemplate,
   /system\.capacity\.mass/,
   "Capacités typées du conteneur absentes de sa fiche",
+);
+assert.match(
+  actorTemplate,
+  /10-K2-P\s+en\s+recette\s+·[\s\S]*?\{\{packageVersion\}\}/,
+  "Le pied Actor doit utiliser la version dynamique pendant la recette K2-P",
+);
+assert.match(
+  itemTemplate,
+  /10-K2-P\s+en\s+recette\s+·\s+paquet[\s\S]*?\{\{packageVersion\}\}/,
+  "Le pied Item doit utiliser la version dynamique pendant la recette K2-P",
 );
 assert.match(
   inventoryRulesSource,
@@ -338,8 +360,8 @@ assert.deepEqual(
 );
 assert.equal(
   personalContentManifest.strictReferences,
-  false,
-  "K1-P doit diagnostiquer les références avant le blocage strict de K2-P/Audit P",
+  true,
+  "K2-P doit bloquer toute référence canonique absente",
 );
 assert.equal(
   crystalAttunement.nomenclature.canonicalTerm,
@@ -366,10 +388,43 @@ assert.equal(
   "3.0.4",
   "Version de l’outil officiel Foundry non verrouillée",
 );
+assert.deepEqual(
+  manifest.packs?.map(({ name, type, system }) => ({ name, type, system })),
+  personalContentManifest.packs.map((pack) => ({
+    name: pack.name,
+    type: pack.documentType,
+    system: "relis",
+  })),
+  "Les trois compendiums K2-P doivent être déclarés comme packs Item du système",
+);
 assert.equal(
-  manifest.packs,
-  undefined,
-  "10-K1-P ne doit pas publier de compendium vide avant 10-K2-P",
+  manifest.packs?.every((pack) => pack.path === `packs/${pack.name}`),
+  true,
+  "Chaque compendium doit viser le répertoire LevelDB construit",
+);
+assert.equal(
+  personalContent.entries.length,
+  2398,
+  "10-K2-P doit publier exactement les 2 398 Items personnels canoniques recensés",
+);
+assert.deepEqual(
+  Object.fromEntries(
+    personalContent.manifest.packs.map((pack) => [
+      pack.id,
+      personalContent.entries.filter(
+        ({ pack: sourcePack }) => sourcePack.id === pack.id,
+      ).length,
+    ]),
+  ),
+  { creation: 199, progression: 1444, material: 755 },
+  "Les trois compendiums K2-P doivent rester exhaustifs",
+);
+assert.equal(
+  personalContent.warnings.length,
+  0,
+  "Aucune référence canonique K2-P ne doit rester en avertissement",
 );
 
-console.log("Manifest RE:LIS valide : 64 types, chemins et URLs contrôlés.");
+console.log(
+  "Manifest RE:LIS valide : 64 types, 2 398 Items, chemins, références et URLs contrôlés.",
+);

@@ -39,6 +39,15 @@ import {
 import type { RelisActor } from "../documents/actor";
 import { materialDiagnostics } from "../rules/personal-material";
 import {
+  attunementHistoryEntry,
+  canAnswerAttunement,
+  canManageAttunement,
+  loadAttunementContract,
+  resolveAttunement,
+  type AttunementColor,
+  type AttunementContract,
+} from "../rules/crystal-attunement";
+import {
   ACCURACY_VALUES,
   ACTIVATION_METHODS,
   ACOUSTIC_SIGNATURES,
@@ -511,6 +520,159 @@ function options(
   return values.map((value) => ({ value, label: labels[value] ?? value }));
 }
 
+function catalogRows(value: Record<string, any>): Array<{
+  label: string;
+  value: string;
+}> {
+  return Object.entries(value ?? {}).map(([label, entry]) => ({
+    label,
+    value: Array.isArray(entry)
+      ? entry.map(String).join(" ; ") || "—"
+      : entry && typeof entry === "object"
+        ? Object.entries(entry)
+            .map(([key, nested]) => `${key} : ${String(nested)}`)
+            .join(" ; ") || "—"
+        : String(entry ?? "") || "—",
+  }));
+}
+
+function attunementDialogContent(
+  contract: AttunementContract,
+  savedAnswers: Record<string, string>,
+): {
+  content: HTMLDivElement;
+  readAnswers: () => Record<string, string>;
+  readTieAxis: () => string;
+} {
+  // DialogV2.input on Foundry 14 requires this attribute-free root element.
+  const content = document.createElement("div");
+  const panel = document.createElement("div");
+  panel.className = "relis-attunement-dialog";
+  const introduction = document.createElement("p");
+  introduction.textContent =
+    "Les réponses décrivent une résonance, pas une morale. Elles n’accordent aucun bonus mécanique dans ce lot.";
+  panel.append(introduction);
+
+  for (const [index, question] of contract.questions.entries()) {
+    const field = document.createElement("label");
+    field.className = "relis-attunement-question";
+    const prompt = document.createElement("span");
+    prompt.textContent = `${index + 1}. ${question.prompt}`;
+    const select = document.createElement("select");
+    select.name = `answer__${question.id}`;
+    select.required = true;
+    const blank = document.createElement("option");
+    blank.value = "";
+    blank.textContent = "Choisir une réponse";
+    select.append(blank);
+    for (const answer of question.options) {
+      const option = document.createElement("option");
+      option.value = answer.id;
+      option.textContent = answer.label;
+      option.selected = savedAnswers[question.id] === answer.id;
+      select.append(option);
+    }
+    field.append(prompt, select);
+    panel.append(field);
+  }
+
+  const tieField = document.createElement("label");
+  tieField.className = "relis-attunement-question";
+  tieField.hidden = true;
+  const tiePrompt = document.createElement("span");
+  tiePrompt.textContent = contract.tieBreaker.prompt;
+  const tieSelect = document.createElement("select");
+  tieSelect.name = "tieAxis";
+  tieField.append(tiePrompt, tieSelect);
+  panel.append(tieField);
+  content.append(panel);
+
+  const readAnswers = () =>
+    Object.fromEntries(
+      contract.questions.map(({ id }) => [
+        id,
+        panel.querySelector<HTMLSelectElement>(`[name="answer__${id}"]`)
+          ?.value ?? "",
+      ]),
+    );
+  const updateTieBreaker = () => {
+    const answers = readAnswers();
+    if (Object.values(answers).some((value) => !value)) {
+      tieField.hidden = true;
+      tieSelect.required = false;
+      tieSelect.replaceChildren();
+      return;
+    }
+    const resolution = resolveAttunement(contract, answers);
+    tieField.hidden = !resolution.needsTieBreaker;
+    tieSelect.required = resolution.needsTieBreaker;
+    const previous = tieSelect.value;
+    tieSelect.replaceChildren();
+    const blank = document.createElement("option");
+    blank.value = "";
+    blank.textContent = "Choisir la phrase conservée";
+    tieSelect.append(blank);
+    for (const choice of contract.tieBreaker.options.filter(({ axis }) =>
+      resolution.topAxes.includes(axis),
+    )) {
+      const option = document.createElement("option");
+      option.value = choice.axis;
+      option.textContent = choice.label;
+      option.selected = choice.axis === previous;
+      tieSelect.append(option);
+    }
+  };
+  panel.addEventListener("change", updateTieBreaker);
+  updateTieBreaker();
+  return { content, readAnswers, readTieAxis: () => tieSelect.value };
+}
+
+async function askAttunement(
+  contract: AttunementContract,
+  savedAnswers: Record<string, string>,
+): Promise<{ answers: Record<string, string>; tieAxis: string } | null> {
+  const dialog = attunementDialogContent(contract, savedAnswers);
+  const result = await foundry.applications.api.DialogV2.input({
+    window: { title: contract.name },
+    content: dialog.content,
+    ok: { label: "Accorder le Cœur" },
+    modal: true,
+    rejectClose: false,
+  });
+  if (!result) return null;
+  return { answers: dialog.readAnswers(), tieAxis: dialog.readTieAxis() };
+}
+
+async function askAttunementColor(
+  contract: AttunementContract,
+  selected: string,
+): Promise<AttunementColor | null> {
+  const content = document.createElement("div");
+  const field = document.createElement("label");
+  field.className = "relis-inventory-dialog-field";
+  field.textContent = "Couleur imposée par le MJ";
+  const select = document.createElement("select");
+  select.name = "colorId";
+  for (const color of contract.palette) {
+    const option = document.createElement("option");
+    option.value = color.id;
+    option.textContent = `${color.label} — ${color.meaning}`;
+    option.selected = color.id === selected;
+    select.append(option);
+  }
+  field.append(select);
+  content.append(field);
+  const result = await foundry.applications.api.DialogV2.input({
+    window: { title: "Modifier l’accord du Cœur d’Écarlithe" },
+    content,
+    ok: { label: "Appliquer" },
+    modal: true,
+    rejectClose: false,
+  });
+  if (!result) return null;
+  return contract.palette.find(({ id }) => id === select.value) ?? null;
+}
+
 export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["relis", "item-sheet"],
@@ -523,6 +685,101 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   };
 
   declare item: Item;
+
+  private async answerCrystalAttunement(): Promise<void> {
+    if (!canAnswerAttunement(this.item, Boolean(game.user?.isGM))) {
+      ui.notifications.error(
+        "L’accord est réservé au propriétaire d’un PJ ou au MJ ; seul le MJ répond pour un PNJ.",
+      );
+      return;
+    }
+    const contract = await loadAttunementContract();
+    const current = this.item.system.attunement ?? {};
+    const response = await askAttunement(contract, {
+      ...(current.answers ?? {}),
+    });
+    if (!response) return;
+    const resolution = resolveAttunement(
+      contract,
+      response.answers,
+      response.tieAxis,
+    );
+    if (!resolution.color || resolution.needsTieBreaker) {
+      ui.notifications.error(
+        "Une égalité subsiste : choisir la phrase de départage proposée.",
+      );
+      return;
+    }
+    const completedAt = new Date().toISOString();
+    const history = Array.from(current.history ?? []);
+    history.push(attunementHistoryEntry("answer", current, completedAt));
+    await this.item.update({
+      "system.attunement": {
+        state: "attuned",
+        questionnaireVersion: contract.contentVersion,
+        answers: resolution.answers,
+        scores: resolution.scores,
+        colorId: resolution.color.id,
+        axisIds: resolution.color.axes,
+        subjectUuid: this.item.parent?.uuid ?? "",
+        subjectName: this.item.parent?.name ?? "",
+        completedAt,
+        history,
+      },
+    });
+    ui.notifications.info(
+      `Cœur d’Écarlithe accordé : ${resolution.color.label}.`,
+    );
+  }
+
+  private async overrideCrystalAttunement(): Promise<void> {
+    if (!canManageAttunement(this.item, Boolean(game.user?.isGM))) return;
+    const contract = await loadAttunementContract();
+    const current = this.item.system.attunement ?? {};
+    const color = await askAttunementColor(
+      contract,
+      String(current.colorId ?? ""),
+    );
+    if (!color) return;
+    const completedAt = new Date().toISOString();
+    const history = Array.from(current.history ?? []);
+    history.push(attunementHistoryEntry("override", current, completedAt));
+    await this.item.update({
+      "system.attunement": {
+        ...current,
+        state: "attuned",
+        questionnaireVersion: contract.contentVersion,
+        colorId: color.id,
+        axisIds: color.axes,
+        subjectUuid: this.item.parent?.uuid ?? "",
+        subjectName: this.item.parent?.name ?? "",
+        completedAt,
+        history,
+      },
+    });
+  }
+
+  private async resetCrystalAttunement(): Promise<void> {
+    if (!canManageAttunement(this.item, Boolean(game.user?.isGM))) return;
+    const current = this.item.system.attunement ?? {};
+    const changedAt = new Date().toISOString();
+    const history = Array.from(current.history ?? []);
+    history.push(attunementHistoryEntry("reset", current, changedAt));
+    await this.item.update({
+      "system.attunement": {
+        state: "unattuned",
+        questionnaireVersion: "",
+        answers: {},
+        scores: {},
+        colorId: "",
+        axisIds: [],
+        subjectUuid: "",
+        subjectName: "",
+        completedAt: "",
+        history,
+      },
+    });
+  }
 
   async _prepareContext(optionsValue: any): Promise<Record<string, any>> {
     const context = await super._prepareContext(optionsValue);
@@ -696,6 +953,36 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         value: system.weaponProfile?.[`${kind}Consumption`]?.[mode] ?? null,
         path: `system.weaponProfile.${kind}Consumption.${mode}`,
       }));
+    const isPranaCrystalResource =
+      this.item.type === "resource" &&
+      system.energyProfile?.kind === "pranaCrystal";
+    let attunementContract: AttunementContract | null = null;
+    if (isPranaCrystalResource) {
+      try {
+        attunementContract = await loadAttunementContract();
+      } catch (error) {
+        diagnostics.push({
+          level: "error",
+          icon: "fa-circle-exclamation",
+          message:
+            error instanceof Error
+              ? error.message
+              : "Questionnaire d’Écarlithe indisponible.",
+        });
+      }
+    }
+    const attunement = system.attunement ?? {};
+    const attunementColor = attunementContract?.palette.find(
+      ({ id }) => id === String(attunement.colorId ?? ""),
+    );
+    const actionHasTest =
+      Boolean(system.test?.configured) ||
+      Boolean(
+        system.test?.attributeKey &&
+        system.test?.skillKey &&
+        system.test?.difficulty !== null &&
+        system.test?.difficulty !== undefined,
+      );
 
     return {
       ...context,
@@ -715,6 +1002,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         label: traitLabel(value),
       })),
       isAction: this.item.type === "action",
+      actionHasTest,
       isWeapon: this.item.type === "weapon",
       isArmor: this.item.type === "armor",
       isAmmunition: this.item.type === "ammunition",
@@ -768,9 +1056,32 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
         "consumable",
         "resource",
       ].includes(this.item.type),
-      isPranaCrystalResource:
-        this.item.type === "resource" &&
-        system.energyProfile?.kind === "pranaCrystal",
+      isPranaCrystalResource,
+      crystalAttunement: isPranaCrystalResource
+        ? {
+            state: String(attunement.state ?? "unattuned"),
+            stateLabel:
+              attunement.state === "attuned"
+                ? "Accordé"
+                : "Incolore, non accordé",
+            colorLabel: attunementColor?.label ?? "Incolore",
+            colorHex: attunementColor?.hex ?? "transparent",
+            colorMeaning:
+              attunementColor?.meaning ?? "Aucune résonance enregistrée.",
+            subjectName: String(attunement.subjectName ?? ""),
+            completedAt: String(attunement.completedAt ?? ""),
+            historyCount: Number(attunement.history?.length ?? 0),
+            canAnswer: Boolean(
+              attunementContract &&
+              canAnswerAttunement(this.item, Boolean(game.user?.isGM)),
+            ),
+            canManage: Boolean(
+              attunementContract &&
+              canManageAttunement(this.item, Boolean(game.user?.isGM)),
+            ),
+            hasActor: Boolean(this.item.parent),
+          }
+        : null,
       isEnergyResource:
         this.item.type === "resource" && Boolean(system.energyProfile?.kind),
       hasSupplyProfile: ["armor", "equipment"].includes(this.item.type),
@@ -828,6 +1139,7 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       effectRefCount: Number(system.effectRefs?.length ?? 0),
       physicalTotals: hasPhysical ? physicalTotals(system.physical) : null,
       containerUsage,
+      canonicalCatalogRows: catalogRows(system.catalog ?? {}),
       qualityOptions: [
         { value: "", label: "Non applicable" },
         ...QUALITY_GRADE_LABELS.map((label, value) => ({
@@ -1182,6 +1494,33 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
           return;
         }
         void actor.rollAction(this.item);
+      });
+    root
+      .querySelector<HTMLButtonElement>("[data-action='answer-attunement']")
+      ?.addEventListener("click", () => {
+        void this.answerCrystalAttunement().catch((error) =>
+          ui.notifications.error(
+            error instanceof Error ? error.message : String(error),
+          ),
+        );
+      });
+    root
+      .querySelector<HTMLButtonElement>("[data-action='override-attunement']")
+      ?.addEventListener("click", () => {
+        void this.overrideCrystalAttunement().catch((error) =>
+          ui.notifications.error(
+            error instanceof Error ? error.message : String(error),
+          ),
+        );
+      });
+    root
+      .querySelector<HTMLButtonElement>("[data-action='reset-attunement']")
+      ?.addEventListener("click", () => {
+        void this.resetCrystalAttunement().catch((error) =>
+          ui.notifications.error(
+            error instanceof Error ? error.message : String(error),
+          ),
+        );
       });
   }
 }

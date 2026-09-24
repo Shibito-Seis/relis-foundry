@@ -1,8 +1,8 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.7.0";
+var PACKAGE_VERSION = "0.8.0";
 var RULES_VERSION = "1.0.0";
-var CONTENT_VERSION = "1.0.0";
+var CONTENT_VERSION = "1.1.0";
 var ACTOR_TYPES = [
 	"character",
 	"npc",
@@ -1253,7 +1253,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			...meta,
 			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
-			contentVersion: text(meta.contentVersion, "1.0.0") || "1.0.0",
+			contentVersion: text(meta.contentVersion, "1.1.0") || "1.1.0",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
 			sourceRef: normalizeReference(meta.sourceRef),
 			sourceVersion: text(meta.sourceVersion),
@@ -1533,6 +1533,10 @@ var TECHNOLOGIES = {
 	electromagnetic: "Électromagnétique",
 	laser: "Laser",
 	plasma: "Plasma",
+	plasmaCompact: "Plasma compact",
+	chemicalAdvanced: "Chimique avancée",
+	photovoltaic: "Photovoltaïque",
+	hybrid: "Hybride",
 	sonic: "Sonique",
 	chemical: "Chimique",
 	technomagical: "Techno-magique",
@@ -1549,7 +1553,9 @@ var TECHNICAL_SIZES = {
 };
 var FEED_INTERFACES = {
 	boxMagazine: "Chargeur droit ou boîte",
+	drum: "Chargeur tambour",
 	tubularMagazine: "Magasin tubulaire",
+	internalMagazine: "Magasin interne",
 	cylinder: "Barillet",
 	belt: "Bande",
 	cassette: "Cassette",
@@ -1568,10 +1574,18 @@ var PRESSURE_CLASSES = {
 	highVelocity: "Haute vélocité",
 	magnum: "Magnum",
 	heavyMagnum: "Magnum lourde",
+	magnumAutomatic: "Magnum automatique",
 	rifleLight: "Fusil léger",
 	rifleIntermediate: "Fusil intermédiaire",
+	rifleSubsonic: "Fusil subsonique",
+	riflePrecisionIntermediate: "Fusil de précision intermédiaire",
 	rifleHeavy: "Fusil lourd",
+	precisionHeavy: "Précision lourde",
 	antiMateriel: "Anti-matériel",
+	shellLight: "Cartouche légère",
+	shellStandard: "Cartouche standard",
+	shellHeavy: "Cartouche très lourde",
+	specializedProjectile: "Projectile spécialisé",
 	electromagnetic: "Électromagnétique",
 	energyMicro: "Énergie micro",
 	energyLight: "Énergie légère",
@@ -1661,7 +1675,8 @@ var AMMUNITION_FAMILIES = {
 	grenade: "Grenade ou roquette",
 	battery: "Cellule ou batterie énergétique",
 	technomagical: "Charge techno-magique",
-	pranaCrystal: "Cristal de Prana"
+	pranaCrystal: "Cristal de Prana",
+	special: "Variante spéciale à appliquer à un profil compatible"
 };
 var AMMUNITION_VARIANTS = {
 	standard: "Standard",
@@ -2504,6 +2519,36 @@ function currencyProfileField() {
 		})
 	});
 }
+function attunementField() {
+	return new fields$1.SchemaField({
+		state: stringChoiceField([
+			"not-applicable",
+			"unattuned",
+			"attuned"
+		], "not-applicable"),
+		questionnaireVersion: optionalStringField$1(),
+		answers: new fields$1.ObjectField({
+			required: true,
+			initial: () => ({})
+		}),
+		scores: new fields$1.ObjectField({
+			required: true,
+			initial: () => ({})
+		}),
+		colorId: optionalStringField$1(),
+		axisIds: stringArrayField(),
+		subjectUuid: optionalStringField$1(),
+		subjectName: optionalStringField$1(),
+		completedAt: optionalStringField$1(),
+		history: new fields$1.ArrayField(new fields$1.ObjectField({
+			required: true,
+			initial: () => ({})
+		}), {
+			required: true,
+			initial: () => []
+		})
+	});
+}
 var RelisItemData = class extends foundry.abstract.TypeDataModel {
 	static isPhysical = false;
 	static defineSchema() {
@@ -2513,6 +2558,10 @@ var RelisItemData = class extends foundry.abstract.TypeDataModel {
 				required: true,
 				blank: true,
 				initial: ""
+			}),
+			catalog: new fields$1.ObjectField({
+				required: true,
+				initial: () => ({})
 			}),
 			traits: new fields$1.ArrayField(new fields$1.StringField(), {
 				required: true,
@@ -2572,22 +2621,13 @@ var ActionData = class extends RelisItemData {
 		return {
 			...super.defineSchema(),
 			test: new fields$1.SchemaField({
-				attributeKey: new fields$1.StringField({
+				configured: new fields$1.BooleanField({
 					required: true,
-					blank: false,
-					initial: "dexterity"
+					initial: false
 				}),
-				skillKey: new fields$1.StringField({
-					required: true,
-					blank: false,
-					initial: "shooting"
-				}),
-				difficulty: new fields$1.NumberField({
-					required: true,
-					integer: true,
-					min: 0,
-					initial: 15
-				}),
+				attributeKey: optionalStringField$1(),
+				skillKey: optionalStringField$1(),
+				difficulty: optionalNumberField(),
 				resourceKey: optionalStringField$1(),
 				cost: new fields$1.NumberField({
 					required: true,
@@ -2638,6 +2678,7 @@ var EquipmentData = class extends PhysicalItemData {
 	static defineSchema() {
 		return {
 			...super.defineSchema(),
+			protectionProfile: protectionProfileField(),
 			energyProfile: energyProfileField(),
 			supplyProfile: supplyProfileField()
 		};
@@ -2665,7 +2706,8 @@ var ResourceData = class extends PhysicalItemData {
 		return {
 			...super.defineSchema(),
 			energyProfile: energyProfileField(),
-			currencyProfile: currencyProfileField()
+			currencyProfile: currencyProfileField(),
+			attunement: attunementField()
 		};
 	}
 };
@@ -5401,8 +5443,8 @@ function materialStatus(item, items) {
 		status.push(batteries.length ? `Batterie : ${batteries.map((battery) => `${battery.name} (${battery.system.energyProfile?.current ?? "?"}/${battery.system.energyProfile?.maximum ?? "?"} CE)`).join(", ")}` : "Aucune batterie installée");
 	} else if (item.type === "weapon" && weapon.feedKind === "pranaCrystal") {
 		const crystal = items.find((candidate) => candidate.system.energyProfile?.kind === "pranaCrystal" && installedOn(candidate, item));
-		status.push(crystal ? `Cristal de Prana : ${crystal.name} · incolore, non accordé` : "Aucun cristal de Prana installé");
-	} else if (energy.kind === "pranaCrystal") status.push("Cristal de Prana : incolore, non accordé");
+		status.push(crystal ? `Cristal de Prana : ${crystal.name} · ${crystal.system.attunement?.state === "attuned" ? crystal.system.attunement?.colorId || "accordé" : "incolore, non accordé"}` : "Aucun cristal de Prana installé");
+	} else if (energy.kind === "pranaCrystal") status.push(`Cristal de Prana : ${item.system.attunement?.state === "attuned" ? item.system.attunement?.colorId || "accordé" : "incolore, non accordé"}`);
 	else if (energy.kind && item.type !== "weapon") status.push(`Énergie : ${energy.current ?? "?"}/${energy.maximum ?? "?"} CE`);
 	const charges = item.system.physical?.charges ?? {};
 	if (charges.current !== null && charges.current !== void 0) status.push(`Usages : ${charges.current}/${charges.maximum ?? "?"}`);
@@ -8074,6 +8116,74 @@ function classificationContext(profile, type, isGM) {
 	};
 }
 //#endregion
+//#region src/rules/crystal-attunement.ts
+var ATTUNEMENT_CONTRACT_URL = "systems/relis/content/personal/crystal-attunement.json";
+var cachedContract = null;
+async function loadAttunementContract() {
+	if (cachedContract) return cachedContract;
+	const response = await fetch(ATTUNEMENT_CONTRACT_URL);
+	if (!response.ok) throw new Error(`Questionnaire d’Écarlithe indisponible (${response.status}).`);
+	cachedContract = await response.json();
+	return cachedContract;
+}
+function axesKey(axes) {
+	return [...axes].sort().join("+");
+}
+function resolveAttunement(contract, answers, tieAxis = "") {
+	const scores = Object.fromEntries(contract.axes.map(({ id }) => [id, 0]));
+	for (const question of contract.questions) {
+		const answerId = answers[question.id];
+		const option = question.options.find(({ id }) => id === answerId);
+		if (!option) throw new Error(`Réponse absente ou invalide : ${question.prompt}`);
+		for (const [axis, weight] of Object.entries(option.weights)) {
+			if (!Object.hasOwn(scores, axis)) throw new Error(`Axe inconnu dans le questionnaire : ${axis}`);
+			scores[axis] = Number(scores[axis]) + Number(weight);
+		}
+	}
+	const maximum = Math.max(...Object.values(scores));
+	const topAxes = contract.axes.map(({ id }) => id).filter((axis) => scores[axis] === maximum);
+	const mapped = contract.palette.find(({ axes }) => axesKey(axes) === axesKey(topAxes));
+	if (mapped) return {
+		answers: { ...answers },
+		scores,
+		topAxes,
+		color: mapped,
+		needsTieBreaker: false
+	};
+	const selectedAxis = topAxes.includes(tieAxis) ? tieAxis : "";
+	const dominant = selectedAxis ? contract.palette.find(({ kind, axes }) => kind === "dominant" && axes[0] === selectedAxis) : null;
+	return {
+		answers: { ...answers },
+		scores,
+		topAxes,
+		color: dominant ?? null,
+		needsTieBreaker: !dominant
+	};
+}
+function canAnswerAttunement(item, isGM) {
+	if (!item.parent) return false;
+	if (isGM) return true;
+	return Boolean(item.isOwner && item.parent.type === "character");
+}
+function canManageAttunement(item, isGM) {
+	return Boolean(isGM && item.parent);
+}
+function attunementHistoryEntry(operation, previous, changedAt) {
+	return {
+		operation,
+		changedAt,
+		state: String(previous.state ?? "unattuned"),
+		questionnaireVersion: String(previous.questionnaireVersion ?? ""),
+		answers: { ...previous.answers },
+		scores: { ...previous.scores },
+		colorId: String(previous.colorId ?? ""),
+		axisIds: Array.from(previous.axisIds ?? [], String),
+		subjectUuid: String(previous.subjectUuid ?? ""),
+		subjectName: String(previous.subjectName ?? ""),
+		completedAt: String(previous.completedAt ?? "")
+	};
+}
+//#endregion
 //#region src/sheets/item-sheet.ts
 var ItemSheetV2 = foundry.applications.sheets.ItemSheetV2;
 var HandlebarsApplicationMixin = foundry.applications.api.HandlebarsApplicationMixin;
@@ -8366,6 +8476,124 @@ function options(values, labels) {
 		label: labels[value] ?? value
 	}));
 }
+function catalogRows(value) {
+	return Object.entries(value ?? {}).map(([label, entry]) => ({
+		label,
+		value: Array.isArray(entry) ? entry.map(String).join(" ; ") || "—" : entry && typeof entry === "object" ? Object.entries(entry).map(([key, nested]) => `${key} : ${String(nested)}`).join(" ; ") || "—" : String(entry ?? "") || "—"
+	}));
+}
+function attunementDialogContent(contract, savedAnswers) {
+	const content = document.createElement("div");
+	const panel = document.createElement("div");
+	panel.className = "relis-attunement-dialog";
+	const introduction = document.createElement("p");
+	introduction.textContent = "Les réponses décrivent une résonance, pas une morale. Elles n’accordent aucun bonus mécanique dans ce lot.";
+	panel.append(introduction);
+	for (const [index, question] of contract.questions.entries()) {
+		const field = document.createElement("label");
+		field.className = "relis-attunement-question";
+		const prompt = document.createElement("span");
+		prompt.textContent = `${index + 1}. ${question.prompt}`;
+		const select = document.createElement("select");
+		select.name = `answer__${question.id}`;
+		select.required = true;
+		const blank = document.createElement("option");
+		blank.value = "";
+		blank.textContent = "Choisir une réponse";
+		select.append(blank);
+		for (const answer of question.options) {
+			const option = document.createElement("option");
+			option.value = answer.id;
+			option.textContent = answer.label;
+			option.selected = savedAnswers[question.id] === answer.id;
+			select.append(option);
+		}
+		field.append(prompt, select);
+		panel.append(field);
+	}
+	const tieField = document.createElement("label");
+	tieField.className = "relis-attunement-question";
+	tieField.hidden = true;
+	const tiePrompt = document.createElement("span");
+	tiePrompt.textContent = contract.tieBreaker.prompt;
+	const tieSelect = document.createElement("select");
+	tieSelect.name = "tieAxis";
+	tieField.append(tiePrompt, tieSelect);
+	panel.append(tieField);
+	content.append(panel);
+	const readAnswers = () => Object.fromEntries(contract.questions.map(({ id }) => [id, panel.querySelector(`[name="answer__${id}"]`)?.value ?? ""]));
+	const updateTieBreaker = () => {
+		const answers = readAnswers();
+		if (Object.values(answers).some((value) => !value)) {
+			tieField.hidden = true;
+			tieSelect.required = false;
+			tieSelect.replaceChildren();
+			return;
+		}
+		const resolution = resolveAttunement(contract, answers);
+		tieField.hidden = !resolution.needsTieBreaker;
+		tieSelect.required = resolution.needsTieBreaker;
+		const previous = tieSelect.value;
+		tieSelect.replaceChildren();
+		const blank = document.createElement("option");
+		blank.value = "";
+		blank.textContent = "Choisir la phrase conservée";
+		tieSelect.append(blank);
+		for (const choice of contract.tieBreaker.options.filter(({ axis }) => resolution.topAxes.includes(axis))) {
+			const option = document.createElement("option");
+			option.value = choice.axis;
+			option.textContent = choice.label;
+			option.selected = choice.axis === previous;
+			tieSelect.append(option);
+		}
+	};
+	panel.addEventListener("change", updateTieBreaker);
+	updateTieBreaker();
+	return {
+		content,
+		readAnswers,
+		readTieAxis: () => tieSelect.value
+	};
+}
+async function askAttunement(contract, savedAnswers) {
+	const dialog = attunementDialogContent(contract, savedAnswers);
+	if (!await foundry.applications.api.DialogV2.input({
+		window: { title: contract.name },
+		content: dialog.content,
+		ok: { label: "Accorder le Cœur" },
+		modal: true,
+		rejectClose: false
+	})) return null;
+	return {
+		answers: dialog.readAnswers(),
+		tieAxis: dialog.readTieAxis()
+	};
+}
+async function askAttunementColor(contract, selected) {
+	const content = document.createElement("div");
+	const field = document.createElement("label");
+	field.className = "relis-inventory-dialog-field";
+	field.textContent = "Couleur imposée par le MJ";
+	const select = document.createElement("select");
+	select.name = "colorId";
+	for (const color of contract.palette) {
+		const option = document.createElement("option");
+		option.value = color.id;
+		option.textContent = `${color.label} — ${color.meaning}`;
+		option.selected = color.id === selected;
+		select.append(option);
+	}
+	field.append(select);
+	content.append(field);
+	if (!await foundry.applications.api.DialogV2.input({
+		window: { title: "Modifier l’accord du Cœur d’Écarlithe" },
+		content,
+		ok: { label: "Appliquer" },
+		modal: true,
+		rejectClose: false
+	})) return null;
+	return contract.palette.find(({ id }) => id === select.value) ?? null;
+}
 var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 	static DEFAULT_OPTIONS = {
 		classes: ["relis", "item-sheet"],
@@ -8376,6 +8604,77 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 		window: { resizable: true }
 	};
 	static PARTS = { main: { template: "systems/relis/templates/items/item.hbs" } };
+	async answerCrystalAttunement() {
+		if (!canAnswerAttunement(this.item, Boolean(game.user?.isGM))) {
+			ui.notifications.error("L’accord est réservé au propriétaire d’un PJ ou au MJ ; seul le MJ répond pour un PNJ.");
+			return;
+		}
+		const contract = await loadAttunementContract();
+		const current = this.item.system.attunement ?? {};
+		const response = await askAttunement(contract, { ...current.answers ?? {} });
+		if (!response) return;
+		const resolution = resolveAttunement(contract, response.answers, response.tieAxis);
+		if (!resolution.color || resolution.needsTieBreaker) {
+			ui.notifications.error("Une égalité subsiste : choisir la phrase de départage proposée.");
+			return;
+		}
+		const completedAt = (/* @__PURE__ */ new Date()).toISOString();
+		const history = Array.from(current.history ?? []);
+		history.push(attunementHistoryEntry("answer", current, completedAt));
+		await this.item.update({ "system.attunement": {
+			state: "attuned",
+			questionnaireVersion: contract.contentVersion,
+			answers: resolution.answers,
+			scores: resolution.scores,
+			colorId: resolution.color.id,
+			axisIds: resolution.color.axes,
+			subjectUuid: this.item.parent?.uuid ?? "",
+			subjectName: this.item.parent?.name ?? "",
+			completedAt,
+			history
+		} });
+		ui.notifications.info(`Cœur d’Écarlithe accordé : ${resolution.color.label}.`);
+	}
+	async overrideCrystalAttunement() {
+		if (!canManageAttunement(this.item, Boolean(game.user?.isGM))) return;
+		const contract = await loadAttunementContract();
+		const current = this.item.system.attunement ?? {};
+		const color = await askAttunementColor(contract, String(current.colorId ?? ""));
+		if (!color) return;
+		const completedAt = (/* @__PURE__ */ new Date()).toISOString();
+		const history = Array.from(current.history ?? []);
+		history.push(attunementHistoryEntry("override", current, completedAt));
+		await this.item.update({ "system.attunement": {
+			...current,
+			state: "attuned",
+			questionnaireVersion: contract.contentVersion,
+			colorId: color.id,
+			axisIds: color.axes,
+			subjectUuid: this.item.parent?.uuid ?? "",
+			subjectName: this.item.parent?.name ?? "",
+			completedAt,
+			history
+		} });
+	}
+	async resetCrystalAttunement() {
+		if (!canManageAttunement(this.item, Boolean(game.user?.isGM))) return;
+		const current = this.item.system.attunement ?? {};
+		const changedAt = (/* @__PURE__ */ new Date()).toISOString();
+		const history = Array.from(current.history ?? []);
+		history.push(attunementHistoryEntry("reset", current, changedAt));
+		await this.item.update({ "system.attunement": {
+			state: "unattuned",
+			questionnaireVersion: "",
+			answers: {},
+			scores: {},
+			colorId: "",
+			axisIds: [],
+			subjectUuid: "",
+			subjectName: "",
+			completedAt: "",
+			history
+		} });
+	}
 	async _prepareContext(optionsValue) {
 		const context = await super._prepareContext(optionsValue);
 		const system = this.item.system;
@@ -8482,6 +8781,20 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			value: system.weaponProfile?.[`${kind}Consumption`]?.[mode] ?? null,
 			path: `system.weaponProfile.${kind}Consumption.${mode}`
 		}));
+		const isPranaCrystalResource = this.item.type === "resource" && system.energyProfile?.kind === "pranaCrystal";
+		let attunementContract = null;
+		if (isPranaCrystalResource) try {
+			attunementContract = await loadAttunementContract();
+		} catch (error) {
+			diagnostics.push({
+				level: "error",
+				icon: "fa-circle-exclamation",
+				message: error instanceof Error ? error.message : "Questionnaire d’Écarlithe indisponible."
+			});
+		}
+		const attunement = system.attunement ?? {};
+		const attunementColor = attunementContract?.palette.find(({ id }) => id === String(attunement.colorId ?? ""));
+		const actionHasTest = Boolean(system.test?.configured) || Boolean(system.test?.attributeKey && system.test?.skillKey && system.test?.difficulty !== null && system.test?.difficulty !== void 0);
 		return {
 			...context,
 			item: this.item,
@@ -8500,6 +8813,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				label: traitLabel(value)
 			})),
 			isAction: this.item.type === "action",
+			actionHasTest,
 			isWeapon: this.item.type === "weapon",
 			isArmor: this.item.type === "armor",
 			isAmmunition: this.item.type === "ammunition",
@@ -8540,7 +8854,20 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				"consumable",
 				"resource"
 			].includes(this.item.type),
-			isPranaCrystalResource: this.item.type === "resource" && system.energyProfile?.kind === "pranaCrystal",
+			isPranaCrystalResource,
+			crystalAttunement: isPranaCrystalResource ? {
+				state: String(attunement.state ?? "unattuned"),
+				stateLabel: attunement.state === "attuned" ? "Accordé" : "Incolore, non accordé",
+				colorLabel: attunementColor?.label ?? "Incolore",
+				colorHex: attunementColor?.hex ?? "transparent",
+				colorMeaning: attunementColor?.meaning ?? "Aucune résonance enregistrée.",
+				subjectName: String(attunement.subjectName ?? ""),
+				completedAt: String(attunement.completedAt ?? ""),
+				historyCount: Number(attunement.history?.length ?? 0),
+				canAnswer: Boolean(attunementContract && canAnswerAttunement(this.item, Boolean(game.user?.isGM))),
+				canManage: Boolean(attunementContract && canManageAttunement(this.item, Boolean(game.user?.isGM))),
+				hasActor: Boolean(this.item.parent)
+			} : null,
 			isEnergyResource: this.item.type === "resource" && Boolean(system.energyProfile?.kind),
 			hasSupplyProfile: ["armor", "equipment"].includes(this.item.type),
 			hasPhysical,
@@ -8570,6 +8897,7 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			effectRefCount: Number(system.effectRefs?.length ?? 0),
 			physicalTotals: hasPhysical ? physicalTotals(system.physical) : null,
 			containerUsage,
+			canonicalCatalogRows: catalogRows(system.catalog ?? {}),
 			qualityOptions: [{
 				value: "",
 				label: "Non applicable"
@@ -8840,6 +9168,15 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 				return;
 			}
 			actor.rollAction(this.item);
+		});
+		root.querySelector("[data-action='answer-attunement']")?.addEventListener("click", () => {
+			this.answerCrystalAttunement().catch((error) => ui.notifications.error(error instanceof Error ? error.message : String(error)));
+		});
+		root.querySelector("[data-action='override-attunement']")?.addEventListener("click", () => {
+			this.overrideCrystalAttunement().catch((error) => ui.notifications.error(error instanceof Error ? error.message : String(error)));
+		});
+		root.querySelector("[data-action='reset-attunement']")?.addEventListener("click", () => {
+			this.resetCrystalAttunement().catch((error) => ui.notifications.error(error instanceof Error ? error.message : String(error)));
 		});
 	}
 };

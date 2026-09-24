@@ -3,7 +3,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { compilePack } from "@foundryvtt/foundryvtt-cli";
+import { compilePack, extractPack } from "@foundryvtt/foundryvtt-cli";
 
 export const PERSONAL_SOURCE_FORMAT = "relis.personal-content";
 export const PERSONAL_SOURCE_FORMAT_VERSION = 1;
@@ -337,30 +337,61 @@ function validateQuestionnaire(value, errors) {
     else axes.add(axis.id);
   }
   const colors = new Set();
-  const colorAxes = new Set();
+  const colorAxisKeys = new Set();
+  const paletteCounts = { dominant: 0, conjunction: 0, equilibrium: 0 };
   for (const [index, color] of (value.palette ?? []).entries()) {
     if (
       !isRecord(color) ||
       !PACK_ID.test(color.id ?? "") ||
       !HEX_COLOR.test(color.hex ?? "") ||
-      !axes.has(color.axis)
+      !Object.hasOwn(paletteCounts, color.kind ?? "") ||
+      !Array.isArray(color.axes) ||
+      color.axes.some((axis) => !axes.has(axis)) ||
+      new Set(color.axes).size !== color.axes.length ||
+      (color.kind === "dominant"
+        ? color.axes.length !== 1
+        : color.axes.length !== 2)
     )
       errors.push(`Questionnaire : couleur ${index} invalide.`);
     else {
       if (colors.has(color.id))
         errors.push(`Questionnaire : couleur dupliquée ${color.id}.`);
-      if (colorAxes.has(color.axis))
+      const axisKey = [...color.axes].sort().join("+");
+      if (colorAxisKeys.has(axisKey))
         errors.push(
-          `Questionnaire : plusieurs couleurs pour l’axe ${color.axis}.`,
+          `Questionnaire : résultat chromatique dupliqué ${axisKey}.`,
         );
       colors.add(color.id);
-      colorAxes.add(color.axis);
+      colorAxisKeys.add(axisKey);
+      paletteCounts[color.kind] += 1;
     }
   }
-  for (const axis of axes)
-    if (!colorAxes.has(axis))
-      errors.push(`Questionnaire : aucune couleur pour l’axe ${axis}.`);
+  for (const [kind, expected] of Object.entries({
+    dominant: 6,
+    conjunction: 6,
+    equilibrium: 3,
+  }))
+    if (paletteCounts[kind] !== expected)
+      errors.push(`Questionnaire : ${expected} couleurs ${kind} attendues.`);
+  for (const axis of axes) {
+    const key = axis;
+    if (!colorAxisKeys.has(key))
+      errors.push(
+        `Questionnaire : aucune couleur dominante pour l’axe ${axis}.`,
+      );
+  }
+  if (
+    !isRecord(value.resolution) ||
+    value.resolution.pairOutcomeRequiresExactlyTwoTopAxes !== true ||
+    value.resolution.unrecognizedTieUsesTieBreaker !== true ||
+    value.resolution.directColorChoice !== false ||
+    value.resolution.blackAttunedOutcome !== false ||
+    value.resolution.blackIsReservedForRawEcarlethe !== true
+  )
+    errors.push("Questionnaire : contrat de résolution chromatique incomplet.");
   const questionIds = new Set();
+  if (value.questions?.length !== 8)
+    errors.push("Questionnaire : huit situations sont requises.");
   for (const [questionIndex, question] of (value.questions ?? []).entries()) {
     const label = `Questionnaire : question ${questionIndex}`;
     if (
@@ -375,8 +406,8 @@ function validateQuestionnaire(value, errors) {
     if (questionIds.has(question.id))
       errors.push(`${label} duplique ${question.id}.`);
     questionIds.add(question.id);
-    if (!Array.isArray(question.options) || question.options.length < 2)
-      errors.push(`${label} doit proposer au moins deux réponses.`);
+    if (!Array.isArray(question.options) || question.options.length !== 4)
+      errors.push(`${label} doit proposer exactement quatre réponses.`);
     const optionIds = new Set();
     for (const option of question.options ?? []) {
       if (
@@ -396,7 +427,7 @@ function validateQuestionnaire(value, errors) {
         if (
           !axes.has(axis) ||
           !Number.isInteger(weight) ||
-          weight < 0 ||
+          weight <= 0 ||
           weight > 3
         )
           errors.push(`${label} contient un poids invalide pour ${axis}.`);
@@ -411,6 +442,10 @@ function validateQuestionnaire(value, errors) {
     for (const axis of axes)
       if (!tieAxes.has(axis))
         errors.push(`Questionnaire : départage absent pour ${axis}.`);
+    if (value.tieBreaker.showOnlyTiedAxes !== true)
+      errors.push(
+        "Questionnaire : le départage doit rester borné aux axes ex æquo.",
+      );
   }
   if (
     !isRecord(value.permissions) ||
@@ -469,8 +504,10 @@ export function createFoundryItem(entry, manifest, packageVersion) {
     causeRefs: [],
     tags,
   };
+  const foundryId = stableFoundryId(entry.relisId);
   return {
-    _id: stableFoundryId(entry.relisId),
+    _key: `!items!${foundryId}`,
+    _id: foundryId,
     name: entry.name,
     type: entry.type,
     img: entry.img ?? "icons/svg/item-bag.svg",
@@ -664,13 +701,31 @@ export async function buildPersonalPacks(
   const generated = generatePersonalContent(projectRoot, sourceOutput);
   safeEmptyDirectory(packOutput);
   const built = [];
+  const compiledCounts = {};
   for (const pack of generated.manifest.packs) {
     if ((generated.counts[pack.name] ?? 0) === 0) continue;
-    await compilePack(
-      path.join(sourceOutput, pack.name),
-      path.join(packOutput, pack.name),
-      { log: false },
+    const compiledPack = path.join(packOutput, pack.name);
+    await compilePack(path.join(sourceOutput, pack.name), compiledPack, {
+      log: false,
+    });
+    const verificationRoot = fs.mkdtempSync(
+      path.join(os.tmpdir(), `relis-${pack.id}-compiled-`),
     );
+    try {
+      await extractPack(compiledPack, verificationRoot, {
+        log: false,
+        transformName: (entry) => `${entry._id}.json`,
+      });
+      const compiledCount = listJsonFiles(verificationRoot).length;
+      const expectedCount = generated.counts[pack.name];
+      if (compiledCount !== expectedCount)
+        throw new Error(
+          `${pack.name} : ${compiledCount} entrée(s) LevelDB extraite(s), ${expectedCount} attendue(s).`,
+        );
+      compiledCounts[pack.name] = compiledCount;
+    } finally {
+      fs.rmSync(verificationRoot, { recursive: true, force: true });
+    }
     built.push(pack.name);
   }
   fs.writeFileSync(
@@ -680,12 +735,13 @@ export async function buildPersonalPacks(
       formatVersion: PERSONAL_SOURCE_FORMAT_VERSION,
       contentVersion: generated.manifest.contentVersion,
       built,
+      compiledCounts,
       skippedEmpty: generated.manifest.packs
         .map((pack) => pack.name)
         .filter((name) => !built.includes(name)),
     }),
   );
-  return { ...generated, packOutput, built };
+  return { ...generated, packOutput, built, compiledCounts };
 }
 
 export function checkPersonalContent(projectRoot = process.cwd()) {
@@ -739,7 +795,7 @@ async function runCli() {
   if (command === "build") {
     const result = await buildPersonalPacks();
     console.log(
-      `Packs personnels compilés : ${result.built.length}; familles vides conservées pour 10-K2-P : ${result.manifest.packs.length - result.built.length}.`,
+      `Packs personnels compilés : ${result.built.length}; familles sans contenu ignorées : ${result.manifest.packs.length - result.built.length}.`,
     );
     return;
   }

@@ -33,6 +33,11 @@ for (const entry of entries)
   fs.cpSync(path.join(root, entry), path.join(stage, entry), {
     recursive: true,
   });
+const runtimeContent = "content/personal/crystal-attunement.json";
+fs.mkdirSync(path.dirname(path.join(stage, runtimeContent)), {
+  recursive: true,
+});
+fs.cpSync(path.join(root, runtimeContent), path.join(stage, runtimeContent));
 const generatedPacks = path.join(buildRoot, "content-packs");
 if (fs.existsSync(generatedPacks)) {
   for (const entry of fs.readdirSync(generatedPacks, { withFileTypes: true })) {
@@ -44,6 +49,9 @@ if (fs.existsSync(generatedPacks)) {
     );
   }
 }
+for (const pack of manifest.packs ?? [])
+  if (!fs.existsSync(path.join(stage, pack.path)))
+    throw new Error(`Compendium déclaré mais absent du paquet : ${pack.path}`);
 fs.rmSync(archive, { force: true });
 execFileSync("zip", ["-q", "-r", archive, "."], {
   cwd: stage,

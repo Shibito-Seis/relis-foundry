@@ -101,6 +101,70 @@
       </div>
     </section>
 
+    {{#if canonicalCatalogRows.length}}
+      <section class="relis-card relis-canonical-source">
+        <p class="relis-kicker">Source canonique 10-K2-P</p>
+        <h2>Données de référence</h2>
+        <dl class="relis-fact-list">
+          {{#each canonicalCatalogRows}}
+            <div><span>{{label}}</span><strong>{{value}}</strong></div>
+          {{/each}}
+        </dl>
+      </section>
+    {{/if}}
+
+    {{#if isPranaCrystalResource}}
+      <section class="relis-card relis-attunement-card">
+        <p class="relis-kicker">Cœur d’Écarlithe</p>
+        <h2>Accord chromatique</h2>
+        <div class="relis-attunement-result">
+          <span
+            class="relis-attunement-swatch"
+            style="--relis-attunement-color: {{crystalAttunement.colorHex}}"
+            aria-hidden="true"
+          ></span>
+          <div>
+            <strong>{{crystalAttunement.stateLabel}}
+              —
+              {{crystalAttunement.colorLabel}}</strong>
+            <p>{{crystalAttunement.colorMeaning}}</p>
+          </div>
+        </div>
+        {{#if crystalAttunement.subjectName}}
+          <p>Accordé à
+            <strong>{{crystalAttunement.subjectName}}</strong>
+            le
+            {{crystalAttunement.completedAt}}.</p>
+        {{/if}}
+        <p>{{crystalAttunement.historyCount}}
+          état(s) antérieur(s) conservé(s). Le transfert ne réinitialise jamais
+          l’accord.</p>
+        {{#unless crystalAttunement.hasActor}}
+          <aside class="relis-inventory-diagnostics">Copier ce Cœur dans
+            l’inventaire d’un Actor avant de répondre au questionnaire.</aside>
+        {{/unless}}
+        <div class="relis-attunement-actions">
+          {{#if crystalAttunement.canAnswer}}
+            <button type="button" data-action="answer-attunement">
+              <i class="fa-solid fa-gem"></i>
+              Répondre au questionnaire
+            </button>
+          {{/if}}
+          {{#if crystalAttunement.canManage}}
+            <button type="button" data-action="override-attunement">
+              Modifier la couleur — MJ
+            </button>
+            <button type="button" data-action="reset-attunement">
+              Réinitialiser l’accord — MJ
+            </button>
+          {{/if}}
+        </div>
+        <p class="relis-scope-note">L’incolore précède l’accord ; le noir reste
+          réservé à l’Écarlithe brute. La couleur n’accorde aucun bonus dans
+          10-K2-P. Prana, activation et surcharge restent en 10-F.</p>
+      </section>
+    {{/if}}
+
     {{#if hasCatalog}}
       <section class="relis-card">
         <p class="relis-kicker">Valeurs stables</p>
@@ -1023,9 +1087,9 @@
                   selected=system.energyProfile.kind
                 }}</select></label>
             {{#if isPranaCrystalResource}}
-              <p class="relis-scope-note">Cristal de Prana incolore et non
-                accordé. Son nom diégétique définitif, sa couleur et son accord
-                seront traités ultérieurement ; aucun CE ne s’applique.</p>
+              <p class="relis-scope-note">Cœur d’Écarlithe : l’accord et sa
+                couleur sont gérés dans la carte dédiée de cette fiche. Ce
+                cristal n’est pas une batterie et ne porte aucun CE.</p>
             {{else}}
               <label>Format<select
                   data-document-field="system.energyProfile.formatId"
@@ -1889,93 +1953,100 @@
       <section class="relis-card">
         <p class="relis-kicker">Compatibilité 10-C</p>
         <h2>Test de l’Action</h2>
-        <div class="relis-grid relis-grid--form relis-item-form">
-          <label>
-            Attribut
-            <select data-document-field="system.test.attributeKey">
-              {{selectOptions
-                attributes
-                selected=system.test.attributeKey
-                valueAttr="key"
-                labelAttr="label"
-              }}
-            </select>
-          </label>
-          <label>
-            Compétence
-            <select data-document-field="system.test.skillKey">
-              {{selectOptions
-                skills
-                selected=system.test.skillKey
-                valueAttr="key"
-                labelAttr="label"
-              }}
-            </select>
-          </label>
-          <label>
-            Difficulté
-            <input
-              type="number"
-              min="0"
-              value="{{system.test.difficulty}}"
-              data-value-type="number"
-              data-document-field="system.test.difficulty"
-            />
-          </label>
-          <label>
-            Ressource technique
-            <input
-              type="text"
-              value="{{system.test.resourceKey}}"
-              data-document-field="system.test.resourceKey"
-            />
-          </label>
-          <label>
-            Coût
-            <input
-              type="number"
-              min="0"
-              value="{{system.test.cost}}"
-              data-value-type="number"
-              data-document-field="system.test.cost"
-            />
-          </label>
-        </div>
-        <h2>Effet temporaire</h2>
-        <div class="relis-grid relis-grid--form relis-item-form">
-          <label>
-            Clé de condition
-            <input
-              type="text"
-              value="{{system.effect.conditionKey}}"
-              data-document-field="system.effect.conditionKey"
-            />
-          </label>
-          <label>
-            Intensité
-            <input
-              type="number"
-              min="0"
-              value="{{system.effect.intensity}}"
-              data-value-type="number"
-              data-document-field="system.effect.intensity"
-            />
-          </label>
-          <label>
-            Durée en rounds
-            <input
-              type="number"
-              min="0"
-              value="{{system.effect.durationRounds}}"
-              data-value-type="number"
-              data-document-field="system.effect.durationRounds"
-            />
-          </label>
-        </div>
-        <button type="button" data-action="test-item">
-          <i class="fa-solid fa-dice-d20"></i>
-          Tester l’Action
-        </button>
+        {{#if actionHasTest}}
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>
+              Attribut
+              <select data-document-field="system.test.attributeKey">
+                {{selectOptions
+                  attributes
+                  selected=system.test.attributeKey
+                  valueAttr="key"
+                  labelAttr="label"
+                }}
+              </select>
+            </label>
+            <label>
+              Compétence
+              <select data-document-field="system.test.skillKey">
+                {{selectOptions
+                  skills
+                  selected=system.test.skillKey
+                  valueAttr="key"
+                  labelAttr="label"
+                }}
+              </select>
+            </label>
+            <label>
+              Difficulté
+              <input
+                type="number"
+                min="0"
+                value="{{system.test.difficulty}}"
+                data-value-type="number"
+                data-document-field="system.test.difficulty"
+              />
+            </label>
+            <label>
+              Ressource technique
+              <input
+                type="text"
+                value="{{system.test.resourceKey}}"
+                data-document-field="system.test.resourceKey"
+              />
+            </label>
+            <label>
+              Coût
+              <input
+                type="number"
+                min="0"
+                value="{{system.test.cost}}"
+                data-value-type="number"
+                data-document-field="system.test.cost"
+              />
+            </label>
+          </div>
+          <h2>Effet temporaire</h2>
+          <div class="relis-grid relis-grid--form relis-item-form">
+            <label>
+              Clé de condition
+              <input
+                type="text"
+                value="{{system.effect.conditionKey}}"
+                data-document-field="system.effect.conditionKey"
+              />
+            </label>
+            <label>
+              Intensité
+              <input
+                type="number"
+                min="0"
+                value="{{system.effect.intensity}}"
+                data-value-type="number"
+                data-document-field="system.effect.intensity"
+              />
+            </label>
+            <label>
+              Durée en rounds
+              <input
+                type="number"
+                min="0"
+                value="{{system.effect.durationRounds}}"
+                data-value-type="number"
+                data-document-field="system.effect.durationRounds"
+              />
+            </label>
+          </div>
+          <button type="button" data-action="test-item">
+            <i class="fa-solid fa-dice-d20"></i>
+            Tester l’Action
+          </button>
+        {{else}}
+          <p class="relis-scope-note">
+            Cette entrée canonique décrit l’Action sans lui inventer de jet. Son
+            automatisation relève de 10-F ou de l’arbitrage du MJ.
+          </p>
+        {{/if}}
       </section>
     {{/if}}
 
@@ -2026,7 +2097,7 @@
   </div>
 
   <footer class="relis-sheet-footer">
-    10-E3-P validé · profils 10-E4-P en recette · paquet
+    10-E4-P et 10-K1-P validés · 10-K2-P en recette · paquet
     {{packageVersion}}
   </footer>
 </section>

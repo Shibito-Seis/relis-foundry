@@ -854,11 +854,13 @@ export function materialStatus(
     );
     status.push(
       crystal
-        ? `Cristal de Prana : ${crystal.name} · incolore, non accordé`
+        ? `Cristal de Prana : ${crystal.name} · ${crystal.system.attunement?.state === "attuned" ? crystal.system.attunement?.colorId || "accordé" : "incolore, non accordé"}`
         : "Aucun cristal de Prana installé",
     );
   } else if (energy.kind === "pranaCrystal")
-    status.push("Cristal de Prana : incolore, non accordé");
+    status.push(
+      `Cristal de Prana : ${item.system.attunement?.state === "attuned" ? item.system.attunement?.colorId || "accordé" : "incolore, non accordé"}`,
+    );
   else if (energy.kind && item.type !== "weapon")
     status.push(
       `Énergie : ${energy.current ?? "?"}/${energy.maximum ?? "?"} CE`,

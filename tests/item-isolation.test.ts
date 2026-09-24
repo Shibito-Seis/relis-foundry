@@ -44,6 +44,7 @@ describe("isolation des données entre exemplaires Item", () => {
           HTMLField: Field,
           SchemaField: Schema,
           ArrayField,
+          ObjectField: Field,
         },
       },
     });
@@ -68,6 +69,11 @@ describe("isolation des données entre exemplaires Item", () => {
       ResourceData,
     ]) {
       const schema = Model.defineSchema();
+      const firstCatalog = schema.catalog.initial();
+      const secondCatalog = schema.catalog.initial();
+      firstCatalog.local = true;
+      expect(secondCatalog).toEqual({});
+      expect(schema.catalog.initial()).toEqual({});
       const a = schema.physical.initial(),
         b = schema.physical.initial();
       for (const key of [
@@ -163,5 +169,16 @@ describe("isolation des données entre exemplaires Item", () => {
     firstWeapon.ammunitionConsumption.burst = 3;
     expect(secondWeapon.energyConsumption.single).toBeNull();
     expect(secondWeapon.ammunitionConsumption.burst).toBeNull();
+    const resourceSchema = ResourceData.defineSchema();
+    const firstAttunement = resourceSchema.attunement.initial();
+    const secondAttunement = resourceSchema.attunement.initial();
+    firstAttunement.answers.question = "answer";
+    firstAttunement.scores.guard = 2;
+    firstAttunement.axisIds.push("guard");
+    firstAttunement.history.push({ operation: "answer" });
+    expect(secondAttunement.answers).toEqual({});
+    expect(secondAttunement.scores).toEqual({});
+    expect(secondAttunement.axisIds).toEqual([]);
+    expect(secondAttunement.history).toEqual([]);
   });
 });
