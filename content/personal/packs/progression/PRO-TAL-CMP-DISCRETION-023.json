@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-DISCRETION-023",
+  "name": "Filature patiente",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage peut suivre une cible dans un lieu habité, un complexe, un vaisseau ou un terrain offrant régulièrement des obstacles sans devoir effectuer un test à chaque déplacement ordinaire.</p>\n<p>Il effectue un test de Discrétion opposé à la vigilance de la cible. Sur une réussite, la filature reste valable jusqu&#39;à ce qu&#39;un changement significatif survienne : zone vide, contrôle d&#39;accès, arrêt soudain, séparation visuelle prolongée ou recherche active du poursuivant.</p>\n<p>Sur une réussite critique, le personnage apprend également une habitude immédiate de la cible : rythme, vérification des angles, préférence d&#39;itinéraire ou prochain arrêt apparent.</p>\n<p>Le talent ne permet pas de traverser une porte verrouillée, un contrôle d&#39;identité ou une zone sans aucune possibilité de dissimulation.</p>",
+    "traits": ["Compétence", "Discrétion", "Exploration", "Filature"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Discrétion — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Discrétion",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Discrétion Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Discrétion",
+        "Niveau": "1",
+        "Traits": "Compétence, Discrétion, Exploration, Filature",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Discrétion Qualifié"
+      }
+    },
+    "level": 1
+  }
+}

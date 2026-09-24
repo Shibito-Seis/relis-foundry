@@ -1,0 +1,37 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-161",
+  "name": "Position estimée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>À partir de repères, cartes, balises, mesures ou données de mouvement réellement disponibles, le personnage détermine sa position et son incertitude.</p>\n<p>Il effectue un test de Navigation contre le DD du milieu.</p>\n<p>• Réussite critique : il établit sa position, son orientation ou vecteur, sa dérive récente et la principale source d&#39;incertitude.</p>\n<p>• Réussite : il établit sa position ou orientation avec une marge d&#39;incertitude annoncée par le MJ.</p>\n<p>• Échec : les données ne permettent pas une estimation fiable dans le temps disponible.</p>\n<p>• Échec critique : deux positions restent plausibles ; le personnage les distingue sans savoir laquelle est correcte.</p>\n<p>Le talent ne crée ni repère, ni signal, ni donnée astronomique et ne permet pas de connaître une position dans un référentiel totalement inconnu.</p>",
+    "traits": ["Analyse", "Compétence", "Navigation", "Orientation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "1 Action, ou Activité d'exploration",
+      "prerequisites": "Navigation Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "1",
+        "Traits": "Analyse, Compétence, Navigation, Orientation",
+        "Type": "1 Action, ou Activité d'exploration",
+        "Prérequis": "Navigation Qualifié",
+        "Réussite critique": "il établit sa position, son orientation ou vecteur, sa dérive récente et la principale source d'incertitude.",
+        "Réussite": "il établit sa position ou orientation avec une marge d'incertitude annoncée par le MJ.",
+        "Échec": "les données ne permettent pas une estimation fiable dans le temps disponible.",
+        "Échec critique": "deux positions restent plausibles ; le personnage les distingue sans savoir laquelle est correcte."
+      }
+    },
+    "level": 1
+  }
+}

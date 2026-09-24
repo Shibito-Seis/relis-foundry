@@ -1,0 +1,47 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-165",
+  "name": "Marge de trajectoire",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage analyse une route ou trajectoire préparée et quantifie sa principale marge d&#39;erreur : temps, distance, dérive, fenêtre, réserve de correction ou précision des données.</p>\n<p>Il effectue un test de Navigation contre le DD du trajet.</p>\n<p>• Réussite critique : il apprend la marge la plus faible, la conséquence probable de son dépassement et le premier signe accessible annonçant cette dérive.</p>\n<p>• Réussite : il apprend la marge la plus faible et la conséquence générale d&#39;une erreur.</p>\n<p>• Échec : la marge ne peut pas être isolée.</p>\n<p>• Échec critique : une donnée essentielle manque ; le MJ indique sa catégorie.</p>\n<p>Le personnage et les opérateurs auxquels il transmet l&#39;analyse gagnent +2 circonstanciel au premier test effectué avant la fin de l&#39;étape pour surveiller ou respecter cette marge. Le talent ne crée aucune réserve de carburant, de temps ou de puissance.</p>",
+    "traits": ["Analyse", "Compétence", "Navigation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-161",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Position estimée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Navigation Expert ; Position estimée",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "3",
+        "Traits": "Analyse, Compétence, Navigation",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Navigation Expert ; Position estimée",
+        "Réussite critique": "il apprend la marge la plus faible, la conséquence probable de son dépassement et le premier signe accessible annonçant cette dérive.",
+        "Réussite": "il apprend la marge la plus faible et la conséquence générale d'une erreur.",
+        "Échec": "la marge ne peut pas être isolée.",
+        "Échec critique": "une donnée essentielle manque ; le MJ indique sa catégorie."
+      }
+    },
+    "level": 3
+  }
+}

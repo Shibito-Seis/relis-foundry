@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-CMP-MEDECINE-107",
+  "name": "Chirurgie de campagne",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Avec un kit chirurgical ou l&#39;équipement spécialisé requis, le personnage peut tenter de faire passer une Blessure critique Contenue à l&#39;état Traitée hors d&#39;une installation médicale complète.</p>\n<p>Il effectue un test de Médecine contre le DD de la Blessure, augmenté selon l&#39;environnement et l&#39;équipement manquant.</p>\n<p>• Réussite critique : la Blessure devient Traitée et son premier intervalle de récupération est réduit d&#39;un quart.</p>\n<p>• Réussite : la Blessure devient Traitée.</p>\n<p>• Échec : elle reste Contenue et les consommables engagés sont dépensés.</p>\n<p>• Échec critique : elle redevient Active ou produit une complication cohérente ; elle ne peut plus bénéficier de Chirurgie de campagne avant des soins appropriés.</p>\n<p>Le talent ne peut pas remplacer un organe absent, régénérer un membre, résoudre instantanément la Blessure ou opérer sans conditions minimales de sécurité.</p>",
+    "traits": ["Compétence", "Médecine", "Soin", "Traitement"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-MEDECINE-101",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Triage clinique",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-MEDECINE-102",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Stabilisation sûre",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Médecine — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Médecine",
+      "activation": "Activité de temps long",
+      "prerequisites": "Médecine Maître ; Triage clinique et Stabilisation sûre",
+      "choice": "",
+      "frequency": "une fois par Blessure et par période de soins",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Médecine",
+        "Niveau": "7",
+        "Traits": "Compétence, Médecine, Soin, Traitement",
+        "Type": "Activité de temps long",
+        "Fréquence": "une fois par Blessure et par période de soins",
+        "Prérequis": "Médecine Maître ; Triage clinique et Stabilisation sûre",
+        "Réussite critique": "la Blessure devient Traitée et son premier intervalle de récupération est réduit d'un quart.",
+        "Réussite": "la Blessure devient Traitée.",
+        "Échec": "elle reste Contenue et les consommables engagés sont dépensés.",
+        "Échec critique": "elle redevient Active ou produit une complication cohérente ; elle ne peut plus bénéficier de Chirurgie de campagne avant des soins appropriés."
+      }
+    },
+    "level": 7
+  }
+}

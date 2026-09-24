@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-163",
+  "name": "Milieu de navigation",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Lorsque le personnage acquiert ce talent, il choisit un milieu :</p>\n<p>• surface planétaire ;</p>\n<p>• souterrain, ruines ou grande structure ;</p>\n<p>• atmosphère et espace orbital ;</p>\n<p>• espace interplanétaire ;</p>\n<p>• espace interstellaire.</p>\n<p>Il gagne +2 circonstanciel aux tests de Navigation destinés à se positionner, tracer une route ou évaluer une dérive dans ce milieu.</p>\n<p>Le talent peut être acquis plusieurs fois pour un milieu différent. Il ne donne ni carte, ni capteur, ni capacité de saut, ni formation au véhicule employé.</p>",
+    "traits": ["Compétence", "Connaissance", "Navigation"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "Passif",
+      "prerequisites": "Navigation Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "1",
+        "Traits": "Compétence, Connaissance, Navigation",
+        "Type": "Passif",
+        "Prérequis": "Navigation Qualifié"
+      }
+    },
+    "level": 1
+  }
+}

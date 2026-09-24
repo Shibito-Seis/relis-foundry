@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-CMP-ENDURANCE-036",
+  "name": "Rythme d'équipe",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage fixe pauses, rotations, respiration et répartition des charges pour un groupe comprenant jusqu&#39;à six créatures.</p>\n<p>Lors du premier test d&#39;Endurance collectif de l&#39;étape, il effectue un test d&#39;Endurance pour Aider. Sur une réussite, jusqu&#39;à deux alliés suivant son rythme gagnent chacun +1 circonstanciel à leur test ; sur une réussite critique, ils gagnent +2.</p>\n<p>Le personnage ne peut pas s&#39;inclure parmi les deux bénéficiaires. Le talent n&#39;empêche pas la Fatigue causée par un manque réel d&#39;eau, de nourriture, d&#39;air ou de protection.</p>",
+    "traits": ["Aide", "Compétence", "Endurance", "Exploration"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Endurance — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Endurance",
+      "activation": "préparation de 10 minutes",
+      "prerequisites": "Endurance Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "une étape de voyage ou une activité prolongée",
+      "metadata": {
+        "Compétence": "Endurance",
+        "Niveau": "3",
+        "Traits": "Aide, Compétence, Endurance, Exploration",
+        "Type": "préparation de 10 minutes",
+        "Durée": "une étape de voyage ou une activité prolongée",
+        "Prérequis": "Endurance Expert"
+      }
+    },
+    "level": 3
+  }
+}

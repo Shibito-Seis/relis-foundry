@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-PILOTAGE-116",
+  "name": "Équipage de manœuvre",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Depuis un poste de copilote ou avec une liaison réelle aux commandes, le personnage coordonne une manœuvre non offensive menée par un autre pilote.</p>\n<p>Lorsqu&#39;il Aide avec Pilotage :</p>\n<p>• une réussite accorde +2 circonstanciel au test principal ;</p>\n<p>• une réussite critique accorde ce bonus et permet au pilote de maintenir la trajectoire précédente sur un échec simple, sans subir une collision ou perte de contrôle supplémentaire due uniquement à cet échec ;</p>\n<p>• un échec critique de l&#39;Aide ne dégrade pas le test principal, mais le personnage ne peut plus aider cette manœuvre.</p>\n<p>Le talent exige des informations de vol et un moyen d&#39;agir ou de communiquer. Il n&#39;accorde ni action supplémentaire au véhicule, ni attaque, ni manœuvre de combat.</p>",
+    "traits": ["Aide", "Compétence", "Pilotage", "Travail d'équipe"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Pilotage — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Pilotage",
+      "activation": "1 Action de préparation, puis Réaction",
+      "prerequisites": "Pilotage Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Pilotage",
+        "Niveau": "3",
+        "Traits": "Aide, Compétence, Pilotage, Travail d'équipe",
+        "Type": "1 Action de préparation, puis Réaction",
+        "Prérequis": "Pilotage Expert"
+      }
+    },
+    "level": 3
+  }
+}

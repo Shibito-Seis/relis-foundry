@@ -1,0 +1,56 @@
+{
+  "relisId": "PRO-TAL-CMP-INFORMATIQUE-097",
+  "name": "Récupération forensique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Avec un support encore lisible et des outils adaptés, le personnage tente de récupérer une donnée supprimée, fragmentée ou partiellement corrompue.</p>\n<p>Il effectue un test d&#39;Informatique contre le DD de l&#39;altération.</p>\n<p>• Réussite critique : il récupère la donnée exploitable et ses métadonnées restantes ; il distingue clairement les portions reconstituées des portions originales.</p>\n<p>• Réussite : il récupère le contenu essentiel, avec des lacunes ou métadonnées manquantes annoncées par le MJ.</p>\n<p>• Échec : aucun contenu fiable n&#39;est récupéré, mais le support n&#39;est pas davantage altéré.</p>\n<p>• Échec critique : une portion fragile devient illisible ou une protection dormante plausible se déclenche.</p>\n<p>Le talent ne recrée pas une information jamais stockée, écrasée sans reste ou détruite avec son support physique.</p>",
+    "traits": ["Analyse", "Compétence", "Informatique", "Récupération"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INFORMATIQUE-091",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Recherche indexée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-INFORMATIQUE-095",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Journal de corrélation",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Informatique — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Informatique",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Informatique Maître ; Recherche indexée et Journal de corrélation",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Informatique",
+        "Niveau": "7",
+        "Traits": "Analyse, Compétence, Informatique, Récupération",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Informatique Maître ; Recherche indexée et Journal de corrélation",
+        "Réussite critique": "il récupère la donnée exploitable et ses métadonnées restantes ; il distingue clairement les portions reconstituées des portions originales.",
+        "Réussite": "il récupère le contenu essentiel, avec des lacunes ou métadonnées manquantes annoncées par le MJ.",
+        "Échec": "aucun contenu fiable n'est récupéré, mais le support n'est pas davantage altéré.",
+        "Échec critique": "une portion fragile devient illisible ou une protection dormante plausible se déclenche."
+      }
+    },
+    "level": 7
+  }
+}

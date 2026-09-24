@@ -1,0 +1,58 @@
+{
+  "relisId": "PRO-TAL-CMP-MELEE-069",
+  "name": "Maître de la mesure",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage lit parfaitement la distance et transforme l&#39;instant en engagement utilitaire. Il effectue un test de Mêlée contre la CAP de la créature ou le DD de l&#39;action.</p>\n<p>• Réussite critique : il se déplace d&#39;au plus 3 mètres vers un espace praticable et choisit deux effets ci-dessous.</p>\n<p>• Réussite : il se déplace d&#39;au plus 3 mètres vers un espace praticable et choisit un effet ci-dessous.</p>\n<p>• Échec : aucun effet.</p>\n<p>• Échec critique : aucun effet et sa Réaction est dépensée.</p>\n<p>Effets possibles :</p>\n<p>• la manipulation déclencheuse demande 1 action supplémentaire pour être achevée, sauf si elle était déjà achevée instantanément ;</p>\n<p>• le personnage ou un allié adjacent peut conserver un objet tenu que l&#39;événement aurait fait lâcher ;</p>\n<p>• la première Réaction hostile déclenchée par le déplacement d&#39;un allié adjacent avant le début du prochain tour du personnage subit -2 circonstanciel ;</p>\n<p>• le personnage apprend immédiatement la portée réelle et la fonction générale de l&#39;arme visible de la créature.</p>\n<p>Cette maîtrise ne contient aucune attaque, contre-attaque, parade automatique ni dégâts. Elle ne peut pas interrompre une action impossible à gêner matériellement.</p>",
+    "traits": ["Compétence", "Légendaire", "Manœuvre", "Mêlée"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-065",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Rompre la mesure",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-068",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Ouverture maîtrisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Mêlée — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Mêlée",
+      "activation": "Réaction",
+      "prerequisites": "Mêlée Légendaire ; Rompre la mesure et Ouverture maîtrisée",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "une créature perceptible entre à portée de mêlée du personnage, quitte cette portée ou tente une manipulation dangereuse dans cet espace",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Mêlée",
+        "Niveau": "15",
+        "Traits": "Compétence, Légendaire, Manœuvre, Mêlée",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "une créature perceptible entre à portée de mêlée du personnage, quitte cette portée ou tente une manipulation dangereuse dans cet espace",
+        "Prérequis": "Mêlée Légendaire ; Rompre la mesure et Ouverture maîtrisée",
+        "Réussite critique": "il se déplace d'au plus 3 mètres vers un espace praticable et choisit deux effets ci-dessous.",
+        "Réussite": "il se déplace d'au plus 3 mètres vers un espace praticable et choisit un effet ci-dessous.",
+        "Échec": "aucun effet.",
+        "Échec critique": "aucun effet et sa Réaction est dépensée."
+      }
+    },
+    "level": 15
+  }
+}

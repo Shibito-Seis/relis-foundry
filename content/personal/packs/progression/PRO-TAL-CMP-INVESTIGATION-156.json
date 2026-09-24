@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-INVESTIGATION-156",
+  "name": "Cellule d'enquête",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage répartit une affaire entre un maximum de quatre participants consentants : scène, archives, témoignages, données, médecine légale ou autre angle réellement disponible.</p>\n<p>Il effectue un test d&#39;Investigation contre le DD de l&#39;affaire.</p>\n<p>• Réussite critique : chaque participant gagne +2 circonstanciel à son premier test suivant le plan ; lorsque deux résultats se contredisent, le groupe l&#39;apprend dès leur mise en commun.</p>\n<p>• Réussite : chaque participant gagne +2 circonstanciel à son premier test suivant le plan.</p>\n<p>• Échec : la répartition ne procure aucun bonus.</p>\n<p>• Échec critique : les tâches se recouvrent inutilement ; aucun participant ne peut recevoir une nouvelle Cellule d&#39;enquête sur cette affaire pendant la scène.</p>\n<p>Chaque participant doit disposer de sa compétence, de son accès et de ses outils. Le talent ne donne aucune information avant que les recherches soient réellement accomplies.</p>",
+    "traits": ["Aide", "Compétence", "Investigation", "Travail d'équipe"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Investigation — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Investigation",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Investigation Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la scène d'enquête",
+      "metadata": {
+        "Compétence": "Investigation",
+        "Niveau": "3",
+        "Traits": "Aide, Compétence, Investigation, Travail d'équipe",
+        "Type": "Activité de 10 minutes",
+        "Durée": "jusqu'à la fin de la scène d'enquête",
+        "Prérequis": "Investigation Expert",
+        "Réussite critique": "chaque participant gagne +2 circonstanciel à son premier test suivant le plan ; lorsque deux résultats se contredisent, le groupe l'apprend dès leur mise en commun.",
+        "Réussite": "chaque participant gagne +2 circonstanciel à son premier test suivant le plan.",
+        "Échec": "la répartition ne procure aucun bonus.",
+        "Échec critique": "les tâches se recouvrent inutilement ; aucun participant ne peut recevoir une nouvelle Cellule d'enquête sur cette affaire pendant la scène."
+      }
+    },
+    "level": 3
+  }
+}

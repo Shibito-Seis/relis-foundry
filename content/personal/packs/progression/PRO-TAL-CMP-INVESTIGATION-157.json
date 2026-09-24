@@ -1,0 +1,47 @@
+{
+  "relisId": "PRO-TAL-CMP-INVESTIGATION-157",
+  "name": "Chronologie reconstruite",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage ordonne au moins trois indices, traces ou témoignages concernant le même événement.</p>\n<p>Il effectue un test d&#39;Investigation contre le DD de l&#39;affaire.</p>\n<p>• Réussite critique : il établit l&#39;ordre des étapes démontrées, les intervalles seulement déduits, une contradiction et la prochaine preuve qui réduirait le plus l&#39;incertitude.</p>\n<p>• Réussite : il établit l&#39;ordre probable, distingue les étapes démontrées des déductions et indique une lacune importante.</p>\n<p>• Échec : les éléments ne suffisent pas à produire une chronologie fiable.</p>\n<p>• Échec critique : deux ordres restent plausibles ; le personnage les formule sans pouvoir trancher.</p>\n<p>Le talent ne date pas un événement sans moyen de mesure et ne place pas une personne précise dans la chronologie sans indice individualisant.</p>",
+    "traits": ["Analyse", "Compétence", "Investigation", "Recherche"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INVESTIGATION-155",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Hypothèse testable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Investigation — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Investigation",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Investigation Maître ; Hypothèse testable",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Investigation",
+        "Niveau": "7",
+        "Traits": "Analyse, Compétence, Investigation, Recherche",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Investigation Maître ; Hypothèse testable",
+        "Réussite critique": "il établit l'ordre des étapes démontrées, les intervalles seulement déduits, une contradiction et la prochaine preuve qui réduirait le plus l'incertitude.",
+        "Réussite": "il établit l'ordre probable, distingue les étapes démontrées des déductions et indique une lacune importante.",
+        "Échec": "les éléments ne suffisent pas à produire une chronologie fiable.",
+        "Échec critique": "deux ordres restent plausibles ; le personnage les formule sans pouvoir trancher."
+      }
+    },
+    "level": 7
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-ENDURANCE-038",
+  "name": "Tenir sous le contrecoup",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage réduit son Contrecoup de 1 pour ce tour, récupérant ainsi une action.</p>\n<p>À la fin de ce tour, il gagne 1 Surmenage. Cette conséquence s&#39;applique même si la scène devrait normalement se terminer pendant le tour.</p>\n<p>Le talent redistribue l&#39;effort ; il ne supprime ni une Fatigue, ni un Effondrement, ni une perte d&#39;action provenant d&#39;une autre source.</p>",
+    "traits": ["Compétence", "Endurance", "Réaction", "Surmenage"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Endurance — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Endurance",
+      "activation": "Réaction",
+      "prerequisites": "Endurance Maître",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "au début du tour du personnage, son Contrecoup lui retire une ou plusieurs actions",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Endurance",
+        "Niveau": "7",
+        "Traits": "Compétence, Endurance, Réaction, Surmenage",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "au début du tour du personnage, son Contrecoup lui retire une ou plusieurs actions",
+        "Prérequis": "Endurance Maître"
+      }
+    },
+    "level": 7
+  }
+}

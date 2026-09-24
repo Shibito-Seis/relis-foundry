@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-INTIMIDATION-212",
+  "name": "Défi captant",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage provoque directement une cible capable de le percevoir afin de concentrer brièvement son attention sur lui.</p>\n<p>Il effectue un test d&#39;Intimidation opposé à Volonté + Sang-froid de la cible.</p>\n<p>• Réussite critique : la cible subit −2 circonstanciel à son premier test visant à ignorer le personnage, dissimuler sa réaction immédiate ou agir socialement contre un autre interlocuteur pendant la durée.</p>\n<p>• Réussite : le personnage gagne +2 circonstanciel à son prochain test visant à lire, contrer ou poursuivre directement l&#39;échange avec cette cible.</p>\n<p>• Échec : la provocation ne procure aucun bénéfice.</p>\n<p>• Échec critique : la cible refuse de se laisser entraîner ; elle devient immunisée à ce talent pour la scène.</p>\n<p>Le talent ne force aucune attaque, aucun déplacement et n&#39;empêche pas la cible de protéger autrui ou de poursuivre une priorité plus importante.</p>",
+    "traits": ["Audition", "Compétence", "Émotion", "Intimidation", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Intimidation — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Intimidation",
+      "activation": "1 Action",
+      "prerequisites": "Intimidation Qualifié",
+      "choice": "",
+      "frequency": "une fois par cible et par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin du prochain tour de la cible ou de l'échange immédiat",
+      "metadata": {
+        "Compétence": "Intimidation",
+        "Niveau": "1",
+        "Traits": "Audition, Compétence, Émotion, Intimidation, Social",
+        "Type": "1 Action",
+        "Fréquence": "une fois par cible et par scène",
+        "Durée": "jusqu'à la fin du prochain tour de la cible ou de l'échange immédiat",
+        "Prérequis": "Intimidation Qualifié",
+        "Réussite critique": "la cible subit −2 circonstanciel à son premier test visant à ignorer le personnage, dissimuler sa réaction immédiate ou agir socialement contre un autre interlocuteur pendant la durée.",
+        "Réussite": "le personnage gagne +2 circonstanciel à son prochain test visant à lire, contrer ou poursuivre directement l'échange avec cette cible.",
+        "Échec": "la provocation ne procure aucun bénéfice.",
+        "Échec critique": "la cible refuse de se laisser entraîner ; elle devient immunisée à ce talent pour la scène."
+      }
+    },
+    "level": 1
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "relisId": "PRO-TAL-CMP-INVESTIGATION-151",
+  "name": "Inspection méthodique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage définit une zone, un objet ou un ensemble de documents accessible et le recherche activement selon une méthode annoncée.</p>\n<p>Il effectue un test d&#39;Investigation contre le DD de la scène.</p>\n<p>• Réussite critique : il distingue les indices pertinents accessibles, les détails banals et une altération récente ou volontaire ; il apprend lequel mérite d&#39;être analysé en priorité.</p>\n<p>• Réussite : il identifie un indice pertinent accessible ou confirme qu&#39;aucun indice correspondant à sa méthode n&#39;est présent dans le champ recherché.</p>\n<p>• Échec : la recherche n&#39;aboutit pas dans le temps disponible.</p>\n<p>• Échec critique : un élément ambigu attire trop son attention ; le MJ indique qu&#39;il s&#39;agit d&#39;une piste incertaine.</p>\n<p>Le talent ne détecte pas passivement un danger, ne traverse aucun obstacle et ne révèle rien qu&#39;aucun sens, outil ou accès disponible ne permet d&#39;atteindre.</p>",
+    "traits": ["Analyse", "Compétence", "Investigation", "Recherche"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Investigation — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Investigation",
+      "activation": "Activité de 2 Actions, ou Activité d'exploration",
+      "prerequisites": "Investigation Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Investigation",
+        "Niveau": "1",
+        "Traits": "Analyse, Compétence, Investigation, Recherche",
+        "Type": "Activité de 2 Actions, ou Activité d'exploration",
+        "Prérequis": "Investigation Qualifié",
+        "Réussite critique": "il distingue les indices pertinents accessibles, les détails banals et une altération récente ou volontaire ; il apprend lequel mérite d'être analysé en priorité.",
+        "Réussite": "il identifie un indice pertinent accessible ou confirme qu'aucun indice correspondant à sa méthode n'est présent dans le champ recherché.",
+        "Échec": "la recherche n'aboutit pas dans le temps disponible.",
+        "Échec critique": "un élément ambigu attire trop son attention ; le MJ indique qu'il s'agit d'une piste incertaine."
+      }
+    },
+    "level": 1
+  }
+}

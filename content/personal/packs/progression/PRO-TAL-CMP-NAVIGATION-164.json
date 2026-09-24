@@ -1,0 +1,49 @@
+{
+  "relisId": "PRO-TAL-CMP-NAVIGATION-164",
+  "name": "Recalcul d'urgence",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage utilise les données immédiatement disponibles pour proposer une correction locale. Il effectue un test de Navigation contre le nouveau DD de la route.</p>\n<p>• Réussite critique : il identifie une correction praticable et une marge de sécurité ; le prochain test effectué pour suivre cette correction gagne +2 circonstanciel.</p>\n<p>• Réussite : il identifie une correction praticable sans bonus supplémentaire.</p>\n<p>• Échec : aucune correction fiable n&#39;est disponible dans l&#39;instant.</p>\n<p>• Échec critique : la correction paraît trop risquée ; le personnage l&#39;écarte avant qu&#39;elle soit transmise comme sûre.</p>\n<p>Le talent ne déplace aucun véhicule, ne fournit aucune action au pilote et ne crée pas une issue absente du terrain ou des capacités de déplacement.</p>",
+    "traits": ["Compétence", "Navigation", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-NAVIGATION-162",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Route balisée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Navigation — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Navigation",
+      "activation": "Réaction",
+      "prerequisites": "Navigation Expert ; Route balisée",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "un obstacle, une fermeture, une dérive ou une donnée nouvelle invalide une route préparée",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Navigation",
+        "Niveau": "3",
+        "Traits": "Compétence, Navigation, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Déclencheur": "un obstacle, une fermeture, une dérive ou une donnée nouvelle invalide une route préparée",
+        "Prérequis": "Navigation Expert ; Route balisée",
+        "Réussite critique": "il identifie une correction praticable et une marge de sécurité ; le prochain test effectué pour suivre cette correction gagne +2 circonstanciel.",
+        "Réussite": "il identifie une correction praticable sans bonus supplémentaire.",
+        "Échec": "aucune correction fiable n'est disponible dans l'instant.",
+        "Échec critique": "la correction paraît trop risquée ; le personnage l'écarte avant qu'elle soit transmise comme sûre."
+      }
+    },
+    "level": 3
+  }
+}

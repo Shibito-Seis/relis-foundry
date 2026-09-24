@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-INVESTIGATION-153",
+  "name": "Angle d'enquête",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Lorsque le personnage acquiert ce talent, il choisit une méthode :</p>\n<p>• scène matérielle ;</p>\n<p>• témoignages et versions ;</p>\n<p>• dossiers et chronologies ;</p>\n<p>• surveillance analytique d&#39;une zone définie ;</p>\n<p>• profil comportemental prudent.</p>\n<p>Il gagne +2 circonstanciel aux tests d&#39;Investigation employant directement cette méthode.</p>\n<p>Sur une réussite critique, il sait également quelle limite de sa méthode pourrait fausser l&#39;interprétation actuelle. Le talent peut être acquis plusieurs fois pour une méthode différente. Il ne remplace ni Informatique, ni Culture, ni Tromperie et ne lit pas les pensées.</p>",
+    "traits": ["Compétence", "Investigation", "Méthode"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Investigation — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Investigation",
+      "activation": "Passif",
+      "prerequisites": "Investigation Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Investigation",
+        "Niveau": "1",
+        "Traits": "Compétence, Investigation, Méthode",
+        "Type": "Passif",
+        "Prérequis": "Investigation Qualifié"
+      }
+    },
+    "level": 1
+  }
+}

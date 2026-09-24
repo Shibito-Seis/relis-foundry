@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-MELEE-062",
+  "name": "Rétention d'arme",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage effectue un test de Mêlée opposé au test ou au DD de l&#39;effet.</p>\n<p>• Réussite critique : il conserve l&#39;arme et peut modifier sa prise sans action.</p>\n<p>• Réussite : il conserve l&#39;arme.</p>\n<p>• Échec : l&#39;effet est résolu normalement.</p>\n<p>• Échec critique : l&#39;effet est résolu normalement et le personnage perd l&#39;avantage de sa posture ; il subit -1 circonstanciel à son prochain test de Mêlée avant la fin de son prochain tour.</p>\n<p>Le talent ne protège pas une arme détruite, une main incapable de tenir ou un objet physiquement emporté avec le personnage.</p>",
+    "traits": ["Compétence", "Manipulation", "Mêlée", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Mêlée — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Mêlée",
+      "activation": "Réaction",
+      "prerequisites": "Mêlée Qualifié",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "une créature ou un danger tente de désarmer le personnage, d'arracher son arme ou de lui faire lâcher prise",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Mêlée",
+        "Niveau": "1",
+        "Traits": "Compétence, Manipulation, Mêlée, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Déclencheur": "une créature ou un danger tente de désarmer le personnage, d'arracher son arme ou de lui faire lâcher prise",
+        "Prérequis": "Mêlée Qualifié",
+        "Réussite critique": "il conserve l'arme et peut modifier sa prise sans action.",
+        "Réussite": "il conserve l'arme.",
+        "Échec": "l'effet est résolu normalement.",
+        "Échec critique": "l'effet est résolu normalement et le personnage perd l'avantage de sa posture ; il subit -1 circonstanciel à son prochain test de Mêlée avant la fin de son prochain tour."
+      }
+    },
+    "level": 1
+  }
+}

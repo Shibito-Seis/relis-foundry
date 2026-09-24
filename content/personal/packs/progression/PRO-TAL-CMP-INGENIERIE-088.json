@@ -1,0 +1,48 @@
+{
+  "relisId": "PRO-TAL-CMP-INGENIERIE-088",
+  "name": "Adaptateur de circonstance",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Avec des connecteurs, conduits, fixations ou matériaux plausibles, le personnage fabrique une liaison temporaire entre deux composants physiquement compatibles mais non conçus pour fonctionner ensemble.</p>\n<p>Il décrit une seule fonction à transmettre : alimentation, fixation, circulation d&#39;un fluide, signal physique ou mouvement mécanique. Il effectue un test d&#39;Ingénierie contre le DD le plus élevé des deux composants, augmenté selon leur incompatibilité.</p>\n<p>• Réussite critique : la liaison fonctionne pour la scène sans malus supplémentaire.</p>\n<p>• Réussite : elle fonctionne, mais impose -2 circonstanciel au premier test qui l&#39;emploie ou demande une surveillance constante.</p>\n<p>• Échec : aucune liaison viable n&#39;est produite.</p>\n<p>• Échec critique : un matériau engagé devient inutilisable ou un incident cohérent survient.</p>\n<p>Le talent ne convertit ni logiciel, ni Mana, ni Prana, ni Flux, ni tension ou puissance au-delà de ce que les composants peuvent supporter.</p>",
+    "traits": ["Compétence", "Improvisation", "Ingénierie", "Manipulation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INGENIERIE-083",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Démontage conservatoire",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Ingénierie — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Ingénierie",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Ingénierie Maître ; Démontage conservatoire",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "jusqu'à la fin de la scène",
+      "metadata": {
+        "Compétence": "Ingénierie",
+        "Niveau": "7",
+        "Traits": "Compétence, Improvisation, Ingénierie, Manipulation",
+        "Type": "Activité de 10 minutes",
+        "Durée": "jusqu'à la fin de la scène",
+        "Prérequis": "Ingénierie Maître ; Démontage conservatoire",
+        "Réussite critique": "la liaison fonctionne pour la scène sans malus supplémentaire.",
+        "Réussite": "elle fonctionne, mais impose -2 circonstanciel au premier test qui l'emploie ou demande une surveillance constante.",
+        "Échec": "aucune liaison viable n'est produite.",
+        "Échec critique": "un matériau engagé devient inutilisable ou un incident cohérent survient."
+      }
+    },
+    "level": 7
+  }
+}

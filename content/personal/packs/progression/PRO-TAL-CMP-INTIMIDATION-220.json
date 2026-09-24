@@ -1,0 +1,67 @@
+{
+  "relisId": "PRO-TAL-CMP-INTIMIDATION-220",
+  "name": "Ultimatum souverain",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Devant plusieurs représentants, factions ou forces capables de comprendre le rapport de force, le personnage annonce des options, un délai et des conséquences qu&#39;il possède réellement les moyens de soutenir.</p>\n<p>Il effectue un test d&#39;Intimidation contre le DD le plus élevé des acteurs visés.</p>\n<p>• Réussite critique : chaque acteur doit répondre publiquement par un choix, un refus, une contre-proposition de coût comparable ou un retrait ; les alliés du personnage gagnent +2 circonstanciel à leur premier test visant à exécuter loyalement les conséquences annoncées.</p>\n<p>• Réussite : chaque acteur formule une réponse avant l&#39;expiration du délai ou révèle par son silence qu&#39;il accepte le risque annoncé.</p>\n<p>• Échec : l&#39;ultimatum ne contraint aucune réponse.</p>\n<p>• Échec critique : une faiblesse fondamentale du levier est comprise par les acteurs ; le MJ l&#39;indique.</p>\n<p>Le talent n&#39;impose pas le choix, ne garantit pas la victoire et ne transforme jamais une conséquence impossible en menace crédible.</p>\n<p>---</p>",
+    "traits": ["Audition", "Compétence", "Intimidation", "Mythique", "Social"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-216",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Démonstration de force",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-218",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Choix sans équivoque",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-INTIMIDATION-219",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "La foule recule",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Intimidation — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Intimidation",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Intimidation Mythique ; Démonstration de force, Choix sans équivoque et La foule recule",
+      "choice": "",
+      "frequency": "une fois par crise majeure",
+      "trigger": "",
+      "duration": "jusqu'à l'expiration du délai annoncé",
+      "metadata": {
+        "Compétence": "Intimidation",
+        "Niveau": "23",
+        "Traits": "Audition, Compétence, Intimidation, Mythique, Social",
+        "Type": "Activité de 1 minute",
+        "Fréquence": "une fois par crise majeure",
+        "Durée": "jusqu'à l'expiration du délai annoncé",
+        "Prérequis": "Intimidation Mythique ; Démonstration de force, Choix sans équivoque et La foule recule",
+        "Réussite critique": "chaque acteur doit répondre publiquement par un choix, un refus, une contre-proposition de coût comparable ou un retrait ; les alliés du personnage gagnent +2 circonstanciel à leur premier test visant à exécuter loyalement les conséquences annoncées.",
+        "Réussite": "chaque acteur formule une réponse avant l'expiration du délai ou révèle par son silence qu'il accepte le risque annoncé.",
+        "Échec": "l'ultimatum ne contraint aucune réponse.",
+        "Échec critique": "une faiblesse fondamentale du levier est comprise par les acteurs ; le MJ l'indique."
+      }
+    },
+    "level": 23
+  }
+}

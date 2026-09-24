@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-CMP-MELEE-067",
+  "name": "Garde sans appui",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage maintient une garde fonctionnelle lorsqu&#39;il se déplace sur un support instable, dans une gravité inhabituelle ou au milieu d&#39;un espace défavorable.</p>\n<p>Il ignore jusqu&#39;à 2 points de malus circonstanciel à ses tests de Mêlée provenant uniquement de son propre mouvement, d&#39;un véhicule ou support mobile, d&#39;un sol instable ou d&#39;une gravité faible ou variable.</p>\n<p>Lorsqu&#39;un échec simple à un test d&#39;Acrobaties ou d&#39;Athlétisme lui fait perdre son appui sans le faire chuter ni l&#39;emporter, il peut employer sa Réaction pour conserver sa prise et sa garde ; ses armes tenues ne tombent pas et aucun malus supplémentaire de posture ne s&#39;applique avant la fin de son tour.</p>\n<p>Le talent n&#39;empêche ni une chute, ni un déplacement forcé, ni les conséquences normales du test de mouvement.</p>",
+    "traits": ["Compétence", "Mêlée", "Mouvement"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-062",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Rétention d'arme",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-MELEE-063",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Combat resserré",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Mêlée — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Mêlée",
+      "activation": "Passif",
+      "prerequisites": "Mêlée Maître ; Combat resserré ou Rétention d'arme",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Mêlée",
+        "Niveau": "7",
+        "Traits": "Compétence, Mêlée, Mouvement",
+        "Type": "Passif",
+        "Prérequis": "Mêlée Maître ; Combat resserré ou Rétention d'arme"
+      }
+    },
+    "level": 7
+  }
+}

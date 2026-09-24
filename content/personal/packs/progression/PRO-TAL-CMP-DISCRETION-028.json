@@ -1,0 +1,35 @@
+{
+  "relisId": "PRO-TAL-CMP-DISCRETION-028",
+  "name": "Silence opérationnel",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Pendant la durée, le personnage peut se déplacer jusqu&#39;à sa vitesse normale en utilisant Discrétion sans subir le malus circonstanciel provenant uniquement de cette vitesse.</p>\n<p>Il peut également ouvrir une porte non bloquée, manipuler une commande simple, dégainer ou ranger un objet sans révéler automatiquement sa position, à condition que l&#39;objet ou le mécanisme puisse réellement être utilisé silencieusement.</p>\n<p>Une attaque, un pouvoir manifeste, une course au-delà de sa vitesse normale ou une action bruyante met fin au talent après sa résolution.</p>\n<p>Silence opérationnel n&#39;étouffe aucun son surnaturellement et ne supprime pas les bruits produits par le terrain ou un équipement inadapté.</p>",
+    "traits": ["Compétence", "Discrétion", "Mouvement"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Discrétion — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Discrétion",
+      "activation": "Activation libre",
+      "prerequisites": "Discrétion Maître",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "3 rounds",
+      "metadata": {
+        "Compétence": "Discrétion",
+        "Niveau": "7",
+        "Traits": "Compétence, Discrétion, Mouvement",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Durée": "3 rounds",
+        "Prérequis": "Discrétion Maître"
+      }
+    },
+    "level": 7
+  }
+}
