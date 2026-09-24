@@ -1,0 +1,60 @@
+{
+  "relisId": "PRO-TAL-CMP-SANG-FROID-228",
+  "name": "Compartimenter l'épreuve",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage diffère uniquement la contrainte comportementale ou la perte d&#39;action déclenchée jusqu&#39;à la fin de l&#39;action en cours, puis la subit normalement pour sa durée restante.</p>\n<p>Il ne diffère ni Stress, ni dégâts, ni Surcharge mentale, ni Traumatisme. L&#39;action reste soumise à tous ses tests et malus, et le talent ne permet pas de commencer une nouvelle action complexe avant l&#39;application de la conséquence.</p>",
+    "traits": [
+      "Compétence",
+      "Concentration",
+      "Mental",
+      "Réaction",
+      "Sang-froid"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-224",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Panique contenue",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-225",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Visage impassible",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sang-froid — #### Niveau 7 — Maître",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sang-froid",
+      "activation": "Réaction",
+      "prerequisites": "Sang-froid Maître ; Panique contenue et Visage impassible",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "une Panique ordinaire ou une conséquence mentale brève devrait empêcher le personnage d'achever une action déjà commencée",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sang-froid",
+        "Niveau": "7",
+        "Traits": "Compétence, Concentration, Mental, Réaction, Sang-froid",
+        "Type": "Réaction",
+        "Fréquence": "une fois par jour",
+        "Déclencheur": "une Panique ordinaire ou une conséquence mentale brève devrait empêcher le personnage d'achever une action déjà commencée",
+        "Prérequis": "Sang-froid Maître ; Panique contenue et Visage impassible"
+      }
+    },
+    "level": 7
+  }
+}

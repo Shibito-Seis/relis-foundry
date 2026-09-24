@@ -1,0 +1,72 @@
+{
+  "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-140",
+  "name": "Harmonie des deux lois",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage établit un modèle unifié d&#39;une convergence techno-magique majeure accessible : réseau de reliques, installation hybride, section de vaisseau, organisme appareillé ou phénomène contenu par une machine.</p>\n<p>Il effectue un test de Techno-magie contre le DD le plus élevé des éléments impliqués.</p>\n<p>• Réussite critique : il identifie les flux matériels et énergétiques accessibles, leurs dépendances, leurs incompatibilités et l&#39;ordre exact des interventions ; jusqu&#39;à six participants gagnent +2 circonstanciel à leurs tests suivant le plan, et le premier échec simple concernant une étape prévue devient une réussite si toutes les ressources nécessaires sont présentes.</p>\n<p>• Réussite : il identifie les dépendances et incompatibilités principales ; jusqu&#39;à six participants gagnent +2 circonstanciel à leur premier test suivant le plan.</p>\n<p>• Échec : le modèle ne procure aucun bénéfice.</p>\n<p>• Échec critique : une résonance demeure ambiguë ; le MJ la signale avant que l&#39;équipe n&#39;engage une ressource irréversible.</p>\n<p>Le modèle dure pour l&#39;intervention ou la scène. Chaque participant doit employer sa propre compétence, ses outils, son accès et ses ressources. Le talent ne crée, n&#39;absorbe, ne convertit et ne restaure gratuitement aucune matière, charge, Mana, Prana ou Flux.</p>\n<p>---</p>",
+    "traits": [
+      "Analyse",
+      "Compétence",
+      "Mythique",
+      "Techno-magie",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-131",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Lecture hybride",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-136",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Interprète de convergence",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-138",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Nœud de panne",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Techno-magie — #### Niveau 23 — Mythique",
+      "family": "",
+      "ancestry": "",
+      "skill": "Techno-magie",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Techno-magie Mythique ; Lecture hybride, Interprète de convergence et Nœud de panne",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Techno-magie",
+        "Niveau": "23",
+        "Traits": "Analyse, Compétence, Mythique, Techno-magie, Travail d'équipe",
+        "Type": "Activité de 10 minutes",
+        "Fréquence": "une fois par scène",
+        "Prérequis": "Techno-magie Mythique ; Lecture hybride, Interprète de convergence et Nœud de panne",
+        "Réussite critique": "il identifie les flux matériels et énergétiques accessibles, leurs dépendances, leurs incompatibilités et l'ordre exact des interventions ; jusqu'à six participants gagnent +2 circonstanciel à leurs tests suivant le plan, et le premier échec simple concernant une étape prévue devient une réussite si toutes les ressources nécessaires sont présentes.",
+        "Réussite": "il identifie les dépendances et incompatibilités principales ; jusqu'à six participants gagnent +2 circonstanciel à leur premier test suivant le plan.",
+        "Échec": "le modèle ne procure aucun bénéfice.",
+        "Échec critique": "une résonance demeure ambiguë ; le MJ la signale avant que l'équipe n'engage une ressource irréversible."
+      }
+    },
+    "level": 23
+  }
+}

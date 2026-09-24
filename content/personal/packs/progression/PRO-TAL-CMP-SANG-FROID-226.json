@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-CMP-SANG-FROID-226",
+  "name": "Reprendre ses esprits",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage guide une cible consentante capable de le percevoir vers un ancrage réel et une respiration ou procédure qu&#39;elle peut suivre.</p>\n<p>Il effectue un test de Sang-froid contre le DD de la source de Stress.</p>\n<p>• Réussite critique : la cible réduit son Stress de 1 et gagne +2 circonstanciel à son prochain test contre la même source avant la fin de la scène.</p>\n<p>• Réussite : la cible réduit son Stress de 1.</p>\n<p>• Échec : aucun effet.</p>\n<p>• Échec critique : la méthode ne convient pas à la cible ; une nouvelle tentative exige une approche ou un intervenant différent.</p>\n<p>Cette activité compte comme le soutien réussi d&#39;un allié prévu par la récupération du Stress. Elle ne se cumule pas avec un autre soutien pour le même incident et ne traite aucun Traumatisme.</p>",
+    "traits": ["Audition", "Compétence", "Mental", "Sang-froid", "Soin"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-221",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Point d'ancrage",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-223",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Discipline intérieure",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sang-froid — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sang-froid",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Sang-froid Expert ; Point d'ancrage ou Discipline intérieure",
+      "choice": "",
+      "frequency": "une fois par cible et par incident",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sang-froid",
+        "Niveau": "3",
+        "Traits": "Audition, Compétence, Mental, Sang-froid, Soin",
+        "Type": "Activité de 1 minute",
+        "Fréquence": "une fois par cible et par incident",
+        "Prérequis": "Sang-froid Expert ; Point d'ancrage ou Discipline intérieure",
+        "Réussite critique": "la cible réduit son Stress de 1 et gagne +2 circonstanciel à son prochain test contre la même source avant la fin de la scène.",
+        "Réussite": "la cible réduit son Stress de 1.",
+        "Échec": "aucun effet.",
+        "Échec critique": "la méthode ne convient pas à la cible ; une nouvelle tentative exige une approche ou un intervenant différent."
+      }
+    },
+    "level": 3
+  }
+}

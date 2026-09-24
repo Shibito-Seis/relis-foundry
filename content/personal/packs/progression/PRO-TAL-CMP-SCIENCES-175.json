@@ -1,0 +1,57 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-175",
+  "name": "Expérience discriminante",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Face à au moins deux hypothèses compatibles avec des observations réelles, le personnage conçoit une expérience capable de les départager.</p>\n<p>Il effectue un test de Sciences contre le DD du phénomène.</p>\n<p>• Réussite critique : il définit la variable, le contrôle, les résultats attendus, le risque principal et un facteur de confusion à surveiller.</p>\n<p>• Réussite : il définit la variable, le contrôle et les résultats permettant de soutenir une hypothèse plutôt qu&#39;une autre.</p>\n<p>• Échec : aucun protocole valide n&#39;est obtenu.</p>\n<p>• Échec critique : les hypothèses ne peuvent pas être départagées avec les moyens actuels ; le MJ indique la donnée ou la capacité manquante.</p>\n<p>La conclusion n&#39;est obtenue qu&#39;après exécution réelle du protocole avec les ressources requises. Le talent ne transforme pas une hypothèse en fait et ne produit aucun matériel.</p>",
+    "traits": ["Analyse", "Compétence", "Préparation", "Sciences"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-171",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Observation instrumentée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-172",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Prélèvement contrôlé",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Sciences Expert ; Observation instrumentée ou Prélèvement contrôlé",
+      "choice": "",
+      "frequency": "une fois par question scientifique",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "3",
+        "Traits": "Analyse, Compétence, Préparation, Sciences",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par question scientifique",
+        "Prérequis": "Sciences Expert ; Observation instrumentée ou Prélèvement contrôlé",
+        "Réussite critique": "il définit la variable, le contrôle, les résultats attendus, le risque principal et un facteur de confusion à surveiller.",
+        "Réussite": "il définit la variable, le contrôle et les résultats permettant de soutenir une hypothèse plutôt qu'une autre.",
+        "Échec": "aucun protocole valide n'est obtenu.",
+        "Échec critique": "les hypothèses ne peuvent pas être départagées avec les moyens actuels ; le MJ indique la donnée ou la capacité manquante."
+      }
+    },
+    "level": 3
+  }
+}

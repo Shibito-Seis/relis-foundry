@@ -1,0 +1,66 @@
+{
+  "relisId": "PRO-TAL-CMP-SANG-FROID-229",
+  "name": "Maître de sa réaction",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage choisit toujours sa réaction de Panique parmi celles compatibles avec la situation.</p>\n<p>Une fois par scène, lorsqu&#39;une Panique ordinaire l&#39;affecte, il peut utiliser sa réaction et effectuer un test de Volonté + Sang-froid contre le DD de la source.</p>\n<p>• Réussite critique : la contrainte de Panique prend fin immédiatement après l&#39;action ou le choix défensif cohérent qu&#39;elle impose.</p>\n<p>• Réussite : la contrainte prend fin à la fin du tour actuel ou de l&#39;action narrative immédiate.</p>\n<p>• Échec : la durée reste normale.</p>\n<p>• Échec critique : la durée reste normale et le personnage gagne 1 Stress.</p>\n<p>Le talent ne prévient ni Surcharge mentale, ni test de rupture, ni acquisition ou aggravation d&#39;un Traumatisme.</p>",
+    "traits": ["Compétence", "Légendaire", "Mental", "Sang-froid"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-224",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Panique contenue",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-227",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fonctionnel sous saturation",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SANG-FROID-228",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Compartimenter l'épreuve",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sang-froid — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sang-froid",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Sang-froid Légendaire ; Panique contenue, Fonctionnel sous saturation et Compartimenter l'épreuve",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sang-froid",
+        "Niveau": "15",
+        "Traits": "Compétence, Légendaire, Mental, Sang-froid",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Sang-froid Légendaire ; Panique contenue, Fonctionnel sous saturation et Compartimenter l'épreuve",
+        "Réussite critique": "la contrainte de Panique prend fin immédiatement après l'action ou le choix défensif cohérent qu'elle impose.",
+        "Réussite": "la contrainte prend fin à la fin du tour actuel ou de l'action narrative immédiate.",
+        "Échec": "la durée reste normale.",
+        "Échec critique": "la durée reste normale et le personnage gagne 1 Stress."
+      }
+    },
+    "level": 15
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-SURVIE-045",
+  "name": "Secours de fortune",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage peut effectuer une Stabilisation improvisée avec Survie + Dextérité en 2 actions au lieu de 3.</p>\n<p>Lorsqu&#39;il utilise des matériaux improvisés pour contenir une hémorragie externe, immobiliser une fracture simple ou protéger une cible pendant son extraction, il ignore le modificateur de +2 au DD provenant uniquement du caractère improvisé du matériel.</p>\n<p>Secours de fortune ne traite pas une Blessure critique, un traumatisme neurologique, un organe interne, une maladie, un poison complexe ou un système IAA sans méthode compatible. Les autres modificateurs de contexte restent applicables.</p>",
+    "traits": ["Compétence", "Guérison", "Manipulation", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Survie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Survie",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Survie Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Survie",
+        "Niveau": "3",
+        "Traits": "Compétence, Guérison, Manipulation, Survie",
+        "Type": "Activité de 2 Actions",
+        "Prérequis": "Survie Expert"
+      }
+    },
+    "level": 3
+  }
+}

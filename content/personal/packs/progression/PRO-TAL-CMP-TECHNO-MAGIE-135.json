@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-TECHNO-MAGIE-135",
+  "name": "Tampon de Flux",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Avec un dissipateur, catalyseur, mise à la terre ou réceptacle compatible réellement disponible, le personnage amortit une fluctuation active d&#39;un dispositif hybride.</p>\n<p>Il effectue un test de Techno-magie contre le DD de la fluctuation.</p>\n<p>• Réussite critique : l&#39;aggravation est suspendue pendant la durée et le dispositif ignore jusqu&#39;à 2 points de malus provenant de cette fluctuation pour une utilisation ordinaire.</p>\n<p>• Réussite : l&#39;aggravation est suspendue pendant la durée.</p>\n<p>• Échec : aucun tampon stable n&#39;est obtenu.</p>\n<p>• Échec critique : le réceptacle ou consommable engagé est saturé sans bénéfice.</p>\n<p>Le talent ne dissipe pas définitivement l&#39;énergie, ne la convertit pas, ne supprime aucun coût ou surcharge et ne fonctionne pas sans capacité matérielle d&#39;absorber ou détourner la fluctuation.</p>",
+    "traits": ["Compétence", "Défense", "Manipulation", "Techno-magie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Techno-magie — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Techno-magie",
+      "activation": "Activité de 2 Actions",
+      "prerequisites": "Techno-magie Expert",
+      "choice": "",
+      "frequency": "une fois par dispositif et par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin du prochain tour du personnage",
+      "metadata": {
+        "Compétence": "Techno-magie",
+        "Niveau": "3",
+        "Traits": "Compétence, Défense, Manipulation, Techno-magie",
+        "Type": "Activité de 2 Actions",
+        "Fréquence": "une fois par dispositif et par scène",
+        "Durée": "jusqu'à la fin du prochain tour du personnage",
+        "Prérequis": "Techno-magie Expert",
+        "Réussite critique": "l'aggravation est suspendue pendant la durée et le dispositif ignore jusqu'à 2 points de malus provenant de cette fluctuation pour une utilisation ordinaire.",
+        "Réussite": "l'aggravation est suspendue pendant la durée.",
+        "Échec": "aucun tampon stable n'est obtenu.",
+        "Échec critique": "le réceptacle ou consommable engagé est saturé sans bénéfice."
+      }
+    },
+    "level": 3
+  }
+}

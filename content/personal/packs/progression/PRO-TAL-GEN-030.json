@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-030",
+  "name": "Défense de circonstance",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage choisit l&#39;un des effets suivants :</p>\n<p>• améliorer d&#39;un degré le couvert applicable contre l&#39;attaque ;</p>\n<p>• gagner +2 circonstanciel en CAP ou CAE contre l&#39;attaque si aucun degré supérieur cohérent n&#39;existe.</p>\n<p>Le couvert, le bouclier ou l&#39;objet subit normalement l&#39;usure et les éventuels dégâts de l&#39;attaque. Le talent ne se cumule pas avec une autre Réaction défensive contre la même attaque.</p>",
+    "traits": ["Défense", "Général", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.6 Talents généraux de niveau 11",
+      "family": "Formation martiale et protection",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "une attaque cible le personnage alors qu'il bénéficie d'un couvert, porte un bouclier utilisable ou se trouve près d'un objet solide interposable",
+      "duration": "",
+      "metadata": {
+        "Famille": "Formation martiale et protection",
+        "Traits": "Défense, Général, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Déclencheur": "une attaque cible le personnage alors qu'il bénéficie d'un couvert, porte un bouclier utilisable ou se trouve près d'un objet solide interposable"
+      }
+    },
+    "level": 11
+  }
+}

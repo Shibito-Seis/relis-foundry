@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-124",
+  "name": "Procédure accélérée",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Lorsque le personnage exécute depuis une console une procédure connue et déjà autorisée — bascule, fermeture, mise en veille, lancement d&#39;un diagnostic ou sélection d&#39;une redondance — il réduit son coût de 1 action, minimum 1.</p>\n<p>Une procédure mesurée en minutes voit sa durée réduite de moitié sur une réussite au test requis. Cette réduction ne s&#39;applique pas à une séquence imposée par un délai physique incompressible.</p>\n<p>Le talent ne raccourcit ni réparation, ni déplacement du vaisseau, ni charge d&#39;une arme, ni action spéciale d&#39;un Poste ou du combat spatial.</p>",
+    "traits": ["Compétence", "Manipulation", "Systèmes de vaisseau"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-121",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Prise de console",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Systèmes de vaisseau — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Systèmes de vaisseau",
+      "activation": "Passif",
+      "prerequisites": "Systèmes de vaisseau Expert ; Prise de console",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Systèmes de vaisseau",
+        "Niveau": "3",
+        "Traits": "Compétence, Manipulation, Systèmes de vaisseau",
+        "Type": "Passif",
+        "Fréquence": "une fois par round",
+        "Prérequis": "Systèmes de vaisseau Expert ; Prise de console"
+      }
+    },
+    "level": 3
+  }
+}

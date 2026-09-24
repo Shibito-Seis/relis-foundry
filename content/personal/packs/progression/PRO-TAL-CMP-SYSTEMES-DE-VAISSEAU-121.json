@@ -1,0 +1,37 @@
+{
+  "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-121",
+  "name": "Prise de console",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Depuis une console accessible, le personnage vérifie les alarmes, commandes et ressources que ses permissions lui permettent de consulter.</p>\n<p>Il effectue un test de Systèmes de vaisseau contre le DD du poste.</p>\n<p>• Réussite critique : il comprend l&#39;état apparent des fonctions accessibles, l&#39;alarme prioritaire, les commandes disponibles et la dépendance la plus menacée.</p>\n<p>• Réussite : il comprend l&#39;état apparent, l&#39;alarme prioritaire et les commandes disponibles.</p>\n<p>• Échec : il ne parvient pas à hiérarchiser les informations.</p>\n<p>• Échec critique : il sélectionne une vue inadaptée ; 1 action est nécessaire pour revenir à l&#39;affichage initial.</p>\n<p>Sur une réussite, il gagne +2 circonstanciel au premier test de Systèmes de vaisseau effectué depuis cette console avant la fin de son prochain tour. Le talent ne confère ni Poste, ni permission, ni commande absente.</p>",
+    "traits": ["Compétence", "Observation", "Poste", "Systèmes de vaisseau"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Systèmes de vaisseau — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Systèmes de vaisseau",
+      "activation": "1 Action",
+      "prerequisites": "Systèmes de vaisseau Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Systèmes de vaisseau",
+        "Niveau": "1",
+        "Traits": "Compétence, Observation, Poste, Systèmes de vaisseau",
+        "Type": "1 Action",
+        "Prérequis": "Systèmes de vaisseau Qualifié",
+        "Réussite critique": "il comprend l'état apparent des fonctions accessibles, l'alarme prioritaire, les commandes disponibles et la dépendance la plus menacée.",
+        "Réussite": "il comprend l'état apparent, l'alarme prioritaire et les commandes disponibles.",
+        "Échec": "il ne parvient pas à hiérarchiser les informations.",
+        "Échec critique": "il sélectionne une vue inadaptée ; 1 action est nécessaire pour revenir à l'affichage initial."
+      }
+    },
+    "level": 1
+  }
+}

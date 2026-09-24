@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-GEN-017",
+  "name": "Marcheur infatigable",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage ignore 1 Fatigue reçue. Si l&#39;échec critique devait infliger 2 Fatigue, il n&#39;en reçoit donc qu&#39;une.</p>\n<p>Le talent ne s&#39;applique pas au Surmenage, à une maladie, une toxine, une Blessure critique ou une autre cause persistante qui doit être traitée.</p>",
+    "traits": ["Endurance", "Exploration", "Général", "Voyage"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-GEN-002",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Endurance de fond",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.4 Talents généraux de niveau 3",
+      "family": "Effort et Surmenage",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Endurance de fond",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "un test de voyage, de marche forcée ou de veille prolongée inflige de la Fatigue au personnage",
+      "duration": "",
+      "metadata": {
+        "Famille": "Effort et Surmenage",
+        "Traits": "Endurance, Exploration, Général, Voyage",
+        "Type": "Réaction",
+        "Fréquence": "une fois par repos long",
+        "Prérequis": "Endurance de fond",
+        "Déclencheur": "un test de voyage, de marche forcée ou de veille prolongée inflige de la Fatigue au personnage"
+      }
+    },
+    "level": 3
+  }
+}

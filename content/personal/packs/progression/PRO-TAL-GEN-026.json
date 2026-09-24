@@ -1,0 +1,51 @@
+{
+  "relisId": "PRO-TAL-GEN-026",
+  "name": "Polyvalence d'équipement",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage choisit :</p>\n<p>• deux nouvelles familles communes admissibles pour Maniement d&#39;urgence ou Protection familière ;</p>\n<p>• ou une catégorie spécialisée validée par le MJ, cohérente avec une formation déjà possédée.</p>\n<p>Il est considéré comme formé à leur usage élémentaire. Le talent n&#39;accorde toujours ni capacité de Voie, ni propriété avancée, ni bonus de dégâts, ni équipement gratuit.</p>\n<p>---</p>",
+    "traits": ["Équipement", "Formation", "Général"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-GEN-007",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Maniement d'urgence",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-GEN-008",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Protection familière",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.5 Talents généraux de niveau 7",
+      "family": "Formation martiale et protection",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Maniement d'urgence ou Protection familière",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Formation martiale et protection",
+        "Traits": "Équipement, Formation, Général",
+        "Type": "Passif",
+        "Prérequis": "Maniement d'urgence ou Protection familière"
+      }
+    },
+    "level": 7
+  }
+}

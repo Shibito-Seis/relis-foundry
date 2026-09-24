@@ -1,0 +1,66 @@
+{
+  "relisId": "PRO-TAL-CMP-SCIENCES-179",
+  "name": "Aux frontières du connaissable",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage étudie un phénomène presque incompréhensible dès lors qu&#39;il possède plusieurs mesures comparables ou des observations reproductibles.</p>\n<p>Il ignore jusqu&#39;à 4 points de malus circonstanciel provenant de son étrangeté, du bruit ou de la difficulté à relier les données, puis effectue un test de Sciences contre son DD.</p>\n<p>• Réussite critique : il établit un modèle de ses propriétés observables, de ses limites connues, de ses variations et de l&#39;expérience décisive encore possible.</p>\n<p>• Réussite : il établit un modèle limité de ses propriétés observables et de ses variations probables.</p>\n<p>• Échec : aucune conclusion robuste n&#39;est possible.</p>\n<p>• Échec critique : une incompatibilité entre les mesures interdit le modèle actuel ; le MJ indique la série qui doit être vérifiée.</p>\n<p>Le talent n&#39;accorde aucune vérité absolue, ne comprend pas une entité sans manifestations mesurables et ne confère aucun contrôle sur le phénomène.</p>",
+    "traits": ["Analyse", "Compétence", "Légendaire", "Sciences"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-175",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Expérience discriminante",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-177",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Modèle à données partielles",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-CMP-SCIENCES-178",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Protocole d'anomalie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Sciences — #### Niveau 15 — Légendaire",
+      "family": "",
+      "ancestry": "",
+      "skill": "Sciences",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Sciences Légendaire ; Expérience discriminante, Modèle à données partielles et Protocole d'anomalie",
+      "choice": "",
+      "frequency": "une fois par scène et par phénomène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Sciences",
+        "Niveau": "15",
+        "Traits": "Analyse, Compétence, Légendaire, Sciences",
+        "Type": "Activité d'exploration",
+        "Fréquence": "une fois par scène et par phénomène",
+        "Prérequis": "Sciences Légendaire ; Expérience discriminante, Modèle à données partielles et Protocole d'anomalie",
+        "Réussite critique": "il établit un modèle de ses propriétés observables, de ses limites connues, de ses variations et de l'expérience décisive encore possible.",
+        "Réussite": "il établit un modèle limité de ses propriétés observables et de ses variations probables.",
+        "Échec": "aucune conclusion robuste n'est possible.",
+        "Échec critique": "une incompatibilité entre les mesures interdit le modèle actuel ; le MJ indique la série qui doit être vérifiée."
+      }
+    },
+    "level": 15
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-CMP-SURVIE-043",
+  "name": "Pistage méthodique",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Lorsqu&#39;il trouve une piste matérielle, le personnage peut la suivre avec Survie et obtient des informations supplémentaires.</p>\n<p>Sur une réussite, il apprend :</p>\n<p>• la direction générale ;</p>\n<p>• une catégorie approximative de nombre ou de masse ;</p>\n<p>• la fraîcheur générale de la piste.</p>\n<p>Sur une réussite critique, il apprend aussi un détail observable : vitesse, blessure, charge portée, hésitation, usage d&#39;un véhicule ou méthode employée pour masquer le passage.</p>\n<p>Le talent n&#39;identifie pas automatiquement les individus et ne reconstitue aucune information que les traces ne contiennent pas.</p>",
+    "traits": ["Compétence", "Exploration", "Pistage", "Survie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Survie — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Survie",
+      "activation": "Activité d'exploration",
+      "prerequisites": "Survie Qualifié",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Survie",
+        "Niveau": "1",
+        "Traits": "Compétence, Exploration, Pistage, Survie",
+        "Type": "Activité d'exploration",
+        "Prérequis": "Survie Qualifié"
+      }
+    },
+    "level": 1
+  }
+}

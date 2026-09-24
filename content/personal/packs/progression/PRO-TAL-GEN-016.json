@@ -1,0 +1,34 @@
+{
+  "relisId": "PRO-TAL-GEN-016",
+  "name": "Initiative partagée",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage et l&#39;allié peuvent échanger leurs résultats d&#39;initiative pour la scène.</p>\n<p>Le talent n&#39;ajoute aucune action, n&#39;altère pas l&#39;initiative d&#39;un adversaire et ne fonctionne pas si l&#39;un des deux personnages est inconscient, totalement surpris ou incapable de percevoir l&#39;autre.</p>",
+    "traits": ["Général", "Initiative", "Tactique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.4 Talents généraux de niveau 3",
+      "family": "Cohésion et autonomie",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "les initiatives viennent d'être déterminées",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cohésion et autonomie",
+        "Traits": "Général, Initiative, Tactique",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "les initiatives viennent d'être déterminées",
+        "Condition": "un allié volontaire se trouve à 8 mètres et peut communiquer avec le personnage"
+      }
+    },
+    "level": 3
+  }
+}

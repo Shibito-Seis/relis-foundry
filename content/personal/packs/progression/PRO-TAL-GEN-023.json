@@ -1,0 +1,33 @@
+{
+  "relisId": "PRO-TAL-GEN-023",
+  "name": "Mouvement tactique",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage se déplace de 2 mètres vers un espace libre qu&#39;il peut atteindre.</p>\n<p>Ce déplacement ne déclenche pas de Réaction de la créature ayant provoqué le talent, mais peut déclencher celles d&#39;autres créatures. Il ne permet pas de traverser un obstacle, d&#39;ignorer un terrain infranchissable ou de se déplacer si le personnage est immobilisé.</p>",
+    "traits": ["Général", "Mobilité", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.5 Talents généraux de niveau 7",
+      "family": "Mobilité et placement",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par round",
+      "trigger": "une créature perceptible termine un déplacement à 2 mètres ou moins du personnage",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité et placement",
+        "Traits": "Général, Mobilité, Réaction",
+        "Type": "Réaction",
+        "Fréquence": "une fois par round",
+        "Déclencheur": "une créature perceptible termine un déplacement à 2 mètres ou moins du personnage"
+      }
+    },
+    "level": 7
+  }
+}

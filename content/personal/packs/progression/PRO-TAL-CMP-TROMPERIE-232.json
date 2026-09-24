@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-TROMPERIE-232",
+  "name": "Diversion crédible",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage exploite un bruit, un mouvement, un objet, une personne ou un événement réellement présent pour attirer brièvement l&#39;attention ailleurs.</p>\n<p>Il effectue un test de Tromperie opposé à Investigation ou à la statistique de vigilance employée par l&#39;observateur.</p>\n<p>• Réussite critique : l&#39;observateur subit −2 circonstanciel à son premier test visant à remarquer une action discrète différente de la diversion ; jusqu&#39;à un allié gagne +2 circonstanciel à cette action.</p>\n<p>• Réussite : le personnage ou un allié gagne +2 circonstanciel à son premier test de Discrétion exploitant immédiatement la diversion.</p>\n<p>• Échec : la diversion ne procure aucun bénéfice.</p>\n<p>• Échec critique : l&#39;observateur comprend qu&#39;on tente de détourner son attention.</p>\n<p>Le talent ne rend personne invisible, ne déplace pas l&#39;observateur et ne crée aucun événement absent.</p>",
+    "traits": ["Compétence", "Manipulation", "Social", "Tromperie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Tromperie — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Tromperie",
+      "activation": "1 Action",
+      "prerequisites": "Tromperie Qualifié",
+      "choice": "",
+      "frequency": "une fois par observateur et par scène",
+      "trigger": "",
+      "duration": "jusqu'à la fin du prochain tour ou de l'action narrative immédiate",
+      "metadata": {
+        "Compétence": "Tromperie",
+        "Niveau": "1",
+        "Traits": "Compétence, Manipulation, Social, Tromperie",
+        "Type": "1 Action",
+        "Fréquence": "une fois par observateur et par scène",
+        "Durée": "jusqu'à la fin du prochain tour ou de l'action narrative immédiate",
+        "Prérequis": "Tromperie Qualifié",
+        "Réussite critique": "l'observateur subit −2 circonstanciel à son premier test visant à remarquer une action discrète différente de la diversion ; jusqu'à un allié gagne +2 circonstanciel à cette action.",
+        "Réussite": "le personnage ou un allié gagne +2 circonstanciel à son premier test de Discrétion exploitant immédiatement la diversion.",
+        "Échec": "la diversion ne procure aucun bénéfice.",
+        "Échec critique": "l'observateur comprend qu'on tente de détourner son attention."
+      }
+    },
+    "level": 1
+  }
+}

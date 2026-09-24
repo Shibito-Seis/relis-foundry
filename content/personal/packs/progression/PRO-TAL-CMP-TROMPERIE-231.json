@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-CMP-TROMPERIE-231",
+  "name": "Mensonge cohérent",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage énonce un mensonge bref compatible avec les faits immédiatement visibles et avec ce qu&#39;il sait de la cible.</p>\n<p>Il effectue un test de Tromperie opposé à Investigation ou Sang-froid de la cible, selon sa méthode de vérification.</p>\n<p>• Réussite critique : la cible accepte provisoirement l&#39;affirmation et le personnage identifie le détail que sa prochaine réponse devra préserver.</p>\n<p>• Réussite : la cible accepte provisoirement l&#39;affirmation jusqu&#39;à l&#39;apparition d&#39;une contradiction sérieuse.</p>\n<p>• Échec : la cible doute ou refuse de conclure.</p>\n<p>• Échec critique : la cible repère une incohérence et peut demander immédiatement une preuve ou une clarification.</p>\n<p>Le talent ne réécrit aucun souvenir, ne crée aucune preuve et ne rend pas crédible une affirmation contredite par une évidence accessible.</p>",
+    "traits": ["Compétence", "Linguistique", "Mental", "Social", "Tromperie"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Tromperie — #### Niveau 1 — Qualifié",
+      "family": "",
+      "ancestry": "",
+      "skill": "Tromperie",
+      "activation": "1 Action ou échange bref",
+      "prerequisites": "Tromperie Qualifié",
+      "choice": "",
+      "frequency": "une fois par cible et par affirmation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Tromperie",
+        "Niveau": "1",
+        "Traits": "Compétence, Linguistique, Mental, Social, Tromperie",
+        "Type": "1 Action ou échange bref",
+        "Fréquence": "une fois par cible et par affirmation",
+        "Prérequis": "Tromperie Qualifié",
+        "Réussite critique": "la cible accepte provisoirement l'affirmation et le personnage identifie le détail que sa prochaine réponse devra préserver.",
+        "Réussite": "la cible accepte provisoirement l'affirmation jusqu'à l'apparition d'une contradiction sérieuse.",
+        "Échec": "la cible doute ou refuse de conclure.",
+        "Échec critique": "la cible repère une incohérence et peut demander immédiatement une preuve ou une clarification."
+      }
+    },
+    "level": 1
+  }
+}

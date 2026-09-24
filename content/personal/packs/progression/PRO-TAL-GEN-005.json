@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-GEN-005",
+  "name": "Appuis sûrs",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests destinés à résister à une chute, une glissade, une mise à terre ou un déplacement forcé.</p>\n<p>Lorsqu&#39;il réussit un tel test, il réduit en outre de 2 mètres le déplacement forcé subi, minimum 0. Cet effet ne permet pas de résister à un déplacement automatique explicitement irrésistible et ne fournit ni adhérence surnaturelle, ni capacité de vol.</p>",
+    "traits": ["Général", "Mobilité", "Physique"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Mobilité et placement",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité et placement",
+        "Traits": "Général, Mobilité, Physique",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

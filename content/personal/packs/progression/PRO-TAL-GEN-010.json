@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-GEN-010",
+  "name": "Soutien coordonné",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Lorsque le personnage réussit une action d&#39;Aide préparée et cohérente, le bonus circonstanciel accordé augmente de 1, jusqu&#39;à un maximum de +2.</p>\n<p>Le talent ne permet pas d&#39;Aider sans moyen réel d&#39;intervenir, ne transforme pas une compétence Inexpérimentée en formation et ne se cumule pas avec un effet augmentant déjà l&#39;Aide pour la même raison.</p>",
+    "traits": ["Aide", "Général", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.3 Talents généraux de niveau 1",
+      "family": "Cohésion et autonomie",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Cohésion et autonomie",
+        "Traits": "Aide, Général, Social",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

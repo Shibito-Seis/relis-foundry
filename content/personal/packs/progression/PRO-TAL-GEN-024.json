@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-GEN-024",
+  "name": "Effort prolongé",
+  "type": "talent",
+  "tags": ["progression", "talent", "general"],
+  "system": {
+    "description": "<p>Le personnage réduit de 1 la Fatigue reçue, minimum 0.</p>\n<p>Le talent peut agir contre un environnement, une privation ou un effort, mais pas contre une Fatigue constituant le coût volontaire d&#39;une capacité, ni contre un plancher de Fatigue. Il ne supprime pas la cause : si l&#39;exposition continue, de nouveaux tests peuvent être nécessaires.</p>",
+    "traits": ["Endurance", "Général", "Physique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-GEN-002",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Endurance de fond",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-general",
+      "sourceSection": "### 31.5 Talents généraux de niveau 7",
+      "family": "Effort et Surmenage",
+      "ancestry": "",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Endurance de fond",
+      "choice": "",
+      "frequency": "une fois par repos long",
+      "trigger": "une source extérieure autre que le Surmenage inflige de la Fatigue au personnage",
+      "duration": "",
+      "metadata": {
+        "Famille": "Effort et Surmenage",
+        "Traits": "Endurance, Général, Physique",
+        "Type": "Réaction",
+        "Fréquence": "une fois par repos long",
+        "Prérequis": "Endurance de fond",
+        "Déclencheur": "une source extérieure autre que le Surmenage inflige de la Fatigue au personnage"
+      }
+    },
+    "level": 7
+  }
+}

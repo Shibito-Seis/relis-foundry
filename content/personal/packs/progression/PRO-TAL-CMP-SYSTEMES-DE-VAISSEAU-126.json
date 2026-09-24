@@ -1,0 +1,39 @@
+{
+  "relisId": "PRO-TAL-CMP-SYSTEMES-DE-VAISSEAU-126",
+  "name": "Liaison interpostes",
+  "type": "talent",
+  "tags": ["progression", "talent", "competence"],
+  "system": {
+    "description": "<p>Le personnage synchronise les informations de sa console avec un opérateur consentant d&#39;un autre Poste réellement connecté.</p>\n<p>Lorsqu&#39;il Aide le test de Systèmes de vaisseau, Pilotage, Navigation, Ingénierie ou Informatique de cet opérateur pour résoudre une crise commune :</p>\n<p>• une réussite accorde +2 circonstanciel au test principal ;</p>\n<p>• une réussite critique accorde ce bonus et l&#39;opérateur apprend avant son test quelle fonction accessible subirait la première conséquence d&#39;un échec simple ;</p>\n<p>• un échec critique de l&#39;Aide ne dégrade pas le résultat principal, mais la liaison cesse.</p>\n<p>Le talent ne transmet pas de permission, ne permet pas d&#39;employer la compétence de l&#39;autre opérateur et ne donne aucune action de Poste supplémentaire.</p>",
+    "traits": [
+      "Aide",
+      "Compétence",
+      "Poste",
+      "Systèmes de vaisseau",
+      "Travail d'équipe"
+    ],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-competence",
+      "sourceSection": "Systèmes de vaisseau — #### Niveau 3 — Expert",
+      "family": "",
+      "ancestry": "",
+      "skill": "Systèmes de vaisseau",
+      "activation": "1 Action de préparation, puis Réaction",
+      "prerequisites": "Systèmes de vaisseau Expert",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Compétence": "Systèmes de vaisseau",
+        "Niveau": "3",
+        "Traits": "Aide, Compétence, Poste, Systèmes de vaisseau, Travail d'équipe",
+        "Type": "1 Action de préparation, puis Réaction",
+        "Prérequis": "Systèmes de vaisseau Expert"
+      }
+    },
+    "level": 3
+  }
+}
