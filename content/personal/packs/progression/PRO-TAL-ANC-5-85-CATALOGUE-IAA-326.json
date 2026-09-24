@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-326",
+  "name": "Corps irremplaçable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage accorde profondément son noyau à un châssis précis. Il gagne +2 circonstanciel contre transfert forcé, dissociation corporelle et effets tentant de prendre le contrôle de ce châssis.</p>\n<p>Lorsqu&#39;un capteur, membre artificiel ou module non vital devrait devenir inutilisable, il peut rerouter ses fonctions : l&#39;élément reste utilisable jusqu&#39;à la fin de son prochain tour, puis subit normalement la défaillance.</p>\n<p>L&#39;accord avec un nouveau châssis demande un repos long et une calibration. Le talent ne rend pas la matière du corps impossible à remplacer.</p>",
+    "traits": ["IAA", "Architecture", "Châssis", "Incarnée"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-319",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Bastion du noyau",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.88 Talents IAA de niveau 9",
+      "family": "Incarnée isolée",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Bastion du noyau",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Incarnée isolée",
+        "Traits": "IAA, Architecture, Châssis, Incarnée",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Bastion du noyau"
+      }
+    },
+    "level": 9
+  }
+}

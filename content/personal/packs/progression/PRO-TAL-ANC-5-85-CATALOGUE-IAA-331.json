@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-331",
+  "name": "Forteresse incarnée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le châssis accordé possède une Résistance aux dégâts physiques et énergétiques égale à un tiers du Niveau général, arrondi à l&#39;inférieur.</p>\n<p>Lorsqu&#39;une Blessure critique désactive un système non vital, le personnage peut ignorer son effet actif jusqu&#39;à la fin de son prochain tour afin de se mettre à l&#39;abri ou accomplir une dernière action cohérente.</p>\n<p>La Résistance ne se cumule pas avec une Résistance d&#39;Ascendance supérieure et ne protège pas un autre châssis ou le serveur d&#39;une Architecture Réseau.</p>",
+    "traits": ["IAA", "Architecture", "Châssis", "Incarnée"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-326",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps irremplaçable",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.89 Talents IAA de niveau 13",
+      "family": "Incarnée isolée",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Corps irremplaçable",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Incarnée isolée",
+        "Traits": "IAA, Architecture, Châssis, Incarnée",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Corps irremplaçable"
+      }
+    },
+    "level": 13
+  }
+}

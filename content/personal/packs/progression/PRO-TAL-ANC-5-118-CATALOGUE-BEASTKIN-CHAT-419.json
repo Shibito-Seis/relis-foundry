@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-419",
+  "name": "Nom choisi",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage connaît les usages Chats permettant de choisir, modifier et transmettre un nom social. Il gagne +2 circonstanciel aux tests de Culture ou de Diplomatie portant sur les identités et communautés Chats. Un nom choisi ne crée aucun document, droit d&#39;accès ou effacement administratif.</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Culture chat et itinérance",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Culture chat et itinérance",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

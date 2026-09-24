@@ -1,0 +1,38 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-379",
+  "name": "Étincelle vulpine",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage projette un feu-follet vers une cible visible à 6 mètres. Il effectue une attaque de Maîtrise Magique + Canalisation contre la CAE. Une réussite inflige 1d4 dégâts de feu ou d&#39;énergie, choisis lors de l&#39;attaque.</p>\n<p>Les dégâts passent à 2d4 au niveau 5, 3d4 au niveau 9, 4d4 au niveau 13 et 5d4 au niveau 17. L&#39;Étincelle ne reçoit ni les améliorations d&#39;une arme, ni les bonus de dégâts réservés aux pouvoirs d&#39;une Voie, sauf mention explicite.</p>\n<p>Hors combat, le personnage peut produire une flamme colorée inoffensive fournissant une faible lumière à portée de main.</p>",
+    "traits": [
+      "Beastkin",
+      "Renard",
+      "Attaque",
+      "Canalisation",
+      "Énergie",
+      "Feu-follet"
+    ],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.108 Talents Beastkins Renards de niveau 1",
+      "family": "Feux-follets et arts spirituels",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Feux-follets et arts spirituels",
+        "Traits": "Beastkin, Renard, Attaque, Canalisation, Énergie, Feu-follet",
+        "Type": "1 Action"
+      }
+    },
+    "level": 1
+  }
+}

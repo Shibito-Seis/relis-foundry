@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-364",
+  "name": "Course instinctive",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant une minute, la Vitesse terrestre du personnage augmente de 2 mètres. À chacun de ses tours, les deux premiers mètres de terrain difficile naturel qu&#39;il traverse ne lui coûtent aucun déplacement supplémentaire.</p>\n<p>Il gagne également +2 circonstanciel aux tests d&#39;Athlétisme ou d&#39;Acrobaties directement effectués pour poursuivre, fuir ou franchir un obstacle sur cet itinéraire.</p>\n<p>Le talent ne fournit aucune Vitesse d&#39;escalade, de nage ou de vol et ne permet pas de traverser un terrain infranchissable.</p>",
+    "traits": ["Beastkin", "Mobilité", "Poursuite"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.99 Talents Beastkins universels de niveau 9",
+      "family": "Mobilité et adaptation",
+      "ancestry": "### 5.96 Catalogue Beastkin universel",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité et adaptation",
+        "Traits": "Beastkin, Mobilité, Poursuite",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 9
+  }
+}

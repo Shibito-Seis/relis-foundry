@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-322",
+  "name": "Coordination parallèle",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Une fois par tour, le personnage peut attribuer deux de ses Actions normales au même châssis au lieu de limiter chacun à une seule Action.</p>\n<p>Les Actions totales du personnage, son unique Réaction et ses ressources partagées ne changent pas.</p>\n<p>Le talent ne permet pas à un châssis coupé d&#39;utiliser ces Actions et ne donne aucun tour indépendant à une sous-instance.</p>\n<p>---</p>",
+    "traits": ["IAA", "Architecture", "Collective"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-314",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Protocole de coupure",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.87 Talents IAA de niveau 5",
+      "family": "Collective / Essaim",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Protocole de coupure",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Collective / Essaim",
+        "Traits": "IAA, Architecture, Collective",
+        "Type": "Passif",
+        "Prérequis": "Protocole de coupure"
+      }
+    },
+    "level": 5
+  }
+}

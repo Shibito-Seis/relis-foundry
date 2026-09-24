@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-321",
+  "name": "Synchronisation sûre",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage synchronise avec une sauvegarde ou une instance compatible par une liaison sécurisée. Il choisit quelles données autobiographiques, techniques et sensorielles transférer et détecte une contradiction manifeste avant son intégration.</p>\n<p>Il gagne +2 circonstanciel aux tests contre surcharge mentale, corruption ou Traumatisme provoqué par cette synchronisation.</p>\n<p>Le talent ne fusionne pas deux volontés indépendantes contre leur gré et ne récupère aucune donnée perdue ou jamais enregistrée.</p>",
+    "traits": ["IAA", "Architecture", "Répliquée", "Synchronisation"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-313",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sauvegarde fondatrice",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.87 Talents IAA de niveau 5",
+      "family": "Répliquée",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "Sauvegarde fondatrice",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Répliquée",
+        "Traits": "IAA, Architecture, Répliquée, Synchronisation",
+        "Type": "Activité de 10 minutes",
+        "Prérequis": "Sauvegarde fondatrice"
+      }
+    },
+    "level": 5
+  }
+}

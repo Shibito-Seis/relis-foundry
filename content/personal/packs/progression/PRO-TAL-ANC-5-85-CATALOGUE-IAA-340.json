@@ -1,0 +1,60 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-340",
+  "name": "Châssis légendaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit deux systèmes majeurs compatibles avec son profil corporel :</p>\n<p>• locomotion aérienne de 6 mètres dans une atmosphère compatible ;</p>\n<p>• locomotion aquatique de 6 mètres et étanchéité aux profondeurs ordinaires ;</p>\n<p>• structure de levage traitant sa Force comme supérieure de 2 pour porter, pousser et tracter ;</p>\n<p>• camouflage donnant +3 circonstanciel aux tests de Discrétion tant qu&#39;il reste immobile ou lent ;</p>\n<p>• coque environnementale réduisant d&#39;un degré chaleur, froid, pression et corrosion ordinaires ;</p>\n<p>• matrice de précision donnant +3 au premier test manuel ou sensoriel de chaque scène lié à une fonction choisie.</p>\n<p>Les systèmes exigent pièces, énergie et maintenance. Ils ne fournissent ni arme, ni immunité, ni équipement vital d&#39;échelle spatiale. Leur remplacement demande une maintenance complète en atelier.</p>",
+    "traits": ["IAA", "Châssis", "Module", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-323",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Module interchangeable",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-331",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forteresse incarnée",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-338",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Essaim intégral",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.91 Talents IAA de niveau 21",
+      "family": "Transcendance IAA",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "préparation lors d'une maintenance complète",
+      "prerequisites": "Module interchangeable ou Forteresse incarnée ou Essaim intégral",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance IAA",
+        "Traits": "IAA, Châssis, Module, Mythique",
+        "Type": "préparation lors d'une maintenance complète",
+        "Prérequis": "Module interchangeable ou Forteresse incarnée ou Essaim intégral"
+      }
+    },
+    "level": 21
+  }
+}

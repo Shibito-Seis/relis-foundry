@@ -1,0 +1,30 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-416",
+  "name": "Œil pour l'incongru",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel aux tests d&#39;Investigation destinés à repérer un détail déplacé, une symétrie rompue, un petit compartiment ou un objet qui ne correspond pas à son environnement. Une fois par scène, en cas de réussite, le MJ indique quel élément observé mérite l&#39;attention, sans résoudre l&#39;énigme.</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Curiosité et exploration",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Curiosité et exploration",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

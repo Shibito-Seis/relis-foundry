@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-376",
+  "name": "Visage emprunté",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage modifie son pelage, sa voix, sa silhouette et ses signes distinctifs tout en restant manifestement un Beastkin Renard. Il peut reproduire une apparence renarde qu&#39;il a observée ou créer une identité originale de même catégorie corporelle.</p>\n<p>Il gagne +2 circonstanciel aux tests de Tromperie destinés à soutenir ce déguisement. La forme persiste jusqu&#39;à révocation, perte de conscience ou nouvelle transformation.</p>\n<p>Le talent ne masque pas la nature Beastkin, ne crée aucun équipement et ne transmet aucun comportement ou souvenir de la personne imitée.</p>",
+    "traits": ["Beastkin", "Renard", "Métamorphose"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.108 Talents Beastkins Renards de niveau 1",
+      "family": "Masques et métamorphoses",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masques et métamorphoses",
+        "Traits": "Beastkin, Renard, Métamorphose",
+        "Type": "Activité de 1 minute"
+      }
+    },
+    "level": 1
+  }
+}

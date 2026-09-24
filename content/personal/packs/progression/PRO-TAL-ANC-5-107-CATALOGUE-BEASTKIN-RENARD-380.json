@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-380",
+  "name": "Parole à double fond",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut dissimuler un message simple dans une conversation, une histoire ou une formule de politesse. Il désigne un interlocuteur connaissant son intention ou un code partagé ; celui-ci comprend le sous-entendu sans test dans des circonstances ordinaires.</p>\n<p>Le personnage gagne +2 circonstanciel à un test de Tromperie destiné à empêcher les autres auditeurs de détecter l&#39;existence du message.</p>\n<p>Le talent ne transmet ni plan complexe, ni information inconnue du locuteur, et aucun interlocuteur n&#39;est contraint d&#39;obéir.</p>",
+    "traits": ["Beastkin", "Renard", "Social", "Ruse"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.108 Talents Beastkins Renards de niveau 1",
+      "family": "Parole et influence",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Parole et influence",
+        "Traits": "Beastkin, Renard, Social, Ruse",
+        "Type": "Passif"
+      }
+    },
+    "level": 1
+  }
+}

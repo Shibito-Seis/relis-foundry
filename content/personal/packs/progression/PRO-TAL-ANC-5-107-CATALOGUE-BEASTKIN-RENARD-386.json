@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-386",
+  "name": "Course sous les obstacles",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>En forme du petit renard, le personnage gagne +2 circonstanciel aux tests d&#39;Acrobaties pour ramper, se faufiler, franchir un passage bas ou progresser sous des obstacles.</p>\n<p>Une fois par tour, il peut ignorer le premier mètre de terrain difficile créé par des débris, racines, mobilier ou créatures plus grandes. Il ne gagne ni vitesse d&#39;escalade, ni capacité à traverser une ouverture plus petite que son corps.</p>",
+    "traits": ["Beastkin", "Renard", "Acrobaties", "Mobilité", "Vulpin"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-377",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forme du petit renard",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.109 Talents Beastkins Renards de niveau 5",
+      "family": "Mobilité vulpine",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Forme du petit renard",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité vulpine",
+        "Traits": "Beastkin, Renard, Acrobaties, Mobilité, Vulpin",
+        "Prérequis": "Forme du petit renard",
+        "Type": "Passif"
+      }
+    },
+    "level": 5
+  }
+}

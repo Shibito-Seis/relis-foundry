@@ -1,0 +1,49 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-408",
+  "name": "Renard légendaire",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Pendant trois tours, le personnage incarne une figure renarde légendaire. Il peut manifester jusqu&#39;à neuf queues, sans que cette apparence soit obligatoire.</p>\n<p>Au début de chacun de ses tours, il choisit un exploit différent parmi les suivants :</p>\n<p>• Ruse parfaite : transformer un échec non critique à un test de Tromperie ou de Discrétion en réussite ordinaire.</p>\n<p>• Visage impossible : adopter immédiatement une identité préparée ou une forme Renard connue ; la transformation reste un déguisement.</p>\n<p>• Pas légendaire : se déplacer jusqu&#39;à la moitié de sa vitesse sans provoquer de Réaction liée au déplacement.</p>\n<p>• Flamme souveraine : ajouter 2d4 dégâts à une Étincelle vulpine réussie contre une seule cible.</p>\n<p>• Parole libératrice : permettre à un allié à 12 mètres de relancer immédiatement un test contre peur, fascination, possession ou coercition mentale.</p>\n<p>• Mémoire ancienne : poser au MJ une question précise sur un détail réellement observé au cours de la scène ou d&#39;un souvenir conservé.</p>\n<p>Chaque exploit ne peut être choisi qu&#39;une fois pendant l&#39;activation. Le talent ne donne aucune Action supplémentaire et ne permet pas d&#39;utiliser un talent que le personnage ne possède pas.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Renard", "Mythique", "Transcendance"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-407",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Sept chemins du renard",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.114 Talent Beastkin Renard de niveau 25",
+      "family": "Transcendance renarde",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Sept chemins du renard",
+      "choice": "",
+      "frequency": "une fois par session",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance renarde",
+        "Traits": "Beastkin, Renard, Mythique, Transcendance",
+        "Prérequis": "Sept chemins du renard",
+        "Type": "1 Action",
+        "Fréquence": "une fois par session",
+        "Ruse parfaite": "transformer un échec non critique à un test de Tromperie ou de Discrétion en réussite ordinaire.",
+        "Visage impossible": "adopter immédiatement une identité préparée ou une forme Renard connue ; la transformation reste un déguisement.",
+        "Pas légendaire": "se déplacer jusqu'à la moitié de sa vitesse sans provoquer de Réaction liée au déplacement.",
+        "Flamme souveraine": "ajouter 2d4 dégâts à une Étincelle vulpine réussie contre une seule cible.",
+        "Parole libératrice": "permettre à un allié à 12 mètres de relancer immédiatement un test contre peur, fascination, possession ou coercition mentale.",
+        "Mémoire ancienne": "poser au MJ une question précise sur un détail réellement observé au cours de la scène ou d'un souvenir conservé."
+      }
+    },
+    "level": 25
+  }
+}

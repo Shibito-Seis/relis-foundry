@@ -1,0 +1,60 @@
+{
+  "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-367",
+  "name": "Morphologie accomplie",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage choisit deux perfectionnements compatibles :</p>\n<p>• son Appendice fonctionnel peut remplir une seconde fonction de sa liste, sans les employer simultanément si elles sont incompatibles ;</p>\n<p>• son Adaptation naturelle s&#39;étend à un second environnement plausible ;</p>\n<p>• son arme naturelle et un appendice distinct bénéficient tous deux de la protection de Corps accordé ;</p>\n<p>• il réduit de 2 les pénalités provenant d&#39;un équipement ou d&#39;un habitat conçu pour une morphologie humanoïde différente de la sienne.</p>\n<p>Il choisit deux options différentes lors de l&#39;acquisition du talent. Elles ne créent aucun organe absent, aucune nouvelle Vitesse et aucune immunité.</p>",
+    "traits": ["Beastkin", "Physiologie"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-350",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Appendice fonctionnel",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-352",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Adaptation naturelle",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-363",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Corps accordé",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.100 Talents Beastkins universels de niveau 13",
+      "family": "Morphologie et armes naturelles",
+      "ancestry": "### 5.96 Catalogue Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Corps accordé, plus Appendice fonctionnel ou Adaptation naturelle",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Morphologie et armes naturelles",
+        "Traits": "Beastkin, Physiologie",
+        "Type": "Passif",
+        "Prérequis": "Corps accordé, plus Appendice fonctionnel ou Adaptation naturelle"
+      }
+    },
+    "level": 13
+  }
+}

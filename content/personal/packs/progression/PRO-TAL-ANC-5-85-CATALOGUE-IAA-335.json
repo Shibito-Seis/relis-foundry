@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-335",
+  "name": "Noyau souverain",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le noyau ne peut être copié, transféré ou réécrit sans le consentement du personnage tant qu&#39;il reste conscient. Les tentatives hostiles exigent toujours un test et subissent -3 circonstanciel.</p>\n<p>Une fois par jour, lorsque le châssis tombe à 0 PV sans destruction explicite du noyau, le personnage reste conscient pendant 3 tours. Il peut communiquer, utiliser des actions purement mentales ou numériques locales et déclencher un arrêt sécurisé.</p>\n<p>Le talent ne restaure aucun PV, ne déplace pas le noyau et ne permet aucune action physique à un châssis détruit.</p>",
+    "traits": ["IAA", "Architecture", "Incarnée", "Noyau"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-331",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forteresse incarnée",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.90 Talents IAA de niveau 17",
+      "family": "Incarnée isolée",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif et Activation libre",
+      "prerequisites": "Forteresse incarnée",
+      "choice": "",
+      "frequency": "une fois par jour pour l'activation",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Incarnée isolée",
+        "Traits": "IAA, Architecture, Incarnée, Noyau",
+        "Type": "Passif et Activation libre",
+        "Fréquence": "une fois par jour pour l'activation",
+        "Prérequis": "Forteresse incarnée"
+      }
+    },
+    "level": 17
+  }
+}

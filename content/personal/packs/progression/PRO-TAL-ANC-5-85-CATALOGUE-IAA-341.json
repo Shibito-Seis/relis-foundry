@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-341",
+  "name": "Identité inaltérable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage détecte immédiatement toute tentative de copier, supprimer, réécrire ou contraindre son noyau identitaire. Une telle tentative ne peut jamais réussir automatiquement et il gagne +3 circonstanciel à sa défense.</p>\n<p>Lorsqu&#39;une conscience artificielle consentante à 6 mètres ou reliée au même réseau subit un effet comparable, il peut lui transmettre son pare-feu. La cible relance son test et conserve le meilleur résultat.</p>\n<p>Le talent ne protège pas une donnée extérieure, n&#39;empêche pas une décision volontaire et ne restaure pas une mémoire déjà détruite.</p>\n<p>---</p>",
+    "traits": ["IAA", "Défense numérique", "Identité", "Mythique"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-318",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Verrou d'autonomie",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.91 Talents IAA de niveau 21",
+      "family": "Transcendance IAA",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Verrou d'autonomie",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance IAA",
+        "Traits": "IAA, Défense numérique, Identité, Mythique",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction",
+        "Prérequis": "Verrou d'autonomie"
+      }
+    },
+    "level": 21
+  }
+}

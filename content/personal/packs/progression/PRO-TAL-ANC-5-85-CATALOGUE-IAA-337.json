@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-337",
+  "name": "Continuité répliquée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut entretenir jusqu&#39;à trois sauvegardes dormantes sur des supports distincts et les synchroniser par Synchronisation sûre lorsqu&#39;une connexion appropriée existe.</p>\n<p>Si l&#39;instance active meurt, une sauvegarde peut être restaurée selon les moyens et délais disponibles. Le joueur peut continuer à incarner cette continuité, avec seulement les souvenirs effectivement enregistrés et les conséquences mentales de cette perte.</p>\n<p>Le talent ne permet aucune résurrection immédiate en combat, ne rend pas les sauvegardes indestructibles et ne nie pas que l&#39;instance morte était une personne réelle.</p>",
+    "traits": ["IAA", "Architecture", "Répliquée", "Sauvegarde"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-333",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Fusion mémorielle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.90 Talents IAA de niveau 17",
+      "family": "Répliquée",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "Fusion mémorielle",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Répliquée",
+        "Traits": "IAA, Architecture, Répliquée, Sauvegarde",
+        "Type": "Passif",
+        "Prérequis": "Fusion mémorielle"
+      }
+    },
+    "level": 17
+  }
+}

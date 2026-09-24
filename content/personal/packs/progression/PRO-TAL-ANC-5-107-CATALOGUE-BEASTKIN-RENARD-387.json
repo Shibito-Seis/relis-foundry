@@ -1,0 +1,43 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-387",
+  "name": "Feu qui égare",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage crée jusqu&#39;à trois lueurs mobiles dans un rayon de 12 mètres. Elles persistent pendant une minute tant qu&#39;il reste conscient et imitent des mouvements simples, une silhouette lointaine ou une source lumineuse errante.</p>\n<p>Il gagne +2 circonstanciel à un test de Tromperie ou de Discrétion utilisant directement ces lueurs. Une créature qui les examine peut les identifier par Investigation, Sang-froid ou un capteur approprié.</p>\n<p>Les feux ne parlent pas, n&#39;infligent aucun dégât, ne produisent aucune chaleur significative et ne peuvent aveugler.</p>",
+    "traits": ["Beastkin", "Renard", "Canalisation", "Feu-follet", "Illusion"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-379",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Étincelle vulpine",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.109 Talents Beastkins Renards de niveau 5",
+      "family": "Feux-follets et arts spirituels",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "1 Action",
+      "prerequisites": "Étincelle vulpine",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Feux-follets et arts spirituels",
+        "Traits": "Beastkin, Renard, Canalisation, Feu-follet, Illusion",
+        "Prérequis": "Étincelle vulpine",
+        "Type": "1 Action",
+        "Fréquence": "une fois par scène"
+      }
+    },
+    "level": 5
+  }
+}

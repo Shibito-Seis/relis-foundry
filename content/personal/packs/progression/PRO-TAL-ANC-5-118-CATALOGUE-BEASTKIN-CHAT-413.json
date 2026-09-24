@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-413",
+  "name": "Chance du chat",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Après un échec non critique à un test de Dextérité, d&#39;Acrobaties, de Discrétion ou d&#39;Initiative, le personnage relance le test et conserve le meilleur résultat. Il ne peut affecter un jet déjà soumis à Fortune ou Infortune.</p>",
+    "traits": ["Fortune"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Chute, chance et neuf vies",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Chute, chance et neuf vies",
+        "Traits": "Fortune",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par jour"
+      }
+    },
+    "level": 1
+  }
+}

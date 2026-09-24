@@ -1,0 +1,47 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-402",
+  "name": "Couronne des cinq queues",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage possède ou manifeste jusqu&#39;à cinq queues. Après un repos long, il choisit deux attitudes parmi les suivantes :</p>\n<p>• Veille : +2 circonstanciel au premier test d&#39;Investigation ou de Sang-froid destiné à déceler un danger, un mensonge ou une illusion.</p>\n<p>• Mirage : +2 circonstanciel au premier test de Tromperie destiné à soutenir un masque ou une diversion.</p>\n<p>• Braise : +2 dégâts à une Étincelle vulpine réussie.</p>\n<p>• Archive : +2 circonstanciel au premier test de Culture ou d&#39;Investigation fondé sur un souvenir personnel.</p>\n<p>Une fois par scène, avant un test ou une attaque admissible, il active une attitude choisie. Les queues peuvent rester spirituelles et n&#39;accordent aucun effet hors de ces attitudes.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Renard", "Queue", "Spiritualité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-398",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Mémoire des queues",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.111 Talents Beastkins Renards de niveau 13",
+      "family": "Queues, mémoire et ancienneté",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "préparation quotidienne et Activation libre",
+      "prerequisites": "Mémoire des queues",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Queues, mémoire et ancienneté",
+        "Traits": "Beastkin, Renard, Queue, Spiritualité",
+        "Prérequis": "Mémoire des queues",
+        "Type": "préparation quotidienne et Activation libre",
+        "Fréquence": "une fois par scène",
+        "Veille": "+2 circonstanciel au premier test d'Investigation ou de Sang-froid destiné à déceler un danger, un mensonge ou une illusion.",
+        "Mirage": "+2 circonstanciel au premier test de Tromperie destiné à soutenir un masque ou une diversion.",
+        "Braise": "+2 dégâts à une Étincelle vulpine réussie.",
+        "Archive": "+2 circonstanciel au premier test de Culture ou d'Investigation fondé sur un souvenir personnel."
+      }
+    },
+    "level": 13
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-348",
+  "name": "Réflexe animal",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage gagne +2 circonstanciel à l&#39;Initiative lorsqu&#39;une scène commence par une embuscade, un danger soudain ou une menace qu&#39;il pouvait percevoir.</p>\n<p>Une fois par scène, lorsqu&#39;il échoue à un test de Perception ou de résistance contre un danger soudain, il peut transformer un échec critique en échec ordinaire.</p>\n<p>Le talent ne fonctionne pas contre un danger totalement imperceptible et ne permet pas d&#39;agir avant le début d&#39;une scène.</p>",
+    "traits": ["Beastkin", "Instinct", "Réaction"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.97 Talents Beastkins universels de niveau 1",
+      "family": "Instinct et vigilance",
+      "ancestry": "### 5.96 Catalogue Beastkin universel",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Instinct et vigilance",
+        "Traits": "Beastkin, Instinct, Réaction",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction"
+      }
+    },
+    "level": 1
+  }
+}

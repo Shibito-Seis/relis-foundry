@@ -1,0 +1,44 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-384",
+  "name": "Tour du renard",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage exploite l&#39;hésitation. Il choisit un effet : se déplacer de 2 mètres, dégainer ou dissimuler un petit objet, ou changer l&#39;apparence d&#39;un détail avec Visage emprunté.</p>\n<p>Le Tour ne fournit aucune attaque, ne rend pas invisible et ne permet pas d&#39;interagir avec un objet hors de portée.</p>",
+    "traits": ["Beastkin", "Renard", "Mobilité", "Réaction", "Ruse"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-374",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Diversion vulpine",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.109 Talents Beastkins Renards de niveau 5",
+      "family": "Ruse et mise en scène",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Diversion vulpine",
+      "choice": "",
+      "frequency": "une fois par scène",
+      "trigger": "une créature échoue à une attaque ou à un test destiné à repérer, suivre ou démasquer le personnage",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ruse et mise en scène",
+        "Traits": "Beastkin, Renard, Mobilité, Réaction, Ruse",
+        "Prérequis": "Diversion vulpine",
+        "Type": "Réaction",
+        "Fréquence": "une fois par scène",
+        "Déclencheur": "une créature échoue à une attaque ou à un test destiné à repérer, suivre ou démasquer le personnage"
+      }
+    },
+    "level": 5
+  }
+}

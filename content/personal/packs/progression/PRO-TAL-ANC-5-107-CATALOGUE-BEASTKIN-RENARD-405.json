@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-405",
+  "name": "Renard de l'entre-monde",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage perçoit les manifestations spirituelles, consciences projetées, résidus de possession et feux-follets dans un rayon de 12 mètres lorsqu&#39;ils ne sont pas entièrement isolés. Il gagne +2 circonstanciel aux tests d&#39;Investigation, de Canalisation ou de Sang-froid destinés à les identifier ou à interagir avec eux.</p>\n<p>Ses attaques naturelles et feux-follets peuvent affecter une manifestation incorporelle normalement insensible au physique, selon sa défense appropriée.</p>\n<p>Une fois par jour, lorsqu&#39;un effet mental ou énergétique devrait l&#39;altérer, le déplacer spirituellement ou le posséder, il peut relancer le test de résistance et conserver le meilleur résultat.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Renard", "Spiritualité", "Transcendance"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.112 Talents Beastkins Renards de niveau 17",
+      "family": "Transcendance renarde",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par jour pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Transcendance renarde",
+        "Traits": "Beastkin, Renard, Spiritualité, Transcendance",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par jour pour la réaction"
+      }
+    },
+    "level": 17
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-329",
+  "name": "Essaim spécialisé",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage attribue à chaque châssis actif une spécialité parmi mobilité, capteurs, manipulation, interface ou protection.</p>\n<p>Chaque châssis gagne +2 circonstanciel à son premier test de la scène correspondant directement à sa spécialité. Deux châssis peuvent choisir la même spécialité, mais leurs bonus ne se cumulent pas sur un même test.</p>\n<p>La spécialité ne fournit aucun équipement et cesse de fonctionner si le module ou système qui la justifie est détruit.</p>\n<p>---</p>",
+    "traits": ["IAA", "Architecture", "Châssis", "Collective"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-85-CATALOGUE-IAA-322",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Coordination parallèle",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.88 Talents IAA de niveau 9",
+      "family": "Collective / Essaim",
+      "ancestry": "### 5.85 Catalogue IAA",
+      "skill": "",
+      "activation": "préparation lors d'un repos long",
+      "prerequisites": "Coordination parallèle",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Collective / Essaim",
+        "Traits": "IAA, Architecture, Châssis, Collective",
+        "Type": "préparation lors d'un repos long",
+        "Prérequis": "Coordination parallèle"
+      }
+    },
+    "level": 9
+  }
+}

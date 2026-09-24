@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-375",
+  "name": "Fausse piste souriante",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage modifie des traces accessibles, laisse des indices anodins ou compose un récit cohérent autour d&#39;un passage récent. Il gagne +2 circonstanciel à un test de Survie ou de Tromperie destiné à faire croire à une direction, un nombre de voyageurs ou une intention erronés.</p>\n<p>Une enquête réussie peut repérer la manipulation. Le talent ne fabrique ni empreinte biologique, ni enregistrement, ni objet absent, et ne peut accuser précisément une personne sans preuve matérielle appropriée.</p>",
+    "traits": ["Beastkin", "Renard", "Exploration", "Ruse"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.108 Talents Beastkins Renards de niveau 1",
+      "family": "Ruse et mise en scène",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Activité de 10 minutes",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Ruse et mise en scène",
+        "Traits": "Beastkin, Renard, Exploration, Ruse",
+        "Type": "Activité de 10 minutes"
+      }
+    },
+    "level": 1
+  }
+}

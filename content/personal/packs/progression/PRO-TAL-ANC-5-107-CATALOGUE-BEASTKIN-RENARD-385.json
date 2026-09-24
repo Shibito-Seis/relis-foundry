@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-385",
+  "name": "Masque sans queue",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage prépare une apparence humanoïde fixe de taille et de corpulence proches des siennes. Il peut adopter ce masque ou revenir à sa forme naturelle. Le masque dissimule pelage, museau, oreilles, griffes et queues.</p>\n<p>Il gagne +2 circonstanciel aux tests de Tromperie pour maintenir cette identité. Ses armes naturelles et talents exigeant un organe renard visible sont inutilisables tant que cet organe reste masqué.</p>\n<p>Le masque ne donne aucune Ascendance imitée, ne change ni voix administrative, ni signature biologique profonde, ni équipement. Une inspection appropriée peut le percer.</p>",
+    "traits": ["Beastkin", "Renard", "Métamorphose"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-376",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Visage emprunté",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.109 Talents Beastkins Renards de niveau 5",
+      "family": "Masques et métamorphoses",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Activité de 1 minute",
+      "prerequisites": "Visage emprunté",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masques et métamorphoses",
+        "Traits": "Beastkin, Renard, Métamorphose",
+        "Prérequis": "Visage emprunté",
+        "Type": "Activité de 1 minute"
+      }
+    },
+    "level": 5
+  }
+}

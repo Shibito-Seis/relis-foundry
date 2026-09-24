@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-354",
+  "name": "Peuple aux mille formes",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage maîtrise la langue ou les codes sociaux choisis. Il gagne +2 circonstanciel aux tests de Culture ou de Diplomatie portant sur les communautés, coutumes, migrations, institutions ou droits des Beastkins.</p>\n<p>Il reconnaît les grands sous-types et peut éviter les maladresses élémentaires liées à une morphologie différente de la sienne.</p>\n<p>Le talent ne donne pas automatiquement accès à une communauté fermée, ne révèle aucun secret culturel et ne garantit pas que tous les Beastkins partagent les mêmes traditions.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Culture", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.97 Talents Beastkins universels de niveau 1",
+      "family": "Peuple Beastkin",
+      "ancestry": "### 5.96 Catalogue Beastkin universel",
+      "skill": "",
+      "activation": "Passif",
+      "prerequisites": "",
+      "choice": "une langue ou communauté Beastkin de référence",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Peuple Beastkin",
+        "Traits": "Beastkin, Culture, Social",
+        "Type": "Passif",
+        "Choix": "une langue ou communauté Beastkin de référence"
+      }
+    },
+    "level": 1
+  }
+}

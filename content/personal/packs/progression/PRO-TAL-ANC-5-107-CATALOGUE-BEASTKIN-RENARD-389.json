@@ -1,0 +1,32 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-389",
+  "name": "Suggestion oblique",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Avant un test de Diplomatie ou de Tromperie destiné à formuler une demande plausible, le personnage gagne +2 circonstanciel au test.</p>\n<p>Si la cible refuse malgré une réussite ordinaire, elle doit, lorsque cela est raisonnable, indiquer une condition acceptable, une alternative moins risquée ou la raison principale de son refus.</p>\n<p>Le talent n&#39;est pas une compulsion. Il ne rend pas acceptable une demande suicidaire, profondément contraire aux valeurs de la cible ou manifestement frauduleuse.</p>",
+    "traits": ["Beastkin", "Renard", "Social"],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.109 Talents Beastkins Renards de niveau 5",
+      "family": "Parole et influence",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Activation libre",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par cible et par scène",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Parole et influence",
+        "Traits": "Beastkin, Renard, Social",
+        "Type": "Activation libre",
+        "Fréquence": "une fois par cible et par scène"
+      }
+    },
+    "level": 5
+  }
+}

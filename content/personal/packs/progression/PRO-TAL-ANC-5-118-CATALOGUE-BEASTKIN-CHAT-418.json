@@ -1,0 +1,31 @@
+{
+  "relisId": "PRO-TAL-ANC-5-118-CATALOGUE-BEASTKIN-CHAT-418",
+  "name": "Ronronnement apaisant",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Une créature consentante qui entend ou ressent le ronronnement gagne +2 circonstanciel à son prochain test de Sang-froid ou de Volonté contre peur, panique ou Stress avant la fin de la scène suivante. Le talent ne soigne pas un Traumatisme et ne fonctionne pas dans une situation où la cible considère le personnage comme une menace.</p>",
+    "traits": [""],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.119 Talents Beastkins Chats de niveau 1",
+      "family": "Présence féline et liens",
+      "ancestry": "### 5.118 Catalogue Beastkin Chat",
+      "skill": "",
+      "activation": "activité d'une minute",
+      "prerequisites": "",
+      "choice": "",
+      "frequency": "une fois par cible et par jour",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Présence féline et liens",
+        "Type": "activité d'une minute",
+        "Fréquence": "une fois par cible et par jour"
+      }
+    },
+    "level": 1
+  }
+}

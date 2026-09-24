@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-403",
+  "name": "Maître des métamorphoses",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage peut adopter ou quitter toute forme Renard qu&#39;il connaît par une activation libre, au maximum une fois par tour. Lorsqu&#39;il se transforme, il peut conserver un seul détail fonctionnel de sa forme précédente : parole claire, mains manipulatrices, arme naturelle ou queue visible.</p>\n<p>Conserver ce détail impose -2 circonstanciel aux tests destinés à faire passer la forme pour naturelle. Il ne permet jamais de cumuler les bénéfices de deux tailles ou deux morphologies incompatibles.</p>\n<p>Une fois par scène, lorsqu&#39;une créature réussit à percer l&#39;un de ses masques, le personnage peut utiliser sa réaction pour l&#39;obliger à relancer son test et conserver le second résultat.</p>",
+    "traits": ["Beastkin", "Renard", "Métamorphose"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-377",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Forme du petit renard",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-107-CATALOGUE-BEASTKIN-RENARD-393",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Galerie d'identités",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.112 Talents Beastkins Renards de niveau 17",
+      "family": "Masques et métamorphoses",
+      "ancestry": "### 5.107 Catalogue Beastkin Renard",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Galerie d'identités ou Forme du petit renard",
+      "choice": "",
+      "frequency": "une fois par scène pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Masques et métamorphoses",
+        "Traits": "Beastkin, Renard, Métamorphose",
+        "Prérequis": "Galerie d'identités ou Forme du petit renard",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par scène pour la réaction"
+      }
+    },
+    "level": 17
+  }
+}

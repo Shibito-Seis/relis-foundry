@@ -1,0 +1,42 @@
+{
+  "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-358",
+  "name": "Chute contrôlée",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Lorsqu&#39;il tombe et peut bouger librement, le personnage amortit la chute avec sa posture, ses appendices ou son instinct. Il réduit les dégâts subis d&#39;un montant égal à son Niveau général.</p>\n<p>S&#39;il ne subit finalement aucun dégât, il peut atterrir debout dans un espace où sa morphologie peut se poser correctement.</p>\n<p>Le talent ne fonctionne pas si le personnage est inconscient, entièrement immobilisé ou écrasé contre une surface avant de pouvoir se réorienter. Les sous-types spécialisés dans la chute pourront améliorer cet effet.</p>",
+    "traits": ["Beastkin", "Acrobaties", "Mobilité"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-351",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Équilibre animal",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.98 Talents Beastkins universels de niveau 5",
+      "family": "Mobilité et adaptation",
+      "ancestry": "### 5.96 Catalogue Beastkin universel",
+      "skill": "",
+      "activation": "Réaction",
+      "prerequisites": "Équilibre animal",
+      "choice": "",
+      "frequency": "",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Mobilité et adaptation",
+        "Traits": "Beastkin, Acrobaties, Mobilité",
+        "Type": "Réaction",
+        "Prérequis": "Équilibre animal"
+      }
+    },
+    "level": 5
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-373",
+  "name": "Âme indomptable",
+  "type": "talent",
+  "tags": ["progression", "talent", "ascendance"],
+  "system": {
+    "description": "<p>Le personnage conserve toujours le droit d&#39;effectuer un test contre un effet qui voudrait effacer son identité, supprimer définitivement sa volonté ou transformer irréversiblement sa nature Beastkin. Un tel effet ne peut jamais réussir automatiquement tant qu&#39;il subsiste comme personne consciente.</p>\n<p>Une fois par session, lorsqu&#39;il devrait mourir sans destruction complète du corps, perdre durablement le contrôle de lui-même ou subir une transformation permanente imposée, il invoque son instinct le plus profond :</p>\n<p>• contre la mort, il reste à 1 PV, tombe à terre et gagne 2 Fatigue et 2 Stress ;</p>\n<p>• contre le contrôle, l&#39;effet prend fin sur lui après l&#39;action en cours et il gagne 2 Stress ;</p>\n<p>• contre la transformation, il suspend ses effets permanents jusqu&#39;à la fin de la scène et obtient immédiatement un nouveau test avec +3 circonstanciel.</p>\n<p>Le talent ne protège pas d&#39;une annihilation corporelle, ne ressuscite pas un personnage déjà mort, ne rend pas toute transformation réversible et ne permet pas de choisir plusieurs effets lors du même déclenchement.</p>\n<p>---</p>",
+    "traits": ["Beastkin", "Identité", "Instinct", "Mythique", "Réaction"],
+    "requirementRefs": [
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-371",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Instinct absolu",
+        "missingPolicy": "diagnose"
+      },
+      {
+        "relisId": "PRO-TAL-ANC-5-96-CATALOGUE-BEASTKIN-UNIVERSEL-372",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "talent",
+        "state": "resolved",
+        "labelSnapshot": "Avatar du vivant",
+        "missingPolicy": "diagnose"
+      }
+    ],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "talent-ascendance",
+      "sourceSection": "### 5.104 Talent Beastkin universel de niveau 29",
+      "family": "Héritage primordial",
+      "ancestry": "### 5.96 Catalogue Beastkin universel",
+      "skill": "",
+      "activation": "Passif et Réaction",
+      "prerequisites": "Instinct absolu et Avatar du vivant",
+      "choice": "",
+      "frequency": "une fois par session pour la réaction",
+      "trigger": "",
+      "duration": "",
+      "metadata": {
+        "Famille": "Héritage primordial",
+        "Traits": "Beastkin, Identité, Instinct, Mythique, Réaction",
+        "Type": "Passif et Réaction",
+        "Fréquence": "une fois par session pour la réaction",
+        "Prérequis": "Instinct absolu et Avatar du vivant"
+      }
+    },
+    "level": 29
+  }
+}
