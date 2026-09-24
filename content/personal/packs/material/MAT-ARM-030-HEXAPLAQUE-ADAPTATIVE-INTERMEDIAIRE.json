@@ -1,0 +1,120 @@
+{
+  "relisId": "MAT-ARM-030-HEXAPLAQUE-ADAPTATIVE-INTERMEDIAIRE",
+  "name": "Hexaplaque adaptative intermédiaire",
+  "type": "armor",
+  "tags": ["materiel", "armure", "intermediate"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>10</dd></div>\n<div><dt>Armure intermédiaire</dt><dd>Hexaplaque adaptative intermédiaire</dd></div>\n<div><dt>Niv.</dt><dd>5</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>CAP/CAE</dt><dd>+3/+3</dd></div>\n<div><dt>Sol. P/E</dt><dd>5/5</dd></div>\n<div><dt>PV/SB</dt><dd>42/21</dd></div>\n<div><dt>Couverture</dt><dd>C</dd></div>\n<div><dt>Force</dt><dd>2</dd></div>\n<div><dt>Vit.</dt><dd>-1</dd></div>\n<div><dt>Signature</dt><dd>Techno-magique détectable</dd></div>\n<div><dt>Empl.</dt><dd>6</dd></div>\n<div><dt>Enc.</dt><dd>6</dd></div>\n<div><dt>Prix</dt><dd>8 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.130 Lot 5-L3 — Armures intermédiaires",
+      "columns": {
+        "#": "10",
+        "Armure intermédiaire": "Hexaplaque adaptative intermédiaire",
+        "Niv.": "5",
+        "Accès": "Spécialisée",
+        "CAP/CAE": "+3/+3",
+        "Sol. P/E": "5/5",
+        "PV/SB": "42/21",
+        "Couverture": "C",
+        "Force": "2",
+        "Vit.": "-1",
+        "Signature": "Techno-magique détectable",
+        "Empl.": "6",
+        "Enc.": "6",
+        "Prix": "8 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 6,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 5,
+    "referencePrice": {
+      "amount": 8000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "intermediate",
+      "access": "specialized",
+      "capBonus": 3,
+      "caeBonus": 3,
+      "solidityPhysical": 5,
+      "solidityEnergy": 5,
+      "coverage": ["C"],
+      "constraintSummary": "# : 10 ; Armure intermédiaire : Hexaplaque adaptative intermédiaire ; Niv. : 5 ; Accès : Spécialisée ; CAP/CAE : +3/+3 ; Sol. P/E : 5/5 ; PV/SB : 42/21 ; Couverture : C ; Force : 2 ; Vit. : -1 ; Signature : Techno-magique détectable ; Empl. : 6 ; Enc. : 6 ; Prix : 8 000"
+    },
+    "supplyProfile": {}
+  }
+}

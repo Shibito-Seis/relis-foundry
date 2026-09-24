@@ -1,0 +1,118 @@
+{
+  "relisId": "MAT-ARM-003-TISSU-ANTI-LASER",
+  "name": "Tissu anti-laser",
+  "type": "armor",
+  "tags": ["materiel", "armure", "underlayer"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>3</dd></div>\n<div><dt>Sous-couche</dt><dd>Tissu anti-laser</dd></div>\n<div><dt>Niv.</dt><dd>1</dd></div>\n<div><dt>Accès</dt><dd>Courante</dd></div>\n<div><dt>CAP/CAE</dt><dd>+0/+1</dd></div>\n<div><dt>Sol. P/E</dt><dd>0/2</dd></div>\n<div><dt>PV/SB</dt><dd>8/4</dd></div>\n<div><dt>Couverture</dt><dd>C</dd></div>\n<div><dt>Fonction principale</dt><dd>Photonique et Thermique lumineux</dd></div>\n<div><dt>Empl.</dt><dd>1</dd></div>\n<div><dt>Équip.</dt><dd>3 Actions</dd></div>\n<div><dt>Prix</dt><dd>400</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.125 Lot 5-L1 — Sous-couches",
+      "columns": {
+        "#": "3",
+        "Sous-couche": "Tissu anti-laser",
+        "Niv.": "1",
+        "Accès": "Courante",
+        "CAP/CAE": "+0/+1",
+        "Sol. P/E": "0/2",
+        "PV/SB": "8/4",
+        "Couverture": "C",
+        "Fonction principale": "Photonique et Thermique lumineux",
+        "Empl.": "1",
+        "Équip.": "3 Actions",
+        "Prix": "400"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "underlayer",
+        "slotsConfigured": true,
+        "bodySlots": ["underlayer"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "referencePrice": {
+      "amount": 400,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "underlayer",
+      "access": "common",
+      "capBonus": 0,
+      "caeBonus": 1,
+      "solidityPhysical": 0,
+      "solidityEnergy": 2,
+      "coverage": ["C"],
+      "constraintSummary": "# : 3 ; Sous-couche : Tissu anti-laser ; Niv. : 1 ; Accès : Courante ; CAP/CAE : +0/+1 ; Sol. P/E : 0/2 ; PV/SB : 8/4 ; Couverture : C ; Fonction principale : Photonique et Thermique lumineux ; Empl. : 1 ; Équip. : 3 Actions ; Prix : 400"
+    },
+    "supplyProfile": {}
+  }
+}

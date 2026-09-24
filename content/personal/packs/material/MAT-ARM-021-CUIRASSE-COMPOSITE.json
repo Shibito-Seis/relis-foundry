@@ -1,0 +1,120 @@
+{
+  "relisId": "MAT-ARM-021-CUIRASSE-COMPOSITE",
+  "name": "Cuirasse composite",
+  "type": "armor",
+  "tags": ["materiel", "armure", "intermediate"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>1</dd></div>\n<div><dt>Armure intermédiaire</dt><dd>Cuirasse composite</dd></div>\n<div><dt>Niv.</dt><dd>2</dd></div>\n<div><dt>Accès</dt><dd>Martiale</dd></div>\n<div><dt>CAP/CAE</dt><dd>+3/+1</dd></div>\n<div><dt>Sol. P/E</dt><dd>4/2</dd></div>\n<div><dt>PV/SB</dt><dd>30/15</dd></div>\n<div><dt>Couverture</dt><dd>T+B</dd></div>\n<div><dt>Force</dt><dd>1</dd></div>\n<div><dt>Vit.</dt><dd>0</dd></div>\n<div><dt>Signature</dt><dd>Visible</dd></div>\n<div><dt>Empl.</dt><dd>3</dd></div>\n<div><dt>Enc.</dt><dd>3</dd></div>\n<div><dt>Prix</dt><dd>2 800</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.130 Lot 5-L3 — Armures intermédiaires",
+      "columns": {
+        "#": "1",
+        "Armure intermédiaire": "Cuirasse composite",
+        "Niv.": "2",
+        "Accès": "Martiale",
+        "CAP/CAE": "+3/+1",
+        "Sol. P/E": "4/2",
+        "PV/SB": "30/15",
+        "Couverture": "T+B",
+        "Force": "1",
+        "Vit.": "0",
+        "Signature": "Visible",
+        "Empl.": "3",
+        "Enc.": "3",
+        "Prix": "2 800"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 3,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 2800,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "intermediate",
+      "access": "martial",
+      "capBonus": 3,
+      "caeBonus": 1,
+      "solidityPhysical": 4,
+      "solidityEnergy": 2,
+      "coverage": ["T", "B"],
+      "constraintSummary": "# : 1 ; Armure intermédiaire : Cuirasse composite ; Niv. : 2 ; Accès : Martiale ; CAP/CAE : +3/+1 ; Sol. P/E : 4/2 ; PV/SB : 30/15 ; Couverture : T+B ; Force : 1 ; Vit. : 0 ; Signature : Visible ; Empl. : 3 ; Enc. : 3 ; Prix : 2 800"
+    },
+    "supplyProfile": {}
+  }
+}

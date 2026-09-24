@@ -1,0 +1,107 @@
+{
+  "relisId": "MAT-AMM-SPC-010-CHIMIQUE-OU-TOXIQUE",
+  "name": "Chimique ou toxique",
+  "type": "ammunition",
+  "tags": ["materiel", "munition", "munition-speciale"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>10</dd></div>\n<div><dt>Modèle</dt><dd>Chimique ou toxique</dd></div>\n<div><dt>Niv.</dt><dd>2+</dd></div>\n<div><dt>Effet</dt><dd>transporte l’agent possédé</dd></div>\n<div><dt>Restrictions principales</dt><dd>dard, aiguille ou projectile creux compatible</dd></div>\n<div><dt>Prix</dt><dd>agent + ×2</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ammunition-variant",
+      "sourceSection": "41.181 Modèles de munitions spéciales",
+      "columns": {
+        "#": "10",
+        "Modèle": "Chimique ou toxique",
+        "Niv.": "2+",
+        "Effet": "transporte l’agent possédé",
+        "Restrictions principales": "dard, aiguille ou projectile creux compatible",
+        "Prix": "agent + ×2"
+      },
+      "restrictions": "dard, aiguille ou projectile creux compatible"
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 2,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "ammunitionProfile": {
+      "familyId": "special",
+      "variantId": "chemical",
+      "chamberingId": "",
+      "feedInterfaceIds": [],
+      "effectSummary": "transporte l’agent possédé",
+      "specialTraits": [],
+      "recoverable": false,
+      "loadOrder": 0
+    }
+  }
+}

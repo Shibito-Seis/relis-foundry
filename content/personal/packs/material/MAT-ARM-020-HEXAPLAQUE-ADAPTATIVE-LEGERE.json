@@ -1,0 +1,120 @@
+{
+  "relisId": "MAT-ARM-020-HEXAPLAQUE-ADAPTATIVE-LEGERE",
+  "name": "Hexaplaque adaptative légère",
+  "type": "armor",
+  "tags": ["materiel", "armure", "light"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>10</dd></div>\n<div><dt>Armure légère</dt><dd>Hexaplaque adaptative légère</dd></div>\n<div><dt>Niv.</dt><dd>4</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>CAP/CAE</dt><dd>+2/+2</dd></div>\n<div><dt>Sol. P/E</dt><dd>3/3</dd></div>\n<div><dt>PV/SB</dt><dd>28/14</dd></div>\n<div><dt>Couverture</dt><dd>C</dd></div>\n<div><dt>Force</dt><dd>1</dd></div>\n<div><dt>Bruit/signature</dt><dd>Techno-magique détectable</dd></div>\n<div><dt>Empl.</dt><dd>4</dd></div>\n<div><dt>Enc.</dt><dd>3</dd></div>\n<div><dt>Équip.</dt><dd>1 minute</dd></div>\n<div><dt>Prix</dt><dd>5 500</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.127 Lot 5-L2 — Armures légères",
+      "columns": {
+        "#": "10",
+        "Armure légère": "Hexaplaque adaptative légère",
+        "Niv.": "4",
+        "Accès": "Spécialisée",
+        "CAP/CAE": "+2/+2",
+        "Sol. P/E": "3/3",
+        "PV/SB": "28/14",
+        "Couverture": "C",
+        "Force": "1",
+        "Bruit/signature": "Techno-magique détectable",
+        "Empl.": "4",
+        "Enc.": "3",
+        "Équip.": "1 minute",
+        "Prix": "5 500"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 3,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 5500,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "light",
+      "access": "specialized",
+      "capBonus": 2,
+      "caeBonus": 2,
+      "solidityPhysical": 3,
+      "solidityEnergy": 3,
+      "coverage": ["C"],
+      "constraintSummary": "# : 10 ; Armure légère : Hexaplaque adaptative légère ; Niv. : 4 ; Accès : Spécialisée ; CAP/CAE : +2/+2 ; Sol. P/E : 3/3 ; PV/SB : 28/14 ; Couverture : C ; Force : 1 ; Bruit/signature : Techno-magique détectable ; Empl. : 4 ; Enc. : 3 ; Équip. : 1 minute ; Prix : 5 500"
+    },
+    "supplyProfile": {}
+  }
+}

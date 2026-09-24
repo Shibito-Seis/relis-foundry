@@ -1,0 +1,120 @@
+{
+  "relisId": "MAT-ARM-040-HEXAPLAQUE-LOURDE-RESONANTE",
+  "name": "Hexaplaque lourde résonante",
+  "type": "armor",
+  "tags": ["materiel", "armure", "heavy"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>10</dd></div>\n<div><dt>Armure lourde</dt><dd>Hexaplaque lourde résonante</dd></div>\n<div><dt>Niv.</dt><dd>7</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>CAP/CAE</dt><dd>+4/+4</dd></div>\n<div><dt>Sol. P/E</dt><dd>9/9</dd></div>\n<div><dt>PV/SB</dt><dd>60/30</dd></div>\n<div><dt>Couverture</dt><dd>C</dd></div>\n<div><dt>Force</dt><dd>4</dd></div>\n<div><dt>Vit.</dt><dd>-2</dd></div>\n<div><dt>Signature</dt><dd>Techno-magique majeure</dd></div>\n<div><dt>Empl.</dt><dd>8</dd></div>\n<div><dt>Enc.</dt><dd>12</dd></div>\n<div><dt>Prix</dt><dd>20 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "armor",
+      "sourceSection": "41.132 Lot 5-L4 — Armures lourdes",
+      "columns": {
+        "#": "10",
+        "Armure lourde": "Hexaplaque lourde résonante",
+        "Niv.": "7",
+        "Accès": "Spécialisée",
+        "CAP/CAE": "+4/+4",
+        "Sol. P/E": "9/9",
+        "PV/SB": "60/30",
+        "Couverture": "C",
+        "Force": "4",
+        "Vit.": "-2",
+        "Signature": "Techno-magique majeure",
+        "Empl.": "8",
+        "Enc.": "12",
+        "Prix": "20 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 12,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "wearable",
+        "wearForm": "mainArmor",
+        "slotsConfigured": true,
+        "bodySlots": ["mainArmor"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 7,
+    "referencePrice": {
+      "amount": 20000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "protectionProfile": {
+      "kind": "heavy",
+      "access": "specialized",
+      "capBonus": 4,
+      "caeBonus": 4,
+      "solidityPhysical": 9,
+      "solidityEnergy": 9,
+      "coverage": ["C"],
+      "constraintSummary": "# : 10 ; Armure lourde : Hexaplaque lourde résonante ; Niv. : 7 ; Accès : Spécialisée ; CAP/CAE : +4/+4 ; Sol. P/E : 9/9 ; PV/SB : 60/30 ; Couverture : C ; Force : 4 ; Vit. : -2 ; Signature : Techno-magique majeure ; Empl. : 8 ; Enc. : 12 ; Prix : 20 000"
+    },
+    "supplyProfile": {}
+  }
+}
