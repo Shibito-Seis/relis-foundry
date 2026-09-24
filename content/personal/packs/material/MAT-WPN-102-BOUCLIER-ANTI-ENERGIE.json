@@ -1,0 +1,157 @@
+{
+  "relisId": "MAT-WPN-102-BOUCLIER-ANTI-ENERGIE",
+  "name": "Bouclier anti-énergie",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "bouclier"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>6</dd></div>\n<div><dt>Bouclier</dt><dd>Bouclier anti-énergie</dd></div>\n<div><dt>Niv.</dt><dd>3</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Mains</dt><dd>1</dd></div>\n<div><dt>CAP/CAE</dt><dd>+1/+2</dd></div>\n<div><dt>Sol. P/E</dt><dd>3/8</dd></div>\n<div><dt>PV/SB</dt><dd>36/18</dd></div>\n<div><dt>Couverture</dt><dd>Large</dd></div>\n<div><dt>Batterie</dt><dd>—</dd></div>\n<div><dt>Empl.</dt><dd>4</dd></div>\n<div><dt>Enc.</dt><dd>4</dd></div>\n<div><dt>Prix</dt><dd>3 800</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "shield",
+      "sourceSection": "41.150 Lot 5-L10 — Boucliers portés — 14 profils",
+      "columns": {
+        "#": "6",
+        "Bouclier": "Bouclier anti-énergie",
+        "Niv.": "3",
+        "Accès": "Spécialisée",
+        "Mains": "1",
+        "CAP/CAE": "+1/+2",
+        "Sol. P/E": "3/8",
+        "PV/SB": "36/18",
+        "Couverture": "Large",
+        "Batterie": "—",
+        "Empl.": "4",
+        "Enc.": "4",
+        "Prix": "3 800"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": 4,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "wearForm": "shield",
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": ["shield"],
+        "shieldHands": 1
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 3800,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "martialTechnoBlade",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "melee",
+      "defenseTarget": "profile",
+      "handsMode": "one",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": null,
+      "damageDice": null,
+      "damageDie": "",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "",
+      "damageTypes": [],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "contact",
+      "range": "Contact",
+      "rangeOptimal": null,
+      "rangeMaximum": null,
+      "recoil": null,
+      "feedKind": "none",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "loud",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "energyConsumption": {
+        "single": null
+      }
+    },
+    "protectionProfile": {
+      "kind": "shield",
+      "access": "specialized",
+      "constraintSummary": "# : 6 ; Bouclier : Bouclier anti-énergie ; Niv. : 3 ; Accès : Spécialisée ; Mains : 1 ; CAP/CAE : +1/+2 ; Sol. P/E : 3/8 ; PV/SB : 36/18 ; Couverture : Large ; Batterie : — ; Empl. : 4 ; Enc. : 4 ; Prix : 3 800"
+    }
+  }
+}

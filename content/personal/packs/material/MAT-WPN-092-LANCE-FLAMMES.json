@@ -1,0 +1,152 @@
+{
+  "relisId": "MAT-WPN-092-LANCE-FLAMMES",
+  "name": "Lance-flammes",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "heavyLauncher"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>8</dd></div>\n<div><dt>Arme</dt><dd>Lance-flammes</dd></div>\n<div><dt>Niv.</dt><dd>4</dd></div>\n<div><dt>Accès</dt><dd>Lourde</dd></div>\n<div><dt>Dégâts / Déf.</dt><dd>1d8 Thermique / CAP</dd></div>\n<div><dt>Préc.</dt><dd>0</dd></div>\n<div><dt>Portée ou zone</dt><dd>cône 8</dd></div>\n<div><dt>Capacité / Recharge</dt><dd>Réservoir 8 projections ; Recharge 3</dd></div>\n<div><dt>Recul</dt><dd>0</dd></div>\n<div><dt>Traits</dt><dd>Dispersion, Énergétique, Incendiaire, Lourde 2</dd></div>\n<div><dt>Signature</dt><dd>Détonante, thermique, très visible</dd></div>\n<div><dt>Fiab.</dt><dd>3</dd></div>\n<div><dt>Struct.</dt><dd>H</dd></div>\n<div><dt>Empl.</dt><dd>6</dd></div>\n<div><dt>Prix</dt><dd>5 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.113 Lot 5-K7 — Armes lourdes et lanceurs",
+      "columns": {
+        "#": "8",
+        "Arme": "Lance-flammes",
+        "Niv.": "4",
+        "Accès": "Lourde",
+        "Dégâts / Déf.": "1d8 Thermique / CAP",
+        "Préc.": "0",
+        "Portée ou zone": "cône 8",
+        "Capacité / Recharge": "Réservoir 8 projections ; Recharge 3",
+        "Recul": "0",
+        "Traits": "Dispersion, Énergétique, Incendiaire, Lourde 2",
+        "Signature": "Détonante, thermique, très visible",
+        "Fiab.": "3",
+        "Struct.": "H",
+        "Empl.": "6",
+        "Prix": "5 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 5000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "heavyLauncher",
+      "support": "personal",
+      "access": "heavy",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": 0,
+      "damageDice": 1,
+      "damageDie": "d8",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d8 Thermique / CAP",
+      "damageTypes": ["thermal"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "cône 8",
+      "rangeOptimal": 8,
+      "rangeMaximum": 8,
+      "recoil": 0,
+      "feedKind": "chamber",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "detonating",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  }
+}

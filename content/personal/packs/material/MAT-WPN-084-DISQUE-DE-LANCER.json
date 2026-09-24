@@ -1,0 +1,152 @@
+{
+  "relisId": "MAT-WPN-084-DISQUE-DE-LANCER",
+  "name": "Disque de lancer",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "bowCrossbowThrown"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>8</dd></div>\n<div><dt>Arme</dt><dd>Disque de lancer</dd></div>\n<div><dt>Niv.</dt><dd>2</dd></div>\n<div><dt>Accès</dt><dd>Martiale</dd></div>\n<div><dt>Mains</dt><dd>1</dd></div>\n<div><dt>Dégâts / Déf.</dt><dd>1d6 Tranchant / CAP</dd></div>\n<div><dt>Préc.</dt><dd>0</dd></div>\n<div><dt>Portée</dt><dd>8/24</dd></div>\n<div><dt>Capacité / Recharge</dt><dd>—</dd></div>\n<div><dt>Traits</dt><dd>Agile, Finesse, Lancée 8</dd></div>\n<div><dt>Signature</dt><dd>Silencieuse</dd></div>\n<div><dt>Fiab.</dt><dd>4</dd></div>\n<div><dt>Struct.</dt><dd>L</dd></div>\n<div><dt>Empl.</dt><dd>1</dd></div>\n<div><dt>Prix</dt><dd>120</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.110 Lot 5-K6 — Arcs, arbalètes et armes lancées",
+      "columns": {
+        "#": "8",
+        "Arme": "Disque de lancer",
+        "Niv.": "2",
+        "Accès": "Martiale",
+        "Mains": "1",
+        "Dégâts / Déf.": "1d6 Tranchant / CAP",
+        "Préc.": "0",
+        "Portée": "8/24",
+        "Capacité / Recharge": "—",
+        "Traits": "Agile, Finesse, Lancée 8",
+        "Signature": "Silencieuse",
+        "Fiab.": "4",
+        "Struct.": "L",
+        "Empl.": "1",
+        "Prix": "120"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 2,
+    "referencePrice": {
+      "amount": 120,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "bowCrossbowThrown",
+      "support": "personal",
+      "access": "martial",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "one",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": 0,
+      "damageDice": 1,
+      "damageDie": "d6",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d6 Tranchant / CAP",
+      "damageTypes": ["slashing"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "8/24",
+      "rangeOptimal": 8,
+      "rangeMaximum": 24,
+      "recoil": null,
+      "feedKind": "chamber",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "silent",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  }
+}

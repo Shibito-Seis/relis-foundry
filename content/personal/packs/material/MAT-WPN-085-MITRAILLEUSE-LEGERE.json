@@ -1,0 +1,152 @@
+{
+  "relisId": "MAT-WPN-085-MITRAILLEUSE-LEGERE",
+  "name": "Mitrailleuse légère",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "heavyLauncher"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>1</dd></div>\n<div><dt>Arme</dt><dd>Mitrailleuse légère</dd></div>\n<div><dt>Niv.</dt><dd>4</dd></div>\n<div><dt>Accès</dt><dd>Lourde</dd></div>\n<div><dt>Dégâts / Déf.</dt><dd>1d8 Perforant / CAP</dd></div>\n<div><dt>Préc.</dt><dd>-1</dd></div>\n<div><dt>Portée ou zone</dt><dd>26/78</dd></div>\n<div><dt>Capacité / Recharge</dt><dd>Bande 100 ; Recharge 2</dd></div>\n<div><dt>Recul</dt><dd>3</dd></div>\n<div><dt>Traits</dt><dd>Automatique, Balistique, Lourde 2, Rafale, Salve, Suppression</dd></div>\n<div><dt>Signature</dt><dd>Détonante</dd></div>\n<div><dt>Fiab.</dt><dd>3</dd></div>\n<div><dt>Struct.</dt><dd>H</dd></div>\n<div><dt>Empl.</dt><dd>5</dd></div>\n<div><dt>Prix</dt><dd>6 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.113 Lot 5-K7 — Armes lourdes et lanceurs",
+      "columns": {
+        "#": "1",
+        "Arme": "Mitrailleuse légère",
+        "Niv.": "4",
+        "Accès": "Lourde",
+        "Dégâts / Déf.": "1d8 Perforant / CAP",
+        "Préc.": "-1",
+        "Portée ou zone": "26/78",
+        "Capacité / Recharge": "Bande 100 ; Recharge 2",
+        "Recul": "3",
+        "Traits": "Automatique, Balistique, Lourde 2, Rafale, Salve, Suppression",
+        "Signature": "Détonante",
+        "Fiab.": "3",
+        "Struct.": "H",
+        "Empl.": "5",
+        "Prix": "6 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 4,
+    "referencePrice": {
+      "amount": 6000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "heavyLauncher",
+      "support": "personal",
+      "access": "heavy",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": -1,
+      "damageDice": 1,
+      "damageDie": "d8",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d8 Perforant / CAP",
+      "damageTypes": ["piercing"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "26/78",
+      "rangeOptimal": 26,
+      "rangeMaximum": 78,
+      "recoil": 3,
+      "feedKind": "detachable",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "BAL-556",
+      "chamberId": "BAL-556",
+      "pressureClassId": "rifleLight",
+      "pressureClass": "rifleLight",
+      "feedInterfaceId": "belt",
+      "feedInterface": "belt",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": ["volley", "burst", "automatic", "suppression"],
+      "ammunitionFamilyIds": ["ballistic"],
+      "acousticSignature": "detonating",
+      "ammunitionConsumption": {
+        "single": 1
+      },
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  }
+}

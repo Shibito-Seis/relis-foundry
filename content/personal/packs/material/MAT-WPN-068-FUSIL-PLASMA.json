@@ -1,0 +1,169 @@
+{
+  "relisId": "MAT-WPN-068-FUSIL-PLASMA",
+  "name": "Fusil plasma",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "energyLongGun"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>6</dd></div>\n<div><dt>Arme</dt><dd>Fusil plasma</dd></div>\n<div><dt>Niv.</dt><dd>6</dd></div>\n<div><dt>Accès</dt><dd>Lourde</dd></div>\n<div><dt>Dégâts / Déf.</dt><dd>1d10 Plasma / CAE</dd></div>\n<div><dt>Préc.</dt><dd>-1</dd></div>\n<div><dt>Portée</dt><dd>20/60</dd></div>\n<div><dt>Batterie / Consommation</dt><dd>48 CE ; 4 CE/tir</dd></div>\n<div><dt>Recul</dt><dd>0</dd></div>\n<div><dt>Traits</dt><dd>Brutale 2, Énergétique, Pénétration 2</dd></div>\n<div><dt>Signature</dt><dd>Détonante, thermique, visible</dd></div>\n<div><dt>Fiab.</dt><dd>2</dd></div>\n<div><dt>Struct.</dt><dd>H</dd></div>\n<div><dt>Empl.</dt><dd>4</dd></div>\n<div><dt>Prix</dt><dd>7 000</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.108 Lot 5-K5 — Armes longues énergétiques",
+      "columns": {
+        "#": "6",
+        "Arme": "Fusil plasma",
+        "Niv.": "6",
+        "Accès": "Lourde",
+        "Dégâts / Déf.": "1d10 Plasma / CAE",
+        "Préc.": "-1",
+        "Portée": "20/60",
+        "Batterie / Consommation": "48 CE ; 4 CE/tir",
+        "Recul": "0",
+        "Traits": "Brutale 2, Énergétique, Pénétration 2",
+        "Signature": "Détonante, thermique, visible",
+        "Fiab.": "2",
+        "Struct.": "H",
+        "Empl.": "4",
+        "Prix": "7 000"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": [],
+        "providedSlots": {
+          "power": 1
+        },
+        "interfaceIds": ["cell"]
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 6,
+    "referencePrice": {
+      "amount": 7000,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "energyLongGun",
+      "support": "personal",
+      "access": "heavy",
+      "attackMode": "ranged",
+      "defenseTarget": "cae",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": -1,
+      "damageDice": 1,
+      "damageDie": "d10",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d10 Plasma / CAE",
+      "damageTypes": ["plasma"],
+      "damageSources": ["energy"],
+      "penetration": 2,
+      "rangeKind": "increments",
+      "range": "20/60",
+      "rangeOptimal": 20,
+      "rangeMaximum": 60,
+      "recoil": 0,
+      "feedKind": "energy",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": 1,
+      "modeIds": [],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "detonating",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "energyConsumption": {
+        "single": 4
+      }
+    },
+    "energyProfile": {
+      "kind": "",
+      "format": "heavy",
+      "formatId": "heavy",
+      "powerClass": "heavy",
+      "powerClassId": "heavy",
+      "technology": "plasma",
+      "technologyId": "plasma",
+      "interfaceId": "cell",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

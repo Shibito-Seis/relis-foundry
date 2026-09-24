@@ -1,0 +1,92 @@
+{
+  "relisId": "MYS-002",
+  "name": "Égide prismatique",
+  "type": "consumable",
+  "tags": ["materiel", "techno-magie"],
+  "system": {
+    "description": "<p>1 — Mana — réduction 1d8 + 1 contre prochaine énergie — 1 A — expire après 10 min</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "techno-magie",
+      "sourceSection": "55.5.2 Potions et élixirs — MYS-001 à MYS-024",
+      "canonicalRow": [
+        "MYS-002",
+        "Égide prismatique",
+        "1",
+        "Mana",
+        "réduction 1d8 + 1 contre prochaine énergie",
+        "1 A",
+        "expire après 10 min"
+      ]
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {},
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 1,
+    "consumableProfile": {
+      "kind": "matrix",
+      "effectSummary": "1 A"
+    },
+    "energyProfile": {
+      "kind": "",
+      "current": null,
+      "maximum": null,
+      "rechargeable": false
+    }
+  }
+}

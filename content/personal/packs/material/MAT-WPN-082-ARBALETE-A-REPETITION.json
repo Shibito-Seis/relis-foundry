@@ -1,0 +1,152 @@
+{
+  "relisId": "MAT-WPN-082-ARBALETE-A-REPETITION",
+  "name": "Arbalète à répétition",
+  "type": "weapon",
+  "tags": ["materiel", "arme", "bowCrossbowThrown"],
+  "system": {
+    "description": "<dl><div><dt>#</dt><dd>6</dd></div>\n<div><dt>Arme</dt><dd>Arbalète à répétition</dd></div>\n<div><dt>Niv.</dt><dd>3</dd></div>\n<div><dt>Accès</dt><dd>Spécialisée</dd></div>\n<div><dt>Mains</dt><dd>2</dd></div>\n<div><dt>Dégâts / Déf.</dt><dd>1d6 Perforant / CAP</dd></div>\n<div><dt>Préc.</dt><dd>0</dd></div>\n<div><dt>Portée</dt><dd>16/48</dd></div>\n<div><dt>Capacité / Recharge</dt><dd>6 carreaux ; Recharge 2</dd></div>\n<div><dt>Traits</dt><dd>Salve</dd></div>\n<div><dt>Signature</dt><dd>Bruyante</dd></div>\n<div><dt>Fiab.</dt><dd>3</dd></div>\n<div><dt>Struct.</dt><dd>H</dd></div>\n<div><dt>Empl.</dt><dd>3</dd></div>\n<div><dt>Prix</dt><dd>1 400</dd></div></dl>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "weapon",
+      "sourceSection": "41.110 Lot 5-K6 — Arcs, arbalètes et armes lancées",
+      "columns": {
+        "#": "6",
+        "Arme": "Arbalète à répétition",
+        "Niv.": "3",
+        "Accès": "Spécialisée",
+        "Mains": "2",
+        "Dégâts / Déf.": "1d6 Perforant / CAP",
+        "Préc.": "0",
+        "Portée": "16/48",
+        "Capacité / Recharge": "6 carreaux ; Recharge 2",
+        "Traits": "Salve",
+        "Signature": "Bruyante",
+        "Fiab.": "3",
+        "Struct.": "H",
+        "Empl.": "3",
+        "Prix": "1 400"
+      }
+    },
+    "physical": {
+      "quantity": 1,
+      "unit": "count",
+      "massEach": null,
+      "volumeEach": null,
+      "bulkEach": null,
+      "containerRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "container",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "locationKey": "",
+      "custodianRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Actor",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "ownershipState": "owned",
+      "accessibility": "stored",
+      "maintenanceRefs": [],
+      "equipState": "stored",
+      "bodyId": "",
+      "hands": 0,
+      "hostRef": {
+        "relisId": "",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "Item",
+        "state": "resolved",
+        "labelSnapshot": "",
+        "missingPolicy": "diagnose"
+      },
+      "equipmentProfile": {
+        "family": "manipulable",
+        "slotsConfigured": true,
+        "bodySlots": []
+      },
+      "condition": "intact",
+      "wear": 0,
+      "charges": {
+        "current": null,
+        "maximum": null,
+        "unit": "charge"
+      },
+      "expiresAt": {
+        "worldTime": null,
+        "calendarId": "",
+        "displayOverride": "",
+        "precision": "exact"
+      },
+      "identified": true
+    },
+    "level": 3,
+    "referencePrice": {
+      "amount": 1400,
+      "currencyRef": {
+        "relisId": "MAT-RES-CREDIT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "resource",
+        "state": "resolved",
+        "labelSnapshot": "Crédit",
+        "missingPolicy": "diagnose"
+      },
+      "unit": "count",
+      "quantityBasis": 1,
+      "sourceRefs": []
+    },
+    "weaponProfile": {
+      "familyId": "bowCrossbowThrown",
+      "support": "personal",
+      "access": "specialized",
+      "attackMode": "ranged",
+      "defenseTarget": "cap",
+      "handsMode": "two",
+      "skillId": "melee",
+      "attributeId": "dexterity",
+      "accuracy": 0,
+      "damageDice": 1,
+      "damageDie": "d6",
+      "damageBonus": null,
+      "damageAttribute": "none",
+      "damageFormula": "1d6 Perforant / CAP",
+      "damageTypes": ["piercing"],
+      "damageSources": ["ballistic"],
+      "penetration": null,
+      "rangeKind": "increments",
+      "range": "16/48",
+      "rangeOptimal": 16,
+      "rangeMaximum": 48,
+      "recoil": null,
+      "feedKind": "chamber",
+      "hybridPhysicalFeedKind": "",
+      "chamberingId": "",
+      "chamberId": "",
+      "pressureClassId": "",
+      "pressureClass": "",
+      "feedInterfaceId": "",
+      "feedInterface": "",
+      "internalCapacity": null,
+      "batterySlotCount": null,
+      "modeIds": ["volley"],
+      "ammunitionFamilyIds": [],
+      "acousticSignature": "loud",
+      "ammunitionConsumption": {
+        "single": null
+      },
+      "energyConsumption": {
+        "single": null
+      }
+    }
+  }
+}
