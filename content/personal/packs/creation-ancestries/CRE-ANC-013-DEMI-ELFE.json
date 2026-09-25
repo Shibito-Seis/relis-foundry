@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Demi-Elfe</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Dextérité, Présence, Maîtrise Magique, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p>Héritage elfique et souplesse humaine. Le bonus libre peut compenser la Vigueur.</p>",
+    "description": "<p><strong>Demi-Elfe</strong>.</p><p>Hybrides humains/elfes.</p>\n<h3>Traits de lore</h3>\n<ul><li>oreilles moins longues que les Elfes ;</li><li>corps plus svelte que les humains ;</li><li>héritage double.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>souplesse sociale ;</li><li>affinité magique modérée ;</li><li>talents hybrides ;</li><li>adaptation culturelle.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Dextérité, Présence, Maîtrise Magique, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p><strong>Logique :</strong> Héritage elfique et souplesse humaine. Le bonus libre peut compenser la Vigueur.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

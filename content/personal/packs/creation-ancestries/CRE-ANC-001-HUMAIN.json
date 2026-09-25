@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Humain</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 libre, +1 libre, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> Aucun</p>\n<p>Polyvalence totale, adaptation humaine, pas de spécialisation biologique forte. Les trois bonus doivent aller dans trois Attributs différents.</p>",
+    "description": "<p><strong>Humain</strong>.</p><p>Race terrienne la plus ancienne et la plus répandue historiquement.</p>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>polyvalence ;</li><li>talents supplémentaires ;</li><li>forte adaptabilité ;</li><li>profils sociaux et professionnels variés.</li></ul>\n<h3>Tensions narratives</h3>\n<ul><li>anciens dominants de la Terre ;</li><li>responsables partiels des expériences Esmans ;</li><li>peuple le plus représenté dans les institutions passées.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 libre, +1 libre, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> Aucun</p>\n<p><strong>Logique :</strong> Polyvalence totale, adaptation humaine, pas de spécialisation biologique forte. Les trois bonus doivent aller dans trois Attributs différents.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

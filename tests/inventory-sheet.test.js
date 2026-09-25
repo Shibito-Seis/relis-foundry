@@ -57,6 +57,7 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
       ["merge-inventory-stack", "if canMerge"],
       ["move-inventory-item", "if canMove"],
       ["transfer-inventory-item", "if canTransfer"],
+      ["delete-inventory-item", "if @root.editable"],
     ]) {
       const position = template.indexOf(`data-action="${action}"`);
       expect(position).toBeGreaterThan(0);
@@ -69,6 +70,13 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
       ).toBe(true);
     }
     expect(sheet).toContain("editable: this.actor.isOwner");
+    expect(template).toMatch(
+      /data-action="transfer-inventory-item"[\s\S]*?Échanger<\/button>/,
+    );
+    expect(template).toMatch(
+      /class="relis-inventory-delete"[\s\S]*?Supprimer<\/button>/,
+    );
+    expect(sheet).toContain("deleteInventoryItem(this.actor, itemId)");
   });
   it("affiche la version dynamique sans migration", () => {
     expect(PACKAGE_VERSION).toBe(

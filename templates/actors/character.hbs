@@ -1304,12 +1304,12 @@
                       {{#if pending}}
                         <span
                           class="relis-state-chip relis-state-chip--warning"
-                        >Transfert en récupération</span>
+                        >Échange en récupération</span>
                       {{else}}
                         {{#if quarantined}}
                           <span
                             class="relis-state-chip relis-state-chip--danger"
-                          >Transfert en quarantaine</span>
+                          >Échange en quarantaine</span>
                         {{else}}
                           {{#if @root.editable}}
                             {{#if canLoadAmmunition}}<button
@@ -1405,12 +1405,24 @@
                                 data-action="transfer-inventory-item"
                                 data-item-id="{{id}}"
                                 data-owner-control
-                                title="Transférer vers un autre Actor"
+                                title="Échanger avec un autre Actor"
                               ><i
                                   class="fa-solid fa-arrow-right-arrow-left"
                                   aria-hidden="true"
                                 ></i>
-                                Transférer</button>{{/if}}
+                                Échanger</button>{{/if}}
+                            <button
+                              type="button"
+                              class="relis-inventory-delete"
+                              data-action="delete-inventory-item"
+                              data-item-id="{{id}}"
+                              data-owner-control
+                              title="Supprimer définitivement cet Item"
+                            ><i
+                                class="fa-solid fa-trash-can"
+                                aria-hidden="true"
+                              ></i>
+                              Supprimer</button>
                           {{/if}}
                         {{/if}}
                       {{/if}}

@@ -24,7 +24,7 @@ npm run content:build
 npm run content:check
 ```
 
-`content:generate` produit les JSON Foundry déterministes dans `build/content-source`. `content:build` utilise l’outil officiel Foundry pour compiler 23 compendiums dans `build/content-packs`. En 10-K2-P v0.8.1, ils contiennent 2 404 Items : 199 de Création, 1 444 de Progression et 761 de Matériel. Les six entrées supplémentaires sont les standards techniques de flèches et carreaux requis par les armes canoniques. Les dossiers sources et les dossiers internes Foundry sont générés depuis la même classification stable.
+`content:generate` produit les JSON Foundry déterministes dans `build/content-source`. `content:build` utilise l’outil officiel Foundry pour compiler 23 compendiums dans `build/content-packs`. En 10-K2-P v0.8.2, ils contiennent 2 404 Items : 199 de Création, 1 444 de Progression et 761 de Matériel. Les six entrées supplémentaires sont les standards techniques de flèches et carreaux requis par les armes canoniques. Les 20 Ascendances et les 12 Voies portent une description développée issue de la Bible ; les propositions concernant les 84 Spécialisations restent dans un rapport séparé jusqu’à validation. Les dossiers sources et les dossiers internes Foundry sont générés depuis la même classification stable.
 
 ## Aliases et questionnaire
 

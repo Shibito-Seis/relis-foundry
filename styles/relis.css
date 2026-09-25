@@ -724,6 +724,19 @@
   font-size: 0.68rem;
 }
 
+.relis-inventory-actions .relis-inventory-delete {
+  color: var(--relis-red);
+  border-color: color-mix(in srgb, var(--relis-red) 72%, transparent);
+  background: color-mix(in srgb, var(--relis-red) 12%, transparent);
+}
+
+.relis-inventory-actions .relis-inventory-delete:hover,
+.relis-inventory-actions .relis-inventory-delete:focus-visible {
+  color: #fff;
+  border-color: var(--relis-red);
+  background: color-mix(in srgb, var(--relis-red) 72%, #241018);
+}
+
 .relis-inventory-secondary {
   margin-top: 0.75rem;
 }

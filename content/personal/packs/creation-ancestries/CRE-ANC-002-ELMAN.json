@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Elman</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Maîtrise Magique, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p>Humain évolué : agile, sensible aux énergies, bon contrôle interne, mais moins fort physiquement.</p>",
+    "description": "<p><strong>Elman</strong>.</p><p>Humains ayant évolué ou muté naturellement.</p>\n<h3>Traits de lore</h3>\n<ul><li>proches des Elfes physiquement ;</li><li>oreilles longues plutôt horizontales ;</li><li>grande dextérité ;</li><li>affinité avec les énergies ambiantes et internes ;</li><li>force physique généralement inférieure aux humains.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>agilité ;</li><li>perception énergétique ;</li><li>canalisation ;</li><li>mobilité ;</li><li>magie interne ou techno-magie légère.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Maîtrise Magique, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p><strong>Logique :</strong> Humain évolué : agile, sensible aux énergies, bon contrôle interne, mais moins fort physiquement.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

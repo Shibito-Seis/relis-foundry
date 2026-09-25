@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Beastkin Loup</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Vigueur, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Présence</p>\n<p>Endurant, mobile, instinctif, mental solide, mais plus rude socialement.</p>",
+    "description": "<p>Les Beastkins sont des humanoïdes à traits animaux marqués. Leur lignée peut exprimer des sens améliorés, des armes naturelles ou des capacités liées au mouvement et à l’environnement.</p>\n<p><strong>Identité de la lignée Beastkin Loup :</strong> Endurant, mobile, instinctif, mental solide, mais plus rude socialement.</p>\n<h3>Héritage Beastkin</h3>\n<ul><li>traits physiques forts ;</li><li>sens améliorés ;</li><li>griffes, crocs, queue, odorat, vision nocturne selon lignée ;</li><li>capacités liées au mouvement ou à l’environnement.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Vigueur, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Présence</p>\n<p><strong>Logique :</strong> Endurant, mobile, instinctif, mental solide, mais plus rude socialement.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

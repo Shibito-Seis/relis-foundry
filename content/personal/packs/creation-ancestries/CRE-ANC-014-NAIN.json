@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Nain</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Technologie</p>\n<p><strong>Malus d’Attribut :</strong> -1 Dextérité</p>\n<p>Robuste, puissant, constructeur ou technicien, mais moins agile.</p>",
+    "description": "<p><strong>Nain</strong>.</p><p>Peuple apparu environ 500 ans avant le présent du jeu.</p>\n<h3>Résumé mécanique canonique</h3>\n<h3>Pistes possibles</h3>\n<ul><li>robustesse ;</li><li>ingénierie ;</li><li>résistance environnementale ;</li><li>minage spatial ;</li><li>gravité ;</li><li>construction ;</li><li>tradition artisanale techno-magique.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Technologie</p>\n<p><strong>Malus d’Attribut :</strong> -1 Dextérité</p>\n<p><strong>Logique :</strong> Robuste, puissant, constructeur ou technicien, mais moins agile.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

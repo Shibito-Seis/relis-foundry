@@ -87,6 +87,7 @@ function shuffled<T>(values: T[], seedText: string): T[] {
 export function selectAttunementQuestions(
   contract: AttunementContract,
   itemSeed: string,
+  selectionVersion = contract.contentVersion,
 ): AttunementQuestion[] {
   const policy = contract.questionSelection;
   if (!policy) return [...contract.questions];
@@ -96,22 +97,29 @@ export function selectAttunementQuestions(
         contract.questions.filter(
           (question) => question.difficulty === difficulty,
         ),
-        `${contract.contentVersion}:${itemSeed}:${difficulty}`,
+        `${selectionVersion}:${itemSeed}:${difficulty}`,
       ).slice(0, count),
   );
   return shuffled(
     selected,
-    `${contract.contentVersion}:${itemSeed}:presentation`,
+    `${selectionVersion}:${itemSeed}:presentation`,
   ).slice(0, policy.count);
 }
 
 export function attunementSessionContract(
   contract: AttunementContract,
   itemSeed: string,
+  persistedVersion = "",
 ): AttunementContract {
+  const questionnaireVersion = persistedVersion || contract.contentVersion;
   return {
     ...contract,
-    questions: selectAttunementQuestions(contract, itemSeed),
+    contentVersion: questionnaireVersion,
+    questions: selectAttunementQuestions(
+      contract,
+      itemSeed,
+      questionnaireVersion,
+    ),
   };
 }
 

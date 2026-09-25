@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Elfe</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Présence, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p>Beau, agile, magique, mais de constitution plus fragile.</p>",
+    "description": "<p><strong>Elfe</strong>.</p><p>Peuple lié à la Fusion des Mondes et à l’arrivée de la magie.</p>\n<h3>Traits de lore</h3>\n<ul><li>apparus environ 600 ans avant le présent du jeu ;</li><li>liés aux grands arbres issus du cataclysme ;</li><li>civilisation magique ancienne ;</li><li>contributeurs majeurs à la techno-magie.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>magie ;</li><li>mémoire ancienne ;</li><li>perception des flux ;</li><li>traditions techno-magiques ;</li><li>longévité élevée et mémoire culturelle précisées dans le catalogue elfique canonique.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Présence, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p><strong>Logique :</strong> Beau, agile, magique, mais de constitution plus fragile.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

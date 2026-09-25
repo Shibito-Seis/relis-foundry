@@ -62,6 +62,7 @@ import {
 } from "../rules/inventory";
 import {
   createInventoryItem,
+  deleteInventoryItem,
   mergeInventoryStacks,
   moveInventoryItem,
   splitInventoryStack,
@@ -1123,6 +1124,14 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       });
     }
 
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-action='delete-inventory-item']",
+    )) {
+      button.addEventListener("click", () => {
+        void this.deletePhysicalItem(button.dataset.itemId ?? "");
+      });
+    }
+
     root
       .querySelector<HTMLButtonElement>("[data-action='create-demo']")
       ?.addEventListener("click", () => {
@@ -1941,7 +1950,7 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     );
     if (!actors.length) {
       ui.notifications.warn(
-        "Aucun autre Personnage ou PNJ modifiable ne peut recevoir cet Item.",
+        "Aucun autre Personnage ou PNJ modifiable ne peut participer à cet échange.",
       );
       return;
     }
@@ -1956,16 +1965,16 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
     if (item.type !== "container")
       dialogNumber(
         content,
-        "Quantité transférée",
+        "Quantité échangée",
         "quantity",
         maximum,
         maximum,
         String(item.system.physical?.unit ?? "count") === "count",
       );
     const result = await askInventoryForm(
-      `Transférer « ${item.name} »`,
+      `Échanger « ${item.name} »`,
       content,
-      "Transférer",
+      "Échanger",
     );
     if (!result) return;
     const destination = actors.find(
@@ -1979,7 +1988,31 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         itemId,
         item.type === "container" ? maximum : Number(result.quantity),
       );
-    }, `Transfert vers ${destination.name} terminé sans duplication jouable.`);
+    }, `Échange avec ${destination.name} terminé sans duplication jouable.`);
+  }
+
+  private async deletePhysicalItem(itemId: string): Promise<void> {
+    if (!this.actor.isOwner) return;
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const content = dialogContent();
+    dialogNote(
+      content,
+      `« ${item.name} » sera définitivement retiré de l’inventaire. Cette opération ne peut pas être annulée.`,
+    );
+    dialogNote(
+      content,
+      "Par sécurité, RE:LIS refusera la suppression si l’Item contient encore des objets ou des munitions, ou s’il est lié à une installation.",
+    );
+    const result = await askInventoryForm(
+      `Supprimer « ${item.name} »`,
+      content,
+      "Supprimer",
+    );
+    if (!result) return;
+    await this.inventoryTask(async () => {
+      await deleteInventoryItem(this.actor, itemId);
+    }, `« ${item.name} » a été supprimé de l’inventaire.`);
   }
 
   private activateTab(

@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Esman</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Volonté</p>\n<p>Corps chargé de puissance et d’énergie interne, mais contrôle instable.</p>",
+    "description": "<p><strong>Esman</strong>.</p><p>Humains génétiquement modifiés pour manier l’énergie.</p>\n<h3>Traits de lore</h3>\n<ul><li>une ou deux cornes noires cristallines ;</li><li>apparence majoritairement humaine ;</li><li>oreilles parfois légèrement pointues ;</li><li>cornes comme manifestation d’une puissance interne mal contenue ;</li><li>associés par soupçon ou symbole à l’anneau noir et à la Pluie écarlate.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>pouvoirs puissants ;</li><li>surcharge ;</li><li>corruption possible ;</li><li>stigmate social ;</li><li>risques liés à la canalisation ;</li><li>lien potentiel avec la Pluie écarlate.</li></ul>\n<p>---</p>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Volonté</p>\n<p><strong>Logique :</strong> Corps chargé de puissance et d’énergie interne, mais contrôle instable.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

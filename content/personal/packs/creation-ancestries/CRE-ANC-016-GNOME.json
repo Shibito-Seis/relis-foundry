@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Gnome</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Intelligence, +1 Technologie, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p>Inventif, savant, techno-magique, mais faible en puissance physique brute.</p>",
+    "description": "<p><strong>Gnome</strong>.</p><p>Peuple apparu environ 250 ans avant le présent du jeu.</p>\n<h3>Résumé mécanique canonique</h3>\n<h3>Pistes possibles</h3>\n<ul><li>invention ;</li><li>bidouillage ;</li><li>curiosité ;</li><li>techno-magie expérimentale ;</li><li>anomalies ;</li><li>chance ou instabilité contrôlée.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Intelligence, +1 Technologie, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p><strong>Logique :</strong> Inventif, savant, techno-magique, mais faible en puissance physique brute.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

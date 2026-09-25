@@ -1,5 +1,13 @@
 # Journal des versions
 
+## 0.8.2 — descriptions et administration d’inventaire
+
+- Développe les descriptions des 20 Ascendances et des 12 Voies depuis la Bible, avec séparation lisible du contexte, des rôles, des branches et des repères mécaniques.
+- Ajoute la suppression confirmée d’un Item d’inventaire pour le propriétaire autorisé ou le MJ ; les conteneurs non vides, hôtes occupés, chargeurs garnis et munitions chargées doivent d’abord être vidés ou détachés.
+- Renomme l’action entre Actors en « Échanger » dans l’interface et les messages, sans altérer le protocole transactionnel interne validé.
+- Fournit un rapport exhaustif de proposition pour les 84 Spécialisations, sans modifier leurs descriptions de compendium avant validation.
+- Porte le contenu personnel en `1.2.1`, conserve le schéma Item 7 sans migration de monde et protège les non-régressions PJ/PNJ, portraits, permissions, versions dynamiques et DialogV2. 10-K2-P reste en recette jusqu’à validation explicite de la v0.8.2.
+
 ## 0.8.1 — correctif de recette 10-K2-P
 
 - Répartit Création, Progression et Matériel dans 23 compendiums regroupés par dossiers Foundry, avec sous-classement des Talents, Pouvoirs, Armes et autres familles.

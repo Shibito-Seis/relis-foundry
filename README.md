@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.8.1` corrige la recette de 10-K2-P sans clore le lot. Elle publie 23 compendiums personnels classés comme une bibliothèque : Création, Progression et Matériel regroupent leurs catégories, tandis que les Talents, Pouvoirs, Armes et autres grandes familles possèdent leurs propres sous-classements. Les 2 404 Items comprennent les 2 398 entrées de la Bible v163 et les six profils techniques de flèches et carreaux explicitement requis par les armes déjà canoniques. Les références restent strictes, les identifiants Foundry stables et le schéma Item demeure 7, sans migration de monde.
+La version `0.8.2` poursuit la recette de 10-K2-P sans clore le lot. Les 20 Ascendances et les 12 Voies disposent désormais de descriptions développées issues de la Bible, en plus de leurs données mécaniques. L’inventaire PJ/PNJ permet au propriétaire autorisé ou au MJ de supprimer explicitement un Item, avec confirmation et refus protecteur si l’objet contient ou héberge encore d’autres Items. L’action entre Actors porte le libellé utilisateur « Échanger » sans modifier le service transactionnel validé. Les 84 Spécialisations font l’objet d’un rapport de propositions séparé : leur texte n’est pas injecté avant validation. Les références restent strictes, les identifiants Foundry stables et le schéma Item demeure 7, sans migration de monde.
 
 L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. Chaque Cœur reçoit un tirage stable de 20 situations dans une banque de 48 — 8 simples, 8 intermédiaires et 4 complexes — sur six axes et quinze couleurs. Réponses, choix MJ, nom coloré, sujet de l’accord et historique persistent. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
 
@@ -16,8 +16,8 @@ restent portés par les vrais Items de l’Actor.
 Les conteneurs sont des Items frères reliés par référence. Leur charge est
 reconstruite sans collection parallèle ; les cycles et dépassements de capacité
 sont refusés. La fiche permet de créer un objet, scinder ou fusionner une pile,
-déplacer une arborescence et transférer tout ou partie vers un autre Personnage
-ou PNJ. Le transfert prépare une copie indisponible, remappe les conteneurs,
+déplacer une arborescence et échanger tout ou partie avec un autre Personnage
+ou PNJ. L’échange prépare une copie indisponible, remappe les conteneurs,
 retire la source puis active la destination afin qu’une erreur ne laisse pas deux
 exemplaires jouables.
 
@@ -49,7 +49,7 @@ en SVG interne jusqu’à la passe graphique finale.
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
-10-K2-P attend la recette 0.8.1. Aucun contrôle visuel automatisé par navigateur :
+10-K2-P attend la recette 0.8.2. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -73,7 +73,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.8.1.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.8.2.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -82,6 +82,14 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.8.2 — descriptions et administration d’inventaire
+
+- Développe les descriptions des 20 Ascendances et des 12 Voies depuis les passages canoniques de la Bible, sans transformer les Journaux d’Ascendance prévus en 10-D3 en simples Items.
+- Ajoute sur les inventaires PJ et PNJ une commande rouge « Supprimer », réservée au propriétaire autorisé ou au MJ, confirmée avant écriture et bloquée tant que l’Item contient, héberge ou charge un autre Item.
+- Renomme l’action utilisateur « Transférer » en « Échanger » ; le service transactionnel, ses verrous et ses protections contre perte ou duplication restent inchangés.
+- Produit un audit séparé des 84 Spécialisations avec une proposition de description pour chacune. Ces propositions ne sont pas encore publiées dans les compendiums.
+- Passe le contenu personnel en `1.2.1`, conserve le schéma Item 7 sans migration et protège portraits, permissions, versions dynamiques et contrat DialogV2 de Foundry 14. 10-K2-P reste ouvert jusqu’à validation explicite de la recette 0.8.2.
 
 ## 0.8.1 — correctif de recette 10-K2-P
 

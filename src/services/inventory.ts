@@ -54,7 +54,8 @@ interface InventoryJournalEntry {
     | "load"
     | "unload"
     | "energy"
-    | "consume";
+    | "consume"
+    | "delete";
   at: number;
   userId: string;
   itemIds: string[];
@@ -141,7 +142,7 @@ function assertDetachedTree(actor: ActorLike, itemId: string): void {
   const ids = [itemId, ...descendantIds(items, itemId)];
   if (ids.some((id) => equipmentLinked(items, id)))
     throw new Error(
-      "Détachez les installations avant de déplacer ou transférer cet ensemble.",
+      "Détachez les installations avant de déplacer ou échanger cet ensemble.",
     );
 }
 
@@ -352,7 +353,7 @@ function transferFlag(item: Item): PendingTransfer | null {
 function assertAvailable(item: Item): void {
   if (transferFlag(item) && transferFlag(item)?.state !== "complete")
     throw new Error(
-      "Cet Item appartient à un transfert en attente de récupération MJ.",
+      "Cet Item appartient à un échange en attente de récupération MJ.",
     );
 }
 
@@ -531,6 +532,67 @@ export async function mergeInventoryStacks(
   });
 }
 
+function loadedPayloadQuantity(item: Item): number {
+  const profiles = [item.system.weaponProfile, item.system.supplyProfile];
+  return profiles.reduce(
+    (total, profile) =>
+      total +
+      [
+        ...Array.from(profile?.loadSequence ?? []),
+        ...Array.from(profile?.chamberLoad ?? []),
+      ].reduce(
+        (sum: number, segment: any) =>
+          sum + Math.max(0, Number(segment?.quantity ?? 0)),
+        0,
+      ),
+    0,
+  );
+}
+
+/** Permanently removes one detached physical Item without orphaning its contents. */
+export async function deleteInventoryItem(
+  actor: ActorLike,
+  itemId: string,
+): Promise<void> {
+  assertActorPermission(actor);
+  await withActorLocks([actor], async () => {
+    assertActorPermission(actor);
+    const item = itemById(actor, itemId);
+    assertAvailable(item);
+    const snapshots = actorSnapshots(actor);
+    if (descendantIds(snapshots, itemId).length)
+      throw new Error(
+        "Videz d’abord ce conteneur ou ce chargeur avant de le supprimer.",
+      );
+    if (equipmentLinked(snapshots, itemId))
+      throw new Error(
+        "Détachez d’abord cet Item de son hôte, ainsi que les modules ou sources qui y sont installés.",
+      );
+    if (loadedPayloadQuantity(item) > 0)
+      throw new Error(
+        "Déchargez d’abord les munitions contenues dans cet Item avant de le supprimer.",
+      );
+    const quantity = Number(item.system.physical?.quantity ?? 0);
+    const operation = operationId();
+    const deleted = await actor.deleteEmbeddedDocuments(
+      "Item",
+      [item.id],
+      inventoryCreateOptions(),
+    );
+    if (!deleted.length)
+      throw new Error("Foundry n’a pas supprimé l’Item demandé.");
+    await appendJournal(
+      actor,
+      journalEntry(
+        "delete",
+        operation,
+        [item.id],
+        Number.isFinite(quantity) ? quantity : null,
+      ),
+    );
+  });
+}
+
 export async function moveInventoryItem(
   actor: ActorLike,
   itemId: string,
@@ -631,7 +693,7 @@ export async function transferInventoryItem(
   assertActorPermission(sourceActor);
   assertActorPermission(destinationActor);
   if (sourceActor.uuid === destinationActor.uuid)
-    throw new Error("Choisissez un autre Actor pour un transfert.");
+    throw new Error("Choisissez un autre Actor pour un échange.");
 
   return withActorLocks([sourceActor, destinationActor], async () => {
     const root = itemById(sourceActor, itemId);
@@ -640,7 +702,7 @@ export async function transferInventoryItem(
     const before = Number(root.system.physical.quantity ?? 0);
     if (root.type === "container" && before !== 1)
       throw new Error(
-        "Ce conteneur porte une quantité incohérente. Ramenez-la à 1 avant le transfert.",
+        "Ce conteneur porte une quantité incohérente. Ramenez-la à 1 avant l’échange.",
       );
     const quantity = requested === undefined ? before : Number(requested);
     const partial = quantity < before;
@@ -652,7 +714,7 @@ export async function transferInventoryItem(
       quantity <= 0 ||
       quantity > before
     ) {
-      throw new Error("La quantité transférée est invalide.");
+      throw new Error("La quantité échangée est invalide.");
     }
     if (root.type === "container" && quantity !== before)
       throw new Error("Un conteneur se transfère avec toute son arborescence.");
@@ -689,7 +751,7 @@ export async function transferInventoryItem(
         const oldParent = byRelisId.get(oldParentRelisId);
         if (!oldParent)
           throw new Error(
-            `Le parent de ${item.name} ne peut pas être remappé pendant le transfert.`,
+            `Le parent de ${item.name} ne peut pas être remappé pendant l’échange.`,
           );
         data.system.physical.containerRef = remappedReference(
           oldParent,
@@ -724,9 +786,7 @@ export async function transferInventoryItem(
           created.map((item) => item.id),
           inventoryCreateOptions(),
         );
-      throw new Error(
-        "Le transfert n’a pas créé toute l’arborescence attendue.",
-      );
+      throw new Error("L’échange n’a pas créé toute l’arborescence attendue.");
     }
 
     try {
@@ -754,11 +814,11 @@ export async function transferInventoryItem(
       await activateTransfer(destinationActor, created);
     } catch (error) {
       console.error(
-        `RE:LIS | Transfert ${operation} placé en attente de récupération`,
+        `RE:LIS | Échange ${operation} placé en attente de récupération`,
         error,
       );
       throw new Error(
-        "Le transfert est conservé mais reste indisponible. Un MJ le finalisera au prochain chargement.",
+        "L’échange est conservé mais reste indisponible. Un MJ le finalisera au prochain chargement.",
         { cause: error },
       );
     }
@@ -1364,7 +1424,7 @@ export async function recoverPendingInventoryTransfers(): Promise<number> {
           inventoryCreateOptions(),
         );
         console.error(
-          `RE:LIS | Transfert ${pending.operationId} mis en quarantaine : état source ambigu.`,
+          `RE:LIS | Échange ${pending.operationId} mis en quarantaine : état source ambigu.`,
         );
       }
     }

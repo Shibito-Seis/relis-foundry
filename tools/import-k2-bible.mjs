@@ -73,6 +73,65 @@ function blockHtml(block) {
   return paragraphs.join("\n");
 }
 
+function descriptiveHtml(block) {
+  const parts = [];
+  let paragraph = [];
+  let list = [];
+  const flushParagraph = () => {
+    if (!paragraph.length) return;
+    parts.push(`<p>${inlineHtml(paragraph.join(" "))}</p>`);
+    paragraph = [];
+  };
+  const flushList = () => {
+    if (!list.length) return;
+    parts.push(
+      `<ul>${list.map((entry) => `<li>${inlineHtml(entry)}</li>`).join("")}</ul>`,
+    );
+    list = [];
+  };
+  for (const source of block) {
+    const line = source.trim();
+    if (!line) {
+      flushParagraph();
+      flushList();
+      continue;
+    }
+    if (/^#{1,6} /.test(line) || /^\|/.test(line)) continue;
+    if (/^[-*] /.test(line)) {
+      flushParagraph();
+      list.push(line.replace(/^[-*] /, ""));
+      continue;
+    }
+    flushList();
+    if (/^[^.!?]+:$/.test(clean(line))) {
+      flushParagraph();
+      parts.push(`<h3>${inlineHtml(line.replace(/:$/, ""))}</h3>`);
+      continue;
+    }
+    paragraph.push(line);
+  }
+  flushParagraph();
+  flushList();
+  return parts.join("\n");
+}
+
+function headingSection(block, heading, level = 4) {
+  const marker = `${"#".repeat(level)} ${heading}`;
+  const start = block.findIndex((line) => line.trim() === marker);
+  if (start < 0) return [];
+  const next = block.findIndex(
+    (line, index) => index > start && line.startsWith(`${"#".repeat(level)} `),
+  );
+  return block.slice(start + 1, next < 0 ? block.length : next);
+}
+
+function bulletDefinitions(block) {
+  return block.flatMap((line) => {
+    const match = line.match(/^[-*] \*\*([^*]+)\*\*\s*:\s*(.+)$/);
+    return match ? [{ name: clean(match[1]), summary: clean(match[2]) }] : [];
+  });
+}
+
 function findLine(prefix, from = 0) {
   return lines.findIndex(
     (line, index) => index >= from && line.startsWith(prefix),
@@ -178,15 +237,57 @@ const ancestryTable = parseTables(ancestrySection.lines).find(
 if (!ancestryTable) throw new Error("Table canonique des Ascendances absente.");
 
 const ancestryRows = ancestryTable.rows.filter((row) => row[0] !== "Total");
+const ancestryDetails = splitHeadings(ancestrySection.lines, 3).filter(
+  ({ heading }) => /^5\.\d+\s+/.test(heading),
+);
+const ancestryDetail = (number) =>
+  ancestryDetails.find(({ heading }) => heading.startsWith(`5.${number} `));
+const ancestryLoreNumbers = {
+  Humain: 1,
+  Elman: 2,
+  "Demi-Beastkin": 4,
+  Elfe: 5,
+  "Demi-Elfe": 6,
+  Nain: 7,
+  "Demi-Nain": 8,
+  Gnome: 9,
+  "Demi-Gnome": 10,
+  IAA: 11,
+  Esman: 12,
+};
+const beastkinDetail = ancestryDetail(3);
+const beastkinIdentityHtml = (name, rationale) => {
+  const detailLines = beastkinDetail?.lines ?? [];
+  const roleStart = detailLines.findIndex(
+    (line) => clean(line) === "Rôle mécanique envisagé :",
+  );
+  const roleLines = roleStart < 0 ? [] : detailLines.slice(roleStart + 1);
+  return [
+    "<p>Les Beastkins sont des humanoïdes à traits animaux marqués. Leur lignée peut exprimer des sens améliorés, des armes naturelles ou des capacités liées au mouvement et à l’environnement.</p>",
+    `<p><strong>Identité de la lignée ${inlineHtml(name)} :</strong> ${inlineHtml(rationale)}</p>`,
+    roleLines.length
+      ? `<h3>Héritage Beastkin</h3>\n${descriptiveHtml(roleLines)}`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+};
 for (const [index, row] of ancestryRows.entries()) {
   const name = row[0];
+  const loreNumber = ancestryLoreNumbers[name];
+  const lore = loreNumber
+    ? descriptiveHtml(ancestryDetail(loreNumber)?.lines ?? [])
+    : "";
+  const description = name.startsWith("Beastkin ")
+    ? beastkinIdentityHtml(name, row[3])
+    : lore;
   add("creation", {
     relisId: `CRE-ANC-${String(index + 1).padStart(3, "0")}-${slug(name)}`,
     name,
     type: "ancestry",
     tags: ["creation", "ascendance"],
     system: commonSystem(
-      `<p><strong>Bonus d’Attribut :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Malus d’Attribut :</strong> ${inlineHtml(row[2])}</p>\n<p>${inlineHtml(row[3])}</p>`,
+      `${description}\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Malus d’Attribut :</strong> ${inlineHtml(row[2])}</p>\n<p><strong>Logique :</strong> ${inlineHtml(row[3])}</p>`,
       {
         kind: "ancestry",
         sourceSection: "5",
@@ -205,7 +306,7 @@ add("creation", {
   type: "ancestry",
   tags: ["creation", "ascendance", "beastkin", "groupe"],
   system: commonSystem(
-    "<p>Ascendance parente. Le personnage choisit une lignée Beastkin canonique ; la fiche parente ne fournit pas de profil d’Attribut autonome.</p>",
+    `${descriptiveHtml(beastkinDetail?.lines ?? [])}\n<h3>Choix de lignée</h3>\n<p>Cette entrée représente la famille Beastkin. Le personnage choisit une lignée Beastkin canonique ; la fiche parente ne fournit pas de profil d’Attribut autonome.</p>`,
     {
       kind: "ancestry-group",
       sourceSection: "5.3 et 5.16",
@@ -382,6 +483,13 @@ if (
   throw new Error("Tables canoniques des Voies incomplètes.");
 
 const pathIdByName = new Map();
+const pathDetails = splitHeadings(paths.lines, 3).filter(({ heading }) =>
+  /^9\.\d+\s+/.test(heading),
+);
+const pathDetailByName = (name) =>
+  pathDetails.find(
+    ({ heading }) => clean(heading.replace(/^9\.\d+\s+/, "")) === name,
+  );
 pathAttributeTable.rows.forEach((row, index) => {
   const name = row[0];
   const relisId = `PRO-VOI-${String(index + 1).padStart(3, "0")}-${slug(name)}`;
@@ -393,13 +501,34 @@ pathAttributeTable.rows.forEach((row, index) => {
   const loadout = pathLoadoutTable.rows.find(
     (candidate) => candidate[0] === name,
   );
+  const detail = pathDetailByName(name);
+  const concept = descriptiveHtml(
+    headingSection(detail?.lines ?? [], "Concept"),
+  );
+  const combatRole = descriptiveHtml(
+    headingSection(detail?.lines ?? [], "Rôle en combat"),
+  );
+  const outsideRole = descriptiveHtml(
+    headingSection(detail?.lines ?? [], "Rôle hors combat"),
+  );
+  const branchDefinitions = bulletDefinitions(
+    headingSection(detail?.lines ?? [], "Branches possibles"),
+  );
+  const branchesHtml = branchDefinitions.length
+    ? `<ul>${branchDefinitions
+        .map(
+          ({ name: branchName, summary }) =>
+            `<li><strong>${inlineHtml(branchName)} :</strong> ${inlineHtml(summary)}</li>`,
+        )
+        .join("")}</ul>`
+    : "";
   add("progression", {
     relisId,
     name,
     type: "path",
     tags: ["progression", "voie"],
     system: commonSystem(
-      `<p><strong>Attribut clef :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Compétences :</strong> ${inlineHtml(skills?.slice(1).join(" — ") ?? "")}</p>\n<p><strong>Dotation :</strong> ${inlineHtml(loadout?.[1] ?? "")}</p>`,
+      `<h3>Concept</h3>\n${concept}\n<h3>Rôle en combat</h3>\n${combatRole}\n<h3>Rôle hors combat</h3>\n${outsideRole}\n<h3>Branches</h3>\n${branchesHtml}\n<h3>Repères de création</h3>\n<p><strong>Attribut clef :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Compétences :</strong> ${inlineHtml(skills?.slice(1).join(" — ") ?? "")}</p>\n<p><strong>Dotation :</strong> ${inlineHtml(loadout?.[1] ?? "")}</p>`,
       {
         kind: "path",
         sourceSection: "9",

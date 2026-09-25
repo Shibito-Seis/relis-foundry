@@ -164,7 +164,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
     expect(generated.system.meta).toMatchObject({
       relisId: "TST-ITEM-001",
       schemaVersion: "7",
-      contentVersion: "1.2.0",
+      contentVersion: "1.2.1",
       status: "active",
     });
     expect(generated.system.meta.sourceRef.relisId).toBe("");

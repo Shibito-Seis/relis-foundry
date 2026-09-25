@@ -1,8 +1,8 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.8.1";
+var PACKAGE_VERSION = "0.8.2";
 var RULES_VERSION = "1.0.0";
-var CONTENT_VERSION = "1.2.0";
+var CONTENT_VERSION = "1.2.1";
 var ACTOR_TYPES = [
 	"character",
 	"npc",
@@ -1253,7 +1253,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			...meta,
 			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
-			contentVersion: text(meta.contentVersion, "1.2.0") || "1.2.0",
+			contentVersion: text(meta.contentVersion, "1.2.1") || "1.2.1",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
 			sourceRef: normalizeReference(meta.sourceRef),
 			sourceVersion: text(meta.sourceVersion),
@@ -5814,7 +5814,7 @@ function assertActorPermission(actor) {
 }
 function assertDetachedTree(actor, itemId) {
 	const items = actorSnapshots(actor);
-	if ([itemId, ...descendantIds(items, itemId)].some((id) => equipmentLinked(items, id))) throw new Error("Détachez les installations avant de déplacer ou transférer cet ensemble.");
+	if ([itemId, ...descendantIds(items, itemId)].some((id) => equipmentLinked(items, id))) throw new Error("Détachez les installations avant de déplacer ou échanger cet ensemble.");
 }
 function previewEquipment(actor, requests, assisted = false) {
 	const body = Array.from(actor.system.bodies ?? []).find((entry) => entry.id === actor.system.activeBodyId);
@@ -5943,7 +5943,7 @@ function transferFlag(item) {
 	return value && typeof value === "object" ? value : null;
 }
 function assertAvailable(item) {
-	if (transferFlag(item) && transferFlag(item)?.state !== "complete") throw new Error("Cet Item appartient à un transfert en attente de récupération MJ.");
+	if (transferFlag(item) && transferFlag(item)?.state !== "complete") throw new Error("Cet Item appartient à un échange en attente de récupération MJ.");
 }
 async function appendJournal(actor, entry) {
 	const current = Array.from(actor.flags?.relis?.inventoryJournal ?? []);
@@ -6049,6 +6049,26 @@ async function mergeInventoryStacks(actor, targetId, sourceId) {
 		await appendJournal(actor, journalEntry("merge", operation, [target.id, source.id], sourceQuantity));
 	});
 }
+function loadedPayloadQuantity(item) {
+	return [item.system.weaponProfile, item.system.supplyProfile].reduce((total, profile) => total + [...Array.from(profile?.loadSequence ?? []), ...Array.from(profile?.chamberLoad ?? [])].reduce((sum, segment) => sum + Math.max(0, Number(segment?.quantity ?? 0)), 0), 0);
+}
+/** Permanently removes one detached physical Item without orphaning its contents. */
+async function deleteInventoryItem(actor, itemId) {
+	assertActorPermission(actor);
+	await withActorLocks([actor], async () => {
+		assertActorPermission(actor);
+		const item = itemById(actor, itemId);
+		assertAvailable(item);
+		const snapshots = actorSnapshots(actor);
+		if (descendantIds(snapshots, itemId).length) throw new Error("Videz d’abord ce conteneur ou ce chargeur avant de le supprimer.");
+		if (equipmentLinked(snapshots, itemId)) throw new Error("Détachez d’abord cet Item de son hôte, ainsi que les modules ou sources qui y sont installés.");
+		if (loadedPayloadQuantity(item) > 0) throw new Error("Déchargez d’abord les munitions contenues dans cet Item avant de le supprimer.");
+		const quantity = Number(item.system.physical?.quantity ?? 0);
+		const operation = operationId();
+		if (!(await actor.deleteEmbeddedDocuments("Item", [item.id], inventoryCreateOptions())).length) throw new Error("Foundry n’a pas supprimé l’Item demandé.");
+		await appendJournal(actor, journalEntry("delete", operation, [item.id], Number.isFinite(quantity) ? quantity : null));
+	});
+}
 async function moveInventoryItem(actor, itemId, targetContainerId) {
 	assertActorPermission(actor);
 	await withActorLocks([actor], async () => {
@@ -6100,19 +6120,19 @@ async function activateTransfer(actor, items) {
 async function transferInventoryItem(sourceActor, destinationActor, itemId, requested) {
 	assertActorPermission(sourceActor);
 	assertActorPermission(destinationActor);
-	if (sourceActor.uuid === destinationActor.uuid) throw new Error("Choisissez un autre Actor pour un transfert.");
+	if (sourceActor.uuid === destinationActor.uuid) throw new Error("Choisissez un autre Actor pour un échange.");
 	return withActorLocks([sourceActor, destinationActor], async () => {
 		const root = itemById(sourceActor, itemId);
 		assertDetachedTree(sourceActor, itemId);
 		assertAvailable(root);
 		const before = Number(root.system.physical.quantity ?? 0);
-		if (root.type === "container" && before !== 1) throw new Error("Ce conteneur porte une quantité incohérente. Ramenez-la à 1 avant le transfert.");
+		if (root.type === "container" && before !== 1) throw new Error("Ce conteneur porte une quantité incohérente. Ramenez-la à 1 avant l’échange.");
 		const quantity = requested === void 0 ? before : Number(requested);
 		const partial = quantity < before;
 		if (partial) {
 			const errors = validateStackSplit(itemSnapshot$1(root), quantity);
 			if (errors.length) throw new Error(errors.join(" "));
-		} else if (!Number.isFinite(quantity) || quantity <= 0 || quantity > before) throw new Error("La quantité transférée est invalide.");
+		} else if (!Number.isFinite(quantity) || quantity <= 0 || quantity > before) throw new Error("La quantité échangée est invalide.");
 		if (root.type === "container" && quantity !== before) throw new Error("Un conteneur se transfère avec toute son arborescence.");
 		const tree = partial ? [root] : transferTree(sourceActor, root);
 		const operation = operationId();
@@ -6136,7 +6156,7 @@ async function transferInventoryItem(sourceActor, destinationActor, itemId, requ
 			} else {
 				const oldParentRelisId = String(item.system.physical?.containerRef?.relisId ?? "");
 				const oldParent = byRelisId.get(oldParentRelisId);
-				if (!oldParent) throw new Error(`Le parent de ${item.name} ne peut pas être remappé pendant le transfert.`);
+				if (!oldParent) throw new Error(`Le parent de ${item.name} ne peut pas être remappé pendant l’échange.`);
 				data.system.physical.containerRef = remappedReference(oldParent, String(newRelisIds.get(oldParent.id)));
 			}
 			data.system.physical.accessibility = "unavailable";
@@ -6157,7 +6177,7 @@ async function transferInventoryItem(sourceActor, destinationActor, itemId, requ
 		const created = await destinationActor.createEmbeddedDocuments("Item", transferData, inventoryCreateOptions());
 		if (created.length !== transferData.length) {
 			if (created.length) await destinationActor.deleteEmbeddedDocuments("Item", created.map((item) => item.id), inventoryCreateOptions());
-			throw new Error("Le transfert n’a pas créé toute l’arborescence attendue.");
+			throw new Error("L’échange n’a pas créé toute l’arborescence attendue.");
 		}
 		try {
 			if (partial) await root.update({ "system.physical.quantity": after }, inventoryCreateOptions());
@@ -6169,8 +6189,8 @@ async function transferInventoryItem(sourceActor, destinationActor, itemId, requ
 		try {
 			await activateTransfer(destinationActor, created);
 		} catch (error) {
-			console.error(`RE:LIS | Transfert ${operation} placé en attente de récupération`, error);
-			throw new Error("Le transfert est conservé mais reste indisponible. Un MJ le finalisera au prochain chargement.", { cause: error });
+			console.error(`RE:LIS | Échange ${operation} placé en attente de récupération`, error);
+			throw new Error("L’échange est conservé mais reste indisponible. Un MJ le finalisera au prochain chargement.", { cause: error });
 		}
 		await Promise.all([appendJournal(sourceActor, journalEntry("transfer-out", operation, sourceItemIds, quantity, { counterpartActorUuid: destinationActor.uuid })), appendJournal(destinationActor, journalEntry("transfer-in", operation, created.map((item) => item.id), quantity, { counterpartActorUuid: sourceActor.uuid }))]);
 		return created;
@@ -6493,7 +6513,7 @@ async function recoverPendingInventoryTransfers() {
 					_id: item.id,
 					"flags.relis.inventoryTransfer.state": "quarantined"
 				})), inventoryCreateOptions());
-				console.error(`RE:LIS | Transfert ${pending.operationId} mis en quarantaine : état source ambigu.`);
+				console.error(`RE:LIS | Échange ${pending.operationId} mis en quarantaine : état source ambigu.`);
 			}
 		}
 	}
@@ -7471,6 +7491,9 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		for (const button of root.querySelectorAll("[data-action='transfer-inventory-item']")) button.addEventListener("click", () => {
 			this.transferPhysicalItem(button.dataset.itemId ?? "");
 		});
+		for (const button of root.querySelectorAll("[data-action='delete-inventory-item']")) button.addEventListener("click", () => {
+			this.deletePhysicalItem(button.dataset.itemId ?? "");
+		});
 		root.querySelector("[data-action='create-demo']")?.addEventListener("click", () => {
 			this.createDemo();
 		});
@@ -7849,7 +7872,7 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		if (!item) return;
 		const actors = Array.from(game.actors?.contents ?? game.actors ?? []).filter((actor) => actor.uuid !== this.actor.uuid && ["character", "npc"].includes(actor.type) && (game.user?.isGM || actor.isOwner));
 		if (!actors.length) {
-			ui.notifications.warn("Aucun autre Personnage ou PNJ modifiable ne peut recevoir cet Item.");
+			ui.notifications.warn("Aucun autre Personnage ou PNJ modifiable ne peut participer à cet échange.");
 			return;
 		}
 		const content = dialogContent();
@@ -7858,14 +7881,26 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			label: actor.name
 		})));
 		const maximum = Number(item.system.physical?.quantity ?? 0);
-		if (item.type !== "container") dialogNumber(content, "Quantité transférée", "quantity", maximum, maximum, String(item.system.physical?.unit ?? "count") === "count");
-		const result = await askInventoryForm(`Transférer « ${item.name} »`, content, "Transférer");
+		if (item.type !== "container") dialogNumber(content, "Quantité échangée", "quantity", maximum, maximum, String(item.system.physical?.unit ?? "count") === "count");
+		const result = await askInventoryForm(`Échanger « ${item.name} »`, content, "Échanger");
 		if (!result) return;
 		const destination = actors.find((actor) => actor.uuid === String(result.actorUuid ?? ""));
 		if (!destination) return;
 		await this.inventoryTask(async () => {
 			await transferInventoryItem(this.actor, destination, itemId, item.type === "container" ? maximum : Number(result.quantity));
-		}, `Transfert vers ${destination.name} terminé sans duplication jouable.`);
+		}, `Échange avec ${destination.name} terminé sans duplication jouable.`);
+	}
+	async deletePhysicalItem(itemId) {
+		if (!this.actor.isOwner) return;
+		const item = this.actor.items.get(itemId);
+		if (!item) return;
+		const content = dialogContent();
+		dialogNote(content, `« ${item.name} » sera définitivement retiré de l’inventaire. Cette opération ne peut pas être annulée.`);
+		dialogNote(content, "Par sécurité, RE:LIS refusera la suppression si l’Item contient encore des objets ou des munitions, ou s’il est lié à une installation.");
+		if (!await askInventoryForm(`Supprimer « ${item.name} »`, content, "Supprimer")) return;
+		await this.inventoryTask(async () => {
+			await deleteInventoryItem(this.actor, itemId);
+		}, `« ${item.name} » a été supprimé de l’inventaire.`);
 	}
 	activateTab(root, requested, focus = false) {
 		const detailLevel = this.actor.type === "npc" ? String(this.actor.system.detailLevel ?? "standard") : "complete";
@@ -8147,15 +8182,17 @@ function shuffled(values, seedText) {
 	}
 	return output;
 }
-function selectAttunementQuestions(contract, itemSeed) {
+function selectAttunementQuestions(contract, itemSeed, selectionVersion = contract.contentVersion) {
 	const policy = contract.questionSelection;
 	if (!policy) return [...contract.questions];
-	return shuffled(Object.entries(policy.difficultyCounts).flatMap(([difficulty, count]) => shuffled(contract.questions.filter((question) => question.difficulty === difficulty), `${contract.contentVersion}:${itemSeed}:${difficulty}`).slice(0, count)), `${contract.contentVersion}:${itemSeed}:presentation`).slice(0, policy.count);
+	return shuffled(Object.entries(policy.difficultyCounts).flatMap(([difficulty, count]) => shuffled(contract.questions.filter((question) => question.difficulty === difficulty), `${selectionVersion}:${itemSeed}:${difficulty}`).slice(0, count)), `${selectionVersion}:${itemSeed}:presentation`).slice(0, policy.count);
 }
-function attunementSessionContract(contract, itemSeed) {
+function attunementSessionContract(contract, itemSeed, persistedVersion = "") {
+	const questionnaireVersion = persistedVersion || contract.contentVersion;
 	return {
 		...contract,
-		questions: selectAttunementQuestions(contract, itemSeed)
+		contentVersion: questionnaireVersion,
+		questions: selectAttunementQuestions(contract, itemSeed, questionnaireVersion)
 	};
 }
 async function loadAttunementContract() {
@@ -8659,8 +8696,8 @@ var RelisItemSheet = class extends HandlebarsApplicationMixin(ItemSheetV2) {
 			ui.notifications.error("L’accord est réservé au propriétaire d’un PJ ou au MJ ; seul le MJ répond pour un PNJ.");
 			return;
 		}
-		const contract = attunementSessionContract(await loadAttunementContract(), this.item.uuid || this.item.id || this.item.name);
 		const current = this.item.system.attunement ?? {};
+		const contract = attunementSessionContract(await loadAttunementContract(), this.item.uuid || this.item.id || this.item.name, String(current.questionnaireVersion ?? ""));
 		const response = await askAttunement(contract, { ...current.answers ?? {} });
 		if (!response) return;
 		const resolution = resolveAttunement(contract, response.answers, response.tieAxis);

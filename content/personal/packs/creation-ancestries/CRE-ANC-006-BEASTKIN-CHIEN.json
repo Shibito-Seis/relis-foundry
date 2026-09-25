@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Beastkin Chien</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Vigueur, +1 Présence, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Maîtrise Magique</p>\n<p>Loyal, robuste, sociable, discipliné, mais moins naturellement lié aux flux.</p>",
+    "description": "<p>Les Beastkins sont des humanoïdes à traits animaux marqués. Leur lignée peut exprimer des sens améliorés, des armes naturelles ou des capacités liées au mouvement et à l’environnement.</p>\n<p><strong>Identité de la lignée Beastkin Chien :</strong> Loyal, robuste, sociable, discipliné, mais moins naturellement lié aux flux.</p>\n<h3>Héritage Beastkin</h3>\n<ul><li>traits physiques forts ;</li><li>sens améliorés ;</li><li>griffes, crocs, queue, odorat, vision nocturne selon lignée ;</li><li>capacités liées au mouvement ou à l’environnement.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Vigueur, +1 Présence, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Maîtrise Magique</p>\n<p><strong>Logique :</strong> Loyal, robuste, sociable, discipliné, mais moins naturellement lié aux flux.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

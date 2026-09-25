@@ -202,6 +202,66 @@ describe("compendiums canoniques 10-K2-P", () => {
     }
   });
 
+  it("développe les 20 Ascendances et les 12 Voies depuis leurs sections canoniques", () => {
+    const values = [...entriesById().values()];
+    const plainWords = (description) =>
+      String(description ?? "")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&[a-z#0-9]+;/giu, " ")
+        .trim()
+        .split(/\s+/u)
+        .filter(Boolean);
+    const ancestries = values.filter(({ type }) => type === "ancestry");
+    expect(ancestries).toHaveLength(20);
+    for (const ancestry of ancestries) {
+      expect(
+        plainWords(ancestry.system.description).length,
+        ancestry.relisId,
+      ).toBeGreaterThanOrEqual(55);
+      expect(ancestry.system.description, ancestry.relisId).toContain("<h3>");
+    }
+    const paths = values.filter(({ type }) => type === "path");
+    expect(paths).toHaveLength(12);
+    for (const path of paths) {
+      expect(
+        plainWords(path.system.description).length,
+        path.relisId,
+      ).toBeGreaterThanOrEqual(140);
+      for (const heading of [
+        "Concept",
+        "Rôle en combat",
+        "Rôle hors combat",
+        "Branches",
+        "Repères de création",
+      ])
+        expect(
+          path.system.description,
+          `${path.relisId} — ${heading}`,
+        ).toContain(`<h3>${heading}</h3>`);
+    }
+  });
+
+  it("audite les 84 Spécialisations sans publier prématurément les propositions", () => {
+    const specializations = [...entriesById().values()].filter(
+      ({ type }) => type === "specialization",
+    );
+    const report = fs.readFileSync(
+      "docs/10-K2-P-audit-descriptions-specialisations.md",
+      "utf8",
+    );
+    expect(specializations).toHaveLength(84);
+    expect(report.match(/^### /gmu)).toHaveLength(84);
+    for (const specialization of specializations) {
+      expect(report, specialization.relisId).toContain(
+        `### ${specialization.name.replaceAll("'", "’")}`,
+      );
+      expect(
+        String(specialization.system.description),
+        specialization.relisId,
+      ).not.toContain("Proposition");
+    }
+  });
+
   it("n’émet que des identifiants matériels acceptés par les registres fermés", () => {
     const material = [...entriesById().values()].filter((entry) =>
       [

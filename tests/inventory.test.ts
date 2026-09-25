@@ -21,6 +21,7 @@ import {
   unloadAmmunition,
   transferItemEnergy,
   consumeInventoryItem,
+  deleteInventoryItem,
 } from "../src/services/inventory";
 
 function reference(relisId = ""): Record<string, unknown> {
@@ -645,6 +646,56 @@ describe("opérations documentaires compensées 10-E2-P", () => {
       user: { id: "gm", isGM: true },
       actors: { contents: [] },
     };
+  });
+
+  it("supprime définitivement un Item vide sous propriété et journalise l’opération", async () => {
+    const actor = new MockActor("source");
+    const item = inventoryItem("empty");
+    item.system.physical.quantity = 0;
+    actor.add(item);
+    await deleteInventoryItem(actor as unknown as Actor, "empty");
+    expect(actor.items.has("empty")).toBe(false);
+    expect(actor.flags.relis.inventoryJournal.at(-1)).toMatchObject({
+      action: "delete",
+      itemIds: ["empty"],
+      quantity: 0,
+    });
+  });
+
+  it("refuse une suppression sans propriété ou laissant un contenu orphelin", async () => {
+    const actor = new MockActor("source");
+    const bag = actor.add(inventoryItem("bag", "container"));
+    const child = actor.add(inventoryItem("child"));
+    child.system.physical.containerRef = { relisId: bag.system.meta.relisId };
+    await expect(
+      deleteInventoryItem(actor as unknown as Actor, "bag"),
+    ).rejects.toThrow(/Videz/u);
+    child.system.physical.containerRef = {};
+    actor.isOwner = false;
+    (globalThis as any).game.user.isGM = false;
+    await expect(
+      deleteInventoryItem(actor as unknown as Actor, "bag"),
+    ).rejects.toThrow(/modifier/u);
+    expect(actor.items.has("bag")).toBe(true);
+  });
+
+  it("exige le détachement et le déchargement avant suppression", async () => {
+    const actor = new MockActor("source");
+    const host = actor.add(inventoryItem("host", "weapon"));
+    host.system.weaponProfile = {
+      loadSequence: [{ quantity: 2 }],
+      chamberLoad: [],
+    };
+    await expect(
+      deleteInventoryItem(actor as unknown as Actor, "host"),
+    ).rejects.toThrow(/Déchargez/u);
+    host.system.weaponProfile.loadSequence = [];
+    const module = actor.add(inventoryItem("module"));
+    module.system.physical.hostRef = { uuid: host.uuid };
+    await expect(
+      deleteInventoryItem(actor as unknown as Actor, "host"),
+    ).rejects.toThrow(/Détachez/u);
+    expect(actor.items.has("host")).toBe(true);
   });
 
   it("scinde puis fusionne sans changer le total", async () => {

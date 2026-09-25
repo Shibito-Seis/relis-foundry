@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  attunementSessionContract,
   attunementHistoryEntry,
   canAnswerAttunement,
   canManageAttunement,
@@ -160,5 +161,41 @@ describe("accord d’un Cœur d’Écarlithe", () => {
         return counts;
       }, {}),
     ).toEqual({ simple: 8, intermediate: 8, complex: 4 });
+  });
+
+  it("conserve le tirage d’un questionnaire commencé avant une version de contenu", () => {
+    const source = contract({ guard: 2 });
+    source.questionSelection = {
+      count: 20,
+      difficultyCounts: { simple: 8, intermediate: 8, complex: 4 },
+      stableForItem: true,
+    };
+    source.questions = [
+      ...Array.from({ length: 16 }, (_, index) => ({
+        ...source.questions[0]!,
+        id: `simple-${index}`,
+        difficulty: "simple" as const,
+      })),
+      ...Array.from({ length: 16 }, (_, index) => ({
+        ...source.questions[0]!,
+        id: `intermediate-${index}`,
+        difficulty: "intermediate" as const,
+      })),
+      ...Array.from({ length: 16 }, (_, index) => ({
+        ...source.questions[0]!,
+        id: `complex-${index}`,
+        difficulty: "complex" as const,
+      })),
+    ];
+    const previous = attunementSessionContract(source, "Item.stable", "1.2.0");
+    const current = attunementSessionContract(
+      { ...source, contentVersion: "1.2.1" },
+      "Item.stable",
+      "1.2.0",
+    );
+    expect(current.contentVersion).toBe("1.2.0");
+    expect(current.questions.map(({ id }) => id)).toEqual(
+      previous.questions.map(({ id }) => id),
+    );
   });
 });

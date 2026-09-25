@@ -1,31 +1,28 @@
 # Publication sur GitHub et The Forge
 
-## Mise à jour 0.8.1 depuis le navigateur uniquement
+## Mise à jour 0.8.2 depuis le navigateur uniquement
 
-Le glisser-déposer GitHub classique n’est pas adapté à cette version : il envoie
-des milliers de requêtes et ne sait pas représenter proprement la suppression des
-trois anciens répertoires de sources. Utiliser un Codespace, qui reste entièrement
-dans le navigateur :
+Cette procédure part du dépôt `main` contenant déjà la v0.8.1. Utiliser un
+Codespace, qui reste entièrement dans le navigateur et évite les limites du
+glisser-déposer GitHub :
 
 1. Sur la page du dépôt, choisir **Code → Codespaces → Create codespace on main**.
 2. Dans l’explorateur du Codespace, téléverser
-   `relis-foundry-update-v0.8.1.zip` à la racine du dépôt.
+   `relis-foundry-update-v0.8.2.zip` à la racine du dépôt.
 3. Ouvrir le terminal intégré et vérifier la cible avec `git rev-parse --show-toplevel`
    puis `git status --short`.
-4. Supprimer uniquement les trois anciennes sources plates :
-   `rm -rf content/personal/packs/creation content/personal/packs/progression content/personal/packs/material`.
-5. Décompresser la mise à jour dans un répertoire temporaire avec
-   `mkdir -p /tmp/relis-update-081 && unzip -q relis-foundry-update-v0.8.1.zip -d /tmp/relis-update-081`.
-6. Copier la racine fournie sur le dépôt avec
-   `rsync -a /tmp/relis-update-081/relis-foundry/ ./`.
-7. Supprimer seulement l’archive téléversée avec
-   `rm relis-foundry-update-v0.8.1.zip`, puis contrôler `git status --short`.
-8. Exécuter `npm ci && npm test`, puis `git add -A`,
-   `git commit -m "Release 0.8.1 - correctif 10-K2-P"` et `git push origin main`.
+4. Décompresser la mise à jour dans un répertoire temporaire avec
+   `mkdir -p /tmp/relis-update-082 && unzip -q relis-foundry-update-v0.8.2.zip -d /tmp/relis-update-082`.
+5. Copier la racine fournie sur le dépôt avec
+   `rsync -a /tmp/relis-update-082/relis-foundry/ ./`.
+6. Supprimer seulement l’archive téléversée avec
+   `rm relis-foundry-update-v0.8.2.zip`, puis contrôler `git status --short`.
+7. Exécuter `npm ci && npm test`, puis `git add -A`,
+   `git commit -m "Release 0.8.2 - descriptions et inventaire"` et `git push origin main`.
 
-`git add -A` est indispensable : il enregistre à la fois les suppressions des
-anciens dossiers et l’ajout des 23 nouvelles familles. Cette procédure évite les
-erreurs HTTP 400/429 du téléversement de masse.
+L’archive update contient uniquement la différence entre les sources v0.8.1 et
+v0.8.2, sous la racine `relis-foundry/`. Cette procédure évite les erreurs HTTP
+400/429 du téléversement fichier par fichier.
 
 ## 1. Créer le dépôt
 
@@ -47,7 +44,7 @@ formatage, les tests unitaires, le build et le manifeste.
 
 Dans `Actions`, ouvrir `Publier une Release Foundry`, choisir `Run workflow`, saisir
 le tag correspondant exactement au manifeste, puis lancer. Pour la recette 10-K2-P,
-utiliser `v0.8.1`. Le workflow construit `relis-v0.8.1.zip`, crée le tag et la
+utiliser `v0.8.2`. Le workflow construit `relis-v0.8.2.zip`, crée le tag et la
 Release, puis y joint l’archive.
 
 Ne pas créer manuellement une archive différente : le ZIP automatisé garantit que
@@ -62,22 +59,22 @@ Utiliser l’URL de manifeste suivante dans le gestionnaire de systèmes :
 
 Le manifeste téléchargera alors :
 
-`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.1/relis-v0.8.1.zip`
+`https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.2/relis-v0.8.2.zip`
 
 ## 5. Recette 10-K2-P
 
 1. Créer un monde avec le système `RE:LIS — RE: Lost in Space`.
 2. Ouvrir la console du navigateur et vérifier l’absence d’erreur rouge `relis`.
 3. Ouvrir l’ancien Personnage de recette 10-C et confirmer sa conservation.
-4. Suivre la recette `RE-LIS_Recette10_K2-P_v0.8.1.md` fournie avec les
+4. Suivre la recette `RE-LIS_Recette10_K2-P_v0.8.2.md` fournie avec les
    livrables de développement.
 5. Vérifier le chargement, la version, la conservation des inventaires et la présence des 23 compendiums regroupés dans Création, Progression et Matériel. Le pipeline, les comptes et les références strictes sont contrôlés par GitHub Actions.
 6. Actualiser le navigateur et confirmer la persistance. Le schéma reste 7 et aucune migration de monde n’est ajoutée. Effectuer la recette seul ; ne solliciter aucun autre participant avant la procédure finale.
 7. Signaler la version Foundry affichée, les erreurs de console et l’étape exacte
    du premier échec éventuel.
 
-## Recette 0.8.1
+## Recette 0.8.2
 
-Arrêter le monde avant de remplacer le système, puis le relancer après installation. Vérifier 0.8.1 dans le manifeste et les pieds de fiches Actor et Item. Conserver une sauvegarde du monde. L’archive update conserve la racine relis-foundry/ et contient les fichiers modifiés depuis la base publique v0.8.0 ; l’archive installable a `system.json` à sa racine. Le schéma reste 7 et aucune migration n’est déclenchée. Ne pas utiliser un remplacement global de version sur package-lock.json.
+Arrêter le monde avant de remplacer le système, puis le relancer après installation. Vérifier 0.8.2 dans le manifeste et les pieds de fiches Actor et Item. Conserver une sauvegarde du monde. L’archive update conserve la racine relis-foundry/ et contient uniquement les fichiers modifiés depuis la v0.8.1 ; l’archive installable a `system.json` à sa racine. Le schéma reste 7 et aucune migration n’est déclenchée. Ne pas utiliser un remplacement global de version sur package-lock.json.
 
-Exécuter `RE-LIS_Recette10_K2-P_v0.8.1.md`, bloc A d’abord. Recette seul en MJ, aucune invitation d’un autre utilisateur et aucun contrôle visuel automatisé par navigateur. La clôture de 10-K2-P attend la validation explicite.
+Exécuter `RE-LIS_Recette10_K2-P_v0.8.2.md`, bloc A d’abord. Recette seul en MJ, aucune invitation d’un autre utilisateur et aucun contrôle visuel automatisé par navigateur. La clôture de 10-K2-P attend la validation explicite.

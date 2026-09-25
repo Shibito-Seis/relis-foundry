@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance", "beastkin", "groupe"],
   "system": {
-    "description": "<p>Ascendance parente. Le personnage choisit une lignée Beastkin canonique ; la fiche parente ne fournit pas de profil d’Attribut autonome.</p>",
+    "description": "<p>Humanoïdes à traits animaux marqués.</p>\n<h3>Sous-types connus</h3>\n<ul><li>Renards ;</li><li>Chats ;</li><li>Félins ;</li><li>Chiens ;</li><li>Loups ;</li><li>Lézards ;</li><li>Ours ;</li><li>Souris ;</li><li>autres variantes possibles, dont formes serpentines ou lamias.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>traits physiques forts ;</li><li>sens améliorés ;</li><li>griffes, crocs, queue, odorat, vision nocturne selon lignée ;</li><li>capacités liées au mouvement ou à l’environnement.</li></ul>\n<h3>Choix de lignée</h3>\n<p>Cette entrée représente la famille Beastkin. Le personnage choisit une lignée Beastkin canonique ; la fiche parente ne fournit pas de profil d’Attribut autonome.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

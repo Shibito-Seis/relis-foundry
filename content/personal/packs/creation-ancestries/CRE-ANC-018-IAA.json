@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>IAA</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 Technologie, +1 Intelligence, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Maîtrise Magique</p>\n<p>Esprit artificiel, logique système, stabilité mentale, mais faible connexion naturelle aux énergies organiques.</p>",
+    "description": "<p><strong>IAA</strong>.</p><p>Intelligences Artificielles Autonomes.</p>\n<h3>Traits de lore</h3>\n<ul><li>entités artificielles proches des humains dans leur comportement ;</li><li>utilisent généralement des corps robotiques ;</li><li>créées notamment parce que la Pluie écarlate ne tuait pas les êtres artificiels.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>corps modulaire ;</li><li>immunité à certaines menaces biologiques ;</li><li>vulnérabilité au piratage ;</li><li>réparation plutôt que soin classique ;</li><li>modules logiciels ;</li><li>lien aux systèmes du vaisseau ;</li><li>question morale : personne, outil ou héritier ?</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Technologie, +1 Intelligence, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Maîtrise Magique</p>\n<p><strong>Logique :</strong> Esprit artificiel, logique système, stabilité mentale, mais faible connexion naturelle aux énergies organiques.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

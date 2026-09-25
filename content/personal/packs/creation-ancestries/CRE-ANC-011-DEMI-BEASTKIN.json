@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Demi-Beastkin</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 dans 2 des 3 bonus du sous-type, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> Malus du sous-type</p>\n<p>Héritage animal atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
+    "description": "<p><strong>Demi-Beastkin</strong>.</p><p>Hybrides plus proches de l’humain.</p>\n<h3>Exemples</h3>\n<ul><li>neko ;</li><li>kitsune ;</li><li>hommes ou femmes loups ;</li><li>autres hybrides humanoïdes à traits animaux.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>compromis entre humain et beastkin ;</li><li>meilleure intégration sociale ;</li><li>traits animaux plus légers ;</li><li>souplesse de création.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 des 3 bonus du sous-type, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> Malus du sous-type</p>\n<p><strong>Logique :</strong> Héritage animal atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],

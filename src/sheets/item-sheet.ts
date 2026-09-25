@@ -728,12 +728,13 @@ export class RelisItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       );
       return;
     }
+    const current = this.item.system.attunement ?? {};
     const sourceContract = await loadAttunementContract();
     const contract = attunementSessionContract(
       sourceContract,
       this.item.uuid || this.item.id || this.item.name,
+      String(current.questionnaireVersion ?? ""),
     );
-    const current = this.item.system.attunement ?? {};
     const response = await askAttunement(contract, {
       ...(current.answers ?? {}),
     });

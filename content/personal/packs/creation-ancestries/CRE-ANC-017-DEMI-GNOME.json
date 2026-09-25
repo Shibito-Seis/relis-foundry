@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Demi-Gnome</strong>.</p><p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Intelligence, Technologie, Maîtrise Magique, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p>Base humaine et inventivité gnome. Le bonus libre peut compenser la Force.</p>",
+    "description": "<p><strong>Demi-Gnome</strong>.</p><p>Hybrides humains/gnomes, construits sur une base humaine comme les Demi-Elfes.</p>\n<h3>Traits de lore</h3>\n<ul><li>héritage humain dominant ou fortement visible ;</li><li>traits gnomes atténués ;</li><li>curiosité, inventivité ou sens de l’expérimentation souvent marqués ;</li><li>meilleure intégration sociale que les Gnomes les plus atypiques.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>compromis entre polyvalence humaine et inventivité gnome ;</li><li>affinité modérée pour la technologie, l’intelligence pratique ou la techno-magie expérimentale ;</li><li>talents hybrides liés au bricolage, à l’adaptation et aux solutions improbables mais fonctionnelles.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Intelligence, Technologie, Maîtrise Magique, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p><strong>Logique :</strong> Base humaine et inventivité gnome. Le bonus libre peut compenser la Force.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],
