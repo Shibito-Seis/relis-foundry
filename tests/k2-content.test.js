@@ -190,9 +190,9 @@ describe("compendiums canoniques 10-K2-P", () => {
     }
   });
 
-  it("publie 2 404 descriptions lisibles sans tableau technique brut", () => {
+  it("publie 2 412 descriptions lisibles sans tableau technique brut", () => {
     const entries = [...entriesById().values()];
-    expect(entries).toHaveLength(2404);
+    expect(entries).toHaveLength(2412);
     for (const entry of entries) {
       expect(
         String(entry.system.description ?? "").trim(),
@@ -202,7 +202,7 @@ describe("compendiums canoniques 10-K2-P", () => {
     }
   });
 
-  it("développe les 20 Ascendances et les 12 Voies depuis leurs sections canoniques", () => {
+  it("développe les 28 documents d’Ascendance et les 12 Voies depuis leurs sections canoniques", () => {
     const values = [...entriesById().values()];
     const plainWords = (description) =>
       String(description ?? "")
@@ -212,7 +212,7 @@ describe("compendiums canoniques 10-K2-P", () => {
         .split(/\s+/u)
         .filter(Boolean);
     const ancestries = values.filter(({ type }) => type === "ancestry");
-    expect(ancestries).toHaveLength(20);
+    expect(ancestries).toHaveLength(28);
     for (const ancestry of ancestries) {
       expect(
         plainWords(ancestry.system.description).length,
@@ -239,6 +239,75 @@ describe("compendiums canoniques 10-K2-P", () => {
           `${path.relisId} — ${heading}`,
         ).toContain(`<h3>${heading}</h3>`);
     }
+  });
+
+  it("sépare les huit lignées Demi-Beastkins sans dupliquer leur catalogue hybride", () => {
+    const entries = entriesById();
+    const group = entries.get("CRE-ANC-011-DEMI-BEASTKIN");
+    const variants = [
+      ["CRE-ANC-020-DEMI-BEASTKIN-RENARD", "Beastkin Renard", "-1 Vigueur"],
+      ["CRE-ANC-021-DEMI-BEASTKIN-CHAT", "Beastkin Chat", "-1 Force"],
+      ["CRE-ANC-022-DEMI-BEASTKIN-FELIN", "Beastkin Félin", "-1 Volonté"],
+      [
+        "CRE-ANC-023-DEMI-BEASTKIN-CHIEN",
+        "Beastkin Chien",
+        "-1 Maîtrise Magique",
+      ],
+      ["CRE-ANC-024-DEMI-BEASTKIN-LOUP", "Beastkin Loup", "-1 Présence"],
+      ["CRE-ANC-025-DEMI-BEASTKIN-LEZARD", "Beastkin Lézard", "-1 Présence"],
+      ["CRE-ANC-026-DEMI-BEASTKIN-OURS", "Beastkin Ours", "-1 Dextérité"],
+      ["CRE-ANC-027-DEMI-BEASTKIN-SOURIS", "Beastkin Souris", "-1 Force"],
+    ];
+
+    expect(group.system.catalog).toMatchObject({
+      kind: "ancestry-group",
+      selectable: false,
+    });
+    expect(
+      group.system.catalog.memberRefs.map(({ relisId }) => relisId),
+    ).toEqual(variants.map(([relisId]) => relisId));
+
+    for (const [relisId, parentName, penalty] of variants) {
+      const ancestry = entries.get(relisId);
+      const parent = [...entries.values()].find(
+        ({ name }) => name === parentName,
+      );
+      expect(ancestry.system.catalog).toMatchObject({
+        kind: "ancestry",
+        selectable: true,
+        parentAncestry: parentName,
+        inheritedAttributeChoiceCount: 2,
+        freeAttributeChoiceCount: 1,
+        attributeChoicesMustBeDistinct: true,
+        freeAttributeMayOffsetPenalty: true,
+        attributePenalty: penalty,
+        talentCatalogs: ["Humain", parentName, "Demi-Beastkin"],
+        parentAncestryRef: {
+          relisId: parent.relisId,
+          state: "resolved",
+        },
+      });
+      expect(ancestry.system.catalog.inheritedAttributeChoices).toHaveLength(3);
+    }
+
+    const ancestries = [...entries.values()].filter(
+      ({ type }) => type === "ancestry",
+    );
+    expect(
+      ancestries.filter(({ system }) => system.catalog.selectable !== false),
+    ).toHaveLength(26);
+    expect(
+      ancestries.filter(
+        ({ system }) => system.catalog.kind === "ancestry-group",
+      ),
+    ).toHaveLength(2);
+
+    for (const stableRelisId of [
+      "CRE-ANC-012-ELFE",
+      "CRE-ANC-013-DEMI-ELFE",
+      "CRE-ANC-019-ESMAN",
+    ])
+      expect(entries.has(stableRelisId), stableRelisId).toBe(true);
   });
 
   it("audite les 84 Spécialisations sans publier prématurément les propositions", () => {

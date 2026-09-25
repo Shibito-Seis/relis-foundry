@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.8.2` poursuit la recette de 10-K2-P sans clore le lot. Les 20 Ascendances et les 12 Voies disposent désormais de descriptions développées issues de la Bible, en plus de leurs données mécaniques. L’inventaire PJ/PNJ permet au propriétaire autorisé ou au MJ de supprimer explicitement un Item, avec confirmation et refus protecteur si l’objet contient ou héberge encore d’autres Items. L’action entre Actors porte le libellé utilisateur « Échanger » sans modifier le service transactionnel validé. Les 84 Spécialisations font l’objet d’un rapport de propositions séparé : leur texte n’est pas injecté avant validation. Les références restent strictes, les identifiants Foundry stables et le schéma Item demeure 7, sans migration de monde.
+La version `0.8.3` poursuit la recette de 10-K2-P sans clore le lot. « Demi-Beastkin » devient un groupe non sélectionnable et huit Ascendances jouables distinctes représentent désormais les parentés Renard, Chat, Félin, Chien, Loup, Lézard, Ours et Souris. Chaque variante expose ses choix d’Attribut hérités, son malus, sa référence parentale et ses catalogues de talents autorisés. Les 28 documents du pack comprennent deux groupes et 26 Ascendances sélectionnables ; le catalogue personnel atteint 2 412 Items. Les références restent strictes, les identifiants existants sont conservés et le schéma Item demeure 7, sans migration de monde.
 
 L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. Chaque Cœur reçoit un tirage stable de 20 situations dans une banque de 48 — 8 simples, 8 intermédiaires et 4 complexes — sur six axes et quinze couleurs. Réponses, choix MJ, nom coloré, sujet de l’accord et historique persistent. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
 
@@ -49,7 +49,7 @@ en SVG interne jusqu’à la passe graphique finale.
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
-10-K2-P attend la recette 0.8.2. Aucun contrôle visuel automatisé par navigateur :
+10-K2-P attend la recette 0.8.3. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -73,7 +73,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.8.2.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.8.3.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -82,6 +82,14 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.8.3 — huit lignées Demi-Beastkins
+
+- Transforme l’ancien Item générique « Demi-Beastkin » en groupe de classement non sélectionnable, sans changer son `relisId`.
+- Ajoute huit Ascendances sélectionnables : Renard, Chat, Félin, Chien, Loup, Lézard, Ours et Souris.
+- Structure pour chaque variante la parenté, les trois bonus héritables, le choix de deux bonus, le bonus libre distinct, le malus parental et les catalogues de talents accessibles.
+- Porte le pack des Ascendances à 28 documents, dont 26 sélectionnables, et le catalogue personnel à 2 412 Items.
+- Passe le contenu personnel en `1.2.2`, conserve tous les autres identifiants, le schéma Item 7 et l’absence de migration de monde. 10-K2-P reste ouvert jusqu’à validation explicite de la recette 0.8.3.
 
 ## 0.8.2 — descriptions et administration d’inventaire
 

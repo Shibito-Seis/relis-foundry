@@ -1,5 +1,13 @@
 # Journal des versions
 
+## 0.8.3 — huit lignées Demi-Beastkins
+
+- Transforme `CRE-ANC-011-DEMI-BEASTKIN` en groupe non sélectionnable et conserve son identité canonique.
+- Ajoute huit Ascendances Demi-Beastkins sélectionnables, chacune liée à son parent Beastkin exact.
+- Structure les choix de deux bonus hérités, le bonus libre distinct, le malus parental et les catalogues Humain, parental et hybride autorisés.
+- Porte le pack des Ascendances à 28 documents et le catalogue personnel à 2 412 Items, avec contrôles de comptes, références, sélectivité et stabilité des identifiants existants.
+- Porte le contenu personnel en `1.2.2`, conserve le schéma Item 7 sans migration et maintient toutes les non-régressions de la v0.8.2. 10-K2-P reste en recette jusqu’à validation explicite de la v0.8.3.
+
 ## 0.8.2 — descriptions et administration d’inventaire
 
 - Développe les descriptions des 20 Ascendances et des 12 Voies depuis la Bible, avec séparation lisible du contexte, des rôles, des branches et des repères mécaniques.

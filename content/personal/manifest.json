@@ -3,7 +3,7 @@
   "format": "relis.personal-content",
   "formatVersion": 1,
   "system": "relis",
-  "contentVersion": "1.2.1",
+  "contentVersion": "1.2.2",
   "strictReferences": true,
   "packs": [
     {

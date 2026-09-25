@@ -1,8 +1,8 @@
 export const SYSTEM_ID = "relis";
-export const PACKAGE_VERSION = "0.8.2";
+export const PACKAGE_VERSION = "0.8.3";
 export const SCHEMA_VERSION = "7";
 export const RULES_VERSION = "1.0.0";
-export const CONTENT_VERSION = "1.2.1";
+export const CONTENT_VERSION = "1.2.2";
 
 export const ACTOR_TYPES = [
   "character",

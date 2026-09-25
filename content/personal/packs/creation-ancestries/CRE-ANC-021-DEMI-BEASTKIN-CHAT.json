@@ -1,0 +1,37 @@
+{
+  "relisId": "CRE-ANC-021-DEMI-BEASTKIN-CHAT",
+  "name": "Demi-Beastkin Chat",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance", "demi-beastkin", "beastkin-chat"],
+  "system": {
+    "description": "<p>Les Demi-Beastkins associent une base humaine à un héritage Beastkin atténué. Leurs traits animaux sont plus légers, leur création plus souple et leur parenté doit rester explicitement définie.</p>\n<p><strong>Parenté de Demi-Beastkin Chat :</strong> Beastkin Chat. Héritage Chat atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>\n<h3>Héritage hybride</h3>\n<p>Cette variante choisit deux bonus parmi les trois Attributs de son parent, conserve son malus et reçoit un bonus libre placé dans un Attribut différent. Elle utilise le catalogue Humain, le catalogue Demi-Beastkin commun et le seul catalogue Beastkin de sa parenté.</p>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Dextérité, Volonté, Présence, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p><strong>Logique :</strong> Héritage Chat atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5.4, 5.16 et 43.9",
+      "attributeBonuses": "+1 dans 2 parmi Dextérité, Volonté, Présence, +1 libre",
+      "attributePenalty": "-1 Force",
+      "rationale": "Héritage Chat atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.",
+      "selectable": true,
+      "parentAncestry": "Beastkin Chat",
+      "inheritedAttributeChoices": ["Dextérité", "Volonté", "Présence"],
+      "inheritedAttributeChoiceCount": 2,
+      "freeAttributeChoiceCount": 1,
+      "attributeChoicesMustBeDistinct": true,
+      "freeAttributeMayOffsetPenalty": true,
+      "talentCatalogs": ["Humain", "Beastkin Chat", "Demi-Beastkin"],
+      "parentAncestryRef": {
+        "relisId": "CRE-ANC-004-BEASTKIN-CHAT",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "ancestry",
+        "state": "resolved",
+        "labelSnapshot": "Beastkin Chat",
+        "missingPolicy": "diagnose"
+      }
+    }
+  },
+  "folder": ""
+}

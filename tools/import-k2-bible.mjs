@@ -245,7 +245,6 @@ const ancestryDetail = (number) =>
 const ancestryLoreNumbers = {
   Humain: 1,
   Elman: 2,
-  "Demi-Beastkin": 4,
   Elfe: 5,
   "Demi-Elfe": 6,
   Nain: 7,
@@ -255,7 +254,40 @@ const ancestryLoreNumbers = {
   IAA: 11,
   Esman: 12,
 };
+const ancestryStableIdNumbers = {
+  Humain: "001",
+  Elman: "002",
+  "Beastkin Renard": "003",
+  "Beastkin Chat": "004",
+  "Beastkin Félin": "005",
+  "Beastkin Chien": "006",
+  "Beastkin Loup": "007",
+  "Beastkin Lézard": "008",
+  "Beastkin Ours": "009",
+  "Beastkin Souris": "010",
+  Elfe: "012",
+  "Demi-Elfe": "013",
+  Nain: "014",
+  "Demi-Nain": "015",
+  Gnome: "016",
+  "Demi-Gnome": "017",
+  IAA: "018",
+  Esman: "019",
+  "Demi-Beastkin Renard": "020",
+  "Demi-Beastkin Chat": "021",
+  "Demi-Beastkin Félin": "022",
+  "Demi-Beastkin Chien": "023",
+  "Demi-Beastkin Loup": "024",
+  "Demi-Beastkin Lézard": "025",
+  "Demi-Beastkin Ours": "026",
+  "Demi-Beastkin Souris": "027",
+};
 const beastkinDetail = ancestryDetail(3);
+const demiBeastkinDetail = ancestryDetail(4);
+const demiBeastkinParentName = (name) =>
+  name.startsWith("Demi-Beastkin ")
+    ? name.replace(/^Demi-Beastkin /, "Beastkin ")
+    : "";
 const beastkinIdentityHtml = (name, rationale) => {
   const detailLines = beastkinDetail?.lines ?? [];
   const roleStart = detailLines.findIndex(
@@ -272,29 +304,68 @@ const beastkinIdentityHtml = (name, rationale) => {
     .filter(Boolean)
     .join("\n");
 };
-for (const [index, row] of ancestryRows.entries()) {
+const demiBeastkinIdentityHtml = (name, rationale) => {
+  const parentName = demiBeastkinParentName(name);
+  return [
+    "<p>Les Demi-Beastkins associent une base humaine à un héritage Beastkin atténué. Leurs traits animaux sont plus légers, leur création plus souple et leur parenté doit rester explicitement définie.</p>",
+    `<p><strong>Parenté de ${inlineHtml(name)} :</strong> ${inlineHtml(parentName)}. ${inlineHtml(rationale)}</p>`,
+    "<h3>Héritage hybride</h3>",
+    "<p>Cette variante choisit deux bonus parmi les trois Attributs de son parent, conserve son malus et reçoit un bonus libre placé dans un Attribut différent. Elle utilise le catalogue Humain, le catalogue Demi-Beastkin commun et le seul catalogue Beastkin de sa parenté.</p>",
+  ].join("\n");
+};
+for (const row of ancestryRows) {
   const name = row[0];
+  const stableNumber = ancestryStableIdNumbers[name];
+  if (!stableNumber)
+    throw new Error(`Identifiant stable d’Ascendance absent : ${name}.`);
   const loreNumber = ancestryLoreNumbers[name];
   const lore = loreNumber
     ? descriptiveHtml(ancestryDetail(loreNumber)?.lines ?? [])
     : "";
+  const isDemiBeastkin = name.startsWith("Demi-Beastkin ");
   const description = name.startsWith("Beastkin ")
     ? beastkinIdentityHtml(name, row[3])
-    : lore;
+    : isDemiBeastkin
+      ? demiBeastkinIdentityHtml(name, row[3])
+      : lore;
+  const parentName = demiBeastkinParentName(name);
+  const parentRow = ancestryRows.find(
+    ([candidate]) => candidate === parentName,
+  );
+  const parentBonusOptions = parentRow
+    ? [...parentRow[1].matchAll(/\+1\s+([^,]+)/gu)].map((match) => match[1])
+    : [];
   add("creation", {
-    relisId: `CRE-ANC-${String(index + 1).padStart(3, "0")}-${slug(name)}`,
+    relisId: `CRE-ANC-${stableNumber}-${slug(name)}`,
     name,
     type: "ancestry",
-    tags: ["creation", "ascendance"],
+    tags: [
+      "creation",
+      "ascendance",
+      ...(isDemiBeastkin
+        ? ["demi-beastkin", slug(parentName).toLocaleLowerCase("fr")]
+        : []),
+    ],
     system: commonSystem(
       `${description}\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Malus d’Attribut :</strong> ${inlineHtml(row[2])}</p>\n<p><strong>Logique :</strong> ${inlineHtml(row[3])}</p>`,
       {
         kind: "ancestry",
-        sourceSection: "5",
+        sourceSection: isDemiBeastkin ? "5.4, 5.16 et 43.9" : "5",
         attributeBonuses: row[1],
         attributePenalty: row[2],
         rationale: row[3],
         selectable: true,
+        ...(isDemiBeastkin
+          ? {
+              parentAncestry: parentName,
+              inheritedAttributeChoices: parentBonusOptions,
+              inheritedAttributeChoiceCount: 2,
+              freeAttributeChoiceCount: 1,
+              attributeChoicesMustBeDistinct: true,
+              freeAttributeMayOffsetPenalty: true,
+              talentCatalogs: ["Humain", parentName, "Demi-Beastkin"],
+            }
+          : {}),
       },
     ),
   });
@@ -314,6 +385,24 @@ add("creation", {
       memberNames: ancestryRows
         .map((row) => row[0])
         .filter((name) => name.startsWith("Beastkin ")),
+    },
+  ),
+});
+
+add("creation", {
+  relisId: "CRE-ANC-011-DEMI-BEASTKIN",
+  name: "Demi-Beastkin",
+  type: "ancestry",
+  tags: ["creation", "ascendance", "demi-beastkin", "groupe"],
+  system: commonSystem(
+    `${descriptiveHtml(demiBeastkinDetail?.lines ?? [])}\n<h3>Choix de parenté</h3>\n<p>Cette entrée représente la famille Demi-Beastkin. Le personnage choisit une unique parenté canonique ; la fiche parente ne fournit ni profil d’Attribut, ni réserves naturelles, ni accès parental autonome.</p>`,
+    {
+      kind: "ancestry-group",
+      sourceSection: "5.4, 5.16 et 43.9",
+      selectable: false,
+      memberNames: ancestryRows
+        .map((row) => row[0])
+        .filter((name) => name.startsWith("Demi-Beastkin ")),
     },
   ),
 });
@@ -2752,6 +2841,38 @@ if (ancestryGroup)
     )
     .map((entry) => reference(entry.relisId, entry.type, entry.name));
 
+const demiBeastkinGroup = entries.find(
+  (entry) => entry.relisId === "CRE-ANC-011-DEMI-BEASTKIN",
+);
+if (demiBeastkinGroup)
+  demiBeastkinGroup.system.catalog.memberRefs = entries
+    .filter(
+      (entry) =>
+        entry.type === "ancestry" &&
+        entry.relisId !== demiBeastkinGroup.relisId &&
+        entry.name.startsWith("Demi-Beastkin "),
+    )
+    .map((entry) => reference(entry.relisId, entry.type, entry.name));
+
+for (const entry of entries.filter(
+  (candidate) =>
+    candidate.type === "ancestry" &&
+    candidate.name.startsWith("Demi-Beastkin "),
+)) {
+  const parent = entries.find(
+    (candidate) => candidate.name === entry.system.catalog.parentAncestry,
+  );
+  if (!parent)
+    throw new Error(
+      `Ascendance parente absente pour ${entry.name} : ${entry.system.catalog.parentAncestry}.`,
+    );
+  entry.system.catalog.parentAncestryRef = reference(
+    parent.relisId,
+    parent.type,
+    parent.name,
+  );
+}
+
 for (const pathEntry of entries.filter((entry) => entry.type === "path"))
   pathEntry.system.catalog.specializationRefs = entries
     .filter(
@@ -2846,7 +2967,7 @@ for (const entry of entries) {
 }
 
 const expected = {
-  ancestry: 20,
+  ancestry: 28,
   profile: 52,
   origin: 48,
   advantage: 31,

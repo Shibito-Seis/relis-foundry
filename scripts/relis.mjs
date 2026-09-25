@@ -1,8 +1,8 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.8.2";
+var PACKAGE_VERSION = "0.8.3";
 var RULES_VERSION = "1.0.0";
-var CONTENT_VERSION = "1.2.1";
+var CONTENT_VERSION = "1.2.2";
 var ACTOR_TYPES = [
 	"character",
 	"npc",
@@ -1253,7 +1253,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			...meta,
 			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
-			contentVersion: text(meta.contentVersion, "1.2.1") || "1.2.1",
+			contentVersion: text(meta.contentVersion, "1.2.2") || "1.2.2",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
 			sourceRef: normalizeReference(meta.sourceRef),
 			sourceVersion: text(meta.sourceVersion),

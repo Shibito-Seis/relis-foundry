@@ -1,0 +1,37 @@
+{
+  "relisId": "CRE-ANC-020-DEMI-BEASTKIN-RENARD",
+  "name": "Demi-Beastkin Renard",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance", "demi-beastkin", "beastkin-renard"],
+  "system": {
+    "description": "<p>Les Demi-Beastkins associent une base humaine à un héritage Beastkin atténué. Leurs traits animaux sont plus légers, leur création plus souple et leur parenté doit rester explicitement définie.</p>\n<p><strong>Parenté de Demi-Beastkin Renard :</strong> Beastkin Renard. Héritage Renard atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>\n<h3>Héritage hybride</h3>\n<p>Cette variante choisit deux bonus parmi les trois Attributs de son parent, conserve son malus et reçoit un bonus libre placé dans un Attribut différent. Elle utilise le catalogue Humain, le catalogue Demi-Beastkin commun et le seul catalogue Beastkin de sa parenté.</p>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Dextérité, Présence, Intelligence, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p><strong>Logique :</strong> Héritage Renard atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5.4, 5.16 et 43.9",
+      "attributeBonuses": "+1 dans 2 parmi Dextérité, Présence, Intelligence, +1 libre",
+      "attributePenalty": "-1 Vigueur",
+      "rationale": "Héritage Renard atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.",
+      "selectable": true,
+      "parentAncestry": "Beastkin Renard",
+      "inheritedAttributeChoices": ["Dextérité", "Présence", "Intelligence"],
+      "inheritedAttributeChoiceCount": 2,
+      "freeAttributeChoiceCount": 1,
+      "attributeChoicesMustBeDistinct": true,
+      "freeAttributeMayOffsetPenalty": true,
+      "talentCatalogs": ["Humain", "Beastkin Renard", "Demi-Beastkin"],
+      "parentAncestryRef": {
+        "relisId": "CRE-ANC-003-BEASTKIN-RENARD",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "ancestry",
+        "state": "resolved",
+        "labelSnapshot": "Beastkin Renard",
+        "missingPolicy": "diagnose"
+      }
+    }
+  },
+  "folder": ""
+}

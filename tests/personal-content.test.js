@@ -67,9 +67,9 @@ afterEach(() => {
 });
 
 describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
-  it("valide l’inventaire canonique exhaustif et classé de 2 404 Items", () => {
+  it("valide l’inventaire canonique exhaustif et classé de 2 412 Items", () => {
     const result = validatePersonalContent();
-    expect(result.entries).toHaveLength(2404);
+    expect(result.entries).toHaveLength(2412);
     expect(result.manifest.packs).toHaveLength(23);
     expect(
       Object.fromEntries(
@@ -82,7 +82,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
       ),
     ).toEqual({
       "creation-advantages": 31,
-      "creation-ancestries": 20,
+      "creation-ancestries": 28,
       "creation-drawbacks": 37,
       "creation-origins": 48,
       "creation-posts": 11,
@@ -118,7 +118,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
       action: 42,
       advantage: 31,
       ammunition: 66,
-      ancestry: 20,
+      ancestry: 28,
       armor: 80,
       consumable: 267,
       container: 28,
@@ -164,7 +164,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
     expect(generated.system.meta).toMatchObject({
       relisId: "TST-ITEM-001",
       schemaVersion: "7",
-      contentVersion: "1.2.1",
+      contentVersion: "1.2.2",
       status: "active",
     });
     expect(generated.system.meta.sourceRef.relisId).toBe("");

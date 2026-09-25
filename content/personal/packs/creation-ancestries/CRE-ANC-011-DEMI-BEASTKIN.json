@@ -2,19 +2,100 @@
   "relisId": "CRE-ANC-011-DEMI-BEASTKIN",
   "name": "Demi-Beastkin",
   "type": "ancestry",
-  "tags": ["creation", "ascendance"],
+  "tags": ["creation", "ascendance", "demi-beastkin", "groupe"],
   "system": {
-    "description": "<p><strong>Demi-Beastkin</strong>.</p><p>Hybrides plus proches de l’humain.</p>\n<h3>Exemples</h3>\n<ul><li>neko ;</li><li>kitsune ;</li><li>hommes ou femmes loups ;</li><li>autres hybrides humanoïdes à traits animaux.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>compromis entre humain et beastkin ;</li><li>meilleure intégration sociale ;</li><li>traits animaux plus légers ;</li><li>souplesse de création.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 des 3 bonus du sous-type, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> Malus du sous-type</p>\n<p><strong>Logique :</strong> Héritage animal atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
+    "description": "<p>Hybrides plus proches de l’humain.</p>\n<p>« Demi-Beastkin » désigne une famille d’Ascendances et non un profil jouable générique. À la création, le personnage choisit obligatoirement une unique parenté parmi Renard, Chat, Félin, Chien, Loup, Lézard, Ours ou Souris. Les huit variantes sont des Ascendances sélectionnables distinctes afin que leurs choix d’Attribut, leur malus, leurs réserves naturelles et leurs prérequis puissent être déterminés sans interprétation ultérieure.</p>\n<h3>Exemples</h3>\n<ul><li>neko ;</li><li>kitsune ;</li><li>hommes ou femmes loups ;</li><li>autres hybrides humanoïdes à traits animaux.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>compromis entre humain et beastkin ;</li><li>meilleure intégration sociale ;</li><li>traits animaux plus légers ;</li><li>souplesse de création.</li></ul>\n<p>Le catalogue de talents Demi-Beastkin demeure commun aux huit variantes. Chaque variante accède en outre au catalogue Humain et au seul catalogue Beastkin correspondant à sa parenté ; elle ne reçoit jamais l’accès aux sept autres parentés sans règle explicite.</p>\n<h3>Choix de parenté</h3>\n<p>Cette entrée représente la famille Demi-Beastkin. Le personnage choisit une unique parenté canonique ; la fiche parente ne fournit ni profil d’Attribut, ni réserves naturelles, ni accès parental autonome.</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],
     "catalog": {
-      "kind": "ancestry",
-      "sourceSection": "5",
-      "attributeBonuses": "+1 dans 2 des 3 bonus du sous-type, +1 libre",
-      "attributePenalty": "Malus du sous-type",
-      "rationale": "Héritage animal atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.",
-      "selectable": true
+      "kind": "ancestry-group",
+      "sourceSection": "5.4, 5.16 et 43.9",
+      "selectable": false,
+      "memberNames": [
+        "Demi-Beastkin Renard",
+        "Demi-Beastkin Chat",
+        "Demi-Beastkin Félin",
+        "Demi-Beastkin Chien",
+        "Demi-Beastkin Loup",
+        "Demi-Beastkin Lézard",
+        "Demi-Beastkin Ours",
+        "Demi-Beastkin Souris"
+      ],
+      "memberRefs": [
+        {
+          "relisId": "CRE-ANC-020-DEMI-BEASTKIN-RENARD",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Renard",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-021-DEMI-BEASTKIN-CHAT",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Chat",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-022-DEMI-BEASTKIN-FELIN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Félin",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-023-DEMI-BEASTKIN-CHIEN",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Chien",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-024-DEMI-BEASTKIN-LOUP",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Loup",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-025-DEMI-BEASTKIN-LEZARD",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Lézard",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-026-DEMI-BEASTKIN-OURS",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Ours",
+          "missingPolicy": "diagnose"
+        },
+        {
+          "relisId": "CRE-ANC-027-DEMI-BEASTKIN-SOURIS",
+          "uuid": "",
+          "documentName": "Item",
+          "type": "ancestry",
+          "state": "resolved",
+          "labelSnapshot": "Demi-Beastkin Souris",
+          "missingPolicy": "diagnose"
+        }
+      ]
     }
   },
   "folder": ""

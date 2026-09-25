@@ -414,8 +414,8 @@ assert.equal(
 );
 assert.equal(
   personalContent.entries.length,
-  2404,
-  "10-K2-P doit publier les 2 404 Items, dont les six projectiles manquants",
+  2412,
+  "10-K2-P doit publier les 2 412 Items, dont les huit lignées Demi-Beastkins",
 );
 assert.equal(
   manifest.packFolders?.length,
@@ -429,5 +429,5 @@ assert.equal(
 );
 
 console.log(
-  "Manifest RE:LIS valide : 64 types, 2 404 Items, 23 packs, chemins, références et URLs contrôlés.",
+  "Manifest RE:LIS valide : 64 types, 2 412 Items, 23 packs, chemins, références et URLs contrôlés.",
 );

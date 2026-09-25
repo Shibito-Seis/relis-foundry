@@ -1,0 +1,37 @@
+{
+  "relisId": "CRE-ANC-025-DEMI-BEASTKIN-LEZARD",
+  "name": "Demi-Beastkin Lézard",
+  "type": "ancestry",
+  "tags": ["creation", "ascendance", "demi-beastkin", "beastkin-lezard"],
+  "system": {
+    "description": "<p>Les Demi-Beastkins associent une base humaine à un héritage Beastkin atténué. Leurs traits animaux sont plus légers, leur création plus souple et leur parenté doit rester explicitement définie.</p>\n<p><strong>Parenté de Demi-Beastkin Lézard :</strong> Beastkin Lézard. Héritage Lézard atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>\n<h3>Héritage hybride</h3>\n<p>Cette variante choisit deux bonus parmi les trois Attributs de son parent, conserve son malus et reçoit un bonus libre placé dans un Attribut différent. Elle utilise le catalogue Humain, le catalogue Demi-Beastkin commun et le seul catalogue Beastkin de sa parenté.</p>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Force, Vigueur, Volonté, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Présence</p>\n<p><strong>Logique :</strong> Héritage Lézard atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
+    "traits": [],
+    "requirementRefs": [],
+    "effectRefs": [],
+    "catalog": {
+      "kind": "ancestry",
+      "sourceSection": "5.4, 5.16 et 43.9",
+      "attributeBonuses": "+1 dans 2 parmi Force, Vigueur, Volonté, +1 libre",
+      "attributePenalty": "-1 Présence",
+      "rationale": "Héritage Lézard atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.",
+      "selectable": true,
+      "parentAncestry": "Beastkin Lézard",
+      "inheritedAttributeChoices": ["Force", "Vigueur", "Volonté"],
+      "inheritedAttributeChoiceCount": 2,
+      "freeAttributeChoiceCount": 1,
+      "attributeChoicesMustBeDistinct": true,
+      "freeAttributeMayOffsetPenalty": true,
+      "talentCatalogs": ["Humain", "Beastkin Lézard", "Demi-Beastkin"],
+      "parentAncestryRef": {
+        "relisId": "CRE-ANC-008-BEASTKIN-LEZARD",
+        "uuid": "",
+        "documentName": "Item",
+        "type": "ancestry",
+        "state": "resolved",
+        "labelSnapshot": "Beastkin Lézard",
+        "missingPolicy": "diagnose"
+      }
+    }
+  },
+  "folder": ""
+}
