@@ -1,12 +1,12 @@
 # 10-K2-P — Audit et propositions de description des 84 Spécialisations
 
-**Statut :** rapport de proposition ; aucune de ces descriptions n’est encore publiée dans les compendiums.
+**Statut :** orientations validées et intégrées aux 84 Spécialisations en v0.8.4 ; ce rapport conserve la trace des bases canoniques employées pour générer leurs catalogues de Talents.
 
 ## Constat
 
 Les 84 Items existent et portent leur Voie, leur dotation principale et leurs références. Leur description actuelle reste toutefois une fiche mécanique de 15 à 24 mots. La Bible fournit pour chaque branche une orientation canonique et une dotation, mais pas toujours un paragraphe narratif autonome.
 
-Les textes ci-dessous constituent donc une base courte et strictement traçable : première phrase issue de l’orientation de branche, seconde phrase issue de la dotation canonique. Ils devront être validés avant intégration.
+Les textes ci-dessous constituent une base courte et strictement traçable : première phrase issue de l’orientation de branche, seconde phrase issue de la dotation canonique. Leur orientation alimente désormais chaque Spécialisation et son catalogue de 32 Talents ; aucun lore supplémentaire n’est déduit de leur seul nom.
 
 ## Bretteur
 

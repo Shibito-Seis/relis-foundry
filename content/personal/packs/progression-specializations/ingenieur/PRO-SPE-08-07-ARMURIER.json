@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "ingenieur"],
   "system": {
-    "description": "<p><strong>Ingénieur — Armurier</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Outils d&#39;armurier, pièces d&#39;armes, kit de modification simple.</p>",
+    "description": "<p><strong>Ingénieur — Armurier</strong>.</p><p>La branche <strong>Armurier</strong> de la Voie <strong>Ingénieur</strong> développe armes, armures, modifications..</p>\n<p><strong>Dotation principale :</strong> Outils d&#39;armurier, pièces d&#39;armes, kit de modification simple.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Ingénieur",
       "branchName": "Armurier",
+      "orientation": "armes, armures, modifications.",
       "primaryLoadout": "Outils d'armurier, pièces d'armes, kit de modification simple.",
       "loadoutRefs": []
     }

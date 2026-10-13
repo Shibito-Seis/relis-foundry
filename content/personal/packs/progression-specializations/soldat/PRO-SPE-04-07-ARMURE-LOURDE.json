@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "soldat"],
   "system": {
-    "description": "<p><strong>Soldat — Armure lourde</strong>.</p><p><strong>Voie :</strong> Soldat</p>\n<p><strong>Dotation principale :</strong> Protection tactique renforcée, harnais d&#39;armure ou plaques modulaires.</p>",
+    "description": "<p><strong>Soldat — Armure lourde</strong>.</p><p>La branche <strong>Armure lourde</strong> de la Voie <strong>Soldat</strong> développe CAP, résistance, armes lourdes..</p>\n<p><strong>Dotation principale :</strong> Protection tactique renforcée, harnais d&#39;armure ou plaques modulaires.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Soldat",
       "branchName": "Armure lourde",
+      "orientation": "CAP, résistance, armes lourdes.",
       "primaryLoadout": "Protection tactique renforcée, harnais d'armure ou plaques modulaires.",
       "loadoutRefs": []
     }

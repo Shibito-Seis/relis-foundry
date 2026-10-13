@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "interfaceur"],
   "system": {
-    "description": "<p><strong>Interfaceur — Interface techno-magique</strong>.</p><p><strong>Voie :</strong> Interfaceur</p>\n<p><strong>Dotation principale :</strong> Convertisseur signal/flux, sonde hybride, pare-feu techno-magique.</p>",
+    "description": "<p><strong>Interfaceur — Interface techno-magique</strong>.</p><p>La branche <strong>Interface techno-magique</strong> de la Voie <strong>Interfaceur</strong> développe systèmes hybrides..</p>\n<p><strong>Dotation principale :</strong> Convertisseur signal/flux, sonde hybride, pare-feu techno-magique.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Interfaceur",
       "branchName": "Interface techno-magique",
+      "orientation": "systèmes hybrides.",
       "primaryLoadout": "Convertisseur signal/flux, sonde hybride, pare-feu techno-magique.",
       "loadoutRefs": [
         {

@@ -1445,6 +1445,40 @@
           <article class="relis-card">
             <p class="relis-kicker">Actions et capacités liées</p><h2>Items non
               physiques</h2>
+            {{#if projectedTalentActions.length}}
+              <h3>Actions projetées</h3>
+              <div class="relis-list" data-projected-talent-actions>
+                {{#each projectedTalentActions}}
+                  <div class="relis-row relis-row--item">
+                    <button
+                      type="button"
+                      class="relis-link"
+                      data-action="open-item"
+                      data-item-id="{{sourceId}}"
+                    >{{sourceName}}</button>
+                    <span class="relis-badge">{{activationLabel}}</span>
+                    <small>{{ruleSummary}}</small>
+                  </div>
+                {{/each}}
+              </div>
+            {{/if}}
+            {{#if projectedTalentPassives.length}}
+              <h3>Passifs structurés</h3>
+              <div class="relis-list" data-projected-talent-passives>
+                {{#each projectedTalentPassives}}
+                  <div class="relis-row relis-row--item">
+                    <button
+                      type="button"
+                      class="relis-link"
+                      data-action="open-item"
+                      data-item-id="{{sourceId}}"
+                    >{{sourceName}}</button>
+                    <span class="relis-badge">Passif</span>
+                    <small>{{ruleSummary}}</small>
+                  </div>
+                {{/each}}
+              </div>
+            {{/if}}
             {{#if relatedItems.length}}
               <div class="relis-list">
                 {{#each relatedItems}}

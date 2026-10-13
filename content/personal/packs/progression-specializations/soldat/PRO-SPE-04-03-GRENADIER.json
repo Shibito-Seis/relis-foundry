@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "soldat"],
   "system": {
-    "description": "<p><strong>Soldat — Grenadier</strong>.</p><p><strong>Voie :</strong> Soldat</p>\n<p><strong>Dotation principale :</strong> Lance-grenades léger, grenades d&#39;entraînement ou charges contrôlées.</p>",
+    "description": "<p><strong>Soldat — Grenadier</strong>.</p><p>La branche <strong>Grenadier</strong> de la Voie <strong>Soldat</strong> développe explosifs, zones, contrôle..</p>\n<p><strong>Dotation principale :</strong> Lance-grenades léger, grenades d&#39;entraînement ou charges contrôlées.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Soldat",
       "branchName": "Grenadier",
+      "orientation": "explosifs, zones, contrôle.",
       "primaryLoadout": "Lance-grenades léger, grenades d'entraînement ou charges contrôlées.",
       "loadoutRefs": []
     }

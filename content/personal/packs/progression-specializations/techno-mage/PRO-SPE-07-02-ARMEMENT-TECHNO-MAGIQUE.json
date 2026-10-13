@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "techno-mage"],
   "system": {
-    "description": "<p><strong>Techno-mage — Armement techno-magique</strong>.</p><p><strong>Voie :</strong> Techno-mage</p>\n<p><strong>Dotation principale :</strong> Arme hybride légère, modulateur de munitions ou amplificateur de lame.</p>",
+    "description": "<p><strong>Techno-mage — Armement techno-magique</strong>.</p><p>La branche <strong>Armement techno-magique</strong> de la Voie <strong>Techno-mage</strong> développe armes hybrides..</p>\n<p><strong>Dotation principale :</strong> Arme hybride légère, modulateur de munitions ou amplificateur de lame.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Techno-mage",
       "branchName": "Armement techno-magique",
+      "orientation": "armes hybrides.",
       "primaryLoadout": "Arme hybride légère, modulateur de munitions ou amplificateur de lame.",
       "loadoutRefs": []
     }

@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "tireur"],
   "system": {
-    "description": "<p><strong>Tireur — Automatique</strong>.</p><p><strong>Voie :</strong> Tireur</p>\n<p><strong>Dotation principale :</strong> Fusil d&#39;assaut, pistolet-mitrailleur ou arme à rafales.</p>",
+    "description": "<p><strong>Tireur — Automatique</strong>.</p><p>La branche <strong>Automatique</strong> de la Voie <strong>Tireur</strong> développe rafales, suppression, zone..</p>\n<p><strong>Dotation principale :</strong> Fusil d&#39;assaut, pistolet-mitrailleur ou arme à rafales.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Tireur",
       "branchName": "Automatique",
+      "orientation": "rafales, suppression, zone.",
       "primaryLoadout": "Fusil d'assaut, pistolet-mitrailleur ou arme à rafales.",
       "loadoutRefs": [
         {

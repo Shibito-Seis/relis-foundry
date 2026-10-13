@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "soldat"],
   "system": {
-    "description": "<p><strong>Soldat — Fantassin tactique</strong>.</p><p><strong>Voie :</strong> Soldat</p>\n<p><strong>Dotation principale :</strong> Fusil polyvalent, grenades utilitaires, kit de couverture.</p>",
+    "description": "<p><strong>Soldat — Fantassin tactique</strong>.</p><p>La branche <strong>Fantassin tactique</strong> de la Voie <strong>Soldat</strong> développe couverture, positions, coordination..</p>\n<p><strong>Dotation principale :</strong> Fusil polyvalent, grenades utilitaires, kit de couverture.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Soldat",
       "branchName": "Fantassin tactique",
+      "orientation": "couverture, positions, coordination.",
       "primaryLoadout": "Fusil polyvalent, grenades utilitaires, kit de couverture.",
       "loadoutRefs": []
     }

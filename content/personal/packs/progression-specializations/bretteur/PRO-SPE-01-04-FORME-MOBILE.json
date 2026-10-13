@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "bretteur"],
   "system": {
-    "description": "<p><strong>Bretteur — Forme mobile</strong>.</p><p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Arme légère/agile, harnais de mobilité ou bottes d&#39;adhérence.</p>",
+    "description": "<p><strong>Bretteur — Forme mobile</strong>.</p><p>La branche <strong>Forme mobile</strong> de la Voie <strong>Bretteur</strong> développe déplacement, esquive, franchissement..</p>\n<p><strong>Dotation principale :</strong> Arme légère/agile, harnais de mobilité ou bottes d&#39;adhérence.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Bretteur",
       "branchName": "Forme mobile",
+      "orientation": "déplacement, esquive, franchissement.",
       "primaryLoadout": "Arme légère/agile, harnais de mobilité ou bottes d'adhérence.",
       "loadoutRefs": []
     }

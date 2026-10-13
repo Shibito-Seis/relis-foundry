@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "ingenieur"],
   "system": {
-    "description": "<p><strong>Ingénieur — Constructeur de terrain</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;abri, ancrages, imprimante de terrain limitée ou plaques légères.</p>",
+    "description": "<p><strong>Ingénieur — Constructeur de terrain</strong>.</p><p>La branche <strong>Constructeur de terrain</strong> de la Voie <strong>Ingénieur</strong> développe bases, abris, structures..</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;abri, ancrages, imprimante de terrain limitée ou plaques légères.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Ingénieur",
       "branchName": "Constructeur de terrain",
+      "orientation": "bases, abris, structures.",
       "primaryLoadout": "Kit d'abri, ancrages, imprimante de terrain limitée ou plaques légères.",
       "loadoutRefs": []
     }

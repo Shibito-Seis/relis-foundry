@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.8.3` poursuit la recette de 10-K2-P sans clore le lot. « Demi-Beastkin » devient un groupe non sélectionnable et huit Ascendances jouables distinctes représentent désormais les parentés Renard, Chat, Félin, Chien, Loup, Lézard, Ours et Souris. Chaque variante expose ses choix d’Attribut hérités, son malus, sa référence parentale et ses catalogues de talents autorisés. Les 28 documents du pack comprennent deux groupes et 26 Ascendances sélectionnables ; le catalogue personnel atteint 2 412 Items. Les références restent strictes, les identifiants existants sont conservés et le schéma Item demeure 7, sans migration de monde.
+La version `0.8.4` ouvre la recette de l’audit de la verticale personnelle après validation de 10-K2-P. Les 84 Spécialisations possèdent chacune un catalogue de 32 Talents, soit deux choix aux niveaux 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28 et 30. Les Talents actifs se projettent comme Actions depuis l’Item possédé sans créer de doublon ; les passifs portent leurs règles structurées sans extraction depuis la prose. Les PV naturels et profils Mana/Prana/Flux des Ascendances, ainsi que les PV par niveau des douze Voies, sont structurés pour être consommés par 10-D3/10-D4. Le catalogue atteint 5 100 Items dans 24 compendiums. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
 
 L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. Chaque Cœur reçoit un tirage stable de 20 situations dans une banque de 48 — 8 simples, 8 intermédiaires et 4 complexes — sur six axes et quinze couleurs. Réponses, choix MJ, nom coloré, sujet de l’accord et historique persistent. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
 
@@ -49,7 +49,7 @@ en SVG interne jusqu’à la passe graphique finale.
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
-10-K2-P attend la recette 0.8.3. Aucun contrôle visuel automatisé par navigateur :
+10-K2-P est validé et clos. L’audit personnel attend la recette 0.8.4. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -73,7 +73,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.8.3.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.8.4.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -82,6 +82,15 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.8.4 — audit de la verticale personnelle
+
+- Publie 2 688 Talents de Spécialisation : 32 pour chacune des 84 Spécialisations, avec deux choix à chacun des seize paliers canoniques.
+- Sépare les Talents actifs projetés dans les Actions et les passifs à règles structurées, sans créer de second Item ni déduire une règle depuis le texte descriptif.
+- Laisse les dotations automatiques fixes vides tant qu’aucune progression canonique ne les impose ; elles restent distinctes des Talents choisis.
+- Structure les PV naturels et profils Mana/Prana/Flux des Ascendances, les deux dominances des héritages mixtes et les PV par niveau des douze Voies.
+- Porte le catalogue à 5 100 Items dans 24 compendiums et le contenu personnel en `1.3.0`, sans changer le schéma Item 7 ni créer de migration de monde.
+- Prépare 10-D3/10-D4 pour l’attribution aux Actors et conserve l’exécution des effets de combat en 10-F. L’audit personnel reste en recette jusqu’à validation explicite de la v0.8.4.
 
 ## 0.8.3 — huit lignées Demi-Beastkins
 

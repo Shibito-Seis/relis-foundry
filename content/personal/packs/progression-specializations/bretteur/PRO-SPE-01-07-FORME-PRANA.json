@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "bretteur"],
   "system": {
-    "description": "<p><strong>Bretteur — Forme Prana</strong>.</p><p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Focus corporel, bandelettes conductrices, catalyseur interne ou arme compatible Prana.</p>",
+    "description": "<p><strong>Bretteur — Forme Prana</strong>.</p><p>La branche <strong>Forme Prana</strong> de la Voie <strong>Bretteur</strong> développe renforcement interne, duel surnaturel..</p>\n<p><strong>Dotation principale :</strong> Focus corporel, bandelettes conductrices, catalyseur interne ou arme compatible Prana.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Bretteur",
       "branchName": "Forme Prana",
+      "orientation": "renforcement interne, duel surnaturel.",
       "primaryLoadout": "Focus corporel, bandelettes conductrices, catalyseur interne ou arme compatible Prana.",
       "loadoutRefs": []
     }

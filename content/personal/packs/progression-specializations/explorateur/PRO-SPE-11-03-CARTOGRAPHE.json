@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "explorateur"],
   "system": {
-    "description": "<p><strong>Explorateur — Cartographe</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Drone cartographique simple, balises de route, module de carte.</p>",
+    "description": "<p><strong>Explorateur — Cartographe</strong>.</p><p>La branche <strong>Cartographe</strong> de la Voie <strong>Explorateur</strong> développe cartes, routes, zones..</p>\n<p><strong>Dotation principale :</strong> Drone cartographique simple, balises de route, module de carte.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Explorateur",
       "branchName": "Cartographe",
+      "orientation": "cartes, routes, zones.",
       "primaryLoadout": "Drone cartographique simple, balises de route, module de carte.",
       "loadoutRefs": []
     }

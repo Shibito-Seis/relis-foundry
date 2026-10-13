@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "briseur"],
   "system": {
-    "description": "<p><strong>Briseur — Lutteur</strong>.</p><p><strong>Voie :</strong> Briseur</p>\n<p><strong>Dotation principale :</strong> Gants de saisie, harnais de lutte, entraves ou exosangle courte.</p>",
+    "description": "<p><strong>Briseur — Lutteur</strong>.</p><p>La branche <strong>Lutteur</strong> de la Voie <strong>Briseur</strong> développe saisie, projection, immobilisation..</p>\n<p><strong>Dotation principale :</strong> Gants de saisie, harnais de lutte, entraves ou exosangle courte.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Briseur",
       "branchName": "Lutteur",
+      "orientation": "saisie, projection, immobilisation.",
       "primaryLoadout": "Gants de saisie, harnais de lutte, entraves ou exosangle courte.",
       "loadoutRefs": []
     }

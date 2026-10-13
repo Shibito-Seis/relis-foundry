@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p><strong>Elfe</strong>.</p><p>Peuple lié à la Fusion des Mondes et à l’arrivée de la magie.</p>\n<h3>Traits de lore</h3>\n<ul><li>apparus environ 600 ans avant le présent du jeu ;</li><li>liés aux grands arbres issus du cataclysme ;</li><li>civilisation magique ancienne ;</li><li>contributeurs majeurs à la techno-magie.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>magie ;</li><li>mémoire ancienne ;</li><li>perception des flux ;</li><li>traditions techno-magiques ;</li><li>longévité élevée et mémoire culturelle précisées dans le catalogue elfique canonique.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Présence, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p><strong>Logique :</strong> Beau, agile, magique, mais de constitution plus fragile.</p>",
+    "description": "<p><strong>Elfe</strong>.</p><p>Peuple lié à la Fusion des Mondes et à l’arrivée de la magie.</p>\n<h3>Traits de lore</h3>\n<ul><li>apparus environ 600 ans avant le présent du jeu ;</li><li>liés aux grands arbres issus du cataclysme ;</li><li>civilisation magique ancienne ;</li><li>contributeurs majeurs à la techno-magie.</li></ul>\n<h3>Rôle mécanique envisagé</h3>\n<ul><li>magie ;</li><li>mémoire ancienne ;</li><li>perception des flux ;</li><li>traditions techno-magiques ;</li><li>longévité élevée et mémoire culturelle précisées dans le catalogue elfique canonique.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Présence, +1 Maîtrise Magique</p>\n<p><strong>Malus d’Attribut :</strong> -1 Vigueur</p>\n<p><strong>Logique :</strong> Beau, agile, magique, mais de constitution plus fragile.</p>\n<h3>Vitalité et énergies naturelles</h3>\n<p><strong>PV :</strong> 8 PV d’Ascendance</p>\n<p><strong>Réserves naturelles :</strong> Profil naturel : Prana 2, Mana 6, Flux 5</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],
@@ -14,7 +14,22 @@
       "attributeBonuses": "+1 Dextérité, +1 Présence, +1 Maîtrise Magique",
       "attributePenalty": "-1 Vigueur",
       "rationale": "Beau, agile, magique, mais de constitution plus fragile.",
-      "selectable": true
+      "selectable": true,
+      "hitPointProfile": {
+        "mode": "fixed",
+        "value": 8
+      },
+      "energyProfiles": [
+        {
+          "id": "natural",
+          "label": "Profil naturel",
+          "prana": 2,
+          "mana": 6,
+          "flux": 5
+        }
+      ],
+      "energySelectionRequired": false,
+      "energyComponentsRemainSeparate": true
     }
   },
   "folder": ""

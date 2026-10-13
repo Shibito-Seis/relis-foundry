@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "medecin"],
   "system": {
-    "description": "<p><strong>Médecin — Cybermédecin</strong>.</p><p><strong>Voie :</strong> Médecin</p>\n<p><strong>Dotation principale :</strong> Outils prothétiques, connecteurs IAA/implants, sondes neuro-techniques.</p>",
+    "description": "<p><strong>Médecin — Cybermédecin</strong>.</p><p>La branche <strong>Cybermédecin</strong> de la Voie <strong>Médecin</strong> développe IAAs, implants, prothèses, corps artificiels..</p>\n<p><strong>Dotation principale :</strong> Outils prothétiques, connecteurs IAA/implants, sondes neuro-techniques.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Médecin",
       "branchName": "Cybermédecin",
+      "orientation": "IAAs, implants, prothèses, corps artificiels.",
       "primaryLoadout": "Outils prothétiques, connecteurs IAA/implants, sondes neuro-techniques.",
       "loadoutRefs": []
     }

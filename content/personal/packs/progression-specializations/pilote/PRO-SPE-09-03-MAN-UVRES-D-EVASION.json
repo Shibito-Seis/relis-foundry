@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "pilote"],
   "system": {
-    "description": "<p><strong>Pilote — Manœuvres d&#39;évasion</strong>.</p><p><strong>Voie :</strong> Pilote</p>\n<p><strong>Dotation principale :</strong> Module d&#39;alerte trajectoire, simulateur personnel, capteurs de collision.</p>",
+    "description": "<p><strong>Pilote — Manœuvres d&#39;évasion</strong>.</p><p>La branche <strong>Manœuvres d&#39;évasion</strong> de la Voie <strong>Pilote</strong> développe esquive, poursuite, fuite..</p>\n<p><strong>Dotation principale :</strong> Module d&#39;alerte trajectoire, simulateur personnel, capteurs de collision.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Pilote",
       "branchName": "Manœuvres d'évasion",
+      "orientation": "esquive, poursuite, fuite.",
       "primaryLoadout": "Module d'alerte trajectoire, simulateur personnel, capteurs de collision.",
       "loadoutRefs": []
     }

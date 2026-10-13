@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "emissaire"],
   "system": {
-    "description": "<p><strong>Émissaire — Premier contact</strong>.</p><p><strong>Voie :</strong> Émissaire</p>\n<p><strong>Dotation principale :</strong> Traducteur culturel, protocole non-humain, kit d&#39;offrandes ou d&#39;échantillons.</p>",
+    "description": "<p><strong>Émissaire — Premier contact</strong>.</p><p>La branche <strong>Premier contact</strong> de la Voie <strong>Émissaire</strong> développe cultures alien, protocole..</p>\n<p><strong>Dotation principale :</strong> Traducteur culturel, protocole non-humain, kit d&#39;offrandes ou d&#39;échantillons.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Émissaire",
       "branchName": "Premier contact",
+      "orientation": "cultures alien, protocole.",
       "primaryLoadout": "Traducteur culturel, protocole non-humain, kit d'offrandes ou d'échantillons.",
       "loadoutRefs": []
     }

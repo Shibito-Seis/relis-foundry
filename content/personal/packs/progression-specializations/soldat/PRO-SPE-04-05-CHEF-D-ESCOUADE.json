@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "soldat"],
   "system": {
-    "description": "<p><strong>Soldat — Chef d&#39;escouade</strong>.</p><p><strong>Voie :</strong> Soldat</p>\n<p><strong>Dotation principale :</strong> Commlink tactique, balises d&#39;ordre, interface de coordination.</p>",
+    "description": "<p><strong>Soldat — Chef d&#39;escouade</strong>.</p><p>La branche <strong>Chef d&#39;escouade</strong> de la Voie <strong>Soldat</strong> développe ordres, bonus d’équipe..</p>\n<p><strong>Dotation principale :</strong> Commlink tactique, balises d&#39;ordre, interface de coordination.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Soldat",
       "branchName": "Chef d'escouade",
+      "orientation": "ordres, bonus d’équipe.",
       "primaryLoadout": "Commlink tactique, balises d'ordre, interface de coordination.",
       "loadoutRefs": []
     }

@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "bretteur"],
   "system": {
-    "description": "<p><strong>Bretteur — Forme défensive</strong>.</p><p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Lame de garde, bouclier léger ou gantelet de parade.</p>",
+    "description": "<p><strong>Bretteur — Forme défensive</strong>.</p><p>La branche <strong>Forme défensive</strong> de la Voie <strong>Bretteur</strong> développe parade, contre, protection d’allié..</p>\n<p><strong>Dotation principale :</strong> Lame de garde, bouclier léger ou gantelet de parade.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Bretteur",
       "branchName": "Forme défensive",
+      "orientation": "parade, contre, protection d’allié.",
       "primaryLoadout": "Lame de garde, bouclier léger ou gantelet de parade.",
       "loadoutRefs": []
     }

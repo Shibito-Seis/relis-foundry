@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "ingenieur"],
   "system": {
-    "description": "<p><strong>Ingénieur — Saboteur</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Charges contrôlées, outils de neutralisation, pièges mécaniques simples.</p>",
+    "description": "<p><strong>Ingénieur — Saboteur</strong>.</p><p>La branche <strong>Saboteur</strong> de la Voie <strong>Ingénieur</strong> développe démolition, pièges, neutralisation..</p>\n<p><strong>Dotation principale :</strong> Charges contrôlées, outils de neutralisation, pièges mécaniques simples.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Ingénieur",
       "branchName": "Saboteur",
+      "orientation": "démolition, pièges, neutralisation.",
       "primaryLoadout": "Charges contrôlées, outils de neutralisation, pièges mécaniques simples.",
       "loadoutRefs": []
     }

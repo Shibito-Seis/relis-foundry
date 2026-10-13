@@ -3,7 +3,7 @@
   "format": "relis.personal-content",
   "formatVersion": 1,
   "system": "relis",
-  "contentVersion": "1.2.2",
+  "contentVersion": "1.3.0",
   "strictReferences": true,
   "packs": [
     {
@@ -69,6 +69,15 @@
       "documentType": "Item",
       "source": "packs/progression-specializations",
       "itemTypes": ["specialization"]
+    },
+    {
+      "id": "progression-specialization-talents",
+      "name": "progression-specialization-talents",
+      "label": "RE:LIS — Talents de Spécialisation",
+      "documentType": "Item",
+      "source": "catalogs/progression-specialization-talents",
+      "sourceMode": "specializationCatalog",
+      "itemTypes": ["talent"]
     },
     {
       "id": "progression-ancestry-talents",

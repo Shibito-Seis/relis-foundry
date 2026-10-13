@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "bretteur"],
   "system": {
-    "description": "<p><strong>Bretteur — Forme équilibrée</strong>.</p><p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Lame polyvalente, sabre ou épée courte équilibrée ; protection légère adaptée au duel.</p>",
+    "description": "<p><strong>Bretteur — Forme équilibrée</strong>.</p><p>La branche <strong>Forme équilibrée</strong> de la Voie <strong>Bretteur</strong> développe style polyvalent, attaque et défense..</p>\n<p><strong>Dotation principale :</strong> Lame polyvalente, sabre ou épée courte équilibrée ; protection légère adaptée au duel.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Bretteur",
       "branchName": "Forme équilibrée",
+      "orientation": "style polyvalent, attaque et défense.",
       "primaryLoadout": "Lame polyvalente, sabre ou épée courte équilibrée ; protection légère adaptée au duel.",
       "loadoutRefs": [
         {

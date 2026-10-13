@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "interfaceur"],
   "system": {
-    "description": "<p><strong>Interfaceur — Dialogue IAA</strong>.</p><p><strong>Voie :</strong> Interfaceur</p>\n<p><strong>Dotation principale :</strong> Interface sociale IAA, protocole de traduction émotionnelle, logs relationnels.</p>",
+    "description": "<p><strong>Interfaceur — Dialogue IAA</strong>.</p><p>La branche <strong>Dialogue IAA</strong> de la Voie <strong>Interfaceur</strong> développe relations avec IA conscientes..</p>\n<p><strong>Dotation principale :</strong> Interface sociale IAA, protocole de traduction émotionnelle, logs relationnels.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Interfaceur",
       "branchName": "Dialogue IAA",
+      "orientation": "relations avec IA conscientes.",
       "primaryLoadout": "Interface sociale IAA, protocole de traduction émotionnelle, logs relationnels.",
       "loadoutRefs": []
     }

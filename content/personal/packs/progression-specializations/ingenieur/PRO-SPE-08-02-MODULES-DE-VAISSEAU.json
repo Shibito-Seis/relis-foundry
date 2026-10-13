@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "ingenieur"],
   "system": {
-    "description": "<p><strong>Ingénieur — Modules de vaisseau</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Kit module, câbles lourds, interface maintenance vaisseau.</p>",
+    "description": "<p><strong>Ingénieur — Modules de vaisseau</strong>.</p><p>La branche <strong>Modules de vaisseau</strong> de la Voie <strong>Ingénieur</strong> développe installation, optimisation..</p>\n<p><strong>Dotation principale :</strong> Kit module, câbles lourds, interface maintenance vaisseau.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Ingénieur",
       "branchName": "Modules de vaisseau",
+      "orientation": "installation, optimisation.",
       "primaryLoadout": "Kit module, câbles lourds, interface maintenance vaisseau.",
       "loadoutRefs": []
     }

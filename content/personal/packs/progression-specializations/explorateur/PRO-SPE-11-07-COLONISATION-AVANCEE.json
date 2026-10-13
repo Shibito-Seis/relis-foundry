@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "explorateur"],
   "system": {
-    "description": "<p><strong>Explorateur — Colonisation avancée</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;analyse sol/eau, graines tests, module d&#39;habitabilité.</p>",
+    "description": "<p><strong>Explorateur — Colonisation avancée</strong>.</p><p>La branche <strong>Colonisation avancée</strong> de la Voie <strong>Explorateur</strong> développe repérer sites Eden, abris, ressources..</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;analyse sol/eau, graines tests, module d&#39;habitabilité.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Explorateur",
       "branchName": "Colonisation avancée",
+      "orientation": "repérer sites Eden, abris, ressources.",
       "primaryLoadout": "Kit d'analyse sol/eau, graines tests, module d'habitabilité.",
       "loadoutRefs": []
     }

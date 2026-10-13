@@ -25,6 +25,10 @@ function clean(value = "") {
     .trim();
 }
 
+function comparisonKey(value = "") {
+  return clean(value).replaceAll("'", "’").toLocaleLowerCase("fr");
+}
+
 function slug(value) {
   return clean(value)
     .normalize("NFD")
@@ -282,6 +286,127 @@ const ancestryStableIdNumbers = {
   "Demi-Beastkin Ours": "026",
   "Demi-Beastkin Souris": "027",
 };
+const ancestryHitPoints = {
+  Humain: 10,
+  Elman: 9,
+  "Beastkin Renard": 9,
+  "Beastkin Chat": 9,
+  "Beastkin Félin": 12,
+  "Beastkin Chien": 11,
+  "Beastkin Loup": 11,
+  "Beastkin Lézard": 12,
+  "Beastkin Ours": 14,
+  "Beastkin Souris": 8,
+  Elfe: 8,
+  "Demi-Elfe": 9,
+  Nain: 12,
+  "Demi-Nain": 11,
+  Gnome: 8,
+  "Demi-Gnome": 10,
+  IAA: 10,
+  Esman: 12,
+};
+const ancestryEnergyProfiles = {
+  Humain: [["natural", "Profil naturel", 4, 3, 0]],
+  Elman: [["natural", "Profil naturel", 3, 5, 3]],
+  "Beastkin Renard": [["natural", "Profil naturel", 3, 4, 1]],
+  "Beastkin Chat": [["natural", "Profil naturel", 3, 2, 0]],
+  "Beastkin Félin": [["natural", "Profil naturel", 6, 2, 0]],
+  "Beastkin Chien": [["natural", "Profil naturel", 5, 1, 0]],
+  "Beastkin Loup": [["natural", "Profil naturel", 5, 2, 0]],
+  "Beastkin Lézard": [["natural", "Profil naturel", 6, 1, 0]],
+  "Beastkin Ours": [["natural", "Profil naturel", 8, 1, 0]],
+  "Beastkin Souris": [["natural", "Profil naturel", 2, 2, 0]],
+  Elfe: [["natural", "Profil naturel", 2, 6, 5]],
+  "Demi-Elfe": [
+    ["human", "Dominance humaine", 3, 4, 2],
+    ["nonHuman", "Dominance elfique", 3, 5, 3],
+  ],
+  Nain: [["natural", "Profil naturel", 6, 2, 0]],
+  "Demi-Nain": [
+    ["human", "Dominance humaine", 5, 3, 0],
+    ["nonHuman", "Dominance naine", 5, 2, 0],
+  ],
+  Gnome: [["natural", "Profil naturel", 2, 5, 2]],
+  "Demi-Gnome": [
+    ["human", "Dominance humaine", 3, 4, 1],
+    ["nonHuman", "Dominance gnome", 3, 4, 1],
+  ],
+  IAA: [["natural", "Profil naturel", 0, 0, 0]],
+  Esman: [["natural", "Profil naturel", 6, 4, 1]],
+  "Demi-Beastkin Renard": [
+    ["human", "Dominance humaine", 4, 3, 0],
+    ["nonHuman", "Dominance Beastkin", 3, 4, 1],
+  ],
+  "Demi-Beastkin Chat": [
+    ["human", "Dominance humaine", 4, 3, 0],
+    ["nonHuman", "Dominance Beastkin", 3, 2, 0],
+  ],
+  "Demi-Beastkin Félin": [
+    ["human", "Dominance humaine", 5, 3, 0],
+    ["nonHuman", "Dominance Beastkin", 5, 2, 0],
+  ],
+  "Demi-Beastkin Chien": [
+    ["human", "Dominance humaine", 4, 2, 0],
+    ["nonHuman", "Dominance Beastkin", 5, 2, 0],
+  ],
+  "Demi-Beastkin Loup": [
+    ["human", "Dominance humaine", 4, 3, 0],
+    ["nonHuman", "Dominance Beastkin", 5, 2, 0],
+  ],
+  "Demi-Beastkin Lézard": [
+    ["human", "Dominance humaine", 5, 2, 0],
+    ["nonHuman", "Dominance Beastkin", 5, 2, 0],
+  ],
+  "Demi-Beastkin Ours": [
+    ["human", "Dominance humaine", 6, 2, 0],
+    ["nonHuman", "Dominance Beastkin", 6, 2, 0],
+  ],
+  "Demi-Beastkin Souris": [
+    ["human", "Dominance humaine", 3, 3, 0],
+    ["nonHuman", "Dominance Beastkin", 3, 2, 0],
+  ],
+};
+const energyProfilesFor = (name) =>
+  (ancestryEnergyProfiles[name] ?? []).map(
+    ([id, label, prana, mana, flux]) => ({
+      id,
+      label,
+      prana,
+      mana,
+      flux,
+    }),
+  );
+const hitPointProfileFor = (name, parentName) => {
+  if (name.startsWith("Demi-Beastkin "))
+    return {
+      mode: "dominance",
+      profiles: [
+        { id: "human", label: "Dominance humaine", value: 10 },
+        {
+          id: "nonHuman",
+          label: "Dominance Beastkin",
+          value: ancestryHitPoints[parentName],
+        },
+      ],
+    };
+  return { mode: "fixed", value: ancestryHitPoints[name] };
+};
+const ancestryVitalsHtml = (hitPoints, energyProfiles) => {
+  const hitPointText =
+    hitPoints.mode === "fixed"
+      ? `${hitPoints.value} PV d’Ascendance`
+      : hitPoints.profiles
+          .map((profile) => `${profile.label} : ${profile.value} PV`)
+          .join(" ; ");
+  const energyText = energyProfiles
+    .map(
+      (profile) =>
+        `${profile.label} : Prana ${profile.prana}, Mana ${profile.mana}, Flux ${profile.flux}`,
+    )
+    .join(" ; ");
+  return `<h3>Vitalité et énergies naturelles</h3>\n<p><strong>PV :</strong> ${inlineHtml(hitPointText)}</p>\n<p><strong>Réserves naturelles :</strong> ${inlineHtml(energyText)}</p>`;
+};
 const beastkinDetail = ancestryDetail(3);
 const demiBeastkinDetail = ancestryDetail(4);
 const demiBeastkinParentName = (name) =>
@@ -335,6 +460,15 @@ for (const row of ancestryRows) {
   const parentBonusOptions = parentRow
     ? [...parentRow[1].matchAll(/\+1\s+([^,]+)/gu)].map((match) => match[1])
     : [];
+  const hitPointProfile = hitPointProfileFor(name, parentName);
+  const energyProfiles = energyProfilesFor(name);
+  if (!energyProfiles.length)
+    throw new Error(`Profil énergétique absent : ${name}.`);
+  if (
+    hitPointProfile.mode === "fixed" &&
+    !Number.isFinite(hitPointProfile.value)
+  )
+    throw new Error(`PV d’Ascendance absents : ${name}.`);
   add("creation", {
     relisId: `CRE-ANC-${stableNumber}-${slug(name)}`,
     name,
@@ -347,7 +481,7 @@ for (const row of ancestryRows) {
         : []),
     ],
     system: commonSystem(
-      `${description}\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Malus d’Attribut :</strong> ${inlineHtml(row[2])}</p>\n<p><strong>Logique :</strong> ${inlineHtml(row[3])}</p>`,
+      `${description}\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Malus d’Attribut :</strong> ${inlineHtml(row[2])}</p>\n<p><strong>Logique :</strong> ${inlineHtml(row[3])}</p>\n${ancestryVitalsHtml(hitPointProfile, energyProfiles)}`,
       {
         kind: "ancestry",
         sourceSection: isDemiBeastkin ? "5.4, 5.16 et 43.9" : "5",
@@ -355,6 +489,10 @@ for (const row of ancestryRows) {
         attributePenalty: row[2],
         rationale: row[3],
         selectable: true,
+        hitPointProfile,
+        energyProfiles,
+        energySelectionRequired: energyProfiles.length > 1,
+        energyComponentsRemainSeparate: true,
         ...(isDemiBeastkin
           ? {
               parentAncestry: parentName,
@@ -572,6 +710,21 @@ if (
   throw new Error("Tables canoniques des Voies incomplètes.");
 
 const pathIdByName = new Map();
+const branchOrientationByPath = new Map();
+const pathHitPointsPerLevel = {
+  Bretteur: 10,
+  Briseur: 12,
+  Tireur: 8,
+  Soldat: 10,
+  Médecin: 8,
+  Channeler: 6,
+  "Techno-mage": 8,
+  Ingénieur: 8,
+  Pilote: 8,
+  Interfaceur: 8,
+  Explorateur: 10,
+  Émissaire: 8,
+};
 const pathDetails = splitHeadings(paths.lines, 3).filter(({ heading }) =>
   /^9\.\d+\s+/.test(heading),
 );
@@ -603,6 +756,15 @@ pathAttributeTable.rows.forEach((row, index) => {
   const branchDefinitions = bulletDefinitions(
     headingSection(detail?.lines ?? [], "Branches possibles"),
   );
+  branchOrientationByPath.set(
+    name,
+    new Map(
+      branchDefinitions.map(({ name: branchName, summary }) => [
+        comparisonKey(branchName),
+        summary,
+      ]),
+    ),
+  );
   const branchesHtml = branchDefinitions.length
     ? `<ul>${branchDefinitions
         .map(
@@ -611,13 +773,16 @@ pathAttributeTable.rows.forEach((row, index) => {
         )
         .join("")}</ul>`
     : "";
+  const hitPointsPerLevel = pathHitPointsPerLevel[name];
+  if (!Number.isInteger(hitPointsPerLevel))
+    throw new Error(`Croissance de PV absente pour la Voie ${name}.`);
   add("progression", {
     relisId,
     name,
     type: "path",
     tags: ["progression", "voie"],
     system: commonSystem(
-      `<h3>Concept</h3>\n${concept}\n<h3>Rôle en combat</h3>\n${combatRole}\n<h3>Rôle hors combat</h3>\n${outsideRole}\n<h3>Branches</h3>\n${branchesHtml}\n<h3>Repères de création</h3>\n<p><strong>Attribut clef :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Compétences :</strong> ${inlineHtml(skills?.slice(1).join(" — ") ?? "")}</p>\n<p><strong>Dotation :</strong> ${inlineHtml(loadout?.[1] ?? "")}</p>`,
+      `<h3>Concept</h3>\n${concept}\n<h3>Rôle en combat</h3>\n${combatRole}\n<h3>Rôle hors combat</h3>\n${outsideRole}\n<h3>Branches</h3>\n${branchesHtml}\n<h3>Repères de création</h3>\n<p><strong>Attribut clef :</strong> ${inlineHtml(row[1])}</p>\n<p><strong>Compétences :</strong> ${inlineHtml(skills?.slice(1).join(" — ") ?? "")}</p>\n<p><strong>Croissance de PV :</strong> ${hitPointsPerLevel} par niveau de Voie principale.</p>\n<p><strong>Dotation :</strong> ${inlineHtml(loadout?.[1] ?? "")}</p>`,
       {
         kind: "path",
         sourceSection: "9",
@@ -628,6 +793,8 @@ pathAttributeTable.rows.forEach((row, index) => {
         skillChoices: (skills?.[4] ?? "").split(",").map(clean),
         branchNames: (branches?.[1] ?? "").split(";").map(clean),
         initialLoadout: loadout?.[1] ?? "",
+        hitPointsPerLevel,
+        grantsHitPointsAsSecondary: false,
       },
     ),
   });
@@ -647,6 +814,12 @@ specializationTables.forEach((table, pathIndex) => {
   const pathName = pathAttributeTable.rows[pathIndex][0];
   table.rows.forEach((row, branchIndex) => {
     const relisId = `PRO-SPE-${String(pathIndex + 1).padStart(2, "0")}-${String(branchIndex + 1).padStart(2, "0")}-${slug(row[0])}`;
+    const orientation =
+      branchOrientationByPath.get(pathName)?.get(comparisonKey(row[0])) ?? "";
+    if (!orientation)
+      throw new Error(
+        `Orientation de Spécialisation absente : ${pathName} — ${row[0]}.`,
+      );
     add("progression", {
       relisId,
       name: `${pathName} — ${row[0]}`,
@@ -654,12 +827,13 @@ specializationTables.forEach((table, pathIndex) => {
       tags: ["progression", "specialisation", slug(pathName).toLowerCase()],
       system: {
         ...commonSystem(
-          `<p><strong>Voie :</strong> ${inlineHtml(pathName)}</p>\n<p><strong>Dotation principale :</strong> ${inlineHtml(row[1])}</p>`,
+          `<p>La branche <strong>${inlineHtml(row[0])}</strong> de la Voie <strong>${inlineHtml(pathName)}</strong> développe ${inlineHtml(orientation)}.</p>\n<p><strong>Dotation principale :</strong> ${inlineHtml(row[1])}</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>`,
           {
             kind: "specialization",
             sourceSection: "9",
             pathName,
             branchName: row[0],
+            orientation,
             primaryLoadout: row[1],
           },
         ),

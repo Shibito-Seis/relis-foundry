@@ -67,10 +67,10 @@ afterEach(() => {
 });
 
 describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
-  it("valide l’inventaire canonique exhaustif et classé de 2 412 Items", () => {
+  it("valide l’inventaire canonique exhaustif et classé de 5 100 Items", () => {
     const result = validatePersonalContent();
-    expect(result.entries).toHaveLength(2412);
-    expect(result.manifest.packs).toHaveLength(23);
+    expect(result.entries).toHaveLength(5100);
+    expect(result.manifest.packs).toHaveLength(24);
     expect(
       Object.fromEntries(
         result.manifest.packs.map((pack) => [
@@ -102,6 +102,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
       "progression-powers-mana": 84,
       "progression-powers-prana": 84,
       "progression-skill-talents": 250,
+      "progression-specialization-talents": 2688,
       "progression-specializations": 84,
       "progression-vampire-talents": 24,
     });
@@ -131,7 +132,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
       profile: 52,
       resource: 62,
       specialization: 84,
-      talent: 1054,
+      talent: 3742,
       weapon: 111,
     });
     expect(result.warnings).toEqual([]);
@@ -164,7 +165,7 @@ describe("pipeline de données personnelles 10-K1-P / 10-K2-P", () => {
     expect(generated.system.meta).toMatchObject({
       relisId: "TST-ITEM-001",
       schemaVersion: "7",
-      contentVersion: "1.2.2",
+      contentVersion: "1.3.0",
       status: "active",
     });
     expect(generated.system.meta.sourceRef.relisId).toBe("");

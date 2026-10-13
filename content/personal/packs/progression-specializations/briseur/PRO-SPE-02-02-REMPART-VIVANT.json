@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "briseur"],
   "system": {
-    "description": "<p><strong>Briseur — Rempart vivant</strong>.</p><p><strong>Voie :</strong> Briseur</p>\n<p><strong>Dotation principale :</strong> Armure renforcée légère, grand bouclier ou module d&#39;ancrage.</p>",
+    "description": "<p><strong>Briseur — Rempart vivant</strong>.</p><p>La branche <strong>Rempart vivant</strong> de la Voie <strong>Briseur</strong> développe tank, blocage, protection d’allié..</p>\n<p><strong>Dotation principale :</strong> Armure renforcée légère, grand bouclier ou module d&#39;ancrage.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Briseur",
       "branchName": "Rempart vivant",
+      "orientation": "tank, blocage, protection d’allié.",
       "primaryLoadout": "Armure renforcée légère, grand bouclier ou module d'ancrage.",
       "loadoutRefs": []
     }

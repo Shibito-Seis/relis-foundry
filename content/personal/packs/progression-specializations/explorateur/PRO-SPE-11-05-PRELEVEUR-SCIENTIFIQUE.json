@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "explorateur"],
   "system": {
-    "description": "<p><strong>Explorateur — Préleveur scientifique</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;échantillons, contenants stériles, scanner de terrain.</p>",
+    "description": "<p><strong>Explorateur — Préleveur scientifique</strong>.</p><p>La branche <strong>Préleveur scientifique</strong> de la Voie <strong>Explorateur</strong> développe échantillons, analyse terrain..</p>\n<p><strong>Dotation principale :</strong> Kit d&#39;échantillons, contenants stériles, scanner de terrain.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Explorateur",
       "branchName": "Préleveur scientifique",
+      "orientation": "échantillons, analyse terrain.",
       "primaryLoadout": "Kit d'échantillons, contenants stériles, scanner de terrain.",
       "loadoutRefs": []
     }

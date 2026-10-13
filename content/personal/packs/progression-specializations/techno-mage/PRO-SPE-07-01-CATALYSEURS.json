@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "techno-mage"],
   "system": {
-    "description": "<p><strong>Techno-mage — Catalyseurs</strong>.</p><p><strong>Voie :</strong> Techno-mage</p>\n<p><strong>Dotation principale :</strong> Catalyseur modulable, batteries de charge, outils de conversion.</p>",
+    "description": "<p><strong>Techno-mage — Catalyseurs</strong>.</p><p>La branche <strong>Catalyseurs</strong> de la Voie <strong>Techno-mage</strong> développe régulation du Mana ou du Flux et conversion de charge technique ; le Prana sert seulement d’amorce vivante lorsqu’un effet l’exige..</p>\n<p><strong>Dotation principale :</strong> Catalyseur modulable, batteries de charge, outils de conversion.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Techno-mage",
       "branchName": "Catalyseurs",
+      "orientation": "régulation du Mana ou du Flux et conversion de charge technique ; le Prana sert seulement d’amorce vivante lorsqu’un effet l’exige.",
       "primaryLoadout": "Catalyseur modulable, batteries de charge, outils de conversion.",
       "loadoutRefs": []
     }

@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "techno-mage"],
   "system": {
-    "description": "<p><strong>Techno-mage — Surcharge contrôlée</strong>.</p><p><strong>Voie :</strong> Techno-mage</p>\n<p><strong>Dotation principale :</strong> Régulateur de surcharge, dissipateur d&#39;urgence, catalyseur à verrou.</p>",
+    "description": "<p><strong>Techno-mage — Surcharge contrôlée</strong>.</p><p>La branche <strong>Surcharge contrôlée</strong> de la Voie <strong>Techno-mage</strong> développe puissance au prix du risque..</p>\n<p><strong>Dotation principale :</strong> Régulateur de surcharge, dissipateur d&#39;urgence, catalyseur à verrou.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Techno-mage",
       "branchName": "Surcharge contrôlée",
+      "orientation": "puissance au prix du risque.",
       "primaryLoadout": "Régulateur de surcharge, dissipateur d'urgence, catalyseur à verrou.",
       "loadoutRefs": []
     }

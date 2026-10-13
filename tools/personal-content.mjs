@@ -35,6 +35,87 @@ const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
 const PACK_ID = /^[a-z][a-z0-9-]*$/;
 const HEX_COLOR = /^#[0-9A-F]{6}$/;
 const FORBIDDEN_SOURCE_KEYS = new Set(["_id", "_stats", "ownership"]);
+const SPECIALIZATION_CATALOG_FORMAT = "relis.specialization-talent-catalogs";
+const SPECIALIZATION_LEVELS = Object.freeze([
+  1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28, 30,
+]);
+const SPECIALIZATION_PROFILES = new Set([
+  "offense",
+  "defense",
+  "mobility",
+  "support",
+  "control",
+  "utility",
+  "energy",
+  "command",
+  "technical",
+  "medical",
+  "stealth",
+  "pilot",
+]);
+const SPECIALIZATION_SKILL_LABELS = Object.freeze({
+  acrobatics: "Acrobaties",
+  heavyWeapons: "Armes lourdes",
+  athletics: "Athlétisme",
+  channeling: "Canalisation",
+  command: "Commandement",
+  commerce: "Commerce",
+  culture: "Culture",
+  diplomacy: "Diplomatie",
+  stealth: "Discrétion",
+  endurance: "Endurance",
+  engineering: "Ingénierie",
+  computing: "Informatique",
+  intimidation: "Intimidation",
+  investigation: "Investigation",
+  medicine: "Médecine",
+  melee: "Mêlée",
+  navigation: "Navigation",
+  piloting: "Pilotage",
+  composure: "Sang-froid",
+  science: "Sciences",
+  survival: "Survie",
+  shipSystems: "Systèmes de vaisseau",
+  technomagic: "Techno-magie",
+  shooting: "Tir",
+  deception: "Tromperie",
+});
+const ACTIVE_TIER_NAMES = Object.freeze([
+  "Initiation",
+  "Enchaînement",
+  "Ouverture",
+  "Cadence",
+  "Percée",
+  "Signature",
+  "Coordination",
+  "Maîtrise",
+  "Suprématie",
+  "Ascendant",
+  "Aboutissement",
+  "Éveil mythique",
+  "Autorité mythique",
+  "Transcendance",
+  "Horizon légendaire",
+  "Apothéose",
+]);
+const PASSIVE_TIER_NAMES = Object.freeze([
+  "Fondations",
+  "Lecture",
+  "Discipline",
+  "Réserve",
+  "Contre-mesure",
+  "Expertise",
+  "Réseau",
+  "Sang-froid",
+  "Inébranlable",
+  "Lucidité supérieure",
+  "Perfection",
+  "Étoile naissante",
+  "Étoile souveraine",
+  "Héritage mythique",
+  "Horizon absolu",
+  "Icône vivante",
+]);
 
 export class PersonalContentError extends Error {
   constructor(messages) {
@@ -148,6 +229,11 @@ function validateManifest(value, sourceRoot, errors) {
       errors.push(`${prefix}.label doit être un libellé français non vide.`);
     if (pack.documentType !== "Item")
       errors.push(`${prefix}.documentType doit valoir Item.`);
+    if (
+      pack.sourceMode !== undefined &&
+      !["entries", "specializationCatalog"].includes(pack.sourceMode)
+    )
+      errors.push(`${prefix}.sourceMode est inconnu.`);
     const directory = relativeInside(
       sourceRoot,
       pack.source,
@@ -172,6 +258,283 @@ function validateManifest(value, sourceRoot, errors) {
     }
   }
   return value.packs;
+}
+
+function talentReference(relisId, type, labelSnapshot = "") {
+  return {
+    relisId,
+    uuid: "",
+    documentName: "Item",
+    type,
+    state: "resolved",
+    labelSnapshot,
+    missingPolicy: "diagnose",
+  };
+}
+
+function specializationTalentId(specializationId, level, track) {
+  const match = String(specializationId).match(/^PRO-SPE-(\d{2})-(\d{2})-/u);
+  if (!match) return "";
+  return `PRO-TAL-SPE-${match[1]}-${match[2]}-${String(level).padStart(2, "0")}-${track}`;
+}
+
+function specializationTier(level) {
+  return level >= 21 ? "mythic" : level >= 16 ? "principal-only" : "shared";
+}
+
+function specializationScale(level) {
+  if (level >= 21) return 3;
+  if (level >= 8) return 2;
+  return 1;
+}
+
+function actionActivation(level) {
+  if (level >= 21)
+    return {
+      kind: "freeAction",
+      actions: 0,
+      frequency: { unit: "scene", uses: 1 },
+      trigger: "Vous engagez la technique associée à votre spécialisation.",
+      duration: "prochain test compatible avant la fin du tour",
+    };
+  if (level >= 16)
+    return {
+      kind: "twoActions",
+      actions: 2,
+      frequency: { unit: "scene", uses: 1 },
+      trigger: "Vous consacrez toute votre attention à la technique.",
+      duration: "prochain test compatible avant la fin du tour",
+    };
+  return {
+    kind: "oneAction",
+    actions: 1,
+    frequency: { unit: "round", uses: 1 },
+    trigger: "Vous préparez la technique de votre spécialisation.",
+    duration: "prochain test compatible avant la fin du tour",
+  };
+}
+
+function activeTalentDescription(catalog, level, value) {
+  const activation = actionActivation(level);
+  const actionLabel =
+    activation.kind === "freeAction"
+      ? "une Action gratuite"
+      : activation.actions === 2
+        ? "deux Actions"
+        : "une Action";
+  return `<p>En vous appuyant sur ${catalog.orientation}, vous préparez <strong>${catalog.activeAxis}</strong>. Dépensez ${actionLabel} : votre prochain test de <strong>${SPECIALIZATION_SKILL_LABELS[catalog.primarySkillId]}</strong> compatible avant la fin du tour reçoit un bonus de circonstance de <strong>+${value}</strong>.</p>\n<p>Cette préparation ne se cumule pas avec une autre technique de la même branche ; seule la valeur la plus élevée s’applique. ${level >= 21 ? "Cette technique mythique ne peut être employée qu’une fois par scène." : level >= 16 ? "Cette technique majeure ne peut être employée qu’une fois par scène." : "Cette technique peut être préparée une fois par round."}</p>`;
+}
+
+function passiveTalentDescription(catalog, level, value) {
+  return `<p>Votre pratique de <strong>${catalog.passiveAxis}</strong> approfondit l’orientation « ${catalog.orientation} ». Lorsque cette approche s’applique clairement, vous ignorez jusqu’à <strong>${value}</strong> point${value > 1 ? "s" : ""} de malus circonstanciel sur un test de <strong>${SPECIALIZATION_SKILL_LABELS[catalog.secondarySkillId]}</strong>.</p>\n<p>Les réductions issues de la même branche ne s’additionnent pas : seule la meilleure valeur s’applique. ${level >= 21 ? "Ce Talent est mythique et réservé à la Spécialisation Principale." : level >= 16 ? "Ce Talent est réservé à la Spécialisation Principale." : "Ce Talent reste accessible à une Spécialisation secondaire dont l’emplacement autorise ce niveau."}</p>`;
+}
+
+function expandSpecializationCatalog(
+  value,
+  file,
+  pack,
+  contentVersion,
+  errors,
+) {
+  const label = path.relative(process.cwd(), file);
+  if (
+    !isRecord(value) ||
+    value.format !== SPECIALIZATION_CATALOG_FORMAT ||
+    value.formatVersion !== 1
+  ) {
+    errors.push(
+      `${label} ne respecte pas le contrat ${SPECIALIZATION_CATALOG_FORMAT} v1.`,
+    );
+    return [];
+  }
+  if (value.contentVersion !== contentVersion)
+    errors.push(
+      `${label} doit partager contentVersion ${contentVersion} avec le manifeste.`,
+    );
+  if (JSON.stringify(value.levels) !== JSON.stringify(SPECIALIZATION_LEVELS))
+    errors.push(`${label} doit déclarer les seize paliers canoniques.`);
+  if (!Array.isArray(value.catalogs) || value.catalogs.length !== 84) {
+    errors.push(`${label} doit déclarer exactement 84 catalogues.`);
+    return [];
+  }
+
+  const expanded = [];
+  const seenSpecializations = new Set();
+  for (const [catalogIndex, catalog] of value.catalogs.entries()) {
+    const prefix = `${label} catalogs[${catalogIndex}]`;
+    if (!isRecord(catalog)) {
+      errors.push(`${prefix} doit être un objet.`);
+      continue;
+    }
+    if (!CANONICAL_ID.test(catalog.specializationId ?? ""))
+      errors.push(`${prefix}.specializationId est invalide.`);
+    if (seenSpecializations.has(catalog.specializationId))
+      errors.push(
+        `${prefix} duplique la Spécialisation ${catalog.specializationId}.`,
+      );
+    seenSpecializations.add(catalog.specializationId);
+    for (const field of [
+      "pathName",
+      "branchName",
+      "orientation",
+      "primarySkillId",
+      "secondarySkillId",
+      "activeAxis",
+      "passiveAxis",
+    ])
+      if (typeof catalog[field] !== "string" || !catalog[field].trim())
+        errors.push(`${prefix}.${field} doit être une chaîne non vide.`);
+    for (const field of ["primarySkillId", "secondarySkillId"])
+      if (!Object.hasOwn(SPECIALIZATION_SKILL_LABELS, catalog[field] ?? ""))
+        errors.push(`${prefix}.${field} est inconnu (${catalog[field]}).`);
+    for (const field of ["activeProfile", "passiveProfile"])
+      if (!SPECIALIZATION_PROFILES.has(catalog[field]))
+        errors.push(`${prefix}.${field} est inconnu (${catalog[field]}).`);
+
+    for (const [tierIndex, level] of SPECIALIZATION_LEVELS.entries()) {
+      const tier = specializationTier(level);
+      const valueAtTier = specializationScale(level);
+      for (const track of ["A", "B"]) {
+        const relisId = specializationTalentId(
+          catalog.specializationId,
+          level,
+          track,
+        );
+        if (!relisId) {
+          errors.push(`${prefix} ne permet pas de produire un relisId stable.`);
+          continue;
+        }
+        const previousLevel = SPECIALIZATION_LEVELS[tierIndex - 1];
+        const previousId = previousLevel
+          ? specializationTalentId(
+              catalog.specializationId,
+              previousLevel,
+              track,
+            )
+          : "";
+        const active = track === "A";
+        const name = `${active ? ACTIVE_TIER_NAMES[tierIndex] : PASSIVE_TIER_NAMES[tierIndex]} — ${catalog.branchName} (${catalog.pathName})`;
+        const activation = active
+          ? actionActivation(level)
+          : {
+              kind: "passive",
+              actions: 0,
+              frequency: { unit: "permanent", uses: null },
+              trigger: "Contexte compatible avec l’orientation de branche.",
+              duration: "permanente",
+            };
+        const ruleElements = active
+          ? [
+              {
+                key: "temporaryModifier",
+                selector: `skill.${catalog.primarySkillId}`,
+                profile: catalog.activeProfile,
+                mode: "upgrade",
+                value: valueAtTier,
+                modifierType: "circumstance",
+                duration: "next-compatible-check",
+                stackGroup: `${catalog.specializationId}.active`,
+                predicate: [
+                  `specialization:${catalog.specializationId}`,
+                  `profile:${catalog.activeProfile}`,
+                ],
+              },
+            ]
+          : [
+              {
+                key: "penaltyReduction",
+                selector: `skill.${catalog.secondarySkillId}`,
+                profile: catalog.passiveProfile,
+                mode: "upgrade",
+                value: valueAtTier,
+                modifierType: "circumstance",
+                stackGroup: `${catalog.specializationId}.passive`,
+                predicate: [
+                  `specialization:${catalog.specializationId}`,
+                  `profile:${catalog.passiveProfile}`,
+                ],
+              },
+            ];
+        const requirementRefs = [
+          talentReference(
+            catalog.specializationId,
+            "specialization",
+            `${catalog.pathName} — ${catalog.branchName}`,
+          ),
+          ...(previousId
+            ? [
+                talentReference(
+                  previousId,
+                  "talent",
+                  `${track === "A" ? ACTIVE_TIER_NAMES[tierIndex - 1] : PASSIVE_TIER_NAMES[tierIndex - 1]} — ${catalog.branchName} (${catalog.pathName})`,
+                ),
+              ]
+            : []),
+        ];
+        expanded.push({
+          entry: {
+            relisId,
+            name,
+            type: "talent",
+            tags: [
+              "progression",
+              "talent",
+              "specialisation",
+              active ? "action-projetee" : "passif-structure",
+              ...(tier === "mythic" ? ["mythique"] : []),
+            ],
+            system: {
+              description: active
+                ? activeTalentDescription(catalog, level, valueAtTier)
+                : passiveTalentDescription(catalog, level, valueAtTier),
+              traits: [
+                "Spécialisation",
+                catalog.pathName,
+                catalog.branchName,
+                active ? "Action" : "Passif",
+                ...(tier === "mythic" ? ["Mythique"] : []),
+              ],
+              requirementRefs,
+              effectRefs: [],
+              level,
+              catalog: {
+                kind: "talent-specialization",
+                sourceSection: "9, 21 et Audit P",
+                pathName: catalog.pathName,
+                branchName: catalog.branchName,
+                specializationRef: talentReference(
+                  catalog.specializationId,
+                  "specialization",
+                  `${catalog.pathName} — ${catalog.branchName}`,
+                ),
+                tier,
+                track,
+                orientation: catalog.orientation,
+                primarySkillId: catalog.primarySkillId,
+                secondarySkillId: catalog.secondarySkillId,
+                activation,
+                projection: {
+                  automaticWhenOwned: true,
+                  target: active ? "actions" : "passiveRules",
+                  duplicateItem: false,
+                  source: "ownedTalent",
+                },
+                ruleElements,
+                resolution: {
+                  attributionLot: "10-D3/10-D4",
+                  combatExecutionLot: "10-F",
+                },
+              },
+            },
+            folder: `${catalog.pathName} — ${catalog.branchName}`,
+          },
+          file,
+          pack,
+        });
+      }
+    }
+  }
+  return expanded;
 }
 
 function validateEntry(entry, file, pack, contentVersion, errors) {
@@ -604,6 +967,38 @@ export function validatePersonalContent(projectRoot = process.cwd()) {
       errors,
     );
     if (!directory) continue;
+    if (pack.sourceMode === "specializationCatalog") {
+      const catalogFiles = listJsonFiles(directory);
+      if (catalogFiles.length !== 1)
+        errors.push(
+          `pack ${pack.id} doit contenir un unique catalogue JSON, reçu ${catalogFiles.length}.`,
+        );
+      for (const file of catalogFiles) {
+        const expanded = expandSpecializationCatalog(
+          readJson(file, errors),
+          file,
+          pack,
+          manifest.contentVersion,
+          errors,
+        );
+        for (const candidate of expanded) {
+          const { entry } = candidate;
+          if (entriesById.has(entry.relisId))
+            errors.push(
+              `${path.relative(projectRoot, file)} : relisId dupliqué ${entry.relisId}.`,
+            );
+          entriesById.set(entry.relisId, entry);
+          const foundryId = stableFoundryId(entry.relisId);
+          if (foundryIds.has(foundryId))
+            errors.push(
+              `Collision d’identifiant Foundry entre ${foundryIds.get(foundryId)} et ${entry.relisId}.`,
+            );
+          foundryIds.set(foundryId, entry.relisId);
+          entries.push(candidate);
+        }
+      }
+      continue;
+    }
     for (const file of listJsonFiles(directory)) {
       const entry = validateEntry(
         readJson(file, errors),
@@ -626,6 +1021,41 @@ export function validatePersonalContent(projectRoot = process.cwd()) {
       foundryIds.set(foundryId, entry.relisId);
       entries.push({ entry, file, pack });
     }
+  }
+
+  const specializationTalents = entries.filter(
+    ({ entry }) => entry.system?.catalog?.kind === "talent-specialization",
+  );
+  for (const { entry: specialization } of entries.filter(
+    ({ entry }) => entry.type === "specialization",
+  )) {
+    const talents = specializationTalents
+      .map(({ entry }) => entry)
+      .filter(
+        (talent) =>
+          talent.system.catalog.specializationRef?.relisId ===
+          specialization.relisId,
+      )
+      .sort(
+        (left, right) =>
+          Number(left.system.level) - Number(right.system.level) ||
+          String(left.system.catalog.track).localeCompare(
+            String(right.system.catalog.track),
+            "fr",
+          ),
+      );
+    specialization.system.catalog.talentLevels = [...SPECIALIZATION_LEVELS];
+    specialization.system.catalog.talentCount = talents.length;
+    specialization.system.catalog.automaticGrants = [];
+    specialization.system.catalog.grantPolicy = {
+      selectedTalentsOnly: true,
+      projectOwnedActionsAutomatically: true,
+      applyOwnedPassiveRulesAutomatically: true,
+      duplicateActionItems: false,
+    };
+    specialization.system.catalog.talentRefs = talents.map((talent) =>
+      talentReference(talent.relisId, "talent", talent.name),
+    );
   }
 
   for (const { entry, file } of entries) {

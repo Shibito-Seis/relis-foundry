@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "ingenieur"],
   "system": {
-    "description": "<p><strong>Ingénieur — Réparateur de crise</strong>.</p><p><strong>Voie :</strong> Ingénieur</p>\n<p><strong>Dotation principale :</strong> Outils rapides, mousse de colmatage, soudeur portable.</p>",
+    "description": "<p><strong>Ingénieur — Réparateur de crise</strong>.</p><p>La branche <strong>Réparateur de crise</strong> de la Voie <strong>Ingénieur</strong> développe réparations rapides..</p>\n<p><strong>Dotation principale :</strong> Outils rapides, mousse de colmatage, soudeur portable.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Ingénieur",
       "branchName": "Réparateur de crise",
+      "orientation": "réparations rapides.",
       "primaryLoadout": "Outils rapides, mousse de colmatage, soudeur portable.",
       "loadoutRefs": []
     }

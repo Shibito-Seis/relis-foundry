@@ -2,7 +2,7 @@
   "id": "relis",
   "title": "RE:LIS — RE: Lost in Space",
   "description": "Système de jeu officiel RE:LIS pour Foundry Virtual Tabletop.",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "compatibility": {
     "minimum": "14",
     "verified": "14",
@@ -76,6 +76,13 @@
       "name": "progression-specializations",
       "label": "RE:LIS — Spécialisations",
       "path": "packs/progression-specializations",
+      "type": "Item",
+      "system": "relis"
+    },
+    {
+      "name": "progression-specialization-talents",
+      "label": "RE:LIS — Talents de Spécialisation",
+      "path": "packs/progression-specialization-talents",
       "type": "Item",
       "system": "relis"
     },
@@ -211,6 +218,7 @@
           "name": "Talents",
           "sorting": "m",
           "packs": [
+            "progression-specialization-talents",
             "progression-ancestry-talents",
             "progression-skill-talents",
             "progression-general-talents",
@@ -260,7 +268,7 @@
   "primaryTokenAttribute": "derived.trackables.hitPoints",
   "url": "https://github.com/Shibito-Seis/relis-foundry",
   "manifest": "https://raw.githubusercontent.com/Shibito-Seis/relis-foundry/main/system.json",
-  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.3/relis-v0.8.3.zip",
+  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.4/relis-v0.8.4.zip",
   "documentTypes": {
     "Actor": {
       "character": {

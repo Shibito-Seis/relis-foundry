@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "emissaire"],
   "system": {
-    "description": "<p><strong>Émissaire — Agent politique</strong>.</p><p><strong>Voie :</strong> Émissaire</p>\n<p><strong>Dotation principale :</strong> Dossiers de faction, sceaux administratifs, outils de propagande.</p>",
+    "description": "<p><strong>Émissaire — Agent politique</strong>.</p><p>La branche <strong>Agent politique</strong> de la Voie <strong>Émissaire</strong> développe factions, réputation, propagande..</p>\n<p><strong>Dotation principale :</strong> Dossiers de faction, sceaux administratifs, outils de propagande.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Émissaire",
       "branchName": "Agent politique",
+      "orientation": "factions, réputation, propagande.",
       "primaryLoadout": "Dossiers de faction, sceaux administratifs, outils de propagande.",
       "loadoutRefs": []
     }

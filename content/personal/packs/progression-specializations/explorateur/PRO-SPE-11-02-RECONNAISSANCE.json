@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "explorateur"],
   "system": {
-    "description": "<p><strong>Explorateur — Reconnaissance</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Camouflage léger, jumelles/scanner discret, balises silencieuses.</p>",
+    "description": "<p><strong>Explorateur — Reconnaissance</strong>.</p><p>La branche <strong>Reconnaissance</strong> de la Voie <strong>Explorateur</strong> développe discrétion, observation, infiltration..</p>\n<p><strong>Dotation principale :</strong> Camouflage léger, jumelles/scanner discret, balises silencieuses.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Explorateur",
       "branchName": "Reconnaissance",
+      "orientation": "discrétion, observation, infiltration.",
       "primaryLoadout": "Camouflage léger, jumelles/scanner discret, balises silencieuses.",
       "loadoutRefs": []
     }

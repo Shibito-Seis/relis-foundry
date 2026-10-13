@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "interfaceur"],
   "system": {
-    "description": "<p><strong>Interfaceur — Piratage offensif</strong>.</p><p><strong>Voie :</strong> Interfaceur</p>\n<p><strong>Dotation principale :</strong> Deck d&#39;intrusion, scripts d&#39;attaque, clés de forçage.</p>",
+    "description": "<p><strong>Interfaceur — Piratage offensif</strong>.</p><p>La branche <strong>Piratage offensif</strong> de la Voie <strong>Interfaceur</strong> développe intrusion, attaque système..</p>\n<p><strong>Dotation principale :</strong> Deck d&#39;intrusion, scripts d&#39;attaque, clés de forçage.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Interfaceur",
       "branchName": "Piratage offensif",
+      "orientation": "intrusion, attaque système.",
       "primaryLoadout": "Deck d'intrusion, scripts d'attaque, clés de forçage.",
       "loadoutRefs": []
     }

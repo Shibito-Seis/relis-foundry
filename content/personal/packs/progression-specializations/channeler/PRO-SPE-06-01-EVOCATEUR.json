@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "channeler"],
   "system": {
-    "description": "<p><strong>Channeler — Évocateur</strong>.</p><p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Focus offensif, cristal de canalisation, catalyseur élémentaire ou matrice d’arsenal.</p>",
+    "description": "<p><strong>Channeler — Évocateur</strong>.</p><p>La branche <strong>Évocateur</strong> de la Voie <strong>Channeler</strong> développe manifestations offensives, éléments et arsenaux projetés, principalement par Mana..</p>\n<p><strong>Dotation principale :</strong> Focus offensif, cristal de canalisation, catalyseur élémentaire ou matrice d’arsenal.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Channeler",
       "branchName": "Évocateur",
+      "orientation": "manifestations offensives, éléments et arsenaux projetés, principalement par Mana.",
       "primaryLoadout": "Focus offensif, cristal de canalisation, catalyseur élémentaire ou matrice d’arsenal.",
       "loadoutRefs": []
     }

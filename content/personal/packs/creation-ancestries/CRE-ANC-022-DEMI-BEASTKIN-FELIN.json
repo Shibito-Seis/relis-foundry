@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance", "demi-beastkin", "beastkin-felin"],
   "system": {
-    "description": "<p>Les Demi-Beastkins associent une base humaine à un héritage Beastkin atténué. Leurs traits animaux sont plus légers, leur création plus souple et leur parenté doit rester explicitement définie.</p>\n<p><strong>Parenté de Demi-Beastkin Félin :</strong> Beastkin Félin. Héritage Félin atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>\n<h3>Héritage hybride</h3>\n<p>Cette variante choisit deux bonus parmi les trois Attributs de son parent, conserve son malus et reçoit un bonus libre placé dans un Attribut différent. Elle utilise le catalogue Humain, le catalogue Demi-Beastkin commun et le seul catalogue Beastkin de sa parenté.</p>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Force, Dextérité, Vigueur, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Volonté</p>\n<p><strong>Logique :</strong> Héritage Félin atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>",
+    "description": "<p>Les Demi-Beastkins associent une base humaine à un héritage Beastkin atténué. Leurs traits animaux sont plus légers, leur création plus souple et leur parenté doit rester explicitement définie.</p>\n<p><strong>Parenté de Demi-Beastkin Félin :</strong> Beastkin Félin. Héritage Félin atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>\n<h3>Héritage hybride</h3>\n<p>Cette variante choisit deux bonus parmi les trois Attributs de son parent, conserve son malus et reçoit un bonus libre placé dans un Attribut différent. Elle utilise le catalogue Humain, le catalogue Demi-Beastkin commun et le seul catalogue Beastkin de sa parenté.</p>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 dans 2 parmi Force, Dextérité, Vigueur, +1 libre</p>\n<p><strong>Malus d’Attribut :</strong> -1 Volonté</p>\n<p><strong>Logique :</strong> Héritage Félin atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.</p>\n<h3>Vitalité et énergies naturelles</h3>\n<p><strong>PV :</strong> Dominance humaine : 10 PV ; Dominance Beastkin : 12 PV</p>\n<p><strong>Réserves naturelles :</strong> Dominance humaine : Prana 5, Mana 3, Flux 0 ; Dominance Beastkin : Prana 5, Mana 2, Flux 0</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],
@@ -15,6 +15,39 @@
       "attributePenalty": "-1 Volonté",
       "rationale": "Héritage Félin atténué avec compensation humaine possible. Le bonus libre doit aller dans un Attribut différent des deux bonus hérités.",
       "selectable": true,
+      "hitPointProfile": {
+        "mode": "dominance",
+        "profiles": [
+          {
+            "id": "human",
+            "label": "Dominance humaine",
+            "value": 10
+          },
+          {
+            "id": "nonHuman",
+            "label": "Dominance Beastkin",
+            "value": 12
+          }
+        ]
+      },
+      "energyProfiles": [
+        {
+          "id": "human",
+          "label": "Dominance humaine",
+          "prana": 5,
+          "mana": 3,
+          "flux": 0
+        },
+        {
+          "id": "nonHuman",
+          "label": "Dominance Beastkin",
+          "prana": 5,
+          "mana": 2,
+          "flux": 0
+        }
+      ],
+      "energySelectionRequired": true,
+      "energyComponentsRemainSeparate": true,
       "parentAncestry": "Beastkin Félin",
       "inheritedAttributeChoices": ["Force", "Dextérité", "Vigueur"],
       "inheritedAttributeChoiceCount": 2,

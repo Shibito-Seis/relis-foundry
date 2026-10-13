@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "explorateur"],
   "system": {
-    "description": "<p><strong>Explorateur — Scanneur d&#39;anomalies</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Détecteur d&#39;anomalie, jauge de flux, balises de mesure.</p>",
+    "description": "<p><strong>Explorateur — Scanneur d&#39;anomalies</strong>.</p><p>La branche <strong>Scanneur d&#39;anomalies</strong> de la Voie <strong>Explorateur</strong> développe détection, approche..</p>\n<p><strong>Dotation principale :</strong> Détecteur d&#39;anomalie, jauge de flux, balises de mesure.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Explorateur",
       "branchName": "Scanneur d'anomalies",
+      "orientation": "détection, approche.",
       "primaryLoadout": "Détecteur d'anomalie, jauge de flux, balises de mesure.",
       "loadoutRefs": []
     }

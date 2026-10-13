@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "channeler"],
   "system": {
-    "description": "<p><strong>Channeler — Invocateur</strong>.</p><p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Relique d&#39;ancrage, pacte scellé, matrice d&#39;invocation mineure.</p>",
+    "description": "<p><strong>Channeler — Invocateur</strong>.</p><p>La branche <strong>Invocateur</strong> de la Voie <strong>Channeler</strong> développe entités, formes, pactes internes..</p>\n<p><strong>Dotation principale :</strong> Relique d&#39;ancrage, pacte scellé, matrice d&#39;invocation mineure.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Channeler",
       "branchName": "Invocateur",
+      "orientation": "entités, formes, pactes internes.",
       "primaryLoadout": "Relique d'ancrage, pacte scellé, matrice d'invocation mineure.",
       "loadoutRefs": []
     }

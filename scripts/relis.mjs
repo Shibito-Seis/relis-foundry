@@ -1,8 +1,8 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.8.3";
+var PACKAGE_VERSION = "0.8.4";
 var RULES_VERSION = "1.0.0";
-var CONTENT_VERSION = "1.2.2";
+var CONTENT_VERSION = "1.3.0";
 var ACTOR_TYPES = [
 	"character",
 	"npc",
@@ -517,12 +517,12 @@ function initialPresentation() {
 		notes: ""
 	};
 }
-function isRecord(value) {
+function isRecord$1(value) {
 	return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 function normalizeBody(value) {
 	const fallback = initialBody();
-	const body = isRecord(value) ? value : {};
+	const body = isRecord$1(value) ? value : {};
 	const locations = Array.isArray(body.locations) && body.locations.length > 0 ? body.locations : fallback.locations;
 	return {
 		...fallback,
@@ -535,7 +535,7 @@ function normalizeBody(value) {
 }
 function normalizePresentation(value) {
 	const fallback = initialPresentation();
-	const presentation = isRecord(value) ? value : {};
+	const presentation = isRecord$1(value) ? value : {};
 	const fallbackPortrait = fallback.portrait;
 	const fallbackToken = fallback.token;
 	const fallbackSourceRef = fallback.sourceRef;
@@ -544,16 +544,16 @@ function normalizePresentation(value) {
 		...presentation,
 		portrait: {
 			...fallbackPortrait,
-			...isRecord(presentation.portrait) ? presentation.portrait : {}
+			...isRecord$1(presentation.portrait) ? presentation.portrait : {}
 		},
 		token: {
 			...fallbackToken,
-			...isRecord(presentation.token) ? presentation.token : {}
+			...isRecord$1(presentation.token) ? presentation.token : {}
 		},
 		bodyIds: Array.isArray(presentation.bodyIds) ? presentation.bodyIds : ["primary"],
 		sourceRef: {
 			...fallbackSourceRef,
-			...isRecord(presentation.sourceRef) ? presentation.sourceRef : {}
+			...isRecord$1(presentation.sourceRef) ? presentation.sourceRef : {}
 		},
 		associatedPresentationId: typeof presentation.associatedPresentationId === "string" ? presentation.associatedPresentationId : ""
 	};
@@ -1253,7 +1253,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			...meta,
 			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
-			contentVersion: text(meta.contentVersion, "1.2.2") || "1.2.2",
+			contentVersion: text(meta.contentVersion, "1.3.0") || "1.3.0",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
 			sourceRef: normalizeReference(meta.sourceRef),
 			sourceVersion: text(meta.sourceVersion),
@@ -6901,6 +6901,72 @@ function normalizeActorTab(actorType, requested, detailLevel = "complete") {
 	return tabs.some((tab) => tab.id === requested) ? String(requested) : tabs[0]?.id ?? "summary";
 }
 //#endregion
+//#region src/rules/talent-projection.ts
+var TALENT_ACTIVATION_KINDS = [
+	"passive",
+	"freeAction",
+	"reaction",
+	"oneAction",
+	"twoActions",
+	"threeActions",
+	"activity"
+];
+function isRecord(value) {
+	return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+function recordArray(value) {
+	return Array.isArray(value) && value.every(isRecord) ? value : [];
+}
+/**
+* Projects a Talent owned by an Actor into its usable Action or passive rule.
+* The Talent remains the only stored Item: projection never creates a second
+* embedded Action Item and therefore cannot duplicate provenance or effects.
+*/
+function projectOwnedSpecializationTalent(item) {
+	const catalog = item?.system?.catalog;
+	if (item?.type !== "talent" || catalog?.kind !== "talent-specialization") return null;
+	const projection = catalog.projection;
+	const activation = catalog.activation;
+	const specializationId = String(catalog.specializationRef?.relisId ?? "");
+	const sourceId = String(item.id ?? item._id ?? item.system?.meta?.relisId ?? item.relisId ?? "");
+	if (!isRecord(projection) || projection.automaticWhenOwned !== true || projection.duplicateItem !== false || projection.source !== "ownedTalent" || !isRecord(activation) || !TALENT_ACTIVATION_KINDS.includes(activation.kind)) return null;
+	const ruleElements = recordArray(catalog.ruleElements);
+	const sourceName = String(item.name ?? "Talent sans nom");
+	if (projection.target === "actions" && activation.kind !== "passive") return {
+		action: {
+			sourceId,
+			sourceName,
+			specializationId,
+			activation,
+			ruleElements
+		},
+		passive: null
+	};
+	if (projection.target === "passiveRules" && activation.kind === "passive") return {
+		action: null,
+		passive: {
+			sourceId,
+			sourceName,
+			specializationId,
+			ruleElements
+		}
+	};
+	return null;
+}
+function collectOwnedTalentProjections(items) {
+	const actions = [];
+	const passives = [];
+	for (const item of items) {
+		const projection = projectOwnedSpecializationTalent(item);
+		if (projection?.action) actions.push(projection.action);
+		if (projection?.passive) passives.push(projection.passive);
+	}
+	return {
+		actions,
+		passives
+	};
+}
+//#endregion
 //#region src/sheets/actor-sheet.ts
 var ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 var HandlebarsApplicationMixin$1 = foundry.applications.api.HandlebarsApplicationMixin;
@@ -6983,6 +7049,22 @@ var QUANTITY_UNIT_LABELS = {
 	ml: "mL",
 	m: "m"
 };
+var TALENT_ACTIVATION_LABELS = {
+	freeAction: "Action gratuite",
+	reaction: "Réaction",
+	oneAction: "1 Action",
+	twoActions: "2 Actions",
+	threeActions: "3 Actions",
+	activity: "Activité"
+};
+function talentRuleSummary(ruleElements) {
+	const rule = ruleElements[0] ?? {};
+	const skillKey = String(rule.selector ?? "").replace(/^skill\./u, "");
+	const skillLabel = SKILL_DEFINITIONS[skillKey]?.[0] ?? skillKey;
+	const value = Number(rule.value);
+	if (!skillLabel || !Number.isFinite(value)) return "Règle structurée";
+	return rule.key === "penaltyReduction" ? `${skillLabel} · réduit jusqu’à ${value} point${value > 1 ? "s" : ""} de malus` : `${skillLabel} · bonus +${value}`;
+}
 function itemSnapshot(item) {
 	const source = item.toObject?.(true) ?? {};
 	return {
@@ -7330,9 +7412,26 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			name: item.name,
 			type: item.type,
 			typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
-			canRoll: item.type === "action"
+			canRoll: item.type === "action",
+			isProjectedTalent: item.type === "talent" && item.system?.catalog?.kind === "talent-specialization" && item.system?.catalog?.projection?.automaticWhenOwned === true
 		}));
-		const relatedItems = itemRows.filter((item) => !isPhysicalItemType(item.type));
+		const relatedItems = itemRows.filter((item) => !isPhysicalItemType(item.type) && !item.isProjectedTalent);
+		const talentProjections = collectOwnedTalentProjections(actorItems.map((item) => ({
+			...item.toObject?.(true) ?? {},
+			id: item.id,
+			name: item.name,
+			type: item.type,
+			system: item.system
+		})));
+		const projectedTalentActions = talentProjections.actions.map((action) => ({
+			...action,
+			activationLabel: TALENT_ACTIVATION_LABELS[String(action.activation.kind)] ?? String(action.activation.kind),
+			ruleSummary: talentRuleSummary(action.ruleElements)
+		}));
+		const projectedTalentPassives = talentProjections.passives.map((passive) => ({
+			...passive,
+			ruleSummary: talentRuleSummary(passive.ruleElements)
+		}));
 		return {
 			...context,
 			actor: this.actor,
@@ -7365,6 +7464,8 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			referenceGroups,
 			hasReferences: referenceGroups.some((group) => group.entries.length > 0),
 			progression: isCharacter ? this.actor.system.progression : null,
+			projectedTalentActions,
+			projectedTalentPassives,
 			hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
 			items: itemRows,
 			relatedItems,

@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "bretteur"],
   "system": {
-    "description": "<p><strong>Bretteur — Forme anti-tir</strong>.</p><p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Lame renforcée, bouclier réactif léger ou module de déviation basique.</p>",
+    "description": "<p><strong>Bretteur — Forme anti-tir</strong>.</p><p>La branche <strong>Forme anti-tir</strong> de la Voie <strong>Bretteur</strong> développe déviation de projectiles, réaction spéciale..</p>\n<p><strong>Dotation principale :</strong> Lame renforcée, bouclier réactif léger ou module de déviation basique.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Bretteur",
       "branchName": "Forme anti-tir",
+      "orientation": "déviation de projectiles, réaction spéciale.",
       "primaryLoadout": "Lame renforcée, bouclier réactif léger ou module de déviation basique.",
       "loadoutRefs": []
     }

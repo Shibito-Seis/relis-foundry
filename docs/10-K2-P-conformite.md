@@ -1,5 +1,7 @@
 # 10-K2-P — Matrice de conformité des compendiums personnels v0.8.3
 
+> **Historique clos.** La recette 0.8.3 a été validée. La conformité courante de l’audit personnel v0.8.4 est tenue dans `docs/Audit-P-conformite.md`.
+
 Base exacte de travail : sources livrées en v0.8.2 et Bible v165. Canon relu avant codage : règle des demi-Ascendances, huit parentés Beastkins, accès aux catalogues hybrides, profils énergétiques du §43.9 et roadmap révisée. 10-K1-P reste validé. 10-K2-P reste en recette jusqu’à validation explicite de la v0.8.3.
 
 ## Inventaire produit

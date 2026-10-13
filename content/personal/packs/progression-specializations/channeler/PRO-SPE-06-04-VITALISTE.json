@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "channeler"],
   "system": {
-    "description": "<p><strong>Channeler — Vitaliste</strong>.</p><p><strong>Voie :</strong> Channeler</p>\n<p><strong>Dotation principale :</strong> Focus de soin, catalyseur organique, bandes de transfert énergétique.</p>",
+    "description": "<p><strong>Channeler — Vitaliste</strong>.</p><p>La branche <strong>Vitaliste</strong> de la Voie <strong>Channeler</strong> développe soin énergétique, renforcement..</p>\n<p><strong>Dotation principale :</strong> Focus de soin, catalyseur organique, bandes de transfert énergétique.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Channeler",
       "branchName": "Vitaliste",
+      "orientation": "soin énergétique, renforcement.",
       "primaryLoadout": "Focus de soin, catalyseur organique, bandes de transfert énergétique.",
       "loadoutRefs": []
     }

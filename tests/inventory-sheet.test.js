@@ -177,6 +177,15 @@ describe("inventaire partagé PJ/PNJ 0.5.0", () => {
     expect(sheet).toContain("physicalCash: cashSummary(");
     expect(sheet).toContain('String(activeBody?.id ?? "")');
   });
+  it("projette les Talents possédés sans dupliquer leurs Items", () => {
+    expect(sheet).toContain("collectOwnedTalentProjections");
+    expect(sheet).toContain("projectedTalentActions");
+    expect(sheet).toContain("projectedTalentPassives");
+    expect(sheet).toContain("!item.isProjectedTalent");
+    expect(template).toContain("data-projected-talent-actions");
+    expect(template).toContain("data-projected-talent-passives");
+    expect(template).toContain('data-item-id="{{sourceId}}"');
+  });
 });
 
 it("place le profil dans la fiche Item et conserve la sélection dans le HTML", () => {

@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "tireur"],
   "system": {
-    "description": "<p><strong>Tireur — Tir techno-magique</strong>.</p><p><strong>Voie :</strong> Tireur</p>\n<p><strong>Dotation principale :</strong> Arme à munitions chargées, catalyseur de tir ou modulateur énergétique.</p>",
+    "description": "<p><strong>Tireur — Tir techno-magique</strong>.</p><p>La branche <strong>Tir techno-magique</strong> de la Voie <strong>Tireur</strong> développe munitions chargées, armes hybrides..</p>\n<p><strong>Dotation principale :</strong> Arme à munitions chargées, catalyseur de tir ou modulateur énergétique.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Tireur",
       "branchName": "Tir techno-magique",
+      "orientation": "munitions chargées, armes hybrides.",
       "primaryLoadout": "Arme à munitions chargées, catalyseur de tir ou modulateur énergétique.",
       "loadoutRefs": []
     }

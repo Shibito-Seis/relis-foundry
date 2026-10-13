@@ -37,6 +37,7 @@ import {
   WEAPON_SUPPORTS,
 } from "../src/data/material-catalog";
 import { validatePersonalContent } from "../tools/personal-content.mjs";
+import { projectOwnedSpecializationTalent } from "../src/rules/talent-projection";
 
 function entriesById() {
   return new Map(
@@ -190,9 +191,9 @@ describe("compendiums canoniques 10-K2-P", () => {
     }
   });
 
-  it("publie 2 412 descriptions lisibles sans tableau technique brut", () => {
+  it("publie 5 100 descriptions lisibles sans tableau technique brut", () => {
     const entries = [...entriesById().values()];
-    expect(entries).toHaveLength(2412);
+    expect(entries).toHaveLength(5100);
     for (const entry of entries) {
       expect(
         String(entry.system.description ?? "").trim(),
@@ -288,6 +289,18 @@ describe("compendiums canoniques 10-K2-P", () => {
         },
       });
       expect(ancestry.system.catalog.inheritedAttributeChoices).toHaveLength(3);
+      expect(ancestry.system.catalog.hitPointProfile).toMatchObject({
+        mode: "dominance",
+        profiles: [
+          { id: "human", value: 10 },
+          {
+            id: "nonHuman",
+            value: parent.system.catalog.hitPointProfile.value,
+          },
+        ],
+      });
+      expect(ancestry.system.catalog.energyProfiles).toHaveLength(2);
+      expect(ancestry.system.catalog.energySelectionRequired).toBe(true);
     }
 
     const ancestries = [...entries.values()].filter(
@@ -310,25 +323,106 @@ describe("compendiums canoniques 10-K2-P", () => {
       expect(entries.has(stableRelisId), stableRelisId).toBe(true);
   });
 
-  it("audite les 84 Spécialisations sans publier prématurément les propositions", () => {
-    const specializations = [...entriesById().values()].filter(
+  it("publie les 84 catalogues complets avec Actions projetées et passifs structurés", () => {
+    const values = [...entriesById().values()];
+    const specializations = values.filter(
       ({ type }) => type === "specialization",
     );
-    const report = fs.readFileSync(
-      "docs/10-K2-P-audit-descriptions-specialisations.md",
-      "utf8",
+    const talents = values.filter(
+      ({ system }) => system.catalog?.kind === "talent-specialization",
     );
     expect(specializations).toHaveLength(84);
-    expect(report.match(/^### /gmu)).toHaveLength(84);
+    expect(talents).toHaveLength(2688);
+    const expectedLevels = [
+      1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28, 30,
+    ];
     for (const specialization of specializations) {
-      expect(report, specialization.relisId).toContain(
-        `### ${specialization.name.replaceAll("'", "’")}`,
+      const catalog = specialization.system.catalog;
+      const owned = talents.filter(
+        (talent) =>
+          talent.system.catalog.specializationRef.relisId ===
+          specialization.relisId,
       );
-      expect(
-        String(specialization.system.description),
-        specialization.relisId,
-      ).not.toContain("Proposition");
+      expect(owned, specialization.relisId).toHaveLength(32);
+      expect(catalog.talentCount, specialization.relisId).toBe(32);
+      expect(catalog.talentRefs, specialization.relisId).toHaveLength(32);
+      expect(catalog.talentLevels, specialization.relisId).toEqual(
+        expectedLevels,
+      );
+      expect(catalog.automaticGrants, specialization.relisId).toEqual([]);
+      expect(catalog.grantPolicy).toMatchObject({
+        selectedTalentsOnly: true,
+        projectOwnedActionsAutomatically: true,
+        applyOwnedPassiveRulesAutomatically: true,
+        duplicateActionItems: false,
+      });
+      for (const level of expectedLevels)
+        expect(
+          owned.filter((talent) => talent.system.level === level),
+          `${specialization.relisId} niveau ${level}`,
+        ).toHaveLength(2);
+      expect(specialization.system.description).toContain(
+        "trente-deux Talents",
+      );
     }
+    const actions = talents.filter(
+      (talent) => talent.system.catalog.projection.target === "actions",
+    );
+    const passives = talents.filter(
+      (talent) => talent.system.catalog.projection.target === "passiveRules",
+    );
+    expect(actions).toHaveLength(1344);
+    expect(passives).toHaveLength(1344);
+    for (const talent of talents) {
+      expect(talent.system.catalog.ruleElements).toHaveLength(1);
+      expect(talent.system.requirementRefs[0].type).toBe("specialization");
+      expect(projectOwnedSpecializationTalent(talent)).not.toBeNull();
+    }
+  });
+
+  it("structure les PV des douze Voies et les réserves naturelles d’Ascendance", () => {
+    const entries = entriesById();
+    const expectedGrowth = {
+      Bretteur: 10,
+      Briseur: 12,
+      Tireur: 8,
+      Soldat: 10,
+      Médecin: 8,
+      Channeler: 6,
+      "Techno-mage": 8,
+      Ingénieur: 8,
+      Pilote: 8,
+      Interfaceur: 8,
+      Explorateur: 10,
+      Émissaire: 8,
+    };
+    const paths = [...entries.values()].filter(({ type }) => type === "path");
+    expect(paths).toHaveLength(12);
+    for (const path of paths) {
+      expect(path.system.catalog.hitPointsPerLevel, path.relisId).toBe(
+        expectedGrowth[path.name],
+      );
+      expect(path.system.catalog.grantsHitPointsAsSecondary).toBe(false);
+    }
+
+    expect(entries.get("CRE-ANC-001-HUMAIN").system.catalog).toMatchObject({
+      hitPointProfile: { mode: "fixed", value: 10 },
+      energyProfiles: [{ id: "natural", prana: 4, mana: 3, flux: 0 }],
+      energySelectionRequired: false,
+      energyComponentsRemainSeparate: true,
+    });
+    expect(entries.get("CRE-ANC-012-ELFE").system.catalog).toMatchObject({
+      hitPointProfile: { mode: "fixed", value: 8 },
+      energyProfiles: [{ id: "natural", prana: 2, mana: 6, flux: 5 }],
+    });
+    expect(entries.get("CRE-ANC-013-DEMI-ELFE").system.catalog).toMatchObject({
+      hitPointProfile: { mode: "fixed", value: 9 },
+      energyProfiles: [
+        { id: "human", prana: 3, mana: 4, flux: 2 },
+        { id: "nonHuman", prana: 3, mana: 5, flux: 3 },
+      ],
+      energySelectionRequired: true,
+    });
   });
 
   it("n’émet que des identifiants matériels acceptés par les registres fermés", () => {
@@ -520,10 +614,14 @@ describe("compendiums canoniques 10-K2-P", () => {
 
   it("déclare les packs classés et leurs dossiers PF2e-like dans le manifeste Foundry", () => {
     const manifest = JSON.parse(fs.readFileSync("system.json", "utf8"));
-    expect(manifest.packs).toHaveLength(23);
+    expect(manifest.packs).toHaveLength(24);
     expect(manifest.packs).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ name: "creation-ancestries", type: "Item" }),
+        expect.objectContaining({
+          name: "progression-specialization-talents",
+          type: "Item",
+        }),
         expect.objectContaining({
           name: "progression-ancestry-talents",
           type: "Item",

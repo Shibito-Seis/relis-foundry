@@ -84,6 +84,7 @@ import {
   powerSourceCompatibility,
 } from "../rules/personal-material";
 import { physicalFeedKind } from "../data/material-catalog";
+import { collectOwnedTalentProjections } from "../rules/talent-projection";
 
 const ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 const HandlebarsApplicationMixin =
@@ -158,6 +159,31 @@ const QUANTITY_UNIT_LABELS: Record<string, string> = {
   ml: "mL",
   m: "m",
 };
+
+const TALENT_ACTIVATION_LABELS: Record<string, string> = {
+  freeAction: "Action gratuite",
+  reaction: "Réaction",
+  oneAction: "1 Action",
+  twoActions: "2 Actions",
+  threeActions: "3 Actions",
+  activity: "Activité",
+};
+
+function talentRuleSummary(
+  ruleElements: Array<Record<string, unknown>>,
+): string {
+  const rule = ruleElements[0] ?? {};
+  const skillKey = String(rule.selector ?? "").replace(/^skill\./u, "");
+  const skillLabel =
+    (SKILL_DEFINITIONS as Record<string, readonly [string, string]>)[
+      skillKey
+    ]?.[0] ?? skillKey;
+  const value = Number(rule.value);
+  if (!skillLabel || !Number.isFinite(value)) return "Règle structurée";
+  return rule.key === "penaltyReduction"
+    ? `${skillLabel} · réduit jusqu’à ${value} point${value > 1 ? "s" : ""} de malus`
+    : `${skillLabel} · bonus +${value}`;
+}
 
 function itemSnapshot(item: Item): InventoryItemLike {
   const source = item.toObject?.(true) ?? {};
@@ -848,9 +874,35 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       type: item.type,
       typeLabel: game.i18n.localize(`TYPES.Item.${item.type}`),
       canRoll: item.type === "action",
+      isProjectedTalent:
+        item.type === "talent" &&
+        item.system?.catalog?.kind === "talent-specialization" &&
+        item.system?.catalog?.projection?.automaticWhenOwned === true,
     }));
     const relatedItems = itemRows.filter(
-      (item) => !isPhysicalItemType(item.type),
+      (item) => !isPhysicalItemType(item.type) && !item.isProjectedTalent,
+    );
+    const talentProjections = collectOwnedTalentProjections(
+      actorItems.map((item) => ({
+        ...(item.toObject?.(true) ?? {}),
+        id: item.id,
+        name: item.name,
+        type: item.type,
+        system: item.system,
+      })),
+    );
+    const projectedTalentActions = talentProjections.actions.map((action) => ({
+      ...action,
+      activationLabel:
+        TALENT_ACTIVATION_LABELS[String(action.activation.kind)] ??
+        String(action.activation.kind),
+      ruleSummary: talentRuleSummary(action.ruleElements),
+    }));
+    const projectedTalentPassives = talentProjections.passives.map(
+      (passive) => ({
+        ...passive,
+        ruleSummary: talentRuleSummary(passive.ruleElements),
+      }),
     );
 
     return {
@@ -887,6 +939,8 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       referenceGroups,
       hasReferences: referenceGroups.some((group) => group.entries.length > 0),
       progression: isCharacter ? this.actor.system.progression : null,
+      projectedTalentActions,
+      projectedTalentPassives,
       hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
       items: itemRows,
       relatedItems,

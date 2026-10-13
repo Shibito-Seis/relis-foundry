@@ -1,5 +1,15 @@
 # Journal des versions
 
+## 0.8.4 — audit de la verticale personnelle
+
+- Ajoute un compendium de 2 688 Talents de Spécialisation : 32 Talents pour chacune des 84 Spécialisations, répartis par deux sur les seize paliers 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28 et 30.
+- Projette les Talents actifs possédés dans les Actions et applique séparément les passifs structurés, sans dupliquer d’Item ni interpréter la description comme une règle.
+- Enregistre sur chaque Spécialisation ses 32 références, ses paliers et une politique d’attribution séparant choix du joueur et dotations automatiques fixes ; aucune dotation fixe n’est inventée.
+- Structure les PV naturels et profils Mana/Prana/Flux des Ascendances, y compris les dominances des héritages mixtes et la règle de PV des huit Demi-Beastkins.
+- Structure les PV par niveau des douze Voies : Channeler 6 ; Tireur, Médecin, Techno-mage, Ingénieur, Pilote, Interfaceur et Émissaire 8 ; Bretteur, Soldat et Explorateur 10 ; Briseur 12.
+- Porte le contenu personnel à 5 100 Items dans 24 compendiums et à la version `1.3.0`. Le schéma Item reste 7, aucune migration n’est ajoutée et 10-D3/10-D4 conservent l’attribution aux Actors tandis que 10-F conserve l’exécution de combat.
+- Enregistre la validation de 10-K2-P ; l’audit personnel reste en recette jusqu’à validation explicite de la v0.8.4.
+
 ## 0.8.3 — huit lignées Demi-Beastkins
 
 - Transforme `CRE-ANC-011-DEMI-BEASTKIN` en groupe non sélectionnable et conserve son identité canonique.

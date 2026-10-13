@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "pilote"],
   "system": {
-    "description": "<p><strong>Pilote — Pilote de navette</strong>.</p><p><strong>Voie :</strong> Pilote</p>\n<p><strong>Dotation principale :</strong> Interface navette, carte de procédures, combinaison de vol renforcée.</p>",
+    "description": "<p><strong>Pilote — Pilote de navette</strong>.</p><p>La branche <strong>Pilote de navette</strong> de la Voie <strong>Pilote</strong> développe transport, atterrissage, extraction..</p>\n<p><strong>Dotation principale :</strong> Interface navette, carte de procédures, combinaison de vol renforcée.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Pilote",
       "branchName": "Pilote de navette",
+      "orientation": "transport, atterrissage, extraction.",
       "primaryLoadout": "Interface navette, carte de procédures, combinaison de vol renforcée.",
       "loadoutRefs": []
     }

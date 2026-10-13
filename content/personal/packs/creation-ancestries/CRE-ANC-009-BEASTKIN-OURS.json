@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p>Les Beastkins sont des humanoïdes à traits animaux marqués. Leur lignée peut exprimer des sens améliorés, des armes naturelles ou des capacités liées au mouvement et à l’environnement.</p>\n<p><strong>Identité de la lignée Beastkin Ours :</strong> Massif, robuste, tenace, mais moins agile.</p>\n<h3>Héritage Beastkin</h3>\n<ul><li>traits physiques forts ;</li><li>sens améliorés ;</li><li>griffes, crocs, queue, odorat, vision nocturne selon lignée ;</li><li>capacités liées au mouvement ou à l’environnement.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Dextérité</p>\n<p><strong>Logique :</strong> Massif, robuste, tenace, mais moins agile.</p>",
+    "description": "<p>Les Beastkins sont des humanoïdes à traits animaux marqués. Leur lignée peut exprimer des sens améliorés, des armes naturelles ou des capacités liées au mouvement et à l’environnement.</p>\n<p><strong>Identité de la lignée Beastkin Ours :</strong> Massif, robuste, tenace, mais moins agile.</p>\n<h3>Héritage Beastkin</h3>\n<ul><li>traits physiques forts ;</li><li>sens améliorés ;</li><li>griffes, crocs, queue, odorat, vision nocturne selon lignée ;</li><li>capacités liées au mouvement ou à l’environnement.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Force, +1 Vigueur, +1 Volonté</p>\n<p><strong>Malus d’Attribut :</strong> -1 Dextérité</p>\n<p><strong>Logique :</strong> Massif, robuste, tenace, mais moins agile.</p>\n<h3>Vitalité et énergies naturelles</h3>\n<p><strong>PV :</strong> 14 PV d’Ascendance</p>\n<p><strong>Réserves naturelles :</strong> Profil naturel : Prana 8, Mana 1, Flux 0</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],
@@ -14,7 +14,22 @@
       "attributeBonuses": "+1 Force, +1 Vigueur, +1 Volonté",
       "attributePenalty": "-1 Dextérité",
       "rationale": "Massif, robuste, tenace, mais moins agile.",
-      "selectable": true
+      "selectable": true,
+      "hitPointProfile": {
+        "mode": "fixed",
+        "value": 14
+      },
+      "energyProfiles": [
+        {
+          "id": "natural",
+          "label": "Profil naturel",
+          "prana": 8,
+          "mana": 1,
+          "flux": 0
+        }
+      ],
+      "energySelectionRequired": false,
+      "energyComponentsRemainSeparate": true
     }
   },
   "folder": ""

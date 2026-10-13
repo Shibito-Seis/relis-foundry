@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "bretteur"],
   "system": {
-    "description": "<p><strong>Bretteur — Forme agressive</strong>.</p><p><strong>Voie :</strong> Bretteur</p>\n<p><strong>Dotation principale :</strong> Grande lame légère, hache courte, double lame ou arme à haut impact.</p>",
+    "description": "<p><strong>Bretteur — Forme agressive</strong>.</p><p>La branche <strong>Forme agressive</strong> de la Voie <strong>Bretteur</strong> développe pression, enchaînements, dégâts..</p>\n<p><strong>Dotation principale :</strong> Grande lame légère, hache courte, double lame ou arme à haut impact.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Bretteur",
       "branchName": "Forme agressive",
+      "orientation": "pression, enchaînements, dégâts.",
       "primaryLoadout": "Grande lame légère, hache courte, double lame ou arme à haut impact.",
       "loadoutRefs": []
     }

@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "interfaceur"],
   "system": {
-    "description": "<p><strong>Interfaceur — Guerre électronique</strong>.</p><p><strong>Voie :</strong> Interfaceur</p>\n<p><strong>Dotation principale :</strong> Brouilleur léger, capteurs passifs, analyseur de signal.</p>",
+    "description": "<p><strong>Interfaceur — Guerre électronique</strong>.</p><p>La branche <strong>Guerre électronique</strong> de la Voie <strong>Interfaceur</strong> développe brouillage, capteurs, combat spatial..</p>\n<p><strong>Dotation principale :</strong> Brouilleur léger, capteurs passifs, analyseur de signal.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Interfaceur",
       "branchName": "Guerre électronique",
+      "orientation": "brouillage, capteurs, combat spatial.",
       "primaryLoadout": "Brouilleur léger, capteurs passifs, analyseur de signal.",
       "loadoutRefs": []
     }

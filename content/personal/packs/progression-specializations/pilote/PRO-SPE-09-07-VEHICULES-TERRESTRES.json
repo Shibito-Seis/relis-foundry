@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "pilote"],
   "system": {
-    "description": "<p><strong>Pilote — Véhicules terrestres</strong>.</p><p><strong>Voie :</strong> Pilote</p>\n<p><strong>Dotation principale :</strong> Interface rover/moto, outils de terrain, harnais de conduite hostile.</p>",
+    "description": "<p><strong>Pilote — Véhicules terrestres</strong>.</p><p>La branche <strong>Véhicules terrestres</strong> de la Voie <strong>Pilote</strong> développe rovers, motos, blindés..</p>\n<p><strong>Dotation principale :</strong> Interface rover/moto, outils de terrain, harnais de conduite hostile.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Pilote",
       "branchName": "Véhicules terrestres",
+      "orientation": "rovers, motos, blindés.",
       "primaryLoadout": "Interface rover/moto, outils de terrain, harnais de conduite hostile.",
       "loadoutRefs": []
     }

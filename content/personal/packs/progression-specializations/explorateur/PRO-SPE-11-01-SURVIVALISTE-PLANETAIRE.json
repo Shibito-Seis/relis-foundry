@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "explorateur"],
   "system": {
-    "description": "<p><strong>Explorateur — Survivaliste planétaire</strong>.</p><p><strong>Voie :</strong> Explorateur</p>\n<p><strong>Dotation principale :</strong> Kit de survie avancé, filtre, allume-feu, couverture thermique.</p>",
+    "description": "<p><strong>Explorateur — Survivaliste planétaire</strong>.</p><p>La branche <strong>Survivaliste planétaire</strong> de la Voie <strong>Explorateur</strong> développe biomes, climat, ressources..</p>\n<p><strong>Dotation principale :</strong> Kit de survie avancé, filtre, allume-feu, couverture thermique.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Explorateur",
       "branchName": "Survivaliste planétaire",
+      "orientation": "biomes, climat, ressources.",
       "primaryLoadout": "Kit de survie avancé, filtre, allume-feu, couverture thermique.",
       "loadoutRefs": []
     }

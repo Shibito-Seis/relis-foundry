@@ -4,7 +4,7 @@
   "type": "ancestry",
   "tags": ["creation", "ascendance"],
   "system": {
-    "description": "<p>Les Beastkins sont des humanoïdes à traits animaux marqués. Leur lignée peut exprimer des sens améliorés, des armes naturelles ou des capacités liées au mouvement et à l’environnement.</p>\n<p><strong>Identité de la lignée Beastkin Souris :</strong> Petit gabarit, précision, instinct technique et observation rapide, mais faible puissance physique brute.</p>\n<h3>Héritage Beastkin</h3>\n<ul><li>traits physiques forts ;</li><li>sens améliorés ;</li><li>griffes, crocs, queue, odorat, vision nocturne selon lignée ;</li><li>capacités liées au mouvement ou à l’environnement.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Technologie, +1 Intelligence</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p><strong>Logique :</strong> Petit gabarit, précision, instinct technique et observation rapide, mais faible puissance physique brute.</p>",
+    "description": "<p>Les Beastkins sont des humanoïdes à traits animaux marqués. Leur lignée peut exprimer des sens améliorés, des armes naturelles ou des capacités liées au mouvement et à l’environnement.</p>\n<p><strong>Identité de la lignée Beastkin Souris :</strong> Petit gabarit, précision, instinct technique et observation rapide, mais faible puissance physique brute.</p>\n<h3>Héritage Beastkin</h3>\n<ul><li>traits physiques forts ;</li><li>sens améliorés ;</li><li>griffes, crocs, queue, odorat, vision nocturne selon lignée ;</li><li>capacités liées au mouvement ou à l’environnement.</li></ul>\n<h3>Profil d’Ascendance</h3>\n<p><strong>Bonus d’Attribut :</strong> +1 Dextérité, +1 Technologie, +1 Intelligence</p>\n<p><strong>Malus d’Attribut :</strong> -1 Force</p>\n<p><strong>Logique :</strong> Petit gabarit, précision, instinct technique et observation rapide, mais faible puissance physique brute.</p>\n<h3>Vitalité et énergies naturelles</h3>\n<p><strong>PV :</strong> 8 PV d’Ascendance</p>\n<p><strong>Réserves naturelles :</strong> Profil naturel : Prana 2, Mana 2, Flux 0</p>",
     "traits": [],
     "requirementRefs": [],
     "effectRefs": [],
@@ -14,7 +14,22 @@
       "attributeBonuses": "+1 Dextérité, +1 Technologie, +1 Intelligence",
       "attributePenalty": "-1 Force",
       "rationale": "Petit gabarit, précision, instinct technique et observation rapide, mais faible puissance physique brute.",
-      "selectable": true
+      "selectable": true,
+      "hitPointProfile": {
+        "mode": "fixed",
+        "value": 8
+      },
+      "energyProfiles": [
+        {
+          "id": "natural",
+          "label": "Profil naturel",
+          "prana": 2,
+          "mana": 2,
+          "flux": 0
+        }
+      ],
+      "energySelectionRequired": false,
+      "energyComponentsRemainSeparate": true
     }
   },
   "folder": ""

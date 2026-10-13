@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Shibito-Seis/relis-foundry/content/schemas/specialization-talent-catalogs.schema.json",
+  "title": "Catalogues de Talents de Spécialisation RE:LIS",
+  "type": "object",
+  "required": [
+    "format",
+    "formatVersion",
+    "contentVersion",
+    "levels",
+    "catalogs"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "relis.specialization-talent-catalogs" },
+    "formatVersion": { "const": 1 },
+    "contentVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "levels": {
+      "const": [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28, 30]
+    },
+    "catalogs": {
+      "type": "array",
+      "minItems": 84,
+      "maxItems": 84,
+      "items": {
+        "type": "object",
+        "required": [
+          "specializationId",
+          "pathName",
+          "branchName",
+          "orientation",
+          "primarySkillId",
+          "secondarySkillId",
+          "activeAxis",
+          "passiveAxis",
+          "activeProfile",
+          "passiveProfile"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "specializationId": {
+            "type": "string",
+            "pattern": "^PRO-SPE-[0-9]{2}-[0-9]{2}-[A-Z0-9-]+$"
+          },
+          "pathName": { "type": "string", "minLength": 1 },
+          "branchName": { "type": "string", "minLength": 1 },
+          "orientation": { "type": "string", "minLength": 1 },
+          "primarySkillId": {
+            "enum": [
+              "acrobatics",
+              "heavyWeapons",
+              "athletics",
+              "channeling",
+              "command",
+              "commerce",
+              "culture",
+              "diplomacy",
+              "stealth",
+              "endurance",
+              "engineering",
+              "computing",
+              "intimidation",
+              "investigation",
+              "medicine",
+              "melee",
+              "navigation",
+              "piloting",
+              "composure",
+              "science",
+              "survival",
+              "shipSystems",
+              "technomagic",
+              "shooting",
+              "deception"
+            ]
+          },
+          "secondarySkillId": {
+            "enum": [
+              "acrobatics",
+              "heavyWeapons",
+              "athletics",
+              "channeling",
+              "command",
+              "commerce",
+              "culture",
+              "diplomacy",
+              "stealth",
+              "endurance",
+              "engineering",
+              "computing",
+              "intimidation",
+              "investigation",
+              "medicine",
+              "melee",
+              "navigation",
+              "piloting",
+              "composure",
+              "science",
+              "survival",
+              "shipSystems",
+              "technomagic",
+              "shooting",
+              "deception"
+            ]
+          },
+          "activeAxis": { "type": "string", "minLength": 1 },
+          "passiveAxis": { "type": "string", "minLength": 1 },
+          "activeProfile": {
+            "enum": [
+              "offense",
+              "defense",
+              "mobility",
+              "support",
+              "control",
+              "utility",
+              "energy",
+              "command",
+              "technical",
+              "medical",
+              "stealth",
+              "pilot"
+            ]
+          },
+          "passiveProfile": {
+            "enum": [
+              "offense",
+              "defense",
+              "mobility",
+              "support",
+              "control",
+              "utility",
+              "energy",
+              "command",
+              "technical",
+              "medical",
+              "stealth",
+              "pilot"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

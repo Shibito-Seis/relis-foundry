@@ -4,7 +4,7 @@
   "type": "specialization",
   "tags": ["progression", "specialisation", "emissaire"],
   "system": {
-    "description": "<p><strong>Émissaire — Manipulateur</strong>.</p><p><strong>Voie :</strong> Émissaire</p>\n<p><strong>Dotation principale :</strong> Faux dossiers, module de voix, outils de discrétion sociale.</p>",
+    "description": "<p><strong>Émissaire — Manipulateur</strong>.</p><p>La branche <strong>Manipulateur</strong> de la Voie <strong>Émissaire</strong> développe bluff, mensonge, influence..</p>\n<p><strong>Dotation principale :</strong> Faux dossiers, module de voix, outils de discrétion sociale.</p>\n<p>Son catalogue comprend trente-deux Talents : deux choix à chacun des seize paliers de la progression principale et mythique.</p>",
     "traits": [],
     "requirementRefs": [
       {
@@ -23,6 +23,7 @@
       "sourceSection": "9",
       "pathName": "Émissaire",
       "branchName": "Manipulateur",
+      "orientation": "bluff, mensonge, influence.",
       "primaryLoadout": "Faux dossiers, module de voix, outils de discrétion sociale.",
       "loadoutRefs": []
     }

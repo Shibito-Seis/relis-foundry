@@ -355,8 +355,8 @@ assert.equal(
 );
 assert.equal(
   personalContentManifest.packs.length,
-  23,
-  "Les 23 compendiums personnels classés doivent être préparés ensemble",
+  24,
+  "Les 24 compendiums personnels classés doivent être préparés ensemble",
 );
 assert.equal(
   personalContentManifest.strictReferences,
@@ -414,8 +414,8 @@ assert.equal(
 );
 assert.equal(
   personalContent.entries.length,
-  2412,
-  "10-K2-P doit publier les 2 412 Items, dont les huit lignées Demi-Beastkins",
+  5100,
+  "Audit P doit publier les 5 100 Items, dont 2 688 Talents de Spécialisation",
 );
 assert.equal(
   manifest.packFolders?.length,
@@ -429,5 +429,5 @@ assert.equal(
 );
 
 console.log(
-  "Manifest RE:LIS valide : 64 types, 2 412 Items, 23 packs, chemins, références et URLs contrôlés.",
+  "Manifest RE:LIS valide : 64 types, 5 100 Items, 24 packs, chemins, références et URLs contrôlés.",
 );
