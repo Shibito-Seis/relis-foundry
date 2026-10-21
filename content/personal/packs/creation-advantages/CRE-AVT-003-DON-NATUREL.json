@@ -12,6 +12,10 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+2",
+      "creationEffects": {
+        "freeAttributeIncreases": 1,
+        "qualifiedSkills": 0
+      },
       "effect": "Le personnage gagne +1 Attribut libre. Ne peut pas améliorer le même Attribut qu’un autre Atout d’Attribut comme Génie."
     }
   },

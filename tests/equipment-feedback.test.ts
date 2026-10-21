@@ -10,7 +10,10 @@ beforeAll(async () => {
   (globalThis as any).foundry = {
     applications: {
       sheets: { ActorSheetV2: class {} },
-      api: { HandlebarsApplicationMixin: (base: any) => base },
+      api: {
+        ApplicationV2: class {},
+        HandlebarsApplicationMixin: (base: any) => base,
+      },
     },
   };
   Sheet = (await import("../src/sheets/actor-sheet")).RelisActorSheet;

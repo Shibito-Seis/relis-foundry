@@ -12,6 +12,14 @@
       "kind": "drawback",
       "sourceSection": "8",
       "value": "-3",
+      "creationConstraints": {
+        "requires": [
+          {
+            "relisId": "CRE-AVT-031-PHYSIOLOGIE-VAMPIRIQUE",
+            "label": "Physiologie vampirique"
+          }
+        ]
+      },
       "effect": "Handicap lié. Le personnage subit le besoin sanguin, la Faim, les Crises, les UV, les Marques d'Abandon, les dix Stades et leurs planchers décrits au chapitre 30. Requiert obligatoirement Physiologie vampirique +3."
     }
   },

@@ -2,7 +2,7 @@
   "id": "relis",
   "title": "RE:LIS — RE: Lost in Space",
   "description": "Système de jeu officiel RE:LIS pour Foundry Virtual Tabletop.",
-  "version": "0.8.4",
+  "version": "0.9.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14",
@@ -23,6 +23,13 @@
     }
   ],
   "packs": [
+    {
+      "name": "creation-ancestry-journals",
+      "label": "RE:LIS — Encyclopédie des Ascendances",
+      "path": "packs/creation-ancestry-journals",
+      "type": "JournalEntry",
+      "system": "relis"
+    },
     {
       "name": "creation-ancestries",
       "label": "RE:LIS — Ascendances",
@@ -268,7 +275,7 @@
   "primaryTokenAttribute": "derived.trackables.hitPoints",
   "url": "https://github.com/Shibito-Seis/relis-foundry",
   "manifest": "https://raw.githubusercontent.com/Shibito-Seis/relis-foundry/main/system.json",
-  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.8.4/relis-v0.8.4.zip",
+  "download": "https://github.com/Shibito-Seis/relis-foundry/releases/download/v0.9.0/relis-v0.9.0.zip",
   "documentTypes": {
     "Actor": {
       "character": {

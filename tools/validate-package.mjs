@@ -347,6 +347,10 @@ assert.equal(
   fs.existsSync(path.join(root, "templates/chat/check-card.hbs")),
   true,
 );
+assert.equal(
+  fs.existsSync(path.join(root, "templates/apps/character-creation.hbs")),
+  true,
+);
 
 assert.equal(
   personalContentManifest.format,
@@ -399,13 +403,26 @@ assert.equal(
   "Version de l’outil officiel Foundry non verrouillée",
 );
 assert.deepEqual(
-  manifest.packs?.map(({ name, type, system }) => ({ name, type, system })),
+  manifest.packs
+    ?.filter(({ type }) => type === "Item")
+    .map(({ name, type, system }) => ({ name, type, system })),
   personalContentManifest.packs.map((pack) => ({
     name: pack.name,
     type: pack.documentType,
     system: "relis",
   })),
   "Tous les compendiums K2-P doivent être déclarés comme packs Item du système",
+);
+assert.deepEqual(
+  manifest.packs?.find(({ name }) => name === "creation-ancestry-journals"),
+  {
+    name: "creation-ancestry-journals",
+    label: "RE:LIS — Encyclopédie des Ascendances",
+    path: "packs/creation-ancestry-journals",
+    type: "JournalEntry",
+    system: "relis",
+  },
+  "Le compendium JournalEntry des 26 Ascendances doit être déclaré",
 );
 assert.equal(
   manifest.packs?.every((pack) => pack.path === `packs/${pack.name}`),
@@ -429,5 +446,5 @@ assert.equal(
 );
 
 console.log(
-  "Manifest RE:LIS valide : 64 types, 5 100 Items, 24 packs, chemins, références et URLs contrôlés.",
+  "Manifest RE:LIS valide : 64 types, 5 100 Items, 24 packs Item et 1 pack JournalEntry, chemins, références et URLs contrôlés.",
 );

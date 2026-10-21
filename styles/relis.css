@@ -1518,6 +1518,241 @@
   }
 }
 
+/* 10-D3 — construction personnelle et assistant reprenable. */
+.relis-build-grid,
+.relis-creation-talent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.7rem;
+}
+
+.relis-build-slot,
+.relis-creation-talent-grid > article {
+  padding: 0.65rem;
+  border: 1px solid #315d6c;
+  background: rgb(7 25 34 / 72%);
+}
+
+.relis-build-item,
+.relis-creation-token,
+.relis-creation-selection {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+  padding: 0.4rem;
+  border-left: 3px solid #42c9db;
+  background: rgb(13 47 60 / 66%);
+}
+
+.relis-build-item--legacy {
+  border-left-color: #e1a948;
+}
+
+.relis-build-item .relis-link,
+.relis-creation-selection > div {
+  flex: 1;
+}
+
+.relis-build-item img,
+.relis-catalog-browser__entry img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.relis-danger {
+  color: #ffd7d7;
+  border-color: #a43f4d;
+  background: #571e29;
+}
+
+.relis-creation-shell {
+  display: grid;
+  grid-template-columns: 15rem minmax(24rem, 1fr) 17rem;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 100%;
+  color: #dceaf0;
+  background: #071923;
+}
+
+.relis-creation-steps,
+.relis-creation-main,
+.relis-creation-summary {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.relis-creation-steps,
+.relis-creation-summary {
+  background: rgb(4 17 24 / 94%);
+}
+
+.relis-creation-steps ol {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.relis-creation-step-menu > summary,
+.relis-creation-summary-menu > summary {
+  display: none;
+}
+
+.relis-creation-step {
+  display: grid;
+  grid-template-columns: 1.8rem 1fr;
+  width: 100%;
+  text-align: left;
+}
+
+.relis-creation-step small {
+  grid-column: 2;
+}
+
+.relis-creation-step[aria-current="step"] {
+  border-color: #69e9f7;
+  box-shadow: inset 3px 0 #69e9f7;
+}
+
+.relis-creation-step--blocked {
+  border-color: #b84b58;
+}
+
+.relis-creation-step--warning {
+  border-color: #d49b34;
+}
+
+.relis-creation-summary dl,
+.relis-creation-review dl {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.relis-creation-summary dl > div,
+.relis-creation-review dl > div,
+.relis-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgb(93 151 170 / 35%);
+}
+
+.relis-creation-footer {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding: 0.7rem 1rem;
+  border-top: 1px solid #397184;
+  background: #06131b;
+}
+
+.relis-choice-grid,
+.relis-skill-choice-grid,
+.relis-creation-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.5rem;
+  margin: 0.55rem 0;
+}
+
+.relis-choice-grid label,
+.relis-skill-choice-grid > div {
+  padding: 0.45rem;
+  border: 1px solid #315d6c;
+  background: rgb(16 54 68 / 55%);
+}
+
+.relis-choice-grid small,
+.relis-catalog-browser__entry small {
+  display: block;
+}
+
+.relis-diagnostic {
+  padding: 0.45rem 0.6rem;
+  border-left: 3px solid #5ea8ba;
+  background: rgb(19 48 59 / 80%);
+}
+
+.relis-diagnostic--error {
+  border-left-color: #d45a67;
+}
+
+.relis-diagnostic--warning {
+  border-left-color: #d49b34;
+}
+
+.relis-catalog-browser {
+  display: grid;
+  gap: 0.6rem;
+  max-height: min(70vh, 48rem);
+}
+
+.relis-catalog-browser__list {
+  display: grid;
+  gap: 0.35rem;
+  min-height: 10rem;
+  overflow-y: auto;
+}
+
+.relis-catalog-browser__entry {
+  display: grid;
+  grid-template-columns: auto 2rem 1fr;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem;
+  border: 1px solid #315d6c;
+}
+
+.relis-primary-action {
+  color: #031319;
+  border-color: #69e9f7;
+  background: #69e9f7;
+}
+
+.relis-directory-create {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 850px) {
+  .relis-creation-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+  }
+
+  .relis-creation-steps {
+    max-height: none;
+  }
+
+  .relis-creation-summary {
+    max-height: none;
+  }
+
+  .relis-creation-step-menu > summary,
+  .relis-creation-summary-menu > summary {
+    display: list-item;
+    cursor: pointer;
+    color: #9feaf3;
+    font-weight: 700;
+  }
+
+  .relis-creation-step-menu[open] ol,
+  .relis-creation-summary-menu[open] dl {
+    max-height: 10rem;
+    overflow-y: auto;
+  }
+
+  .relis-creation-footer {
+    grid-column: 1;
+  }
+}
+
 @media (max-width: 480px) {
   .relis-person-sheet {
     padding: 0.5rem;

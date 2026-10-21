@@ -6,6 +6,7 @@ declare const Hooks: {
 declare const foundry: Record<string, any>;
 declare const game: Record<string, any>;
 declare const ui: Record<string, any>;
+declare function fromUuid(uuid: string): Promise<any>;
 
 declare class Actor {
   static implementation: {
@@ -18,6 +19,7 @@ declare class Actor {
   effects: any;
   uuid: string;
   isOwner: boolean;
+  sheet: { render(force?: boolean): unknown };
   update(data: Record<string, unknown>): Promise<Actor>;
   createEmbeddedDocuments(
     documentName: string,
@@ -34,6 +36,7 @@ declare class Actor {
     ids: string[],
     options?: Record<string, unknown>,
   ): Promise<any[]>;
+  delete(options?: Record<string, unknown>): Promise<Actor>;
 }
 
 declare class ActiveEffect {

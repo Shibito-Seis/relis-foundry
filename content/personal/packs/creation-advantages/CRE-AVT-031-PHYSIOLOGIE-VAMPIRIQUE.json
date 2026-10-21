@@ -12,6 +12,11 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+3",
+      "creationConstraints": {
+        "requires": [
+          { "relisId": "CRE-HCP-037-FAIM-ECARLATE", "label": "Faim écarlate" }
+        ]
+      },
       "effect": "Atout lié. Le personnage possède l'altération biologique techno-magique décrite au chapitre 30 : vision nocturne, sens du sang, crocs, Récupération sanguine, résistance biologique et vieillissement ralenti selon son Stade. Requiert obligatoirement Faim écarlate -3."
     }
   },

@@ -12,6 +12,14 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+1/+2",
+      "creationConstraints": {
+        "requires": [
+          {
+            "relisId": "CRE-HCP-005-FAMILLE-A-NOURRIR",
+            "label": "Famille à nourrir"
+          }
+        ]
+      },
       "effect": "Requiert Famille à nourrir. +1 : la famille est localisée et joignable périodiquement, ce qui fournit un soutien moral. +2 : elle peut aussi fournir informations, contacts ou objectifs narratifs une fois par arc."
     }
   },

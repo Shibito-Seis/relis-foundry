@@ -1,8 +1,8 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.8.4";
+var PACKAGE_VERSION = "0.9.0";
 var RULES_VERSION = "1.0.0";
-var CONTENT_VERSION = "1.3.0";
+var CONTENT_VERSION = "1.4.0";
 var ACTOR_TYPES = [
 	"character",
 	"npc",
@@ -1253,7 +1253,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			...meta,
 			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
-			contentVersion: text(meta.contentVersion, "1.3.0") || "1.3.0",
+			contentVersion: text(meta.contentVersion, "1.4.0") || "1.4.0",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
 			sourceRef: normalizeReference(meta.sourceRef),
 			sourceVersion: text(meta.sourceVersion),
@@ -3938,6 +3938,1685 @@ function ensureRelisId(document) {
 }
 function registerIdentityHooks() {
 	for (const documentName of DOCUMENT_NAMES) Hooks.on(`preCreate${documentName}`, ensureRelisId);
+}
+var CHARACTER_CREATION_STEPS = [
+	{
+		id: "frame",
+		label: "Cadre"
+	},
+	{
+		id: "identity",
+		label: "Identité"
+	},
+	{
+		id: "body",
+		label: "Corps & Ascendance"
+	},
+	{
+		id: "profile",
+		label: "Profil & Origine"
+	},
+	{
+		id: "attributes",
+		label: "Attributs"
+	},
+	{
+		id: "skills",
+		label: "Compétences"
+	},
+	{
+		id: "path",
+		label: "Voie & Spécialisations"
+	},
+	{
+		id: "talents",
+		label: "Talents & Capacités"
+	},
+	{
+		id: "resources",
+		label: "Ressources initiales"
+	},
+	{
+		id: "appearance",
+		label: "Apparence & Présentation"
+	},
+	{
+		id: "assignments",
+		label: "Affectations"
+	},
+	{
+		id: "review",
+		label: "Révision"
+	}
+];
+var ATTRIBUTE_BY_LABEL = new Map(Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => [normalizeLabel(label), key]));
+var SKILL_BY_LABEL = new Map(Object.entries(SKILL_DEFINITIONS).map(([key, [label]]) => [normalizeLabel(label), key]));
+function normalizeLabel(value) {
+	return String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/gu, "").trim().toLocaleLowerCase("fr");
+}
+function distinct(values) {
+	return [...new Set(values)];
+}
+function catalogChoiceLabels(value) {
+	if (!Array.isArray(value)) return [];
+	return value.map(String).filter(Boolean);
+}
+function attributeKey(value) {
+	return ATTRIBUTE_BY_LABEL.get(normalizeLabel(value)) ?? null;
+}
+function skillKey(value) {
+	return SKILL_BY_LABEL.get(normalizeLabel(value)) ?? null;
+}
+function signedAttributes(value) {
+	const result = [];
+	for (const fragment of String(value ?? "").split(",")) {
+		const match = fragment.trim().match(/^([+-]\d+)\s+(.+)$/u);
+		if (!match) continue;
+		const key = attributeKey(match[2]);
+		const amount = Number(match[1]);
+		if (key && Number.isInteger(amount)) result.push([key, amount]);
+	}
+	return result;
+}
+function markedAttributes(value, sign) {
+	const [bonuses = "", penalties = ""] = String(value ?? "").split(";");
+	return (sign > 0 ? bonuses : penalties).split(/,|\bou\b/iu).map((fragment) => attributeKey(fragment.replace(/[+\-\d]/gu, "").trim())).filter((key) => Boolean(key));
+}
+function freeAttributeCount(value) {
+	return String(value ?? "").split(",").filter((fragment) => /^\s*\+1\s+libre\s*$/iu.test(fragment)).length;
+}
+function selectionReference(selection) {
+	return {
+		relisId: selection?.relisId ?? "",
+		uuid: selection?.uuid ?? "",
+		documentName: selection ? "Item" : "",
+		type: selection?.type ?? "",
+		state: selection ? "resolved" : "unresolved",
+		labelSnapshot: selection?.name ?? "",
+		missingPolicy: "diagnose"
+	};
+}
+function createCharacterDraft(id, ownerId = "", now = Date.now()) {
+	return {
+		id,
+		version: 1,
+		revision: 0,
+		currentStep: "frame",
+		updatedAt: now,
+		completedActorUuid: "",
+		frame: {
+			ownerId,
+			level: 1,
+			creationType: "character",
+			templateRef: ""
+		},
+		identity: {
+			primaryName: "",
+			publicName: "",
+			pronouns: "",
+			gender: "",
+			callsign: "",
+			earthBirthDate: "",
+			chronologicalAge: null,
+			biologicalAge: null,
+			apparentAge: null,
+			memorableMemory: ""
+		},
+		body: {
+			nature: "biological",
+			size: "medium",
+			ancestry: null,
+			ancestryAttributeChoices: [],
+			ancestryProfileId: ""
+		},
+		profile: {
+			profile: null,
+			profileMode: "standard",
+			profileAttributeChoices: [],
+			profilePenalty: "",
+			advantageAttributeChoices: {},
+			origin: null,
+			advantages: [],
+			drawbacks: []
+		},
+		attributes: {
+			pathAttribute: "",
+			freeIncreases: []
+		},
+		skills: {
+			qualified: [],
+			favorites: []
+		},
+		path: {
+			path: null,
+			primarySpecialization: null,
+			secondaryScheme: "duo",
+			secondarySpecializations: []
+		},
+		talents: {
+			ancestryTalent: null,
+			profileTalent: null,
+			primaryTalent: null,
+			secondaryTalents: []
+		},
+		resources: {
+			energyProfileId: "",
+			creditsPending: true,
+			equipmentPending: true
+		},
+		appearance: {
+			actorImage: "",
+			tokenImage: "",
+			description: ""
+		},
+		assignments: {
+			primaryPost: null,
+			secondaryPosts: []
+		}
+	};
+}
+function normalizeCharacterDraft(value, id, ownerId = "") {
+	const base = createCharacterDraft(id, ownerId);
+	if (!value || value.version !== 1) return base;
+	return {
+		...base,
+		...value,
+		id,
+		frame: {
+			...base.frame,
+			...value.frame
+		},
+		identity: {
+			...base.identity,
+			...value.identity
+		},
+		body: {
+			...base.body,
+			...value.body
+		},
+		profile: {
+			...base.profile,
+			...value.profile
+		},
+		attributes: {
+			...base.attributes,
+			...value.attributes
+		},
+		skills: {
+			...base.skills,
+			...value.skills
+		},
+		path: {
+			...base.path,
+			...value.path
+		},
+		talents: {
+			...base.talents,
+			...value.talents
+		},
+		resources: {
+			...base.resources,
+			...value.resources
+		},
+		appearance: {
+			...base.appearance,
+			...value.appearance
+		},
+		assignments: {
+			...base.assignments,
+			...value.assignments
+		}
+	};
+}
+function secondarySpecializationCount(scheme) {
+	return scheme === "duo" ? 2 : scheme === "trio" ? 3 : 4;
+}
+function requiredQualifiedSkillCount(draft, intelligence) {
+	const pathTotal = Number(draft.path.path?.catalog.qualifiedSkillTotal);
+	const advantageSkills = draft.profile.advantages.reduce((total, advantage) => total + Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.qualifiedSkills) || 0)), 0);
+	return Number.isFinite(pathTotal) ? Math.max(0, pathTotal + 2 + Math.max(0, Math.trunc(intelligence)) + advantageSkills) : null;
+}
+function advantageAttributeChanges(draft, diagnostics) {
+	const result = [];
+	const allChoices = [];
+	for (const advantage of draft.profile.advantages) {
+		const expected = Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.freeAttributeIncreases) || 0));
+		if (expected === 0) continue;
+		const choices = distinct(draft.profile.advantageAttributeChoices[advantage.relisId] ?? []);
+		if (choices.length !== expected) diagnostics.push({
+			level: "error",
+			step: "attributes",
+			message: `${advantage.name} exige ${expected} augmentation${expected > 1 ? "s" : ""} d’Attribut libre${expected > 1 ? "s" : ""}.`
+		});
+		allChoices.push(...choices);
+		result.push(...choices.map((key) => [key, 1]));
+	}
+	if (distinct(allChoices).length !== allChoices.length) diagnostics.push({
+		level: "error",
+		step: "attributes",
+		message: "Deux Atouts d’Attribut ne peuvent pas augmenter le même Attribut à la création."
+	});
+	return result;
+}
+function selectedCreationValue(selection) {
+	const values = String(selection.catalog.value ?? "").match(/[+-]\d+/gu)?.map(Number).filter(Number.isFinite) ?? [];
+	if (values.length === 0) return null;
+	if (values.length === 1) return values[0] ?? null;
+	const selected = Number(selection.catalog.selectedValue);
+	return values.includes(selected) ? selected : null;
+}
+function ancestryAttributeChanges(draft, diagnostics) {
+	const catalog = draft.body.ancestry?.catalog ?? {};
+	const fixed = [...signedAttributes(catalog.attributeBonuses), ...signedAttributes(catalog.attributePenalty)];
+	const freeCount = freeAttributeCount(catalog.attributeBonuses);
+	const inheritedCount = Number(catalog.inheritedAttributeChoiceCount ?? 0);
+	const expected = freeCount + inheritedCount;
+	const selected = distinct(draft.body.ancestryAttributeChoices);
+	if (draft.body.ancestry && selected.length !== expected) diagnostics.push({
+		level: "error",
+		step: "body",
+		message: `${draft.body.ancestry.name} exige ${expected} choix d’Attribut distinct${expected > 1 ? "s" : ""}.`
+	});
+	const inheritedAllowed = catalogChoiceLabels(catalog.inheritedAttributeChoices).map(attributeKey).filter((key) => Boolean(key));
+	if (inheritedCount > 0 && selected.filter((key) => inheritedAllowed.includes(key)).length < inheritedCount) diagnostics.push({
+		level: "error",
+		step: "body",
+		message: "Un choix d’Attribut hérité ne provient pas du parent déclaré."
+	});
+	return [...fixed, ...selected.map((key) => [key, 1])];
+}
+function profileAttributeChanges(draft, diagnostics) {
+	const profile = draft.profile.profile;
+	if (!profile) return [];
+	const catalog = profile.catalog;
+	const selected = distinct(draft.profile.profileAttributeChoices);
+	const allowed = catalogChoiceLabels(catalog.standardAttributes).map(attributeKey).filter((key) => Boolean(key));
+	const markedBonuses = markedAttributes(catalog.markedProfile, 1);
+	const result = [];
+	if (draft.profile.profileMode === "marked") {
+		if (markedBonuses.length !== 2) diagnostics.push({
+			level: "error",
+			step: "profile",
+			message: `Le Profil marqué ${profile.name} ne fournit pas deux bonus structurés.`
+		});
+		result.push(...markedBonuses.map((key) => [key, 1]));
+	} else {
+		if (selected.length !== 1 || selected.some((key) => !allowed.includes(key))) diagnostics.push({
+			level: "error",
+			step: "profile",
+			message: `Le Profil ${profile.name} exige un bonus d’Attribut parmi sa liste.`
+		});
+		result.push(...selected.map((key) => [key, 1]));
+	}
+	if (draft.profile.profileMode === "marked") {
+		const allowedPenalties = markedAttributes(catalog.markedProfile, -1);
+		if (!draft.profile.profilePenalty || !allowedPenalties.includes(draft.profile.profilePenalty)) diagnostics.push({
+			level: "error",
+			step: "profile",
+			message: "Le Profil marqué exige une contrepartie prévue par sa source."
+		});
+		else result.push([draft.profile.profilePenalty, -1]);
+	}
+	return result;
+}
+function selectedHitPoints(draft) {
+	const profile = draft.body.ancestry?.catalog.hitPointProfile;
+	if (!profile) return null;
+	if (profile.mode === "fixed") {
+		const value = Number(profile.value);
+		return Number.isFinite(value) ? value : null;
+	}
+	const selected = (Array.isArray(profile.profiles) ? profile.profiles : []).find((entry) => String(entry.id) === (draft.body.ancestryProfileId || draft.resources.energyProfileId));
+	const value = Number(selected?.value);
+	return Number.isFinite(value) ? value : null;
+}
+function selectedEnergyProfile(draft) {
+	const profiles = Array.isArray(draft.body.ancestry?.catalog.energyProfiles) ? draft.body.ancestry?.catalog.energyProfiles : [];
+	if (!profiles.length) return null;
+	return profiles.find((profile) => String(profile.id) === draft.resources.energyProfileId) ?? (profiles.length === 1 ? profiles[0] : null);
+}
+function deriveCharacterCreation(draft) {
+	const diagnostics = [];
+	if (draft.frame.level !== 1) diagnostics.push({
+		level: "error",
+		step: "frame",
+		message: "10-D3 crée un personnage de niveau 1. Les niveaux ultérieurs appartiennent à la progression 10-D4."
+	});
+	const attributes = Object.fromEntries(Object.keys(ATTRIBUTE_LABELS).map((key) => [key, 0]));
+	const changes = [
+		...ancestryAttributeChanges(draft, diagnostics),
+		...profileAttributeChanges(draft, diagnostics),
+		...advantageAttributeChanges(draft, diagnostics)
+	];
+	const pathAllowed = catalogChoiceLabels(draft.path.path?.catalog.keyAttributes).map(attributeKey).filter((key) => Boolean(key));
+	if (draft.path.path) {
+		if (!draft.attributes.pathAttribute || !pathAllowed.includes(draft.attributes.pathAttribute)) diagnostics.push({
+			level: "error",
+			step: "attributes",
+			message: "Choisissez un Attribut clef proposé par la Voie."
+		});
+		else changes.push([draft.attributes.pathAttribute, 1]);
+	}
+	const free = distinct(draft.attributes.freeIncreases);
+	if (free.length !== 4) diagnostics.push({
+		level: "error",
+		step: "attributes",
+		message: "Le palier de création exige quatre augmentations libres dans quatre Attributs distincts."
+	});
+	changes.push(...free.map((key) => [key, 1]));
+	for (const [key, amount] of changes) attributes[key] += amount;
+	const ancestryHp = selectedHitPoints(draft);
+	if (draft.body.ancestry && ancestryHp === null) diagnostics.push({
+		level: "error",
+		step: "resources",
+		message: "Le profil de PV d’Ascendance doit être choisi."
+	});
+	const pathHp = Number(draft.path.path?.catalog.hitPointsPerLevel);
+	const level = Math.max(1, Math.trunc(Number(draft.frame.level) || 1));
+	const hitPoints = ancestryHp !== null && Number.isFinite(pathHp) ? ancestryHp + level * (pathHp + attributes.vigor) : null;
+	const energy = selectedEnergyProfile(draft);
+	if (draft.body.ancestry?.catalog.energySelectionRequired === true && !energy) diagnostics.push({
+		level: "error",
+		step: "resources",
+		message: "Choisissez le profil énergétique ou la dominance de l’Ascendance."
+	});
+	const energyPools = energy ? [
+		["mana", Number(energy.mana ?? 0)],
+		["prana", Number(energy.prana ?? 0)],
+		["flux", Number(energy.flux ?? 0)]
+	].map(([key, maximum]) => ({
+		key: String(key),
+		current: Number(maximum),
+		maximum: Number(maximum),
+		reserved: 0,
+		debt: 0,
+		unit: "points"
+	})) : [];
+	const qualified = distinct(draft.skills.qualified);
+	const required = requiredQualifiedSkillCount(draft, attributes.intelligence);
+	if (required !== null && qualified.length !== required) diagnostics.push({
+		level: "error",
+		step: "skills",
+		message: `La création exige ${required} compétences Qualifiées ; ${qualified.length} sont sélectionnées.`
+	});
+	const pathRequired = catalogChoiceLabels(draft.path.path?.catalog.requiredSkills).map(skillKey).filter((key) => Boolean(key));
+	if (pathRequired.some((key) => !qualified.includes(key))) diagnostics.push({
+		level: "error",
+		step: "skills",
+		message: "Les compétences obligatoires de la Voie doivent être Qualifiées."
+	});
+	const pathOptions = distinct([...pathRequired, ...catalogChoiceLabels(draft.path.path?.catalog.skillChoices).map(skillKey).filter((key) => Boolean(key))]);
+	const pathTotal = Number(draft.path.path?.catalog.qualifiedSkillTotal);
+	if (Number.isFinite(pathTotal) && qualified.filter((key) => pathOptions.includes(key)).length < pathTotal) diagnostics.push({
+		level: "error",
+		step: "skills",
+		message: `La Voie exige ${pathTotal} compétences choisies dans son propre catalogue.`
+	});
+	const profileOptions = catalogChoiceLabels(draft.profile.profile?.catalog.skillChoices).map(skillKey).filter((key) => Boolean(key));
+	if (draft.profile.profile && qualified.filter((key) => profileOptions.includes(key)).length < 2) diagnostics.push({
+		level: "error",
+		step: "skills",
+		message: "Le Profil exige deux compétences choisies dans sa liste."
+	});
+	const secondaryExpected = secondarySpecializationCount(draft.path.secondaryScheme);
+	if (draft.path.secondarySpecializations.length > secondaryExpected) diagnostics.push({
+		level: "error",
+		step: "path",
+		message: `Le schéma choisi autorise ${secondaryExpected} Spécialisations secondaires.`
+	});
+	const secondarySpecializationIds = draft.path.secondarySpecializations.map((entry) => entry.relisId);
+	if (distinct(secondarySpecializationIds).length !== secondarySpecializationIds.length || secondarySpecializationIds.includes(draft.path.primarySpecialization?.relisId ?? "")) diagnostics.push({
+		level: "error",
+		step: "path",
+		message: "Une branche ne peut pas occuper deux emplacements de Spécialisation ni être à la fois principale et secondaire."
+	});
+	if (draft.path.primarySpecialization && draft.path.path) {
+		const pathName = String(draft.path.path.name);
+		if (draft.path.primarySpecialization.catalog.pathName !== pathName) diagnostics.push({
+			level: "error",
+			step: "path",
+			message: "La Spécialisation Principale doit appartenir à la Voie principale."
+		});
+	}
+	const ancestryTalentCatalogs = /* @__PURE__ */ new Set([
+		draft.body.ancestry?.name,
+		...draft.body.ancestry?.catalog.talentCatalogs ?? [],
+		"Universel"
+	]);
+	if (draft.talents.ancestryTalent && (draft.talents.ancestryTalent.level !== 1 || !ancestryTalentCatalogs.has(String(draft.talents.ancestryTalent.catalog.ancestry)))) diagnostics.push({
+		level: "error",
+		step: "talents",
+		message: "Le Talent d’Ascendance doit être de niveau 1 et appartenir à un catalogue autorisé par l’Ascendance."
+	});
+	if (draft.talents.profileTalent && (draft.talents.profileTalent.level !== 1 || !catalogChoiceLabels(draft.profile.profile?.catalog.skillChoices).includes(String(draft.talents.profileTalent.catalog.skill)))) diagnostics.push({
+		level: "error",
+		step: "talents",
+		message: "Le Talent de Profil doit être de niveau 1 et relever d’une Compétence proposée par le Profil."
+	});
+	if (draft.talents.primaryTalent && (draft.talents.primaryTalent.level !== 1 || draft.talents.primaryTalent.catalog.specializationRef?.relisId !== draft.path.primarySpecialization?.relisId)) diagnostics.push({
+		level: "error",
+		step: "talents",
+		message: "Le Talent principal doit être de niveau 1 et provenir de la Spécialisation Principale."
+	});
+	const secondaryIds = new Set(draft.path.secondarySpecializations.map((entry) => entry.relisId));
+	const secondaryTalentSources = draft.talents.secondaryTalents.map((talent) => String(talent.catalog.specializationRef?.relisId ?? ""));
+	if (draft.talents.secondaryTalents.some((talent, index) => talent.level !== 1 || !secondaryIds.has(secondaryTalentSources[index] ?? "")) || distinct(secondaryTalentSources).length !== secondaryTalentSources.length) diagnostics.push({
+		level: "error",
+		step: "talents",
+		message: "Chaque Talent secondaire doit être de niveau 1, provenir d’une Spécialisation secondaire choisie et rester unique dans sa branche."
+	});
+	const unresolvedValues = [...draft.profile.advantages, ...draft.profile.drawbacks].filter((entry) => selectedCreationValue(entry) === null);
+	if (unresolvedValues.length) diagnostics.push({
+		level: "error",
+		step: "profile",
+		message: `Choisissez la valeur de ${unresolvedValues.map((entry) => entry.name).join(", ")}.`
+	});
+	const advantageValue = draft.profile.advantages.reduce((sum, entry) => sum + Math.max(0, selectedCreationValue(entry) ?? 0), 0);
+	const drawbackValue = draft.profile.drawbacks.reduce((sum, entry) => sum + Math.min(0, selectedCreationValue(entry) ?? 0), 0);
+	if (draft.profile.advantages.length > 3) diagnostics.push({
+		level: "error",
+		step: "profile",
+		message: "La création autorise au maximum trois Atouts."
+	});
+	if (advantageValue + drawbackValue !== 0) diagnostics.push({
+		level: "error",
+		step: "profile",
+		message: `La balance Atouts / Handicaps doit être nulle (actuellement ${advantageValue + drawbackValue}).`
+	});
+	const selectedIds = new Set([...draft.profile.advantages, ...draft.profile.drawbacks].map((entry) => entry.relisId));
+	for (const selection of [...draft.profile.advantages, ...draft.profile.drawbacks]) {
+		const constraints = selection.catalog.creationConstraints ?? {};
+		for (const required of constraints.requires ?? []) if (!selectedIds.has(String(required.relisId ?? ""))) diagnostics.push({
+			level: "error",
+			step: "profile",
+			message: `${selection.name} requiert ${String(required.label ?? required.relisId)}.`
+		});
+		for (const incompatible of constraints.incompatible ?? []) if (selectedIds.has(String(incompatible.relisId ?? ""))) diagnostics.push({
+			level: incompatible.sameSubjectOnly ? "warning" : "error",
+			step: "profile",
+			message: incompatible.sameSubjectOnly ? `${selection.name} ne peut viser le même sujet que ${String(incompatible.label ?? incompatible.relisId)} ; vérifiez que les éléments concernés sont distincts.` : `${selection.name} est incompatible avec ${String(incompatible.label ?? incompatible.relisId)}.`
+		});
+	}
+	for (const automatic of draft.body.ancestry?.catalog.automaticDrawbacks ?? []) if (!selectedIds.has(String(automatic.relisId ?? ""))) diagnostics.push({
+		level: "error",
+		step: "profile",
+		message: `${draft.body.ancestry?.name} reçoit automatiquement ${String(automatic.label ?? automatic.relisId)}.`
+	});
+	for (const [step, missing, message] of [
+		[
+			"identity",
+			!draft.identity.primaryName.trim(),
+			"Le nom principal est obligatoire."
+		],
+		[
+			"body",
+			!draft.body.ancestry,
+			"Une Ascendance doit être choisie."
+		],
+		[
+			"profile",
+			!draft.profile.profile,
+			"Un Profil doit être choisi."
+		],
+		[
+			"profile",
+			!draft.profile.origin,
+			"Une Origine doit être choisie."
+		],
+		[
+			"path",
+			!draft.path.path,
+			"Une Voie principale doit être choisie."
+		],
+		[
+			"path",
+			!draft.path.primarySpecialization,
+			"Une Spécialisation Principale doit être choisie."
+		],
+		[
+			"assignments",
+			!draft.assignments.primaryPost,
+			"Un Poste principal doit être choisi."
+		]
+	]) if (missing) diagnostics.push({
+		level: "error",
+		step,
+		message
+	});
+	if (!draft.talents.ancestryTalent) diagnostics.push({
+		level: "warning",
+		step: "talents",
+		message: "Talent d’Ascendance laissé en attente."
+	});
+	if (!draft.talents.profileTalent) diagnostics.push({
+		level: "warning",
+		step: "talents",
+		message: "Talent de compétence du Profil laissé en attente."
+	});
+	if (!draft.talents.primaryTalent) diagnostics.push({
+		level: "warning",
+		step: "talents",
+		message: "Talent de Spécialisation Principale laissé en attente."
+	});
+	const secondaryWithoutTalent = draft.path.secondarySpecializations.filter((specialization) => !draft.talents.secondaryTalents.some((talent) => talent.catalog.specializationRef?.relisId === specialization.relisId));
+	if (secondaryWithoutTalent.length) diagnostics.push({
+		level: "warning",
+		step: "talents",
+		message: `${secondaryWithoutTalent.length} Talent${secondaryWithoutTalent.length > 1 ? "s" : ""} secondaire${secondaryWithoutTalent.length > 1 ? "s" : ""} de niveau 1 reste${secondaryWithoutTalent.length > 1 ? "nt" : ""} en attente.`
+	});
+	if (draft.resources.creditsPending) diagnostics.push({
+		level: "warning",
+		step: "resources",
+		message: "Crédits initiaux conservés comme choix en attente."
+	});
+	if (draft.resources.equipmentPending) diagnostics.push({
+		level: "warning",
+		step: "resources",
+		message: "Équipement initial conservé comme choix en attente."
+	});
+	return {
+		attributes,
+		hitPoints,
+		hitPointSources: [
+			ancestryHp === null ? "Ascendance non résolue" : `Ascendance ${ancestryHp}`,
+			Number.isFinite(pathHp) ? `Voie ${pathHp}/niveau` : "Voie non résolue",
+			`Vigueur ${attributes.vigor}/niveau`
+		],
+		energyPools,
+		qualifiedSkillCount: qualified.length,
+		requiredQualifiedSkills: required,
+		diagnostics
+	};
+}
+function creationStepState(draft, step) {
+	const diagnostics = deriveCharacterCreation(draft).diagnostics.filter((entry) => entry.step === step);
+	if (diagnostics.some((entry) => entry.level === "error")) return "blocked";
+	if (diagnostics.some((entry) => entry.level === "warning")) return "warning";
+	const index = CHARACTER_CREATION_STEPS.findIndex((entry) => entry.id === step);
+	const current = CHARACTER_CREATION_STEPS.findIndex((entry) => entry.id === draft.currentStep);
+	if (index < current) return "complete";
+	if (index === current) return "in-progress";
+	return "not-started";
+}
+function characterActorSource(draft) {
+	const derived = deriveCharacterCreation(draft);
+	const pendingMessages = derived.diagnostics.filter((entry) => entry.level === "warning").map((entry, index) => ({
+		id: `creation-${index + 1}`,
+		sort: index,
+		status: "active",
+		value: entry.message,
+		visibility: "owner"
+	}));
+	const attributes = Object.fromEntries(Object.entries(derived.attributes).map(([key, base]) => [key, {
+		base,
+		partial: false,
+		modifiers: []
+	}]));
+	const qualified = new Set(draft.skills.qualified);
+	const favorites = new Set(draft.skills.favorites);
+	const skills = Object.fromEntries(Object.entries(SKILL_DEFINITIONS).map(([key, [, defaultAttribute]]) => [key, {
+		rank: qualified.has(key) ? "trained" : "untrained",
+		defaultAttribute,
+		favorite: favorites.has(key),
+		modifiers: []
+	}]));
+	const reference = selectionReference;
+	return {
+		name: draft.identity.primaryName.trim(),
+		type: "character",
+		img: draft.appearance.actorImage || "icons/svg/mystery-man.svg",
+		ownership: draft.frame.ownerId ? {
+			default: 0,
+			[draft.frame.ownerId]: 3
+		} : { default: 0 },
+		prototypeToken: draft.appearance.tokenImage ? { texture: { src: draft.appearance.tokenImage } } : void 0,
+		flags: { relis: { characterCreation: {
+			draftId: draft.id,
+			version: draft.version,
+			revision: draft.revision,
+			completedAt: Date.now(),
+			selections: {
+				ancestryAttributeChoices: draft.body.ancestryAttributeChoices,
+				ancestryProfileId: draft.body.ancestryProfileId,
+				profileMode: draft.profile.profileMode,
+				profileAttributeChoices: draft.profile.profileAttributeChoices,
+				profilePenalty: draft.profile.profilePenalty,
+				advantageAttributeChoices: draft.profile.advantageAttributeChoices,
+				pathAttribute: draft.attributes.pathAttribute,
+				freeIncreases: draft.attributes.freeIncreases,
+				qualifiedSkills: draft.skills.qualified,
+				favoriteSkills: draft.skills.favorites,
+				energyProfileId: draft.resources.energyProfileId,
+				secondaryScheme: draft.path.secondaryScheme
+			}
+		} } },
+		system: {
+			identity: {
+				primaryName: draft.identity.primaryName,
+				publicName: draft.identity.publicName,
+				pronouns: draft.identity.pronouns,
+				gender: draft.identity.gender,
+				callsign: draft.identity.callsign,
+				biography: draft.appearance.description,
+				memory: draft.identity.memorableMemory
+			},
+			age: {
+				earthBirthDate: draft.identity.earthBirthDate,
+				chronological: {
+					value: draft.identity.chronologicalAge,
+					unit: "years",
+					precision: "exact"
+				},
+				biological: {
+					value: draft.identity.biologicalAge,
+					unit: "years",
+					precision: "exact"
+				},
+				apparent: {
+					value: draft.identity.apparentAge,
+					unit: "years",
+					precision: "exact"
+				}
+			},
+			level: draft.frame.level,
+			attributes,
+			skills,
+			bodies: [{
+				id: "primary",
+				name: "Corps principal",
+				nature: draft.body.nature,
+				size: draft.body.size
+			}],
+			activeBodyId: "primary",
+			build: {
+				ancestryRef: reference(draft.body.ancestry),
+				profileRef: reference(draft.profile.profile),
+				originRef: reference(draft.profile.origin),
+				pathRef: reference(draft.path.path),
+				primarySpecializationRef: reference(draft.path.primarySpecialization),
+				secondarySpecializations: draft.path.secondarySpecializations.map((selection) => ({
+					ref: reference(selection),
+					rank: "1",
+					sourceRef: reference(draft.path.path)
+				})),
+				advantageRefs: draft.profile.advantages.map(reference),
+				drawbackRefs: draft.profile.drawbacks.map(reference)
+			},
+			post: {
+				primaryRef: reference(draft.assignments.primaryPost),
+				secondaryRefs: draft.assignments.secondaryPosts.map(reference)
+			},
+			health: { hitPoints: {
+				key: "hitPoints",
+				current: Math.max(0, derived.hitPoints ?? 0),
+				maximum: Math.max(0, derived.hitPoints ?? 0),
+				reserved: 0,
+				debt: 0,
+				unit: "pv"
+			} },
+			energyPools: derived.energyPools,
+			progression: {
+				pendingChoices: pendingMessages,
+				automaticGrants: [{
+					id: "creation-attributes",
+					sort: 0,
+					status: "active",
+					value: "Attributs de création calculés depuis l’Ascendance, le Profil, la Voie et le palier libre.",
+					visibility: "owner"
+				}, {
+					id: "creation-resources",
+					sort: 1,
+					status: "active",
+					value: "PV et réserves naturelles calculés depuis les catalogues canoniques.",
+					visibility: "owner"
+				}],
+				historyRefs: [],
+				mythicStars: 0
+			}
+		}
+	};
+}
+function draftSelections(draft) {
+	return [
+		draft.body.ancestry,
+		draft.profile.profile,
+		draft.profile.origin,
+		...draft.profile.advantages,
+		...draft.profile.drawbacks,
+		draft.path.path,
+		draft.path.primarySpecialization,
+		...draft.path.secondarySpecializations,
+		draft.talents.ancestryTalent,
+		draft.talents.profileTalent,
+		draft.talents.primaryTalent,
+		...draft.talents.secondaryTalents,
+		draft.assignments.primaryPost,
+		...draft.assignments.secondaryPosts
+	].filter((entry) => Boolean(entry));
+}
+function initialPhysicalCredits(draft) {
+	const ids = new Set([...draft.profile.advantages, ...draft.profile.drawbacks].map((entry) => entry.relisId));
+	if (ids.has("CRE-HCP-004-SANS-LE-SOU")) return 0;
+	if (ids.has("CRE-AVT-016-TRES-RICHE")) return 15e4;
+	if (ids.has("CRE-AVT-015-RICHE")) return 5e4;
+	if (ids.has("CRE-HCP-003-TRES-PAUVRE")) return 1250;
+	if (ids.has("CRE-HCP-002-PAUVRE")) return 2500;
+	return 5e3;
+}
+//#endregion
+//#region src/services/character-build.ts
+var BUILD_ITEM_TYPES = /* @__PURE__ */ new Set([
+	"ancestry",
+	"profile",
+	"origin",
+	"advantage",
+	"drawback",
+	"path",
+	"specialization",
+	"post"
+]);
+var BUILD_SLOT_DEFINITIONS = {
+	ancestry: {
+		label: "Ascendance",
+		packId: "relis.creation-ancestries",
+		itemType: "ancestry",
+		path: "system.build.ancestryRef",
+		multiple: false
+	},
+	profile: {
+		label: "Profil",
+		packId: "relis.creation-profiles",
+		itemType: "profile",
+		path: "system.build.profileRef",
+		multiple: false
+	},
+	origin: {
+		label: "Origine",
+		packId: "relis.creation-origins",
+		itemType: "origin",
+		path: "system.build.originRef",
+		multiple: false
+	},
+	advantages: {
+		label: "Atouts",
+		packId: "relis.creation-advantages",
+		itemType: "advantage",
+		path: "system.build.advantageRefs",
+		multiple: true
+	},
+	drawbacks: {
+		label: "Handicaps",
+		packId: "relis.creation-drawbacks",
+		itemType: "drawback",
+		path: "system.build.drawbackRefs",
+		multiple: true
+	},
+	path: {
+		label: "Voie principale",
+		packId: "relis.progression-paths",
+		itemType: "path",
+		path: "system.build.pathRef",
+		multiple: false
+	},
+	primarySpecialization: {
+		label: "Spécialisation Principale",
+		packId: "relis.progression-specializations",
+		itemType: "specialization",
+		path: "system.build.primarySpecializationRef",
+		multiple: false
+	},
+	secondarySpecializations: {
+		label: "Spécialisations secondaires",
+		packId: "relis.progression-specializations",
+		itemType: "specialization",
+		path: "system.build.secondarySpecializations",
+		multiple: true
+	},
+	primaryPost: {
+		label: "Poste principal",
+		packId: "relis.creation-posts",
+		itemType: "post",
+		path: "system.post.primaryRef",
+		multiple: false
+	},
+	secondaryPosts: {
+		label: "Postes secondaires",
+		packId: "relis.creation-posts",
+		itemType: "post",
+		path: "system.post.secondaryRefs",
+		multiple: true
+	}
+};
+function referenceFromSelection(selection, embedded) {
+	return {
+		relisId: selection.relisId,
+		uuid: embedded.uuid,
+		documentName: "Item",
+		type: selection.type,
+		state: "resolved",
+		labelSnapshot: selection.name,
+		missingPolicy: "diagnose"
+	};
+}
+function sourceRelisId(item) {
+	return String(item.system?.meta?.relisId ?? item.flags?.relis?.canonicalId ?? "");
+}
+function referenceMatches$1(item, reference) {
+	return Boolean(reference?.uuid && reference.uuid === item.uuid || reference?.relisId && reference.relisId === sourceRelisId(item));
+}
+function getPath(source, path) {
+	return path.split(".").reduce((value, key) => value?.[key], source);
+}
+function buildSlotRows(actor) {
+	const items = Array.from(actor.items ?? []);
+	return Object.entries(BUILD_SLOT_DEFINITIONS).map(([key, definition]) => {
+		const candidates = items.filter((item) => item.type === definition.itemType);
+		const raw = getPath(actor, definition.path);
+		const references = definition.multiple ? Array.from(raw ?? []).map((entry) => entry?.ref ?? entry) : raw ? [raw] : [];
+		const rows = candidates.map((item) => {
+			const selected = references.some((reference) => referenceMatches$1(item, reference));
+			return {
+				id: item.id,
+				name: item.name,
+				img: item.img || "icons/svg/item-bag.svg",
+				relisId: sourceRelisId(item),
+				selected,
+				legacy: !selected,
+				cssClass: selected ? "relis-build-item" : "relis-build-item relis-build-item--legacy",
+				slotKey: key
+			};
+		});
+		let diagnostic = "";
+		if (!definition.multiple && candidates.length > 1) diagnostic = `${candidates.length} Items ${definition.label} sont embarqués. Aucun n’est supprimé automatiquement.`;
+		else if (!definition.multiple && candidates.length === 1 && !rows[0]?.selected) diagnostic = "Item historique non rattaché à la référence active.";
+		else if (definition.multiple && rows.some((row) => row.legacy)) {
+			const legacyCount = rows.filter((row) => row.legacy).length;
+			diagnostic = `${legacyCount} Item${legacyCount > 1 ? "s" : ""} ${definition.label} historique${legacyCount > 1 ? "s" : ""} non rattaché${legacyCount > 1 ? "s" : ""}. Aucun n’est supprimé automatiquement.`;
+		} else if (references.some((reference) => !candidates.some((item) => referenceMatches$1(item, reference)))) diagnostic = "Une référence active ne correspond plus à aucun Item embarqué.";
+		return {
+			key,
+			label: definition.label,
+			packId: definition.packId,
+			multiple: definition.multiple,
+			items: rows,
+			empty: rows.length === 0,
+			diagnostic
+		};
+	});
+}
+async function loadCatalogSelections(packId, predicate) {
+	const pack = game.packs?.get(packId);
+	if (!pack) throw new Error(`Compendium introuvable : ${packId}.`);
+	return (await pack.getDocuments()).map((document) => ({
+		packId,
+		uuid: document.uuid,
+		relisId: sourceRelisId(document),
+		name: document.name,
+		type: document.type,
+		img: document.img || "icons/svg/item-bag.svg",
+		catalog: JSON.parse(JSON.stringify(document.system?.catalog ?? {})),
+		level: document.system?.level === null || document.system?.level === void 0 ? null : Number(document.system.level),
+		requirementRefs: JSON.parse(JSON.stringify(document.system?.requirementRefs ?? [])),
+		description: String(document.system?.description ?? "")
+	})).filter((selection) => selection.catalog.selectable !== false && (!predicate || predicate(selection))).sort((left, right) => left.name.localeCompare(right.name, "fr"));
+}
+async function openCatalogPicker(options) {
+	const entries = await loadCatalogSelections(options.packId, options.predicate);
+	const root = document.createElement("div");
+	const browser = document.createElement("section");
+	browser.className = "relis-catalog-browser";
+	const searchLabel = document.createElement("label");
+	searchLabel.textContent = "Rechercher dans le catalogue";
+	const search = document.createElement("input");
+	search.type = "search";
+	search.placeholder = "Nom, famille ou branche…";
+	searchLabel.append(search);
+	browser.append(searchLabel);
+	const status = document.createElement("p");
+	status.className = "relis-catalog-browser__status";
+	status.setAttribute("role", "status");
+	browser.append(status);
+	const list = document.createElement("div");
+	list.className = "relis-catalog-browser__list";
+	const selectedIds = new Set(options.selectedRelisIds ?? []);
+	for (const [index, entry] of entries.entries()) {
+		const label = document.createElement("label");
+		label.className = "relis-catalog-browser__entry";
+		label.dataset.search = `${entry.name} ${entry.catalog.pathName ?? ""} ${entry.catalog.branchName ?? ""}`.toLocaleLowerCase("fr");
+		const input = document.createElement("input");
+		input.type = "radio";
+		input.name = "selection";
+		input.value = String(index);
+		input.disabled = selectedIds.has(entry.relisId);
+		const image = document.createElement("img");
+		image.src = entry.img;
+		image.alt = "";
+		const text = document.createElement("span");
+		const strong = document.createElement("strong");
+		strong.textContent = entry.name;
+		const small = document.createElement("small");
+		small.textContent = [
+			entry.catalog.pathName,
+			entry.catalog.branchName,
+			selectedIds.has(entry.relisId) ? "Déjà sélectionné" : ""
+		].filter(Boolean).join(" · ");
+		text.append(strong, small);
+		label.append(input, image, text);
+		list.append(label);
+	}
+	browser.append(list);
+	root.append(browser);
+	const filter = () => {
+		const query = search.value.trim().toLocaleLowerCase("fr");
+		let visible = 0;
+		for (const row of list.querySelectorAll("label")) {
+			const match = !query || (row.dataset.search ?? "").includes(query);
+			row.hidden = !match;
+			if (match) visible += 1;
+		}
+		status.textContent = `${visible} résultat${visible > 1 ? "s" : ""}.`;
+	};
+	search.addEventListener("input", filter);
+	filter();
+	const result = await foundry.applications.api.DialogV2.input({
+		window: { title: options.title },
+		content: root,
+		ok: { label: "Sélectionner" },
+		modal: true,
+		rejectClose: false
+	});
+	if (!result || result.selection === void 0 || result.selection === "") return null;
+	const selection = entries[Number(result.selection)] ?? null;
+	if (!selection || !["advantage", "drawback"].includes(selection.type)) return selection;
+	const values = [...new Set((String(selection.catalog.value ?? "").match(/[+-]\d+/gu) ?? []).map(Number).filter(Number.isFinite))];
+	if (values.length === 0) return selection;
+	if (values.length === 1) {
+		selection.catalog.selectedValue = values[0];
+		return selection;
+	}
+	const valueRoot = document.createElement("div");
+	const valueField = document.createElement("label");
+	valueField.className = "relis-inventory-dialog-field";
+	valueField.textContent = `Valeur de ${selection.name}`;
+	const valueSelect = document.createElement("select");
+	valueSelect.name = "selectedValue";
+	for (const value of values) {
+		const option = document.createElement("option");
+		option.value = String(value);
+		option.textContent = value > 0 ? `+${value}` : String(value);
+		valueSelect.append(option);
+	}
+	valueField.append(valueSelect);
+	valueRoot.append(valueField);
+	const valueResult = await foundry.applications.api.DialogV2.input({
+		window: { title: `Préciser ${selection.name}` },
+		content: valueRoot,
+		ok: { label: "Valider la valeur" },
+		modal: true,
+		rejectClose: false
+	});
+	if (!valueResult) return null;
+	const selectedValue = Number(valueResult.selectedValue);
+	if (!values.includes(selectedValue)) return null;
+	selection.catalog.selectedValue = selectedValue;
+	return selection;
+}
+async function embeddedSource(selection) {
+	const source = await fromUuid(selection.uuid);
+	if (!source || source.documentName !== "Item") throw new Error(`Source de catalogue introuvable : ${selection.name}.`);
+	const data = source.toObject(true);
+	delete data._id;
+	data.system ??= {};
+	data.system.catalog ??= {};
+	for (const key of ["selectedValue", "creationAutomatic"]) if (selection.catalog[key] !== void 0) data.system.catalog[key] = selection.catalog[key];
+	return data;
+}
+async function assignBuildSelection(actor, slotKey, selection) {
+	if (!actor.isOwner && !game.user?.isGM) throw new Error("Vous ne pouvez pas modifier cette construction.");
+	const definition = BUILD_SLOT_DEFINITIONS[slotKey];
+	if (selection.type !== definition.itemType) throw new Error(`Le catalogue ne fournit pas un Item ${definition.itemType}.`);
+	const current = getPath(actor, definition.path);
+	const currentReferences = definition.multiple ? Array.from(current ?? []).map((entry) => entry?.ref ?? entry) : current ? [current] : [];
+	if (definition.multiple && currentReferences.some((reference) => reference.relisId === selection.relisId)) throw new Error(`${selection.name} est déjà sélectionné.`);
+	if (slotKey === "primarySpecialization" && Array.from(actor.system.build?.secondarySpecializations ?? []).some((entry) => (entry?.ref ?? entry)?.relisId === selection.relisId)) throw new Error("Une Spécialisation secondaire ne peut pas devenir simultanément la Spécialisation Principale.");
+	if (slotKey === "secondarySpecializations" && actor.system.build?.primarySpecializationRef?.relisId === selection.relisId) throw new Error("La Spécialisation Principale ne peut pas occuper aussi un emplacement secondaire.");
+	const reusable = Array.from(actor.items ?? []).find((item) => !["advantage", "drawback"].includes(selection.type) && item.type === definition.itemType && sourceRelisId(item) === selection.relisId && !currentReferences.some((reference) => referenceMatches$1(item, reference)));
+	const createdNew = !reusable;
+	const [created] = reusable ? [reusable] : await actor.createEmbeddedDocuments("Item", [await embeddedSource(selection)], { sourceUuid: selection.uuid });
+	if (!created) throw new Error("Foundry n’a pas créé l’Item sélectionné.");
+	const reference = referenceFromSelection(selection, created);
+	if (definition.multiple) {
+		const value = slotKey === "secondarySpecializations" ? [...Array.from(current ?? []), {
+			ref: reference,
+			rank: "1",
+			sourceRef: JSON.parse(JSON.stringify(actor.system.build?.pathRef ?? {}))
+		}] : [...Array.from(current ?? []), reference];
+		try {
+			await actor.update({ [definition.path]: value });
+		} catch (error) {
+			if (createdNew) await actor.deleteEmbeddedDocuments("Item", [created.id]);
+			throw error;
+		}
+		return;
+	}
+	try {
+		await actor.update({ [definition.path]: reference });
+	} catch (error) {
+		if (createdNew) await actor.deleteEmbeddedDocuments("Item", [created.id]);
+		throw error;
+	}
+}
+async function removeBuildItem(actor, slotKey, itemId) {
+	if (!actor.isOwner && !game.user?.isGM) throw new Error("Vous ne pouvez pas modifier cette construction.");
+	const definition = BUILD_SLOT_DEFINITIONS[slotKey];
+	const item = actor.items.get(itemId);
+	if (!item || item.type !== definition.itemType) throw new Error("Item de construction introuvable.");
+	const current = getPath(actor, definition.path);
+	let update;
+	if (definition.multiple) update = Array.from(current ?? []).filter((entry) => {
+		const reference = entry?.ref ?? entry;
+		return !referenceMatches$1(item, reference);
+	});
+	else update = referenceMatches$1(item, current) ? {
+		relisId: "",
+		uuid: "",
+		documentName: "",
+		type: "",
+		state: "unresolved",
+		labelSnapshot: "",
+		missingPolicy: "diagnose"
+	} : current;
+	await actor.update({ [definition.path]: update });
+	await actor.deleteEmbeddedDocuments("Item", [item.id]);
+}
+async function selectedItemSources(draft) {
+	const unique = /* @__PURE__ */ new Map();
+	for (const selection of draftSelections(draft)) unique.set(selection.relisId, selection);
+	const result = [];
+	for (const selection of unique.values()) result.push(await embeddedSource(selection));
+	if (!draft.resources.creditsPending) {
+		const credits = initialPhysicalCredits(draft);
+		if (credits > 0) {
+			const [selection] = await loadCatalogSelections("relis.material-resources", (entry) => entry.relisId === "MAT-RES-CREDIT");
+			if (!selection) throw new Error("La source canonique du crédit physique est absente.");
+			const source = await embeddedSource(selection);
+			source.system.physical.quantity = credits;
+			result.push(source);
+		}
+	}
+	return result;
+}
+async function synchronizeEmbeddedBuildReferences(actor, draft, createdItems) {
+	const byRelisId = new Map(createdItems.map((item) => [sourceRelisId(item), item]).filter(([relisId]) => Boolean(relisId)));
+	const ref = (selection) => {
+		const embedded = byRelisId.get(selection.relisId);
+		if (!embedded) throw new Error(`L’Item embarqué ${selection.name} est introuvable.`);
+		return referenceFromSelection(selection, embedded);
+	};
+	const emptyReference = {
+		relisId: "",
+		uuid: "",
+		documentName: "",
+		type: "",
+		state: "unresolved",
+		labelSnapshot: "",
+		missingPolicy: "diagnose"
+	};
+	const optionalRef = (selection) => selection ? ref(selection) : emptyReference;
+	const pathReference = optionalRef(draft.path.path);
+	await actor.update({
+		"system.build.ancestryRef": optionalRef(draft.body.ancestry),
+		"system.build.profileRef": optionalRef(draft.profile.profile),
+		"system.build.originRef": optionalRef(draft.profile.origin),
+		"system.build.pathRef": pathReference,
+		"system.build.primarySpecializationRef": optionalRef(draft.path.primarySpecialization),
+		"system.build.secondarySpecializations": draft.path.secondarySpecializations.map((selection) => ({
+			ref: ref(selection),
+			rank: "1",
+			sourceRef: pathReference
+		})),
+		"system.build.advantageRefs": draft.profile.advantages.map(ref),
+		"system.build.drawbackRefs": draft.profile.drawbacks.map(ref),
+		"system.post.primaryRef": optionalRef(draft.assignments.primaryPost),
+		"system.post.secondaryRefs": draft.assignments.secondaryPosts.map(ref)
+	});
+}
+var characterFinalizations = /* @__PURE__ */ new Map();
+async function performCharacterFinalization(draft) {
+	const existing = Array.from(game.actors ?? []).find((actor) => actor.flags?.relis?.characterCreation?.draftId === draft.id);
+	if (existing) return existing;
+	const errors = deriveCharacterCreation(draft).diagnostics.filter((entry) => entry.level === "error");
+	if (errors.length) throw new Error(`Création bloquée : ${errors.map((entry) => entry.message).join(" ")}`);
+	const actor = await Actor.implementation.create(characterActorSource(draft));
+	try {
+		const items = await selectedItemSources(draft);
+		await synchronizeEmbeddedBuildReferences(actor, draft, items.length ? await actor.createEmbeddedDocuments("Item", items) : []);
+		return actor;
+	} catch (error) {
+		await actor.delete?.();
+		throw error;
+	}
+}
+async function finalizeCharacterDraft(draft) {
+	const running = characterFinalizations.get(draft.id);
+	if (running) return running;
+	const operation = performCharacterFinalization(draft);
+	characterFinalizations.set(draft.id, operation);
+	try {
+		return await operation;
+	} finally {
+		characterFinalizations.delete(draft.id);
+	}
+}
+//#endregion
+//#region src/ui/character-creation-assistant.ts
+var ApplicationV2 = foundry.applications.api.ApplicationV2;
+var HandlebarsApplicationMixin$2 = foundry.applications.api.HandlebarsApplicationMixin;
+var DRAFT_FLAG = "characterCreationDrafts";
+function draftId() {
+	return globalThis.crypto?.randomUUID?.() ?? `draft-${Date.now()}`;
+}
+function clone$1(value) {
+	return JSON.parse(JSON.stringify(value));
+}
+function setDraftValue(draft, path, value) {
+	const parts = path.split(".");
+	let current = draft;
+	for (const key of parts.slice(0, -1)) current = current[key];
+	current[parts.at(-1)] = value;
+	draft.revision += 1;
+	draft.updatedAt = Date.now();
+}
+function selectedSummary(selection) {
+	return selection?.name ?? "Non sélectionné";
+}
+function allowedAttributeChoices(draft, source) {
+	const labels = [];
+	if (source === "ancestry") {
+		const catalog = draft.body.ancestry?.catalog ?? {};
+		labels.push(...catalog.inheritedAttributeChoices ?? []);
+		if (String(catalog.attributeBonuses ?? "").split(",").filter((part) => /\+1\s+libre/iu.test(part)).length > 0) labels.push(...Object.values(ATTRIBUTE_LABELS));
+	}
+	if (source === "profile") labels.push(...draft.profile.profile?.catalog.standardAttributes ?? []);
+	if (source === "path") labels.push(...draft.path.path?.catalog.keyAttributes ?? []);
+	const normalized = new Map(Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => [label.normalize("NFD").replace(/[\u0300-\u036f]/gu, "").toLocaleLowerCase("fr"), key]));
+	return [...new Set(labels.map((label) => normalized.get(String(label).replace(/^[+-]\d*\s*/u, "").normalize("NFD").replace(/[\u0300-\u036f]/gu, "").toLocaleLowerCase("fr"))).filter((key) => Boolean(key)))];
+}
+function markedPenaltyChoices(draft) {
+	const penaltyPart = String(draft.profile.profile?.catalog.markedProfile ?? "").split(";")[1] ?? "";
+	const lookup = new Map(Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => [label.normalize("NFD").replace(/[\u0300-\u036f]/gu, "").toLocaleLowerCase("fr"), key]));
+	return penaltyPart.split(/,|\bou\b/iu).map((value) => lookup.get(value.replace(/[-+\d]/gu, "").trim().normalize("NFD").replace(/[\u0300-\u036f]/gu, "").toLocaleLowerCase("fr"))).filter((key) => Boolean(key));
+}
+function energyProfiles(draft) {
+	return Array.isArray(draft.body.ancestry?.catalog.energyProfiles) ? draft.body.ancestry?.catalog.energyProfiles : [];
+}
+function stepIndex(step) {
+	return CHARACTER_CREATION_STEPS.findIndex((entry) => entry.id === step);
+}
+async function readDrafts() {
+	return clone$1(game.user?.getFlag("relis", DRAFT_FLAG) ?? {});
+}
+async function writeDrafts(drafts) {
+	if (!game.settings.get("relis", "assistants.persistDrafts")) return;
+	await game.user?.setFlag(SYSTEM_ID, DRAFT_FLAG, drafts);
+}
+var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2(ApplicationV2) {
+	static DEFAULT_OPTIONS = {
+		id: "relis-character-creation",
+		classes: ["relis", "relis-character-creation"],
+		position: {
+			width: 1080,
+			height: 760
+		},
+		window: {
+			title: "RE:LIS — Assistant de création",
+			resizable: true
+		}
+	};
+	static PARTS = { main: { template: "systems/relis/templates/apps/character-creation.hbs" } };
+	draft;
+	constructor(draft, options = {}) {
+		super(options);
+		this.draft = draft;
+	}
+	async _prepareContext(options) {
+		const context = await super._prepareContext(options);
+		const derived = deriveCharacterCreation(this.draft);
+		const current = this.draft.currentStep;
+		const index = stepIndex(current);
+		const profileAttributes = allowedAttributeChoices(this.draft, "profile");
+		const ancestryAttributes = allowedAttributeChoices(this.draft, "ancestry");
+		const pathAttributes = allowedAttributeChoices(this.draft, "path");
+		const requiredPathSkills = new Set((this.draft.path.path?.catalog.requiredSkills ?? []).map(String));
+		const selectedSkills = new Set(this.draft.skills.qualified);
+		const favoriteSkills = new Set(this.draft.skills.favorites);
+		const skillRows = Object.entries(SKILL_DEFINITIONS).map(([key, [label]]) => ({
+			key,
+			label,
+			selected: selectedSkills.has(key),
+			favorite: favoriteSkills.has(key),
+			required: requiredPathSkills.has(label)
+		}));
+		const currentDiagnostics = derived.diagnostics.filter((entry) => entry.step === current);
+		return {
+			...context,
+			draft: this.draft,
+			currentStep: current,
+			currentStepLabel: CHARACTER_CREATION_STEPS.find((step) => step.id === current)?.label ?? current,
+			[`step_${current}`]: true,
+			steps: CHARACTER_CREATION_STEPS.map((step, stepNumber) => ({
+				...step,
+				number: stepNumber + 1,
+				active: step.id === current,
+				ariaCurrent: step.id === current ? "step" : "false",
+				state: creationStepState(this.draft, step.id),
+				stateLabel: {
+					"not-started": "Non commencée",
+					"in-progress": "En cours",
+					complete: "Complète",
+					warning: "Avec avertissement",
+					blocked: "Bloquée"
+				}[creationStepState(this.draft, step.id)]
+			})),
+			owners: Array.from(game.users ?? []).filter((user) => (game.user?.isGM || user.id === game.user?.id) && (user.active || user.id === this.draft.frame.ownerId)).map((user) => ({
+				id: user.id,
+				name: user.name
+			})),
+			natureOptions: [
+				{
+					key: "biological",
+					label: "Biologique"
+				},
+				{
+					key: "synthetic",
+					label: "Synthétique"
+				},
+				{
+					key: "hybrid",
+					label: "Hybride"
+				},
+				{
+					key: "energetic",
+					label: "Énergétique"
+				},
+				{
+					key: "atypical",
+					label: "Atypique"
+				}
+			],
+			sizeOptions: [
+				{
+					key: "small",
+					label: "Petit"
+				},
+				{
+					key: "medium",
+					label: "Moyen"
+				},
+				{
+					key: "large",
+					label: "Grand"
+				}
+			],
+			secondarySchemeOptions: [
+				{
+					key: "duo",
+					label: "Duo spécialisé · 2"
+				},
+				{
+					key: "trio",
+					label: "Trio équilibré · 3"
+				},
+				{
+					key: "quartet",
+					label: "Quatuor polyvalent · 4"
+				}
+			],
+			profileModeStandard: this.draft.profile.profileMode === "standard",
+			profileModeMarked: this.draft.profile.profileMode === "marked",
+			previousDisabled: index <= 0,
+			nextDisabled: index >= CHARACTER_CREATION_STEPS.length - 1,
+			isReview: current === "review",
+			currentDiagnostics,
+			diagnostics: derived.diagnostics,
+			blockingDiagnostics: derived.diagnostics.filter((entry) => entry.level === "error"),
+			canFinalize: !derived.diagnostics.some((entry) => entry.level === "error"),
+			attributes: Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
+				key,
+				label,
+				value: derived.attributes[key],
+				ancestryAllowed: ancestryAttributes.includes(key),
+				ancestrySelected: this.draft.body.ancestryAttributeChoices.includes(key),
+				profileAllowed: profileAttributes.includes(key),
+				profileSelected: this.draft.profile.profileAttributeChoices.includes(key),
+				pathAllowed: pathAttributes.includes(key),
+				pathSelected: this.draft.attributes.pathAttribute === key,
+				freeSelected: this.draft.attributes.freeIncreases.includes(key)
+			})),
+			advantageAttributeRows: this.draft.profile.advantages.map((advantage) => ({
+				relisId: advantage.relisId,
+				name: advantage.name,
+				expected: Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.freeAttributeIncreases) || 0)),
+				choices: Object.entries(ATTRIBUTE_LABELS).map(([key, label]) => ({
+					key,
+					label,
+					dataPath: `profile.advantageAttributeChoices.${advantage.relisId}`,
+					inputType: Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.freeAttributeIncreases) || 0)) === 1 ? "radio" : "checkbox",
+					radioName: `advantage-attribute-${advantage.relisId}`,
+					selected: (this.draft.profile.advantageAttributeChoices[advantage.relisId] ?? []).includes(key)
+				}))
+			})).filter((entry) => entry.expected > 0),
+			markedPenalties: markedPenaltyChoices(this.draft).map((key) => ({
+				key,
+				label: ATTRIBUTE_LABELS[key]
+			})),
+			markedBonuses: String(this.draft.profile.profile?.catalog.markedProfile ?? "").split(";")[0],
+			skillRows,
+			energyProfiles: energyProfiles(this.draft).map((profile) => ({
+				...profile,
+				summary: `Mana ${profile.mana ?? 0} · Prana ${profile.prana ?? 0} · Flux ${profile.flux ?? 0}`,
+				ancestrySelected: this.draft.body.ancestryProfileId === String(profile.id),
+				energySelected: this.draft.resources.energyProfileId === String(profile.id)
+			})),
+			secondaryExpected: secondarySpecializationCount(this.draft.path.secondaryScheme),
+			hitPoints: derived.hitPoints ?? "—",
+			initialCredits: initialPhysicalCredits(this.draft).toLocaleString("fr-FR"),
+			hitPointSources: derived.hitPointSources,
+			requiredQualifiedSkills: derived.requiredQualifiedSkills ?? "—",
+			selectedQualifiedSkills: derived.qualifiedSkillCount,
+			selectionSummary: {
+				ancestry: selectedSummary(this.draft.body.ancestry),
+				profile: selectedSummary(this.draft.profile.profile),
+				origin: selectedSummary(this.draft.profile.origin),
+				path: selectedSummary(this.draft.path.path),
+				primarySpecialization: selectedSummary(this.draft.path.primarySpecialization),
+				post: selectedSummary(this.draft.assignments.primaryPost)
+			}
+		};
+	}
+	async _onRender(context, options) {
+		await super._onRender(context, options);
+		const root = this.element;
+		for (const button of root.querySelectorAll("[data-step-id]")) button.addEventListener("click", () => {
+			this.draft.currentStep = button.dataset.stepId;
+			this.saveAndRender();
+		});
+		for (const field of root.querySelectorAll("[data-draft-path]")) field.addEventListener("change", () => {
+			const path = field.dataset.draftPath;
+			if (!path) return;
+			const value = field instanceof HTMLInputElement && field.type === "checkbox" ? field.checked : field instanceof HTMLInputElement && field.type === "number" ? Number(field.value) : field.value;
+			setDraftValue(this.draft, path, value);
+			if (path === "body.ancestryProfileId") setDraftValue(this.draft, "resources.energyProfileId", value);
+			if (path === "resources.energyProfileId") setDraftValue(this.draft, "body.ancestryProfileId", value);
+			this.saveAndRender();
+		});
+		for (const input of root.querySelectorAll("[data-draft-array]")) input.addEventListener("change", () => {
+			const path = input.dataset.draftArray;
+			if (!path) return;
+			const values = Array.from(root.querySelectorAll(`[data-draft-array="${path}"]:checked`)).map((entry) => entry.value);
+			setDraftValue(this.draft, path, values);
+			this.saveAndRender();
+		});
+		for (const button of root.querySelectorAll("[data-assistant-action]")) button.addEventListener("click", () => {
+			this.handleAction(button.dataset.assistantAction ?? "", button);
+		});
+	}
+	async handleAction(action, button) {
+		try {
+			if (action === "previous" || action === "next") {
+				const current = stepIndex(this.draft.currentStep);
+				const step = CHARACTER_CREATION_STEPS[action === "previous" ? current - 1 : current + 1];
+				if (step) this.draft.currentStep = step.id;
+				await this.saveAndRender();
+				return;
+			}
+			if (action === "save-close") {
+				await this.save();
+				await this.close();
+				return;
+			}
+			if (action === "finalize") {
+				button.disabled = true;
+				const actor = await finalizeCharacterDraft(this.draft);
+				this.draft.completedActorUuid = actor.uuid;
+				await this.save();
+				ui.notifications.info(`Personnage créé : ${actor.name}.`);
+				await actor.sheet?.render(true);
+				await this.close();
+				return;
+			}
+			if (action === "open-ancestry-journal") {
+				const relisId = this.draft.body.ancestry?.relisId;
+				const pack = game.packs?.get("relis.creation-ancestry-journals");
+				if (!relisId || !pack) throw new Error("Journal encyclopédique d’Ascendance introuvable.");
+				const journal = (await pack.getDocuments()).find((entry) => entry.flags?.relis?.ancestryRelisId === relisId);
+				if (!journal) throw new Error("Entrée encyclopédique d’Ascendance introuvable.");
+				await journal.sheet?.render(true);
+				return;
+			}
+			if (action === "clear-selection") {
+				const path = button.dataset.selectionPath;
+				if (path) {
+					setDraftValue(this.draft, path, button.dataset.multiple === "true" ? [] : null);
+					if (path === "body.ancestry") {
+						this.draft.body.ancestryAttributeChoices = [];
+						this.draft.body.ancestryProfileId = "";
+						this.draft.resources.energyProfileId = "";
+						this.draft.talents.ancestryTalent = null;
+						this.draft.profile.drawbacks = this.draft.profile.drawbacks.filter((entry) => entry.catalog.creationAutomatic !== true);
+					}
+					if (path === "profile.profile") {
+						this.draft.profile.profileAttributeChoices = [];
+						this.draft.profile.profilePenalty = "";
+						this.draft.talents.profileTalent = null;
+					}
+					if (path === "path.path") {
+						this.draft.attributes.pathAttribute = "";
+						this.draft.path.primarySpecialization = null;
+						this.draft.path.secondarySpecializations = [];
+						this.draft.talents.primaryTalent = null;
+						this.draft.talents.secondaryTalents = [];
+					}
+					if (path === "path.primarySpecialization") this.draft.talents.primaryTalent = null;
+				}
+				await this.saveAndRender();
+				return;
+			}
+			if (action === "remove-selection") {
+				const path = button.dataset.selectionPath;
+				const relisId = button.dataset.relisId;
+				if (path && relisId) {
+					const values = path.split(".").reduce((value, key) => value[key], this.draft);
+					setDraftValue(this.draft, path, Array.from(values ?? []).filter((entry) => entry.relisId !== relisId));
+					if (path === "profile.advantages") delete this.draft.profile.advantageAttributeChoices[relisId];
+					if (path === "path.secondarySpecializations") this.draft.talents.secondaryTalents = this.draft.talents.secondaryTalents.filter((talent) => talent.catalog.specializationRef?.relisId !== relisId);
+				}
+				await this.saveAndRender();
+				return;
+			}
+			if (action === "pick") await this.pick(button.dataset.picker ?? "");
+		} catch (error) {
+			console.error("RE:LIS | Assistant de création", error);
+			ui.notifications.error(error instanceof Error ? error.message : "Opération de création refusée.");
+			button.disabled = false;
+		}
+	}
+	async pick(kind) {
+		const ancestry = this.draft.body.ancestry;
+		const profile = this.draft.profile.profile;
+		const path = this.draft.path.path;
+		const primary = this.draft.path.primarySpecialization;
+		const configuration = {
+			ancestry: {
+				title: "Choisir une Ascendance",
+				packId: "relis.creation-ancestries",
+				path: "body.ancestry"
+			},
+			profile: {
+				title: "Choisir un Profil",
+				packId: "relis.creation-profiles",
+				path: "profile.profile"
+			},
+			origin: {
+				title: "Choisir une Origine",
+				packId: "relis.creation-origins",
+				path: "profile.origin"
+			},
+			advantage: {
+				title: "Ajouter un Atout",
+				packId: "relis.creation-advantages",
+				path: "profile.advantages",
+				multiple: true
+			},
+			drawback: {
+				title: "Ajouter un Handicap",
+				packId: "relis.creation-drawbacks",
+				path: "profile.drawbacks",
+				multiple: true,
+				predicate: (entry) => entry.catalog.automaticOnly !== true
+			},
+			path: {
+				title: "Choisir une Voie",
+				packId: "relis.progression-paths",
+				path: "path.path"
+			},
+			primarySpecialization: {
+				title: "Choisir la Spécialisation Principale",
+				packId: "relis.progression-specializations",
+				path: "path.primarySpecialization",
+				predicate: (entry) => Boolean(path && entry.catalog.pathName === path.name)
+			},
+			secondarySpecialization: {
+				title: "Ajouter une Spécialisation secondaire",
+				packId: "relis.progression-specializations",
+				path: "path.secondarySpecializations",
+				multiple: true,
+				predicate: (entry) => entry.relisId !== primary?.relisId
+			},
+			ancestryTalent: {
+				title: "Choisir le Talent d’Ascendance de niveau 1",
+				packId: "relis.progression-ancestry-talents",
+				path: "talents.ancestryTalent",
+				predicate: (entry) => {
+					const allowed = /* @__PURE__ */ new Set([
+						ancestry?.name,
+						...ancestry?.catalog.talentCatalogs ?? [],
+						"Universel"
+					]);
+					return entry.level === 1 && allowed.has(String(entry.catalog.ancestry));
+				}
+			},
+			profileTalent: {
+				title: "Choisir le Talent de compétence du Profil",
+				packId: "relis.progression-skill-talents",
+				path: "talents.profileTalent",
+				predicate: (entry) => entry.level === 1 && Boolean(profile && (profile.catalog.skillChoices ?? []).includes(entry.catalog.skill))
+			},
+			primaryTalent: {
+				title: "Choisir le Talent de Spécialisation Principale",
+				packId: "relis.progression-specialization-talents",
+				path: "talents.primaryTalent",
+				predicate: (entry) => entry.level === 1 && entry.catalog.specializationRef?.relisId === primary?.relisId
+			},
+			secondaryTalent: {
+				title: "Ajouter un Talent de Spécialisation secondaire",
+				packId: "relis.progression-specialization-talents",
+				path: "talents.secondaryTalents",
+				multiple: true,
+				predicate: (entry) => {
+					const specializationId = String(entry.catalog.specializationRef?.relisId ?? "");
+					const allowed = this.draft.path.secondarySpecializations.some((specialization) => specialization.relisId === specializationId);
+					const alreadyFilled = this.draft.talents.secondaryTalents.some((talent) => talent.catalog.specializationRef?.relisId === specializationId);
+					return entry.level === 1 && allowed && !alreadyFilled;
+				}
+			},
+			post: {
+				title: "Choisir le Poste principal",
+				packId: "relis.creation-posts",
+				path: "assignments.primaryPost"
+			},
+			secondaryPost: {
+				title: "Ajouter un Poste secondaire",
+				packId: "relis.creation-posts",
+				path: "assignments.secondaryPosts",
+				multiple: true
+			}
+		}[kind];
+		if (!configuration) return;
+		const current = configuration.path.split(".").reduce((value, key) => value[key], this.draft);
+		const selected = configuration.multiple ? Array.from(current ?? []).map((entry) => entry.relisId) : current?.relisId ? [current.relisId] : [];
+		const choice = await openCatalogPicker({
+			title: configuration.title,
+			packId: configuration.packId,
+			selectedRelisIds: selected,
+			...configuration.predicate ? { predicate: configuration.predicate } : {}
+		});
+		if (!choice) return;
+		setDraftValue(this.draft, configuration.path, configuration.multiple ? [...Array.from(current ?? []), choice] : choice);
+		if (kind === "ancestry") {
+			this.draft.body.ancestryAttributeChoices = [];
+			this.draft.body.ancestryProfileId = "";
+			this.draft.resources.energyProfileId = "";
+			this.draft.talents.ancestryTalent = null;
+			this.draft.profile.drawbacks = this.draft.profile.drawbacks.filter((entry) => entry.catalog.creationAutomatic !== true);
+			for (const automatic of choice.catalog.automaticDrawbacks ?? []) {
+				const [drawback] = await loadCatalogSelections("relis.creation-drawbacks", (entry) => entry.relisId === automatic.relisId);
+				if (!drawback) throw new Error(`Le Handicap automatique ${String(automatic.label ?? automatic.relisId)} est introuvable.`);
+				drawback.catalog.selectedValue = Number(automatic.selectedValue);
+				drawback.catalog.creationAutomatic = true;
+				this.draft.profile.drawbacks.push(drawback);
+			}
+		}
+		if (kind === "profile") {
+			this.draft.profile.profileAttributeChoices = [];
+			this.draft.profile.profilePenalty = "";
+			this.draft.talents.profileTalent = null;
+		}
+		if (kind === "path") {
+			this.draft.attributes.pathAttribute = "";
+			this.draft.path.primarySpecialization = null;
+			this.draft.path.secondarySpecializations = [];
+			this.draft.talents.primaryTalent = null;
+			this.draft.talents.secondaryTalents = [];
+		}
+		await this.saveAndRender();
+	}
+	async save() {
+		const drafts = await readDrafts();
+		drafts[this.draft.id] = clone$1(this.draft);
+		await writeDrafts(drafts);
+	}
+	async saveAndRender() {
+		await this.save();
+		await this.render({ force: true });
+	}
+};
+async function openCharacterCreationAssistant() {
+	const drafts = await readDrafts();
+	const latest = Object.values(drafts).filter((entry) => !entry.completedActorUuid).sort((left, right) => right.updatedAt - left.updatedAt)[0];
+	const id = latest?.id ?? draftId();
+	const draft = normalizeCharacterDraft(latest ?? createCharacterDraft(id), id, game.user?.id ?? "");
+	drafts[id] = draft;
+	await writeDrafts(drafts);
+	new RelisCharacterCreationAssistant(draft).render(true);
+}
+//#endregion
+//#region src/hooks/character-creation.ts
+function registerCharacterCreationHooks() {
+	Hooks.on("renderActorDirectory", (_application, element) => {
+		const root = element instanceof HTMLElement ? element : element?.[0];
+		if (!root || root.querySelector("[data-relis-create-character]")) return;
+		if (!game.user?.isGM && !game.user?.can?.("ACTOR_CREATE")) return;
+		const button = document.createElement("button");
+		button.type = "button";
+		button.dataset.relisCreateCharacter = "true";
+		button.className = "relis-directory-create";
+		button.innerHTML = "<i class=\"fa-solid fa-wand-magic-sparkles\" aria-hidden=\"true\"></i> Créer un personnage RE:LIS";
+		button.addEventListener("click", () => {
+			openCharacterCreationAssistant();
+		});
+		(root.querySelector(".directory-header .header-actions") ?? root.querySelector(".directory-header") ?? root).append(button);
+	});
 }
 //#endregion
 //#region src/hooks/integrity.ts
@@ -7415,7 +9094,13 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			canRoll: item.type === "action",
 			isProjectedTalent: item.type === "talent" && item.system?.catalog?.kind === "talent-specialization" && item.system?.catalog?.projection?.automaticWhenOwned === true
 		}));
-		const relatedItems = itemRows.filter((item) => !isPhysicalItemType(item.type) && !item.isProjectedTalent);
+		const relatedItems = itemRows.filter((item) => !isPhysicalItemType(item.type) && !item.isProjectedTalent && !BUILD_ITEM_TYPES.has(item.type));
+		const buildSlots = isPerson ? buildSlotRows(this.actor) : [];
+		const buildSummary = Object.fromEntries(buildSlots.map((slot) => {
+			const active = slot.items.filter((item) => item.selected);
+			const label = active.length > 0 ? active.map((item) => item.name).join(", ") : slot.items.length > 0 ? `À rattacher (${slot.items.length})` : "Non défini";
+			return [slot.key, label];
+		}));
 		const talentProjections = collectOwnedTalentProjections(actorItems.map((item) => ({
 			...item.toObject?.(true) ?? {},
 			id: item.id,
@@ -7469,6 +9154,22 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 			hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
 			items: itemRows,
 			relatedItems,
+			buildSummary,
+			identityBuildSlots: buildSlots.filter((slot) => [
+				"ancestry",
+				"profile",
+				"origin",
+				"advantages",
+				"drawbacks"
+			].includes(slot.key)),
+			progressionBuildSlots: buildSlots.filter((slot) => [
+				"path",
+				"primarySpecialization",
+				"secondarySpecializations",
+				"primaryPost",
+				"secondaryPosts"
+			].includes(slot.key)),
+			hasBuildDiagnostics: buildSlots.some((slot) => slot.diagnostic),
 			inventoryRows,
 			inventoryGroups: groupInventory(inventoryRows),
 			equipmentOverview: equipmentOverview(physicalSnapshots, activeBody ?? { id: "" }),
@@ -7598,6 +9299,61 @@ var RelisActorSheet = class extends HandlebarsApplicationMixin$1(ActorSheetV2) {
 		root.querySelector("[data-action='create-demo']")?.addEventListener("click", () => {
 			this.createDemo();
 		});
+		root.querySelector("[data-action='open-creation-assistant']")?.addEventListener("click", () => {
+			openCharacterCreationAssistant();
+		});
+		for (const button of root.querySelectorAll("[data-action='pick-build-item']")) button.addEventListener("click", () => {
+			this.pickBuildItem(button.dataset.buildSlot);
+		});
+		for (const button of root.querySelectorAll("[data-action='remove-build-item']")) button.addEventListener("click", () => {
+			this.removeBuildItem(button.dataset.buildSlot, button.dataset.itemId ?? "");
+		});
+	}
+	async pickBuildItem(slotKey) {
+		const definition = BUILD_SLOT_DEFINITIONS[slotKey];
+		if (!definition || !this.actor.isOwner && !game.user?.isGM) return;
+		const selectedRelisIds = buildSlotRows(this.actor).find((slot) => slot.key === slotKey)?.items.filter((item) => item.selected).map((item) => item.relisId) ?? [];
+		const pathName = String(this.actor.system.build?.pathRef?.labelSnapshot ?? "");
+		if (slotKey === "primarySpecialization" && !pathName) {
+			ui.notifications.warn("Rattachez d’abord la Voie principale afin de filtrer ses Spécialisations.");
+			return;
+		}
+		const choice = await openCatalogPicker({
+			title: `Choisir : ${definition.label}`,
+			packId: definition.packId,
+			selectedRelisIds,
+			...slotKey === "primarySpecialization" && pathName ? { predicate: (entry) => entry.catalog.pathName === pathName } : {}
+		});
+		if (!choice) return;
+		try {
+			await assignBuildSelection(this.actor, slotKey, choice);
+			ui.notifications.info(`${choice.name} est rattaché à la fiche.`);
+			await this.render({ force: true });
+		} catch (error) {
+			console.error("RE:LIS | Sélection de construction refusée", error);
+			ui.notifications.error(error instanceof Error ? error.message : "Sélection refusée.");
+		}
+	}
+	async removeBuildItem(slotKey, itemId) {
+		if (!slotKey || !itemId || !this.actor.isOwner && !game.user?.isGM) return;
+		const item = this.actor.items.get(itemId);
+		if (!item) return;
+		if (!await foundry.applications.api.DialogV2.confirm({
+			window: { title: `Retirer ${item.name}` },
+			content: `<p>Retirer définitivement <strong>${item.name}</strong> de la construction de cet Actor ?</p>`,
+			yes: { label: "Retirer" },
+			no: { label: "Annuler" },
+			modal: true,
+			rejectClose: false
+		})) return;
+		try {
+			await removeBuildItem(this.actor, slotKey, itemId);
+			ui.notifications.info(`${item.name} a été retiré.`);
+			await this.render({ force: true });
+		} catch (error) {
+			console.error("RE:LIS | Retrait de construction refusé", error);
+			ui.notifications.error(error instanceof Error ? error.message : "Retrait refusé.");
+		}
 	}
 	async inventoryTask(task, success) {
 		try {
@@ -9435,6 +11191,7 @@ Hooks.once("init", () => {
 	registerSettings();
 	registerSheets();
 	registerIdentityHooks();
+	registerCharacterCreationHooks();
 	registerIntegrityHooks();
 	registerItemHooks();
 });

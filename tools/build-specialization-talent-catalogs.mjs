@@ -253,7 +253,7 @@ fs.writeFileSync(
       $schema: "../../schemas/specialization-talent-catalogs.schema.json",
       format: "relis.specialization-talent-catalogs",
       formatVersion: 1,
-      contentVersion: "1.3.0",
+      contentVersion: "1.4.0",
       levels: LEVELS,
       catalogs,
     },

@@ -3,6 +3,7 @@ import { registerDataModels } from "./data/models";
 import { RelisActor } from "./documents/actor";
 import { RelisItem } from "./documents/item";
 import { registerIdentityHooks } from "./hooks/identity";
+import { registerCharacterCreationHooks } from "./hooks/character-creation";
 import { registerIntegrityHooks } from "./hooks/integrity";
 import { migrateItemCore, registerItemHooks } from "./hooks/items";
 import { registerSettings } from "./settings";
@@ -19,6 +20,7 @@ Hooks.once("init", () => {
   registerSettings();
   registerSheets();
   registerIdentityHooks();
+  registerCharacterCreationHooks();
   registerIntegrityHooks();
   registerItemHooks();
 });

@@ -82,7 +82,10 @@ describe("amorçage Foundry 10-C", () => {
         },
       },
       applications: {
-        api: { HandlebarsApplicationMixin: (Base: unknown) => Base },
+        api: {
+          ApplicationV2: MockActorSheetV2,
+          HandlebarsApplicationMixin: (Base: unknown) => Base,
+        },
         sheets: {
           ActorSheetV2: MockActorSheetV2,
           ItemSheetV2: MockItemSheetV2,
@@ -142,7 +145,7 @@ describe("amorçage Foundry 10-C", () => {
     );
     expect(registeredSettings).toHaveLength(32);
     expect(registeredSheets).toEqual(["Actor", "Item"]);
-    expect(hookNames).toHaveLength(11);
+    expect(hookNames).toHaveLength(12);
     expect((globalThis as any).CONFIG.Actor.documentClass.name).toBe(
       "RelisActor",
     );

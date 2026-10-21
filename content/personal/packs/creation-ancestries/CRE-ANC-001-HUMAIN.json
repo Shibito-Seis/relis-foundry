@@ -29,7 +29,14 @@
         }
       ],
       "energySelectionRequired": false,
-      "energyComponentsRemainSeparate": true
+      "energyComponentsRemainSeparate": true,
+      "automaticDrawbacks": [
+        {
+          "relisId": "CRE-HCP-001-PRECEPTE-DE-L-HUMANITE",
+          "label": "Précepte de l’Humanité",
+          "selectedValue": -1
+        }
+      ]
     }
   },
   "folder": ""

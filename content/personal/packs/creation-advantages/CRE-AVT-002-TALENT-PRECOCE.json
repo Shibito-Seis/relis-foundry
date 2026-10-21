@@ -12,6 +12,10 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+2",
+      "creationEffects": {
+        "freeAttributeIncreases": 0,
+        "qualifiedSkills": 2
+      },
       "effect": "Le personnage gagne +2 compétences Qualifiées initiales. Elles peuvent être hors listes de Voie ou de Profil si le MJ valide l’explication narrative."
     }
   },

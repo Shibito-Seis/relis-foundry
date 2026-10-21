@@ -1,0 +1,648 @@
+<section class="relis-creation-shell" data-draft-id="{{draft.id}}">
+  <aside class="relis-creation-steps" aria-label="Étapes de création">
+    <details class="relis-creation-step-menu" open>
+      <summary>Étapes · {{currentStepLabel}}</summary>
+      <p class="relis-kicker">Assistant 10-D3</p>
+      <h2>Création de personnage</h2>
+      <ol>
+        {{#each steps}}
+          <li>
+            <button
+              type="button"
+              class="relis-creation-step relis-creation-step--{{state}}"
+              data-step-id="{{id}}"
+              aria-current="{{ariaCurrent}}"
+            >
+              <span>{{number}}</span>
+              <b>{{label}}</b>
+              <small>{{stateLabel}}</small>
+            </button>
+          </li>
+        {{/each}}
+      </ol>
+    </details>
+  </aside>
+
+  <main class="relis-creation-main">
+    {{#if step_frame}}
+      <p class="relis-kicker">Étape 1</p><h2>Cadre</h2>
+      <p>Ce brouillon ne crée aucun Actor avant la confirmation finale.</p>
+      <div class="relis-grid relis-grid--form">
+        <label>Propriétaire<select data-draft-path="frame.ownerId">
+            {{selectOptions
+              owners
+              selected=draft.frame.ownerId
+              valueAttr="id"
+              labelAttr="name"
+            }}
+          </select></label>
+        <label>Niveau de départ<input
+            type="number"
+            min="1"
+            max="1"
+            value="{{draft.frame.level}}"
+            data-draft-path="frame.level"
+            disabled
+          /></label>
+        <label>Type de création<select data-draft-path="frame.creationType">
+            <option value="character" selected>Personnage joueur</option>
+          </select></label>
+      </div>
+      <div class="relis-empty-state relis-empty-state--small"><p>Les modèles
+          facultatifs restent différés : aucun consentement, secret ou choix
+          identitaire n’est précoché.</p></div>
+    {{/if}}
+
+    {{#if step_identity}}
+      <p class="relis-kicker">Étape 2</p><h2>Identité</h2>
+      <div class="relis-grid relis-grid--form">
+        <label>Nom principal<input
+            type="text"
+            value="{{draft.identity.primaryName}}"
+            data-draft-path="identity.primaryName"
+          /></label>
+        <label>Nom affiché<input
+            type="text"
+            value="{{draft.identity.publicName}}"
+            data-draft-path="identity.publicName"
+          /></label>
+        <label>Pronoms<input
+            type="text"
+            value="{{draft.identity.pronouns}}"
+            data-draft-path="identity.pronouns"
+          /></label>
+        <label>Genre<input
+            type="text"
+            value="{{draft.identity.gender}}"
+            data-draft-path="identity.gender"
+          /></label>
+        <label>Indicatif<input
+            type="text"
+            value="{{draft.identity.callsign}}"
+            data-draft-path="identity.callsign"
+          /></label>
+        <label>Date de naissance terrienne<input
+            type="text"
+            value="{{draft.identity.earthBirthDate}}"
+            data-draft-path="identity.earthBirthDate"
+            placeholder="Repère ou date connue"
+          /></label>
+        <label>Âge chronologique<input
+            type="number"
+            min="0"
+            value="{{draft.identity.chronologicalAge}}"
+            data-draft-path="identity.chronologicalAge"
+          /></label>
+        <label>Âge biologique<input
+            type="number"
+            min="0"
+            value="{{draft.identity.biologicalAge}}"
+            data-draft-path="identity.biologicalAge"
+          /></label>
+        <label>Âge apparent<input
+            type="number"
+            min="0"
+            value="{{draft.identity.apparentAge}}"
+            data-draft-path="identity.apparentAge"
+          /></label>
+      </div>
+      <label>Souvenir marquant<textarea
+          rows="5"
+          data-draft-path="identity.memorableMemory"
+        >{{draft.identity.memorableMemory}}</textarea></label>
+      <p class="relis-scope-note">Ces champs identitaires sont volontairement
+        libres. La projection publique n’efface jamais l’identité personnelle.</p>
+    {{/if}}
+
+    {{#if step_body}}
+      <p class="relis-kicker">Étape 3</p><h2>Corps & Ascendance</h2>
+      <div class="relis-grid relis-grid--form">
+        <label>Nature<select data-draft-path="body.nature">{{selectOptions
+              natureOptions
+              selected=draft.body.nature
+              valueAttr="key"
+              labelAttr="label"
+            }}</select></label>
+        <label>Gabarit<select data-draft-path="body.size">{{selectOptions
+              sizeOptions
+              selected=draft.body.size
+              valueAttr="key"
+              labelAttr="label"
+            }}</select></label>
+      </div>
+      <article class="relis-creation-selection">
+        <div><span>Ascendance</span><strong
+          >{{selectionSummary.ancestry}}</strong></div>
+        <button
+          type="button"
+          data-assistant-action="pick"
+          data-picker="ancestry"
+          title="Ouvrir le compendium des Ascendances"
+        ><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          Choisir</button>
+        {{#if draft.body.ancestry}}<button
+            type="button"
+            data-assistant-action="open-ancestry-journal"
+            title="Lire le Journal encyclopédique"
+          ><i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            Lire</button>{{/if}}
+        {{#if draft.body.ancestry}}<button
+            type="button"
+            class="relis-danger"
+            data-assistant-action="clear-selection"
+            data-selection-path="body.ancestry"
+          ><i
+              class="fa-solid fa-trash-can"
+              aria-hidden="true"
+            ></i></button>{{/if}}
+      </article>
+      {{#if draft.body.ancestry}}
+        <h3>Choix d’Attribut de l’Ascendance</h3>
+        <div class="relis-choice-grid">
+          {{#each attributes}}{{#if ancestryAllowed}}<label><input
+                  type="checkbox"
+                  value="{{key}}"
+                  data-draft-array="body.ancestryAttributeChoices"
+                  {{checked ancestrySelected}}
+                />{{label}}</label>{{/if}}{{/each}}
+        </div>
+        {{#if energyProfiles.length}}
+          <h3>Profil naturel ou dominance</h3>
+          <div class="relis-choice-grid">
+            {{#each energyProfiles}}<label><input
+                  type="radio"
+                  name="ancestryProfile"
+                  value="{{id}}"
+                  data-draft-path="body.ancestryProfileId"
+                  {{checked ancestrySelected}}
+                />
+                <b>{{label}}</b><small>{{summary}}</small></label>{{/each}}
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+
+    {{#if step_profile}}
+      <p class="relis-kicker">Étape 4</p><h2>Profil & Origine</h2>
+      <article class="relis-creation-selection">
+        <div><span>Profil</span><strong
+          >{{selectionSummary.profile}}</strong></div>
+        <button
+          type="button"
+          data-assistant-action="pick"
+          data-picker="profile"
+        ><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          Choisir</button>
+        {{#if draft.profile.profile}}<button
+            type="button"
+            class="relis-danger"
+            data-assistant-action="clear-selection"
+            data-selection-path="profile.profile"
+          ><i
+              class="fa-solid fa-trash-can"
+              aria-hidden="true"
+            ></i></button>{{/if}}
+      </article>
+      {{#if draft.profile.profile}}
+        <div class="relis-choice-grid">
+          <label><input
+              type="radio"
+              name="profileMode"
+              value="standard"
+              data-draft-path="profile.profileMode"
+              {{checked profileModeStandard}}
+            />Standard</label>
+          <label><input
+              type="radio"
+              name="profileMode"
+              value="marked"
+              data-draft-path="profile.profileMode"
+              {{checked profileModeMarked}}
+            />Marqué</label>
+        </div>
+        {{#if profileModeStandard}}<h3>Bonus d’Attribut standard</h3><div
+            class="relis-choice-grid"
+          >{{#each attributes}}{{#if profileAllowed}}<label><input
+                    type="radio"
+                    name="profileAttribute"
+                    value="{{key}}"
+                    data-draft-array="profile.profileAttributeChoices"
+                    {{checked profileSelected}}
+                  />{{label}}</label>{{/if}}{{/each}}</div>{{/if}}
+        {{#if profileModeMarked}}<h3>Bonus fixes du Profil marqué</h3><p
+          >{{markedBonuses}}</p>{{#if markedPenalties.length}}<label
+            >Contrepartie du Profil marqué<select
+                data-draft-path="profile.profilePenalty"
+              ><option value="">Choisir…</option>{{selectOptions
+                  markedPenalties
+                  selected=draft.profile.profilePenalty
+                  valueAttr="key"
+                  labelAttr="label"
+                }}</select></label>{{/if}}{{/if}}
+      {{/if}}
+      <article class="relis-creation-selection">
+        <div><span>Origine</span><strong
+          >{{selectionSummary.origin}}</strong></div>
+        <button
+          type="button"
+          data-assistant-action="pick"
+          data-picker="origin"
+        ><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          Choisir</button>
+        {{#if draft.profile.origin}}<button
+            type="button"
+            class="relis-danger"
+            data-assistant-action="clear-selection"
+            data-selection-path="profile.origin"
+          ><i
+              class="fa-solid fa-trash-can"
+              aria-hidden="true"
+            ></i></button>{{/if}}
+      </article>
+      <div class="relis-creation-columns">
+        <section><h3>Atouts</h3><button
+            type="button"
+            data-assistant-action="pick"
+            data-picker="advantage"
+          ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>{{#each
+            draft.profile.advantages
+          }}<div class="relis-creation-token"><span>{{name}}
+                ·
+                {{catalog.selectedValue}}</span><button
+                type="button"
+                data-assistant-action="remove-selection"
+                data-selection-path="profile.advantages"
+                data-relis-id="{{relisId}}"
+              ><i
+                  class="fa-solid fa-trash-can"
+                ></i></button></div>{{/each}}</section>
+        <section><h3>Handicaps</h3><button
+            type="button"
+            data-assistant-action="pick"
+            data-picker="drawback"
+          ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>{{#each
+            draft.profile.drawbacks
+          }}<div class="relis-creation-token"><span>{{name}}
+                ·
+                {{catalog.selectedValue}}{{#if catalog.creationAutomatic}}
+                  · Automatique{{/if}}</span>{{#unless
+                catalog.creationAutomatic
+              }}<button
+                  type="button"
+                  data-assistant-action="remove-selection"
+                  data-selection-path="profile.drawbacks"
+                  data-relis-id="{{relisId}}"
+                ><i
+                    class="fa-solid fa-trash-can"
+                  ></i></button>{{/unless}}</div>{{/each}}</section>
+      </div>
+    {{/if}}
+
+    {{#if step_attributes}}
+      <p class="relis-kicker">Étape 5</p><h2>Attributs</h2>
+      <h3>Attribut clef de Voie</h3>
+      {{#if draft.path.path}}<div class="relis-choice-grid">{{#each
+            attributes
+          }}{{#if pathAllowed}}<label><input
+                  type="radio"
+                  name="pathAttribute"
+                  value="{{key}}"
+                  data-draft-path="attributes.pathAttribute"
+                  {{checked pathSelected}}
+                />{{label}}</label>{{/if}}{{/each}}</div>{{else}}<p
+          class="relis-warning"
+        >Choisissez d’abord la Voie à l’étape 7.</p>{{/if}}
+      <h3>Quatre augmentations libres distinctes</h3>
+      <div class="relis-choice-grid">{{#each attributes}}<label><input
+              type="checkbox"
+              value="{{key}}"
+              data-draft-array="attributes.freeIncreases"
+              {{checked freeSelected}}
+            />{{label}}
+            <b>{{value}}</b></label>{{/each}}</div>
+      {{#each advantageAttributeRows}}
+        <h3>{{name}} · {{expected}} augmentation(s) d’Attribut</h3>
+        <div class="relis-choice-grid">{{#each choices}}<label><input
+                type="{{inputType}}"
+                name="{{radioName}}"
+                value="{{key}}"
+                data-draft-array="{{dataPath}}"
+                {{checked selected}}
+              />{{label}}</label>{{/each}}</div>
+      {{/each}}
+    {{/if}}
+
+    {{#if step_skills}}
+      <p class="relis-kicker">Étape 6</p><h2>Compétences</h2>
+      <p><strong>{{selectedQualifiedSkills}}</strong>
+        /
+        {{requiredQualifiedSkills}}
+        compétences Qualifiées. Les compétences obligatoires de la Voie sont
+        signalées.</p>
+      <div class="relis-skill-choice-grid">{{#each skillRows}}<div><label><input
+                type="checkbox"
+                value="{{key}}"
+                data-draft-array="skills.qualified"
+                {{checked selected}}
+              />{{label}}{{#if required}}
+                <b>Obligatoire</b>{{/if}}</label><label
+              class="relis-favorite"
+            ><input
+                type="checkbox"
+                value="{{key}}"
+                data-draft-array="skills.favorites"
+                {{checked favorite}}
+              />★ Favorite</label></div>{{/each}}</div>
+    {{/if}}
+
+    {{#if step_path}}
+      <p class="relis-kicker">Étape 7</p><h2>Voie & Spécialisations</h2>
+      <article class="relis-creation-selection"><div><span>Voie principale</span><strong
+          >{{selectionSummary.path}}</strong></div><button
+          type="button"
+          data-assistant-action="pick"
+          data-picker="path"
+        ><i class="fa-solid fa-magnifying-glass"></i> Choisir</button>{{#if
+          draft.path.path
+        }}<button
+            type="button"
+            class="relis-danger"
+            data-assistant-action="clear-selection"
+            data-selection-path="path.path"
+          ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+      <article class="relis-creation-selection"><div><span>Spécialisation
+            Principale</span><strong
+          >{{selectionSummary.primarySpecialization}}</strong></div>{{#if
+          draft.path.path
+        }}<button
+            type="button"
+            data-assistant-action="pick"
+            data-picker="primarySpecialization"
+          ><i class="fa-solid fa-magnifying-glass"></i>
+            Choisir</button>{{else}}<button
+            type="button"
+            data-assistant-action="pick"
+            data-picker="primarySpecialization"
+            disabled
+          ><i class="fa-solid fa-magnifying-glass"></i>
+            Choisir</button>{{/if}}{{#if
+          draft.path.primarySpecialization
+        }}<button
+            type="button"
+            class="relis-danger"
+            data-assistant-action="clear-selection"
+            data-selection-path="path.primarySpecialization"
+          ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+      <label>Schéma secondaire<select
+          data-draft-path="path.secondaryScheme"
+        >{{selectOptions
+            secondarySchemeOptions
+            selected=draft.path.secondaryScheme
+            valueAttr="key"
+            labelAttr="label"
+          }}</select></label>
+      <h3>Spécialisations secondaires ·
+        {{draft.path.secondarySpecializations.length}}
+        /
+        {{secondaryExpected}}</h3>
+      <button
+        type="button"
+        data-assistant-action="pick"
+        data-picker="secondarySpecialization"
+      ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>
+      {{#each draft.path.secondarySpecializations}}<div
+          class="relis-creation-token"
+        ><span>{{name}} · Rang 1</span><button
+            type="button"
+            data-assistant-action="remove-selection"
+            data-selection-path="path.secondarySpecializations"
+            data-relis-id="{{relisId}}"
+          ><i class="fa-solid fa-trash-can"></i></button></div>{{/each}}
+      <p class="relis-scope-note">Les emplacements non remplis restent en
+        réserve ; le schéma, lui, est verrouillé à la création.</p>
+    {{/if}}
+
+    {{#if step_talents}}
+      <p class="relis-kicker">Étape 8</p><h2>Talents & Capacités</h2>
+      <p>Les choix sont filtrés sur le niveau 1 et leurs sources. Ils peuvent
+        rester en attente.</p>
+      <div class="relis-creation-talent-grid">
+        <article><h3>Talent d’Ascendance</h3><strong
+          >{{draft.talents.ancestryTalent.name}}</strong><button
+            type="button"
+            data-assistant-action="pick"
+            data-picker="ancestryTalent"
+          ><i class="fa-solid fa-magnifying-glass"></i>
+            Choisir</button>{{#if draft.talents.ancestryTalent}}<button
+              type="button"
+              class="relis-danger"
+              data-assistant-action="clear-selection"
+              data-selection-path="talents.ancestryTalent"
+            ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+        <article><h3>Talent de Profil</h3><strong
+          >{{draft.talents.profileTalent.name}}</strong><button
+            type="button"
+            data-assistant-action="pick"
+            data-picker="profileTalent"
+          ><i class="fa-solid fa-magnifying-glass"></i>
+            Choisir</button>{{#if draft.talents.profileTalent}}<button
+              type="button"
+              class="relis-danger"
+              data-assistant-action="clear-selection"
+              data-selection-path="talents.profileTalent"
+            ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+        <article><h3>Talent principal</h3><strong
+          >{{draft.talents.primaryTalent.name}}</strong><button
+            type="button"
+            data-assistant-action="pick"
+            data-picker="primaryTalent"
+          ><i class="fa-solid fa-magnifying-glass"></i>
+            Choisir</button>{{#if draft.talents.primaryTalent}}<button
+              type="button"
+              class="relis-danger"
+              data-assistant-action="clear-selection"
+              data-selection-path="talents.primaryTalent"
+            ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+      </div>
+      <h3>Talents secondaires</h3><button
+        type="button"
+        data-assistant-action="pick"
+        data-picker="secondaryTalent"
+      ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>
+      {{#each draft.talents.secondaryTalents}}<div
+          class="relis-creation-token"
+        ><span>{{name}}</span><button
+            type="button"
+            data-assistant-action="remove-selection"
+            data-selection-path="talents.secondaryTalents"
+            data-relis-id="{{relisId}}"
+          ><i class="fa-solid fa-trash-can"></i></button></div>{{/each}}
+    {{/if}}
+
+    {{#if step_resources}}
+      <p class="relis-kicker">Étape 9</p><h2>Ressources initiales</h2>
+      <article class="relis-card"><h3>Points de vie · {{hitPoints}}</h3>{{#each
+          hitPointSources
+        }}<p>{{this}}</p>{{/each}}</article>
+      {{#if energyProfiles.length}}<h3>Réserves naturelles</h3><div
+          class="relis-choice-grid"
+        >{{#each energyProfiles}}<label><input
+                type="radio"
+                name="energyProfile"
+                value="{{id}}"
+                data-draft-path="resources.energyProfileId"
+                {{checked energySelected}}
+              />
+              <b>{{label}}</b><small
+              >{{summary}}</small></label>{{/each}}</div>{{/if}}
+      <label><input
+          type="checkbox"
+          data-draft-path="resources.creditsPending"
+          {{checked draft.resources.creditsPending}}
+        />Conserver les
+        {{initialCredits}}
+        crédits initiaux comme choix en attente</label>
+      <label><input type="checkbox" checked disabled />Les dotations et achats
+        restent des choix en attente tant qu’aucun paquet complet n’est confirmé</label>
+      <p class="relis-scope-note">Aucun équipement absent du catalogue n’est
+        inventé. Si les crédits ne restent pas en attente, leur quantité
+        calculée est matérialisée avec le véritable Item Crédit.</p>
+    {{/if}}
+
+    {{#if step_appearance}}
+      <p class="relis-kicker">Étape 10</p><h2>Apparence & Présentation</h2>
+      <div class="relis-grid relis-grid--form"><label>Portrait identitaire<input
+            type="text"
+            value="{{draft.appearance.actorImage}}"
+            data-draft-path="appearance.actorImage"
+            placeholder="Chemin Foundry facultatif"
+          /></label><label>Texture du Token<input
+            type="text"
+            value="{{draft.appearance.tokenImage}}"
+            data-draft-path="appearance.tokenImage"
+            placeholder="Chemin Foundry facultatif"
+          /></label></div>
+      <label>Description<textarea
+          rows="9"
+          data-draft-path="appearance.description"
+        >{{draft.appearance.description}}</textarea></label>
+      <p class="relis-scope-note">La gestion complète des Présentations, Corps
+        et médias appartient à 10-D5.</p>
+    {{/if}}
+
+    {{#if step_assignments}}
+      <p class="relis-kicker">Étape 11</p><h2>Affectations</h2>
+      <article class="relis-creation-selection"><div><span>Poste principal</span><strong
+          >{{selectionSummary.post}}</strong></div><button
+          type="button"
+          data-assistant-action="pick"
+          data-picker="post"
+        ><i class="fa-solid fa-magnifying-glass"></i> Choisir</button>{{#if
+          draft.assignments.primaryPost
+        }}<button
+            type="button"
+            class="relis-danger"
+            data-assistant-action="clear-selection"
+            data-selection-path="assignments.primaryPost"
+          ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+      <h3>Postes secondaires</h3><button
+        type="button"
+        data-assistant-action="pick"
+        data-picker="secondaryPost"
+      ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>{{#each
+        draft.assignments.secondaryPosts
+      }}<div class="relis-creation-token"><span>{{name}}</span><button
+            type="button"
+            data-assistant-action="remove-selection"
+            data-selection-path="assignments.secondaryPosts"
+            data-relis-id="{{relisId}}"
+          ><i class="fa-solid fa-trash-can"></i></button></div>{{/each}}
+      <p class="relis-scope-note">Groupe, vaisseau et relations ne sont pas
+        créés implicitement sans Document cible autorisé.</p>
+    {{/if}}
+
+    {{#if step_review}}
+      <p class="relis-kicker">Étape 12</p><h2>Révision</h2>
+      <div class="relis-creation-review">
+        <dl><div><dt>Nom</dt><dd>{{draft.identity.primaryName}}</dd></div><div
+          ><dt>Ascendance</dt><dd>{{selectionSummary.ancestry}}</dd></div><div
+          ><dt>Profil</dt><dd>{{selectionSummary.profile}}</dd></div><div><dt
+            >Origine</dt><dd>{{selectionSummary.origin}}</dd></div><div><dt
+            >Voie</dt><dd>{{selectionSummary.path}}</dd></div><div><dt
+            >Spécialisation</dt><dd
+            >{{selectionSummary.primarySpecialization}}</dd></div><div><dt
+            >PV</dt><dd>{{hitPoints}}</dd></div><div><dt>Compétences</dt><dd
+            >{{selectedQualifiedSkills}}
+              /
+              {{requiredQualifiedSkills}}</dd></div></dl>
+        <section><h3>Diagnostics</h3>{{#each diagnostics}}<p
+              class="relis-diagnostic relis-diagnostic--{{level}}"
+            ><b>{{step}}</b> · {{message}}</p>{{else}}<p>Aucune incohérence.</p>{{/each}}</section>
+      </div>
+      {{#if canFinalize}}<button
+          type="button"
+          class="relis-primary-action"
+          data-assistant-action="finalize"
+        ><i class="fa-solid fa-user-check"></i>
+          Créer définitivement le personnage</button>{{else}}<button
+          type="button"
+          class="relis-primary-action"
+          data-assistant-action="finalize"
+          disabled
+        ><i class="fa-solid fa-user-check"></i>
+          Créer définitivement le personnage</button>{{/if}}
+      <p>La confirmation est idempotente : un double clic ne peut pas créer deux
+        Actors depuis le même brouillon.</p>
+    {{/if}}
+
+    {{#if currentDiagnostics.length}}<aside
+        class="relis-creation-diagnostics"
+        aria-live="polite"
+      >{{#each currentDiagnostics}}<p
+            class="relis-diagnostic relis-diagnostic--{{level}}"
+          >{{message}}</p>{{/each}}</aside>{{/if}}
+  </main>
+
+  <aside class="relis-creation-summary">
+    <details class="relis-creation-summary-menu" open>
+      <summary>Résumé courant</summary>
+      <p class="relis-kicker">Résumé courant</p>
+      <h2>{{draft.identity.primaryName}}</h2>
+      <dl><div><dt>Ascendance</dt><dd
+          >{{selectionSummary.ancestry}}</dd></div><div><dt>Profil</dt><dd
+          >{{selectionSummary.profile}}</dd></div><div><dt>Voie</dt><dd
+          >{{selectionSummary.path}}</dd></div><div><dt>PV</dt><dd
+          >{{hitPoints}}</dd></div><div><dt>Compétences</dt><dd
+          >{{selectedQualifiedSkills}}
+            /
+            {{requiredQualifiedSkills}}</dd></div></dl>
+      <details><summary>Attributs calculés</summary>{{#each attributes}}<div
+            class="relis-summary-row"
+          ><span>{{label}}</span><b>{{value}}</b></div>{{/each}}</details>
+      <p><small>Brouillon {{draft.id}} · révision {{draft.revision}}</small></p>
+    </details>
+  </aside>
+
+  <footer class="relis-creation-footer">
+    {{#if previousDisabled}}<button
+        type="button"
+        data-assistant-action="previous"
+        disabled
+      ><i class="fa-solid fa-arrow-left"></i> Précédent</button>{{else}}<button
+        type="button"
+        data-assistant-action="previous"
+      ><i class="fa-solid fa-arrow-left"></i> Précédent</button>{{/if}}
+    <button type="button" data-assistant-action="save-close"><i
+        class="fa-solid fa-floppy-disk"
+      ></i>
+      Enregistrer et quitter</button>
+    {{#if nextDisabled}}<button
+        type="button"
+        data-assistant-action="next"
+        disabled
+      >Suivant <i class="fa-solid fa-arrow-right"></i></button>{{else}}<button
+        type="button"
+        data-assistant-action="next"
+      >Suivant <i class="fa-solid fa-arrow-right"></i></button>{{/if}}
+  </footer>
+</section>

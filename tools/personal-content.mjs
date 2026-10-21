@@ -36,6 +36,12 @@ const PACK_ID = /^[a-z][a-z0-9-]*$/;
 const HEX_COLOR = /^#[0-9A-F]{6}$/;
 const FORBIDDEN_SOURCE_KEYS = new Set(["_id", "_stats", "ownership"]);
 const SPECIALIZATION_CATALOG_FORMAT = "relis.specialization-talent-catalogs";
+export const ANCESTRY_JOURNAL_PACK = Object.freeze({
+  id: "creation-ancestry-journals",
+  name: "creation-ancestry-journals",
+  label: "RE:LIS — Encyclopédie des Ascendances",
+  documentType: "JournalEntry",
+});
 const SPECIALIZATION_LEVELS = Object.freeze([
   1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28, 30,
 ]);
@@ -944,6 +950,69 @@ export function createFoundryItem(entry, manifest, packageVersion, pack) {
   };
 }
 
+export function createAncestryJournal(entry, manifest, packageVersion) {
+  const journalRelisId = `JRN-${entry.relisId}`;
+  const journalId = stableFoundryId(journalRelisId);
+  const pageId = stableFoundryId(`${journalRelisId}-PRESENTATION`);
+  return {
+    _key: `!journal!${journalId}`,
+    _id: journalId,
+    name: entry.name,
+    pages: [
+      {
+        _key: `!journal.pages!${journalId}.${pageId}`,
+        _id: pageId,
+        name: "Présentation",
+        type: "text",
+        text: {
+          format: 1,
+          content: entry.system.description,
+          markdown: "",
+        },
+        title: { show: true, level: 1 },
+        image: {},
+        video: {},
+        src: null,
+        sort: 0,
+        ownership: { default: -1 },
+        flags: {
+          relis: {
+            ancestryRelisId: entry.relisId,
+            generated: true,
+          },
+        },
+        _stats: {
+          systemId: "relis",
+          systemVersion: packageVersion,
+          coreVersion: "14",
+          createdTime: 0,
+          modifiedTime: 0,
+          lastModifiedBy: null,
+        },
+      },
+    ],
+    folder: null,
+    sort: 0,
+    ownership: { default: 0 },
+    flags: {
+      relis: {
+        canonicalId: journalRelisId,
+        ancestryRelisId: entry.relisId,
+        contentVersion: manifest.contentVersion,
+        generated: true,
+      },
+    },
+    _stats: {
+      systemId: "relis",
+      systemVersion: packageVersion,
+      coreVersion: "14",
+      createdTime: 0,
+      modifiedTime: 0,
+      lastModifiedBy: null,
+    },
+  };
+}
+
 export function validatePersonalContent(projectRoot = process.cwd()) {
   const errors = [];
   const warnings = [];
@@ -1133,19 +1202,42 @@ export function generatePersonalContent(
         ),
       );
   }
+  const ancestryJournals = validation.entries
+    .filter(
+      ({ entry }) =>
+        entry.type === "ancestry" && entry.system.catalog?.selectable !== false,
+    )
+    .sort((left, right) =>
+      left.entry.relisId.localeCompare(right.entry.relisId, "fr"),
+    );
+  const journalTarget = path.join(outputRoot, ANCESTRY_JOURNAL_PACK.name);
+  fs.mkdirSync(journalTarget, { recursive: true });
+  for (const { entry } of ancestryJournals) {
+    const document = createAncestryJournal(
+      entry,
+      validation.manifest,
+      packageVersion,
+    );
+    fs.writeFileSync(
+      path.join(journalTarget, `${document._id}.json`),
+      stableJson(document),
+    );
+  }
+  counts[ANCESTRY_JOURNAL_PACK.name] = ancestryJournals.length;
+  const packDefinitions = [...validation.manifest.packs, ANCESTRY_JOURNAL_PACK];
   const index = {
     format: "relis.generated-personal-content",
     formatVersion: PERSONAL_SOURCE_FORMAT_VERSION,
     contentVersion: validation.manifest.contentVersion,
     packageVersion,
-    packs: validation.manifest.packs.map((pack) => ({
+    packs: packDefinitions.map((pack) => ({
       id: pack.id,
       name: pack.name,
       label: pack.label,
       documentType: pack.documentType,
       system: "relis",
       path: `packs/${pack.name}`,
-      itemTypes: pack.itemTypes,
+      ...(pack.itemTypes ? { itemTypes: pack.itemTypes } : {}),
       entries: counts[pack.name],
     })),
     questionnaire: {
@@ -1154,7 +1246,7 @@ export function generatePersonalContent(
     },
   };
   fs.writeFileSync(path.join(outputRoot, "index.json"), stableJson(index));
-  return { ...validation, outputRoot, index, counts };
+  return { ...validation, outputRoot, index, counts, packDefinitions };
 }
 
 function directoryDigest(directory) {
@@ -1188,7 +1280,7 @@ export async function buildPersonalPacks(
   safeEmptyDirectory(packOutput);
   const built = [];
   const compiledCounts = {};
-  for (const pack of generated.manifest.packs) {
+  for (const pack of generated.packDefinitions) {
     if ((generated.counts[pack.name] ?? 0) === 0) continue;
     const compiledPack = path.join(packOutput, pack.name);
     await compilePack(path.join(sourceOutput, pack.name), compiledPack, {
@@ -1202,9 +1294,11 @@ export async function buildPersonalPacks(
         log: false,
         transformName: (entry) => `${entry._id}.json`,
       });
+      const prefix =
+        pack.documentType === "JournalEntry" ? "!journal!" : "!items!";
       const compiledCount = listJsonFiles(verificationRoot)
         .map((file) => readJson(file, []))
-        .filter((document) => document?._key?.startsWith("!items!")).length;
+        .filter((document) => document?._key?.startsWith(prefix)).length;
       const expectedCount = generated.counts[pack.name];
       if (compiledCount !== expectedCount)
         throw new Error(
@@ -1224,7 +1318,7 @@ export async function buildPersonalPacks(
       contentVersion: generated.manifest.contentVersion,
       built,
       compiledCounts,
-      skippedEmpty: generated.manifest.packs
+      skippedEmpty: generated.packDefinitions
         .map((pack) => pack.name)
         .filter((name) => !built.includes(name)),
     }),
@@ -1283,7 +1377,7 @@ async function runCli() {
   if (command === "build") {
     const result = await buildPersonalPacks();
     console.log(
-      `Packs personnels compilés : ${result.built.length}; familles sans contenu ignorées : ${result.manifest.packs.length - result.built.length}.`,
+      `Packs personnels compilés : ${result.built.length}; familles sans contenu ignorées : ${result.packDefinitions.length - result.built.length}.`,
     );
     return;
   }

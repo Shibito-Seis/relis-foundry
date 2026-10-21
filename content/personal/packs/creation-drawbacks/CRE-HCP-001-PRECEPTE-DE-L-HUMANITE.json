@@ -12,6 +12,7 @@
       "kind": "drawback",
       "sourceSection": "8",
       "value": "-1",
+      "automaticOnly": true,
       "effect": "Handicap automatique humain. Le personnage porte le poids moral, historique ou politique de l’humanité. Le MJ peut créer des complications liées aux fautes humaines, à l’UJC, aux Esmans, aux IAAs ou aux peuples non-humains."
     }
   },

@@ -12,6 +12,13 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+3",
+      "creationConstraints": {
+        "incompatible": [
+          { "relisId": "CRE-HCP-002-PAUVRE", "label": "Pauvre" },
+          { "relisId": "CRE-HCP-003-TRES-PAUVRE", "label": "Très pauvre" },
+          { "relisId": "CRE-HCP-004-SANS-LE-SOU", "label": "Sans le sou" }
+        ]
+      },
       "effect": "Le personnage commence avec 150 000 crédits ou un patrimoine majeur : compte, parts, bien, coffre, droits, héritage ou actifs. Ces ressources peuvent attirer dettes, convoitises ou obligations. Incompatible avec Pauvre, Très pauvre et Sans le sou."
     }
   },

@@ -1,5 +1,15 @@
 # Journal des versions
 
+## 0.9.0 — 10-D3, création de personnage
+
+- Ajoute l’assistant de création reprenable en douze étapes, son résumé courant, ses diagnostics et sa confirmation finale idempotente sans Actor partiel.
+- Branche les choix sur les compendiums canoniques et calcule Attributs, compétences, PV et réserves depuis leurs données structurées.
+- Verrouille cette création au niveau 1, applique les effets initiaux structurés et contrôle depuis les catalogues les coûts variables, le Précepte humain, les dépendances et les incompatibilités Atouts/Handicaps.
+- Ajoute les sélecteurs manuels à loupe et les corbeilles de retrait sur les fiches PJ/PNJ, sous contrôle du propriétaire ou du MJ.
+- Déplace visuellement Ascendance, Profil, Origine, Atouts, Handicaps, Voie, Spécialisations et Postes hors de l’inventaire matériel. Les doublons historiques ne sont jamais supprimés automatiquement et reçoivent un diagnostic ; changer la référence active conserve aussi l’ancienne source comme historique.
+- Génère un compendium de 26 Journaux encyclopédiques d’Ascendance depuis les descriptions canoniques existantes.
+- Passe le contenu personnel à `1.4.0` et le paquet à `0.9.0`, conserve 5 100 Items, ajoute 26 Journaux, maintient le schéma Item 7 et ne crée aucune migration de monde. 10-D3 reste en recette jusqu’à validation explicite.
+
 ## 0.8.4 — audit de la verticale personnelle
 
 - Ajoute un compendium de 2 688 Talents de Spécialisation : 32 Talents pour chacune des 84 Spécialisations, répartis par deux sur les seize paliers 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28 et 30.

@@ -203,6 +203,30 @@ describe("compendiums canoniques 10-K2-P", () => {
     }
   });
 
+  it("porte dans les catalogues les contraintes de création consommées par 10-D3", () => {
+    const entries = entriesById();
+    expect(
+      entries.get("CRE-ANC-001-HUMAIN").system.catalog.automaticDrawbacks,
+    ).toEqual([
+      expect.objectContaining({
+        relisId: "CRE-HCP-001-PRECEPTE-DE-L-HUMANITE",
+        selectedValue: -1,
+      }),
+    ]);
+    expect(
+      entries.get("CRE-AVT-025-MA-FAMILLE-EST-EN-VIE").system.catalog
+        .creationConstraints.requires,
+    ).toContainEqual(
+      expect.objectContaining({ relisId: "CRE-HCP-005-FAMILLE-A-NOURRIR" }),
+    );
+    expect(
+      entries.get("CRE-AVT-031-PHYSIOLOGIE-VAMPIRIQUE").system.catalog
+        .creationConstraints.requires,
+    ).toContainEqual(
+      expect.objectContaining({ relisId: "CRE-HCP-037-FAIM-ECARLATE" }),
+    );
+  });
+
   it("développe les 28 documents d’Ascendance et les 12 Voies depuis leurs sections canoniques", () => {
     const values = [...entriesById().values()];
     const plainWords = (description) =>
@@ -614,10 +638,14 @@ describe("compendiums canoniques 10-K2-P", () => {
 
   it("déclare les packs classés et leurs dossiers PF2e-like dans le manifeste Foundry", () => {
     const manifest = JSON.parse(fs.readFileSync("system.json", "utf8"));
-    expect(manifest.packs).toHaveLength(24);
+    expect(manifest.packs).toHaveLength(25);
     expect(manifest.packs).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ name: "creation-ancestries", type: "Item" }),
+        expect.objectContaining({
+          name: "creation-ancestry-journals",
+          type: "JournalEntry",
+        }),
         expect.objectContaining({
           name: "progression-specialization-talents",
           type: "Item",

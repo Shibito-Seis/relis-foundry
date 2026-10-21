@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.8.4` ouvre la recette de l’audit de la verticale personnelle après validation de 10-K2-P. Les 84 Spécialisations possèdent chacune un catalogue de 32 Talents, soit deux choix aux niveaux 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21, 23, 25, 28 et 30. Les Talents actifs se projettent comme Actions depuis l’Item possédé sans créer de doublon ; les passifs portent leurs règles structurées sans extraction depuis la prose. Les PV naturels et profils Mana/Prana/Flux des Ascendances, ainsi que les PV par niveau des douze Voies, sont structurés pour être consommés par 10-D3/10-D4. Le catalogue atteint 5 100 Items dans 24 compendiums. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
+La version `0.9.0` ouvre la recette de 10-D3 après validation de l’audit personnel. Elle fournit l’assistant de création de niveau 1, reprenable en douze étapes, calcule les Attributs, compétences Qualifiées, PV et réserves depuis les vrais catalogues, contrôle leurs contraintes de création, puis ne crée l’Actor qu’à la confirmation finale idempotente. Les fiches PJ et PNJ séparent désormais Ascendance, Profil, Origine, Atouts, Handicaps, Voie, Spécialisations et Postes de l’inventaire physique. Une loupe ouvre chaque compendium filtré ; une corbeille retire explicitement l’Item embarqué. Les doublons historiques et les anciennes références sont conservés et diagnostiqués sans suppression automatique. Les 26 Ascendances sélectionnables disposent en outre d’un Journal encyclopédique généré depuis leur description canonique. Le contenu compte toujours 5 100 Items, désormais complétés par 26 Journaux dans un vingt-cinquième compendium. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
 
 L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. Chaque Cœur reçoit un tirage stable de 20 situations dans une banque de 48 — 8 simples, 8 intermédiaires et 4 complexes — sur six axes et quinze couleurs. Réponses, choix MJ, nom coloré, sujet de l’accord et historique persistent. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
 
@@ -49,7 +49,7 @@ en SVG interne jusqu’à la passe graphique finale.
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
-10-K2-P est validé et clos. L’audit personnel attend la recette 0.8.4. Aucun contrôle visuel automatisé par navigateur :
+10-K2-P et l’audit personnel sont validés et clos. 10-D3 attend la recette 0.9.0. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -73,7 +73,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.8.4.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.9.0.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -82,6 +82,16 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.9.0 — assistant de création 10-D3
+
+- Ajoute un Assistant ApplicationV2 en douze étapes, avec navigation, diagnostics, résumé, sauvegarde automatique et manuelle dans les données utilisateur, reprise inter-appareils et création finale idempotente.
+- Limite la création à son niveau 1 canonique et dérive les Attributs, compétences Qualifiées, PV et réserves naturelles depuis les Items d’Ascendance, de Profil et de Voie ; les choix différés restent visibles sans inventer de dotation absente.
+- Consomme les coûts variables, effets initiaux, dépendances et incompatibilités portés par les catalogues, dont le Précepte humain automatique et le paquet vampirique indivisible.
+- Ajoute aux fiches PJ et PNJ des sélecteurs à loupe et des suppressions explicites pour les éléments de construction ; les contrôles restent soumis à la propriété.
+- Retire les Items de construction du fourre-tout d’inventaire sans supprimer les copies embarquées. Les doublons hérités, dont plusieurs Ascendances, et les références remplacées sont signalés et laissés à la décision de l’utilisateur.
+- Génère 26 Journaux encyclopédiques d’Ascendance à partir des descriptions canoniques, dans un compendium dédié.
+- Passe le paquet à `0.9.0` et le contenu à `1.4.0`. Le catalogue conserve 5 100 Items dans 24 compendiums Item, auxquels s’ajoute un compendium de 26 Journaux. Le schéma Item reste 7 et aucune migration n’est créée. 10-D3 reste en recette jusqu’à validation explicite.
 
 ## 0.8.4 — audit de la verticale personnelle
 

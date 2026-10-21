@@ -85,6 +85,16 @@ import {
 } from "../rules/personal-material";
 import { physicalFeedKind } from "../data/material-catalog";
 import { collectOwnedTalentProjections } from "../rules/talent-projection";
+import {
+  BUILD_ITEM_TYPES,
+  BUILD_SLOT_DEFINITIONS,
+  assignBuildSelection,
+  buildSlotRows,
+  openCatalogPicker,
+  removeBuildItem,
+  type BuildSlotKey,
+} from "../services/character-build";
+import { openCharacterCreationAssistant } from "../ui/character-creation-assistant";
 
 const ActorSheetV2 = foundry.applications.sheets.ActorSheetV2;
 const HandlebarsApplicationMixin =
@@ -880,7 +890,23 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
         item.system?.catalog?.projection?.automaticWhenOwned === true,
     }));
     const relatedItems = itemRows.filter(
-      (item) => !isPhysicalItemType(item.type) && !item.isProjectedTalent,
+      (item) =>
+        !isPhysicalItemType(item.type) &&
+        !item.isProjectedTalent &&
+        !BUILD_ITEM_TYPES.has(item.type),
+    );
+    const buildSlots = isPerson ? buildSlotRows(this.actor) : [];
+    const buildSummary = Object.fromEntries(
+      buildSlots.map((slot) => {
+        const active = slot.items.filter((item) => item.selected);
+        const label =
+          active.length > 0
+            ? active.map((item) => item.name).join(", ")
+            : slot.items.length > 0
+              ? `À rattacher (${slot.items.length})`
+              : "Non défini";
+        return [slot.key, label];
+      }),
     );
     const talentProjections = collectOwnedTalentProjections(
       actorItems.map((item) => ({
@@ -944,6 +970,22 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       hasDemoEnergy: energyPools.some((pool) => pool.isDemo),
       items: itemRows,
       relatedItems,
+      buildSummary,
+      identityBuildSlots: buildSlots.filter((slot) =>
+        ["ancestry", "profile", "origin", "advantages", "drawbacks"].includes(
+          slot.key,
+        ),
+      ),
+      progressionBuildSlots: buildSlots.filter((slot) =>
+        [
+          "path",
+          "primarySpecialization",
+          "secondarySpecializations",
+          "primaryPost",
+          "secondaryPosts",
+        ].includes(slot.key),
+      ),
+      hasBuildDiagnostics: buildSlots.some((slot) => slot.diagnostic),
       inventoryRows,
       inventoryGroups: groupInventory(inventoryRows),
       equipmentOverview: equipmentOverview(
@@ -1191,6 +1233,100 @@ export class RelisActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
       ?.addEventListener("click", () => {
         void this.createDemo();
       });
+
+    root
+      .querySelector<HTMLButtonElement>(
+        "[data-action='open-creation-assistant']",
+      )
+      ?.addEventListener("click", () => {
+        void openCharacterCreationAssistant();
+      });
+
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-action='pick-build-item']",
+    )) {
+      button.addEventListener("click", () => {
+        void this.pickBuildItem(button.dataset.buildSlot as BuildSlotKey);
+      });
+    }
+    for (const button of root.querySelectorAll<HTMLButtonElement>(
+      "[data-action='remove-build-item']",
+    )) {
+      button.addEventListener("click", () => {
+        void this.removeBuildItem(
+          button.dataset.buildSlot as BuildSlotKey,
+          button.dataset.itemId ?? "",
+        );
+      });
+    }
+  }
+
+  private async pickBuildItem(slotKey: BuildSlotKey): Promise<void> {
+    const definition = BUILD_SLOT_DEFINITIONS[slotKey];
+    if (!definition || (!this.actor.isOwner && !game.user?.isGM)) return;
+    const currentSlots = buildSlotRows(this.actor);
+    const selectedRelisIds =
+      currentSlots
+        .find((slot) => slot.key === slotKey)
+        ?.items.filter((item) => item.selected)
+        .map((item) => item.relisId) ?? [];
+    const pathName = String(
+      this.actor.system.build?.pathRef?.labelSnapshot ?? "",
+    );
+    if (slotKey === "primarySpecialization" && !pathName) {
+      ui.notifications.warn(
+        "Rattachez d’abord la Voie principale afin de filtrer ses Spécialisations.",
+      );
+      return;
+    }
+    const choice = await openCatalogPicker({
+      title: `Choisir : ${definition.label}`,
+      packId: definition.packId,
+      selectedRelisIds,
+      ...(slotKey === "primarySpecialization" && pathName
+        ? { predicate: (entry) => entry.catalog.pathName === pathName }
+        : {}),
+    });
+    if (!choice) return;
+    try {
+      await assignBuildSelection(this.actor, slotKey, choice);
+      ui.notifications.info(`${choice.name} est rattaché à la fiche.`);
+      await this.render({ force: true });
+    } catch (error) {
+      console.error("RE:LIS | Sélection de construction refusée", error);
+      ui.notifications.error(
+        error instanceof Error ? error.message : "Sélection refusée.",
+      );
+    }
+  }
+
+  private async removeBuildItem(
+    slotKey: BuildSlotKey,
+    itemId: string,
+  ): Promise<void> {
+    if (!slotKey || !itemId || (!this.actor.isOwner && !game.user?.isGM))
+      return;
+    const item = this.actor.items.get(itemId) as Item | undefined;
+    if (!item) return;
+    const confirmed = await foundry.applications.api.DialogV2.confirm({
+      window: { title: `Retirer ${item.name}` },
+      content: `<p>Retirer définitivement <strong>${item.name}</strong> de la construction de cet Actor ?</p>`,
+      yes: { label: "Retirer" },
+      no: { label: "Annuler" },
+      modal: true,
+      rejectClose: false,
+    });
+    if (!confirmed) return;
+    try {
+      await removeBuildItem(this.actor, slotKey, itemId);
+      ui.notifications.info(`${item.name} a été retiré.`);
+      await this.render({ force: true });
+    } catch (error) {
+      console.error("RE:LIS | Retrait de construction refusé", error);
+      ui.notifications.error(
+        error instanceof Error ? error.message : "Retrait refusé.",
+      );
+    }
   }
 
   private async inventoryTask(

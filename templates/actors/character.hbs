@@ -47,6 +47,10 @@
           <dl class="relis-id-facts">
             <div><dt>Nom public</dt><dd>{{displayName}}</dd></div>
             <div><dt>Niveau</dt><dd>{{system.level}}</dd></div>
+            <div><dt>Ascendance</dt><dd>{{buildSummary.ancestry}}</dd></div>
+            <div><dt>Voie</dt><dd>{{buildSummary.path}}</dd></div>
+            <div><dt>Spécialisation</dt><dd
+              >{{buildSummary.primarySpecialization}}</dd></div>
             <div><dt>Corps actif</dt><dd>{{activeBody.name}}</dd></div>
             <div><dt>Nature</dt><dd>{{activeBodyNatureLabel}}</dd></div>
           </dl>
@@ -55,6 +59,8 @@
             <div><dt>Désignation</dt><dd>{{displayName}}</dd></div>
             <div><dt>Densité</dt><dd>{{npcDetailLevel}}</dd></div>
             <div><dt>Rôle</dt><dd>{{system.role}}</dd></div>
+            <div><dt>Ascendance</dt><dd>{{buildSummary.ancestry}}</dd></div>
+            <div><dt>Voie</dt><dd>{{buildSummary.path}}</dd></div>
             <div><dt>Corps actif</dt><dd>{{activeBody.name}}</dd></div>
           </dl>
         {{/if}}
@@ -187,6 +193,70 @@
         hidden
       >
         <div class="relis-content-grid">
+          <article class="relis-card relis-card--wide relis-build-panel">
+            <div class="relis-section-heading">
+              <div><p class="relis-kicker">Construction identitaire</p><h2
+                >Ascendance, Profil & Origine</h2></div>
+              {{#if editable}}{{#if isCharacter}}<button
+                    type="button"
+                    data-action="open-creation-assistant"
+                    data-owner-control
+                  ><i
+                      class="fa-solid fa-wand-magic-sparkles"
+                      aria-hidden="true"
+                    ></i>
+                    Assistant de création</button>{{/if}}{{/if}}
+            </div>
+            <p class="relis-scope-note">Les Items sources restent embarqués pour
+              conserver leur instantané, mais ils ne sont plus présentés comme
+              du matériel d’inventaire.</p>
+            <div class="relis-build-grid">
+              {{#each identityBuildSlots}}
+                <section class="relis-build-slot" data-build-slot="{{key}}">
+                  <div class="relis-section-heading"><h3>{{label}}</h3>{{#if
+                      @root.editable
+                    }}<button
+                        type="button"
+                        data-action="pick-build-item"
+                        data-build-slot="{{key}}"
+                        data-owner-control
+                        title="Ouvrir le compendium {{label}}"
+                      ><i
+                          class="fa-solid fa-magnifying-glass"
+                          aria-hidden="true"
+                        ></i></button>{{/if}}</div>
+                  {{#each items}}<div class="{{cssClass}}"><button
+                        type="button"
+                        class="relis-link"
+                        data-action="open-item"
+                        data-item-id="{{id}}"
+                      ><img src="{{img}}" alt="" />{{name}}</button>{{#if
+                        selected
+                      }}<span class="relis-state-chip">Référence active</span>{{else}}<span
+                          class="relis-state-chip relis-state-chip--warning"
+                        >Historique non rattaché</span>{{/if}}{{#if
+                        @root.editable
+                      }}<button
+                          type="button"
+                          class="relis-danger"
+                          data-action="remove-build-item"
+                          data-build-slot="{{slotKey}}"
+                          data-item-id="{{id}}"
+                          data-owner-control
+                          title="Retirer {{name}}"
+                        ><i
+                            class="fa-solid fa-trash-can"
+                            aria-hidden="true"
+                          ></i></button>{{/if}}</div>{{else}}<p
+                      class="relis-muted"
+                    >Aucune sélection.</p>{{/each}}
+                  {{#if diagnostic}}<p
+                      class="relis-diagnostic relis-diagnostic--warning"
+                    >{{diagnostic}}</p>{{/if}}
+                </section>
+              {{/each}}
+            </div>
+          </article>
           <article class="relis-card">
             <p class="relis-kicker">Dossier civil</p><h2>Identité</h2>
             <div class="relis-grid relis-grid--form">
@@ -393,6 +463,67 @@
         hidden
       >
         <div class="relis-content-grid">
+          <article class="relis-card relis-card--wide relis-build-panel">
+            <div class="relis-section-heading"><div><p
+                  class="relis-kicker"
+                >Construction mécanique</p><h2>Voie, Spécialisations & Postes</h2></div>{{#if
+                editable
+              }}<button
+                  type="button"
+                  data-action="open-creation-assistant"
+                  data-owner-control
+                ><i
+                    class="fa-solid fa-wand-magic-sparkles"
+                    aria-hidden="true"
+                  ></i>
+                  Reprendre l’assistant</button>{{/if}}</div>
+            <div class="relis-build-grid">
+              {{#each progressionBuildSlots}}
+                <section class="relis-build-slot" data-build-slot="{{key}}">
+                  <div class="relis-section-heading"><h3>{{label}}</h3>{{#if
+                      @root.editable
+                    }}<button
+                        type="button"
+                        data-action="pick-build-item"
+                        data-build-slot="{{key}}"
+                        data-owner-control
+                        title="Ouvrir le compendium {{label}}"
+                      ><i
+                          class="fa-solid fa-magnifying-glass"
+                          aria-hidden="true"
+                        ></i></button>{{/if}}</div>
+                  {{#each items}}<div class="{{cssClass}}"><button
+                        type="button"
+                        class="relis-link"
+                        data-action="open-item"
+                        data-item-id="{{id}}"
+                      ><img src="{{img}}" alt="" />{{name}}</button>{{#if
+                        selected
+                      }}<span class="relis-state-chip">Référence active</span>{{else}}<span
+                          class="relis-state-chip relis-state-chip--warning"
+                        >Historique non rattaché</span>{{/if}}{{#if
+                        @root.editable
+                      }}<button
+                          type="button"
+                          class="relis-danger"
+                          data-action="remove-build-item"
+                          data-build-slot="{{slotKey}}"
+                          data-item-id="{{id}}"
+                          data-owner-control
+                          title="Retirer {{name}}"
+                        ><i
+                            class="fa-solid fa-trash-can"
+                            aria-hidden="true"
+                          ></i></button>{{/if}}</div>{{else}}<p
+                      class="relis-muted"
+                    >Aucune sélection.</p>{{/each}}
+                  {{#if diagnostic}}<p
+                      class="relis-diagnostic relis-diagnostic--warning"
+                    >{{diagnostic}}</p>{{/if}}
+                </section>
+              {{/each}}
+            </div>
+          </article>
           <article class="relis-card">
             <p class="relis-kicker">État actuel</p><h2>Progression</h2>
             <div class="relis-grid relis-grid--form">
@@ -729,6 +860,105 @@
         hidden
       >
         <div class="relis-content-grid">
+          <article class="relis-card relis-card--wide relis-build-panel">
+            <div class="relis-section-heading">
+              <div><p class="relis-kicker">Construction du PNJ</p><h2>Identité &
+                  progression</h2></div>
+            </div>
+            <p class="relis-scope-note">Ces sources sont présentées hors de
+              l’inventaire physique. Une copie historique reste conservée et
+              diagnostiquée jusqu’à son retrait explicite.</p>
+            <div class="relis-build-grid">
+              {{#each identityBuildSlots}}
+                <section class="relis-build-slot" data-build-slot="{{key}}">
+                  <div class="relis-section-heading"><h3>{{label}}</h3>{{#if
+                      @root.editable
+                    }}<button
+                        type="button"
+                        data-action="pick-build-item"
+                        data-build-slot="{{key}}"
+                        data-owner-control
+                        title="Ouvrir le compendium {{label}}"
+                      ><i
+                          class="fa-solid fa-magnifying-glass"
+                          aria-hidden="true"
+                        ></i></button>{{/if}}</div>
+                  {{#each items}}<div class="{{cssClass}}"><button
+                        type="button"
+                        class="relis-link"
+                        data-action="open-item"
+                        data-item-id="{{id}}"
+                      ><img src="{{img}}" alt="" />{{name}}</button>{{#if
+                        selected
+                      }}<span class="relis-state-chip">Référence active</span>{{else}}<span
+                          class="relis-state-chip relis-state-chip--warning"
+                        >Historique non rattaché</span>{{/if}}{{#if
+                        @root.editable
+                      }}<button
+                          type="button"
+                          class="relis-danger"
+                          data-action="remove-build-item"
+                          data-build-slot="{{slotKey}}"
+                          data-item-id="{{id}}"
+                          data-owner-control
+                          title="Retirer {{name}}"
+                        ><i
+                            class="fa-solid fa-trash-can"
+                            aria-hidden="true"
+                          ></i></button>{{/if}}</div>{{else}}<p
+                      class="relis-muted"
+                    >Aucune sélection.</p>{{/each}}
+                  {{#if diagnostic}}<p
+                      class="relis-diagnostic relis-diagnostic--warning"
+                    >{{diagnostic}}</p>{{/if}}
+                </section>
+              {{/each}}
+              {{#each progressionBuildSlots}}
+                <section class="relis-build-slot" data-build-slot="{{key}}">
+                  <div class="relis-section-heading"><h3>{{label}}</h3>{{#if
+                      @root.editable
+                    }}<button
+                        type="button"
+                        data-action="pick-build-item"
+                        data-build-slot="{{key}}"
+                        data-owner-control
+                        title="Ouvrir le compendium {{label}}"
+                      ><i
+                          class="fa-solid fa-magnifying-glass"
+                          aria-hidden="true"
+                        ></i></button>{{/if}}</div>
+                  {{#each items}}<div class="{{cssClass}}"><button
+                        type="button"
+                        class="relis-link"
+                        data-action="open-item"
+                        data-item-id="{{id}}"
+                      ><img src="{{img}}" alt="" />{{name}}</button>{{#if
+                        selected
+                      }}<span class="relis-state-chip">Référence active</span>{{else}}<span
+                          class="relis-state-chip relis-state-chip--warning"
+                        >Historique non rattaché</span>{{/if}}{{#if
+                        @root.editable
+                      }}<button
+                          type="button"
+                          class="relis-danger"
+                          data-action="remove-build-item"
+                          data-build-slot="{{slotKey}}"
+                          data-item-id="{{id}}"
+                          data-owner-control
+                          title="Retirer {{name}}"
+                        ><i
+                            class="fa-solid fa-trash-can"
+                            aria-hidden="true"
+                          ></i></button>{{/if}}</div>{{else}}<p
+                      class="relis-muted"
+                    >Aucune sélection.</p>{{/each}}
+                  {{#if diagnostic}}<p
+                      class="relis-diagnostic relis-diagnostic--warning"
+                    >{{diagnostic}}</p>{{/if}}
+                </section>
+              {{/each}}
+            </div>
+          </article>
           <article class="relis-card"><p class="relis-kicker">Projection
               autorisée</p><h2>Identité</h2>
             <div class="relis-grid relis-grid--form">

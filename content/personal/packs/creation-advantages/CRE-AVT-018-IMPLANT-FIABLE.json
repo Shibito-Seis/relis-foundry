@@ -12,6 +12,20 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+2",
+      "creationConstraints": {
+        "incompatible": [
+          {
+            "relisId": "CRE-HCP-023-BIONIQUE-INSTABLE",
+            "label": "Bionique instable",
+            "sameSubjectOnly": true
+          },
+          {
+            "relisId": "CRE-HCP-024-IMPLANT-DEFECTUEUX",
+            "label": "Implant défectueux",
+            "sameSubjectOnly": true
+          }
+        ]
+      },
       "effect": "Le personnage possède un implant ou une prothèse stable. Il compense une fonction perdue ou donne +2 à un usage précis validé : vision augmentée, interface, bras renforcé, stabilisateur neural, etc."
     }
   },
