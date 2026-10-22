@@ -493,6 +493,7 @@ for (const row of ancestryRows) {
         energyProfiles,
         energySelectionRequired: energyProfiles.length > 1,
         energyComponentsRemainSeparate: true,
+        bodyNature: name === "IAA" ? "synthetic" : "biological",
         ...(isDemiBeastkin
           ? {
               parentAncestry: parentName,
@@ -618,6 +619,67 @@ for (const [header, kind] of originKinds) {
 
 const assets = section("## 8. Atouts", "## 9. Voies");
 const assetTables = parseTables(assets.lines);
+const creationChoicesByName = {
+  "Prodige énergétique": [
+    {
+      id: "energy",
+      label: "Énergie maîtrisée",
+      minimum: 1,
+      maximum: 1,
+      options: ["Mana", "Prana", "Flux"],
+    },
+  ],
+  "Corps adapté": [
+    {
+      id: "environment",
+      label: "Environnement d’adaptation",
+      minimum: 1,
+      maximum: 1,
+      options: [
+        "Froid",
+        "Chaleur",
+        "Faible oxygène",
+        "Gravité forte",
+        "Gravité faible",
+        "Toxines légères",
+        "Radiation faible",
+      ],
+    },
+  ],
+  "Immunité rare": [
+    {
+      id: "immunity",
+      label: "Catégorie d’immunité",
+      minimum: 1,
+      maximum: 1,
+      options: [
+        "Toxine",
+        "Maladie",
+        "Parasite",
+        "Radiation légère",
+        "Contaminant alimentaire",
+        "Sédatif",
+      ],
+    },
+  ],
+  "Éducation d’élite": [
+    {
+      id: "domains",
+      label: "Domaines de formation",
+      minimum: 2,
+      maximum: 2,
+      options: [
+        "Culture",
+        "Sciences",
+        "Commerce",
+        "Commandement",
+        "Diplomatie",
+        "Ingénierie",
+        "Techno-magie",
+      ],
+    },
+  ],
+};
 for (const [header, type, code] of [
   ["Atout", "advantage", "AVT"],
   ["Handicap", "drawback", "HCP"],
@@ -637,6 +699,7 @@ for (const [header, type, code] of [
           sourceSection: "8",
           value: row[1],
           effect: row[2],
+          creationChoices: creationChoicesByName[row[0]] ?? [],
         },
       ),
     });
@@ -670,6 +733,7 @@ postNames.forEach((name, index) => {
     tags: ["creation", "poste"],
     system: commonSystem(blockHtml(detail?.lines ?? []), {
       kind: "post",
+      postTier: index < 4 ? "primary" : "secondary",
       sourceSection: detail?.heading ?? "10",
       capabilities: (capacityTable?.rows ?? []).map((row) => ({
         name: row[0],

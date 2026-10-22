@@ -63,7 +63,8 @@
         "state": "resolved",
         "labelSnapshot": "Beastkin Lézard",
         "missingPolicy": "diagnose"
-      }
+      },
+      "bodyNature": "biological"
     }
   },
   "folder": ""

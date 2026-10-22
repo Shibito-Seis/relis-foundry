@@ -37,7 +37,8 @@
           "phase": "[Exploration / Social]",
           "effect": "Rappelle une procédure, anecdote, contact mineur ou expérience indirecte utile. Donne une piste, pas une solution complète."
         }
-      ]
+      ],
+      "postTier": "secondary"
     }
   },
   "folder": ""

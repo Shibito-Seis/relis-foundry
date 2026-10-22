@@ -63,7 +63,8 @@
         "state": "resolved",
         "labelSnapshot": "Beastkin Félin",
         "missingPolicy": "diagnose"
-      }
+      },
+      "bodyNature": "biological"
     }
   },
   "folder": ""

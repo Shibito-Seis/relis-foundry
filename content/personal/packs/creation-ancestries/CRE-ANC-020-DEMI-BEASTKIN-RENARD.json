@@ -63,7 +63,8 @@
         "state": "resolved",
         "labelSnapshot": "Beastkin Renard",
         "missingPolicy": "diagnose"
-      }
+      },
+      "bodyNature": "biological"
     }
   },
   "folder": ""

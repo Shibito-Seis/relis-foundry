@@ -36,7 +36,8 @@
           "label": "Précepte de l’Humanité",
           "selectedValue": -1
         }
-      ]
+      ],
+      "bodyNature": "biological"
     }
   },
   "folder": ""

@@ -138,4 +138,39 @@ describe("construction manuelle PF2e-like 10-D3", () => {
     expect(service).toContain('browser.className = "relis-catalog-browser"');
     expect(service).not.toMatch(/root\.className\s*=/u);
   });
+
+  it("verrouille les catalogues lisibles, filtrables et réellement défilants", () => {
+    const service = fs.readFileSync("src/services/character-build.ts", "utf8");
+    const style = fs.readFileSync("styles/relis.css", "utf8");
+    expect(service).toContain("openCatalogSelectionDocument");
+    expect(service).toContain("Valider la sélection");
+    expect(service).toContain("normalizeCatalogSearch");
+    expect(service).toContain("Sélectionner");
+    expect(service).toContain("Lire");
+    expect(style).toMatch(
+      /\.relis-catalog-browser__entry\[hidden\]\s*\{\s*display:\s*none/u,
+    );
+    expect(style).toMatch(
+      /\.relis-catalog-browser__list[\s\S]*?overflow-y:\s*auto/u,
+    );
+  });
+
+  it("impose les sélecteurs Foundry, les plafonds de choix et le nettoyage sûr", () => {
+    const assistant = fs.readFileSync(
+      "src/ui/character-creation-assistant.ts",
+      "utf8",
+    );
+    const template = fs.readFileSync(
+      "templates/apps/character-creation.hbs",
+      "utf8",
+    );
+    const service = fs.readFileSync("src/services/character-build.ts", "utf8");
+    expect(assistant).toContain("FilePicker.implementation");
+    expect(assistant).toContain("input.dataset.maxSelections");
+    expect(template).toContain('data-max-selections="4"');
+    expect(template).toContain('data-picker="equipment"');
+    expect(template).not.toContain('placeholder="Chemin Foundry facultatif"');
+    expect(service).toMatch(/let actor: Actor \| null = null/u);
+    expect(service).toMatch(/if \(actor\) await actor\.delete\(\)/u);
+  });
 });

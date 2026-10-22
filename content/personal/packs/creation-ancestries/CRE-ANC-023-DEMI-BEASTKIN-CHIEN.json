@@ -63,7 +63,8 @@
         "state": "resolved",
         "labelSnapshot": "Beastkin Chien",
         "missingPolicy": "diagnose"
-      }
+      },
+      "bodyNature": "biological"
     }
   },
   "folder": ""

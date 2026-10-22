@@ -12,7 +12,23 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+2",
-      "effect": "Choisir une catégorie précise : toxine, maladie, parasite, radiation légère, contaminant alimentaire, sédatif. Immunité aux formes mineures ; +2 contre les formes graves."
+      "effect": "Choisir une catégorie précise : toxine, maladie, parasite, radiation légère, contaminant alimentaire, sédatif. Immunité aux formes mineures ; +2 contre les formes graves.",
+      "creationChoices": [
+        {
+          "id": "immunity",
+          "label": "Catégorie d’immunité",
+          "minimum": 1,
+          "maximum": 1,
+          "options": [
+            "Toxine",
+            "Maladie",
+            "Parasite",
+            "Radiation légère",
+            "Contaminant alimentaire",
+            "Sédatif"
+          ]
+        }
+      ]
     }
   },
   "folder": ""

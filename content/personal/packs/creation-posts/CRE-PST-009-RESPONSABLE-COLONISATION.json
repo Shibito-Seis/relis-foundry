@@ -37,7 +37,8 @@
           "phase": "[Temps long / Exploration]",
           "effect": "Lance un test agricole ou biologique : graines, sol, eau, microfaune, compatibilité alimentaire. Permet de détecter potentiel ou danger avant exploitation à grande échelle."
         }
-      ]
+      ],
+      "postTier": "secondary"
     }
   },
   "folder": ""

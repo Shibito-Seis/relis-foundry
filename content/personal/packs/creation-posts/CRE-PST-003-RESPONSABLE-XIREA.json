@@ -37,7 +37,8 @@
           "phase": "[Crise de vaisseau]",
           "effect": "Force une demande en priorité haute auprès de Xirea : calcul, fermeture de zone, alerte, déploiement de drone, verrouillage, diagnostic, redirection d’énergie ou assistance d’urgence. Xirea peut refuser seulement si un protocole supérieur, un secret ou une contradiction majeure l’exige."
         }
-      ]
+      ],
+      "postTier": "primary"
     }
   },
   "folder": ""

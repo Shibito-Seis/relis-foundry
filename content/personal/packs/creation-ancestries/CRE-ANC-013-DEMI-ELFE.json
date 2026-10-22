@@ -36,7 +36,8 @@
         }
       ],
       "energySelectionRequired": true,
-      "energyComponentsRemainSeparate": true
+      "energyComponentsRemainSeparate": true,
+      "bodyNature": "biological"
     }
   },
   "folder": ""

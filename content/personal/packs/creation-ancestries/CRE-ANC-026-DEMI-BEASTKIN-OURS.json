@@ -63,7 +63,8 @@
         "state": "resolved",
         "labelSnapshot": "Beastkin Ours",
         "missingPolicy": "diagnose"
-      }
+      },
+      "bodyNature": "biological"
     }
   },
   "folder": ""

@@ -70,22 +70,23 @@ function completeDraft() {
     "intelligence",
     "willpower",
   ];
-  draft.skills.qualified = [
-    "shooting",
-    "composure",
-    "stealth",
-    "investigation",
-    "medicine",
-    "science",
-    "engineering",
-    "computing",
-  ];
+  draft.skills.profileChoices = ["medicine", "science"];
+  draft.skills.pathChoices = ["stealth", "investigation"];
+  draft.skills.freeChoices = ["engineering", "computing"];
   draft.assignments.primaryPost = selection(
-    "Officier sécurité",
+    "Commandant",
     "post",
-    "CRE-PST-TEST",
-    {},
+    "CRE-PST-001-COMMANDANT",
+    { postTier: "primary" },
   );
+  draft.assignments.secondaryPosts = [
+    selection(
+      "Responsable Sécurité",
+      "post",
+      "CRE-PST-006-RESPONSABLE-SECURITE",
+      { postTier: "secondary" },
+    ),
+  ];
   return draft;
 }
 
@@ -96,9 +97,9 @@ describe("assistant canonique 10-D3", () => {
       "identity",
       "body",
       "profile",
+      "path",
       "attributes",
       "skills",
-      "path",
       "talents",
       "resources",
       "appearance",
@@ -189,7 +190,7 @@ describe("assistant canonique 10-D3", () => {
     draft.profile.advantageAttributeChoices["CRE-AVT-001-GENIE"] = [
       "technology",
     ];
-    draft.skills.qualified.push("athletics", "endurance");
+    draft.skills.freeChoices.push("athletics", "endurance");
     let result = deriveCharacterCreation(draft);
     expect(result.attributes.technology).toBe(1);
     expect(result.requiredQualifiedSkills).toBe(10);
@@ -254,6 +255,60 @@ describe("assistant canonique 10-D3", () => {
     expect(secondarySpecializationCount("duo")).toBe(2);
     expect(secondarySpecializationCount("trio")).toBe(3);
     expect(secondarySpecializationCount("quartet")).toBe(4);
+  });
+
+  it("sépare strictement les quatre Postes principaux des sept secondaires", () => {
+    const draft = completeDraft();
+    draft.assignments.primaryPost!.catalog.postTier = "secondary";
+    draft.assignments.secondaryPosts[0]!.catalog.postTier = "primary";
+    const errors = deriveCharacterCreation(draft).diagnostics.map(
+      ({ message }) => message,
+    );
+    expect(errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining("quatre Postes principaux"),
+        expect.stringContaining("Poste secondaire"),
+      ]),
+    );
+  });
+
+  it("exige les choix structurés des Atouts sans champ libre substitutif", () => {
+    const draft = completeDraft();
+    draft.profile.advantages.push(
+      selection(
+        "Prodige énergétique",
+        "advantage",
+        "CRE-AVT-010-PRODIGE-ENERGETIQUE",
+        {
+          value: "+2",
+          creationChoices: [
+            {
+              id: "energy",
+              label: "Énergie maîtrisée",
+              minimum: 1,
+              maximum: 1,
+              options: ["Mana", "Prana", "Flux"],
+            },
+          ],
+        },
+      ),
+    );
+    draft.profile.drawbacks.push(
+      selection("Dette", "drawback", "CRE-HCP-006-DETTE", { value: "-2" }),
+    );
+    expect(
+      deriveCharacterCreation(draft).diagnostics.some(({ message }) =>
+        message.includes("Énergie maîtrisée"),
+      ),
+    ).toBe(true);
+    draft.profile.selectionChoices["CRE-AVT-010-PRODIGE-ENERGETIQUE:energy"] = [
+      "Prana",
+    ];
+    expect(
+      deriveCharacterCreation(draft).diagnostics.some(({ message }) =>
+        message.includes("Énergie maîtrisée"),
+      ),
+    ).toBe(false);
   });
 
   it("reste une création de niveau 1 et consomme les contraintes des catalogues", () => {

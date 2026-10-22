@@ -15,7 +15,11 @@
             >
               <span>{{number}}</span>
               <b>{{label}}</b>
-              <small>{{stateLabel}}</small>
+              <i
+                class="{{stateIcon}}"
+                title="{{stateLabel}}"
+                aria-label="{{stateLabel}}"
+              ></i>
             </button>
           </li>
         {{/each}}
@@ -106,8 +110,9 @@
             data-draft-path="identity.apparentAge"
           /></label>
       </div>
-      <label>Souvenir marquant<textarea
-          rows="5"
+      <label class="relis-creation-textarea">Souvenir marquant<textarea
+          rows="2"
+          data-auto-grow
           data-draft-path="identity.memorableMemory"
         >{{draft.identity.memorableMemory}}</textarea></label>
       <p class="relis-scope-note">Ces champs identitaires sont volontairement
@@ -117,12 +122,9 @@
     {{#if step_body}}
       <p class="relis-kicker">Étape 3</p><h2>Corps & Ascendance</h2>
       <div class="relis-grid relis-grid--form">
-        <label>Nature<select data-draft-path="body.nature">{{selectOptions
-              natureOptions
-              selected=draft.body.nature
-              valueAttr="key"
-              labelAttr="label"
-            }}</select></label>
+        <div class="relis-derived-field"><span>Nature corporelle</span><strong
+          >{{bodyNatureLabel}}</strong><small>Déduite de l’Ascendance ; les
+            transformations corporelles seront gérées par leurs règles.</small></div>
         <label>Gabarit<select data-draft-path="body.size">{{selectOptions
               sizeOptions
               selected=draft.body.size
@@ -163,7 +165,9 @@
                   type="checkbox"
                   value="{{key}}"
                   data-draft-array="body.ancestryAttributeChoices"
+                  data-max-selections="{{ancestryMaximum}}"
                   {{checked ancestrySelected}}
+                  data-selection-disabled="{{ancestryDisabled}}"
                 />{{label}}</label>{{/if}}{{/each}}
         </div>
         {{#if energyProfiles.length}}
@@ -195,6 +199,11 @@
           Choisir</button>
         {{#if draft.profile.profile}}<button
             type="button"
+            data-assistant-action="open-selection"
+            data-selection-uuid="{{draft.profile.profile.uuid}}"
+          ><i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            Lire</button><button
+            type="button"
             class="relis-danger"
             data-assistant-action="clear-selection"
             data-selection-path="profile.profile"
@@ -204,6 +213,7 @@
             ></i></button>{{/if}}
       </article>
       {{#if draft.profile.profile}}
+        <details class="relis-selection-description"><summary>Résumé du Profil</summary>{{{profileSelection.description}}}</details>
         <div class="relis-choice-grid">
           <label><input
               type="radio"
@@ -239,6 +249,17 @@
                   valueAttr="key"
                   labelAttr="label"
                 }}</select></label>{{/if}}{{/if}}
+        <h3>Deux compétences de Profil ·
+          {{draft.skills.profileChoices.length}}
+          / 2</h3>
+        <div class="relis-choice-grid">{{#each profileSkillRows}}<label><input
+                type="checkbox"
+                value="{{key}}"
+                data-draft-array="skills.profileChoices"
+                data-max-selections="2"
+                {{checked selected}}
+                data-selection-disabled="{{disabled}}"
+              />{{label}}</label>{{/each}}</div>
       {{/if}}
       <article class="relis-creation-selection">
         <div><span>Origine</span><strong
@@ -251,6 +272,11 @@
           Choisir</button>
         {{#if draft.profile.origin}}<button
             type="button"
+            data-assistant-action="open-selection"
+            data-selection-uuid="{{draft.profile.origin.uuid}}"
+          ><i class="fa-solid fa-book-open" aria-hidden="true"></i>
+            Lire</button><button
+            type="button"
             class="relis-danger"
             data-assistant-action="clear-selection"
             data-selection-path="profile.origin"
@@ -259,47 +285,97 @@
               aria-hidden="true"
             ></i></button>{{/if}}
       </article>
+      {{#if draft.profile.origin}}<details
+          class="relis-selection-description"
+        ><summary>Résumé de l’Origine</summary>{{{originSelection.description}}}</details>{{/if}}
       <div class="relis-creation-columns">
         <section><h3>Atouts</h3><button
             type="button"
             data-assistant-action="pick"
             data-picker="advantage"
-          ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>{{#each
-            draft.profile.advantages
-          }}<div class="relis-creation-token"><span>{{name}}
-                ·
-                {{catalog.selectedValue}}</span><button
-                type="button"
-                data-assistant-action="remove-selection"
-                data-selection-path="profile.advantages"
-                data-relis-id="{{relisId}}"
-              ><i
-                  class="fa-solid fa-trash-can"
-                ></i></button></div>{{/each}}</section>
+            data-selection-disabled="{{advantageLimitReached}}"
+          ><i class="fa-solid fa-magnifying-glass"></i>
+            Ajouter</button>{{#each advantageRows}}<article
+              class="relis-creation-choice-card"
+            ><header><strong>{{name}}
+                  ·
+                  {{catalog.selectedValue}}</strong><button
+                  type="button"
+                  data-assistant-action="open-selection"
+                  data-selection-uuid="{{uuid}}"
+                ><i class="fa-solid fa-book-open"></i> Lire</button><button
+                  type="button"
+                  data-assistant-action="remove-selection"
+                  data-selection-path="profile.advantages"
+                  data-relis-id="{{relisId}}"
+                ><i class="fa-solid fa-trash-can"></i></button></header><p
+              >{{excerpt}}</p>{{#each creationChoices}}<fieldset><legend
+                  >{{label}}
+                    ·
+                    {{minimum}}{{#unless minimum}}0{{/unless}}{{#if maximum}}
+                      à
+                      {{maximum}}{{/if}}</legend><div
+                    class="relis-choice-grid"
+                  >{{#each options}}<label><input
+                          type="checkbox"
+                          value="{{value}}"
+                          data-draft-array="{{dataPath}}"
+                          data-max-selections="{{maximum}}"
+                          {{checked selected}}
+                          data-selection-disabled="{{disabled}}"
+                        />{{value}}</label>{{/each}}</div></fieldset>{{/each}}<label
+                class="relis-creation-textarea"
+              >Précisions liées à cet Atout<textarea
+                  rows="2"
+                  data-auto-grow
+                  data-draft-path="{{detailPath}}"
+                >{{details}}</textarea></label></article>{{/each}}{{#each
+            advantageAttributeRows
+          }}<h4>{{name}} · {{expected}} augmentation(s) d’Attribut</h4><div
+              class="relis-choice-grid"
+            >{{#each choices}}<label><input
+                    type="{{inputType}}"
+                    name="{{radioName}}"
+                    value="{{key}}"
+                    data-draft-array="{{dataPath}}"
+                    data-max-selections="{{maxSelections}}"
+                    {{checked selected}}
+                  />{{label}}</label>{{/each}}</div>{{/each}}</section>
         <section><h3>Handicaps</h3><button
             type="button"
             data-assistant-action="pick"
             data-picker="drawback"
-          ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>{{#each
-            draft.profile.drawbacks
-          }}<div class="relis-creation-token"><span>{{name}}
-                ·
-                {{catalog.selectedValue}}{{#if catalog.creationAutomatic}}
-                  · Automatique{{/if}}</span>{{#unless
-                catalog.creationAutomatic
-              }}<button
+          ><i class="fa-solid fa-magnifying-glass"></i>
+            Ajouter</button>{{#each drawbackRows}}<article
+              class="relis-creation-choice-card"
+            ><header><strong>{{name}}
+                  ·
+                  {{catalog.selectedValue}}{{#if catalog.creationAutomatic}}
+                    · Automatique{{/if}}</strong><button
                   type="button"
-                  data-assistant-action="remove-selection"
-                  data-selection-path="profile.drawbacks"
-                  data-relis-id="{{relisId}}"
-                ><i
-                    class="fa-solid fa-trash-can"
-                  ></i></button>{{/unless}}</div>{{/each}}</section>
+                  data-assistant-action="open-selection"
+                  data-selection-uuid="{{uuid}}"
+                ><i class="fa-solid fa-book-open"></i> Lire</button>{{#unless
+                  catalog.creationAutomatic
+                }}<button
+                    type="button"
+                    data-assistant-action="remove-selection"
+                    data-selection-path="profile.drawbacks"
+                    data-relis-id="{{relisId}}"
+                  ><i
+                      class="fa-solid fa-trash-can"
+                    ></i></button>{{/unless}}</header><p>{{excerpt}}</p><label
+                class="relis-creation-textarea"
+              >Précisions liées à ce Handicap<textarea
+                  rows="2"
+                  data-auto-grow
+                  data-draft-path="{{detailPath}}"
+                >{{details}}</textarea></label></article>{{/each}}</section>
       </div>
     {{/if}}
 
     {{#if step_attributes}}
-      <p class="relis-kicker">Étape 5</p><h2>Attributs</h2>
+      <p class="relis-kicker">Étape 6</p><h2>Attributs</h2>
       <h3>Attribut clef de Voie</h3>
       {{#if draft.path.path}}<div class="relis-choice-grid">{{#each
             attributes
@@ -311,52 +387,57 @@
                   {{checked pathSelected}}
                 />{{label}}</label>{{/if}}{{/each}}</div>{{else}}<p
           class="relis-warning"
-        >Choisissez d’abord la Voie à l’étape 7.</p>{{/if}}
+        >Choisissez d’abord la Voie à l’étape 5.</p>{{/if}}
       <h3>Quatre augmentations libres distinctes</h3>
       <div class="relis-choice-grid">{{#each attributes}}<label><input
               type="checkbox"
               value="{{key}}"
               data-draft-array="attributes.freeIncreases"
+              data-max-selections="4"
               {{checked freeSelected}}
+              data-selection-disabled="{{freeDisabled}}"
             />{{label}}
             <b>{{value}}</b></label>{{/each}}</div>
-      {{#each advantageAttributeRows}}
-        <h3>{{name}} · {{expected}} augmentation(s) d’Attribut</h3>
-        <div class="relis-choice-grid">{{#each choices}}<label><input
-                type="{{inputType}}"
-                name="{{radioName}}"
-                value="{{key}}"
-                data-draft-array="{{dataPath}}"
-                {{checked selected}}
-              />{{label}}</label>{{/each}}</div>
-      {{/each}}
     {{/if}}
 
     {{#if step_skills}}
-      <p class="relis-kicker">Étape 6</p><h2>Compétences</h2>
+      <p class="relis-kicker">Étape 7</p><h2>Compétences</h2>
       <p><strong>{{selectedQualifiedSkills}}</strong>
         /
         {{requiredQualifiedSkills}}
-        compétences Qualifiées. Les compétences obligatoires de la Voie sont
-        signalées.</p>
-      <div class="relis-skill-choice-grid">{{#each skillRows}}<div><label><input
-                type="checkbox"
-                value="{{key}}"
-                data-draft-array="skills.qualified"
-                {{checked selected}}
-              />{{label}}{{#if required}}
-                <b>Obligatoire</b>{{/if}}</label><label
+        compétences Qualifiées. Les choix du Profil et de la Voie sont rappelés
+        ci-dessous et verrouillés.</p>
+      <h3>Compétences déjà accordées</h3>
+      <div class="relis-skill-choice-grid">{{#each qualifiedSkillRows}}<div
+          ><span><b>{{label}}</b><small>{{source}}</small></span><label
               class="relis-favorite"
+              title="Raccourci visuel sur la fiche ; aucun rang ni bonus supplémentaire."
             ><input
                 type="checkbox"
                 value="{{key}}"
                 data-draft-array="skills.favorites"
                 {{checked favorite}}
-              />★ Favorite</label></div>{{/each}}</div>
+              />★ Favori de fiche</label></div>{{/each}}</div>
+      <h3>Choix libres ·
+        {{draft.skills.freeChoices.length}}
+        /
+        {{freeExpected}}</h3>
+      <div class="relis-skill-choice-grid">{{#each freeSkillRows}}<div><label
+            ><input
+                type="checkbox"
+                value="{{key}}"
+                data-draft-array="skills.freeChoices"
+                data-max-selections="{{maximum}}"
+                {{checked selected}}
+                data-selection-disabled="{{disabled}}"
+              />{{label}}</label></div>{{/each}}</div>
+      <p class="relis-scope-note"><strong>Favori de fiche</strong>
+        est seulement un raccourci visuel pour retrouver une compétence ; il ne
+        donne ni rang, ni bonus, ni nouvelle qualification.</p>
     {{/if}}
 
     {{#if step_path}}
-      <p class="relis-kicker">Étape 7</p><h2>Voie & Spécialisations</h2>
+      <p class="relis-kicker">Étape 5</p><h2>Voie & Spécialisations</h2>
       <article class="relis-creation-selection"><div><span>Voie principale</span><strong
           >{{selectionSummary.path}}</strong></div><button
           type="button"
@@ -366,10 +447,38 @@
           draft.path.path
         }}<button
             type="button"
+            data-assistant-action="open-selection"
+            data-selection-uuid="{{draft.path.path.uuid}}"
+          ><i class="fa-solid fa-book-open"></i> Lire</button><button
+            type="button"
             class="relis-danger"
             data-assistant-action="clear-selection"
             data-selection-path="path.path"
           ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+      {{#if draft.path.path}}<details
+          class="relis-selection-description"
+        ><summary>Résumé de la Voie</summary>{{{pathSelection.description}}}</details><h3
+        >Compétences obligatoires de Voie</h3><div
+          class="relis-choice-grid"
+        >{{#each pathRequiredSkillRows}}<div class="relis-locked-choice"><i
+                class="fa-solid fa-lock"
+              ></i>
+              {{label}}{{#if alreadyGranted}}
+                · déjà accordée par le Profil, donc remplacée par un choix de
+                Voie{{/if}}</div>{{/each}}</div><h3>Compétences choisies dans la
+          Voie ·
+          {{draft.skills.pathChoices.length}}
+          /
+          {{expectedPathChoices}}</h3><div class="relis-choice-grid">{{#each
+            pathSkillRows
+          }}<label><input
+                type="checkbox"
+                value="{{key}}"
+                data-draft-array="skills.pathChoices"
+                data-max-selections="{{maximum}}"
+                {{checked selected}}
+                data-selection-disabled="{{disabled}}"
+              />{{label}}</label>{{/each}}</div>{{/if}}
       <article class="relis-creation-selection"><div><span>Spécialisation
             Principale</span><strong
           >{{selectionSummary.primarySpecialization}}</strong></div>{{#if
@@ -389,10 +498,17 @@
           draft.path.primarySpecialization
         }}<button
             type="button"
+            data-assistant-action="open-selection"
+            data-selection-uuid="{{draft.path.primarySpecialization.uuid}}"
+          ><i class="fa-solid fa-book-open"></i> Lire</button><button
+            type="button"
             class="relis-danger"
             data-assistant-action="clear-selection"
             data-selection-path="path.primarySpecialization"
           ><i class="fa-solid fa-trash-can"></i></button>{{/if}}</article>
+      {{#if draft.path.primarySpecialization}}<details
+          class="relis-selection-description"
+        ><summary>Résumé de la Spécialisation principale</summary>{{{primarySpecializationSelection.description}}}</details>{{/if}}
       <label>Schéma secondaire<select
           data-draft-path="path.secondaryScheme"
         >{{selectOptions
@@ -409,23 +525,31 @@
         type="button"
         data-assistant-action="pick"
         data-picker="secondarySpecialization"
+        data-selection-disabled="{{secondarySpecializationLimitReached}}"
       ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>
-      {{#each draft.path.secondarySpecializations}}<div
-          class="relis-creation-token"
-        ><span>{{name}} · Rang 1</span><button
-            type="button"
-            data-assistant-action="remove-selection"
-            data-selection-path="path.secondarySpecializations"
-            data-relis-id="{{relisId}}"
-          ><i class="fa-solid fa-trash-can"></i></button></div>{{/each}}
+      {{#each secondarySpecializationRows}}<article
+          class="relis-creation-choice-card"
+        ><header><strong>{{name}} · Rang 1</strong><button
+              type="button"
+              data-assistant-action="open-selection"
+              data-selection-uuid="{{uuid}}"
+            ><i class="fa-solid fa-book-open"></i> Lire</button><button
+              type="button"
+              data-assistant-action="remove-selection"
+              data-selection-path="path.secondarySpecializations"
+              data-relis-id="{{relisId}}"
+            ><i class="fa-solid fa-trash-can"></i></button></header><p
+          >{{excerpt}}</p></article>{{/each}}
       <p class="relis-scope-note">Les emplacements non remplis restent en
         réserve ; le schéma, lui, est verrouillé à la création.</p>
     {{/if}}
 
     {{#if step_talents}}
       <p class="relis-kicker">Étape 8</p><h2>Talents & Capacités</h2>
-      <p>Les choix sont filtrés sur le niveau 1 et leurs sources. Ils peuvent
-        rester en attente.</p>
+      <p>Chaque emplacement reçoit un seul Talent initial de niveau 1 issu de sa
+        source. « Fondation » et « Initiation » sont des choix alternatifs du
+        même emplacement lorsqu’ils appartiennent à la même branche : lire leur
+        fiche permet de choisir l’effet voulu.</p>
       <div class="relis-creation-talent-grid">
         <article><h3>Talent d’Ascendance</h3><strong
           >{{draft.talents.ancestryTalent.name}}</strong><button
@@ -477,6 +601,16 @@
             data-selection-path="talents.secondaryTalents"
             data-relis-id="{{relisId}}"
           ><i class="fa-solid fa-trash-can"></i></button></div>{{/each}}
+      {{#if talentRows.length}}<h3>Choix retenus et descriptions</h3>{{#each
+          talentRows
+        }}<article class="relis-creation-choice-card"><header><strong
+              >{{name}}</strong><button
+                type="button"
+                data-assistant-action="open-selection"
+                data-selection-uuid="{{uuid}}"
+              ><i class="fa-solid fa-book-open"></i>
+                Lire la fiche</button></header><p
+            >{{excerpt}}</p></article>{{/each}}{{/if}}
     {{/if}}
 
     {{#if step_resources}}
@@ -502,8 +636,35 @@
         />Conserver les
         {{initialCredits}}
         crédits initiaux comme choix en attente</label>
-      <label><input type="checkbox" checked disabled />Les dotations et achats
-        restent des choix en attente tant qu’aucun paquet complet n’est confirmé</label>
+      <h3>Indications canoniques de dotation</h3>
+      {{#each equipmentGuidance}}<p
+          class="relis-scope-note"
+        >{{this}}</p>{{else}}<p class="relis-scope-note">Aucune indication de
+          dotation n’est structurée par les choix actuels.</p>{{/each}}
+      <div class="relis-inline-actions"><button
+          type="button"
+          data-assistant-action="pick"
+          data-picker="equipment"
+        ><i class="fa-solid fa-magnifying-glass"></i>
+          Ajouter un objet réel</button><label><input
+            type="checkbox"
+            data-draft-path="resources.equipmentPending"
+            {{checked draft.resources.equipmentPending}}
+          />Conserver le reste de la dotation en attente</label></div>
+      {{#each initialEquipmentRows}}<article
+          class="relis-creation-choice-card"
+        ><header><strong>{{name}}</strong><button
+              type="button"
+              data-assistant-action="open-selection"
+              data-selection-uuid="{{uuid}}"
+            ><i class="fa-solid fa-book-open"></i> Lire</button><button
+              type="button"
+              class="relis-danger"
+              data-assistant-action="remove-selection"
+              data-selection-path="resources.initialEquipment"
+              data-relis-id="{{relisId}}"
+            ><i class="fa-solid fa-trash-can"></i></button></header><p
+          >{{excerpt}}</p></article>{{/each}}
       <p class="relis-scope-note">Aucun équipement absent du catalogue n’est
         inventé. Si les crédits ne restent pas en attente, leur quantité
         calculée est matérialisée avec le véritable Item Crédit.</p>
@@ -511,19 +672,49 @@
 
     {{#if step_appearance}}
       <p class="relis-kicker">Étape 10</p><h2>Apparence & Présentation</h2>
-      <div class="relis-grid relis-grid--form"><label>Portrait identitaire<input
-            type="text"
-            value="{{draft.appearance.actorImage}}"
-            data-draft-path="appearance.actorImage"
-            placeholder="Chemin Foundry facultatif"
-          /></label><label>Texture du Token<input
-            type="text"
-            value="{{draft.appearance.tokenImage}}"
-            data-draft-path="appearance.tokenImage"
-            placeholder="Chemin Foundry facultatif"
-          /></label></div>
-      <label>Description<textarea
-          rows="9"
+      <div class="relis-media-picker-grid"><article><span>Portrait identitaire</span>{{#if
+            draft.appearance.actorImage
+          }}<img
+              src="{{draft.appearance.actorImage}}"
+              alt="Aperçu du portrait"
+            />{{/if}}<code>{{draft.appearance.actorImage}}</code><div
+            class="relis-inline-actions"
+          ><button
+              type="button"
+              data-assistant-action="pick-image"
+              data-draft-path="appearance.actorImage"
+            ><i class="fa-solid fa-image"></i> Choisir</button>{{#if
+              draft.appearance.actorImage
+            }}<button
+                type="button"
+                class="relis-danger"
+                data-assistant-action="clear-image"
+                data-draft-path="appearance.actorImage"
+              ><i
+                  class="fa-solid fa-trash-can"
+                ></i></button>{{/if}}</div></article><article><span>Texture du
+            Token</span>{{#if draft.appearance.tokenImage}}<img
+              src="{{draft.appearance.tokenImage}}"
+              alt="Aperçu du Token"
+            />{{/if}}<code>{{draft.appearance.tokenImage}}</code><div
+            class="relis-inline-actions"
+          ><button
+              type="button"
+              data-assistant-action="pick-image"
+              data-draft-path="appearance.tokenImage"
+            ><i class="fa-solid fa-image"></i> Choisir</button>{{#if
+              draft.appearance.tokenImage
+            }}<button
+                type="button"
+                class="relis-danger"
+                data-assistant-action="clear-image"
+                data-draft-path="appearance.tokenImage"
+              ><i
+                  class="fa-solid fa-trash-can"
+                ></i></button>{{/if}}</div></article></div>
+      <label class="relis-creation-textarea">Description<textarea
+          rows="2"
+          data-auto-grow
           data-draft-path="appearance.description"
         >{{draft.appearance.description}}</textarea></label>
       <p class="relis-scope-note">La gestion complète des Présentations, Corps
@@ -541,6 +732,10 @@
           draft.assignments.primaryPost
         }}<button
             type="button"
+            data-assistant-action="open-selection"
+            data-selection-uuid="{{draft.assignments.primaryPost.uuid}}"
+          ><i class="fa-solid fa-book-open"></i> Lire</button><button
+            type="button"
             class="relis-danger"
             data-assistant-action="clear-selection"
             data-selection-path="assignments.primaryPost"
@@ -549,9 +744,14 @@
         type="button"
         data-assistant-action="pick"
         data-picker="secondaryPost"
+        data-selection-disabled="{{secondaryPostLimitReached}}"
       ><i class="fa-solid fa-magnifying-glass"></i> Ajouter</button>{{#each
         draft.assignments.secondaryPosts
       }}<div class="relis-creation-token"><span>{{name}}</span><button
+            type="button"
+            data-assistant-action="open-selection"
+            data-selection-uuid="{{uuid}}"
+          ><i class="fa-solid fa-book-open"></i> Lire</button><button
             type="button"
             data-assistant-action="remove-selection"
             data-selection-path="assignments.secondaryPosts"

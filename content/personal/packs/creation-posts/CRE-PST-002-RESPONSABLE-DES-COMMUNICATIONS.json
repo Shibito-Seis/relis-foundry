@@ -37,7 +37,8 @@
           "phase": "[Crise de vaisseau / Toutes phases]",
           "effect": "Diffuse une annonce claire à l’équipage, aux PNJ, aux survivants réveillés ou aux civils. Peut calmer une panique, organiser une évacuation, renforcer une consigne ou empêcher une rumeur dangereuse."
         }
-      ]
+      ],
+      "postTier": "primary"
     }
   },
   "folder": ""

@@ -37,7 +37,8 @@
           "phase": "[Combat normal / Exploration]",
           "effect": "Détecte un comportement biologique, physique, magique ou technologique anormal avant qu’il ne surprenne totalement le groupe. Sert surtout contre créatures, anomalies et environnements hostiles."
         }
-      ]
+      ],
+      "postTier": "secondary"
     }
   },
   "folder": ""

@@ -63,7 +63,8 @@
         "state": "resolved",
         "labelSnapshot": "Beastkin Souris",
         "missingPolicy": "diagnose"
-      }
+      },
+      "bodyNature": "biological"
     }
   },
   "folder": ""

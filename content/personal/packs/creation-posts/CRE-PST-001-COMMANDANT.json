@@ -37,7 +37,8 @@
           "phase": "[Exploration / Crise de vaisseau]",
           "effect": "Le Commandant déclare une priorité officielle : évacuation, réparation, défense, analyse, poursuite, fuite, quarantaine, exploration ou autre objectif critique. L’équipage, les systèmes de bord ou Xirea doivent traiter cette priorité comme l’objectif principal de bord, sauf opposition narrative majeure."
         }
-      ]
+      ],
+      "postTier": "primary"
     }
   },
   "folder": ""

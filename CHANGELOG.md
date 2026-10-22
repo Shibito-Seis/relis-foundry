@@ -1,5 +1,15 @@
 # Journal des versions
 
+## 0.9.1 — correctif de recette 10-D3
+
+- Rend les sélecteurs de compendium défilants, recherchables et lisibles avant sélection, avec boutons explicites par ligne.
+- Replace Voie & Spécialisations en étape 5, Attributs en étape 6 et Compétences en étape 7 ; les compétences obligatoires de Voie sont choisies et rappelées à la bonne étape.
+- Empêche directement de dépasser les plafonds d’Attributs, de compétences et de Spécialisations, au lieu d’attendre un diagnostic final.
+- Déduit la nature corporelle depuis l’Ascendance et sépare les quatre Postes principaux des sept Postes secondaires.
+- Structure les options d’Atouts qui imposent un choix, affiche les descriptions des éléments retenus et permet d’ajouter de vrais Items de dotation initiale.
+- Remplace les chemins d’image libres par le sélecteur Foundry, améliore les zones de texte et les états visuels des étapes, puis corrige le nettoyage d’une création d’Actor refusée.
+- Passe le contenu personnel à `1.4.1` et le paquet à `0.9.1`, conserve 5 100 Items et 26 Journaux, maintient le schéma Item 7 et ne crée aucune migration de monde. 10-D3 reste en recette jusqu’à validation explicite.
+
 ## 0.9.0 — 10-D3, création de personnage
 
 - Ajoute l’assistant de création reprenable en douze étapes, son résumé courant, ses diagnostics et sa confirmation finale idempotente sans Actor partiel.

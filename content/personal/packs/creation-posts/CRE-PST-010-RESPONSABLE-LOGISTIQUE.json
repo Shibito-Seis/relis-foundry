@@ -37,7 +37,8 @@
           "phase": "[Social / diplomatie]",
           "effect": "Identifie ce que le groupe peut offrir sans se mettre en danger : surplus, service, pièce, information, ressource secondaire. Utile pour commerce et négociation."
         }
-      ]
+      ],
+      "postTier": "secondary"
     }
   },
   "folder": ""

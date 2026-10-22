@@ -1,8 +1,8 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.9.0";
+var PACKAGE_VERSION = "0.9.1";
 var RULES_VERSION = "1.0.0";
-var CONTENT_VERSION = "1.4.0";
+var CONTENT_VERSION = "1.4.1";
 var ACTOR_TYPES = [
 	"character",
 	"npc",
@@ -1253,7 +1253,7 @@ function normalizeItemSystem(value, physical, idFactory = createRelisId) {
 			...meta,
 			schemaVersion: "7",
 			rulesVersion: text(meta.rulesVersion, "1.0.0") || "1.0.0",
-			contentVersion: text(meta.contentVersion, "1.4.0") || "1.4.0",
+			contentVersion: text(meta.contentVersion, "1.4.1") || "1.4.1",
 			relisId: text(meta.relisId) || createWorldItemId(idFactory),
 			sourceRef: normalizeReference(meta.sourceRef),
 			sourceVersion: text(meta.sourceVersion),
@@ -3957,16 +3957,16 @@ var CHARACTER_CREATION_STEPS = [
 		label: "Profil & Origine"
 	},
 	{
+		id: "path",
+		label: "Voie & Spécialisations"
+	},
+	{
 		id: "attributes",
 		label: "Attributs"
 	},
 	{
 		id: "skills",
 		label: "Compétences"
-	},
-	{
-		id: "path",
-		label: "Voie & Spécialisations"
 	},
 	{
 		id: "talents",
@@ -4075,6 +4075,8 @@ function createCharacterDraft(id, ownerId = "", now = Date.now()) {
 			profileAttributeChoices: [],
 			profilePenalty: "",
 			advantageAttributeChoices: {},
+			selectionChoices: {},
+			selectionDetails: {},
 			origin: null,
 			advantages: [],
 			drawbacks: []
@@ -4084,6 +4086,9 @@ function createCharacterDraft(id, ownerId = "", now = Date.now()) {
 			freeIncreases: []
 		},
 		skills: {
+			profileChoices: [],
+			pathChoices: [],
+			freeChoices: [],
 			qualified: [],
 			favorites: []
 		},
@@ -4102,7 +4107,8 @@ function createCharacterDraft(id, ownerId = "", now = Date.now()) {
 		resources: {
 			energyProfileId: "",
 			creditsPending: true,
-			equipmentPending: true
+			equipmentPending: true,
+			initialEquipment: []
 		},
 		appearance: {
 			actorImage: "",
@@ -4118,7 +4124,7 @@ function createCharacterDraft(id, ownerId = "", now = Date.now()) {
 function normalizeCharacterDraft(value, id, ownerId = "") {
 	const base = createCharacterDraft(id, ownerId);
 	if (!value || value.version !== 1) return base;
-	return {
+	const draft = {
 		...base,
 		...value,
 		id,
@@ -4167,6 +4173,49 @@ function normalizeCharacterDraft(value, id, ownerId = "") {
 			...value.assignments
 		}
 	};
+	migrateLegacySkillChoices(draft);
+	draft.skills.qualified = qualifiedSkillKeys(draft);
+	draft.skills.favorites = draft.skills.favorites.filter((key) => draft.skills.qualified.includes(key));
+	if (draft.body.ancestry) draft.body.nature = String(draft.body.ancestry.catalog.bodyNature ?? draft.body.nature);
+	return draft;
+}
+function pathSkillKeys(draft) {
+	const catalog = draft.path.path?.catalog ?? {};
+	return {
+		required: catalogChoiceLabels(catalog.requiredSkills).map(skillKey).filter((key) => Boolean(key)),
+		choices: catalogChoiceLabels(catalog.skillChoices).map(skillKey).filter((key) => Boolean(key)),
+		total: Math.max(0, Math.trunc(Number(catalog.qualifiedSkillTotal) || 0))
+	};
+}
+function profileSkillKeys(draft) {
+	return catalogChoiceLabels(draft.profile.profile?.catalog.skillChoices).map(skillKey).filter((key) => Boolean(key));
+}
+function migrateLegacySkillChoices(draft) {
+	if (draft.skills.profileChoices.length || draft.skills.pathChoices.length || draft.skills.freeChoices.length || !draft.skills.qualified.length) return;
+	const remaining = [...distinct(draft.skills.qualified)];
+	const profileAllowed = new Set(profileSkillKeys(draft));
+	draft.skills.profileChoices = remaining.filter((key) => profileAllowed.has(key)).slice(0, 2);
+	const profileSelected = new Set(draft.skills.profileChoices);
+	const path = pathSkillKeys(draft);
+	const pathAllowed = new Set(path.choices);
+	const newRequired = path.required.filter((key) => !profileSelected.has(key));
+	const expectedPathChoices = Math.max(0, path.total - newRequired.length);
+	draft.skills.pathChoices = remaining.filter((key) => pathAllowed.has(key) && !profileSelected.has(key) && !path.required.includes(key)).slice(0, expectedPathChoices);
+	const allocated = /* @__PURE__ */ new Set([
+		...draft.skills.profileChoices,
+		...path.required,
+		...draft.skills.pathChoices
+	]);
+	draft.skills.freeChoices = remaining.filter((key) => !allocated.has(key));
+}
+function qualifiedSkillKeys(draft) {
+	const path = pathSkillKeys(draft);
+	return distinct([
+		...draft.skills.profileChoices,
+		...path.required,
+		...draft.skills.pathChoices,
+		...draft.skills.freeChoices
+	]);
 }
 function secondarySpecializationCount(scheme) {
 	return scheme === "duo" ? 2 : scheme === "trio" ? 3 : 4;
@@ -4175,6 +4224,9 @@ function requiredQualifiedSkillCount(draft, intelligence) {
 	const pathTotal = Number(draft.path.path?.catalog.qualifiedSkillTotal);
 	const advantageSkills = draft.profile.advantages.reduce((total, advantage) => total + Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.qualifiedSkills) || 0)), 0);
 	return Number.isFinite(pathTotal) ? Math.max(0, pathTotal + 2 + Math.max(0, Math.trunc(intelligence)) + advantageSkills) : null;
+}
+function freeQualifiedSkillCount(draft, intelligence) {
+	return Math.max(0, Math.trunc(intelligence) + draft.profile.advantages.reduce((total, advantage) => total + Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.qualifiedSkills) || 0)), 0));
 }
 function advantageAttributeChanges(draft, diagnostics) {
 	const result = [];
@@ -4185,7 +4237,7 @@ function advantageAttributeChanges(draft, diagnostics) {
 		const choices = distinct(draft.profile.advantageAttributeChoices[advantage.relisId] ?? []);
 		if (choices.length !== expected) diagnostics.push({
 			level: "error",
-			step: "attributes",
+			step: "profile",
 			message: `${advantage.name} exige ${expected} augmentation${expected > 1 ? "s" : ""} d’Attribut libre${expected > 1 ? "s" : ""}.`
 		});
 		allChoices.push(...choices);
@@ -4193,7 +4245,7 @@ function advantageAttributeChanges(draft, diagnostics) {
 	}
 	if (distinct(allChoices).length !== allChoices.length) diagnostics.push({
 		level: "error",
-		step: "attributes",
+		step: "profile",
 		message: "Deux Atouts d’Attribut ne peuvent pas augmenter le même Attribut à la création."
 	});
 	return result;
@@ -4332,37 +4384,57 @@ function deriveCharacterCreation(draft) {
 		debt: 0,
 		unit: "points"
 	})) : [];
-	const qualified = distinct(draft.skills.qualified);
+	const profileOptions = profileSkillKeys(draft);
+	const profileChoices = distinct(draft.skills.profileChoices);
+	if (draft.profile.profile && (profileChoices.length !== 2 || profileChoices.some((key) => !profileOptions.includes(key)))) diagnostics.push({
+		level: "error",
+		step: "profile",
+		message: "Le Profil exige exactement deux compétences choisies dans sa liste."
+	});
+	const pathSkills = pathSkillKeys(draft);
+	const profileSet = new Set(profileChoices);
+	const newlyGrantedRequired = pathSkills.required.filter((key) => !profileSet.has(key));
+	const expectedPathChoices = Math.max(0, pathSkills.total - newlyGrantedRequired.length);
+	const pathChoices = distinct(draft.skills.pathChoices);
+	if (draft.path.path && (pathChoices.length !== expectedPathChoices || pathChoices.some((key) => !pathSkills.choices.includes(key) || profileSet.has(key) || pathSkills.required.includes(key)))) diagnostics.push({
+		level: "error",
+		step: "path",
+		message: `La Voie exige ${expectedPathChoices} compétence${expectedPathChoices > 1 ? "s" : ""} supplémentaire${expectedPathChoices > 1 ? "s" : ""} parmi sa liste, en plus de ses compétences obligatoires.`
+	});
+	const grantedBeforeFree = /* @__PURE__ */ new Set([
+		...profileChoices,
+		...pathSkills.required,
+		...pathChoices
+	]);
+	const freeExpected = freeQualifiedSkillCount(draft, attributes.intelligence);
+	const freeChoices = distinct(draft.skills.freeChoices);
+	if (freeChoices.length !== freeExpected || freeChoices.some((key) => grantedBeforeFree.has(key))) diagnostics.push({
+		level: "error",
+		step: "skills",
+		message: `Choisissez exactement ${freeExpected} compétence${freeExpected > 1 ? "s" : ""} Qualifiée${freeExpected > 1 ? "s" : ""} libre${freeExpected > 1 ? "s" : ""}, sans reprendre une compétence déjà accordée.`
+	});
+	const qualified = qualifiedSkillKeys(draft);
 	const required = requiredQualifiedSkillCount(draft, attributes.intelligence);
 	if (required !== null && qualified.length !== required) diagnostics.push({
 		level: "error",
 		step: "skills",
 		message: `La création exige ${required} compétences Qualifiées ; ${qualified.length} sont sélectionnées.`
 	});
-	const pathRequired = catalogChoiceLabels(draft.path.path?.catalog.requiredSkills).map(skillKey).filter((key) => Boolean(key));
-	if (pathRequired.some((key) => !qualified.includes(key))) diagnostics.push({
-		level: "error",
-		step: "skills",
-		message: "Les compétences obligatoires de la Voie doivent être Qualifiées."
-	});
-	const pathOptions = distinct([...pathRequired, ...catalogChoiceLabels(draft.path.path?.catalog.skillChoices).map(skillKey).filter((key) => Boolean(key))]);
-	const pathTotal = Number(draft.path.path?.catalog.qualifiedSkillTotal);
-	if (Number.isFinite(pathTotal) && qualified.filter((key) => pathOptions.includes(key)).length < pathTotal) diagnostics.push({
-		level: "error",
-		step: "skills",
-		message: `La Voie exige ${pathTotal} compétences choisies dans son propre catalogue.`
-	});
-	const profileOptions = catalogChoiceLabels(draft.profile.profile?.catalog.skillChoices).map(skillKey).filter((key) => Boolean(key));
-	if (draft.profile.profile && qualified.filter((key) => profileOptions.includes(key)).length < 2) diagnostics.push({
-		level: "error",
-		step: "skills",
-		message: "Le Profil exige deux compétences choisies dans sa liste."
-	});
 	const secondaryExpected = secondarySpecializationCount(draft.path.secondaryScheme);
 	if (draft.path.secondarySpecializations.length > secondaryExpected) diagnostics.push({
 		level: "error",
 		step: "path",
 		message: `Le schéma choisi autorise ${secondaryExpected} Spécialisations secondaires.`
+	});
+	if (draft.assignments.primaryPost && draft.assignments.primaryPost.catalog.postTier !== "primary") diagnostics.push({
+		level: "error",
+		step: "assignments",
+		message: "Le Poste principal choisi n’appartient pas aux quatre Postes principaux."
+	});
+	if (draft.assignments.secondaryPosts.length !== 1 || draft.assignments.secondaryPosts.some((post) => post.catalog.postTier !== "secondary")) diagnostics.push({
+		level: "error",
+		step: "assignments",
+		message: "La création exige exactement un Poste secondaire issu du catalogue secondaire."
 	});
 	const secondarySpecializationIds = draft.path.secondarySpecializations.map((entry) => entry.relisId);
 	if (distinct(secondarySpecializationIds).length !== secondarySpecializationIds.length || secondarySpecializationIds.includes(draft.path.primarySpecialization?.relisId ?? "")) diagnostics.push({
@@ -4436,11 +4508,39 @@ function deriveCharacterCreation(draft) {
 			step: "profile",
 			message: incompatible.sameSubjectOnly ? `${selection.name} ne peut viser le même sujet que ${String(incompatible.label ?? incompatible.relisId)} ; vérifiez que les éléments concernés sont distincts.` : `${selection.name} est incompatible avec ${String(incompatible.label ?? incompatible.relisId)}.`
 		});
+		for (const choice of selection.catalog.creationChoices ?? []) {
+			const key = `${selection.relisId}:${String(choice.id ?? "choice")}`;
+			const selected = distinct(draft.profile.selectionChoices[key] ?? []);
+			const options = new Set((choice.options ?? []).map(String));
+			const minimum = Math.max(0, Math.trunc(Number(choice.minimum) || 0));
+			const maximum = Math.max(minimum, Math.trunc(Number(choice.maximum) || minimum));
+			if (selected.length < minimum || selected.length > maximum || selected.some((value) => !options.has(value))) diagnostics.push({
+				level: "error",
+				step: "profile",
+				message: `${selection.name} exige ${minimum === maximum ? `${minimum}` : `${minimum} à ${maximum}`} choix valide${maximum > 1 ? "s" : ""} pour « ${String(choice.label ?? "Précision")} ».`
+			});
+		}
 	}
 	for (const automatic of draft.body.ancestry?.catalog.automaticDrawbacks ?? []) if (!selectedIds.has(String(automatic.relisId ?? ""))) diagnostics.push({
 		level: "error",
 		step: "profile",
 		message: `${draft.body.ancestry?.name} reçoit automatiquement ${String(automatic.label ?? automatic.relisId)}.`
+	});
+	const validMedia = (path) => !path || /\.(?:avif|bmp|gif|jpe?g|png|svg|webp)$/iu.test(path);
+	if (!validMedia(draft.appearance.actorImage)) diagnostics.push({
+		level: "error",
+		step: "appearance",
+		message: "Le portrait doit être choisi avec le sélecteur Foundry et utiliser un format d’image reconnu."
+	});
+	if (!validMedia(draft.appearance.tokenImage)) diagnostics.push({
+		level: "error",
+		step: "appearance",
+		message: "La texture du Token doit être choisie avec le sélecteur Foundry et utiliser un format d’image reconnu."
+	});
+	if (!draft.resources.equipmentPending && !draft.resources.initialEquipment.length) diagnostics.push({
+		level: "error",
+		step: "resources",
+		message: "Choisissez au moins un Item réel d’équipement initial ou conservez explicitement la dotation en attente."
 	});
 	for (const [step, missing, message] of [
 		[
@@ -4552,7 +4652,8 @@ function characterActorSource(draft) {
 		partial: false,
 		modifiers: []
 	}]));
-	const qualified = new Set(draft.skills.qualified);
+	const qualifiedKeys = qualifiedSkillKeys(draft);
+	const qualified = new Set(qualifiedKeys);
 	const favorites = new Set(draft.skills.favorites);
 	const skills = Object.fromEntries(Object.entries(SKILL_DEFINITIONS).map(([key, [, defaultAttribute]]) => [key, {
 		rank: qualified.has(key) ? "trained" : "untrained",
@@ -4584,8 +4685,13 @@ function characterActorSource(draft) {
 				advantageAttributeChoices: draft.profile.advantageAttributeChoices,
 				pathAttribute: draft.attributes.pathAttribute,
 				freeIncreases: draft.attributes.freeIncreases,
-				qualifiedSkills: draft.skills.qualified,
+				qualifiedSkills: qualifiedKeys,
+				profileSkillChoices: draft.skills.profileChoices,
+				pathSkillChoices: draft.skills.pathChoices,
+				freeSkillChoices: draft.skills.freeChoices,
 				favoriteSkills: draft.skills.favorites,
+				selectionChoices: draft.profile.selectionChoices,
+				selectionDetails: draft.profile.selectionDetails,
 				energyProfileId: draft.resources.energyProfileId,
 				secondaryScheme: draft.path.secondaryScheme
 			}
@@ -4691,7 +4797,8 @@ function draftSelections(draft) {
 		draft.talents.primaryTalent,
 		...draft.talents.secondaryTalents,
 		draft.assignments.primaryPost,
-		...draft.assignments.secondaryPosts
+		...draft.assignments.secondaryPosts,
+		...draft.resources.initialEquipment
 	].filter((entry) => Boolean(entry));
 }
 function initialPhysicalCredits(draft) {
@@ -4860,8 +4967,48 @@ async function loadCatalogSelections(packId, predicate) {
 		description: String(document.system?.description ?? "")
 	})).filter((selection) => selection.catalog.selectable !== false && (!predicate || predicate(selection))).sort((left, right) => left.name.localeCompare(right.name, "fr"));
 }
+async function loadCatalogSelectionsFromPacks(packIds, predicate) {
+	return (await Promise.all(packIds.map((packId) => loadCatalogSelections(packId, predicate)))).flat().sort((left, right) => left.name.localeCompare(right.name, "fr"));
+}
+async function openCatalogSelectionDocument(selection) {
+	if (selection.type === "ancestry") {
+		const pack = game.packs?.get("relis.creation-ancestry-journals");
+		if (pack) {
+			const journal = (await pack.getDocuments()).find((entry) => entry.flags?.relis?.ancestryRelisId === selection.relisId);
+			if (journal) {
+				await journal.sheet?.render(true);
+				return;
+			}
+		}
+	}
+	const document = await fromUuid(selection.uuid);
+	if (!document) throw new Error(`Source de catalogue introuvable : ${selection.name}.`);
+	await document.sheet?.render(true);
+}
+function normalizeCatalogSearch(value) {
+	return String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/gu, "").toLocaleLowerCase("fr");
+}
+function plainText$1(value) {
+	const container = document.createElement("div");
+	container.innerHTML = String(value ?? "");
+	return (container.textContent ?? "").trim();
+}
+function catalogMetadata(selection) {
+	const value = String(selection.catalog.value ?? "").trim();
+	const level = selection.level ? `Niveau ${selection.level}` : "";
+	return [
+		value ? `Valeur ${value}` : "",
+		selection.catalog.pathName,
+		selection.catalog.branchName,
+		selection.catalog.family,
+		selection.catalog.postTier === "primary" ? "Poste principal" : selection.catalog.postTier === "secondary" ? "Poste secondaire" : "",
+		level
+	].filter(Boolean).join(" · ");
+}
 async function openCatalogPicker(options) {
-	const entries = await loadCatalogSelections(options.packId, options.predicate);
+	const packIds = options.packIds ?? (options.packId ? [options.packId] : []);
+	if (!packIds.length) throw new Error("Aucun catalogue n’a été fourni.");
+	const entries = await loadCatalogSelectionsFromPacks(packIds, options.predicate);
 	const root = document.createElement("div");
 	const browser = document.createElement("section");
 	browser.className = "relis-catalog-browser";
@@ -4880,14 +5027,15 @@ async function openCatalogPicker(options) {
 	list.className = "relis-catalog-browser__list";
 	const selectedIds = new Set(options.selectedRelisIds ?? []);
 	for (const [index, entry] of entries.entries()) {
-		const label = document.createElement("label");
-		label.className = "relis-catalog-browser__entry";
-		label.dataset.search = `${entry.name} ${entry.catalog.pathName ?? ""} ${entry.catalog.branchName ?? ""}`.toLocaleLowerCase("fr");
+		const row = document.createElement("article");
+		row.className = "relis-catalog-browser__entry";
+		row.dataset.search = normalizeCatalogSearch(`${entry.name} ${catalogMetadata(entry)} ${plainText$1(entry.description ?? "")}`);
 		const input = document.createElement("input");
 		input.type = "radio";
 		input.name = "selection";
 		input.value = String(index);
 		input.disabled = selectedIds.has(entry.relisId);
+		input.setAttribute("aria-label", `Sélectionner ${entry.name}`);
 		const image = document.createElement("img");
 		image.src = entry.img;
 		image.alt = "";
@@ -4895,21 +5043,37 @@ async function openCatalogPicker(options) {
 		const strong = document.createElement("strong");
 		strong.textContent = entry.name;
 		const small = document.createElement("small");
-		small.textContent = [
-			entry.catalog.pathName,
-			entry.catalog.branchName,
-			selectedIds.has(entry.relisId) ? "Déjà sélectionné" : ""
-		].filter(Boolean).join(" · ");
+		small.textContent = [catalogMetadata(entry), selectedIds.has(entry.relisId) ? "Déjà sélectionné" : ""].filter(Boolean).join(" · ");
 		text.append(strong, small);
-		label.append(input, image, text);
-		list.append(label);
+		const actions = document.createElement("span");
+		actions.className = "relis-catalog-browser__actions";
+		const selectButton = document.createElement("button");
+		selectButton.type = "button";
+		selectButton.disabled = input.disabled;
+		selectButton.innerHTML = "<i class=\"fa-solid fa-check\" aria-hidden=\"true\"></i> Sélectionner";
+		selectButton.addEventListener("click", () => {
+			input.checked = true;
+			for (const candidate of list.querySelectorAll("article")) candidate.classList.remove("is-selected");
+			row.classList.add("is-selected");
+		});
+		const readButton = document.createElement("button");
+		readButton.type = "button";
+		readButton.innerHTML = "<i class=\"fa-solid fa-book-open\" aria-hidden=\"true\"></i> Lire";
+		readButton.addEventListener("click", () => {
+			openCatalogSelectionDocument(entry).catch((error) => {
+				ui.notifications.error(error instanceof Error ? error.message : "Lecture impossible.");
+			});
+		});
+		actions.append(selectButton, readButton);
+		row.append(input, image, text, actions);
+		list.append(row);
 	}
 	browser.append(list);
 	root.append(browser);
 	const filter = () => {
-		const query = search.value.trim().toLocaleLowerCase("fr");
+		const query = normalizeCatalogSearch(search.value.trim());
 		let visible = 0;
-		for (const row of list.querySelectorAll("label")) {
+		for (const row of list.querySelectorAll("article")) {
 			const match = !query || (row.dataset.search ?? "").includes(query);
 			row.hidden = !match;
 			if (match) visible += 1;
@@ -4921,7 +5085,7 @@ async function openCatalogPicker(options) {
 	const result = await foundry.applications.api.DialogV2.input({
 		window: { title: options.title },
 		content: root,
-		ok: { label: "Sélectionner" },
+		ok: { label: "Valider la sélection" },
 		modal: true,
 		rejectClose: false
 	});
@@ -4968,7 +5132,12 @@ async function embeddedSource(selection) {
 	delete data._id;
 	data.system ??= {};
 	data.system.catalog ??= {};
-	for (const key of ["selectedValue", "creationAutomatic"]) if (selection.catalog[key] !== void 0) data.system.catalog[key] = selection.catalog[key];
+	for (const key of [
+		"selectedValue",
+		"creationAutomatic",
+		"selectedChoices",
+		"selectionDetails"
+	]) if (selection.catalog[key] !== void 0) data.system.catalog[key] = selection.catalog[key];
 	return data;
 }
 async function assignBuildSelection(actor, slotKey, selection) {
@@ -5033,7 +5202,14 @@ async function selectedItemSources(draft) {
 	const unique = /* @__PURE__ */ new Map();
 	for (const selection of draftSelections(draft)) unique.set(selection.relisId, selection);
 	const result = [];
-	for (const selection of unique.values()) result.push(await embeddedSource(selection));
+	for (const selection of unique.values()) {
+		const enriched = JSON.parse(JSON.stringify(selection));
+		const selectedChoices = draft.profile.selectionChoices[selection.relisId];
+		const selectionDetails = draft.profile.selectionDetails[selection.relisId];
+		if (selectedChoices?.length) enriched.catalog.selectedChoices = selectedChoices;
+		if (selectionDetails?.trim()) enriched.catalog.selectionDetails = selectionDetails.trim();
+		result.push(await embeddedSource(enriched));
+	}
 	if (!draft.resources.creditsPending) {
 		const credits = initialPhysicalCredits(draft);
 		if (credits > 0) {
@@ -5087,13 +5263,16 @@ async function performCharacterFinalization(draft) {
 	if (existing) return existing;
 	const errors = deriveCharacterCreation(draft).diagnostics.filter((entry) => entry.level === "error");
 	if (errors.length) throw new Error(`Création bloquée : ${errors.map((entry) => entry.message).join(" ")}`);
-	const actor = await Actor.implementation.create(characterActorSource(draft));
+	let actor = null;
 	try {
+		actor = await Actor.implementation.create(characterActorSource(draft));
+		if (!actor) throw new Error("Foundry n’a pas créé l’Actor demandé.");
 		const items = await selectedItemSources(draft);
-		await synchronizeEmbeddedBuildReferences(actor, draft, items.length ? await actor.createEmbeddedDocuments("Item", items) : []);
+		const createdItems = items.length ? await actor.createEmbeddedDocuments("Item", items) : [];
+		await synchronizeEmbeddedBuildReferences(actor, draft, createdItems);
 		return actor;
 	} catch (error) {
-		await actor.delete?.();
+		if (actor) await actor.delete();
 		throw error;
 	}
 }
@@ -5127,8 +5306,49 @@ function setDraftValue(draft, path, value) {
 	draft.revision += 1;
 	draft.updatedAt = Date.now();
 }
+function plainText(html) {
+	const container = document.createElement("div");
+	container.innerHTML = html;
+	return (container.textContent ?? "").trim();
+}
 function selectedSummary(selection) {
 	return selection?.name ?? "Non sélectionné";
+}
+var BODY_NATURE_LABELS$1 = {
+	biological: "Biologique",
+	synthetic: "Synthétique",
+	hybrid: "Hybride",
+	energetic: "Énergétique",
+	atypical: "Atypique"
+};
+function selectionView(draft, selection) {
+	return {
+		...selection,
+		description: selection.description ?? "",
+		excerpt: plainText(selection.description ?? "").slice(0, 420),
+		detailPath: `profile.selectionDetails.${selection.relisId}`,
+		details: draft.profile.selectionDetails[selection.relisId] ?? "",
+		creationChoices: Array.from(selection.catalog.creationChoices ?? []).map((choice) => {
+			const id = String(choice.id ?? "choice");
+			const dataPath = `profile.selectionChoices.${selection.relisId}:${id}`;
+			const selected = draft.profile.selectionChoices[`${selection.relisId}:${id}`] ?? [];
+			const maximum = Math.max(Math.trunc(Number(choice.minimum) || 0), Math.trunc(Number(choice.maximum) || 0));
+			return {
+				id,
+				label: String(choice.label ?? "Précision"),
+				dataPath,
+				minimum: Math.max(0, Math.trunc(Number(choice.minimum) || 0)),
+				maximum,
+				options: Array.from(choice.options ?? []).map((value) => ({
+					value: String(value),
+					dataPath,
+					maximum,
+					selected: selected.includes(String(value)),
+					disabled: !selected.includes(String(value)) && selected.length >= maximum
+				}))
+			};
+		})
+	};
 }
 function allowedAttributeChoices(draft, source) {
 	const labels = [];
@@ -5187,15 +5407,53 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 		const profileAttributes = allowedAttributeChoices(this.draft, "profile");
 		const ancestryAttributes = allowedAttributeChoices(this.draft, "ancestry");
 		const pathAttributes = allowedAttributeChoices(this.draft, "path");
-		const requiredPathSkills = new Set((this.draft.path.path?.catalog.requiredSkills ?? []).map(String));
-		const selectedSkills = new Set(this.draft.skills.qualified);
+		const ancestryChoiceExpected = Math.max(0, Math.trunc(Number(this.draft.body.ancestry?.catalog.inheritedAttributeChoiceCount) || 0)) + (String(this.draft.body.ancestry?.catalog.attributeBonuses ?? "").match(/\+1\s+libre/giu)?.length ?? 0);
+		const pathSkills = pathSkillKeys(this.draft);
+		const profileSkills = profileSkillKeys(this.draft);
+		const profileSelected = new Set(this.draft.skills.profileChoices);
+		const pathSelected = new Set(this.draft.skills.pathChoices);
+		const freeSelected = new Set(this.draft.skills.freeChoices);
+		const qualifiedSkills = qualifiedSkillKeys(this.draft);
 		const favoriteSkills = new Set(this.draft.skills.favorites);
-		const skillRows = Object.entries(SKILL_DEFINITIONS).map(([key, [label]]) => ({
+		const skillLabel = (key) => SKILL_DEFINITIONS[key]?.[0] ?? key;
+		const profileSkillRows = profileSkills.map((key) => ({
+			key,
+			label: skillLabel(key),
+			selected: profileSelected.has(key),
+			disabled: !profileSelected.has(key) && profileSelected.size >= 2
+		}));
+		const newlyGrantedRequired = pathSkills.required.filter((key) => !profileSelected.has(key));
+		const expectedPathChoices = Math.max(0, pathSkills.total - newlyGrantedRequired.length);
+		const pathSkillRows = pathSkills.choices.filter((key) => !profileSelected.has(key) && !pathSkills.required.includes(key)).map((key) => ({
+			key,
+			label: skillLabel(key),
+			selected: pathSelected.has(key),
+			disabled: !pathSelected.has(key) && pathSelected.size >= expectedPathChoices,
+			maximum: expectedPathChoices
+		}));
+		const freeExpected = freeQualifiedSkillCount(this.draft, derived.attributes.intelligence);
+		const grantedBeforeFree = /* @__PURE__ */ new Set([
+			...profileSelected,
+			...pathSkills.required,
+			...pathSelected
+		]);
+		const freeSkillRows = Object.entries(SKILL_DEFINITIONS).filter(([key]) => !grantedBeforeFree.has(key)).map(([key, [label]]) => ({
 			key,
 			label,
-			selected: selectedSkills.has(key),
-			favorite: favoriteSkills.has(key),
-			required: requiredPathSkills.has(label)
+			selected: freeSelected.has(key),
+			disabled: !freeSelected.has(key) && freeSelected.size >= freeExpected,
+			maximum: freeExpected
+		}));
+		const sourceBySkill = /* @__PURE__ */ new Map();
+		for (const key of this.draft.skills.profileChoices) sourceBySkill.set(key, "Profil");
+		for (const key of pathSkills.required) sourceBySkill.set(key, sourceBySkill.has(key) ? "Profil + Voie obligatoire" : "Voie obligatoire");
+		for (const key of this.draft.skills.pathChoices) sourceBySkill.set(key, "Choix de Voie");
+		for (const key of this.draft.skills.freeChoices) sourceBySkill.set(key, "Choix libre");
+		const qualifiedSkillRows = qualifiedSkills.map((key) => ({
+			key,
+			label: skillLabel(key),
+			source: sourceBySkill.get(key) ?? "Création",
+			favorite: favoriteSkills.has(key)
 		}));
 		const currentDiagnostics = derived.diagnostics.filter((entry) => entry.step === current);
 		return {
@@ -5216,34 +5474,20 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 					complete: "Complète",
 					warning: "Avec avertissement",
 					blocked: "Bloquée"
+				}[creationStepState(this.draft, step.id)],
+				stateIcon: {
+					"not-started": "fa-regular fa-circle",
+					"in-progress": "fa-solid fa-wrench",
+					complete: "fa-solid fa-circle-check",
+					warning: "fa-solid fa-triangle-exclamation",
+					blocked: "fa-solid fa-ban"
 				}[creationStepState(this.draft, step.id)]
 			})),
 			owners: Array.from(game.users ?? []).filter((user) => (game.user?.isGM || user.id === game.user?.id) && (user.active || user.id === this.draft.frame.ownerId)).map((user) => ({
 				id: user.id,
 				name: user.name
 			})),
-			natureOptions: [
-				{
-					key: "biological",
-					label: "Biologique"
-				},
-				{
-					key: "synthetic",
-					label: "Synthétique"
-				},
-				{
-					key: "hybrid",
-					label: "Hybride"
-				},
-				{
-					key: "energetic",
-					label: "Énergétique"
-				},
-				{
-					key: "atypical",
-					label: "Atypique"
-				}
-			],
+			bodyNatureLabel: BODY_NATURE_LABELS$1[this.draft.body.nature] ?? this.draft.body.nature,
 			sizeOptions: [
 				{
 					key: "small",
@@ -5287,11 +5531,14 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				value: derived.attributes[key],
 				ancestryAllowed: ancestryAttributes.includes(key),
 				ancestrySelected: this.draft.body.ancestryAttributeChoices.includes(key),
+				ancestryDisabled: !this.draft.body.ancestryAttributeChoices.includes(key) && this.draft.body.ancestryAttributeChoices.length >= ancestryChoiceExpected,
+				ancestryMaximum: ancestryChoiceExpected,
 				profileAllowed: profileAttributes.includes(key),
 				profileSelected: this.draft.profile.profileAttributeChoices.includes(key),
 				pathAllowed: pathAttributes.includes(key),
 				pathSelected: this.draft.attributes.pathAttribute === key,
-				freeSelected: this.draft.attributes.freeIncreases.includes(key)
+				freeSelected: this.draft.attributes.freeIncreases.includes(key),
+				freeDisabled: !this.draft.attributes.freeIncreases.includes(key) && this.draft.attributes.freeIncreases.length >= 4
 			})),
 			advantageAttributeRows: this.draft.profile.advantages.map((advantage) => ({
 				relisId: advantage.relisId,
@@ -5301,6 +5548,7 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 					key,
 					label,
 					dataPath: `profile.advantageAttributeChoices.${advantage.relisId}`,
+					maxSelections: Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.freeAttributeIncreases) || 0)),
 					inputType: Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.freeAttributeIncreases) || 0)) === 1 ? "radio" : "checkbox",
 					radioName: `advantage-attribute-${advantage.relisId}`,
 					selected: (this.draft.profile.advantageAttributeChoices[advantage.relisId] ?? []).includes(key)
@@ -5311,7 +5559,17 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				label: ATTRIBUTE_LABELS[key]
 			})),
 			markedBonuses: String(this.draft.profile.profile?.catalog.markedProfile ?? "").split(";")[0],
-			skillRows,
+			profileSkillRows,
+			pathRequiredSkillRows: pathSkills.required.map((key) => ({
+				key,
+				label: skillLabel(key),
+				alreadyGranted: profileSelected.has(key)
+			})),
+			pathSkillRows,
+			expectedPathChoices,
+			freeSkillRows,
+			freeExpected,
+			qualifiedSkillRows,
 			energyProfiles: energyProfiles(this.draft).map((profile) => ({
 				...profile,
 				summary: `Mana ${profile.mana ?? 0} · Prana ${profile.prana ?? 0} · Flux ${profile.flux ?? 0}`,
@@ -5319,6 +5577,11 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				energySelected: this.draft.resources.energyProfileId === String(profile.id)
 			})),
 			secondaryExpected: secondarySpecializationCount(this.draft.path.secondaryScheme),
+			secondarySpecializationLimitReached: this.draft.path.secondarySpecializations.length >= secondarySpecializationCount(this.draft.path.secondaryScheme),
+			secondaryPostLimitReached: this.draft.assignments.secondaryPosts.length >= 1,
+			advantageLimitReached: this.draft.profile.advantages.length >= 3,
+			ancestryChoiceExpected,
+			attributeLimitReached: this.draft.attributes.freeIncreases.length >= 4,
 			hitPoints: derived.hitPoints ?? "—",
 			initialCredits: initialPhysicalCredits(this.draft).toLocaleString("fr-FR"),
 			hitPointSources: derived.hitPointSources,
@@ -5331,12 +5594,33 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				path: selectedSummary(this.draft.path.path),
 				primarySpecialization: selectedSummary(this.draft.path.primarySpecialization),
 				post: selectedSummary(this.draft.assignments.primaryPost)
-			}
+			},
+			profileSelection: this.draft.profile.profile ? selectionView(this.draft, this.draft.profile.profile) : null,
+			originSelection: this.draft.profile.origin ? selectionView(this.draft, this.draft.profile.origin) : null,
+			advantageRows: this.draft.profile.advantages.map((entry) => selectionView(this.draft, entry)),
+			drawbackRows: this.draft.profile.drawbacks.map((entry) => selectionView(this.draft, entry)),
+			pathSelection: this.draft.path.path ? selectionView(this.draft, this.draft.path.path) : null,
+			primarySpecializationSelection: this.draft.path.primarySpecialization ? selectionView(this.draft, this.draft.path.primarySpecialization) : null,
+			secondarySpecializationRows: this.draft.path.secondarySpecializations.map((entry) => selectionView(this.draft, entry)),
+			talentRows: [
+				this.draft.talents.ancestryTalent,
+				this.draft.talents.profileTalent,
+				this.draft.talents.primaryTalent,
+				...this.draft.talents.secondaryTalents
+			].filter((entry) => Boolean(entry)).map((entry) => selectionView(this.draft, entry)),
+			equipmentGuidance: [
+				this.draft.profile.profile?.catalog.typicalBenefit ? `Profil : ${String(this.draft.profile.profile.catalog.typicalBenefit)}` : "",
+				this.draft.path.path?.catalog.initialLoadout ? `Voie : ${String(this.draft.path.path.catalog.initialLoadout)}` : "",
+				this.draft.path.primarySpecialization?.catalog.primaryLoadout ? `Spécialisation principale : ${String(this.draft.path.primarySpecialization.catalog.primaryLoadout)}` : "",
+				...this.draft.path.secondarySpecializations.map((entry) => entry.catalog.primaryLoadout ? `${entry.name} : ${String(entry.catalog.primaryLoadout)}` : "")
+			].filter(Boolean),
+			initialEquipmentRows: this.draft.resources.initialEquipment.map((entry) => selectionView(this.draft, entry))
 		};
 	}
 	async _onRender(context, options) {
 		await super._onRender(context, options);
 		const root = this.element;
+		for (const control of root.querySelectorAll("[data-selection-disabled=\"true\"]")) control.disabled = true;
 		for (const button of root.querySelectorAll("[data-step-id]")) button.addEventListener("click", () => {
 			this.draft.currentStep = button.dataset.stepId;
 			this.saveAndRender();
@@ -5353,10 +5637,29 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 		for (const input of root.querySelectorAll("[data-draft-array]")) input.addEventListener("change", () => {
 			const path = input.dataset.draftArray;
 			if (!path) return;
-			const values = Array.from(root.querySelectorAll(`[data-draft-array="${path}"]:checked`)).map((entry) => entry.value);
+			let checked = Array.from(root.querySelectorAll(`[data-draft-array="${path}"]:checked`));
+			const maximum = Number(input.dataset.maxSelections);
+			if (input.checked && Number.isFinite(maximum) && maximum >= 0 && checked.length > maximum) {
+				input.checked = false;
+				checked = checked.filter((entry) => entry !== input);
+				ui.notifications.warn(`Ce choix est limité à ${maximum} sélection${maximum > 1 ? "s" : ""}.`);
+			}
+			const values = checked.map((entry) => entry.value);
 			setDraftValue(this.draft, path, values);
+			if (path.startsWith("skills.") && path !== "skills.favorites") {
+				const qualified = new Set(qualifiedSkillKeys(this.draft));
+				this.draft.skills.favorites = this.draft.skills.favorites.filter((key) => qualified.has(key));
+			}
 			this.saveAndRender();
 		});
+		for (const textarea of root.querySelectorAll("textarea[data-auto-grow]")) {
+			const resize = () => {
+				textarea.style.height = "auto";
+				textarea.style.height = `${Math.max(textarea.scrollHeight, 56)}px`;
+			};
+			resize();
+			textarea.addEventListener("input", resize);
+		}
 		for (const button of root.querySelectorAll("[data-assistant-action]")) button.addEventListener("click", () => {
 			this.handleAction(button.dataset.assistantAction ?? "", button);
 		});
@@ -5394,11 +5697,29 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				await journal.sheet?.render(true);
 				return;
 			}
+			if (action === "open-selection") {
+				const uuid = button.dataset.selectionUuid;
+				const selection = draftSelections(this.draft).find((entry) => entry.uuid === uuid);
+				if (!selection) throw new Error("Sélection de catalogue introuvable.");
+				await openCatalogSelectionDocument(selection);
+				return;
+			}
+			if (action === "pick-image") {
+				this.openImagePicker(button.dataset.draftPath ?? "");
+				return;
+			}
+			if (action === "clear-image") {
+				const path = button.dataset.draftPath;
+				if (path) setDraftValue(this.draft, path, "");
+				await this.saveAndRender();
+				return;
+			}
 			if (action === "clear-selection") {
 				const path = button.dataset.selectionPath;
 				if (path) {
 					setDraftValue(this.draft, path, button.dataset.multiple === "true" ? [] : null);
 					if (path === "body.ancestry") {
+						this.draft.body.nature = "biological";
 						this.draft.body.ancestryAttributeChoices = [];
 						this.draft.body.ancestryProfileId = "";
 						this.draft.resources.energyProfileId = "";
@@ -5409,6 +5730,9 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 						this.draft.profile.profileAttributeChoices = [];
 						this.draft.profile.profilePenalty = "";
 						this.draft.talents.profileTalent = null;
+						this.draft.skills.profileChoices = [];
+						this.draft.skills.pathChoices = [];
+						this.draft.skills.freeChoices = [];
 					}
 					if (path === "path.path") {
 						this.draft.attributes.pathAttribute = "";
@@ -5416,6 +5740,8 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 						this.draft.path.secondarySpecializations = [];
 						this.draft.talents.primaryTalent = null;
 						this.draft.talents.secondaryTalents = [];
+						this.draft.skills.pathChoices = [];
+						this.draft.skills.freeChoices = [];
 					}
 					if (path === "path.primarySpecialization") this.draft.talents.primaryTalent = null;
 				}
@@ -5429,7 +5755,12 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 					const values = path.split(".").reduce((value, key) => value[key], this.draft);
 					setDraftValue(this.draft, path, Array.from(values ?? []).filter((entry) => entry.relisId !== relisId));
 					if (path === "profile.advantages") delete this.draft.profile.advantageAttributeChoices[relisId];
+					if (path === "profile.advantages" || path === "profile.drawbacks") {
+						delete this.draft.profile.selectionDetails[relisId];
+						for (const key of Object.keys(this.draft.profile.selectionChoices)) if (key.startsWith(`${relisId}:`)) delete this.draft.profile.selectionChoices[key];
+					}
 					if (path === "path.secondarySpecializations") this.draft.talents.secondaryTalents = this.draft.talents.secondaryTalents.filter((talent) => talent.catalog.specializationRef?.relisId !== relisId);
+					if (path === "resources.initialEquipment" && this.draft.resources.initialEquipment.length === 0) this.draft.resources.equipmentPending = true;
 				}
 				await this.saveAndRender();
 				return;
@@ -5440,6 +5771,20 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			ui.notifications.error(error instanceof Error ? error.message : "Opération de création refusée.");
 			button.disabled = false;
 		}
+	}
+	openImagePicker(path) {
+		if (!path) return;
+		const current = path.split(".").reduce((value, key) => value?.[key], this.draft);
+		const FilePicker = foundry.applications.apps.FilePicker.implementation;
+		new FilePicker({
+			type: "image",
+			current: String(current ?? ""),
+			callback: async (selectedPath) => {
+				if (!selectedPath) return;
+				setDraftValue(this.draft, path, selectedPath);
+				await this.saveAndRender();
+			}
+		}).render({ force: true });
 	}
 	async pick(kind) {
 		const ancestry = this.draft.body.ancestry;
@@ -5466,7 +5811,8 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				title: "Ajouter un Atout",
 				packId: "relis.creation-advantages",
 				path: "profile.advantages",
-				multiple: true
+				multiple: true,
+				maximum: 3
 			},
 			drawback: {
 				title: "Ajouter un Handicap",
@@ -5491,6 +5837,7 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				packId: "relis.progression-specializations",
 				path: "path.secondarySpecializations",
 				multiple: true,
+				maximum: secondarySpecializationCount(this.draft.path.secondaryScheme),
 				predicate: (entry) => entry.relisId !== primary?.relisId
 			},
 			ancestryTalent: {
@@ -5533,27 +5880,50 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			post: {
 				title: "Choisir le Poste principal",
 				packId: "relis.creation-posts",
-				path: "assignments.primaryPost"
+				path: "assignments.primaryPost",
+				predicate: (entry) => entry.catalog.postTier === "primary"
 			},
 			secondaryPost: {
 				title: "Ajouter un Poste secondaire",
 				packId: "relis.creation-posts",
 				path: "assignments.secondaryPosts",
-				multiple: true
+				multiple: true,
+				maximum: 1,
+				predicate: (entry) => entry.catalog.postTier === "secondary"
+			},
+			equipment: {
+				title: "Ajouter un équipement initial réel",
+				packIds: [
+					"relis.material-weapons",
+					"relis.material-armor",
+					"relis.material-equipment",
+					"relis.material-consumables",
+					"relis.material-ammunition",
+					"relis.material-resources",
+					"relis.material-containers"
+				],
+				path: "resources.initialEquipment",
+				multiple: true,
+				predicate: (entry) => entry.relisId !== "MAT-RES-CREDIT"
 			}
 		}[kind];
 		if (!configuration) return;
 		const current = configuration.path.split(".").reduce((value, key) => value[key], this.draft);
+		if (configuration.multiple && configuration.maximum !== void 0 && Array.from(current ?? []).length >= configuration.maximum) throw new Error(`Ce choix est limité à ${configuration.maximum} sélection${configuration.maximum > 1 ? "s" : ""}.`);
 		const selected = configuration.multiple ? Array.from(current ?? []).map((entry) => entry.relisId) : current?.relisId ? [current.relisId] : [];
-		const choice = await openCatalogPicker({
+		const pickerOptions = {
 			title: configuration.title,
-			packId: configuration.packId,
 			selectedRelisIds: selected,
 			...configuration.predicate ? { predicate: configuration.predicate } : {}
-		});
+		};
+		if (configuration.packIds) pickerOptions.packIds = configuration.packIds;
+		else if (configuration.packId) pickerOptions.packId = configuration.packId;
+		else throw new Error("Aucun catalogue n’est configuré pour ce choix.");
+		const choice = await openCatalogPicker(pickerOptions);
 		if (!choice) return;
 		setDraftValue(this.draft, configuration.path, configuration.multiple ? [...Array.from(current ?? []), choice] : choice);
 		if (kind === "ancestry") {
+			this.draft.body.nature = String(choice.catalog.bodyNature ?? "biological");
 			this.draft.body.ancestryAttributeChoices = [];
 			this.draft.body.ancestryProfileId = "";
 			this.draft.resources.energyProfileId = "";
@@ -5571,6 +5941,9 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			this.draft.profile.profileAttributeChoices = [];
 			this.draft.profile.profilePenalty = "";
 			this.draft.talents.profileTalent = null;
+			this.draft.skills.profileChoices = [];
+			this.draft.skills.pathChoices = [];
+			this.draft.skills.freeChoices = [];
 		}
 		if (kind === "path") {
 			this.draft.attributes.pathAttribute = "";
@@ -5578,7 +5951,10 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			this.draft.path.secondarySpecializations = [];
 			this.draft.talents.primaryTalent = null;
 			this.draft.talents.secondaryTalents = [];
+			this.draft.skills.pathChoices = [];
+			this.draft.skills.freeChoices = [];
 		}
+		if (kind === "equipment") this.draft.resources.equipmentPending = false;
 		await this.saveAndRender();
 	}
 	async save() {

@@ -37,7 +37,8 @@
           "phase": "[Crise de vaisseau / Combat spatial]",
           "effect": "Annonce et prépare une secousse, collision, turbulence, entrée atmosphérique ou manœuvre violente. Les alliés ou systèmes préparés réduisent les conséquences d’un choc, d’une perte de contrôle ou d’une secousse majeure."
         }
-      ]
+      ],
+      "postTier": "primary"
     }
   },
   "folder": ""

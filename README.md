@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.9.0` ouvre la recette de 10-D3 après validation de l’audit personnel. Elle fournit l’assistant de création de niveau 1, reprenable en douze étapes, calcule les Attributs, compétences Qualifiées, PV et réserves depuis les vrais catalogues, contrôle leurs contraintes de création, puis ne crée l’Actor qu’à la confirmation finale idempotente. Les fiches PJ et PNJ séparent désormais Ascendance, Profil, Origine, Atouts, Handicaps, Voie, Spécialisations et Postes de l’inventaire physique. Une loupe ouvre chaque compendium filtré ; une corbeille retire explicitement l’Item embarqué. Les doublons historiques et les anciennes références sont conservés et diagnostiqués sans suppression automatique. Les 26 Ascendances sélectionnables disposent en outre d’un Journal encyclopédique généré depuis leur description canonique. Le contenu compte toujours 5 100 Items, désormais complétés par 26 Journaux dans un vingt-cinquième compendium. Le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
+La version `0.9.1` corrige la première recette de 10-D3 sans en prononcer la clôture. Les navigateurs de compendium sont défilants, filtrables et permettent de lire chaque source avant de la sélectionner. La Voie et ses compétences occupent l’étape 5, les Attributs l’étape 6 et les Compétences libres l’étape 7 ; les plafonds de quatre Attributs et de deux, trois ou quatre Spécialisations sont bloqués directement dans l’interface. La nature corporelle est déduite de l’Ascendance, les quatre Postes principaux sont séparés des sept Postes secondaires, et le matériel initial peut être choisi parmi les véritables catalogues. Portrait et Token passent par le sélecteur de fichiers Foundry, tandis que la finalisation refuse les médias invalides et nettoie sans erreur un échec de création. Le contenu compte toujours 5 100 Items et 26 Journaux ; le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
 
 L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. Chaque Cœur reçoit un tirage stable de 20 situations dans une banque de 48 — 8 simples, 8 intermédiaires et 4 complexes — sur six axes et quinze couleurs. Réponses, choix MJ, nom coloré, sujet de l’accord et historique persistent. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
 
@@ -49,7 +49,7 @@ en SVG interne jusqu’à la passe graphique finale.
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
-10-K2-P et l’audit personnel sont validés et clos. 10-D3 attend la recette 0.9.0. Aucun contrôle visuel automatisé par navigateur :
+10-K2-P et l’audit personnel sont validés et clos. 10-D3 attend la recette 0.9.1. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -73,7 +73,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.9.0.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.9.1.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -82,6 +82,15 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.9.1 — correctif de recette 10-D3
+
+- Rend tous les navigateurs de compendium défilants et réellement filtrables ; chaque ligne propose désormais `Sélectionner` et `Lire` avant validation.
+- Réordonne les étapes 5 à 7 en Voie & Spécialisations, Attributs, puis Compétences ; rattache les compétences obligatoires et les choix de Voie à l’étape 5 et explique le Favori de fiche sans lui donner d’effet mécanique.
+- Bloque directement les choix au-delà des plafonds canoniques : quatre augmentations libres, deux compétences de Profil, quota de Voie, compétences libres, schéma secondaire 2/3/4 et un seul Poste secondaire.
+- Déduit la nature corporelle de l’Ascendance, sépare les quatre Postes principaux des sept secondaires et structure les choix de Prodige énergétique, Corps adapté, Immunité rare et Éducation d’élite.
+- Ajoute lecture et résumé des sélections, précisions des Atouts/Handicaps, choix d’équipement initial réel et sélecteurs Foundry pour le portrait et le Token.
+- Corrige la finalisation lorsque Foundry refuse la création de l’Actor et protège les chemins d’image invalides. Le paquet passe à `0.9.1`, le contenu à `1.4.1`, le schéma Item reste 7 et aucune migration n’est créée. 10-D3 demeure en recette jusqu’à validation explicite.
 
 ## 0.9.0 — assistant de création 10-D3
 

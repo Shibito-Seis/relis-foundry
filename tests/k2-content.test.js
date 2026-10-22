@@ -225,6 +225,47 @@ describe("compendiums canoniques 10-K2-P", () => {
     ).toContainEqual(
       expect.objectContaining({ relisId: "CRE-HCP-037-FAIM-ECARLATE" }),
     );
+    for (const relisId of [
+      "CRE-AVT-010-PRODIGE-ENERGETIQUE",
+      "CRE-AVT-019-CORPS-ADAPTE",
+      "CRE-AVT-020-IMMUNITE-RARE",
+      "CRE-AVT-022-EDUCATION-D-ELITE",
+    ])
+      expect(
+        entries.get(relisId).system.catalog.creationChoices,
+        relisId,
+      ).toEqual([
+        expect.objectContaining({
+          minimum: expect.any(Number),
+          maximum: expect.any(Number),
+          options: expect.any(Array),
+        }),
+      ]);
+  });
+
+  it("déduit la nature corporelle et sépare 4 Postes principaux de 7 secondaires", () => {
+    const values = [...entriesById().values()];
+    const ancestries = values.filter(
+      ({ type, system }) =>
+        type === "ancestry" && system.catalog.selectable !== false,
+    );
+    expect(
+      ancestries.find(({ relisId }) => relisId === "CRE-ANC-018-IAA").system
+        .catalog.bodyNature,
+    ).toBe("synthetic");
+    for (const ancestry of ancestries.filter(
+      ({ relisId }) => relisId !== "CRE-ANC-018-IAA",
+    ))
+      expect(ancestry.system.catalog.bodyNature, ancestry.relisId).toBe(
+        "biological",
+      );
+    const posts = values.filter(({ type }) => type === "post");
+    expect(
+      posts.filter(({ system }) => system.catalog.postTier === "primary"),
+    ).toHaveLength(4);
+    expect(
+      posts.filter(({ system }) => system.catalog.postTier === "secondary"),
+    ).toHaveLength(7);
   });
 
   it("développe les 28 documents d’Ascendance et les 12 Voies depuis leurs sections canoniques", () => {

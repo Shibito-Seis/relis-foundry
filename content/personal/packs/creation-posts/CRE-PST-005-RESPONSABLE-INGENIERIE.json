@@ -37,7 +37,8 @@
           "phase": "[Exploration / Temps long]",
           "effect": "Avant une mission, identifie une faiblesse technique, une pièce à surveiller ou une ressource nécessaire. Peut éviter une panne surprise si l’équipe agit dessus."
         }
-      ]
+      ],
+      "postTier": "secondary"
     }
   },
   "folder": ""

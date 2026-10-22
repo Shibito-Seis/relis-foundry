@@ -29,7 +29,8 @@
         }
       ],
       "energySelectionRequired": false,
-      "energyComponentsRemainSeparate": true
+      "energyComponentsRemainSeparate": true,
+      "bodyNature": "synthetic"
     }
   },
   "folder": ""

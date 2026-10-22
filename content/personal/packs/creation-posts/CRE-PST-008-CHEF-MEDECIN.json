@@ -37,7 +37,8 @@
           "phase": "[Exploration / Temps long]",
           "effect": "Identifie une maladie, blessure, mutation, contamination, trouble cryostatique ou anomalie corporelle, puis indique le traitement ou protocole nécessaire."
         }
-      ]
+      ],
+      "postTier": "secondary"
     }
   },
   "folder": ""

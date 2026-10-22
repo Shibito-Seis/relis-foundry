@@ -12,9 +12,9 @@ export const CHARACTER_CREATION_STEPS = [
   { id: "identity", label: "Identité" },
   { id: "body", label: "Corps & Ascendance" },
   { id: "profile", label: "Profil & Origine" },
+  { id: "path", label: "Voie & Spécialisations" },
   { id: "attributes", label: "Attributs" },
   { id: "skills", label: "Compétences" },
-  { id: "path", label: "Voie & Spécialisations" },
   { id: "talents", label: "Talents & Capacités" },
   { id: "resources", label: "Ressources initiales" },
   { id: "appearance", label: "Apparence & Présentation" },
@@ -76,6 +76,8 @@ export interface CharacterCreationDraft {
     profileAttributeChoices: AttributeKey[];
     profilePenalty: AttributeKey | "";
     advantageAttributeChoices: Record<string, AttributeKey[]>;
+    selectionChoices: Record<string, string[]>;
+    selectionDetails: Record<string, string>;
     origin: CatalogSelection | null;
     advantages: CatalogSelection[];
     drawbacks: CatalogSelection[];
@@ -85,6 +87,9 @@ export interface CharacterCreationDraft {
     freeIncreases: AttributeKey[];
   };
   skills: {
+    profileChoices: SkillKey[];
+    pathChoices: SkillKey[];
+    freeChoices: SkillKey[];
     qualified: SkillKey[];
     favorites: SkillKey[];
   };
@@ -104,6 +109,7 @@ export interface CharacterCreationDraft {
     energyProfileId: string;
     creditsPending: boolean;
     equipmentPending: boolean;
+    initialEquipment: CatalogSelection[];
   };
   appearance: {
     actorImage: string;
@@ -262,12 +268,20 @@ export function createCharacterDraft(
       profileAttributeChoices: [],
       profilePenalty: "",
       advantageAttributeChoices: {},
+      selectionChoices: {},
+      selectionDetails: {},
       origin: null,
       advantages: [],
       drawbacks: [],
     },
     attributes: { pathAttribute: "", freeIncreases: [] },
-    skills: { qualified: [], favorites: [] },
+    skills: {
+      profileChoices: [],
+      pathChoices: [],
+      freeChoices: [],
+      qualified: [],
+      favorites: [],
+    },
     path: {
       path: null,
       primarySpecialization: null,
@@ -284,6 +298,7 @@ export function createCharacterDraft(
       energyProfileId: "",
       creditsPending: true,
       equipmentPending: true,
+      initialEquipment: [],
     },
     appearance: { actorImage: "", tokenImage: "", description: "" },
     assignments: { primaryPost: null, secondaryPosts: [] },
@@ -297,7 +312,7 @@ export function normalizeCharacterDraft(
 ): CharacterCreationDraft {
   const base = createCharacterDraft(id, ownerId);
   if (!value || value.version !== CHARACTER_CREATION_VERSION) return base;
-  return {
+  const draft = {
     ...base,
     ...value,
     id,
@@ -313,6 +328,83 @@ export function normalizeCharacterDraft(
     appearance: { ...base.appearance, ...value.appearance },
     assignments: { ...base.assignments, ...value.assignments },
   };
+  migrateLegacySkillChoices(draft);
+  draft.skills.qualified = qualifiedSkillKeys(draft);
+  draft.skills.favorites = draft.skills.favorites.filter((key) =>
+    draft.skills.qualified.includes(key),
+  );
+  if (draft.body.ancestry)
+    draft.body.nature = String(
+      draft.body.ancestry.catalog.bodyNature ?? draft.body.nature,
+    );
+  return draft;
+}
+
+export function pathSkillKeys(draft: CharacterCreationDraft): {
+  required: SkillKey[];
+  choices: SkillKey[];
+  total: number;
+} {
+  const catalog = draft.path.path?.catalog ?? {};
+  return {
+    required: catalogChoiceLabels(catalog.requiredSkills)
+      .map(skillKey)
+      .filter((key): key is SkillKey => Boolean(key)),
+    choices: catalogChoiceLabels(catalog.skillChoices)
+      .map(skillKey)
+      .filter((key): key is SkillKey => Boolean(key)),
+    total: Math.max(0, Math.trunc(Number(catalog.qualifiedSkillTotal) || 0)),
+  };
+}
+
+export function profileSkillKeys(draft: CharacterCreationDraft): SkillKey[] {
+  return catalogChoiceLabels(draft.profile.profile?.catalog.skillChoices)
+    .map(skillKey)
+    .filter((key): key is SkillKey => Boolean(key));
+}
+
+function migrateLegacySkillChoices(draft: CharacterCreationDraft): void {
+  if (
+    draft.skills.profileChoices.length ||
+    draft.skills.pathChoices.length ||
+    draft.skills.freeChoices.length ||
+    !draft.skills.qualified.length
+  )
+    return;
+  const remaining = [...distinct(draft.skills.qualified)];
+  const profileAllowed = new Set(profileSkillKeys(draft));
+  draft.skills.profileChoices = remaining
+    .filter((key) => profileAllowed.has(key))
+    .slice(0, 2);
+  const profileSelected = new Set(draft.skills.profileChoices);
+  const path = pathSkillKeys(draft);
+  const pathAllowed = new Set(path.choices);
+  const newRequired = path.required.filter((key) => !profileSelected.has(key));
+  const expectedPathChoices = Math.max(0, path.total - newRequired.length);
+  draft.skills.pathChoices = remaining
+    .filter(
+      (key) =>
+        pathAllowed.has(key) &&
+        !profileSelected.has(key) &&
+        !path.required.includes(key),
+    )
+    .slice(0, expectedPathChoices);
+  const allocated = new Set([
+    ...draft.skills.profileChoices,
+    ...path.required,
+    ...draft.skills.pathChoices,
+  ]);
+  draft.skills.freeChoices = remaining.filter((key) => !allocated.has(key));
+}
+
+export function qualifiedSkillKeys(draft: CharacterCreationDraft): SkillKey[] {
+  const path = pathSkillKeys(draft);
+  return distinct([
+    ...draft.skills.profileChoices,
+    ...path.required,
+    ...draft.skills.pathChoices,
+    ...draft.skills.freeChoices,
+  ]);
 }
 
 export function secondarySpecializationCount(
@@ -345,6 +437,27 @@ export function requiredQualifiedSkillCount(
     : null;
 }
 
+export function freeQualifiedSkillCount(
+  draft: CharacterCreationDraft,
+  intelligence: number,
+): number {
+  return Math.max(
+    0,
+    Math.trunc(intelligence) +
+      draft.profile.advantages.reduce(
+        (total, advantage) =>
+          total +
+          Math.max(
+            0,
+            Math.trunc(
+              Number(advantage.catalog.creationEffects?.qualifiedSkills) || 0,
+            ),
+          ),
+        0,
+      ),
+  );
+}
+
 function advantageAttributeChanges(
   draft: CharacterCreationDraft,
   diagnostics: CreationDiagnostic[],
@@ -365,7 +478,7 @@ function advantageAttributeChanges(
     if (choices.length !== expected)
       diagnostics.push({
         level: "error",
-        step: "attributes",
+        step: "profile",
         message: `${advantage.name} exige ${expected} augmentation${expected > 1 ? "s" : ""} d’Attribut libre${expected > 1 ? "s" : ""}.`,
       });
     allChoices.push(...choices);
@@ -374,7 +487,7 @@ function advantageAttributeChanges(
   if (distinct(allChoices).length !== allChoices.length)
     diagnostics.push({
       level: "error",
-      step: "attributes",
+      step: "profile",
       message:
         "Deux Atouts d’Attribut ne peuvent pas augmenter le même Attribut à la création.",
     });
@@ -595,55 +708,70 @@ export function deriveCharacterCreation(
       }))
     : [];
 
-  const qualified = distinct(draft.skills.qualified);
+  const profileOptions = profileSkillKeys(draft);
+  const profileChoices = distinct(draft.skills.profileChoices);
+  if (
+    draft.profile.profile &&
+    (profileChoices.length !== 2 ||
+      profileChoices.some((key) => !profileOptions.includes(key)))
+  )
+    diagnostics.push({
+      level: "error",
+      step: "profile",
+      message:
+        "Le Profil exige exactement deux compétences choisies dans sa liste.",
+    });
+
+  const pathSkills = pathSkillKeys(draft);
+  const profileSet = new Set(profileChoices);
+  const newlyGrantedRequired = pathSkills.required.filter(
+    (key) => !profileSet.has(key),
+  );
+  const expectedPathChoices = Math.max(
+    0,
+    pathSkills.total - newlyGrantedRequired.length,
+  );
+  const pathChoices = distinct(draft.skills.pathChoices);
+  if (
+    draft.path.path &&
+    (pathChoices.length !== expectedPathChoices ||
+      pathChoices.some(
+        (key) =>
+          !pathSkills.choices.includes(key) ||
+          profileSet.has(key) ||
+          pathSkills.required.includes(key),
+      ))
+  )
+    diagnostics.push({
+      level: "error",
+      step: "path",
+      message: `La Voie exige ${expectedPathChoices} compétence${expectedPathChoices > 1 ? "s" : ""} supplémentaire${expectedPathChoices > 1 ? "s" : ""} parmi sa liste, en plus de ses compétences obligatoires.`,
+    });
+
+  const grantedBeforeFree = new Set([
+    ...profileChoices,
+    ...pathSkills.required,
+    ...pathChoices,
+  ]);
+  const freeExpected = freeQualifiedSkillCount(draft, attributes.intelligence);
+  const freeChoices = distinct(draft.skills.freeChoices);
+  if (
+    freeChoices.length !== freeExpected ||
+    freeChoices.some((key) => grantedBeforeFree.has(key))
+  )
+    diagnostics.push({
+      level: "error",
+      step: "skills",
+      message: `Choisissez exactement ${freeExpected} compétence${freeExpected > 1 ? "s" : ""} Qualifiée${freeExpected > 1 ? "s" : ""} libre${freeExpected > 1 ? "s" : ""}, sans reprendre une compétence déjà accordée.`,
+    });
+
+  const qualified = qualifiedSkillKeys(draft);
   const required = requiredQualifiedSkillCount(draft, attributes.intelligence);
   if (required !== null && qualified.length !== required)
     diagnostics.push({
       level: "error",
       step: "skills",
       message: `La création exige ${required} compétences Qualifiées ; ${qualified.length} sont sélectionnées.`,
-    });
-  const pathRequired = catalogChoiceLabels(
-    draft.path.path?.catalog.requiredSkills,
-  )
-    .map(skillKey)
-    .filter((key): key is SkillKey => Boolean(key));
-  if (pathRequired.some((key) => !qualified.includes(key)))
-    diagnostics.push({
-      level: "error",
-      step: "skills",
-      message:
-        "Les compétences obligatoires de la Voie doivent être Qualifiées.",
-    });
-  const pathOptions = distinct([
-    ...pathRequired,
-    ...catalogChoiceLabels(draft.path.path?.catalog.skillChoices)
-      .map(skillKey)
-      .filter((key): key is SkillKey => Boolean(key)),
-  ]);
-  const pathTotal = Number(draft.path.path?.catalog.qualifiedSkillTotal);
-  if (
-    Number.isFinite(pathTotal) &&
-    qualified.filter((key) => pathOptions.includes(key)).length < pathTotal
-  )
-    diagnostics.push({
-      level: "error",
-      step: "skills",
-      message: `La Voie exige ${pathTotal} compétences choisies dans son propre catalogue.`,
-    });
-  const profileOptions = catalogChoiceLabels(
-    draft.profile.profile?.catalog.skillChoices,
-  )
-    .map(skillKey)
-    .filter((key): key is SkillKey => Boolean(key));
-  if (
-    draft.profile.profile &&
-    qualified.filter((key) => profileOptions.includes(key)).length < 2
-  )
-    diagnostics.push({
-      level: "error",
-      step: "skills",
-      message: "Le Profil exige deux compétences choisies dans sa liste.",
     });
 
   const secondaryExpected = secondarySpecializationCount(
@@ -654,6 +782,28 @@ export function deriveCharacterCreation(
       level: "error",
       step: "path",
       message: `Le schéma choisi autorise ${secondaryExpected} Spécialisations secondaires.`,
+    });
+  if (
+    draft.assignments.primaryPost &&
+    draft.assignments.primaryPost.catalog.postTier !== "primary"
+  )
+    diagnostics.push({
+      level: "error",
+      step: "assignments",
+      message:
+        "Le Poste principal choisi n’appartient pas aux quatre Postes principaux.",
+    });
+  if (
+    draft.assignments.secondaryPosts.length !== 1 ||
+    draft.assignments.secondaryPosts.some(
+      (post) => post.catalog.postTier !== "secondary",
+    )
+  )
+    diagnostics.push({
+      level: "error",
+      step: "assignments",
+      message:
+        "La création exige exactement un Poste secondaire issu du catalogue secondaire.",
     });
   const secondarySpecializationIds = draft.path.secondarySpecializations.map(
     (entry) => entry.relisId,
@@ -802,6 +952,26 @@ export function deriveCharacterCreation(
             ? `${selection.name} ne peut viser le même sujet que ${String(incompatible.label ?? incompatible.relisId)} ; vérifiez que les éléments concernés sont distincts.`
             : `${selection.name} est incompatible avec ${String(incompatible.label ?? incompatible.relisId)}.`,
         });
+    for (const choice of selection.catalog.creationChoices ?? []) {
+      const key = `${selection.relisId}:${String(choice.id ?? "choice")}`;
+      const selected = distinct(draft.profile.selectionChoices[key] ?? []);
+      const options = new Set((choice.options ?? []).map(String));
+      const minimum = Math.max(0, Math.trunc(Number(choice.minimum) || 0));
+      const maximum = Math.max(
+        minimum,
+        Math.trunc(Number(choice.maximum) || minimum),
+      );
+      if (
+        selected.length < minimum ||
+        selected.length > maximum ||
+        selected.some((value) => !options.has(value))
+      )
+        diagnostics.push({
+          level: "error",
+          step: "profile",
+          message: `${selection.name} exige ${minimum === maximum ? `${minimum}` : `${minimum} à ${maximum}`} choix valide${maximum > 1 ? "s" : ""} pour « ${String(choice.label ?? "Précision")} ».`,
+        });
+    }
   }
   for (const automatic of draft.body.ancestry?.catalog.automaticDrawbacks ?? [])
     if (!selectedIds.has(String(automatic.relisId ?? "")))
@@ -810,6 +980,34 @@ export function deriveCharacterCreation(
         step: "profile",
         message: `${draft.body.ancestry?.name} reçoit automatiquement ${String(automatic.label ?? automatic.relisId)}.`,
       });
+
+  const validMedia = (path: string) =>
+    !path || /\.(?:avif|bmp|gif|jpe?g|png|svg|webp)$/iu.test(path);
+  if (!validMedia(draft.appearance.actorImage))
+    diagnostics.push({
+      level: "error",
+      step: "appearance",
+      message:
+        "Le portrait doit être choisi avec le sélecteur Foundry et utiliser un format d’image reconnu.",
+    });
+  if (!validMedia(draft.appearance.tokenImage))
+    diagnostics.push({
+      level: "error",
+      step: "appearance",
+      message:
+        "La texture du Token doit être choisie avec le sélecteur Foundry et utiliser un format d’image reconnu.",
+    });
+
+  if (
+    !draft.resources.equipmentPending &&
+    !draft.resources.initialEquipment.length
+  )
+    diagnostics.push({
+      level: "error",
+      step: "resources",
+      message:
+        "Choisissez au moins un Item réel d’équipement initial ou conservez explicitement la dotation en attente.",
+    });
 
   for (const [step, missing, message] of [
     [
@@ -934,7 +1132,8 @@ export function characterActorSource(
       { base, partial: false, modifiers: [] },
     ]),
   );
-  const qualified = new Set(draft.skills.qualified);
+  const qualifiedKeys = qualifiedSkillKeys(draft);
+  const qualified = new Set(qualifiedKeys);
   const favorites = new Set(draft.skills.favorites);
   const skills = Object.fromEntries(
     Object.entries(SKILL_DEFINITIONS).map(([key, [, defaultAttribute]]) => [
@@ -974,8 +1173,13 @@ export function characterActorSource(
             advantageAttributeChoices: draft.profile.advantageAttributeChoices,
             pathAttribute: draft.attributes.pathAttribute,
             freeIncreases: draft.attributes.freeIncreases,
-            qualifiedSkills: draft.skills.qualified,
+            qualifiedSkills: qualifiedKeys,
+            profileSkillChoices: draft.skills.profileChoices,
+            pathSkillChoices: draft.skills.pathChoices,
+            freeSkillChoices: draft.skills.freeChoices,
             favoriteSkills: draft.skills.favorites,
+            selectionChoices: draft.profile.selectionChoices,
+            selectionDetails: draft.profile.selectionDetails,
             energyProfileId: draft.resources.energyProfileId,
             secondaryScheme: draft.path.secondaryScheme,
           },
@@ -1098,6 +1302,7 @@ export function draftSelections(
     ...draft.talents.secondaryTalents,
     draft.assignments.primaryPost,
     ...draft.assignments.secondaryPosts,
+    ...draft.resources.initialEquipment,
   ].filter((entry): entry is CatalogSelection => Boolean(entry));
 }
 

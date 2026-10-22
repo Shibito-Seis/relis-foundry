@@ -12,7 +12,24 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+2",
-      "effect": "Le personnage a reçu une formation supérieure. Choisir deux domaines parmi Culture, Sciences, Commerce, Commandement, Diplomatie, Ingénierie ou Techno-magie : +2 aux jets liés aux institutions, protocoles ou savoirs avancés de ces domaines."
+      "effect": "Le personnage a reçu une formation supérieure. Choisir deux domaines parmi Culture, Sciences, Commerce, Commandement, Diplomatie, Ingénierie ou Techno-magie : +2 aux jets liés aux institutions, protocoles ou savoirs avancés de ces domaines.",
+      "creationChoices": [
+        {
+          "id": "domains",
+          "label": "Domaines de formation",
+          "minimum": 2,
+          "maximum": 2,
+          "options": [
+            "Culture",
+            "Sciences",
+            "Commerce",
+            "Commandement",
+            "Diplomatie",
+            "Ingénierie",
+            "Techno-magie"
+          ]
+        }
+      ]
     }
   },
   "folder": ""

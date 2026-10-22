@@ -12,7 +12,16 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+2",
-      "effect": "Choisir Mana, Prana ou Flux. Le personnage gagne +2 aux jets de Canalisation liés à cette énergie pour la détecter, la stabiliser ou éviter une surcharge mineure."
+      "effect": "Choisir Mana, Prana ou Flux. Le personnage gagne +2 aux jets de Canalisation liés à cette énergie pour la détecter, la stabiliser ou éviter une surcharge mineure.",
+      "creationChoices": [
+        {
+          "id": "energy",
+          "label": "Énergie maîtrisée",
+          "minimum": 1,
+          "maximum": 1,
+          "options": ["Mana", "Prana", "Flux"]
+        }
+      ]
     }
   },
   "folder": ""

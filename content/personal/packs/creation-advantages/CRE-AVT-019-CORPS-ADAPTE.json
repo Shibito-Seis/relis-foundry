@@ -12,7 +12,24 @@
       "kind": "advantage",
       "sourceSection": "8",
       "value": "+1",
-      "effect": "Choisir un environnement : froid, chaleur, faible oxygène, gravité forte/faible, toxines légères, radiation faible. Le personnage gagne +2 aux jets pour y résister."
+      "effect": "Choisir un environnement : froid, chaleur, faible oxygène, gravité forte/faible, toxines légères, radiation faible. Le personnage gagne +2 aux jets pour y résister.",
+      "creationChoices": [
+        {
+          "id": "environment",
+          "label": "Environnement d’adaptation",
+          "minimum": 1,
+          "maximum": 1,
+          "options": [
+            "Froid",
+            "Chaleur",
+            "Faible oxygène",
+            "Gravité forte",
+            "Gravité faible",
+            "Toxines légères",
+            "Radiation faible"
+          ]
+        }
+      ]
     }
   },
   "folder": ""

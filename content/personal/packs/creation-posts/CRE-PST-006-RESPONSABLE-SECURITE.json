@@ -37,7 +37,8 @@
           "phase": "[Social / diplomatie / Crise]",
           "effect": "Met en place une procédure de fouille, garde, interrogatoire ou détention sécurisée. Réduit les risques d’évasion, mutinerie ou incident."
         }
-      ]
+      ],
+      "postTier": "secondary"
     }
   },
   "folder": ""

@@ -246,14 +246,84 @@ export async function loadCatalogSelections(
     .sort((left, right) => left.name.localeCompare(right.name, "fr"));
 }
 
+export async function loadCatalogSelectionsFromPacks(
+  packIds: string[],
+  predicate?: (selection: CatalogSelection) => boolean,
+): Promise<CatalogSelection[]> {
+  const groups = await Promise.all(
+    packIds.map((packId) => loadCatalogSelections(packId, predicate)),
+  );
+  return groups
+    .flat()
+    .sort((left, right) => left.name.localeCompare(right.name, "fr"));
+}
+
+export async function openCatalogSelectionDocument(
+  selection: CatalogSelection,
+): Promise<void> {
+  if (selection.type === "ancestry") {
+    const pack = game.packs?.get("relis.creation-ancestry-journals");
+    if (pack) {
+      const journals = await pack.getDocuments();
+      const journal = journals.find(
+        (entry: any) =>
+          entry.flags?.relis?.ancestryRelisId === selection.relisId,
+      );
+      if (journal) {
+        await journal.sheet?.render(true);
+        return;
+      }
+    }
+  }
+  const document = await fromUuid(selection.uuid);
+  if (!document)
+    throw new Error(`Source de catalogue introuvable : ${selection.name}.`);
+  await document.sheet?.render(true);
+}
+
+function normalizeCatalogSearch(value: unknown): string {
+  return String(value ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/gu, "")
+    .toLocaleLowerCase("fr");
+}
+
+function plainText(value: unknown): string {
+  const container = document.createElement("div");
+  container.innerHTML = String(value ?? "");
+  return (container.textContent ?? "").trim();
+}
+
+function catalogMetadata(selection: CatalogSelection): string {
+  const value = String(selection.catalog.value ?? "").trim();
+  const level = selection.level ? `Niveau ${selection.level}` : "";
+  return [
+    value ? `Valeur ${value}` : "",
+    selection.catalog.pathName,
+    selection.catalog.branchName,
+    selection.catalog.family,
+    selection.catalog.postTier === "primary"
+      ? "Poste principal"
+      : selection.catalog.postTier === "secondary"
+        ? "Poste secondaire"
+        : "",
+    level,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
+
 export async function openCatalogPicker(options: {
   title: string;
-  packId: string;
+  packId?: string;
+  packIds?: string[];
   selectedRelisIds?: string[];
   predicate?: (selection: CatalogSelection) => boolean;
 }): Promise<CatalogSelection | null> {
-  const entries = await loadCatalogSelections(
-    options.packId,
+  const packIds = options.packIds ?? (options.packId ? [options.packId] : []);
+  if (!packIds.length) throw new Error("Aucun catalogue n’a été fourni.");
+  const entries = await loadCatalogSelectionsFromPacks(
+    packIds,
     options.predicate,
   );
   const root = document.createElement("div");
@@ -274,17 +344,17 @@ export async function openCatalogPicker(options: {
   list.className = "relis-catalog-browser__list";
   const selectedIds = new Set(options.selectedRelisIds ?? []);
   for (const [index, entry] of entries.entries()) {
-    const label = document.createElement("label");
-    label.className = "relis-catalog-browser__entry";
-    label.dataset.search =
-      `${entry.name} ${entry.catalog.pathName ?? ""} ${entry.catalog.branchName ?? ""}`.toLocaleLowerCase(
-        "fr",
-      );
+    const row = document.createElement("article");
+    row.className = "relis-catalog-browser__entry";
+    row.dataset.search = normalizeCatalogSearch(
+      `${entry.name} ${catalogMetadata(entry)} ${plainText(entry.description ?? "")}`,
+    );
     const input = document.createElement("input");
     input.type = "radio";
     input.name = "selection";
     input.value = String(index);
     input.disabled = selectedIds.has(entry.relisId);
+    input.setAttribute("aria-label", `Sélectionner ${entry.name}`);
     const image = document.createElement("img");
     image.src = entry.img;
     image.alt = "";
@@ -293,22 +363,46 @@ export async function openCatalogPicker(options: {
     strong.textContent = entry.name;
     const small = document.createElement("small");
     small.textContent = [
-      entry.catalog.pathName,
-      entry.catalog.branchName,
+      catalogMetadata(entry),
       selectedIds.has(entry.relisId) ? "Déjà sélectionné" : "",
     ]
       .filter(Boolean)
       .join(" · ");
     text.append(strong, small);
-    label.append(input, image, text);
-    list.append(label);
+    const actions = document.createElement("span");
+    actions.className = "relis-catalog-browser__actions";
+    const selectButton = document.createElement("button");
+    selectButton.type = "button";
+    selectButton.disabled = input.disabled;
+    selectButton.innerHTML =
+      '<i class="fa-solid fa-check" aria-hidden="true"></i> Sélectionner';
+    selectButton.addEventListener("click", () => {
+      input.checked = true;
+      for (const candidate of list.querySelectorAll("article"))
+        candidate.classList.remove("is-selected");
+      row.classList.add("is-selected");
+    });
+    const readButton = document.createElement("button");
+    readButton.type = "button";
+    readButton.innerHTML =
+      '<i class="fa-solid fa-book-open" aria-hidden="true"></i> Lire';
+    readButton.addEventListener("click", () => {
+      void openCatalogSelectionDocument(entry).catch((error) => {
+        ui.notifications.error(
+          error instanceof Error ? error.message : "Lecture impossible.",
+        );
+      });
+    });
+    actions.append(selectButton, readButton);
+    row.append(input, image, text, actions);
+    list.append(row);
   }
   browser.append(list);
   root.append(browser);
   const filter = () => {
-    const query = search.value.trim().toLocaleLowerCase("fr");
+    const query = normalizeCatalogSearch(search.value.trim());
     let visible = 0;
-    for (const row of list.querySelectorAll<HTMLElement>("label")) {
+    for (const row of list.querySelectorAll<HTMLElement>("article")) {
       const match = !query || (row.dataset.search ?? "").includes(query);
       row.hidden = !match;
       if (match) visible += 1;
@@ -320,7 +414,7 @@ export async function openCatalogPicker(options: {
   const result = (await foundry.applications.api.DialogV2.input({
     window: { title: options.title },
     content: root,
-    ok: { label: "Sélectionner" },
+    ok: { label: "Valider la sélection" },
     modal: true,
     rejectClose: false,
   })) as Record<string, any> | null;
@@ -379,7 +473,12 @@ async function embeddedSource(
   delete data._id;
   data.system ??= {};
   data.system.catalog ??= {};
-  for (const key of ["selectedValue", "creationAutomatic"])
+  for (const key of [
+    "selectedValue",
+    "creationAutomatic",
+    "selectedChoices",
+    "selectionDetails",
+  ])
     if (selection.catalog[key] !== undefined)
       data.system.catalog[key] = selection.catalog[key];
   return data;
@@ -515,8 +614,16 @@ async function selectedItemSources(
   for (const selection of draftSelections(draft))
     unique.set(selection.relisId, selection);
   const result: Record<string, any>[] = [];
-  for (const selection of unique.values())
-    result.push(await embeddedSource(selection));
+  for (const selection of unique.values()) {
+    const enriched = JSON.parse(JSON.stringify(selection)) as CatalogSelection;
+    const selectedChoices = draft.profile.selectionChoices[selection.relisId];
+    const selectionDetails = draft.profile.selectionDetails[selection.relisId];
+    if (selectedChoices?.length)
+      enriched.catalog.selectedChoices = selectedChoices;
+    if (selectionDetails?.trim())
+      enriched.catalog.selectionDetails = selectionDetails.trim();
+    result.push(await embeddedSource(enriched));
+  }
   if (!draft.resources.creditsPending) {
     const credits = initialPhysicalCredits(draft);
     if (credits > 0) {
@@ -598,8 +705,10 @@ async function performCharacterFinalization(
     throw new Error(
       `Création bloquée : ${errors.map((entry) => entry.message).join(" ")}`,
     );
-  const actor = await Actor.implementation.create(characterActorSource(draft));
+  let actor: Actor | null = null;
   try {
+    actor = await Actor.implementation.create(characterActorSource(draft));
+    if (!actor) throw new Error("Foundry n’a pas créé l’Actor demandé.");
     const items = await selectedItemSources(draft);
     const createdItems = items.length
       ? ((await actor.createEmbeddedDocuments("Item", items)) as Item[])
@@ -607,7 +716,7 @@ async function performCharacterFinalization(
     await synchronizeEmbeddedBuildReferences(actor, draft, createdItems);
     return actor;
   } catch (error) {
-    await actor.delete?.();
+    if (actor) await actor.delete();
     throw error;
   }
 }
