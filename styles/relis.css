@@ -1710,9 +1710,10 @@
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
   gap: 0.6rem;
-  width: min(58rem, 78vw);
-  height: min(70vh, 48rem);
-  min-height: 24rem;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: min(24rem, 60vh);
 }
 
 .relis-catalog-browser__list {
@@ -1726,11 +1727,17 @@
 
 .relis-catalog-browser__entry {
   display: grid;
-  grid-template-columns: auto 2rem minmax(10rem, 1fr) auto;
+  grid-template-columns: auto 2rem minmax(0, 1fr);
   align-items: center;
   gap: 0.55rem;
+  min-width: 0;
   padding: 0.45rem;
   border: 1px solid #315d6c;
+}
+
+.relis-catalog-browser__entry > span:not(.relis-catalog-browser__actions) {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .relis-catalog-browser__entry[hidden] {
@@ -1748,6 +1755,77 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+.relis-catalog-browser__actions {
+  grid-column: 2 / -1;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.relis-catalog-browser__actions button {
+  flex: 0 1 auto;
+  min-width: 7rem;
+}
+
+.relis-creation-budget {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0.65rem 0;
+  padding: 0.65rem;
+  border: 1px solid #397184;
+  background: rgb(8 35 46 / 75%);
+}
+
+.relis-creation-budget > div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.relis-creation-budget > div strong {
+  color: #83effb;
+  font-size: 1.15rem;
+}
+
+.relis-creation-budget progress {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.relis-creation-grant-grid,
+.relis-creation-package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.55rem;
+}
+
+.relis-creation-package {
+  display: grid;
+  align-content: start;
+  gap: 0.45rem;
+  padding: 0.65rem;
+  border: 1px solid #397184;
+  background: rgb(16 54 68 / 55%);
+}
+
+.relis-creation-package > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.55rem;
+}
+
+.relis-creation-package--locked {
+  border-color: #82672f;
+  background: rgb(68 48 17 / 45%);
+}
+
+.relis-creation-source-badge {
+  padding: 0.15rem 0.35rem;
+  border: 1px solid #4f899a;
+  color: #bfeaf2;
+  font-size: 0.78rem;
 }
 
 .relis-creation-choice-card,

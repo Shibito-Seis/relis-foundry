@@ -145,8 +145,11 @@ describe("construction manuelle PF2e-like 10-D3", () => {
     expect(service).toContain("openCatalogSelectionDocument");
     expect(service).toContain("Valider la sélection");
     expect(service).toContain("normalizeCatalogSearch");
+    expect(service).toContain('renderedSearch.addEventListener("input"');
     expect(service).toContain("Sélectionner");
     expect(service).toContain("Lire");
+    expect(service).toContain("render: attachBrowserListeners");
+    expect(service).toContain("resizable: true");
     expect(style).toMatch(
       /\.relis-catalog-browser__entry\[hidden\]\s*\{\s*display:\s*none/u,
     );
@@ -168,7 +171,9 @@ describe("construction manuelle PF2e-like 10-D3", () => {
     expect(assistant).toContain("FilePicker.implementation");
     expect(assistant).toContain("input.dataset.maxSelections");
     expect(template).toContain('data-max-selections="4"');
-    expect(template).toContain('data-picker="equipment"');
+    expect(template).toContain('data-picker="grantedEquipment"');
+    expect(template).toContain('data-picker="purchasedEquipment"');
+    expect(template).toContain("Paquetages préfaits payants");
     expect(template).not.toContain('placeholder="Chemin Foundry facultatif"');
     expect(service).toMatch(/let actor: Actor \| null = null/u);
     expect(service).toMatch(/if \(actor\) await actor\.delete\(\)/u);

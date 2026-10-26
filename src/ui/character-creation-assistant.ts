@@ -16,8 +16,13 @@ import {
   normalizeCharacterDraft,
   pathSkillKeys,
   profileSkillKeys,
+  purchaseQuantity,
+  purchaseUnitPrice,
   qualifiedSkillKeys,
+  remainingPhysicalCredits,
   secondarySpecializationCount,
+  startingPackageRows,
+  startingPurchaseTotal,
   type CatalogSelection,
   type CharacterCreationDraft,
   type CharacterCreationStepId,
@@ -25,6 +30,7 @@ import {
 import {
   finalizeCharacterDraft,
   loadCatalogSelections,
+  MATERIAL_PACK_IDS,
   openCatalogPicker,
   openCatalogSelectionDocument,
 } from "../services/character-build";
@@ -332,6 +338,50 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
     const currentDiagnostics = derived.diagnostics.filter(
       (entry) => entry.step === current,
     );
+    const equipmentGrantSources = [
+      {
+        id: "common",
+        label: "Équipement commun",
+        guidance:
+          "Combinaison de survie standard, terminal personnel basique, rations d’urgence, vêtements ou combinaison de cryostase, identifiant de capsule, petit objet personnel et arme basique légère au choix.",
+      },
+      this.draft.profile.profile?.catalog.typicalBenefit
+        ? {
+            id: this.draft.profile.profile.relisId,
+            label: `Profil · ${this.draft.profile.profile.name}`,
+            guidance: String(this.draft.profile.profile.catalog.typicalBenefit),
+          }
+        : null,
+      this.draft.path.path?.catalog.initialLoadout
+        ? {
+            id: this.draft.path.path.relisId,
+            label: `Voie · ${this.draft.path.path.name}`,
+            guidance: String(this.draft.path.path.catalog.initialLoadout),
+          }
+        : null,
+      this.draft.path.primarySpecialization?.catalog.primaryLoadout
+        ? {
+            id: this.draft.path.primarySpecialization.relisId,
+            label: `Spécialisation principale · ${this.draft.path.primarySpecialization.name}`,
+            guidance: String(
+              this.draft.path.primarySpecialization.catalog.primaryLoadout,
+            ),
+          }
+        : null,
+      ...this.draft.path.secondarySpecializations.map((entry) =>
+        entry.catalog.primaryLoadout
+          ? {
+              id: entry.relisId,
+              label: `Spécialisation secondaire · ${entry.name}`,
+              guidance: String(entry.catalog.primaryLoadout),
+            }
+          : null,
+      ),
+    ].filter(
+      (entry): entry is { id: string; label: string; guidance: string } =>
+        Boolean(entry),
+    );
+    const remainingCredits = remainingPhysicalCredits(this.draft);
     return {
       ...context,
       draft: this.draft,
@@ -505,6 +555,10 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
       initialCredits: initialPhysicalCredits(this.draft).toLocaleString(
         "fr-FR",
       ),
+      initialCreditsRaw: initialPhysicalCredits(this.draft),
+      spentCredits: startingPurchaseTotal(this.draft).toLocaleString("fr-FR"),
+      spentCreditsRaw: startingPurchaseTotal(this.draft),
+      remainingCredits: remainingCredits.toLocaleString("fr-FR"),
       hitPointSources: derived.hitPointSources,
       requiredQualifiedSkills: derived.requiredQualifiedSkills ?? "—",
       selectedQualifiedSkills: derived.qualifiedSkillCount,
@@ -547,25 +601,38 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
       ]
         .filter((entry): entry is CatalogSelection => Boolean(entry))
         .map((entry) => selectionView(this.draft, entry)),
-      equipmentGuidance: [
-        this.draft.profile.profile?.catalog.typicalBenefit
-          ? `Profil : ${String(this.draft.profile.profile.catalog.typicalBenefit)}`
-          : "",
-        this.draft.path.path?.catalog.initialLoadout
-          ? `Voie : ${String(this.draft.path.path.catalog.initialLoadout)}`
-          : "",
-        this.draft.path.primarySpecialization?.catalog.primaryLoadout
-          ? `Spécialisation principale : ${String(this.draft.path.primarySpecialization.catalog.primaryLoadout)}`
-          : "",
-        ...this.draft.path.secondarySpecializations.map((entry) =>
-          entry.catalog.primaryLoadout
-            ? `${entry.name} : ${String(entry.catalog.primaryLoadout)}`
-            : "",
-        ),
-      ].filter(Boolean),
-      initialEquipmentRows: this.draft.resources.initialEquipment.map((entry) =>
-        selectionView(this.draft, entry),
+      equipmentGrantSources,
+      initialEquipmentRows: this.draft.resources.initialEquipment.map(
+        (entry) => ({
+          ...selectionView(this.draft, entry),
+          sourceLabel: String(
+            entry.catalog.creationGrantSourceLabel ?? "Dotation de création",
+          ),
+        }),
       ),
+      purchasedEquipmentRows: this.draft.resources.purchasedEquipment.map(
+        (entry) => {
+          const quantity = purchaseQuantity(entry);
+          const unitPrice = purchaseUnitPrice(entry);
+          return {
+            ...selectionView(this.draft, entry),
+            quantity,
+            unitPrice: unitPrice.toLocaleString("fr-FR"),
+            subtotal: (quantity * unitPrice).toLocaleString("fr-FR"),
+            decreaseDisabled: quantity <= 1,
+            increaseDisabled: unitPrice > remainingCredits,
+          };
+        },
+      ),
+      startingPackageRows: startingPackageRows(this.draft).map((entry) => ({
+        ...entry,
+        cssClass: entry.levelOneAvailable
+          ? "relis-creation-package"
+          : "relis-creation-package relis-creation-package--locked",
+        costLabel: entry.cost.toLocaleString("fr-FR"),
+        disabled:
+          !entry.selected && (!entry.levelOneAvailable || !entry.affordable),
+      })),
     };
   }
 
@@ -794,7 +861,52 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
         await this.saveAndRender();
         return;
       }
-      if (action === "pick") await this.pick(button.dataset.picker ?? "");
+      if (action === "adjust-purchase") {
+        const relisId = button.dataset.relisId;
+        const delta = Math.trunc(Number(button.dataset.delta) || 0);
+        const selection = this.draft.resources.purchasedEquipment.find(
+          (entry) => entry.relisId === relisId,
+        );
+        if (!selection || !delta) return;
+        const quantity = purchaseQuantity(selection);
+        if (
+          delta > 0 &&
+          purchaseUnitPrice(selection) > remainingPhysicalCredits(this.draft)
+        )
+          throw new Error("Les crédits personnels restants sont insuffisants.");
+        selection.catalog.creationPurchaseQuantity = Math.max(
+          1,
+          quantity + delta,
+        );
+        await this.saveAndRender();
+        return;
+      }
+      if (action === "toggle-starting-package") {
+        const packageId = button.dataset.packageId;
+        if (!packageId) return;
+        const packages = new Set(this.draft.resources.purchasedPackageIds);
+        if (packages.has(packageId)) packages.delete(packageId);
+        else {
+          const entry = startingPackageRows(this.draft).find(
+            (candidate) => candidate.id === packageId,
+          );
+          if (!entry?.levelOneAvailable)
+            throw new Error(
+              entry?.unavailableReason ||
+                "Ce paquet n’est pas disponible à la création niveau 1.",
+            );
+          if (!entry.affordable)
+            throw new Error(
+              "Les crédits personnels restants sont insuffisants.",
+            );
+          packages.add(packageId);
+        }
+        this.draft.resources.purchasedPackageIds = [...packages];
+        await this.saveAndRender();
+        return;
+      }
+      if (action === "pick")
+        await this.pick(button.dataset.picker ?? "", button);
     } catch (error) {
       console.error("RE:LIS | Assistant de création", error);
       ui.notifications.error(
@@ -824,7 +936,7 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
     void picker.render({ force: true });
   }
 
-  private async pick(kind: string): Promise<void> {
+  private async pick(kind: string, button?: HTMLButtonElement): Promise<void> {
     const ancestry = this.draft.body.ancestry;
     const profile = this.draft.profile.profile;
     const path = this.draft.path.path;
@@ -957,20 +1069,25 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
         maximum: 1,
         predicate: (entry) => entry.catalog.postTier === "secondary",
       },
-      equipment: {
-        title: "Ajouter un équipement initial réel",
-        packIds: [
-          "relis.material-weapons",
-          "relis.material-armor",
-          "relis.material-equipment",
-          "relis.material-consumables",
-          "relis.material-ammunition",
-          "relis.material-resources",
-          "relis.material-containers",
-        ],
+      grantedEquipment: {
+        title: "Ajouter un objet attribué gratuitement",
+        packIds: MATERIAL_PACK_IDS,
         path: "resources.initialEquipment",
         multiple: true,
-        predicate: (entry) => entry.relisId !== "MAT-RES-CREDIT",
+        predicate: (entry) =>
+          entry.relisId !== "MAT-RES-CREDIT" &&
+          (entry.level == null || entry.level <= 1),
+      },
+      purchasedEquipment: {
+        title: "Acheter un objet de niveau 1 ou inférieur",
+        packIds: MATERIAL_PACK_IDS,
+        path: "resources.purchasedEquipment",
+        multiple: true,
+        predicate: (entry) =>
+          entry.relisId !== "MAT-RES-CREDIT" &&
+          (entry.level == null || entry.level <= 1) &&
+          Number.isFinite(Number(entry.referencePrice?.amount)) &&
+          Number(entry.referencePrice?.amount) > 0,
       },
     };
     const configuration = mapping[kind];
@@ -986,8 +1103,15 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
       throw new Error(
         `Ce choix est limité à ${configuration.maximum} sélection${configuration.maximum > 1 ? "s" : ""}.`,
       );
+    const grantSourceId = button?.dataset.grantSourceId ?? "";
     const selected = configuration.multiple
-      ? Array.from(current ?? []).map((entry: any) => entry.relisId)
+      ? Array.from(current ?? [])
+          .filter(
+            (entry: any) =>
+              kind !== "grantedEquipment" ||
+              entry.catalog.creationGrantSourceId === grantSourceId,
+          )
+          .map((entry: any) => entry.relisId)
       : current?.relisId
         ? [current.relisId]
         : [];
@@ -1003,6 +1127,23 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
     else throw new Error("Aucun catalogue n’est configuré pour ce choix.");
     const choice = await openCatalogPicker(pickerOptions);
     if (!choice) return;
+    if (kind === "grantedEquipment") {
+      choice.catalog.creationGrantSourceId = grantSourceId || "creation";
+      choice.catalog.creationGrantSourceLabel =
+        button?.dataset.grantSourceLabel ?? "Dotation de création";
+      choice.catalog.creationGrantQuantity = 1;
+    }
+    if (kind === "purchasedEquipment") {
+      const unitPrice = Number(choice.referencePrice?.amount);
+      if (!Number.isFinite(unitPrice) || unitPrice <= 0)
+        throw new Error(
+          "Cet Item ne possède pas de prix de référence achetable.",
+        );
+      if (unitPrice > remainingPhysicalCredits(this.draft))
+        throw new Error("Les crédits personnels restants sont insuffisants.");
+      choice.catalog.creationPurchaseUnitPrice = unitPrice;
+      choice.catalog.creationPurchaseQuantity = 1;
+    }
     setDraftValue(
       this.draft,
       configuration.path,
@@ -1050,7 +1191,6 @@ export class RelisCharacterCreationAssistant extends HandlebarsApplicationMixin(
       this.draft.skills.pathChoices = [];
       this.draft.skills.freeChoices = [];
     }
-    if (kind === "equipment") this.draft.resources.equipmentPending = false;
     await this.saveAndRender();
   }
 

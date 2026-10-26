@@ -1,6 +1,6 @@
 //#region src/config.ts
 var SYSTEM_ID = "relis";
-var PACKAGE_VERSION = "0.9.1";
+var PACKAGE_VERSION = "0.9.2";
 var RULES_VERSION = "1.0.0";
 var CONTENT_VERSION = "1.4.1";
 var ACTOR_TYPES = [
@@ -3939,6 +3939,144 @@ function ensureRelisId(document) {
 function registerIdentityHooks() {
 	for (const documentName of DOCUMENT_NAMES) Hooks.on(`preCreate${documentName}`, ensureRelisId);
 }
+//#endregion
+//#region src/rules/starting-equipment.ts
+var STARTING_EQUIPMENT_PACKAGES = [
+	{
+		id: "civil-prudent",
+		label: "Civil prudent",
+		cost: 2500,
+		summary: "Gilet civil, pistolet de service, deux chargeurs garnis, nécessaire d’hygiène et communicateur civil.",
+		contents: [
+			{
+				relisId: "MAT-ARM-011-GILET-DE-PROTECTION-CIVIL",
+				quantity: 1
+			},
+			{
+				relisId: "MAT-WPN-032-PISTOLET-DE-SERVICE",
+				quantity: 1
+			},
+			{
+				relisId: "MAT-CTR-CHG-002-PISTOLET-DE-SERVICE",
+				quantity: 2
+			},
+			{
+				relisId: "BAL-9P",
+				quantity: 24
+			},
+			{
+				relisId: "UTL-043",
+				quantity: 1
+			},
+			{
+				relisId: "UTL-049",
+				quantity: 1
+			}
+		],
+		levelOneAvailable: true,
+		unavailableReason: ""
+	},
+	{
+		id: "securite",
+		label: "Sécurité",
+		cost: 4500,
+		summary: "Gilet balistique, pistolet automatique, deux recharges et casque balistique.",
+		contents: [],
+		levelOneAvailable: false,
+		unavailableReason: "Le pistolet automatique canonique est de niveau 3 ; ce paquet dépasse donc la limite de création niveau 1."
+	},
+	{
+		id: "eclaireur",
+		label: "Éclaireur",
+		cost: 4800,
+		summary: "Armure d’éclaireur, carabine civile, deux recharges et capteurs simples.",
+		contents: [],
+		levelOneAvailable: false,
+		unavailableReason: "L’armure d’éclaireur canonique est de niveau 2 ; ce paquet dépasse donc la limite de création niveau 1."
+	},
+	{
+		id: "technicien",
+		label: "Technicien",
+		cost: 4e3,
+		summary: "Tenue rembourrée, pistolet de poche, trousse technique et batterie standard.",
+		contents: [
+			{
+				relisId: "MAT-ARM-001-TENUE-REMBOURREE",
+				quantity: 1
+			},
+			{
+				relisId: "MAT-WPN-031-PISTOLET-DE-POCHE",
+				quantity: 1
+			},
+			{
+				relisId: "UTL-001",
+				quantity: 1
+			},
+			{
+				relisId: "MAT-RES-BAT-003-BATTERIE-STANDARD",
+				quantity: 1
+			}
+		],
+		levelOneAvailable: true,
+		unavailableReason: ""
+	},
+	{
+		id: "medecin-terrain",
+		label: "Médecin de terrain",
+		cost: 4800,
+		summary: "Protection médicale légère, projecteur de dards et consommables de soin.",
+		contents: [],
+		levelOneAvailable: false,
+		unavailableReason: "La protection médicale et le projecteur de dards canoniques sont de niveau 2."
+	},
+	{
+		id: "pilote",
+		label: "Pilote",
+		cost: 4800,
+		summary: "Combinaison blindée de pilote, casque ou interface, arme de poing et cellule.",
+		contents: [],
+		levelOneAvailable: false,
+		unavailableReason: "La combinaison et l’interface de pilote canoniques sont de niveau 2."
+	},
+	{
+		id: "operateur-energetique",
+		label: "Opérateur énergétique",
+		cost: 5e3,
+		summary: "Tissu anti-laser, pistolet laser, batterie et protection énergétique légère.",
+		contents: [],
+		levelOneAvailable: false,
+		unavailableReason: "Le pistolet laser canonique est de niveau 2 ; ce paquet dépasse donc la limite de création niveau 1."
+	},
+	{
+		id: "survie-eva",
+		label: "Survie EVA",
+		cost: 4500,
+		summary: "Combinaison orbitale d’urgence, casque antichoc, trousse technique et pistolet compact.",
+		contents: [
+			{
+				relisId: "MAT-ARM-073-COMBINAISON-ORBITALE-D-URGENCE",
+				quantity: 1
+			},
+			{
+				relisId: "MAT-ARM-055-CASQUE-CIVIL-ANTICHOC",
+				quantity: 1
+			},
+			{
+				relisId: "UTL-001",
+				quantity: 1
+			},
+			{
+				relisId: "MAT-WPN-031-PISTOLET-DE-POCHE",
+				quantity: 1
+			}
+		],
+		levelOneAvailable: true,
+		unavailableReason: ""
+	}
+];
+function startingEquipmentPackage(id) {
+	return STARTING_EQUIPMENT_PACKAGES.find((entry) => entry.id === id);
+}
 var CHARACTER_CREATION_STEPS = [
 	{
 		id: "frame",
@@ -4106,9 +4244,11 @@ function createCharacterDraft(id, ownerId = "", now = Date.now()) {
 		},
 		resources: {
 			energyProfileId: "",
-			creditsPending: true,
+			creditsPending: false,
 			equipmentPending: true,
-			initialEquipment: []
+			initialEquipment: [],
+			purchasedEquipment: [],
+			purchasedPackageIds: []
 		},
 		appearance: {
 			actorImage: "",
@@ -4173,6 +4313,9 @@ function normalizeCharacterDraft(value, id, ownerId = "") {
 			...value.assignments
 		}
 	};
+	draft.resources.creditsPending = false;
+	draft.resources.purchasedEquipment = Array.from(draft.resources.purchasedEquipment ?? []);
+	draft.resources.purchasedPackageIds = Array.from(draft.resources.purchasedPackageIds ?? []).filter((id) => Boolean(startingEquipmentPackage(id)));
 	migrateLegacySkillChoices(draft);
 	draft.skills.qualified = qualifiedSkillKeys(draft);
 	draft.skills.favorites = draft.skills.favorites.filter((key) => draft.skills.qualified.includes(key));
@@ -4223,10 +4366,10 @@ function secondarySpecializationCount(scheme) {
 function requiredQualifiedSkillCount(draft, intelligence) {
 	const pathTotal = Number(draft.path.path?.catalog.qualifiedSkillTotal);
 	const advantageSkills = draft.profile.advantages.reduce((total, advantage) => total + Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.qualifiedSkills) || 0)), 0);
-	return Number.isFinite(pathTotal) ? Math.max(0, pathTotal + 2 + Math.max(0, Math.trunc(intelligence)) + advantageSkills) : null;
+	return Number.isFinite(pathTotal) ? Math.max(0, pathTotal + 2 + 1 + Math.max(0, Math.trunc(intelligence)) + advantageSkills) : null;
 }
 function freeQualifiedSkillCount(draft, intelligence) {
-	return Math.max(0, Math.trunc(intelligence) + draft.profile.advantages.reduce((total, advantage) => total + Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.qualifiedSkills) || 0)), 0));
+	return Math.max(0, 1 + Math.max(0, Math.trunc(intelligence)) + draft.profile.advantages.reduce((total, advantage) => total + Math.max(0, Math.trunc(Number(advantage.catalog.creationEffects?.qualifiedSkills) || 0)), 0));
 }
 function advantageAttributeChanges(draft, diagnostics) {
 	const result = [];
@@ -4604,11 +4747,19 @@ function deriveCharacterCreation(draft) {
 		step: "talents",
 		message: `${secondaryWithoutTalent.length} Talent${secondaryWithoutTalent.length > 1 ? "s" : ""} secondaire${secondaryWithoutTalent.length > 1 ? "s" : ""} de niveau 1 reste${secondaryWithoutTalent.length > 1 ? "nt" : ""} en attente.`
 	});
-	if (draft.resources.creditsPending) diagnostics.push({
-		level: "warning",
+	if (startingPurchaseTotal(draft) > initialPhysicalCredits(draft)) diagnostics.push({
+		level: "error",
 		step: "resources",
-		message: "Crédits initiaux conservés comme choix en attente."
+		message: "Les achats de départ dépassent les crédits personnels disponibles."
 	});
+	for (const id of draft.resources.purchasedPackageIds) {
+		const packageEntry = startingEquipmentPackage(id);
+		if (!packageEntry?.levelOneAvailable) diagnostics.push({
+			level: "error",
+			step: "resources",
+			message: `Le paquet ${packageEntry?.label ?? id} n’est pas compatible avec la limite d’équipement niveau 1.`
+		});
+	}
 	if (draft.resources.equipmentPending) diagnostics.push({
 		level: "warning",
 		step: "resources",
@@ -4798,7 +4949,8 @@ function draftSelections(draft) {
 		...draft.talents.secondaryTalents,
 		draft.assignments.primaryPost,
 		...draft.assignments.secondaryPosts,
-		...draft.resources.initialEquipment
+		...draft.resources.initialEquipment,
+		...draft.resources.purchasedEquipment
 	].filter((entry) => Boolean(entry));
 }
 function initialPhysicalCredits(draft) {
@@ -4810,8 +4962,52 @@ function initialPhysicalCredits(draft) {
 	if (ids.has("CRE-HCP-002-PAUVRE")) return 2500;
 	return 5e3;
 }
+function purchaseQuantity(selection) {
+	return Math.max(1, Math.trunc(Number(selection.catalog.creationPurchaseQuantity) || 1));
+}
+function purchaseUnitPrice(selection) {
+	return Math.max(0, Number(selection.catalog.creationPurchaseUnitPrice ?? selection.referencePrice?.amount ?? 0) || 0);
+}
+function startingPurchaseTotal(draft) {
+	return draft.resources.purchasedEquipment.reduce((total, selection) => total + purchaseQuantity(selection) * purchaseUnitPrice(selection), 0) + draft.resources.purchasedPackageIds.reduce((total, id) => total + (startingEquipmentPackage(id)?.cost ?? 0), 0);
+}
+function remainingPhysicalCredits(draft) {
+	return Math.max(0, initialPhysicalCredits(draft) - startingPurchaseTotal(draft));
+}
+function startingPackageRows(draft) {
+	const selected = new Set(draft.resources.purchasedPackageIds);
+	const remaining = remainingPhysicalCredits(draft);
+	return STARTING_EQUIPMENT_PACKAGES.map((entry) => ({
+		...entry,
+		selected: selected.has(entry.id),
+		affordable: selected.has(entry.id) || entry.cost <= remaining
+	}));
+}
 //#endregion
 //#region src/services/character-build.ts
+var MATERIAL_PACK_IDS = [
+	"relis.material-weapons",
+	"relis.material-armor",
+	"relis.material-equipment",
+	"relis.material-consumables",
+	"relis.material-ammunition",
+	"relis.material-resources",
+	"relis.material-containers"
+];
+var MATERIAL_ITEM_TYPES = /* @__PURE__ */ new Set([
+	"weapon",
+	"armor",
+	"equipment",
+	"consumable",
+	"ammunition",
+	"resource",
+	"container"
+]);
+var STACKABLE_MATERIAL_TYPES = /* @__PURE__ */ new Set([
+	"consumable",
+	"ammunition",
+	"resource"
+]);
 var BUILD_ITEM_TYPES = /* @__PURE__ */ new Set([
 	"ancestry",
 	"profile",
@@ -4964,7 +5160,8 @@ async function loadCatalogSelections(packId, predicate) {
 		catalog: JSON.parse(JSON.stringify(document.system?.catalog ?? {})),
 		level: document.system?.level === null || document.system?.level === void 0 ? null : Number(document.system.level),
 		requirementRefs: JSON.parse(JSON.stringify(document.system?.requirementRefs ?? [])),
-		description: String(document.system?.description ?? "")
+		description: String(document.system?.description ?? ""),
+		referencePrice: JSON.parse(JSON.stringify(document.system?.referencePrice ?? {}))
 	})).filter((selection) => selection.catalog.selectable !== false && (!predicate || predicate(selection))).sort((left, right) => left.name.localeCompare(right.name, "fr"));
 }
 async function loadCatalogSelectionsFromPacks(packIds, predicate) {
@@ -4995,14 +5192,16 @@ function plainText$1(value) {
 }
 function catalogMetadata(selection) {
 	const value = String(selection.catalog.value ?? "").trim();
-	const level = selection.level ? `Niveau ${selection.level}` : "";
+	const level = selection.level === null || selection.level === void 0 ? "" : `Niveau ${selection.level}`;
+	const price = Number(selection.referencePrice?.amount);
 	return [
 		value ? `Valeur ${value}` : "",
 		selection.catalog.pathName,
 		selection.catalog.branchName,
 		selection.catalog.family,
 		selection.catalog.postTier === "primary" ? "Poste principal" : selection.catalog.postTier === "secondary" ? "Poste secondaire" : "",
-		level
+		level,
+		Number.isFinite(price) && price > 0 ? `${price.toLocaleString("fr-FR")} crédits` : ""
 	].filter(Boolean).join(" · ");
 }
 async function openCatalogPicker(options) {
@@ -5050,44 +5249,67 @@ async function openCatalogPicker(options) {
 		const selectButton = document.createElement("button");
 		selectButton.type = "button";
 		selectButton.disabled = input.disabled;
+		selectButton.dataset.catalogSelectIndex = String(index);
 		selectButton.innerHTML = "<i class=\"fa-solid fa-check\" aria-hidden=\"true\"></i> Sélectionner";
-		selectButton.addEventListener("click", () => {
-			input.checked = true;
-			for (const candidate of list.querySelectorAll("article")) candidate.classList.remove("is-selected");
-			row.classList.add("is-selected");
-		});
 		const readButton = document.createElement("button");
 		readButton.type = "button";
+		readButton.dataset.catalogReadIndex = String(index);
 		readButton.innerHTML = "<i class=\"fa-solid fa-book-open\" aria-hidden=\"true\"></i> Lire";
-		readButton.addEventListener("click", () => {
-			openCatalogSelectionDocument(entry).catch((error) => {
-				ui.notifications.error(error instanceof Error ? error.message : "Lecture impossible.");
-			});
-		});
 		actions.append(selectButton, readButton);
 		row.append(input, image, text, actions);
 		list.append(row);
 	}
 	browser.append(list);
 	root.append(browser);
-	const filter = () => {
-		const query = normalizeCatalogSearch(search.value.trim());
-		let visible = 0;
-		for (const row of list.querySelectorAll("article")) {
-			const match = !query || (row.dataset.search ?? "").includes(query);
-			row.hidden = !match;
-			if (match) visible += 1;
-		}
-		status.textContent = `${visible} résultat${visible > 1 ? "s" : ""}.`;
+	status.textContent = `${entries.length} résultat${entries.length > 1 ? "s" : ""}.`;
+	const attachBrowserListeners = (_event, dialog) => {
+		const renderedBrowser = dialog.element.querySelector(".relis-catalog-browser");
+		const renderedSearch = renderedBrowser?.querySelector("input[type=\"search\"]");
+		const renderedStatus = renderedBrowser?.querySelector(".relis-catalog-browser__status");
+		const renderedList = renderedBrowser?.querySelector(".relis-catalog-browser__list");
+		if (!renderedBrowser || !renderedSearch || !renderedStatus || !renderedList) return;
+		const filter = () => {
+			const query = normalizeCatalogSearch(renderedSearch.value.trim());
+			let visible = 0;
+			for (const row of renderedList.querySelectorAll("article")) {
+				const match = !query || (row.dataset.search ?? "").includes(query);
+				row.hidden = !match;
+				if (match) visible += 1;
+			}
+			renderedStatus.textContent = `${visible} résultat${visible > 1 ? "s" : ""}.`;
+		};
+		renderedSearch.addEventListener("input", filter);
+		for (const button of renderedList.querySelectorAll("[data-catalog-select-index]")) button.addEventListener("click", () => {
+			const index = Number(button.dataset.catalogSelectIndex);
+			const radio = renderedList.querySelector(`input[name="selection"][value="${index}"]`);
+			if (!radio || radio.disabled) return;
+			radio.checked = true;
+			for (const candidate of renderedList.querySelectorAll("article")) candidate.classList.remove("is-selected");
+			radio.closest("article")?.classList.add("is-selected");
+		});
+		for (const button of renderedList.querySelectorAll("[data-catalog-read-index]")) button.addEventListener("click", () => {
+			const entry = entries[Number(button.dataset.catalogReadIndex)];
+			if (!entry) return;
+			openCatalogSelectionDocument(entry).catch((error) => {
+				ui.notifications.error(error instanceof Error ? error.message : "Lecture impossible.");
+			});
+		});
+		filter();
 	};
-	search.addEventListener("input", filter);
-	filter();
 	const result = await foundry.applications.api.DialogV2.input({
-		window: { title: options.title },
+		window: {
+			title: options.title,
+			resizable: true
+		},
+		position: {
+			width: 760,
+			height: 640
+		},
 		content: root,
 		ok: { label: "Valider la sélection" },
 		modal: true,
-		rejectClose: false
+		rejectClose: false,
+		render: attachBrowserListeners
 	});
 	if (!result || result.selection === void 0 || result.selection === "") return null;
 	const selection = entries[Number(result.selection)] ?? null;
@@ -5200,7 +5422,10 @@ async function removeBuildItem(actor, slotKey, itemId) {
 }
 async function selectedItemSources(draft) {
 	const unique = /* @__PURE__ */ new Map();
-	for (const selection of draftSelections(draft)) unique.set(selection.relisId, selection);
+	for (const selection of draftSelections(draft)) {
+		if (MATERIAL_ITEM_TYPES.has(selection.type)) continue;
+		unique.set(selection.relisId, selection);
+	}
 	const result = [];
 	for (const selection of unique.values()) {
 		const enriched = JSON.parse(JSON.stringify(selection));
@@ -5210,15 +5435,43 @@ async function selectedItemSources(draft) {
 		if (selectionDetails?.trim()) enriched.catalog.selectionDetails = selectionDetails.trim();
 		result.push(await embeddedSource(enriched));
 	}
-	if (!draft.resources.creditsPending) {
-		const credits = initialPhysicalCredits(draft);
-		if (credits > 0) {
-			const [selection] = await loadCatalogSelections("relis.material-resources", (entry) => entry.relisId === "MAT-RES-CREDIT");
-			if (!selection) throw new Error("La source canonique du crédit physique est absente.");
+	const appendMaterial = async (selection, quantity, acquisitionKind, lotId) => {
+		const count = Math.max(1, Math.trunc(quantity));
+		const copies = STACKABLE_MATERIAL_TYPES.has(selection.type) ? 1 : count;
+		for (let index = 0; index < copies; index += 1) {
 			const source = await embeddedSource(selection);
-			source.system.physical.quantity = credits;
+			source.system.physical ??= {};
+			source.system.physical.quantity = copies === 1 && STACKABLE_MATERIAL_TYPES.has(selection.type) ? count : 1;
+			source.system.provenance ??= {};
+			source.system.provenance.acquisitionKind = acquisitionKind;
+			source.system.provenance.lotId = lotId;
 			result.push(source);
 		}
+	};
+	for (const selection of draft.resources.initialEquipment) await appendMaterial(selection, Number(selection.catalog.creationGrantQuantity) || 1, "creationGrant", String(selection.catalog.creationGrantSourceId ?? "creation"));
+	for (const selection of draft.resources.purchasedEquipment) await appendMaterial(selection, purchaseQuantity(selection), "creationPurchase", "individual-purchase");
+	if (draft.resources.purchasedPackageIds.length) {
+		const materialCatalog = await loadCatalogSelectionsFromPacks(MATERIAL_PACK_IDS);
+		const byRelisId = new Map(materialCatalog.map((selection) => [selection.relisId, selection]));
+		for (const packageId of draft.resources.purchasedPackageIds) {
+			const packageEntry = startingEquipmentPackage(packageId);
+			if (!packageEntry?.levelOneAvailable) throw new Error(`Le paquet ${packageEntry?.label ?? packageId} n’est pas disponible à la création niveau 1.`);
+			for (const content of packageEntry.contents) {
+				const selection = byRelisId.get(content.relisId);
+				if (!selection) throw new Error(`Le paquet ${packageEntry.label} référence un Item absent : ${content.relisId}.`);
+				await appendMaterial(selection, content.quantity, "creationPurchase", packageEntry.id);
+			}
+		}
+	}
+	const credits = remainingPhysicalCredits(draft);
+	if (credits > 0) {
+		const [selection] = await loadCatalogSelections("relis.material-resources", (entry) => entry.relisId === "MAT-RES-CREDIT");
+		if (!selection) throw new Error("La source canonique du crédit physique est absente.");
+		const source = await embeddedSource(selection);
+		source.system.physical.quantity = credits;
+		source.system.provenance.acquisitionKind = "creationGrant";
+		source.system.provenance.lotId = "starting-credits";
+		result.push(source);
 	}
 	return result;
 }
@@ -5456,6 +5709,34 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			favorite: favoriteSkills.has(key)
 		}));
 		const currentDiagnostics = derived.diagnostics.filter((entry) => entry.step === current);
+		const equipmentGrantSources = [
+			{
+				id: "common",
+				label: "Équipement commun",
+				guidance: "Combinaison de survie standard, terminal personnel basique, rations d’urgence, vêtements ou combinaison de cryostase, identifiant de capsule, petit objet personnel et arme basique légère au choix."
+			},
+			this.draft.profile.profile?.catalog.typicalBenefit ? {
+				id: this.draft.profile.profile.relisId,
+				label: `Profil · ${this.draft.profile.profile.name}`,
+				guidance: String(this.draft.profile.profile.catalog.typicalBenefit)
+			} : null,
+			this.draft.path.path?.catalog.initialLoadout ? {
+				id: this.draft.path.path.relisId,
+				label: `Voie · ${this.draft.path.path.name}`,
+				guidance: String(this.draft.path.path.catalog.initialLoadout)
+			} : null,
+			this.draft.path.primarySpecialization?.catalog.primaryLoadout ? {
+				id: this.draft.path.primarySpecialization.relisId,
+				label: `Spécialisation principale · ${this.draft.path.primarySpecialization.name}`,
+				guidance: String(this.draft.path.primarySpecialization.catalog.primaryLoadout)
+			} : null,
+			...this.draft.path.secondarySpecializations.map((entry) => entry.catalog.primaryLoadout ? {
+				id: entry.relisId,
+				label: `Spécialisation secondaire · ${entry.name}`,
+				guidance: String(entry.catalog.primaryLoadout)
+			} : null)
+		].filter((entry) => Boolean(entry));
+		const remainingCredits = remainingPhysicalCredits(this.draft);
 		return {
 			...context,
 			draft: this.draft,
@@ -5584,6 +5865,10 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			attributeLimitReached: this.draft.attributes.freeIncreases.length >= 4,
 			hitPoints: derived.hitPoints ?? "—",
 			initialCredits: initialPhysicalCredits(this.draft).toLocaleString("fr-FR"),
+			initialCreditsRaw: initialPhysicalCredits(this.draft),
+			spentCredits: startingPurchaseTotal(this.draft).toLocaleString("fr-FR"),
+			spentCreditsRaw: startingPurchaseTotal(this.draft),
+			remainingCredits: remainingCredits.toLocaleString("fr-FR"),
 			hitPointSources: derived.hitPointSources,
 			requiredQualifiedSkills: derived.requiredQualifiedSkills ?? "—",
 			selectedQualifiedSkills: derived.qualifiedSkillCount,
@@ -5608,13 +5893,29 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				this.draft.talents.primaryTalent,
 				...this.draft.talents.secondaryTalents
 			].filter((entry) => Boolean(entry)).map((entry) => selectionView(this.draft, entry)),
-			equipmentGuidance: [
-				this.draft.profile.profile?.catalog.typicalBenefit ? `Profil : ${String(this.draft.profile.profile.catalog.typicalBenefit)}` : "",
-				this.draft.path.path?.catalog.initialLoadout ? `Voie : ${String(this.draft.path.path.catalog.initialLoadout)}` : "",
-				this.draft.path.primarySpecialization?.catalog.primaryLoadout ? `Spécialisation principale : ${String(this.draft.path.primarySpecialization.catalog.primaryLoadout)}` : "",
-				...this.draft.path.secondarySpecializations.map((entry) => entry.catalog.primaryLoadout ? `${entry.name} : ${String(entry.catalog.primaryLoadout)}` : "")
-			].filter(Boolean),
-			initialEquipmentRows: this.draft.resources.initialEquipment.map((entry) => selectionView(this.draft, entry))
+			equipmentGrantSources,
+			initialEquipmentRows: this.draft.resources.initialEquipment.map((entry) => ({
+				...selectionView(this.draft, entry),
+				sourceLabel: String(entry.catalog.creationGrantSourceLabel ?? "Dotation de création")
+			})),
+			purchasedEquipmentRows: this.draft.resources.purchasedEquipment.map((entry) => {
+				const quantity = purchaseQuantity(entry);
+				const unitPrice = purchaseUnitPrice(entry);
+				return {
+					...selectionView(this.draft, entry),
+					quantity,
+					unitPrice: unitPrice.toLocaleString("fr-FR"),
+					subtotal: (quantity * unitPrice).toLocaleString("fr-FR"),
+					decreaseDisabled: quantity <= 1,
+					increaseDisabled: unitPrice > remainingCredits
+				};
+			}),
+			startingPackageRows: startingPackageRows(this.draft).map((entry) => ({
+				...entry,
+				cssClass: entry.levelOneAvailable ? "relis-creation-package" : "relis-creation-package relis-creation-package--locked",
+				costLabel: entry.cost.toLocaleString("fr-FR"),
+				disabled: !entry.selected && (!entry.levelOneAvailable || !entry.affordable)
+			}))
 		};
 	}
 	async _onRender(context, options) {
@@ -5765,7 +6066,33 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				await this.saveAndRender();
 				return;
 			}
-			if (action === "pick") await this.pick(button.dataset.picker ?? "");
+			if (action === "adjust-purchase") {
+				const relisId = button.dataset.relisId;
+				const delta = Math.trunc(Number(button.dataset.delta) || 0);
+				const selection = this.draft.resources.purchasedEquipment.find((entry) => entry.relisId === relisId);
+				if (!selection || !delta) return;
+				const quantity = purchaseQuantity(selection);
+				if (delta > 0 && purchaseUnitPrice(selection) > remainingPhysicalCredits(this.draft)) throw new Error("Les crédits personnels restants sont insuffisants.");
+				selection.catalog.creationPurchaseQuantity = Math.max(1, quantity + delta);
+				await this.saveAndRender();
+				return;
+			}
+			if (action === "toggle-starting-package") {
+				const packageId = button.dataset.packageId;
+				if (!packageId) return;
+				const packages = new Set(this.draft.resources.purchasedPackageIds);
+				if (packages.has(packageId)) packages.delete(packageId);
+				else {
+					const entry = startingPackageRows(this.draft).find((candidate) => candidate.id === packageId);
+					if (!entry?.levelOneAvailable) throw new Error(entry?.unavailableReason || "Ce paquet n’est pas disponible à la création niveau 1.");
+					if (!entry.affordable) throw new Error("Les crédits personnels restants sont insuffisants.");
+					packages.add(packageId);
+				}
+				this.draft.resources.purchasedPackageIds = [...packages];
+				await this.saveAndRender();
+				return;
+			}
+			if (action === "pick") await this.pick(button.dataset.picker ?? "", button);
 		} catch (error) {
 			console.error("RE:LIS | Assistant de création", error);
 			ui.notifications.error(error instanceof Error ? error.message : "Opération de création refusée.");
@@ -5786,7 +6113,7 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			}
 		}).render({ force: true });
 	}
-	async pick(kind) {
+	async pick(kind, button) {
 		const ancestry = this.draft.body.ancestry;
 		const profile = this.draft.profile.profile;
 		const path = this.draft.path.path;
@@ -5891,26 +6218,26 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 				maximum: 1,
 				predicate: (entry) => entry.catalog.postTier === "secondary"
 			},
-			equipment: {
-				title: "Ajouter un équipement initial réel",
-				packIds: [
-					"relis.material-weapons",
-					"relis.material-armor",
-					"relis.material-equipment",
-					"relis.material-consumables",
-					"relis.material-ammunition",
-					"relis.material-resources",
-					"relis.material-containers"
-				],
+			grantedEquipment: {
+				title: "Ajouter un objet attribué gratuitement",
+				packIds: MATERIAL_PACK_IDS,
 				path: "resources.initialEquipment",
 				multiple: true,
-				predicate: (entry) => entry.relisId !== "MAT-RES-CREDIT"
+				predicate: (entry) => entry.relisId !== "MAT-RES-CREDIT" && (entry.level == null || entry.level <= 1)
+			},
+			purchasedEquipment: {
+				title: "Acheter un objet de niveau 1 ou inférieur",
+				packIds: MATERIAL_PACK_IDS,
+				path: "resources.purchasedEquipment",
+				multiple: true,
+				predicate: (entry) => entry.relisId !== "MAT-RES-CREDIT" && (entry.level == null || entry.level <= 1) && Number.isFinite(Number(entry.referencePrice?.amount)) && Number(entry.referencePrice?.amount) > 0
 			}
 		}[kind];
 		if (!configuration) return;
 		const current = configuration.path.split(".").reduce((value, key) => value[key], this.draft);
 		if (configuration.multiple && configuration.maximum !== void 0 && Array.from(current ?? []).length >= configuration.maximum) throw new Error(`Ce choix est limité à ${configuration.maximum} sélection${configuration.maximum > 1 ? "s" : ""}.`);
-		const selected = configuration.multiple ? Array.from(current ?? []).map((entry) => entry.relisId) : current?.relisId ? [current.relisId] : [];
+		const grantSourceId = button?.dataset.grantSourceId ?? "";
+		const selected = configuration.multiple ? Array.from(current ?? []).filter((entry) => kind !== "grantedEquipment" || entry.catalog.creationGrantSourceId === grantSourceId).map((entry) => entry.relisId) : current?.relisId ? [current.relisId] : [];
 		const pickerOptions = {
 			title: configuration.title,
 			selectedRelisIds: selected,
@@ -5921,6 +6248,18 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 		else throw new Error("Aucun catalogue n’est configuré pour ce choix.");
 		const choice = await openCatalogPicker(pickerOptions);
 		if (!choice) return;
+		if (kind === "grantedEquipment") {
+			choice.catalog.creationGrantSourceId = grantSourceId || "creation";
+			choice.catalog.creationGrantSourceLabel = button?.dataset.grantSourceLabel ?? "Dotation de création";
+			choice.catalog.creationGrantQuantity = 1;
+		}
+		if (kind === "purchasedEquipment") {
+			const unitPrice = Number(choice.referencePrice?.amount);
+			if (!Number.isFinite(unitPrice) || unitPrice <= 0) throw new Error("Cet Item ne possède pas de prix de référence achetable.");
+			if (unitPrice > remainingPhysicalCredits(this.draft)) throw new Error("Les crédits personnels restants sont insuffisants.");
+			choice.catalog.creationPurchaseUnitPrice = unitPrice;
+			choice.catalog.creationPurchaseQuantity = 1;
+		}
 		setDraftValue(this.draft, configuration.path, configuration.multiple ? [...Array.from(current ?? []), choice] : choice);
 		if (kind === "ancestry") {
 			this.draft.body.nature = String(choice.catalog.bodyNature ?? "biological");
@@ -5954,7 +6293,6 @@ var RelisCharacterCreationAssistant = class extends HandlebarsApplicationMixin$2
 			this.draft.skills.pathChoices = [];
 			this.draft.skills.freeChoices = [];
 		}
-		if (kind === "equipment") this.draft.resources.equipmentPending = false;
 		await this.saveAndRender();
 	}
 	async save() {

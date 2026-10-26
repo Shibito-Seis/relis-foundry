@@ -4,6 +4,10 @@ import {
   type AttributeKey,
   type SkillKey,
 } from "../config";
+import {
+  STARTING_EQUIPMENT_PACKAGES,
+  startingEquipmentPackage,
+} from "./starting-equipment";
 
 export const CHARACTER_CREATION_VERSION = 1;
 
@@ -36,6 +40,12 @@ export interface CatalogSelection {
   level?: number | null;
   requirementRefs?: Array<Record<string, any>>;
   description?: string;
+  referencePrice?: {
+    amount: number | null;
+    currencyRef?: Record<string, any>;
+    unit?: string;
+    quantityBasis?: number;
+  };
 }
 
 export interface CharacterCreationDraft {
@@ -110,6 +120,8 @@ export interface CharacterCreationDraft {
     creditsPending: boolean;
     equipmentPending: boolean;
     initialEquipment: CatalogSelection[];
+    purchasedEquipment: CatalogSelection[];
+    purchasedPackageIds: string[];
   };
   appearance: {
     actorImage: string;
@@ -296,9 +308,11 @@ export function createCharacterDraft(
     },
     resources: {
       energyProfileId: "",
-      creditsPending: true,
+      creditsPending: false,
       equipmentPending: true,
       initialEquipment: [],
+      purchasedEquipment: [],
+      purchasedPackageIds: [],
     },
     appearance: { actorImage: "", tokenImage: "", description: "" },
     assignments: { primaryPost: null, secondaryPosts: [] },
@@ -328,6 +342,13 @@ export function normalizeCharacterDraft(
     appearance: { ...base.appearance, ...value.appearance },
     assignments: { ...base.assignments, ...value.assignments },
   };
+  draft.resources.creditsPending = false;
+  draft.resources.purchasedEquipment = Array.from(
+    draft.resources.purchasedEquipment ?? [],
+  );
+  draft.resources.purchasedPackageIds = Array.from(
+    draft.resources.purchasedPackageIds ?? [],
+  ).filter((id) => Boolean(startingEquipmentPackage(id)));
   migrateLegacySkillChoices(draft);
   draft.skills.qualified = qualifiedSkillKeys(draft);
   draft.skills.favorites = draft.skills.favorites.filter((key) =>
@@ -432,7 +453,11 @@ export function requiredQualifiedSkillCount(
   return Number.isFinite(pathTotal)
     ? Math.max(
         0,
-        pathTotal + 2 + Math.max(0, Math.trunc(intelligence)) + advantageSkills,
+        pathTotal +
+          2 +
+          1 +
+          Math.max(0, Math.trunc(intelligence)) +
+          advantageSkills,
       )
     : null;
 }
@@ -443,7 +468,8 @@ export function freeQualifiedSkillCount(
 ): number {
   return Math.max(
     0,
-    Math.trunc(intelligence) +
+    1 +
+      Math.max(0, Math.trunc(intelligence)) +
       draft.profile.advantages.reduce(
         (total, advantage) =>
           total +
@@ -1063,12 +1089,22 @@ export function deriveCharacterCreation(
       step: "talents",
       message: `${secondaryWithoutTalent.length} Talent${secondaryWithoutTalent.length > 1 ? "s" : ""} secondaire${secondaryWithoutTalent.length > 1 ? "s" : ""} de niveau 1 reste${secondaryWithoutTalent.length > 1 ? "nt" : ""} en attente.`,
     });
-  if (draft.resources.creditsPending)
+  if (startingPurchaseTotal(draft) > initialPhysicalCredits(draft))
     diagnostics.push({
-      level: "warning",
+      level: "error",
       step: "resources",
-      message: "Crédits initiaux conservés comme choix en attente.",
+      message:
+        "Les achats de départ dépassent les crédits personnels disponibles.",
     });
+  for (const id of draft.resources.purchasedPackageIds) {
+    const packageEntry = startingEquipmentPackage(id);
+    if (!packageEntry?.levelOneAvailable)
+      diagnostics.push({
+        level: "error",
+        step: "resources",
+        message: `Le paquet ${packageEntry?.label ?? id} n’est pas compatible avec la limite d’équipement niveau 1.`,
+      });
+  }
   if (draft.resources.equipmentPending)
     diagnostics.push({
       level: "warning",
@@ -1303,6 +1339,7 @@ export function draftSelections(
     draft.assignments.primaryPost,
     ...draft.assignments.secondaryPosts,
     ...draft.resources.initialEquipment,
+    ...draft.resources.purchasedEquipment,
   ].filter((entry): entry is CatalogSelection => Boolean(entry));
 }
 
@@ -1318,4 +1355,54 @@ export function initialPhysicalCredits(draft: CharacterCreationDraft): number {
   if (ids.has("CRE-HCP-003-TRES-PAUVRE")) return 1_250;
   if (ids.has("CRE-HCP-002-PAUVRE")) return 2_500;
   return 5_000;
+}
+
+export function purchaseQuantity(selection: CatalogSelection): number {
+  return Math.max(
+    1,
+    Math.trunc(Number(selection.catalog.creationPurchaseQuantity) || 1),
+  );
+}
+
+export function purchaseUnitPrice(selection: CatalogSelection): number {
+  return Math.max(
+    0,
+    Number(
+      selection.catalog.creationPurchaseUnitPrice ??
+        selection.referencePrice?.amount ??
+        0,
+    ) || 0,
+  );
+}
+
+export function startingPurchaseTotal(draft: CharacterCreationDraft): number {
+  const individual = draft.resources.purchasedEquipment.reduce(
+    (total, selection) =>
+      total + purchaseQuantity(selection) * purchaseUnitPrice(selection),
+    0,
+  );
+  const packages = draft.resources.purchasedPackageIds.reduce(
+    (total, id) => total + (startingEquipmentPackage(id)?.cost ?? 0),
+    0,
+  );
+  return individual + packages;
+}
+
+export function remainingPhysicalCredits(
+  draft: CharacterCreationDraft,
+): number {
+  return Math.max(
+    0,
+    initialPhysicalCredits(draft) - startingPurchaseTotal(draft),
+  );
+}
+
+export function startingPackageRows(draft: CharacterCreationDraft) {
+  const selected = new Set(draft.resources.purchasedPackageIds);
+  const remaining = remainingPhysicalCredits(draft);
+  return STARTING_EQUIPMENT_PACKAGES.map((entry) => ({
+    ...entry,
+    selected: selected.has(entry.id),
+    affordable: selected.has(entry.id) || entry.cost <= remaining,
+  }));
 }

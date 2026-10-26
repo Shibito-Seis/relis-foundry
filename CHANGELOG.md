@@ -1,5 +1,14 @@
 # Journal des versions
 
+## 0.9.2 — compétences et équipement initial 10-D3
+
+- Applique la règle validée des compétences libres : une compétence libre garantie, plus l’Intelligence positive et les éventuels bonus structurés d’Atout.
+- Rend les navigateurs de compendium redimensionnables et attache après rendu le filtrage instantané, ainsi que les actions Sélectionner et Lire, conformément au cycle de vie DialogV2 de Foundry 14.
+- Sépare les dotations gratuites du Profil, de la Voie et des Spécialisations des achats personnels ; chaque source de dotation est identifiée et choisie depuis les vrais compendiums.
+- Conserve les 5 000 crédits personnels pour acheter des paquetages préfaits ou des Items isolés tarifés de niveau 1 ou inférieur ; le solde non dépensé devient un Item de crédits physiques.
+- Publie les huit paquetages canoniques. Les paquetages qui référencent encore un Item de niveau 2 ou 3 restent visibles mais verrouillés avec leur motif, sans contourner la création niveau 1.
+- Passe le paquet à `0.9.2`, conserve le contenu en `1.4.1`, le schéma Item 7 et l’absence de migration de monde. 10-D3 demeure en recette jusqu’à validation explicite.
+
 ## 0.9.1 — correctif de recette 10-D3
 
 - Rend les sélecteurs de compendium défilants, recherchables et lisibles avant sélection, avec boutons explicites par ligne.

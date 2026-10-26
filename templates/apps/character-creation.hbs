@@ -629,31 +629,42 @@
               />
               <b>{{label}}</b><small
               >{{summary}}</small></label>{{/each}}</div>{{/if}}
-      <label><input
+      <section class="relis-creation-budget" aria-label="Budget personnel"><div
+        ><span>Crédits personnels</span><strong
+          >{{initialCredits}}</strong></div><div><span>Achats</span><strong
+          >{{spentCredits}}</strong></div><div><span>Argent liquide conservé</span><strong
+          >{{remainingCredits}}</strong></div><progress
+          value="{{spentCreditsRaw}}"
+          max="{{initialCreditsRaw}}"
+          aria-label="Part des crédits dépensée"
+        ></progress></section>
+      <p class="relis-scope-note">Les dotations du Profil, de la Voie et des
+        Spécialisations sont gratuites. Les achats ci-dessous sont seuls déduits
+        des crédits personnels ; tout solde non dépensé devient un Item Crédit
+        physique.</p>
+      <h3>Matériel attribué gratuitement</h3>
+      <div class="relis-creation-grant-grid">{{#each
+          equipmentGrantSources
+        }}<article class="relis-creation-choice-card"><header><strong
+              >{{label}}</strong><button
+                type="button"
+                data-assistant-action="pick"
+                data-picker="grantedEquipment"
+                data-grant-source-id="{{id}}"
+                data-grant-source-label="{{label}}"
+              ><i class="fa-solid fa-magnifying-glass"></i>
+                Choisir un Item</button></header><p
+            >{{guidance}}</p></article>{{/each}}</div>
+      <label class="relis-scope-note"><input
           type="checkbox"
-          data-draft-path="resources.creditsPending"
-          {{checked draft.resources.creditsPending}}
-        />Conserver les
-        {{initialCredits}}
-        crédits initiaux comme choix en attente</label>
-      <h3>Indications canoniques de dotation</h3>
-      {{#each equipmentGuidance}}<p
-          class="relis-scope-note"
-        >{{this}}</p>{{else}}<p class="relis-scope-note">Aucune indication de
-          dotation n’est structurée par les choix actuels.</p>{{/each}}
-      <div class="relis-inline-actions"><button
-          type="button"
-          data-assistant-action="pick"
-          data-picker="equipment"
-        ><i class="fa-solid fa-magnifying-glass"></i>
-          Ajouter un objet réel</button><label><input
-            type="checkbox"
-            data-draft-path="resources.equipmentPending"
-            {{checked draft.resources.equipmentPending}}
-          />Conserver le reste de la dotation en attente</label></div>
+          data-draft-path="resources.equipmentPending"
+          {{checked draft.resources.equipmentPending}}
+        />Conserver une partie ambiguë de la dotation gratuite en attente</label>
       {{#each initialEquipmentRows}}<article
           class="relis-creation-choice-card"
-        ><header><strong>{{name}}</strong><button
+        ><header><strong>{{name}}</strong><span
+              class="relis-creation-source-badge"
+            >{{sourceLabel}}</span><button
               type="button"
               data-assistant-action="open-selection"
               data-selection-uuid="{{uuid}}"
@@ -665,9 +676,63 @@
               data-relis-id="{{relisId}}"
             ><i class="fa-solid fa-trash-can"></i></button></header><p
           >{{excerpt}}</p></article>{{/each}}
-      <p class="relis-scope-note">Aucun équipement absent du catalogue n’est
-        inventé. Si les crédits ne restent pas en attente, leur quantité
-        calculée est matérialisée avec le véritable Item Crédit.</p>
+      <h3>Paquetages préfaits payants</h3>
+      <div class="relis-creation-package-grid">{{#each
+          startingPackageRows
+        }}<article class="{{cssClass}}"><header><strong>{{label}}</strong><span
+              >{{costLabel}}
+                crédits</span></header><p>{{summary}}</p>{{#if
+              unavailableReason
+            }}<p class="relis-diagnostic relis-diagnostic--warning"><i
+                  class="fa-solid fa-lock"
+                ></i>
+                {{unavailableReason}}</p>{{/if}}<button
+              type="button"
+              data-assistant-action="toggle-starting-package"
+              data-package-id="{{id}}"
+              data-selection-disabled="{{disabled}}"
+            >{{#if selected}}Retirer le paquet{{else}}Acheter le paquet{{/if}}</button></article>{{/each}}</div>
+      <h3>Achats libres</h3>
+      <button
+        type="button"
+        data-assistant-action="pick"
+        data-picker="purchasedEquipment"
+      ><i class="fa-solid fa-magnifying-glass"></i>
+        Acheter un Item de niveau 1 ou inférieur</button>
+      {{#each purchasedEquipmentRows}}<article
+          class="relis-creation-choice-card"
+        ><header><strong>{{name}}</strong><span>{{unitPrice}}
+              crédits ×
+              {{quantity}}
+              =
+              {{subtotal}}</span><button
+              type="button"
+              data-assistant-action="open-selection"
+              data-selection-uuid="{{uuid}}"
+            ><i class="fa-solid fa-book-open"></i> Lire</button><button
+              type="button"
+              data-assistant-action="adjust-purchase"
+              data-relis-id="{{relisId}}"
+              data-delta="-1"
+              data-selection-disabled="{{decreaseDisabled}}"
+            ><i class="fa-solid fa-minus"></i></button><button
+              type="button"
+              data-assistant-action="adjust-purchase"
+              data-relis-id="{{relisId}}"
+              data-delta="1"
+              data-selection-disabled="{{increaseDisabled}}"
+            ><i class="fa-solid fa-plus"></i></button><button
+              type="button"
+              class="relis-danger"
+              data-assistant-action="remove-selection"
+              data-selection-path="resources.purchasedEquipment"
+              data-relis-id="{{relisId}}"
+            ><i class="fa-solid fa-trash-can"></i></button></header><p
+          >{{excerpt}}</p></article>{{/each}}
+      <p class="relis-scope-note">Le sélecteur d’achat masque les Items de
+        niveau supérieur à 1 et ceux dont le prix n’est pas encore défini. Les
+        paquetages incompatibles restent visibles avec leur motif, sans pouvoir
+        contourner cette limite.</p>
     {{/if}}
 
     {{#if step_appearance}}

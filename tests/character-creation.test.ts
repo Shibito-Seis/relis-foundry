@@ -5,9 +5,15 @@ import {
   createCharacterDraft,
   creationStepState,
   deriveCharacterCreation,
+  freeQualifiedSkillCount,
+  initialPhysicalCredits,
+  remainingPhysicalCredits,
+  requiredQualifiedSkillCount,
   secondarySpecializationCount,
+  startingPurchaseTotal,
   type CatalogSelection,
 } from "../src/rules/character-creation";
+import { STARTING_EQUIPMENT_PACKAGES } from "../src/rules/starting-equipment";
 
 function selection(
   name: string,
@@ -72,7 +78,7 @@ function completeDraft() {
   ];
   draft.skills.profileChoices = ["medicine", "science"];
   draft.skills.pathChoices = ["stealth", "investigation"];
-  draft.skills.freeChoices = ["engineering", "computing"];
+  draft.skills.freeChoices = ["engineering", "computing", "athletics"];
   draft.assignments.primaryPost = selection(
     "Commandant",
     "post",
@@ -119,8 +125,8 @@ describe("assistant canonique 10-D3", () => {
       willpower: 0,
       magicMastery: 1,
     });
-    expect(result.requiredQualifiedSkills).toBe(8);
-    expect(result.qualifiedSkillCount).toBe(8);
+    expect(result.requiredQualifiedSkills).toBe(9);
+    expect(result.qualifiedSkillCount).toBe(9);
     expect(result.hitPoints).toBe(21);
     expect(result.energyPools).toEqual([
       expect.objectContaining({ key: "mana", maximum: 4 }),
@@ -190,10 +196,10 @@ describe("assistant canonique 10-D3", () => {
     draft.profile.advantageAttributeChoices["CRE-AVT-001-GENIE"] = [
       "technology",
     ];
-    draft.skills.freeChoices.push("athletics", "endurance");
+    draft.skills.freeChoices.push("endurance", "culture");
     let result = deriveCharacterCreation(draft);
     expect(result.attributes.technology).toBe(1);
-    expect(result.requiredQualifiedSkills).toBe(10);
+    expect(result.requiredQualifiedSkills).toBe(11);
     expect(
       result.diagnostics.some(({ message }) => message.includes("Dette")),
     ).toBe(true);
@@ -205,6 +211,57 @@ describe("assistant canonique 10-D3", () => {
     expect(
       result.diagnostics.some(({ message }) => message.includes("balance")),
     ).toBe(false);
+  });
+
+  it("accorde toujours une compétence libre, puis ajoute l’Intelligence positive", () => {
+    const draft = completeDraft();
+    expect(freeQualifiedSkillCount(draft, -2)).toBe(1);
+    expect(freeQualifiedSkillCount(draft, 0)).toBe(1);
+    expect(freeQualifiedSkillCount(draft, 2)).toBe(3);
+    expect(requiredQualifiedSkillCount(draft, 2)).toBe(9);
+  });
+
+  it("sépare les dotations gratuites du budget personnel de 5 000 crédits", () => {
+    const draft = completeDraft();
+    const purchase = selection(
+      "Combinaison orbitale d’urgence",
+      "armor",
+      "MAT-ARM-073-COMBINAISON-ORBITALE-D-URGENCE",
+      { creationPurchaseQuantity: 2, creationPurchaseUnitPrice: 1_200 },
+    );
+    purchase.level = 1;
+    purchase.referencePrice = { amount: 1_200 };
+    draft.resources.initialEquipment.push(
+      selection(
+        "Pistolet de service attribué",
+        "weapon",
+        "MAT-WPN-032-PISTOLET-DE-SERVICE",
+        { creationGrantSourceId: "profile" },
+      ),
+    );
+    draft.resources.purchasedEquipment.push(purchase);
+    draft.resources.purchasedPackageIds.push("civil-prudent");
+
+    expect(initialPhysicalCredits(draft)).toBe(5_000);
+    expect(startingPurchaseTotal(draft)).toBe(4_900);
+    expect(remainingPhysicalCredits(draft)).toBe(100);
+  });
+
+  it("référence les huit paquetages payants et verrouille ceux qui dépassent le niveau 1", () => {
+    expect(STARTING_EQUIPMENT_PACKAGES).toHaveLength(8);
+    expect(
+      STARTING_EQUIPMENT_PACKAGES.filter(({ levelOneAvailable }) =>
+        Boolean(levelOneAvailable),
+      ).map(({ id }) => id),
+    ).toEqual(["civil-prudent", "technicien", "survie-eva"]);
+    expect(
+      STARTING_EQUIPMENT_PACKAGES.filter(({ levelOneAvailable }) =>
+        Boolean(!levelOneAvailable),
+      ).every(
+        ({ contents, unavailableReason }) =>
+          contents.length === 0 && unavailableReason.length > 0,
+      ),
+    ).toBe(true);
   });
 
   it("impose le Précepte de l’Humanité et refuse les branches secondaires dupliquées", () => {

@@ -2,7 +2,7 @@
 
 Premier socle technique du système `relis`, ciblé sur Foundry VTT 14.365 et The Forge.
 
-La version `0.9.1` corrige la première recette de 10-D3 sans en prononcer la clôture. Les navigateurs de compendium sont défilants, filtrables et permettent de lire chaque source avant de la sélectionner. La Voie et ses compétences occupent l’étape 5, les Attributs l’étape 6 et les Compétences libres l’étape 7 ; les plafonds de quatre Attributs et de deux, trois ou quatre Spécialisations sont bloqués directement dans l’interface. La nature corporelle est déduite de l’Ascendance, les quatre Postes principaux sont séparés des sept Postes secondaires, et le matériel initial peut être choisi parmi les véritables catalogues. Portrait et Token passent par le sélecteur de fichiers Foundry, tandis que la finalisation refuse les médias invalides et nettoie sans erreur un échec de création. Le contenu compte toujours 5 100 Items et 26 Journaux ; le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
+La version `0.9.2` poursuit la recette de 10-D3 sans en prononcer la clôture. Les navigateurs de compendium sont défilants, filtrent pendant la frappe, permettent de lire chaque source avant sélection et leur fenêtre est redimensionnable. Les compétences libres suivent désormais la règle `1 + Intelligence positive`, en plus des deux compétences de Profil et du quota de Voie. Les dotations gratuites du Profil, de la Voie et des Spécialisations sont séparées du budget personnel : le personnage conserve 5 000 crédits pour acheter des paquetages préfaits ou des Items isolés de niveau 1 ou inférieur, puis reçoit le solde non dépensé sous forme de crédits physiques. Le contenu reste en `1.4.1`, avec 5 100 Items et 26 Journaux ; le schéma Item demeure 7 et aucune migration de monde n’est ajoutée.
 
 L’Écarlithe noire brute, le Cœur d’Écarlithe incolore et la techno-lame de Prana sont de vrais Items distincts. Chaque Cœur reçoit un tirage stable de 20 situations dans une banque de 48 — 8 simples, 8 intermédiaires et 4 complexes — sur six axes et quinze couleurs. Réponses, choix MJ, nom coloré, sujet de l’accord et historique persistent. La couleur n’accorde aucun bonus mécanique. Le propriétaire répond pour son PJ ; le MJ répond pour un PNJ et garde seul la modification directe ou la réinitialisation. L’activation, la surcharge et la résolution de combat restent en 10-F.
 
@@ -49,7 +49,7 @@ en SVG interne jusqu’à la passe graphique finale.
 Les trois densités PNJ sont conservées. Les commandes modifiables sont réservées
 au propriétaire autorisé ou au MJ. Le pied de fiche affiche la version réelle.
 10-E2-P, la revue visuelle 0.4.3, 10-E3-P, 10-E4-P et 10-K1-P sont validés.
-10-K2-P et l’audit personnel sont validés et clos. 10-D3 attend la recette 0.9.1. Aucun contrôle visuel automatisé par navigateur :
+10-K2-P et l’audit personnel sont validés et clos. 10-D3 attend la recette 0.9.2. Aucun contrôle visuel automatisé par navigateur :
 la recette utilisateur se fait seul, bloc par bloc ; les autres participants
 restent réservés à la procédure finale.
 Les préférences de repli restent locales au navigateur, par utilisateur et Actor.
@@ -73,7 +73,7 @@ npm test
 npm run package
 ```
 
-L’archive installable est créée sous `build/relis-v0.9.1.zip`. Son `system.json` se
+L’archive installable est créée sous `build/relis-v0.9.2.zip`. Son `system.json` se
 trouve à la racine de l’archive, conformément au paquet téléchargé par Foundry. Le
 paquet exclut les tests, les outils et les dépendances de développement ; il conserve
 la source map du bundle afin que les erreurs de la recette distante soient traçables.
@@ -82,6 +82,14 @@ la source map du bundle afin que les erreurs de la recette distante soient traç
 
 Tous droits réservés — voir `LICENSE`. La visibilité publique du dépôt n’autorise
 pas la réutilisation du code, du contenu ou des médias.
+
+## 0.9.2 — compétences et équipement initial 10-D3
+
+- Calcule les choix libres avec `1 + Intelligence positive`, auxquels s’ajoutent les éventuels bonus structurés d’Atout.
+- Rend les sélecteurs de compendium redimensionnables et filtrables immédiatement pendant la frappe, sans régresser le contrat DialogV2 de Foundry 14.
+- Distingue les dotations gratuites du Profil, de la Voie et des Spécialisations des 5 000 crédits personnels.
+- Permet d’acheter des paquetages préfaits et des Items isolés tarifés de niveau 1 ou inférieur, puis matérialise le solde non dépensé en crédits physiques.
+- Conserve le contenu `1.4.1`, le schéma Item 7 et l’absence de migration. 10-D3 reste en recette.
 
 ## 0.9.1 — correctif de recette 10-D3
 

@@ -6,8 +6,36 @@ import {
   characterActorSource,
   deriveCharacterCreation,
   draftSelections,
-  initialPhysicalCredits,
+  purchaseQuantity,
+  remainingPhysicalCredits,
 } from "../rules/character-creation";
+import { startingEquipmentPackage } from "../rules/starting-equipment";
+
+export const MATERIAL_PACK_IDS = [
+  "relis.material-weapons",
+  "relis.material-armor",
+  "relis.material-equipment",
+  "relis.material-consumables",
+  "relis.material-ammunition",
+  "relis.material-resources",
+  "relis.material-containers",
+];
+
+const MATERIAL_ITEM_TYPES = new Set([
+  "weapon",
+  "armor",
+  "equipment",
+  "consumable",
+  "ammunition",
+  "resource",
+  "container",
+]);
+
+const STACKABLE_MATERIAL_TYPES = new Set([
+  "consumable",
+  "ammunition",
+  "resource",
+]);
 
 export const BUILD_ITEM_TYPES = new Set([
   "ancestry",
@@ -237,6 +265,9 @@ export async function loadCatalogSelections(
         JSON.stringify(document.system?.requirementRefs ?? []),
       ),
       description: String(document.system?.description ?? ""),
+      referencePrice: JSON.parse(
+        JSON.stringify(document.system?.referencePrice ?? {}),
+      ),
     }))
     .filter(
       (selection) =>
@@ -296,7 +327,11 @@ function plainText(value: unknown): string {
 
 function catalogMetadata(selection: CatalogSelection): string {
   const value = String(selection.catalog.value ?? "").trim();
-  const level = selection.level ? `Niveau ${selection.level}` : "";
+  const level =
+    selection.level === null || selection.level === undefined
+      ? ""
+      : `Niveau ${selection.level}`;
+  const price = Number(selection.referencePrice?.amount);
   return [
     value ? `Valeur ${value}` : "",
     selection.catalog.pathName,
@@ -308,6 +343,9 @@ function catalogMetadata(selection: CatalogSelection): string {
         ? "Poste secondaire"
         : "",
     level,
+    Number.isFinite(price) && price > 0
+      ? `${price.toLocaleString("fr-FR")} crédits`
+      : "",
   ]
     .filter(Boolean)
     .join(" · ");
@@ -374,49 +412,84 @@ export async function openCatalogPicker(options: {
     const selectButton = document.createElement("button");
     selectButton.type = "button";
     selectButton.disabled = input.disabled;
+    selectButton.dataset.catalogSelectIndex = String(index);
     selectButton.innerHTML =
       '<i class="fa-solid fa-check" aria-hidden="true"></i> Sélectionner';
-    selectButton.addEventListener("click", () => {
-      input.checked = true;
-      for (const candidate of list.querySelectorAll("article"))
-        candidate.classList.remove("is-selected");
-      row.classList.add("is-selected");
-    });
     const readButton = document.createElement("button");
     readButton.type = "button";
+    readButton.dataset.catalogReadIndex = String(index);
     readButton.innerHTML =
       '<i class="fa-solid fa-book-open" aria-hidden="true"></i> Lire';
-    readButton.addEventListener("click", () => {
-      void openCatalogSelectionDocument(entry).catch((error) => {
-        ui.notifications.error(
-          error instanceof Error ? error.message : "Lecture impossible.",
-        );
-      });
-    });
     actions.append(selectButton, readButton);
     row.append(input, image, text, actions);
     list.append(row);
   }
   browser.append(list);
   root.append(browser);
-  const filter = () => {
-    const query = normalizeCatalogSearch(search.value.trim());
-    let visible = 0;
-    for (const row of list.querySelectorAll<HTMLElement>("article")) {
-      const match = !query || (row.dataset.search ?? "").includes(query);
-      row.hidden = !match;
-      if (match) visible += 1;
-    }
-    status.textContent = `${visible} résultat${visible > 1 ? "s" : ""}.`;
+  status.textContent = `${entries.length} résultat${entries.length > 1 ? "s" : ""}.`;
+  const attachBrowserListeners = (_event: Event, dialog: any) => {
+    const element = dialog.element as HTMLElement;
+    const renderedBrowser = element.querySelector<HTMLElement>(
+      ".relis-catalog-browser",
+    );
+    const renderedSearch = renderedBrowser?.querySelector<HTMLInputElement>(
+      'input[type="search"]',
+    );
+    const renderedStatus = renderedBrowser?.querySelector<HTMLElement>(
+      ".relis-catalog-browser__status",
+    );
+    const renderedList = renderedBrowser?.querySelector<HTMLElement>(
+      ".relis-catalog-browser__list",
+    );
+    if (!renderedBrowser || !renderedSearch || !renderedStatus || !renderedList)
+      return;
+    const filter = () => {
+      const query = normalizeCatalogSearch(renderedSearch.value.trim());
+      let visible = 0;
+      for (const row of renderedList.querySelectorAll<HTMLElement>("article")) {
+        const match = !query || (row.dataset.search ?? "").includes(query);
+        row.hidden = !match;
+        if (match) visible += 1;
+      }
+      renderedStatus.textContent = `${visible} résultat${visible > 1 ? "s" : ""}.`;
+    };
+    renderedSearch.addEventListener("input", filter);
+    for (const button of renderedList.querySelectorAll<HTMLButtonElement>(
+      "[data-catalog-select-index]",
+    ))
+      button.addEventListener("click", () => {
+        const index = Number(button.dataset.catalogSelectIndex);
+        const radio = renderedList.querySelector<HTMLInputElement>(
+          `input[name="selection"][value="${index}"]`,
+        );
+        if (!radio || radio.disabled) return;
+        radio.checked = true;
+        for (const candidate of renderedList.querySelectorAll("article"))
+          candidate.classList.remove("is-selected");
+        radio.closest("article")?.classList.add("is-selected");
+      });
+    for (const button of renderedList.querySelectorAll<HTMLButtonElement>(
+      "[data-catalog-read-index]",
+    ))
+      button.addEventListener("click", () => {
+        const entry = entries[Number(button.dataset.catalogReadIndex)];
+        if (!entry) return;
+        void openCatalogSelectionDocument(entry).catch((error) => {
+          ui.notifications.error(
+            error instanceof Error ? error.message : "Lecture impossible.",
+          );
+        });
+      });
+    filter();
   };
-  search.addEventListener("input", filter);
-  filter();
   const result = (await foundry.applications.api.DialogV2.input({
-    window: { title: options.title },
+    window: { title: options.title, resizable: true },
+    position: { width: 760, height: 640 },
     content: root,
     ok: { label: "Valider la sélection" },
     modal: true,
     rejectClose: false,
+    render: attachBrowserListeners,
   })) as Record<string, any> | null;
   if (!result || result.selection === undefined || result.selection === "")
     return null;
@@ -611,8 +684,10 @@ async function selectedItemSources(
   draft: CharacterCreationDraft,
 ): Promise<Record<string, any>[]> {
   const unique = new Map<string, CatalogSelection>();
-  for (const selection of draftSelections(draft))
+  for (const selection of draftSelections(draft)) {
+    if (MATERIAL_ITEM_TYPES.has(selection.type)) continue;
     unique.set(selection.relisId, selection);
+  }
   const result: Record<string, any>[] = [];
   for (const selection of unique.values()) {
     const enriched = JSON.parse(JSON.stringify(selection)) as CatalogSelection;
@@ -624,19 +699,85 @@ async function selectedItemSources(
       enriched.catalog.selectionDetails = selectionDetails.trim();
     result.push(await embeddedSource(enriched));
   }
-  if (!draft.resources.creditsPending) {
-    const credits = initialPhysicalCredits(draft);
-    if (credits > 0) {
-      const [selection] = await loadCatalogSelections(
-        "relis.material-resources",
-        (entry) => entry.relisId === "MAT-RES-CREDIT",
-      );
-      if (!selection)
-        throw new Error("La source canonique du crédit physique est absente.");
+
+  const appendMaterial = async (
+    selection: CatalogSelection,
+    quantity: number,
+    acquisitionKind: "creationGrant" | "creationPurchase",
+    lotId: string,
+  ) => {
+    const count = Math.max(1, Math.trunc(quantity));
+    const copies = STACKABLE_MATERIAL_TYPES.has(selection.type) ? 1 : count;
+    for (let index = 0; index < copies; index += 1) {
       const source = await embeddedSource(selection);
-      source.system.physical.quantity = credits;
+      source.system.physical ??= {};
+      source.system.physical.quantity =
+        copies === 1 && STACKABLE_MATERIAL_TYPES.has(selection.type)
+          ? count
+          : 1;
+      source.system.provenance ??= {};
+      source.system.provenance.acquisitionKind = acquisitionKind;
+      source.system.provenance.lotId = lotId;
       result.push(source);
     }
+  };
+
+  for (const selection of draft.resources.initialEquipment)
+    await appendMaterial(
+      selection,
+      Number(selection.catalog.creationGrantQuantity) || 1,
+      "creationGrant",
+      String(selection.catalog.creationGrantSourceId ?? "creation"),
+    );
+  for (const selection of draft.resources.purchasedEquipment)
+    await appendMaterial(
+      selection,
+      purchaseQuantity(selection),
+      "creationPurchase",
+      "individual-purchase",
+    );
+
+  if (draft.resources.purchasedPackageIds.length) {
+    const materialCatalog =
+      await loadCatalogSelectionsFromPacks(MATERIAL_PACK_IDS);
+    const byRelisId = new Map(
+      materialCatalog.map((selection) => [selection.relisId, selection]),
+    );
+    for (const packageId of draft.resources.purchasedPackageIds) {
+      const packageEntry = startingEquipmentPackage(packageId);
+      if (!packageEntry?.levelOneAvailable)
+        throw new Error(
+          `Le paquet ${packageEntry?.label ?? packageId} n’est pas disponible à la création niveau 1.`,
+        );
+      for (const content of packageEntry.contents) {
+        const selection = byRelisId.get(content.relisId);
+        if (!selection)
+          throw new Error(
+            `Le paquet ${packageEntry.label} référence un Item absent : ${content.relisId}.`,
+          );
+        await appendMaterial(
+          selection,
+          content.quantity,
+          "creationPurchase",
+          packageEntry.id,
+        );
+      }
+    }
+  }
+
+  const credits = remainingPhysicalCredits(draft);
+  if (credits > 0) {
+    const [selection] = await loadCatalogSelections(
+      "relis.material-resources",
+      (entry) => entry.relisId === "MAT-RES-CREDIT",
+    );
+    if (!selection)
+      throw new Error("La source canonique du crédit physique est absente.");
+    const source = await embeddedSource(selection);
+    source.system.physical.quantity = credits;
+    source.system.provenance.acquisitionKind = "creationGrant";
+    source.system.provenance.lotId = "starting-credits";
+    result.push(source);
   }
   return result;
 }
